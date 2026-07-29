@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+.python-version
+__pycache__/
+.tmp/
+.cache/
