@@ -127,6 +127,26 @@
         ],
         "updatedAt": "2026-07-30T16:06:27.538Z"
       }
+    },
+    "columbus-fishing-30": {
+      "gumroad": {
+        "id": "ayBMu_53fzAeexiAZOdIbw==",
+        "url": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+        "permalink": "columbus-fishing-30",
+        "published": true,
+        "price": 1200,
+        "files": [
+          {
+            "id": "QfSX8iwTfYY7bhnAeVkcCg==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/605086646ef0d37b49c19c74cf38b2af/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785432699-0YgyKM6EXDZe%2BCsdko4HHbd6xnj4q%2FmTNw96lgIqfU0%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          }
+        ],
+        "updatedAt": "2026-07-30T17:21:39.477Z"
+      }
     }
   }
 }

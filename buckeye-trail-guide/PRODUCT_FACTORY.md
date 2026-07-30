@@ -43,6 +43,7 @@ Personal / local
 - ~~Hocking Hills day-trip from Columbus~~ → shipped as `products/hocking-hills-day`
 - ~~Top 15 super natural experiences in Columbus under $15~~ → shipped as `products/columbus-nature-15` (nature)
 - ~~Columbus supernatural / paranormal under $30~~ → shipped as `products/columbus-supernatural` ($2 guide)
+- ~~Top 30 fishing spots around Columbus~~ → shipped as `products/columbus-fishing-30`
 - Holiday guest hosting timeline (central Ohio weather aware)
 
 Professional / life admin

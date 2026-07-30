@@ -174,6 +174,32 @@ File: `products/columbus-supernatural/product.pdf`
 
 ---
 
+## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $12
+
+**Title:** Top 30 Fishing Spots Around Columbus, Ohio  
+**Price:** $12  
+**Summary:**  
+Thirty fishing spots near Columbus — bring your Ohio license, then use local tips for access, crowds, and nearby food/walks.
+
+**Description:**
+
+A practical central Ohio fishing field guide — not a regulations manual.
+
+Includes:
+
+- 30 spots across reservoirs, metro parks, rivers/creeks, and easy day-trips  
+- Local tip at each stop  
+- License + gear checklist  
+- Half-day sampler menus  
+- Printable trip log  
+
+**You get:** PDF download  
+**Perfect for:** weekend anglers, new residents, “where should we fish?” group chats  
+
+File: `products/columbus-fishing-30/product.pdf`
+
+---
+
 ## Bundle (optional) — Central Ohio Starter Trio — $34
 
 First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).

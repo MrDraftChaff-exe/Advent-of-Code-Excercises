@@ -63,4 +63,13 @@ export const products = [
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-supernatural',
     cover: '/covers/columbus-supernatural.png',
   },
+  {
+    id: 'columbus-fishing-30',
+    title: 'Top 30 Fishing Spots Around Columbus',
+    subtitle: 'License + Local Tips',
+    price: 12,
+    blurb: 'Reservoirs, metro parks, rivers, and day-trips — bring your license and use the local tip at each stop.',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30',
+    cover: '/covers/columbus-fishing-30.png',
+  },
 ];

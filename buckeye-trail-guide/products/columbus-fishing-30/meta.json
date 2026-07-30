@@ -1,0 +1,25 @@
+{
+  "id": "columbus-fishing-30",
+  "title": "Top 30 Fishing Spots Around Columbus, Ohio",
+  "price": 12,
+  "permalink": "columbus-fishing-30",
+  "oneLiner": "Thirty fishing spots near Columbus — bring your Ohio license, then use local tips for access, pressure, and what to do nearby.",
+  "bullets": [
+    "30 spots: reservoirs, metro parks, rivers/creeks, and easy day-trips",
+    "Local tip at each stop (access, crowds, nearby food/walks)",
+    "License + gear checklist and half-day sampler menus",
+    "Printable trip log worksheet"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "fishing",
+    "outdoors",
+    "reservoirs",
+    "metro-parks",
+    "printable",
+    "day-trip"
+  ],
+  "files": ["product.pdf"],
+  "cover": "cover.png"
+}
