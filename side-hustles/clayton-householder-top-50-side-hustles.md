@@ -4,7 +4,7 @@ Digital product stream (Bucket E) is **cleared to launch**. Consulting/gigs stil
 
 ## Brand
 
-**Buckeye Trail Guide** — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.
+**Buckeye Trail Guide** — a collection of guides curated by Keith Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.
 
 ## What exists now
 

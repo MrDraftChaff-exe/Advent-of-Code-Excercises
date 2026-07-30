@@ -111,5 +111,5 @@ You can answer: where you buy food, how you get to work, what happens in a storm
 
 ---
 
-*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*  
 *Personal use. Not affiliated with The Ohio State University or the City of Columbus.*

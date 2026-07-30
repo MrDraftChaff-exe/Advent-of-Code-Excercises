@@ -292,5 +292,5 @@ Thirty places to wet a line within an easy drive of Columbus. Bring a valid **Oh
 
 ---
 
-*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*  
 *Personal use. Not affiliated with The Ohio State University, the City of Columbus, ODNR, Metro Parks, or Ohio State Parks. Species, bait success, links, and access change — confirm license rules, limits, and posted park/reservoir rules before you go.*

@@ -99,5 +99,5 @@ Everything else in this kit supports that choice.
 
 ---
 
-*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*  
 *Personal use. Not affiliated with The Ohio State University or the City of Columbus.*

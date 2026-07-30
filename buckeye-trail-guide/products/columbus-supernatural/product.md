@@ -141,5 +141,5 @@ Would / wouldn’t bring first-timers: ____________________
 
 ---
 
-*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*  
 *Personal use. Local legend ≠ verified haunting. Not affiliated with The Ohio State University, the City of Columbus, Metro Parks, tour operators, or any cemetery association. Prices change — confirm before you go.*

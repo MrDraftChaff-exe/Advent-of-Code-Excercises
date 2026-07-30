@@ -2,9 +2,9 @@ export const brand = {
   name: 'Buckeye Trail Guide',
   tagline: 'Practical guides for everyday life.',
   description:
-    'Printable guides curated by Clayton Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.',
+    'Printable guides curated by Keith Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.',
   city: 'Columbus',
-  curator: 'Clayton Householder',
+  curator: 'Keith Householder',
   avatar: '/gumroad-avatar.png',
 };
 

@@ -1,6 +1,6 @@
 # Brand assets — Buckeye Trail Guide
 
-Mascot: Clayton’s black Maine Coon in a trail-guide badge (scarlet ring, buckeye leaves + nut). Ohio nature theme.
+Mascot: Keith’s black Maine Coon in a trail-guide badge (scarlet ring, buckeye leaves + nut). Ohio nature theme.
 
 ## Profile pictures (no dead space)
 

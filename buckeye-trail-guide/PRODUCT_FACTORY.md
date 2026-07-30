@@ -6,7 +6,7 @@ When you want a new product, paste this prompt into Cursor:
 
 Create a new Buckeye Trail Guide digital download.
 
-**Brand:** Buckeye Trail Guide — printable guides curated by Clayton Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.
+**Brand:** Buckeye Trail Guide — printable guides curated by Keith Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.
 
 **Constraints:** Never banking, cybersecurity, Wells Fargo, PAM, or employer topics. Avoid trademarked university/team logos; use generic wording where needed.
 
@@ -26,7 +26,7 @@ Create a new Buckeye Trail Guide digital download.
 - Checklists, tables, worksheets
 - Fits on printable pages; use markdown headings
 - End with brand line + affiliation disclaimer:  
-  `*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*`  
+  `*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*`  
   `*Personal use. Not affiliated with The Ohio State University or the City of Columbus.*`  
   (Add product-specific park/org notes on the same disclaimer line when relevant.)
 

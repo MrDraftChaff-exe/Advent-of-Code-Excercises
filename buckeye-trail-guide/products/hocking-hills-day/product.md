@@ -128,5 +128,5 @@ What I'd change next time: _________________________________
 
 ---
 
-*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Buckeye Trail Guide · Curated by Keith Householder · Columbus, Ohio*  
 *Personal use. Not affiliated with The Ohio State University, the City of Columbus, or Ohio State Parks.*
