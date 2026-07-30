@@ -7,8 +7,9 @@ Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 ## Status
 
 - Compliance: **approved** for digital product sales (Bucket E).
-- Model: create once → sell on Gumroad/Etsy forever → Cursor adds SKUs.
+- Model: create once → sell on Gumroad forever → Cursor adds SKUs.
 - Still off WF systems / work hours.
+- Etsy: **paused** (platform fees).
 
 ## Structure
 
@@ -52,12 +53,7 @@ npm run dry-run
 npm run publish -- --platforms gumroad
 ```
 
-**Etsy:** follow [`publisher/ETSY_SETUP.md`](./publisher/ETSY_SETUP.md) then:
-
-```bash
-node src/etsy-auth.js
-npm run publish -- --platforms etsy
-```
+**Etsy:** paused — see [`publisher/ETSY_SETUP.md`](./publisher/ETSY_SETUP.md) (not in active pipeline).
 
 See [`publisher/README.md`](./publisher/README.md).
 
@@ -65,4 +61,4 @@ See [`publisher/README.md`](./publisher/README.md).
 
 Continuing from [side-hustle research](https://cursor.com/agents/bc-6df4d7d7-430e-4f20-802e-effeddeb8678) as **Buckeye Trail Guide**.
 
-Next actions for the owner: publish SKU #4 on Gumroad, deploy `site/`, soft-launch posts in `launch/soft-launch-posts.md`, then Etsy when keys are ready.
+Next actions for the owner: deploy `site/`, soft-launch posts in `launch/soft-launch-posts.md`, finish Facebook Page auth at home.

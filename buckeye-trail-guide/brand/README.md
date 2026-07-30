@@ -9,7 +9,7 @@ Opaque, edge-to-edge circle on charcoal — use these for marketplace / social a
 | File | Platform |
 | --- | --- |
 | `profiles/gumroad-avatar.png` (1024) | Gumroad shop + profile |
-| `profiles/etsy-avatar.png` (500) | Etsy shop icon |
+| `profiles/etsy-avatar.png` (500) | Etsy shop icon (**paused** — not in pipeline) |
 | `profiles/social-avatar.png` (400) | Facebook / Nextdoor / LinkedIn |
 | `profiles/profile-*.png` | Extra sizes (128–1024) |
 

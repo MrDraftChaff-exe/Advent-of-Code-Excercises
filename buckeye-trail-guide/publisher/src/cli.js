@@ -41,7 +41,7 @@ Usage:
 
 Options:
   --dry-run              Show what would happen (no API writes)
-  --platforms a,b        gumroad,etsy,lemonsqueezy (default: gumroad)
+  --platforms a,b        gumroad,lemonsqueezy (default: gumroad; etsy paused)
   --product <id>         Only sync one product folder id
   --no-sync-site         Do not rewrite site/src/catalog.js Gumroad URLs
   --sync-site-only       Only rewrite site catalog from state.json
@@ -49,7 +49,7 @@ Options:
 
 Env (see .env.example):
   GUMROAD_ACCESS_TOKEN
-  ETSY_API_KEY ETSY_ACCESS_TOKEN ETSY_SHOP_ID [ETSY_TAXONOMY_ID] [ETSY_AUTO_PUBLISH=true]
+  ETSY_*                 (paused — not in active pipeline)
   LEMON_SQUEEZY_API_KEY LEMON_SQUEEZY_STORE_ID
 `);
 }

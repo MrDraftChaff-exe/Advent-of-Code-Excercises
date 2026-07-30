@@ -13,7 +13,7 @@
 - [x] Personal email (not employer)
 - [x] Gumroad shop URL renamed to `buckeyetrailguide`
 - [ ] Optional: Beehiiv/Substack for later waitlist
-- [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
+- [ ] Etsy shop + API keys — **paused** (fees; see `publisher/ETSY_SETUP.md`)
 - [ ] Pinterest Business + developer app (see `publisher/PINTEREST_SETUP.md`) — paused
 - [ ] Facebook Page + Page token (see `publisher/FACEBOOK_SETUP.md`)
 
@@ -24,8 +24,8 @@ Upload from `buckeye-trail-guide/brand/profiles/` (no white dead space):
 - [ ] Gumroad profile / shop avatar → upload `brand/profiles/gumroad-avatar.png` in Settings → Profile (API cannot set this)
 - [x] Gumroad product thumbnails + covers uploaded for all live SKUs (topic-derived)
 - [x] Re-upload **topic-derived** square thumbnails for all live SKUs from `brand/thumbnails/<slug>.png`
-- [ ] Etsy shop icon → `profiles/etsy-avatar.png` (when shop exists)
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png`
+- ~~Etsy shop icon~~ — paused with Etsy pipeline
 
 ## 2) Export products to PDF
 
@@ -42,8 +42,8 @@ Preferred (once tokens are in `publisher/.env`):
 ```bash
 cd buckeye-trail-guide/publisher
 npm run publish -- --platforms gumroad
-# optional:
-npm run publish -- --platforms gumroad,etsy,lemonsqueezy
+# optional later:
+# npm run publish -- --platforms gumroad,lemonsqueezy
 ```
 
 Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashboard.

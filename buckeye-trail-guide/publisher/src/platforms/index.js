@@ -1,10 +1,9 @@
 import { gumroad } from './gumroad.js';
-import { etsy } from './etsy.js';
 import { lemonsqueezy } from './lemonsqueezy.js';
+// Etsy paused — fees too high for now. Code kept in etsy.js / etsy-auth.js for later.
 
 export const platforms = {
   gumroad,
-  etsy,
   lemonsqueezy,
 };
 
@@ -15,6 +14,11 @@ export function resolvePlatforms(csv) {
     .filter(Boolean);
   const list = [];
   for (const id of wanted) {
+    if (id === 'etsy') {
+      throw new Error(
+        'Etsy is paused (platform fees). Use Gumroad for now. Code remains in src/platforms/etsy.js when you reopen it.'
+      );
+    }
     if (!platforms[id]) {
       throw new Error(`Unknown platform "${id}". Available: ${Object.keys(platforms).join(', ')}`);
     }
