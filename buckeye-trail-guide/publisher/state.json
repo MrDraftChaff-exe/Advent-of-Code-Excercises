@@ -9,23 +9,23 @@
         "price": 2400,
         "files": [
           {
-            "id": "uAPm9nOwsNqS6ptWvH4_nA==",
+            "id": "SWEYABsfQzj_8n4rbH-BzQ==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/df89118fdfb393b72b609a79079b1291/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785423000-kCbBSsHIIHHQqyGXk8umzR74WOvrcAtBtoxsE86hse8%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/8477c06789159536e38729d7f4673905/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424119-F%2BJvS9o86dvNICIyQ0ajy3rHAPLZ9KFsM0AvNYEGPw8%3D",
             "filetype": "pdf",
             "filegroup": "document"
           },
           {
-            "id": "Qg8ekB0w3LBpXe9Lqr3z-A==",
+            "id": "ptP_25AJmaDV1_QwAPjVhw==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/e5ec2e0afa64fa8b9b6eea4b246d5f82/original/Move-to-Columbus-Settling-Spreadsheet.xlsx?response-content-disposition=attachment&verify=1785423000-tV%2BVpuVwXdUSReYiZKr3rM7ehi3LGEuizUR07SqlBgI%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/1aa7a51667f4cc5b2a3b8d72ef21fb95/original/Move-to-Columbus-Settling-Spreadsheet.xlsx?response-content-disposition=attachment&verify=1785424119-L9ngA6jm2yULWM%2FLhlDS2tRNSSPM2JQPITf07DgkcOM%3D",
             "filetype": "xlsx",
             "filegroup": "url"
           }
         ],
-        "updatedAt": "2026-07-30T14:40:00.673Z"
+        "updatedAt": "2026-07-30T14:58:39.736Z"
       }
     },
     "stadium-weekend": {
@@ -37,15 +37,15 @@
         "price": 700,
         "files": [
           {
-            "id": "zeTO6z9DlWLT4xOraCkFvg==",
+            "id": "M4EdtQyzhXK5N_uJcdIE6Q==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/14b8d2f813dc575c17e1643911b29496/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785423009-JSRmNQjK5x0xB1Q1F3w%2B7xU2fKkbLI3rgbJqsFrlqw4%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/f5d4c904e7d628fb16a4ee1874b9adbf/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424123-APcJ%2BguNnV3TUn%2F3kHq8IiamFBN%2FwRzTN%2FOE7EgqkP8%3D",
             "filetype": "pdf",
             "filegroup": "document"
           }
         ],
-        "updatedAt": "2026-07-30T14:40:09.193Z"
+        "updatedAt": "2026-07-30T14:58:43.194Z"
       }
     },
     "weekend-columbus": {
@@ -57,15 +57,15 @@
         "price": 900,
         "files": [
           {
-            "id": "-Kla1LSxMNHJ63DbSpwgcA==",
+            "id": "9oKsdAxQ8DBf58hZX4xRng==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/6170ef1ea569eb295ab1a6fb1c432413/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785423017-heD4fQLOwqAYvvCY1hAzuOUcDQihgFtqkEqijaK4Ckc%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/d3f9dc88c0e52de585a979ec341c79a2/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424128-6coNljwTA1M0Vcxfx1QZIt%2BqIiJyI5zPtRtvtz94IJA%3D",
             "filetype": "pdf",
             "filegroup": "document"
           }
         ],
-        "updatedAt": "2026-07-30T14:40:17.710Z"
+        "updatedAt": "2026-07-30T14:58:48.955Z"
       }
     }
   }

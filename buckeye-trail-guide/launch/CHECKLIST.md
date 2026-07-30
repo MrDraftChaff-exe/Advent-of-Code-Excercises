@@ -1,4 +1,4 @@
-# Launch checklist — Mile Marker Publisher
+# Launch checklist — Buckeye Trail Guide
 
 ## 0) Compliance — APPROVED
 
@@ -20,9 +20,9 @@ From each `products/*/product.md`:
 ```bash
 # option A — open in any markdown preview and Print → PDF
 # option B — if you install md-to-pdf:
-npx --yes md-to-pdf mile-marker-publisher/products/weekend-columbus/product.md
-npx --yes md-to-pdf mile-marker-publisher/products/move-in-pack/product.md
-npx --yes md-to-pdf mile-marker-publisher/products/stadium-weekend/product.md
+npx --yes md-to-pdf buckeye-trail-guide/products/weekend-columbus/product.md
+npx --yes md-to-pdf buckeye-trail-guide/products/move-in-pack/product.md
+npx --yes md-to-pdf buckeye-trail-guide/products/stadium-weekend/product.md
 ```
 
 ## 3) Publish with the auto-deploy tool
@@ -30,7 +30,7 @@ npx --yes md-to-pdf mile-marker-publisher/products/stadium-weekend/product.md
 Preferred (once tokens are in `publisher/.env`):
 
 ```bash
-cd mile-marker-publisher/publisher
+cd buckeye-trail-guide/publisher
 npm run publish -- --platforms gumroad
 # optional:
 npm run publish -- --platforms gumroad,etsy,lemonsqueezy
@@ -41,7 +41,7 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 ## 4) Deploy site
 
 ```bash
-cd mile-marker-publisher/site
+cd buckeye-trail-guide/site
 npm run build
 # deploy `dist/` to Vercel, Netlify, or Cloudflare Pages
 ```

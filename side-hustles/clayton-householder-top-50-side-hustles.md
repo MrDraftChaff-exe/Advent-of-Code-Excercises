@@ -1,23 +1,25 @@
-# Mile Marker Publisher — Compliance approved
+# Buckeye Trail Guide — Compliance approved
 
 Digital product stream (Bucket E) is **cleared to launch**. Consulting/gigs still off-limits unless newly approved.
 
+## Brand
+
+**Buckeye Trail Guide** — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.
+
 ## What exists now
 
-Brand **Mile Marker Publisher**: printable Columbus / Central Ohio field kits.
-
-| Kit | Price | Path |
+| Guide | Price | Path |
 | --- | --- | --- |
-| Weekend in Columbus | $9 | `mile-marker-publisher/products/weekend-columbus` |
-| Move to Columbus Settling Pack + Spreadsheet | $24 | `mile-marker-publisher/products/move-in-pack` |
-| Stadium Weekend Logistics | $7 | `mile-marker-publisher/products/stadium-weekend` |
+| Weekend in Columbus | $9 | `buckeye-trail-guide/products/weekend-columbus` |
+| Move to Columbus Settling Pack + Spreadsheet | $24 | `buckeye-trail-guide/products/move-in-pack` |
+| Stadium Weekend Logistics | $7 | `buckeye-trail-guide/products/stadium-weekend` |
 
-Site: `mile-marker-publisher/site` · Factory: `PRODUCT_FACTORY.md` · Launch: `launch/CHECKLIST.md`
+Site: `buckeye-trail-guide/site` · Factory: `PRODUCT_FACTORY.md` · Launch: `launch/CHECKLIST.md`
 
-## Launch now
+## Launch / sync
 
-1. Create Gumroad (personal email) → upload the three PDFs → paste copy from `launch/gumroad-copy.md`
-2. Put live URLs in `site/src/catalog.js`
-3. Deploy site (`cd mile-marker-publisher/site && npm run build`)
-4. Soft-launch on personal channels (not WF systems)
-5. Ask Cursor for SKU #4 when ready
+```bash
+cd buckeye-trail-guide/publisher
+npm run publish -- --platforms gumroad
+# later: npm run publish -- --platforms gumroad,etsy
+```

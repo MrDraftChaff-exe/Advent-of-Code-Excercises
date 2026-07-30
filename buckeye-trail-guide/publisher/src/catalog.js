@@ -1,5 +1,5 @@
 /**
- * Load Mile Marker Publisher products from products/<id>/meta.json
+ * Load Buckeye Trail Guide products from products/<id>/meta.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -69,8 +69,8 @@ function buildDescriptionHtml(meta, dir) {
   const bullets = (meta.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('');
   let body = `<p>${escapeHtml(meta.oneLiner || '')}</p>`;
   if (bullets) body += `<p><strong>Includes:</strong></p><ul>${bullets}</ul>`;
-  body += `<p>Instant digital download from Mile Marker Publisher (Columbus / Central Ohio field kits).</p>`;
-  body += `<p><em>Personal use. Not affiliated with the City of Columbus or any university.</em></p>`;
+  body += `<p>From <strong>Buckeye Trail Guide</strong> — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.</p>`;
+  body += `<p><em>Personal use. Not affiliated with The Ohio State University or the City of Columbus.</em></p>`;
   if (fs.existsSync(mdPath)) {
     // Keep HTML lean for marketplaces; full content is in the PDF.
     body += `<p>Full printable guide included in the download.</p>`;

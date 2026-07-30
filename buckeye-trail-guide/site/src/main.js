@@ -9,8 +9,8 @@ app.innerHTML = `
   <header class="top">
     <a class="logo" href="#">${brand.name}</a>
     <nav>
-      <a href="#kits">Kits</a>
-      <a class="nav-cta" href="#kits">Get a kit</a>
+      <a href="#kits">Guides</a>
+      <a class="nav-cta" href="#kits">Browse guides</a>
     </nav>
   </header>
 
@@ -18,26 +18,23 @@ app.innerHTML = `
     <section class="hero">
       <p class="brand-mark">${brand.name}</p>
       <h1>${brand.tagline}</h1>
-      <p class="lede">
-        Printable plans for Columbus weekends, move-ins, and stadium days —
-        built once, used whenever you need them.
-      </p>
+      <p class="lede">${brand.description}</p>
       <div class="cta-row">
-        <a class="btn primary" href="#kits">Browse kits</a>
+        <a class="btn primary" href="#kits">Browse guides</a>
         <a class="btn ghost" href="#how">How it works</a>
       </div>
     </section>
 
     <section id="how" class="how">
-      <h2>One job: remove the scramble.</h2>
+      <h2>One job: make the next step obvious.</h2>
       <p>
-        Each kit is a short, printable field guide. Download, print or save offline,
-        check boxes as you go.
+        Each guide is a short, practical download — checklists, plans, and worksheets
+        curated for real life in and beyond Columbus.
       </p>
     </section>
 
     <section id="kits" class="kits">
-      <h2>Kits</h2>
+      <h2>Guides</h2>
       <div class="kit-list">
         ${products
           .map(
@@ -58,8 +55,8 @@ app.innerHTML = `
   </main>
 
   <footer class="foot">
-    <p><strong>${brand.name}</strong> · ${brand.city}</p>
-    <p class="fine">Digital downloads. Personal use. Not affiliated with the City of Columbus or any university.</p>
+    <p><strong>${brand.name}</strong> · Curated by ${brand.curator} · ${brand.city}</p>
+    <p class="fine">Digital downloads for personal use. Not affiliated with The Ohio State University or the City of Columbus.</p>
   </footer>
 `;
 

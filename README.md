@@ -1,15 +1,16 @@
-# Side Hustle Research + Mile Marker Publisher
+# Side Hustle Research + Buckeye Trail Guide
 
 ## Active stream (Cursor-built)
 
-**[Mile Marker Publisher](./mile-marker-publisher/README.md)** — automated Columbus digital field kits (weekend, move-in, stadium logistics).
+**[Buckeye Trail Guide](./buckeye-trail-guide/README.md)** — guides curated by Clayton Householder (Columbus, Ohio native) spanning personal life, professional life, and anything that makes life easier.
 
-- Products in `mile-marker-publisher/products/`
-- Marketing site in `mile-marker-publisher/site/`
-- Launch copy + checklist in `mile-marker-publisher/launch/`
-- Next SKUs via `mile-marker-publisher/PRODUCT_FACTORY.md`
+- Products in `buckeye-trail-guide/products/`
+- Marketing site in `buckeye-trail-guide/site/`
+- Launch copy + checklist in `buckeye-trail-guide/launch/`
+- Next SKUs via `buckeye-trail-guide/PRODUCT_FACTORY.md`
+- Publisher: `buckeye-trail-guide/publisher/`
 
-**Compliance:** digital product sales approved. Follow `mile-marker-publisher/launch/CHECKLIST.md` to go live.
+**Compliance:** digital product sales approved. Follow `buckeye-trail-guide/launch/CHECKLIST.md` to go live.
 
 ## Research notes
 

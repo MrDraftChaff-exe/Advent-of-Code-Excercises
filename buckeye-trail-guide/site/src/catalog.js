@@ -1,7 +1,10 @@
 export const brand = {
-  name: 'Mile Marker Publisher',
-  tagline: 'Field kits for Central Ohio life.',
+  name: 'Buckeye Trail Guide',
+  tagline: 'Guides that make life easier.',
+  description:
+    'A collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make everyday living simpler.',
   city: 'Columbus',
+  curator: 'Clayton Householder',
 };
 
 export const products = [

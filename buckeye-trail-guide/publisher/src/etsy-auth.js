@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Etsy OAuth 2.0 (PKCE) setup for Mile Marker Publisher.
+ * Etsy OAuth 2.0 (PKCE) setup for Buckeye Trail Guide.
  *
  * Usage:
  *   1. Create an Etsy shop + developer app (see publisher/ETSY_SETUP.md)
@@ -187,7 +187,7 @@ async function main() {
   authUrl.searchParams.set('code_challenge', challenge);
   authUrl.searchParams.set('code_challenge_method', 'S256');
 
-  console.log('\nMile Marker Publisher — Etsy OAuth\n');
+  console.log('\nBuckeye Trail Guide — Etsy OAuth\n');
   console.log('1) In your Etsy app, callback URL must be EXACTLY:');
   console.log(`   ${REDIRECT_URI}`);
   console.log('\n2) Open this URL in your browser (accept the localhost cert warning):\n');

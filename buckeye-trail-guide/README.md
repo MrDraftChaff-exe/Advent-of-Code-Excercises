@@ -1,22 +1,22 @@
-# Mile Marker Publisher
+# Buckeye Trail Guide
 
-Automated digital-product income stream for **Central Ohio / Columbus** living kits.
+A collection of guides curated by **Clayton Householder**, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.
 
 Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 
 ## Status
 
 - Compliance: **approved** for digital product sales (Bucket E).
-- Niche: local living — **not** banking, cybersecurity, or employer-related.
 - Model: create once → sell on Gumroad/Etsy forever → Cursor adds SKUs.
 - Still off WF systems / work hours.
+- Not affiliated with The Ohio State University.
 
 ## Structure
 
 ```text
-mile-marker-publisher/
+buckeye-trail-guide/
   site/                 # Marketing site (Vite)
-  products/             # Source kits (markdown → PDF/HTML)
+  products/             # Source guides (markdown → PDF/HTML)
   launch/               # Gumroad copy, pricing, checklist
   PRODUCT_FACTORY.md    # How to ask Cursor for the next SKU
 ```
@@ -24,12 +24,12 @@ mile-marker-publisher/
 ## Quick start (site)
 
 ```bash
-cd mile-marker-publisher/site
+cd buckeye-trail-guide/site
 npm install
 npm run dev
 ```
 
-## First three kits
+## First three guides
 
 | SKU | Price target | Folder |
 | --- | --- | --- |
@@ -39,10 +39,8 @@ npm run dev
 
 ## Publisher (auto-deploy)
 
-Deploy all kits to Gumroad / Etsy / Lemon Squeezy from one CLI:
-
 ```bash
-cd mile-marker-publisher/publisher
+cd buckeye-trail-guide/publisher
 cp .env.example .env   # add tokens
 npm install
 npm run dry-run

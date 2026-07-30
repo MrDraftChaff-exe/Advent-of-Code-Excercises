@@ -1,7 +1,7 @@
 {
-  "name": "mile-marker-publisher",
+  "name": "buckeye-trail-guide",
   "version": "1.0.0",
-  "description": "Deploy Mile Marker Publisher kits to Gumroad, Etsy, and more",
+  "description": "Deploy Buckeye Trail Guide products to Gumroad, Etsy, and more",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
   "license": "ISC",
   "type": "module",
   "bin": {
-    "mile-marker-publish": "./src/cli.js"
+    "buckeye-trail-guide": "./src/cli.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

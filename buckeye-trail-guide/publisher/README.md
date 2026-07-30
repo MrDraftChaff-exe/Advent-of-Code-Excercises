@@ -1,4 +1,4 @@
-# Mile Marker Publisher
+# Buckeye Trail Guide
 
 Deploy every kit in `../products/` to your sales platforms from one command.
 
@@ -15,7 +15,7 @@ Source of truth: each `products/<id>/meta.json` + files in that folder.
 ## Setup
 
 ```bash
-cd mile-marker-publisher/publisher
+cd buckeye-trail-guide/publisher
 cp .env.example .env
 npm install
 ```
