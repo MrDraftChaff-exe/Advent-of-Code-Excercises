@@ -55,12 +55,16 @@ export const gumroad = {
       throw new Error(`Gumroad product save failed: ${JSON.stringify(result)}`);
     }
 
+    // Publish if draft (requires payout method connected on Gumroad)
     if (result.product && result.product.published === false) {
       console.log('  [gumroad] enabling (publish)…');
       try {
-        await api(token, 'PUT', `/products/${productId}/enable`, {});
-      } catch {
-        await api(token, 'POST', `/products/${productId}/enable`, {});
+        const enabled = await api(token, 'PUT', `/products/${productId}/enable`, {});
+        if (!enabled.success) {
+          console.warn(`  [gumroad] not published yet: ${enabled.message || JSON.stringify(enabled)}`);
+        }
+      } catch (err) {
+        console.warn(`  [gumroad] enable skipped: ${err.message}`);
       }
     }
 

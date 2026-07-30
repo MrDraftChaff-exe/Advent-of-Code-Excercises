@@ -11,7 +11,7 @@ export const products = [
     subtitle: '48-Hour Field Kit',
     price: 9,
     blurb: 'Two strong days planned — neighborhoods, timing, weather swaps, packing.',
-    gumroad: 'https://householder6.gumroad.com/l/weekend-columbus', // replace with live Gumroad URL
+    gumroad: 'https://householder6.gumroad.com/l/weekend-columbus',
   },
   {
     id: 'move-in-pack',
