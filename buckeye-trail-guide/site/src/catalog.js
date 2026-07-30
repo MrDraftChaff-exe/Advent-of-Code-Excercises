@@ -1,8 +1,8 @@
 export const brand = {
   name: 'Buckeye Trail Guide',
-  tagline: 'Guides that make life easier.',
+  tagline: 'Practical guides for everyday life.',
   description:
-    'A collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.',
+    'Printable guides curated by Clayton Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.',
   city: 'Columbus',
   curator: 'Clayton Householder',
   avatar: '/gumroad-avatar.png',
@@ -22,7 +22,7 @@ export const products = [
     id: 'move-in-pack',
     title: 'Move to Columbus',
     subtitle: 'Settling Pack + Spreadsheet',
-    price: 24,
+    price: 9,
     blurb: 'PDF checklists plus Excel: neighborhood scores, budget, apartment compare, rolodex.',
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/move-to-columbus',
     cover: '/covers/move-in-pack.png',
@@ -67,7 +67,7 @@ export const products = [
     id: 'columbus-fishing-30',
     title: 'Top 30 Fishing Spots Around Columbus',
     subtitle: 'License + Local Tips',
-    price: 12,
+    price: 9,
     blurb: 'Fish species, bait tips, and website links for 30 spots — bring your license and go.',
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30',
     cover: '/covers/columbus-fishing-30.png',

@@ -30,10 +30,10 @@ File to upload: export `products/weekend-columbus/product.md` → PDF
 
 ---
 
-## Product 2 — Move to Columbus — Settling Pack — $24
+## Product 2 — Move to Columbus — Settling Pack — $9
 
 **Title:** Move to Columbus — Settling Pack (PDF + Excel)  
-**Price:** $24  
+**Price:** $9  
 **Summary:**  
 First-30-days relocation pack for Columbus — printable PDF checklists **plus** a fillable Excel workbook (scorecard, budget, apartment compare, rolodex).
 
@@ -174,10 +174,10 @@ File: `products/columbus-supernatural/product.pdf`
 
 ---
 
-## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $12
+## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $9
 
 **Title:** Top 30 Fishing Spots Around Columbus, Ohio  
-**Price:** $12  
+**Price:** $9  
 **Summary:**  
 Thirty fishing spots near Columbus — fish species, preferred bait, website links, and local tips. Bring your Ohio license.
 
@@ -200,9 +200,9 @@ File: `products/columbus-fishing-30/product.pdf`
 
 ---
 
-## Bundle (optional) — Central Ohio Starter Trio — $34
+## Bundle (optional) — Central Ohio Starter Trio — $22
 
-First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
+First three kits ($9 + $9 + $7 = $25). Bundle at **$22** (save $3).
 
 ## Bundle (optional) — Day-Trip Add-On — $14
 

@@ -1,6 +1,6 @@
 # Buckeye Trail Guide
 
-A collection of guides curated by **Clayton Householder**, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.
+Printable guides curated by **Clayton Householder**, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.
 
 Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 
@@ -34,11 +34,12 @@ npm run dev
 | SKU | Price | Folder | Gumroad |
 | --- | --- | --- | --- |
 | Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` | [live](https://buckeyetrailguide.gumroad.com/l/weekend-columbus) |
-| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
+| Move to Columbus — Settling Pack + Spreadsheet | $9 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
 | Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://buckeyetrailguide.gumroad.com/l/stadium-weekend) |
 | Hocking Hills Day Trip — From Columbus | $8 | `products/hocking-hills-day` | [live](https://buckeyetrailguide.gumroad.com/l/hocking-hills-day) |
 | Top 15 Super Natural Experiences in Columbus — Under $15 Each | $9 | `products/columbus-nature-15` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-nature-15) |
 | Columbus Supernatural / Paranormal Experiences — Under $30 Each | $2 | `products/columbus-supernatural` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-supernatural) |
+| Top 30 Fishing Spots Around Columbus, Ohio | $9 | `products/columbus-fishing-30` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30) |
 
 ## Publisher (auto-deploy)
 

@@ -7,3 +7,7 @@ dist/
 
 # local Etsy OAuth TLS (optional to regenerate)
 # mile-marker-publisher/publisher/certs/
+
+# OAuth temp state
+**/.facebook-oauth-state
+**/.pinterest-oauth-state

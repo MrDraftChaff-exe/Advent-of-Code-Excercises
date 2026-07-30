@@ -6,7 +6,7 @@ When you want a new product, paste this prompt into Cursor:
 
 Create a new Buckeye Trail Guide digital download.
 
-**Brand:** Buckeye Trail Guide — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.
+**Brand:** Buckeye Trail Guide — printable guides curated by Clayton Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.
 
 **Constraints:** Never banking, cybersecurity, Wells Fargo, PAM, or employer topics. Avoid trademarked university/team logos; use generic wording where needed.
 
@@ -40,7 +40,7 @@ Create a new Buckeye Trail Guide digital download.
 - No trademarked team/university logos in imagery.
 - After generating, upload the square thumbnail to Gumroad for that product (API or dashboard).
 
-**Pricing guide:** single sheet $5–$9 · pack $15–$29 · bundle $39
+**Pricing guide:** every product **under $10** (typical $5–$9). Prefer simple single-price digital downloads over premium packs.
 
 ---
 

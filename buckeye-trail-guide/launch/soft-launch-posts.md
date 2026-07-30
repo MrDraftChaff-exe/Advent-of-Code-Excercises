@@ -19,7 +19,7 @@ Shop: https://buckeyetrailguide.gumroad.com
 
 ## Personal LinkedIn
 
-Side project outside work: **Buckeye Trail Guide** — practical digital guides for Columbus life (weekends, moving, day trips).
+Side project outside work: **Buckeye Trail Guide** — practical printable guides (personal life, local know-how, settling in, planning, everyday admin).
 
 Not affiliated with my employer. Built as simple printable downloads.
 
