@@ -38,7 +38,7 @@ npm run dev
 | Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
 | Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://buckeyetrailguide.gumroad.com/l/stadium-weekend) |
 | Hocking Hills Day Trip — From Columbus | $8 | `products/hocking-hills-day` | [live](https://buckeyetrailguide.gumroad.com/l/hocking-hills-day) |
-| Top 15 Super Natural Experiences in Columbus — Under $15 Each | $9 | `products/columbus-nature-15` | publish next |
+| Top 15 Super Natural Experiences in Columbus — Under $15 Each | $9 | `products/columbus-nature-15` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-nature-15) |
 
 ## Publisher (auto-deploy)
 
