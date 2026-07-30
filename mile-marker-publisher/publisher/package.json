@@ -1,7 +1,7 @@
 {
   "name": "mile-marker-publisher",
   "version": "1.0.0",
-  "description": "Deploy Mile Marker kits to Gumroad, Etsy, and more",
+  "description": "Deploy Mile Marker Publisher kits to Gumroad, Etsy, and more",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

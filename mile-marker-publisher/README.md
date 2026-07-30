@@ -1,4 +1,4 @@
-# Mile Marker
+# Mile Marker Publisher
 
 Automated digital-product income stream for **Central Ohio / Columbus** living kits.
 
@@ -14,7 +14,7 @@ Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 ## Structure
 
 ```text
-mile-marker/
+mile-marker-publisher/
   site/                 # Marketing site (Vite)
   products/             # Source kits (markdown → PDF/HTML)
   launch/               # Gumroad copy, pricing, checklist
@@ -24,7 +24,7 @@ mile-marker/
 ## Quick start (site)
 
 ```bash
-cd mile-marker/site
+cd mile-marker-publisher/site
 npm install
 npm run dev
 ```
@@ -42,7 +42,7 @@ npm run dev
 Deploy all kits to Gumroad / Etsy / Lemon Squeezy from one CLI:
 
 ```bash
-cd mile-marker/publisher
+cd mile-marker-publisher/publisher
 cp .env.example .env   # add tokens
 npm install
 npm run dry-run

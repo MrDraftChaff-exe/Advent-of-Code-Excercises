@@ -15,7 +15,7 @@ Source of truth: each `products/<id>/meta.json` + files in that folder.
 ## Setup
 
 ```bash
-cd mile-marker/publisher
+cd mile-marker-publisher/publisher
 cp .env.example .env
 # paste tokens into .env
 npm install

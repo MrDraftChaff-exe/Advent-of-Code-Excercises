@@ -33,7 +33,7 @@ function parseArgs(argv) {
 
 function help() {
   console.log(`
-Mile Marker publisher — deploy kits to sales platforms
+Mile Marker Publisher — deploy kits to sales platforms
 
 Usage:
   npm run publish -- [options]
@@ -70,7 +70,7 @@ async function main() {
   const products = loadProducts({ only });
   const selected = resolvePlatforms(args.platforms);
 
-  console.log(`Mile Marker publisher`);
+  console.log(`Mile Marker Publisher`);
   console.log(`  products: ${products.map((p) => p.id).join(', ')}`);
   console.log(`  platforms: ${selected.map((p) => p.id).join(', ')}`);
   console.log(`  mode: ${args.dryRun ? 'DRY RUN' : 'LIVE'}`);

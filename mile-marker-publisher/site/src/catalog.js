@@ -1,5 +1,5 @@
 export const brand = {
-  name: 'Mile Marker',
+  name: 'Mile Marker Publisher',
   tagline: 'Field kits for Central Ohio life.',
   city: 'Columbus',
 };

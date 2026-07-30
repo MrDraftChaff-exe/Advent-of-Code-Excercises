@@ -4,16 +4,16 @@ When you want a new product, paste this prompt into Cursor:
 
 ---
 
-Create a new Mile Marker digital kit.
+Create a new Mile Marker Publisher digital kit.
 
 **Niche constraint:** Central Ohio / Columbus living, travel, home, food, seasons, or family logistics. Never banking, cybersecurity, Wells Fargo, PAM, or employer topics.
 
 **Deliverables:**
-1. Create `mile-marker/products/<slug>/` with:
+1. Create `mile-marker-publisher/products/<slug>/` with:
    - `product.md` — full customer-facing kit (printable, scannable, checklist-heavy)
    - `meta.json` — title, price, one-liner, bullets, SEO tags
-2. Add the product to `mile-marker/site/src/catalog.js`
-3. Add a Gumroad block to `mile-marker/launch/gumroad-copy.md`
+2. Add the product to `mile-marker-publisher/site/src/catalog.js`
+3. Add a Gumroad block to `mile-marker-publisher/launch/gumroad-copy.md`
 4. Keep voice: practical, local, no hype, no fake stats
 
 **Format rules for product.md:**

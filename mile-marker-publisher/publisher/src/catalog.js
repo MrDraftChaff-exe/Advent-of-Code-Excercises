@@ -1,5 +1,5 @@
 /**
- * Load Mile Marker products from products/<id>/meta.json
+ * Load Mile Marker Publisher products from products/<id>/meta.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -69,7 +69,7 @@ function buildDescriptionHtml(meta, dir) {
   const bullets = (meta.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('');
   let body = `<p>${escapeHtml(meta.oneLiner || '')}</p>`;
   if (bullets) body += `<p><strong>Includes:</strong></p><ul>${bullets}</ul>`;
-  body += `<p>Instant digital download from Mile Marker (Columbus / Central Ohio field kits).</p>`;
+  body += `<p>Instant digital download from Mile Marker Publisher (Columbus / Central Ohio field kits).</p>`;
   body += `<p><em>Personal use. Not affiliated with the City of Columbus or any university.</em></p>`;
   if (fs.existsSync(mdPath)) {
     // Keep HTML lean for marketplaces; full content is in the PDF.
