@@ -8,7 +8,7 @@ app.innerHTML = `
 
   <header class="top">
     <a class="logo" href="#">
-      <img class="logo-mark" src="/icon-192.png" width="40" height="40" alt="" />
+      <img class="logo-mark" src="/gumroad-avatar.png" width="40" height="40" alt="" />
       ${brand.name}
     </a>
     <nav>
@@ -19,7 +19,7 @@ app.innerHTML = `
 
   <main>
     <section class="hero">
-      <img class="hero-mark" src="/icon-512.png" width="120" height="120" alt="${brand.name}" />
+      <img class="hero-mark" src="/gumroad-avatar.png" width="120" height="120" alt="${brand.name}" />
       <p class="brand-mark">${brand.name}</p>
       <h1>${brand.tagline}</h1>
       <p class="lede">${brand.description}</p>
@@ -44,6 +44,7 @@ app.innerHTML = `
           .map(
             (p, i) => `
           <article class="kit" style="--i:${i}">
+            <img class="kit-cover" src="${p.cover}" alt="" width="160" height="120" />
             <div class="kit-copy">
               <p class="kit-price">$${p.price}</p>
               <h3>${p.title}</h3>

@@ -13,6 +13,8 @@ They're digital downloads (PDF). If you're hosting visitors or just moved here, 
 Shop: https://householder6.gumroad.com  
 (More coming under Buckeye Trail Guide.)
 
+**Attach:** `brand/profiles/social-avatar.png` or a product cover from `brand/covers/`.
+
 ---
 
 ## Personal LinkedIn
@@ -22,6 +24,8 @@ Side project outside work: **Buckeye Trail Guide** — practical digital guides 
 Not affiliated with my employer. Built as simple printable downloads.
 
 https://householder6.gumroad.com
+
+**Attach:** `brand/profiles/social-avatar.png`
 
 ---
 

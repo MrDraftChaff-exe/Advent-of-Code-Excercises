@@ -15,6 +15,15 @@
 - [ ] Optional: Beehiiv/Substack for later waitlist
 - [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
 
+## 1b) Brand / profile pictures
+
+Upload from `buckeye-trail-guide/brand/profiles/` (no white dead space):
+
+- [ ] Gumroad profile / shop avatar → `profiles/gumroad-avatar.png`
+- [ ] Gumroad product thumbnails → `brand/covers/<sku>.png` (all 4 SKUs)
+- [ ] Etsy shop icon → `profiles/etsy-avatar.png` (when shop exists)
+- [ ] Soft-launch posts → attach `profiles/social-avatar.png`
+
 ## 2) Export products to PDF
 
 PDFs already exist under each `products/*/product.pdf`. Re-export after edits:

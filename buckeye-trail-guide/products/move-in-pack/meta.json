@@ -1,6 +1,6 @@
 {
   "id": "move-in-pack",
-  "title": "Move to Columbus — Settling Pack",
+  "title": "Move to Columbus \u2014 Settling Pack",
   "price": 24,
   "permalink": "move-to-columbus",
   "oneLiner": "PDF checklists plus a working Excel workbook for the first 30 days in Central Ohio.",
@@ -10,6 +10,17 @@
     "Excel: month-1 budget planned vs actual",
     "Excel: apartment compare + local rolodex"
   ],
-  "tags": ["columbus", "moving", "checklist", "ohio", "apartment", "spreadsheet"],
-  "files": ["product.pdf", "Move-to-Columbus-Settling-Spreadsheet.xlsx"]
+  "tags": [
+    "columbus",
+    "moving",
+    "checklist",
+    "ohio",
+    "apartment",
+    "spreadsheet"
+  ],
+  "files": [
+    "product.pdf",
+    "Move-to-Columbus-Settling-Spreadsheet.xlsx"
+  ],
+  "cover": "cover.png"
 }

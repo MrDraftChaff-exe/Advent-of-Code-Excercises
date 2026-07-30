@@ -241,15 +241,23 @@ nav a {
 
 .kit {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto;
   gap: 1.5rem;
-  align-items: end;
+  align-items: center;
   padding: 2rem 0;
   border-top: 1px solid rgba(20, 32, 28, 0.14);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.55s ease, transform 0.55s ease;
   transition-delay: calc(var(--i) * 80ms);
+}
+
+.kit-cover {
+  width: 7.5rem;
+  height: 5.625rem;
+  object-fit: cover;
+  border-radius: 0.35rem;
+  flex-shrink: 0;
 }
 
 .kit.in {
@@ -299,8 +307,12 @@ nav a {
 
 @media (max-width: 720px) {
   .kit {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     align-items: start;
+  }
+
+  .kit .btn {
+    grid-column: 1 / -1;
   }
 
   .nav-cta {
