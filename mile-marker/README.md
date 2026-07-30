@@ -34,7 +34,7 @@ npm run dev
 | SKU | Price target | Folder |
 | --- | --- | --- |
 | Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` |
-| Move to Columbus — Settling Pack | $19 | `products/move-in-pack` |
+| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` |
 | Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` |
 
 ## Launch path
