@@ -1,12 +1,11 @@
 # Launch checklist — Mile Marker
 
-## 0) Compliance gate (required)
+## 0) Compliance — APPROVED
 
-- [ ] Email Compliance using the Bucket E questions (digital downloads, no client work, non-work niche)
-- [ ] Keep written approval
-- [ ] No WF laptop, email, Slack, or work hours for this project
-
-If Compliance says no to digital sales: park this repo; do not publish paid links.
+- [x] Compliance OK'd digital product sales (Bucket E)
+- [ ] Keep the written approval somewhere you can find it
+- [ ] Still: no WF laptop, email, Slack, or work hours for this project
+- [ ] Still: no banking/cyber/employer content in kits
 
 ## 1) Accounts
 

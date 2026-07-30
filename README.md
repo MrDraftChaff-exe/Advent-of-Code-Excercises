@@ -9,7 +9,7 @@
 - Launch copy + checklist in `mile-marker/launch/`
 - Next SKUs via `mile-marker/PRODUCT_FACTORY.md`
 
-**Compliance:** publish paid products only after written OK for digital downloads.
+**Compliance:** digital product sales approved. Follow `mile-marker/launch/CHECKLIST.md` to go live.
 
 ## Research notes
 

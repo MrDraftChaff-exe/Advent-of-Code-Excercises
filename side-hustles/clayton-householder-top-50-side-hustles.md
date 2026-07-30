@@ -1,6 +1,6 @@
-# Mile Marker — after Compliance said no
+# Mile Marker — Compliance approved
 
-Cursor is building the **digital product stream** (Bucket E), not consulting/gigs.
+Digital product stream (Bucket E) is **cleared to launch**. Consulting/gigs still off-limits unless newly approved.
 
 ## What exists now
 
@@ -12,14 +12,12 @@ Brand **Mile Marker**: printable Columbus / Central Ohio field kits.
 | Move to Columbus Settling Pack | $19 | `mile-marker/products/move-in-pack` |
 | Stadium Weekend Logistics | $7 | `mile-marker/products/stadium-weekend` |
 
-Site: `mile-marker/site` · Factory prompt: `mile-marker/PRODUCT_FACTORY.md` · Launch: `mile-marker/launch/`
+Site: `mile-marker/site` · Factory: `PRODUCT_FACTORY.md` · Launch: `launch/CHECKLIST.md`
 
-## Your next human steps
+## Launch now
 
-1. Send Compliance the Bucket E question (digital downloads, non-work niche, no WF systems).
-2. If yes → Gumroad + PDF export + deploy site (`launch/CHECKLIST.md`).
-3. Tell Cursor: “Add the next Mile Marker kit for [topic]” using `PRODUCT_FACTORY.md`.
-
-## Still off-limits without new approval
-
-Consulting, Dash/Uber/Flex, vending business, client mentoring, cyber/banking products.
+1. Create Gumroad (personal email) → upload the three PDFs → paste copy from `launch/gumroad-copy.md`
+2. Put live URLs in `site/src/catalog.js`
+3. Deploy site (`cd mile-marker/site && npm run build`)
+4. Soft-launch on personal channels (not WF systems)
+5. Ask Cursor for SKU #4 when ready

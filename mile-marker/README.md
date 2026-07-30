@@ -6,9 +6,10 @@ Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 
 ## Status
 
-- Compliance: launch only after Wells Fargo confirms **digital downloads / online sales** are allowed (Bucket E).
+- Compliance: **approved** for digital product sales (Bucket E).
 - Niche: local living — **not** banking, cybersecurity, or employer-related.
 - Model: create once → sell on Gumroad/Etsy forever → Cursor adds SKUs.
+- Still off WF systems / work hours.
 
 ## Structure
 
