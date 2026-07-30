@@ -72,4 +72,13 @@ export const products = [
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30',
     cover: '/covers/columbus-fishing-30.png',
   },
+  {
+    id: 'columbus-roads-40',
+    title: 'Columbus Roads: 20 Avoid + 20 Use',
+    subtitle: 'Free Driving Field Guide',
+    price: 0,
+    blurb: 'Corridors to skip and calmer roads to take — quality, maintenance, crashes, travel time, and local input.',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-roads-40',
+    cover: '/covers/columbus-roads-40.png',
+  },
 ];

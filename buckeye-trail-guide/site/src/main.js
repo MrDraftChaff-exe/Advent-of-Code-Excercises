@@ -41,19 +41,21 @@ app.innerHTML = `
       <h2>Guides</h2>
       <div class="kit-list">
         ${products
-          .map(
-            (p, i) => `
+          .map((p, i) => {
+            const priceLabel = p.price === 0 ? 'Free' : `$${p.price}`;
+            const cta = p.price === 0 ? `Get free — ${priceLabel}` : `Buy — ${priceLabel}`;
+            return `
           <article class="kit" style="--i:${i}">
             <img class="kit-cover" src="${p.cover}" alt="" width="160" height="120" />
             <div class="kit-copy">
-              <p class="kit-price">$${p.price}</p>
+              <p class="kit-price">${priceLabel}</p>
               <h3>${p.title}</h3>
               <p class="kit-sub">${p.subtitle}</p>
               <p>${p.blurb}</p>
             </div>
-            <a class="btn primary" href="${p.gumroad}">Buy — $${p.price}</a>
-          </article>`
-          )
+            <a class="btn primary" href="${p.gumroad}">${cta}</a>
+          </article>`;
+          })
           .join('')}
       </div>
     </section>

@@ -200,6 +200,32 @@ File: `products/columbus-fishing-30/product.pdf`
 
 ---
 
+## Product 8 — Columbus Roads: Top 20 to Avoid + Top 20 to Use — Free
+
+**Title:** Columbus Roads: Top 20 to Avoid + Top 20 to Use  
+**Price:** Free ($0)  
+**Summary:**  
+Free guide to 20 Columbus corridors to avoid and 20 smarter roads to use — based on road quality, maintenance, crash patterns, travel time, and local input.
+
+**Description:**
+
+A practical driving field guide for Columbus — not an official crash ranking.
+
+Includes:
+
+- Top 20 roads to avoid (worst times + better options)  
+- Top 20 roads to use as calmer defaults  
+- Swap cheat sheet  
+- Transparent method + feedback email for user input  
+- Links to OHGO / MORPC / city project pages  
+
+**You get:** PDF download  
+**Perfect for:** new drivers in town, commuters, anyone tired of the same backup  
+
+File: `products/columbus-roads-40/product.pdf`
+
+---
+
 ## Bundle (optional) — Central Ohio Starter Trio — $22
 
 First three kits ($9 + $9 + $7 = $25). Bundle at **$22** (save $3).

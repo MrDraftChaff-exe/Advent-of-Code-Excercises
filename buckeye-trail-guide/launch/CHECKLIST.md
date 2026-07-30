@@ -57,6 +57,7 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 - [x] Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
 - [x] Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
 - [x] Top 30 Fishing Spots Around Columbus, Ohio — $9
+- [x] Columbus Roads: Top 20 to Avoid + Top 20 to Use — Free
 
 ## 4) Deploy site
 

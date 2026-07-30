@@ -1,0 +1,25 @@
+{
+  "id": "columbus-roads-40",
+  "title": "Columbus Roads: Top 20 to Avoid + Top 20 to Use",
+  "price": 0,
+  "permalink": "columbus-roads-40",
+  "oneLiner": "Free guide to 20 Columbus corridors to avoid and 20 smarter roads to use — based on road quality, maintenance, crash patterns, travel time, and local input.",
+  "bullets": [
+    "Top 20 roads to avoid (with worst times + better options)",
+    "Top 20 roads to use as calmer defaults",
+    "Swap cheat sheet for common stuck spots",
+    "Transparent method + feedback email for user input"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "roads",
+    "driving",
+    "traffic",
+    "commute",
+    "free",
+    "printable"
+  ],
+  "files": ["product.pdf"],
+  "cover": "cover.png"
+}

@@ -154,6 +154,27 @@
         "updatedAt": "2026-07-30T17:40:19.069Z",
         "thumbnailUrl": "https://public-files.gumroad.com/irchhqqln1aqk0a0fwcthe92udfz"
       }
+    },
+    "columbus-roads-40": {
+      "gumroad": {
+        "id": "2iLI9QctunQO1MTQ96l8hg==",
+        "url": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+        "permalink": "columbus-roads-40",
+        "published": true,
+        "price": 0,
+        "files": [
+          {
+            "id": "REXaDmanWM-5kbfcRNHpzA==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/1f86f8708de6c8300595dd48716025d0/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785434414-SvTEHB78eLNOKcVo9SPvN37S7dSwYLjzbtXNgdUFdAQ%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          }
+        ],
+        "thumbnailUrl": null,
+        "updatedAt": "2026-07-30T17:50:14.845Z"
+      }
     }
   }
 }

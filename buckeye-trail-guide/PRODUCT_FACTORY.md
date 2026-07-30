@@ -40,7 +40,7 @@ Create a new Buckeye Trail Guide digital download.
 - No trademarked team/university logos in imagery.
 - After generating, upload the square thumbnail to Gumroad for that product (API or dashboard).
 
-**Pricing guide:** every product **under $10** (typical $5–$9). Prefer simple single-price digital downloads over premium packs.
+**Pricing guide:** every product **under $10** (typical $5–$9; free/$0 allowed for lead magnets). Prefer simple single-price digital downloads over premium packs.
 
 ---
 
@@ -56,6 +56,7 @@ Personal / local
 - ~~Top 15 super natural experiences in Columbus under $15~~ → shipped as `products/columbus-nature-15` (nature)
 - ~~Columbus supernatural / paranormal under $30~~ → shipped as `products/columbus-supernatural` ($2 guide)
 - ~~Top 30 fishing spots around Columbus~~ → shipped as `products/columbus-fishing-30`
+- ~~Top 20 roads to avoid + top 20 to use (Columbus)~~ → shipped as `products/columbus-roads-40` (free)
 - Holiday guest hosting timeline (central Ohio weather aware)
 
 Professional / life admin

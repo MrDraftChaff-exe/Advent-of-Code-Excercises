@@ -40,6 +40,7 @@ npm run dev
 | Top 15 Super Natural Experiences in Columbus — Under $15 Each | $9 | `products/columbus-nature-15` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-nature-15) |
 | Columbus Supernatural / Paranormal Experiences — Under $30 Each | $2 | `products/columbus-supernatural` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-supernatural) |
 | Top 30 Fishing Spots Around Columbus, Ohio | $9 | `products/columbus-fishing-30` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30) |
+| Columbus Roads: Top 20 to Avoid + Top 20 to Use | Free | `products/columbus-roads-40` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-roads-40) |
 
 ## Publisher (auto-deploy)
 
