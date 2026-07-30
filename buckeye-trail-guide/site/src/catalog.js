@@ -68,7 +68,7 @@ export const products = [
     title: 'Top 30 Fishing Spots Around Columbus',
     subtitle: 'License + Local Tips',
     price: 12,
-    blurb: 'Reservoirs, metro parks, rivers, and day-trips — bring your license and use the local tip at each stop.',
+    blurb: 'Fish species, bait tips, and website links for 30 spots — bring your license and go.',
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30',
     cover: '/covers/columbus-fishing-30.png',
   },
