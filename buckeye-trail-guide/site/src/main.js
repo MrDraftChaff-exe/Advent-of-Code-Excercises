@@ -7,7 +7,10 @@ app.innerHTML = `
   <div class="atmosphere" aria-hidden="true"></div>
 
   <header class="top">
-    <a class="logo" href="#">${brand.name}</a>
+    <a class="logo" href="#">
+      <img class="logo-mark" src="/icon-192.png" width="40" height="40" alt="" />
+      ${brand.name}
+    </a>
     <nav>
       <a href="#kits">Guides</a>
       <a class="nav-cta" href="#kits">Browse guides</a>
@@ -16,6 +19,7 @@ app.innerHTML = `
 
   <main>
     <section class="hero">
+      <img class="hero-mark" src="/icon-512.png" width="120" height="120" alt="${brand.name}" />
       <p class="brand-mark">${brand.name}</p>
       <h1>${brand.tagline}</h1>
       <p class="lede">${brand.description}</p>

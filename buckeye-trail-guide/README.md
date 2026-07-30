@@ -15,6 +15,7 @@ Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 
 ```text
 buckeye-trail-guide/
+  brand/                # Mascot icon + favicons
   site/                 # Marketing site (Vite)
   products/             # Source guides (markdown → PDF/HTML)
   launch/               # Gumroad copy, pricing, checklist
