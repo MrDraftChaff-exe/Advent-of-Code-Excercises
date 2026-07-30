@@ -1,6 +1,26 @@
 # Move to Columbus — Settling Pack
 
-For people relocating to Columbus / Franklin County (and close suburbs). Print it. Check boxes. Ignore fluff.
+For people relocating to Columbus / Franklin County (and close suburbs). Print the PDF. Track the live numbers in the spreadsheet. Ignore fluff.
+
+## What’s in this pack
+
+| File | Use it for |
+| --- | --- |
+| This PDF | Readable checklists and guidance |
+| `Move-to-Columbus-Settling-Spreadsheet.xlsx` | Fillable trackers with auto-totals |
+
+### Spreadsheet tabs
+
+1. **Start Here** — your move details  
+2. **Pre-Move** — checklist with done/remaining counts  
+3. **Neighborhood Score** — score 1–5 across 3 areas (totals + winner)  
+4. **Week 1 Setup** — utilities, address changes, local finds  
+5. **Month 1 Budget** — planned vs actual with variance  
+6. **Apartment Compare** — true monthly cost (rent + fees + utilities + commute)  
+7. **Day 30 Check-In** — settled score  
+8. **Local Rolodex** — pharmacy, grocery, urgent care, etc.  
+
+Yellow cells = your inputs. Green cells = calculated.
 
 ## Pre-move (2–4 weeks out)
 

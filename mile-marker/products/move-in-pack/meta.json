@@ -1,13 +1,13 @@
 {
   "id": "move-in-pack",
   "title": "Move to Columbus — Settling Pack",
-  "price": 19,
-  "oneLiner": "Checklists for the first 30 days after you land in Central Ohio.",
+  "price": 24,
+  "oneLiner": "PDF checklists plus a working Excel workbook for the first 30 days in Central Ohio.",
   "bullets": [
-    "Pre-move, week-1, and day-30 checklists",
-    "Neighborhood fit scorecard",
-    "Utilities, registration, and local setup list",
-    "First-month budget worksheet"
+    "PDF: pre-move, week-1, and day-30 checklists",
+    "Excel: neighborhood scorecard with auto-totals",
+    "Excel: month-1 budget planned vs actual",
+    "Excel: apartment compare + local rolodex"
   ],
-  "tags": ["columbus", "moving", "checklist", "ohio", "apartment"]
+  "tags": ["columbus", "moving", "checklist", "ohio", "apartment", "spreadsheet"]
 }

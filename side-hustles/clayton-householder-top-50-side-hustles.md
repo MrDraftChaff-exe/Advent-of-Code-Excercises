@@ -9,7 +9,7 @@ Brand **Mile Marker**: printable Columbus / Central Ohio field kits.
 | Kit | Price | Path |
 | --- | --- | --- |
 | Weekend in Columbus | $9 | `mile-marker/products/weekend-columbus` |
-| Move to Columbus Settling Pack | $19 | `mile-marker/products/move-in-pack` |
+| Move to Columbus Settling Pack + Spreadsheet | $24 | `mile-marker/products/move-in-pack` |
 | Stadium Weekend Logistics | $7 | `mile-marker/products/stadium-weekend` |
 
 Site: `mile-marker/site` · Factory: `PRODUCT_FACTORY.md` · Launch: `launch/CHECKLIST.md`

@@ -39,9 +39,8 @@ npm run dev
 
 ## Launch path
 
-1. Get written Compliance OK for digital product sales.
-2. Create Gumroad account; paste copy from `launch/gumroad-copy.md`.
-3. Export each product markdown to PDF (browser print or `npx md-to-pdf`).
-4. Deploy site to Vercel/Netlify; point CTAs at Gumroad links.
-5. Soft-launch on personal LinkedIn/Facebook (no WF systems, no work time).
-6. Ask Cursor: “Add the next Mile Marker kit for [niche] using PRODUCT_FACTORY.md”.
+1. Create Gumroad account (personal email); paste copy from `launch/gumroad-copy.md`.
+2. Upload PDFs from `products/*/product.pdf`.
+3. Deploy site to Vercel/Netlify; point CTAs at Gumroad links (`site/src/catalog.js`).
+4. Soft-launch on personal LinkedIn/Facebook/Nextdoor (no WF systems, no work time).
+5. Ask Cursor: “Add the next Mile Marker kit for [niche] using PRODUCT_FACTORY.md”.

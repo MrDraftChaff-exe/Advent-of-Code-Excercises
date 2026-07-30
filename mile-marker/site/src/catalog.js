@@ -16,9 +16,9 @@ export const products = [
   {
     id: 'move-in-pack',
     title: 'Move to Columbus',
-    subtitle: 'Settling Pack',
-    price: 19,
-    blurb: 'First 30 days: utilities, scorecards, budget sheet, local setup.',
+    subtitle: 'Settling Pack + Spreadsheet',
+    price: 24,
+    blurb: 'PDF checklists plus Excel: neighborhood scores, budget, apartment compare, rolodex.',
     gumroad: '#move-in',
   },
   {

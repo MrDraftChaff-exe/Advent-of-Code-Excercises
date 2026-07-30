@@ -30,18 +30,18 @@ File to upload: export `products/weekend-columbus/product.md` → PDF
 
 ---
 
-## Product 2 — Move to Columbus — Settling Pack — $19
+## Product 2 — Move to Columbus — Settling Pack — $24
 
-**Title:** Move to Columbus — Settling Pack  
-**Price:** $19  
+**Title:** Move to Columbus — Settling Pack (PDF + Excel)  
+**Price:** $24  
 **Summary:**  
-First-30-days checklists for relocating to Columbus — utilities, neighborhood scorecard, budget worksheet, local setup.
+First-30-days relocation pack for Columbus — printable PDF checklists **plus** a fillable Excel workbook (scorecard, budget, apartment compare, rolodex).
 
 **Description:**
 
-Moving cities is a hundred tiny tasks. This pack sequences them.
+Moving cities is a hundred tiny tasks. This pack sequences them — and gives you a spreadsheet that does the math.
 
-Includes:
+**PDF includes:**
 
 - Pre-move checklist  
 - Neighborhood fit scorecard  
@@ -51,10 +51,22 @@ Includes:
 - Day-30 check-in  
 - Season packing priorities for Ohio  
 
-**You get:** PDF download  
+**Excel workbook includes (8 tabs):**
+
+- Pre-move tracker with progress counts  
+- Neighborhood scorecard (1–5 scores, auto totals, winner)  
+- Week 1 setup with owner / due date / confirmation fields  
+- Month 1 budget — planned vs actual + variance  
+- Apartment compare — true monthly cost (rent + fees + utilities + commute)  
+- Day 30 settled score  
+- Local rolodex (pharmacy, grocery, urgent care, etc.)  
+
+**You get:** PDF + `.xlsx` downloads  
 **Perfect for:** new residents, relocating employees, people helping family move  
 
-File: `products/move-in-pack/product.md` → PDF
+Files:
+- `products/move-in-pack/product.pdf`
+- `products/move-in-pack/Move-to-Columbus-Settling-Spreadsheet.xlsx`
 
 ---
 
@@ -85,6 +97,6 @@ File: `products/stadium-weekend/product.md` → PDF
 
 ---
 
-## Bundle (optional) — Central Ohio Starter Trio — $29
+## Bundle (optional) — Central Ohio Starter Trio — $34
 
-All three kits. Save $6 vs separate.
+All three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
