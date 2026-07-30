@@ -9,7 +9,9 @@
     "dry-run": "node src/cli.js --dry-run",
     "etsy-auth": "node src/etsy-auth.js",
     "pinterest-auth": "node src/pinterest-auth.js",
-    "pinterest-pins": "node src/pinterest-pins.js"
+    "pinterest-pins": "node src/pinterest-pins.js",
+    "facebook-auth": "node src/facebook-auth.js",
+    "facebook-posts": "node src/facebook-posts.js"
   },
   "keywords": [],
   "author": "",
