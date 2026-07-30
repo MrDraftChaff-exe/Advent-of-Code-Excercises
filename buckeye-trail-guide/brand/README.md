@@ -32,9 +32,9 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 
 - [ ] Gumroad → Settings / Profile photo → `profiles/gumroad-avatar.png`
 - [ ] Gumroad → each product thumbnail → `covers/<sku>.png`
-- [ ] Etsy shop icon → `profiles/etsy-avatar.png`
 - [ ] Facebook Page cover → `buckeye-trail-guide-facebook-cover.jpg` (851×315 JPG)
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png` or a cover
+- ~~Etsy shop icon~~ — paused (fees); asset kept at `profiles/etsy-avatar.png`
 
 
 ## Live on Gumroad (API)
