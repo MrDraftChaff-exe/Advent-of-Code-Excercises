@@ -19,7 +19,9 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 
 | File | Use |
 | --- | --- |
-| `buckeye-trail-guide-facebook-cover.png` | Facebook Page cover (1640×624) |
+| `buckeye-trail-guide-facebook-cover.jpg` | **Upload this** — Facebook Page cover (851×315, sRGB JPG, &lt;100KB) |
+| `buckeye-trail-guide-facebook-cover-1640.jpg` | Optional retina cover (1640×624 JPG) |
+| `buckeye-trail-guide-facebook-cover.png` | Archive PNG (1640×624) — Facebook may reject large PNGs |
 | `buckeye-trail-guide-facebook-cover-source.png` | Wider source before Facebook crop |
 | `og-image.png` | Link previews |
 | `favicon-32/64.png` | Browser tabs |
@@ -31,7 +33,7 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 - [ ] Gumroad → Settings / Profile photo → `profiles/gumroad-avatar.png`
 - [ ] Gumroad → each product thumbnail → `covers/<sku>.png`
 - [ ] Etsy shop icon → `profiles/etsy-avatar.png`
-- [ ] Facebook Page cover → `buckeye-trail-guide-facebook-cover.png` (1640×624)
+- [ ] Facebook Page cover → `buckeye-trail-guide-facebook-cover.jpg` (851×315 JPG)
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png` or a cover
 
 
