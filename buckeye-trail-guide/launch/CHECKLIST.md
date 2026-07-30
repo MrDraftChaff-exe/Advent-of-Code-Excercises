@@ -9,9 +9,9 @@
 
 ## 1) Accounts
 
-- [x] Gumroad (`householder6` / businesshouseholder@gmail.com)
+- [x] Gumroad (`buckeyetrailguide` / businesshouseholder@gmail.com)
 - [x] Personal email (not employer)
-- [ ] Optional: rename Gumroad shop URL to match brand
+- [x] Gumroad shop URL renamed to `buckeyetrailguide`
 - [ ] Optional: Beehiiv/Substack for later waitlist
 - [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
 
@@ -50,7 +50,7 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 - [x] Weekend in Columbus — $9
 - [x] Move to Columbus — $24
 - [x] Stadium Weekend — $7
-- [ ] Hocking Hills Day Trip — $8 (SKU #4 ready; publish next)
+- [x] Hocking Hills Day Trip — $8
 
 ## 4) Deploy site
 

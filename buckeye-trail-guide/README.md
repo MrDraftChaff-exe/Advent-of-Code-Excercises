@@ -34,9 +34,9 @@ npm run dev
 
 | SKU | Price | Folder | Gumroad |
 | --- | --- | --- | --- |
-| Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` | [live](https://householder6.gumroad.com/l/weekend-columbus) |
-| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` | [live](https://householder6.gumroad.com/l/move-to-columbus) |
-| Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://householder6.gumroad.com/l/stadium-weekend) |
+| Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` | [live](https://buckeyetrailguide.gumroad.com/l/weekend-columbus) |
+| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
+| Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://buckeyetrailguide.gumroad.com/l/stadium-weekend) |
 | Hocking Hills Day Trip — From Columbus | $8 | `products/hocking-hills-day` | publish next |
 
 ## Publisher (auto-deploy)

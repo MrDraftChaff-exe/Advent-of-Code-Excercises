@@ -15,7 +15,7 @@ export const products = [
     subtitle: '48-Hour Field Kit',
     price: 9,
     blurb: 'Two strong days planned — neighborhoods, timing, weather swaps, packing.',
-    gumroad: 'https://householder6.gumroad.com/l/weekend-columbus',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/weekend-columbus',
     cover: '/covers/weekend-columbus.png',
   },
   {
@@ -24,7 +24,7 @@ export const products = [
     subtitle: 'Settling Pack + Spreadsheet',
     price: 24,
     blurb: 'PDF checklists plus Excel: neighborhood scores, budget, apartment compare, rolodex.',
-    gumroad: 'https://householder6.gumroad.com/l/move-to-columbus',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/move-to-columbus',
     cover: '/covers/move-in-pack.png',
   },
   {
@@ -33,7 +33,7 @@ export const products = [
     subtitle: 'Logistics Sheet',
     price: 7,
     blurb: 'Meetup pins, parking vs rideshare, exit timing — print and go.',
-    gumroad: 'https://householder6.gumroad.com/l/stadium-weekend',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/stadium-weekend',
     cover: '/covers/stadium-weekend.png',
   },
   {
@@ -42,7 +42,7 @@ export const products = [
     subtitle: 'From Columbus',
     price: 8,
     blurb: 'Leave early, hike the highlights, get home before dark — routes, packing, weather swaps.',
-    gumroad: 'https://householder6.gumroad.com/l/hocking-hills-day',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/hocking-hills-day',
     cover: '/covers/hocking-hills-day.png',
   },
 ];

@@ -3,69 +3,89 @@
     "move-in-pack": {
       "gumroad": {
         "id": "B8tNaJ_yt6Jv3s0rj5Ie8g==",
-        "url": "https://householder6.gumroad.com/l/move-to-columbus",
+        "url": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
         "permalink": "move-to-columbus",
         "published": true,
         "price": 2400,
         "files": [
           {
-            "id": "5t_9OTOv5NefzO2UwJQj8A==",
+            "id": "muJ9OcOunH4dNf-_pvsvUg==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/b298a965aa9c3ca601e62c03f2bed4ad/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424194-w9QHHIMqetNfQCsXeaOBMWOIq6FXDibRy8FKxnwWOj4%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/c01538ba3e4084ae87dcf2ea8e6655dc/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785425492-G2YALscFWYmxz%2BWHcSdfMsvxmHsJ3am4hxtZjOJVjjo%3D",
             "filetype": "pdf",
             "filegroup": "document"
           },
           {
-            "id": "e23z3w5bh6GeUCpJfJDBKA==",
+            "id": "NtoHCrPFBcTeoJUUQ8CJcg==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/b6e6e765f89089aaf368bd4d9c05283e/original/Move-to-Columbus-Settling-Spreadsheet.xlsx?response-content-disposition=attachment&verify=1785424194-t7kte6i2Cn5h2ensQ0uH2SofxcIpVb80kVgnNv2vMIA%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/95fcd0ddd8003224c0d8bbe2690e7245/original/Move-to-Columbus-Settling-Spreadsheet.xlsx?response-content-disposition=attachment&verify=1785425492-4UxsLcEVOFfRwP6%2Fk1EhTXFG6%2BWruTIV0ykAv1Aid10%3D",
             "filetype": "xlsx",
             "filegroup": "url"
           }
         ],
-        "updatedAt": "2026-07-30T14:59:54.461Z"
+        "updatedAt": "2026-07-30T15:21:32.733Z"
       }
     },
     "stadium-weekend": {
       "gumroad": {
         "id": "B0rkLKsUHXG563Pt7l8YsQ==",
-        "url": "https://householder6.gumroad.com/l/stadium-weekend",
+        "url": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
         "permalink": "stadium-weekend",
         "published": true,
         "price": 700,
         "files": [
           {
-            "id": "MX-mmR_7Kerp5mPnb7nKFA==",
+            "id": "HWMyVj4TyUs_RpnnXwj51A==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/b2b9e19bbca421db7fd406ba87826d05/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424198-q9%2BEdUbb1nVi2oOGzs9YsqjT3xEPHp6%2BQ20r30boTGY%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/7d3f2b4d8f49af104a050956eb02fd1f/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785425493-10kICmt65yQTXkRD%2BSCjdjx49R%2BTPwcSONL7VFvHFfY%3D",
             "filetype": "pdf",
             "filegroup": "document"
           }
         ],
-        "updatedAt": "2026-07-30T14:59:58.492Z"
+        "updatedAt": "2026-07-30T15:21:33.598Z"
       }
     },
     "weekend-columbus": {
       "gumroad": {
         "id": "8xnJufjEkop-ELjtLeOjXA==",
-        "url": "https://householder6.gumroad.com/l/weekend-columbus",
+        "url": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
         "permalink": "weekend-columbus",
         "published": true,
         "price": 900,
         "files": [
           {
-            "id": "NBA6NXjTu6uI1SziUbKX8A==",
+            "id": "GPUq7S-yIQcbeaxythBMJg==",
             "name": null,
             "size": null,
-            "url": "https://files.gumroad.com/attachments/2028616317421/5bf1b4bf8916f329fa35a92d9a415ba2/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785424202-YnOL7sAtnR3Lqbj2HU6aHyybFoq1bKip0X3HM5lSLnE%3D",
+            "url": "https://files.gumroad.com/attachments/2028616317421/8dfda855563bb375e76097c1ae86f612/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785425494-O8O67P%2BxI%2FBmcEGHHUd4dZfChBMO0xB%2FaYRKJCf8EGo%3D",
             "filetype": "pdf",
             "filegroup": "document"
           }
         ],
-        "updatedAt": "2026-07-30T15:00:02.710Z"
+        "updatedAt": "2026-07-30T15:21:34.278Z"
+      }
+    },
+    "hocking-hills-day": {
+      "gumroad": {
+        "id": "zyWHcIgNw6PnGsG-a8WfGg==",
+        "url": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+        "permalink": "hocking-hills-day",
+        "published": true,
+        "price": 800,
+        "files": [
+          {
+            "id": "YW0I_qztukJcZkgce8gPPg==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/8460066103c6ec4bafc33ec7a9b3b314/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785425491-H8o2PZKT1aHx2aNsE8BbU944wkqjHqF9XQGiw5GV0as%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          }
+        ],
+        "updatedAt": "2026-07-30T15:21:31.443Z"
       }
     }
   }

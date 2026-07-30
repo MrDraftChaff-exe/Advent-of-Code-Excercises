@@ -10,7 +10,7 @@ Made a small set of printable Columbus guides — weekend plans, move-in checkli
 
 They're digital downloads (PDF). If you're hosting visitors or just moved here, they might save you a few group-chat rounds.
 
-Shop: https://householder6.gumroad.com  
+Shop: https://buckeyetrailguide.gumroad.com  
 (More coming under Buckeye Trail Guide.)
 
 **Attach:** `brand/profiles/social-avatar.png` or a product cover from `brand/covers/`.
@@ -23,7 +23,7 @@ Side project outside work: **Buckeye Trail Guide** — practical digital guides 
 
 Not affiliated with my employer. Built as simple printable downloads.
 
-https://householder6.gumroad.com
+https://buckeyetrailguide.gumroad.com
 
 **Attach:** `brand/profiles/social-avatar.png`
 
