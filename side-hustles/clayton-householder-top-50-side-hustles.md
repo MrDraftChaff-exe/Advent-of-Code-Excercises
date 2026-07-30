@@ -1,134 +1,168 @@
-# Side hustle decision brief — Clayton Householder
+# Side hustles to investigate — Columbus, OH + automation-first
 
-Not a list of 50. Three paths worth testing, with market evidence and a weekend validation script.
+Resume used as optional context only (Reynoldsburg / Columbus metro, full-time W-2). Ideas below are **not** limited to cybersecurity.
 
-**Your edge:** CyberArk Defender + Sentry, multi-client PAM ops (GuidePoint), encryption at scale (Wells Fargo), docs/runbooks, PowerShell, mentoring. That is a narrow, expensive niche.
-
-**Hard filter:** Wells Fargo requires pre-clearance for outside employment/consulting that could conflict. Path 1 and Path 2 are usually safest to start as *education for individuals*. Path 3 needs Compliance approval before you take money.
-
----
-
-## The only three paths worth investigating
-
-### Path 1 — Sell CyberArk / PAM exam + ops training (most automated that matches your certs)
-
-**Why this, not “templates in general”:**  
-Udemy already has buyers searching “CyberArk.” Existing courses are mostly **practice-question dumps**, not ops reality. Examples:
-
-- [Complete CyberArk Certification Preparation](https://www.udemy.com/course/cyberark-test/) — 200+ practice Qs  
-- [CyberArk Defender PAM practice questions](https://www.udemy.com/course/cyberark-defender-pampam-def-practice-questions/)
-
-**Gap you can own:** “I passed Defender/Sentry *and* ran CyberArk for clients up to ~20k users — here’s how ops actually works” (labs, health checks, patch interpretation, DR testing, documentation). No employer IP.
-
-| | |
-| --- | --- |
-| **Money shape** | Udemy (~37% royalty if organic) or Gumroad/Teachable (you keep most, you drive traffic) |
-| **Price comps** | Practice tests often ~$20–$50 promo; serious lab courses often $50–$150; mentor retainers elsewhere $120–$450/mo |
-| **Automation** | High after recording — platform delivers forever |
-| **Time to first $** | 4–8 weekends to a thin MVP (1 module + 50 practice Qs with explanations) |
-| **Kill criterion** | If 20 LinkedIn DMs / waitlist signups in 2 weeks = 0 interest in “CyberArk ops labs,” stop |
-
-**Weekend validation (do this before building a full course):**
-1. Post on LinkedIn: “Thinking of a short CyberArk Defender/Sentry ops lab pack (not just dumps). Would you pay $49 for: vault health checklist, release-note action sheet, 50 explained practice Qs? Comment yes / what you’d need.”
-2. Create a free Google Form waitlist (email + “Defender / Sentry / both / job-seeker”).
-3. Spend 2 hours reviewing the top 5 Udemy CyberArk courses — note 1-star complaints. Your outline is those complaints fixed.
-4. If ≥15 waitlist emails → record Module 1 only (60–90 min) and sell as a $29–$49 pilot on Gumroad.
+**Preference:** More automated after setup. Local Columbus angles included where they matter.  
+**Note:** Columbus municipal income tax is **2.5%** on earnings; Ohio vendor’s license via Ohio Business Gateway if you sell taxable goods. Pre-clear any outside work with Wells Fargo if required by policy.
 
 ---
 
-### Path 2 — Sell one boring security ops pack people already buy (fastest automated test)
+## How to use this
 
-**Why:** Buyers already pay for Excel/Sheets cyber trackers and IR kits. You don’t need a brand; you need one sharp SKU.
-
-**Comps that prove the category exists:**
-- [ExcelLog Cybersecurity Complete Suit](https://excellog.net/cybersecurity-templates/) — **$59.99**, 50+ Excel templates/dashboards  
-- [Rex Method IR Kit on Gumroad](https://rexcyberdefense.gumroad.com/l/iibvyi) — **$197** SMB IR templates (listing can show low sales — proof that **price + positioning** matter; $197 cold often dies)
-
-**Your SKU (build only one):**  
-**“Privileged Access Ops Pack”** — Excel/Sheets:
-
-1. Privileged account inventory + owner attestation  
-2. Access review tracker (export-friendly columns)  
-3. CyberArk-ish health/ops checklist (generic PAM language if you want trademark safety)  
-4. Release-note → change ticket worksheet  
-5. DR test evidence log  
-
-Price **$39** (starter) / **$79** (full). Sweet spot for impulse digital buys is roughly **$7–$79**; $197 needs an audience or sales call.
-
-| | |
-| --- | --- |
-| **Money shape** | Gumroad one-time; later annual “update pass” |
-| **Automation** | Highest — file download, almost zero support if scoped well |
-| **Time to first $** | One weekend if you already think in these worksheets |
-| **Kill criterion** | 0 sales after 50 qualified visits (LinkedIn + 2 niche Slack/Discord posts) → wrong offer or no distribution; fix distribution before building SKU #2 |
-
-**Weekend validation:**
-1. Do **not** build 50 templates. Build a 1-page sample PDF of the privileged inventory sheet.
-2. Gumroad product page live with “Coming Friday” or $19 early-bird.
-3. Post sample screenshot + “reply EMAIL and I’ll send the free sample page.”
-4. Count emails. ≥25 emails → finish the $39 pack. &lt;5 → distribution problem or weak hook; try Path 1 waitlist instead.
+Investigate = spend a few hours gathering real local numbers (comps, permits, demand), not build yet.  
+**Auto** = after setup, how little ongoing labor (5 = mostly passive).  
+**Local** = Columbus-specific leverage (OSU, logistics, growth corridors).
 
 ---
 
-### Path 3 — Part-time CyberArk delivery through a VAR/SI (highest $/hour, least automated, needs approval)
+## Tier 1 — Highest automation (investigate first)
 
-**Why this is the real money in your niche:** US PAM/CyberArk contract demand is active right now. Public comps:
+### Online / remote (location-independent)
 
-| Signal | Detail |
-| --- | --- |
-| Apex CyberArk/PAM Analyst | Remote contract, **$55–$65/hr** |
-| Eliassen Senior CyberArk Engineer | **$71–$81/hr** W2 |
-| CyberArk Solution Architect (Dice) | **$60–$70/hr** |
-| Staffing guide (PAM CyberArk/BeyondTrust) | Contract often cited **~$125–$190/hr** for senior/architect |
-| eQuest / SI CyberArk PAM Engineer (Dice) | Explicitly offers **part-time** for critical project phases |
-| Independent consultants | LinkedIn profiles advertising “open to part-time CyberArk ONLY” |
+| # | Idea | Auto | Why investigate | First check |
+| --- | --- | --- | --- | --- |
+| 1 | **Print on demand** (Merch by Amazon, Etsy+Printify, Redbubble) | 5 | No inventory; platforms fulfill | Apply Merch; upload 20 designs in a niche (OSU-adjacent *careful with trademarks*, Ohio outdoors, trades, parents) |
+| 2 | **Digital products** (Gumroad/Etsy printables, planners, trackers) | 5 | Zero COGS after creation | Pick one niche with existing $15–$59 sellers; ship one SKU |
+| 3 | **Affiliate site / newsletter** (tools, local living, parenting, home) | 4–5 | Recurring commissions if SEO/email works | Beehiiv + 4 posts; join 2 affiliate programs |
+| 4 | **Stock content** (photos, prompts, Notion templates, icon packs) | 5 | Create once, sell repeatedly | Creative Market / Etsy comps in one niche |
+| 5 | **Self-published ebooks / low-content books** (KDP) | 5 | Amazon distribution | 1 short guide or journal niche with BSR comps |
+| 6 | **YouTube / Shorts → ads + affiliates** | 4 | Evergreen if niche is searchable | 10 videos in one niche before monetizing |
+| 7 | **Car wrap advertising** (Wrapify, Carvertise, etc.) | 5 | Drive normally, get paid | Check Columbus campaign availability + vehicle eligibility |
+| 8 | **Domain flipping / expired domains** | 4 | Buy → park/sell | NameBio sales comps; small capital test |
+| 9 | **Dividend / index investing** (not a “hustle,” but automated) | 5 | True passive after funding | Only surplus capital; not entrepreneurial |
+| 10 | **Cash-secured / covered strategies** (advanced) | 4 | Markets do the work | Only if you already understand risk |
 
-**10 hours/week at $70/hr ≈ $2,800/month.** That crushes most “passive” digital experiments — but it is a second job, and **Wells Fargo pre-clearance is mandatory**.
+### Local assets that rent themselves (Columbus)
 
-| | |
-| --- | --- |
-| **Money shape** | W2/corp-to-corp through a recruiter or SI — not “start an MSSP” |
-| **Automation** | Low — you trade hours |
-| **Fit** | Highest skill match of anything on this page |
-| **Kill criterion** | Compliance says no → abandon Path 3 entirely; do not freelance under the radar |
+| # | Idea | Auto | Local angle | First check |
+| --- | --- | --- | --- | --- |
+| 11 | **Rent driveway / garage / shed** (Neighbor.com) | 5 | OSU + apartment density = storage/parking demand | List unused space; comps for Columbus parking/garages on Neighbor |
+| 12 | **Game-day / event parking** (private lot or driveway near OSU/Arena) | 4 | Buckeyes + concerts spike rates | HOA/city rules; SpotHero/Neighbor/Facebook game-day comps |
+| 13 | **Airbnb / STR room or ADU** | 3–4 | OSU weekends, Short North, Convention Center | Columbus Ch. 598 STR permit; occupancy + cleaning costs |
+| 14 | **PeerSpace** (photo/meeting room in home or rented suite) | 4 | Content creators + corporate | List a clean room; check zoning/HOA |
+| 15 | **Turo car rental** | 3–4 | Airport + downtown demand | Insurance rules; depreciation math |
+| 16 | **Trailer / tool / camera rental** (Fat Llama, local FB) | 3–4 | DIY + events | Theft/deposit process; what you already own |
+| 17 | **Storage lockers / smart lockers** (capital) | 4 | Apartments, warehouses | Capex + property owner deals |
+| 18 | **ATM placement** | 4 | Bars, smoke shops, events | Machine + cash float + location split |
+| 19 | **Vending machines** (cashless + telemetry) | 3–4 | Strong Columbus story: Easton/Polaris offices, Rickenbacker logistics, apartments; OSU/downtown often locked by big ops | 3 location pitch letters; Ohio seller’s permit; ~$1.5k–$8k/machine |
+| 20 | **Micro-markets / unattended retail** in offices | 3–4 | Corporate corridors | Same as vending, higher ticket |
 
-**Weekend validation (investigation only — no client work yet):**
-1. Read WF outside-business / secondary employment process; submit disclosure **before** applying.
-2. Search Dice/LinkedIn for “CyberArk” + “contract” + “part-time” / “flexible.” Save 5 postings.
-3. Message 3 PAM SI/VAR recruiters: “Employed full-time; exploring pre-cleared part-time CyberArk delivery 5–10 hrs/week. Defender+Sentry. Interested?”
-4. If 0 recruiter replies in 10 days after clearance → stick to Path 1/2.
-
----
-
-## What not to waste investigation time on
-
-| Idea | Why skip for now |
-| --- | --- |
-| Generic “50 side hustles” / POD merch / bandwidth sharing | Zero leverage of CyberArk edge |
-| Bug bounties | Wrong skill center of gravity (you’re ops/PAM, not offensive) |
-| Building an MSSP / vCISO firm | Capital, on-call, conflict, not a side hustle |
-| $197 IR mega-kits with no audience | Category exists; cold traffic at that price often gets **0 sales** |
-| Competing with ExcelLog’s 50-template suite on day one | You lose on catalog size; win on **one PAM-specific pack** |
+**Columbus vending notes (from operator guides):** Well-placed machines often cited ~$250–$800+/mo gross; profit much lower after COGS/commission. Growth pockets called out: Polaris/Easton offices, apartment laundry rooms, Licking County/Intel supplier belt, Rickenbacker industrial — not the already-covered OSU student union lobbies.
 
 ---
 
-## Recommended sequence
+## Tier 2 — Semi-automated local (systems + occasional labor)
+
+| # | Idea | Auto | Columbus hook | First check |
+| --- | --- | --- | --- | --- |
+| 21 | **Amazon Flex** | 2 | Strong OH Flex market (logistics hub) | App blocks near you; true $/hr after gas |
+| 22 | **DoorDash / Uber Eats** | 1–2 | Short North, Campus, German Village density | 4 peak shifts; track net |
+| 23 | **Uber / Lyft** | 1–2 | Airport, bars, game days | Surge map study one weekend |
+| 24 | **Rover / Wag pet care** | 2 | Clintonville, Grandview, Short North, New Albany growth | Profile + 5 walks; Petme cites ~$15–$24/walk Columbus |
+| 25 | **Taskrabbit / handyman gigs** | 1–2 | Growing housing stock | Skill fit + insurance |
+| 26 | **Mobile car detailing** (you or hire) | 2→3 | Apartments without garages | Facebook Marketplace ads test $50 detail |
+| 27 | **Lawn / snow** (seasonal route, then subcontract) | 2→4 | Reynoldsburg suburbs | 10-door flyer test; later hire |
+| 28 | **Pressure washing** | 2 | Driveways, HOAs, restaurants | One equipment buy; 5 quotes |
+| 29 | **Residential cleaning** (productize → cleaners) | 2→4 | Dual-income suburbs | Thumbtack/ Angi test; SOP for hire |
+| 30 | **Junk removal** (truck + Craigslist) | 2 | Constant turnover near campus | Dump fees + truck cost |
+| 31 | **Dumpster rental** (roll-offs) | 3 | Construction + DIYers | Trailer/dumpster capex; city permits |
+| 32 | **Portable toilet / event rentals** | 3 | Festivals, builds | Delivery logistics |
+| 33 | **Photo booth / mirror rental** | 3 | Weddings + OSU events | Weekend calendar fill rate |
+| 34 | **Bounce house / party rentals** | 3 | Suburbs + birthdays | Storage + insurance |
+| 35 | **Mobile tire / battery service** | 2 | Highway + apartments | Certs + van |
+| 36 | **Self-serve car wash** (buy existing) | 4 | Capex $79k–$484k+ Columbus estimates | BizBuySell listings; water permits |
+| 37 | **Laundromat** (buy existing) | 4 | Renter-heavy corridors; $142k–$778k estimates | Trailing-12 revenue or walk away |
+| 38 | **Self-storage investing** | 4 | Cap-heavy | Syndications vs. small facility |
+| 39 | **Billboard / bench ads** (lease then resell space) | 4 | Arterials | Rare/expensive; partner angle |
+| 40 | **EV charger hosting** (home/lot) | 4 | Incentive-dependent | Utility + rebate research |
+
+---
+
+## Tier 3 — Skill / interest / resume-optional (mix)
+
+| # | Idea | Auto | Notes |
+| --- | --- | --- | --- |
+| 41 | **Tutoring** (math, IT, certifications) | 2 | OSU + high school market; Zoom scales |
+| 42 | **Career mentorship platforms** | 3 | Resume helps; $120–$450/mo typical platform rates |
+| 43 | **Notary / loan signing agent** | 2 | Mobile appointments |
+| 44 | **Mystery shopping / user testing** | 2 | Low $; easy start |
+| 45 | **Reselling** (FB Marketplace, eBay, estate sales) | 2→3 | Automation via saved searches + ship station |
+| 46 | **Thrift → eBay/Poshmark** | 2 | Campus move-out gold (May/Aug) |
+| 47 | **Photography** (real estate / events) | 2 | Game-day + listings |
+| 48 | **DJ / haunt/seasonal events** | 1 | You have haunt ops background — seasonal |
+| 49 | **Cyber / docs products** (optional resume leverage) | 4–5 | Only if you want; not required |
+| 50 | **Part-time CyberArk contract** | 1 | Highest $/hr from resume; needs employer clearance |
+
+---
+
+## Best “investigate this month” shortlist (automation × doable in Columbus)
+
+### A. Almost passive, low capital
+1. **Neighbor.com** — list driveway/garage/shed this week  
+2. **Print on demand** — 20 designs, multi-platform  
+3. **One digital product** — $19–$49 printable or template  
+4. **Car wrap ads** — availability check for your commute (I-70 / Easton / downtown)
+
+### B. Semi-passive, needs capital or locations
+5. **Vending** — pitch 10 apartment/office/warehouse managers in Reynoldsburg, Easton, Rickenbacker; don’t buy machines until 1–2 LOIs  
+6. **ATM** in a cash business you know  
+7. **Game-day parking** if you control a spot near campus/Arena District  
+
+### C. Local service → automate later with help
+8. **Mobile detailing or pressure washing** — validate demand with 10 jobs, then raise price / hire  
+9. **Pet sitting route** in Clintonville/Grandview/New Albany  
+10. **Amazon Flex** — measure real net $/hr for 2 weeks (baseline gig)
+
+### D. Bigger bets (research only unless you have capital)
+11. Buy a **laundromat** or **self-serve car wash** listing — underwrite trailing revenue, don’t “start from zero”  
+12. **STR** only with permit math and cleaning automation (turnover is the job)
+
+---
+
+## Columbus-specific demand drivers to keep in mind
+
+- **Ohio State** — year-round students + football weekends (parking, STR, delivery, rentals)  
+- **Short North / Arena / Convention Center** — events, nightlife, visitors  
+- **Easton / Polaris / Dublin / New Albany** — corporate + affluent residential services  
+- **Rickenbacker + Amazon logistics** — Flex, warehouse-adjacent vending, industrial breaks  
+- **Intel / Licking County supply chain growth** — new workplaces = new vending/micro-market whitespace  
+- **Apartment growth** — laundry rooms, package solutions, pet care, detailing  
+
+---
+
+## 7-day investigation plan (concrete)
+
+**Day 1–2 — Asset audit**  
+What can earn without you? Spare parking, garage, shed, car (Turo/wrap), camera, tools, unused rooms.
+
+**Day 3 — List one asset**  
+Neighbor or Turo or PeerSpace live. Measure inquiries for 14 days.
+
+**Day 4 — Online automated test**  
+Open POD or Gumroad; publish *something* sellable in &lt;4 hours.
+
+**Day 5 — Local walk/drive audit**  
+Photograph 10 potential vending/ATM sites (apartments, warehouses, car dealers). Note incumbent machines.
+
+**Day 6 — Gig baseline**  
+One Flex or Dash evening. Write down net $/hr. This is your “time-for-money” floor to beat.
+
+**Day 7 — Pick one primary**  
+Choose the path with (inquiries × automation × capital you actually have). Kill the rest for 60 days.
+
+---
+
+## Rough capital vs automation map
 
 ```text
-This weekend: Path 2 sample + waitlist  AND  Path 1 LinkedIn poll
-     ↓
-If waitlist ≥15–25: ship Path 2 pack ($39) within 7 days
-     ↓
-Use buyers/DMs to outline Path 1 Module 1 (course)
-     ↓
-In parallel (only if Compliance OK): Path 3 recruiter pings
+$0–$200     POD, digital products, Neighbor listing, affiliates, car wrap apps
+$500–$3k    First used vending machine, tools for detailing/pressure wash, photo booth used
+$3k–$15k    2–3 cashless venders, ATM + float, trailer rental start
+$50k+       Laundromat / car wash / storage (prefer buying existing cash flow)
 ```
-
-**Automation ranking if all three clear:** Path 2 (set-and-forget files) > Path 1 (course, light updates) > Path 3 (hours for dollars).  
-**Likelihood of meaningful $ in 60 days:** Path 3 (if allowed) > Path 1/2 with distribution > Path 2 with no audience.
 
 ---
 
-## One-sentence strategy
+## Bottom line
 
-Sell what the market already searches for (**CyberArk certs/ops** and **security trackers**), keep it productized so it runs without you, and only add part-time PAM delivery if Wells Fargo explicitly allows it.
+Broaden past the resume: **rent idle space/assets**, **ship digital/POD products**, and **only then** put capital into Columbus vending/ATMs where growth corridors are under-served. Use gigs (Flex/Dash/Rover) only as a measured baseline, not the destination, if automation is the goal.
