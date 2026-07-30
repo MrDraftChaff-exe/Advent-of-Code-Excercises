@@ -14,9 +14,11 @@ Create a new Buckeye Trail Guide digital download.
 1. Create `buckeye-trail-guide/products/<slug>/` with:
    - `product.md` — full customer-facing guide (printable, scannable, checklist-heavy)
    - `meta.json` — title, price, one-liner, bullets, SEO tags, files list
+   - `cover.png` — topic-derived cover (see Thumbnail / cover rules)
 2. Add the product to `buckeye-trail-guide/site/src/catalog.js`
 3. Add a Gumroad block to `buckeye-trail-guide/launch/gumroad-copy.md`
-4. Keep voice: practical, clear, no hype, no fake stats
+4. Generate unique topic thumbnail + cover assets (see rules below)
+5. Keep voice: practical, clear, no hype, no fake stats
 
 **Format rules for product.md:**
 - One clear outcome in the title
@@ -27,6 +29,16 @@ Create a new Buckeye Trail Guide digital download.
   `*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*`  
   `*Personal use. Not affiliated with The Ohio State University or the City of Columbus.*`  
   (Add product-specific park/org notes on the same disclaimer line when relevant.)
+
+**Thumbnail / cover rules (required):**
+- Every SKU must have a **unique** image set derived from **that guide’s topic** (what the customer is buying), not the brand mascot and not a reused photo from another SKU.
+- Do **not** use the cat badge / trail emblem as the product thumbnail or cover.
+- Create:
+  - `brand/covers/<slug>.png` + `site/public/covers/<slug>.png` + `products/<slug>/cover.png` (wide cover)
+  - `brand/thumbnails/<slug>.png` + `site/public/thumbnails/<slug>.png` (square 1024×1024 shop card)
+- Thumbnail layout: topic photo on top + dark text bar with `BUCKEYE TRAIL GUIDE` / title / subtitle.
+- No trademarked team/university logos in imagery.
+- After generating, upload the square thumbnail to Gumroad for that product (API or dashboard).
 
 **Pricing guide:** single sheet $5–$9 · pack $15–$29 · bundle $39
 

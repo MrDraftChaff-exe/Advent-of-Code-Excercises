@@ -25,8 +25,8 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 | `buckeye-trail-guide-facebook-cover-source.png` | Wider source before Facebook crop |
 | `og-image.png` | Link previews |
 | `favicon-32/64.png` | Browser tabs |
-| `covers/<sku>.png` | Product cover / preview images |
-| `thumbnails/<sku>.png` | Square Gumroad product thumbnails (1024) |
+| `covers/<sku>.png` | Product cover / preview images — **unique per SKU, topic-derived** (not the cat badge) |
+| `thumbnails/<sku>.png` | Square Gumroad product thumbnails (1024) — **unique per SKU, topic-derived** |
 
 ## Upload checklist (manual — needs your login)
 
