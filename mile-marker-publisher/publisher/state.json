@@ -1,3 +1,72 @@
 {
-  "products": {}
+  "products": {
+    "move-in-pack": {
+      "gumroad": {
+        "id": "B8tNaJ_yt6Jv3s0rj5Ie8g==",
+        "url": "https://householder6.gumroad.com/l/move-to-columbus",
+        "permalink": "move-to-columbus",
+        "published": false,
+        "price": 2400,
+        "files": [
+          {
+            "id": "FXrSW_nDbHcyNOKEqbxb2w==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/5a86964e7466da69002699ca2cfd3f8e/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785421342-P4hnKhnJLP2XSHR1JQWIsLuWTJKrnAycTXPzqm06am0%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          },
+          {
+            "id": "NkiGhD-1SqHXTzXsEfM7kg==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/7513530d17e11ffe9e15d63261ee139e/original/Move-to-Columbus-Settling-Spreadsheet.xlsx?response-content-disposition=attachment&verify=1785421342-tird%2FUUDq1G%2B3FZcI0TIl9HTTcqN02EezpTSmzFIr8w%3D",
+            "filetype": "xlsx",
+            "filegroup": "url"
+          }
+        ],
+        "updatedAt": "2026-07-30T14:12:22.458Z"
+      }
+    },
+    "stadium-weekend": {
+      "gumroad": {
+        "id": "B0rkLKsUHXG563Pt7l8YsQ==",
+        "url": "https://householder6.gumroad.com/l/stadium-weekend",
+        "permalink": "stadium-weekend",
+        "published": false,
+        "price": 700,
+        "files": [
+          {
+            "id": "0W_80I4_Er9spklwPgznSA==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/911c19d3b8000f5234093d0eca34c9fe/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785421343-C9s%2FM6c95VyE8%2BBYsRpjHd9VP0w9HEdLKQogyfr5aYQ%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          }
+        ],
+        "updatedAt": "2026-07-30T14:12:23.415Z"
+      }
+    },
+    "weekend-columbus": {
+      "gumroad": {
+        "id": "8xnJufjEkop-ELjtLeOjXA==",
+        "url": "https://householder6.gumroad.com/l/weekend-columbus",
+        "permalink": "weekend-columbus",
+        "published": false,
+        "price": 900,
+        "files": [
+          {
+            "id": "der0amjgtfryF8QlwHgg7g==",
+            "name": null,
+            "size": null,
+            "url": "https://files.gumroad.com/attachments/2028616317421/876fb2c0a1e08b4d106b14828ef3acc0/original/product.pdf?response-content-disposition=attachment&cache_key=JgIv6Zpa1UJksOZKIgrHJg&verify=1785421344-7eVzpJthZM8fLMryvQ3jyLIFezIMCKPil0c9mJ7FWHQ%3D",
+            "filetype": "pdf",
+            "filegroup": "document"
+          }
+        ],
+        "updatedAt": "2026-07-30T14:12:24.349Z"
+      }
+    }
+  }
 }

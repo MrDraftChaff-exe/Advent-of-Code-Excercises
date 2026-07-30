@@ -108,21 +108,28 @@ async function uploadFile(token, filePath) {
     }
     const etag = put.headers.get('etag') || put.headers.get('ETag');
     if (!etag) throw new Error(`Missing ETag for part ${part.part_number}`);
-    completedParts.push({ part_number: part.part_number, etag: etag.replaceAll('"', '') });
+    // Gumroad expects the S3 ETag including quotes, e.g. "abc123"
+    const etagValue = etag.includes('"') ? etag : `"${etag}"`;
+    completedParts.push({ part_number: Number(part.part_number), etag: etagValue });
   }
 
-  const completeFields = {
-    upload_id: presign.upload_id,
-    key: presign.key,
-  };
-  completedParts.forEach((p, i) => {
-    completeFields[`parts[${i}][part_number]`] = String(p.part_number);
-    completeFields[`parts[${i}][etag]`] = p.etag;
-  });
+  const body = new URLSearchParams();
+  body.set('access_token', token);
+  body.set('upload_id', presign.upload_id);
+  body.set('key', presign.key);
+  for (const p of completedParts) {
+    body.append('parts[][part_number]', String(p.part_number));
+    body.append('parts[][etag]', p.etag);
+  }
 
-  const complete = await api(token, 'POST', '/files/complete', completeFields);
-  if (!complete.success || !complete.file_url) {
-    throw new Error(`complete failed: ${JSON.stringify(complete)}`);
+  const res = await fetch(`${API}/files/complete`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  const complete = await res.json().catch(() => ({}));
+  if (!res.ok || !complete.success || !complete.file_url) {
+    throw new Error(`complete failed: ${res.status} ${JSON.stringify(complete)}`);
   }
   return complete.file_url;
 }
@@ -151,9 +158,9 @@ async function api(token, method, pathname, fields = {}) {
       continue;
     }
     if (key === 'files' && Array.isArray(value)) {
-      value.forEach((f, i) => {
-        if (f.id) body.append(`files[${i}][id]`, String(f.id));
-        if (f.url) body.append(`files[${i}][url]`, String(f.url));
+      value.forEach((f) => {
+        if (f.id) body.append('files[][id]', String(f.id));
+        if (f.url) body.append('files[][url]', String(f.url));
       });
       continue;
     }

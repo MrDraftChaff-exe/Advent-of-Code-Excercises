@@ -11,7 +11,7 @@ export const products = [
     subtitle: '48-Hour Field Kit',
     price: 9,
     blurb: 'Two strong days planned — neighborhoods, timing, weather swaps, packing.',
-    gumroad: '#weekend', // replace with live Gumroad URL
+    gumroad: 'https://householder6.gumroad.com/l/weekend-columbus', // replace with live Gumroad URL
   },
   {
     id: 'move-in-pack',
@@ -19,7 +19,7 @@ export const products = [
     subtitle: 'Settling Pack + Spreadsheet',
     price: 24,
     blurb: 'PDF checklists plus Excel: neighborhood scores, budget, apartment compare, rolodex.',
-    gumroad: '#move-in',
+    gumroad: 'https://householder6.gumroad.com/l/move-to-columbus',
   },
   {
     id: 'stadium-weekend',
@@ -27,6 +27,6 @@ export const products = [
     subtitle: 'Logistics Sheet',
     price: 7,
     blurb: 'Meetup pins, parking vs rideshare, exit timing — print and go.',
-    gumroad: '#stadium',
+    gumroad: 'https://householder6.gumroad.com/l/stadium-weekend',
   },
 ];
