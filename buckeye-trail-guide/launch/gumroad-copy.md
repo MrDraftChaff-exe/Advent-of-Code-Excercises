@@ -97,6 +97,37 @@ File: `products/stadium-weekend/product.md` → PDF
 
 ---
 
+## Product 4 — Hocking Hills Day Trip — From Columbus — $8
+
+**Title:** Hocking Hills Day Trip — From Columbus  
+**Price:** $8  
+**Summary:**  
+A printable one-day plan from Columbus to Hocking Hills — drive windows, two route options, packing, and weather swaps.
+
+**Description:**
+
+Stop rebuilding the same day-trip plan in group chats the night before.
+
+This guide gives you:
+
+- Night-before checklist  
+- Drive timing windows from Columbus  
+- Route A (classic highlights) and Route B (deeper hike)  
+- Parking backups + group meetup pins  
+- Season/weather swaps  
+- Day-pack list and return timeline  
+
+**You get:** PDF download (print or phone)  
+**Perfect for:** weekend hosts, first-timers, carpool groups  
+
+File: `products/hocking-hills-day/product.pdf`
+
+---
+
 ## Bundle (optional) — Central Ohio Starter Trio — $34
 
-All three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
+First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
+
+## Bundle (optional) — Day-Trip Add-On — $14
+
+Weekend Field Kit + Hocking Hills Day Trip ($9 + $8 = $17). Bundle at **$14** (save $3).

@@ -9,20 +9,18 @@
 
 ## 1) Accounts
 
-- [ ] Gumroad (or Payhip / Lemon Squeezy)
-- [ ] Personal email (not employer)
+- [x] Gumroad (`householder6` / businesshouseholder@gmail.com)
+- [x] Personal email (not employer)
+- [ ] Optional: rename Gumroad shop URL to match brand
 - [ ] Optional: Beehiiv/Substack for later waitlist
+- [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
 
 ## 2) Export products to PDF
 
-From each `products/*/product.md`:
+PDFs already exist under each `products/*/product.pdf`. Re-export after edits:
 
 ```bash
-# option A — open in any markdown preview and Print → PDF
-# option B — if you install md-to-pdf:
-npx --yes md-to-pdf buckeye-trail-guide/products/weekend-columbus/product.md
-npx --yes md-to-pdf buckeye-trail-guide/products/move-in-pack/product.md
-npx --yes md-to-pdf buckeye-trail-guide/products/stadium-weekend/product.md
+npx --yes md-to-pdf buckeye-trail-guide/products/<slug>/product.md
 ```
 
 ## 3) Publish with the auto-deploy tool
@@ -38,6 +36,13 @@ npm run publish -- --platforms gumroad,etsy,lemonsqueezy
 
 Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashboard.
 
+### Live on Gumroad
+
+- [x] Weekend in Columbus — $9
+- [x] Move to Columbus — $24
+- [x] Stadium Weekend — $7
+- [ ] Hocking Hills Day Trip — $8 (SKU #4 ready; publish next)
+
 ## 4) Deploy site
 
 ```bash
@@ -46,8 +51,10 @@ npm run build
 # deploy `dist/` to Vercel, Netlify, or Cloudflare Pages
 ```
 
-- [ ] Custom domain optional (`milemarkerohio.com` or similar)
+- [ ] Host marketing site (Vercel/Netlify/Cloudflare)
+- [ ] Custom domain optional (e.g. `buckeyetrailguide.com`)
 - [ ] Smoke-test mobile CTA buttons
+- [ ] Point catalog Gumroad links at live listings after SKU #4 publish
 
 ## 5) Soft launch (personal channels only)
 
@@ -55,9 +62,9 @@ npm run build
 - [ ] 1 personal LinkedIn post (no WF confidential; no tagging employer)  
 - [ ] Offer weekend kit free to 5 friends for testimonials  
 
-## 6) Ask Cursor for SKU #4
+## 6) Next SKUs
 
-Open `PRODUCT_FACTORY.md` and run the prompt (farmers market calendar, Hocking day trip, etc.).
+SKU #4 (Hocking Hills) is in the repo. For #5+, open `PRODUCT_FACTORY.md` and run the prompt.
 
 ## Success metrics (30 days)
 
@@ -66,4 +73,4 @@ Open `PRODUCT_FACTORY.md` and run the prompt (farmers market calendar, Hocking d
 | Site visitors | 100+ |
 | Sales | 5+ (any SKU) |
 | Refunds | 0–1 |
-| Next action | Double down on winner OR ship SKU #4 |
+| Next action | Double down on winner OR ship next SKU |

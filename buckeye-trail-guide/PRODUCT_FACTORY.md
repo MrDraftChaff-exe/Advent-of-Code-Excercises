@@ -36,7 +36,7 @@ Personal / local
 - First winter in Ohio car + home kit
 - Apartment hunting scorecard (Columbus neighborhoods)
 - Short North gallery hop evening plan
-- Hocking Hills day-trip from Columbus
+- ~~Hocking Hills day-trip from Columbus~~ → shipped as `products/hocking-hills-day`
 - Holiday guest hosting timeline (central Ohio weather aware)
 
 Professional / life admin

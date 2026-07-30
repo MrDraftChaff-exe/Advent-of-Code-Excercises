@@ -29,13 +29,14 @@ npm install
 npm run dev
 ```
 
-## First three guides
+## Guides
 
-| SKU | Price target | Folder |
-| --- | --- | --- |
-| Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` |
-| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` |
-| Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` |
+| SKU | Price | Folder | Gumroad |
+| --- | --- | --- | --- |
+| Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` | [live](https://householder6.gumroad.com/l/weekend-columbus) |
+| Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` | [live](https://householder6.gumroad.com/l/move-to-columbus) |
+| Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://householder6.gumroad.com/l/stadium-weekend) |
+| Hocking Hills Day Trip — From Columbus | $8 | `products/hocking-hills-day` | publish next |
 
 ## Publisher (auto-deploy)
 
@@ -55,3 +56,9 @@ npm run publish -- --platforms etsy
 ```
 
 See [`publisher/README.md`](./publisher/README.md).
+
+## This agent session
+
+Continuing from [side-hustle research](https://cursor.com/agents/bc-6df4d7d7-430e-4f20-802e-effeddeb8678) as **Buckeye Trail Guide**.
+
+Next actions for the owner: publish SKU #4 on Gumroad, deploy `site/`, soft-launch posts in `launch/soft-launch-posts.md`, then Etsy when keys are ready.

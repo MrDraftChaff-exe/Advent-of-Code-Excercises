@@ -32,4 +32,12 @@ export const products = [
     blurb: 'Meetup pins, parking vs rideshare, exit timing — print and go.',
     gumroad: 'https://householder6.gumroad.com/l/stadium-weekend',
   },
+  {
+    id: 'hocking-hills-day',
+    title: 'Hocking Hills Day Trip',
+    subtitle: 'From Columbus',
+    price: 8,
+    blurb: 'Leave early, hike the highlights, get home before dark — routes, packing, weather swaps.',
+    gumroad: 'https://householder6.gumroad.com/l/hocking-hills-day',
+  },
 ];
