@@ -14,7 +14,8 @@
 - [x] Gumroad shop URL renamed to `buckeyetrailguide`
 - [ ] Optional: Beehiiv/Substack for later waitlist
 - [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
-- [ ] Pinterest Business + developer app (see `publisher/PINTEREST_SETUP.md`)
+- [ ] Pinterest Business + developer app (see `publisher/PINTEREST_SETUP.md`) — paused
+- [ ] Facebook Page + Page token (see `publisher/FACEBOOK_SETUP.md`)
 
 ## 1b) Brand / profile pictures
 
