@@ -14,6 +14,7 @@
 - [x] Gumroad shop URL renamed to `buckeyetrailguide`
 - [ ] Optional: Beehiiv/Substack for later waitlist
 - [ ] Etsy shop + API keys (see `publisher/ETSY_SETUP.md`)
+- [ ] Pinterest Business + developer app (see `publisher/PINTEREST_SETUP.md`)
 
 ## 1b) Brand / profile pictures
 
@@ -52,6 +53,7 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 - [x] Stadium Weekend — $7
 - [x] Hocking Hills Day Trip — $8
 - [x] Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
+- [x] Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
 
 ## 4) Deploy site
 

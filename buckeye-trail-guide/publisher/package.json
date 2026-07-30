@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish": "node src/cli.js",
     "dry-run": "node src/cli.js --dry-run",
-    "etsy-auth": "node src/etsy-auth.js"
+    "etsy-auth": "node src/etsy-auth.js",
+    "pinterest-auth": "node src/pinterest-auth.js",
+    "pinterest-pins": "node src/pinterest-pins.js"
   },
   "keywords": [],
   "author": "",
