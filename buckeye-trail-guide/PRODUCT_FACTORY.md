@@ -23,6 +23,10 @@ Create a new Buckeye Trail Guide digital download.
 - 1 short intro paragraph
 - Checklists, tables, worksheets
 - Fits on printable pages; use markdown headings
+- End with brand line + affiliation disclaimer:  
+  `*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*`  
+  `*Personal use. Not affiliated with The Ohio State University or the City of Columbus.*`  
+  (Add product-specific park/org notes on the same disclaimer line when relevant.)
 
 **Pricing guide:** single sheet $5–$9 · pack $15–$29 · bundle $39
 

@@ -1,6 +1,6 @@
 # Brand assets — Buckeye Trail Guide
 
-Mascot: Clayton’s black Maine Coon in a trail-guide badge (scarlet ring, buckeye leaves + nut). Ohio nature theme — not affiliated with The Ohio State University.
+Mascot: Clayton’s black Maine Coon in a trail-guide badge (scarlet ring, buckeye leaves + nut). Ohio nature theme.
 
 ## Profile pictures (no dead space)
 

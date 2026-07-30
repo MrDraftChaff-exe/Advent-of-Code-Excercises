@@ -9,7 +9,6 @@ Built to be expanded by Cursor: add a product folder, update the catalog, ship.
 - Compliance: **approved** for digital product sales (Bucket E).
 - Model: create once → sell on Gumroad/Etsy forever → Cursor adds SKUs.
 - Still off WF systems / work hours.
-- Not affiliated with The Ohio State University.
 
 ## Structure
 

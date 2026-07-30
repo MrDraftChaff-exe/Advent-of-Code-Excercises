@@ -96,3 +96,8 @@ A tight plan for visitors (or locals hosting them). Pick a pace, follow the skel
 Circle one: **food-first** · **outdoors-first** · **culture-first**
 
 Everything else in this kit supports that choice.
+
+---
+
+*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Personal use. Not affiliated with The Ohio State University or the City of Columbus.*

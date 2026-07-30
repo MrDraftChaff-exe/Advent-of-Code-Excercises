@@ -66,3 +66,8 @@ After event: walk to _______________ then request rideshare
 ## One rule that prevents 80% of stress
 
 One pin. One timeline owner. Everyone else just shows up.
+
+---
+
+*Buckeye Trail Guide · Curated by Clayton Householder · Columbus, Ohio*  
+*Personal use. Not affiliated with The Ohio State University or the City of Columbus.*

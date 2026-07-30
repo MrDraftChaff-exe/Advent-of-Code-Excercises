@@ -61,7 +61,7 @@ app.innerHTML = `
 
   <footer class="foot">
     <p><strong>${brand.name}</strong> · Curated by ${brand.curator} · ${brand.city}</p>
-    <p class="fine">Digital downloads for personal use. Not affiliated with The Ohio State University or the City of Columbus.</p>
+    <p class="fine">Digital downloads for personal use.</p>
   </footer>
 `;
 
