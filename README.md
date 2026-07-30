@@ -1,8 +1,10 @@
-# Side Hustle Research + Buckeye Trail Guide
+# Buckeye Trail Guide
 
-## Active stream (Cursor-built)
+A collection of guides curated by **Clayton Householder**, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.
 
-**[Buckeye Trail Guide](./buckeye-trail-guide/README.md)** — guides curated by Clayton Householder (Columbus, Ohio native) spanning personal life, professional life, and anything that makes life easier.
+## Project
+
+See **[buckeye-trail-guide/](./buckeye-trail-guide/README.md)** for the full business kit:
 
 - Products in `buckeye-trail-guide/products/`
 - Marketing site in `buckeye-trail-guide/site/`
@@ -11,7 +13,3 @@
 - Publisher: `buckeye-trail-guide/publisher/`
 
 **Compliance:** digital product sales approved. Follow `buckeye-trail-guide/launch/CHECKLIST.md` to go live.
-
-## Research notes
-
-- [Compliance-safe clarification brief](./side-hustles/clayton-householder-top-50-side-hustles.md)
