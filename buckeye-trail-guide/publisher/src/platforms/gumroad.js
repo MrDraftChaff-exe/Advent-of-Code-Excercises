@@ -68,6 +68,10 @@ export const gumroad = {
       }
     }
 
+    const media = await syncProductMedia(token, productId, product);
+    if (media.thumbnailUrl) console.log(`  [gumroad] thumbnail ✓`);
+    if (media.coverOk) console.log(`  [gumroad] cover ✓`);
+
     const fresh = await api(token, 'GET', `/products/${productId}`);
     const p = fresh.product || result.product;
 
@@ -78,10 +82,53 @@ export const gumroad = {
       published: p.published,
       price: p.price,
       files: (p.files || []).map((f) => f.name || f.file_name || f),
+      thumbnailUrl: p.thumbnail_url || media.thumbnailUrl || null,
       updatedAt: new Date().toISOString(),
     };
   },
 };
+
+async function syncProductMedia(token, productId, product) {
+  const out = { thumbnailUrl: null, coverOk: false };
+  const thumbPath = path.join(product.dir, '..', '..', 'brand', 'thumbnails', `${product.id}.png`);
+  const coverPath = path.join(product.dir, '..', '..', 'brand', 'covers', `${product.id}.png`);
+  // Prefer explicit public base; else GitHub raw for this repo/branch
+  const base =
+    (process.env.GUMROAD_MEDIA_BASE || '').replace(/\/$/, '') ||
+    githubRawBase();
+  if (!base) return out;
+
+  const thumbUrl = `${base}/buckeye-trail-guide/brand/thumbnails/${product.id}.png`;
+  const coverUrl = `${base}/buckeye-trail-guide/brand/covers/${product.id}.png`;
+
+  if (fs.existsSync(path.resolve(product.dir, '..', '..', 'brand', 'thumbnails', `${product.id}.png`)) || true) {
+    try {
+      const res = await api(token, 'POST', `/products/${productId}/thumbnail`, { url: thumbUrl });
+      if (res.success) out.thumbnailUrl = res.thumbnail?.url || thumbUrl;
+      else console.warn(`  [gumroad] thumbnail warn: ${res.message || JSON.stringify(res)}`);
+    } catch (err) {
+      console.warn(`  [gumroad] thumbnail skipped: ${err.message}`);
+    }
+    try {
+      const res = await api(token, 'POST', `/products/${productId}/covers`, { url: coverUrl });
+      out.coverOk = !!res.success;
+      if (!res.success) console.warn(`  [gumroad] cover warn: ${res.message || JSON.stringify(res)}`);
+    } catch (err) {
+      console.warn(`  [gumroad] cover skipped: ${err.message}`);
+    }
+  }
+  return out;
+}
+
+function githubRawBase() {
+  const repo = process.env.GITHUB_REPOSITORY || 'MrDraftChaff-exe/Advent-of-Code-Excercises';
+  const branch =
+    process.env.GUMROAD_MEDIA_BRANCH ||
+    process.env.GITHUB_REF_NAME ||
+    process.env.GITHUB_HEAD_REF ||
+    'cursor/buckeye-trail-guide-090f';
+  return `https://raw.githubusercontent.com/${repo}/${branch}`;
+}
 
 async function uploadFile(token, filePath) {
   const buf = fs.readFileSync(filePath);
