@@ -19,8 +19,8 @@
 
 Upload from `buckeye-trail-guide/brand/profiles/` (no white dead space):
 
-- [ ] Gumroad profile / shop avatar → `profiles/gumroad-avatar.png`
-- [ ] Gumroad product thumbnails → `brand/covers/<sku>.png` (all 4 SKUs)
+- [ ] Gumroad profile / shop avatar → upload `brand/profiles/gumroad-avatar.png` in Settings → Profile (API cannot set this)
+- [x] Gumroad product thumbnails + covers uploaded for all 4 SKUs via API
 - [ ] Etsy shop icon → `profiles/etsy-avatar.png` (when shop exists)
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png`
 

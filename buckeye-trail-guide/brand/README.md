@@ -21,7 +21,8 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 | --- | --- |
 | `og-image.png` | Link previews |
 | `favicon-32/64.png` | Browser tabs |
-| `covers/<sku>.png` | Product listing thumbnails |
+| `covers/<sku>.png` | Product cover / preview images |
+| `thumbnails/<sku>.png` | Square Gumroad product thumbnails (1024) |
 
 ## Upload checklist (manual — needs your login)
 
@@ -29,3 +30,9 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 - [ ] Gumroad → each product thumbnail → `covers/<sku>.png`
 - [ ] Etsy shop icon → `profiles/etsy-avatar.png`
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png` or a cover
+
+
+## Live on Gumroad (API)
+
+- Product thumbnails + covers: uploaded for all 4 SKUs
+- Profile avatar: upload manually at [Settings → Profile](https://gumroad.com/settings) using `profiles/gumroad-avatar.png`
