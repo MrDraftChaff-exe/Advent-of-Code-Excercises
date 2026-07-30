@@ -17,54 +17,46 @@ Source of truth: each `products/<id>/meta.json` + files in that folder.
 ```bash
 cd mile-marker-publisher/publisher
 cp .env.example .env
-# paste tokens into .env
 npm install
 ```
 
-### Gumroad token
-Gumroad → Settings → Advanced → API. Token needs **edit_products**.
-
-### Etsy
-1. Create an app at developers.etsy.com  
-2. OAuth for your shop (listings_w, listings_r)  
-3. Set `ETSY_SHOP_ID` and a digital `ETSY_TAXONOMY_ID`  
-4. Optional: `ETSY_AUTO_PUBLISH=true` to activate after upload  
-
-### Lemon Squeezy
-API key + store id. After deploy, attach PDF/xlsx in the LS dashboard when prompted.
-
-## Commands
+### Gumroad
+Gumroad → Settings → Advanced → API (`edit_products`). Then:
 
 ```bash
-# Safe preview
-npm run dry-run
-npm run publish -- --dry-run --platforms gumroad,etsy,lemonsqueezy
-
-# Live: Gumroad only (recommended first)
 npm run publish -- --platforms gumroad
-
-# One product
-npm run publish -- --platforms gumroad --product weekend-columbus
-
-# All configured platforms
-npm run publish -- --platforms gumroad,etsy,lemonsqueezy
-
-# Only rewrite site CTAs from state.json
-npm run publish -- --sync-site-only
 ```
 
-After a successful Gumroad sync, `state.json` stores product ids/URLs and the site catalog Gumroad links are rewritten automatically.
+### Etsy
+Full walkthrough: **[ETSY_SETUP.md](./ETSY_SETUP.md)**
+
+```bash
+# put ETSY_API_KEY=keystring:shared_secret in .env (never in chat)
+npm run etsy-auth
+npm run publish -- --platforms etsy
+```
+
+### Both
+
+```bash
+npm run publish -- --platforms gumroad,etsy
+```
+
+### Dry run / site only
+
+```bash
+npm run dry-run
+npm run publish -- --sync-site-only
+```
 
 ## Workflow with Cursor
 
 1. Ask Cursor to add/update a kit (`PRODUCT_FACTORY.md`).  
-2. Run `npm run publish -- --platforms gumroad,etsy`.  
-3. Redeploy the marketing site if needed (`cd ../site && npm run build`).  
-
-No more hand-copying prices/files into each dashboard (except Lemon Squeezy files).
+2. `npm run publish -- --platforms gumroad,etsy`  
+3. Redeploy marketing site if needed (`cd ../site && npm run build`).  
 
 ## Security
 
 - Never commit `.env`  
-- Use a personal Gumroad/Etsy account (not employer accounts)  
-- Keep Compliance constraints: no WF systems/time for publishing
+- Never paste API secrets/tokens into chat  
+- Personal Gumroad/Etsy accounts only; no WF systems/time  

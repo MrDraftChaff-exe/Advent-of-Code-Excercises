@@ -4,3 +4,6 @@ dist/
 *.log
 .env
 **/.env
+
+# local Etsy OAuth TLS (optional to regenerate)
+# mile-marker-publisher/publisher/certs/

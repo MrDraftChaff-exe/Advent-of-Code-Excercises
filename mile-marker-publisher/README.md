@@ -49,4 +49,11 @@ npm run dry-run
 npm run publish -- --platforms gumroad
 ```
 
+**Etsy:** follow [`publisher/ETSY_SETUP.md`](./publisher/ETSY_SETUP.md) then:
+
+```bash
+node src/etsy-auth.js
+npm run publish -- --platforms etsy
+```
+
 See [`publisher/README.md`](./publisher/README.md).
