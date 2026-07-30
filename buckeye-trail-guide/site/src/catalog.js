@@ -54,4 +54,13 @@ export const products = [
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-nature-15',
     cover: '/covers/columbus-nature-15.png',
   },
+  {
+    id: 'columbus-supernatural',
+    title: 'Columbus Supernatural / Paranormal',
+    subtitle: 'Experiences Under $30 Each',
+    price: 2,
+    blurb: 'Haunted lore walks, cemeteries, historic sites, and affordable paranormal outings.',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-supernatural',
+    cover: '/covers/columbus-supernatural.png',
+  },
 ];

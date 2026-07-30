@@ -149,6 +149,31 @@ File: `products/columbus-nature-15/product.pdf`
 
 ---
 
+## Product 6 — Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
+
+**Title:** Columbus Supernatural / Paranormal Experiences — Under $30 Each  
+**Price:** $2  
+**Summary:**  
+Haunted lore walks, cemeteries, historic sites, and affordable paranormal outings in Columbus — each free or under $30.
+
+**Description:**
+
+A practical spooky-night planner — not trespassing tips.
+
+Includes:
+
+- 15 supernatural / paranormal outing ideas with tips  
+- Evening sampler menus  
+- Under-$30 budget worksheet  
+- Etiquette checklist (public property / posted hours only)  
+
+**You get:** PDF download  
+**Perfect for:** Halloween season, date-night lore walks, curious locals  
+
+File: `products/columbus-supernatural/product.pdf`
+
+---
+
 ## Bundle (optional) — Central Ohio Starter Trio — $34
 
 First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
