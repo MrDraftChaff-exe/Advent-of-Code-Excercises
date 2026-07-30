@@ -37,10 +37,16 @@ npm run dev
 | Move to Columbus — Settling Pack + Spreadsheet | $24 | `products/move-in-pack` |
 | Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` |
 
-## Launch path
+## Publisher (auto-deploy)
 
-1. Create Gumroad account (personal email); paste copy from `launch/gumroad-copy.md`.
-2. Upload PDFs from `products/*/product.pdf`.
-3. Deploy site to Vercel/Netlify; point CTAs at Gumroad links (`site/src/catalog.js`).
-4. Soft-launch on personal LinkedIn/Facebook/Nextdoor (no WF systems, no work time).
-5. Ask Cursor: “Add the next Mile Marker kit for [niche] using PRODUCT_FACTORY.md”.
+Deploy all kits to Gumroad / Etsy / Lemon Squeezy from one CLI:
+
+```bash
+cd mile-marker/publisher
+cp .env.example .env   # add tokens
+npm install
+npm run dry-run
+npm run publish -- --platforms gumroad
+```
+
+See [`publisher/README.md`](./publisher/README.md).

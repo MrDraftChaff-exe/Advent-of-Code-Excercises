@@ -2,6 +2,7 @@
   "id": "stadium-weekend",
   "title": "Stadium Weekend Logistics Sheet",
   "price": 7,
+  "permalink": "stadium-weekend",
   "oneLiner": "Timing, parking, weather, and meetup plans for a Columbus stadium weekend — without the scramble.",
   "bullets": [
     "T-minus timeline from Friday to Sunday",
@@ -9,5 +10,6 @@
     "Group meetup template",
     "Weather and exit strategy checklist"
   ],
-  "tags": ["columbus", "stadium", "weekend", "parking", "printable"]
+  "tags": ["columbus", "stadium", "weekend", "parking", "printable"],
+  "files": ["product.pdf"]
 }

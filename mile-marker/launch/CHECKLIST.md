@@ -25,12 +25,18 @@ npx --yes md-to-pdf mile-marker/products/move-in-pack/product.md
 npx --yes md-to-pdf mile-marker/products/stadium-weekend/product.md
 ```
 
-## 3) Publish Gumroad
+## 3) Publish with the auto-deploy tool
 
-- [ ] Paste copy from `gumroad-copy.md`
-- [ ] Upload PDFs
-- [ ] Enable pay-what-you-want? **No** for v1 (fixed price)
-- [ ] Copy live URLs into `site/src/catalog.js`
+Preferred (once tokens are in `publisher/.env`):
+
+```bash
+cd mile-marker/publisher
+npm run publish -- --platforms gumroad
+# optional:
+npm run publish -- --platforms gumroad,etsy,lemonsqueezy
+```
+
+Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashboard.
 
 ## 4) Deploy site
 

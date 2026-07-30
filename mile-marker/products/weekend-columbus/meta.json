@@ -2,6 +2,7 @@
   "id": "weekend-columbus",
   "title": "Weekend in Columbus — 48-Hour Field Kit",
   "price": 9,
+  "permalink": "weekend-columbus",
   "oneLiner": "A printable plan for two strong days in Columbus without overthinking it.",
   "bullets": [
     "Hour-by-hour Saturday and Sunday skeletons",
@@ -9,5 +10,6 @@
     "Weather-flex swaps and parking notes",
     "One packing checklist for out-of-town guests"
   ],
-  "tags": ["columbus", "weekend", "travel", "ohio", "printable"]
+  "tags": ["columbus", "weekend", "travel", "ohio", "printable"],
+  "files": ["product.pdf"]
 }

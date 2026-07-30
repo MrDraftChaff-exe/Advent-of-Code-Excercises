@@ -1,0 +1,172 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const API = 'https://api.gumroad.com/v2';
+
+export const gumroad = {
+  id: 'gumroad',
+  name: 'Gumroad',
+  requiredEnv: ['GUMROAD_ACCESS_TOKEN'],
+
+  async publish(product, record, { dryRun, token }) {
+    token = token || process.env.GUMROAD_ACCESS_TOKEN;
+
+    if (dryRun) {
+      return {
+        dryRun: true,
+        would: record.id ? 'update' : 'create',
+        files: product.files.map((f) => path.basename(f)),
+        priceCents: product.priceCents,
+        needsToken: !token,
+      };
+    }
+
+    if (!token) throw new Error('GUMROAD_ACCESS_TOKEN missing');
+
+    const fileUrls = [];
+    for (const filePath of product.files) {
+      console.log(`  [gumroad] uploading ${path.basename(filePath)}…`);
+      fileUrls.push(await uploadFile(token, filePath));
+    }
+
+    const payload = {
+      name: product.title,
+      description: product.descriptionHtml,
+      price: String(product.priceCents),
+      price_currency_type: 'usd',
+      custom_permalink: product.permalink,
+      custom_summary: product.oneLiner,
+      native_type: 'digital',
+      tags: product.tags,
+      files: fileUrls.map((url) => ({ url })),
+    };
+
+    let productId = record.id;
+    let result;
+
+    if (productId) {
+      result = await api(token, 'PUT', `/products/${productId}`, payload);
+    } else {
+      result = await api(token, 'POST', '/products', payload);
+      productId = result.product?.id;
+    }
+
+    if (!result.success) {
+      throw new Error(`Gumroad product save failed: ${JSON.stringify(result)}`);
+    }
+
+    if (result.product && result.product.published === false) {
+      console.log('  [gumroad] enabling (publish)…');
+      try {
+        await api(token, 'PUT', `/products/${productId}/enable`, {});
+      } catch {
+        await api(token, 'POST', `/products/${productId}/enable`, {});
+      }
+    }
+
+    const fresh = await api(token, 'GET', `/products/${productId}`);
+    const p = fresh.product || result.product;
+
+    return {
+      id: p.id,
+      url: p.short_url || p.url,
+      permalink: p.custom_permalink,
+      published: p.published,
+      price: p.price,
+      files: (p.files || []).map((f) => f.name || f.file_name || f),
+      updatedAt: new Date().toISOString(),
+    };
+  },
+};
+
+async function uploadFile(token, filePath) {
+  const buf = fs.readFileSync(filePath);
+  const filename = path.basename(filePath);
+
+  const presign = await api(token, 'POST', '/files/presign', {
+    filename,
+    file_size: String(buf.length),
+  });
+  if (!presign.success) throw new Error(`presign failed: ${JSON.stringify(presign)}`);
+
+  const completedParts = [];
+  for (const part of presign.parts) {
+    const start = (part.part_number - 1) * 100 * 1024 * 1024;
+    const end = Math.min(start + 100 * 1024 * 1024, buf.length);
+    const chunk = buf.subarray(start, end);
+    const put = await fetch(part.presigned_url, {
+      method: 'PUT',
+      body: chunk,
+      headers: {
+        'Content-Type': 'application/octet-stream',
+        'Content-Length': String(chunk.length),
+      },
+    });
+    if (!put.ok) {
+      const text = await put.text();
+      throw new Error(`S3 upload part ${part.part_number} failed: ${put.status} ${text}`);
+    }
+    const etag = put.headers.get('etag') || put.headers.get('ETag');
+    if (!etag) throw new Error(`Missing ETag for part ${part.part_number}`);
+    completedParts.push({ part_number: part.part_number, etag: etag.replaceAll('"', '') });
+  }
+
+  const completeFields = {
+    upload_id: presign.upload_id,
+    key: presign.key,
+  };
+  completedParts.forEach((p, i) => {
+    completeFields[`parts[${i}][part_number]`] = String(p.part_number);
+    completeFields[`parts[${i}][etag]`] = p.etag;
+  });
+
+  const complete = await api(token, 'POST', '/files/complete', completeFields);
+  if (!complete.success || !complete.file_url) {
+    throw new Error(`complete failed: ${JSON.stringify(complete)}`);
+  }
+  return complete.file_url;
+}
+
+async function api(token, method, pathname, fields = {}) {
+  if (method === 'GET') {
+    const url = new URL(API + pathname);
+    url.searchParams.set('access_token', token);
+    const res = await fetch(url);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(`Gumroad GET ${pathname}: ${res.status} ${JSON.stringify(data)}`);
+    return data;
+  }
+
+  const body = new URLSearchParams();
+  body.set('access_token', token);
+
+  for (const [key, value] of Object.entries(fields)) {
+    if (value === undefined || value === null) continue;
+    if (key.startsWith('parts[')) {
+      body.set(key, String(value));
+      continue;
+    }
+    if (key === 'tags' && Array.isArray(value)) {
+      value.forEach((t) => body.append('tags[]', String(t)));
+      continue;
+    }
+    if (key === 'files' && Array.isArray(value)) {
+      value.forEach((f, i) => {
+        if (f.id) body.append(`files[${i}][id]`, String(f.id));
+        if (f.url) body.append(`files[${i}][url]`, String(f.url));
+      });
+      continue;
+    }
+    if (typeof value === 'object') continue;
+    body.set(key, String(value));
+  }
+
+  const res = await fetch(API + pathname, {
+    method,
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`Gumroad ${method} ${pathname}: ${res.status} ${JSON.stringify(data)}`);
+  return data;
+}
