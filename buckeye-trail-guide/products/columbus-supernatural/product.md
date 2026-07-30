@@ -67,7 +67,7 @@ Literary history with a slightly uncanny old-house vibe; paid interior programs 
 ### 11. Affordable commercial ghost tour (when listed ≤ $30) — $–$$
 Columbus-area walking ghost tours often land in the $20–$30 band — book only when the listed adult price fits.  
 **Go for:** a hosted storytelling night so you don’t invent routes on private land.  
-**Tip:** Screenshot the price before checkout; surge/halloween dates can jump over $30.
+**Tip:** Screenshot the price before checkout; surge/Halloween dates can jump over $30.
 
 ### 12. Historic tavern lore stop (one drink max) — $–$$
 Pick a long-running downtown / German Village / Short North spot with “haunted bar” reputation; one soda or cheap drink keeps you under $30.  

@@ -69,7 +69,7 @@ function buildDescriptionHtml(meta, dir) {
   const bullets = (meta.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('');
   let body = `<p>${escapeHtml(meta.oneLiner || '')}</p>`;
   if (bullets) body += `<p><strong>Includes:</strong></p><ul>${bullets}</ul>`;
-  body += `<p>From <strong>Buckeye Trail Guide</strong> — printable guides curated by Keith Householder, a Columbus Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.</p>`;
+  body += `<p>From <strong>Buckeye Trail Guide</strong> — printable guides curated by Keith Householder, a Columbus, Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.</p>`;
   if (fs.existsSync(mdPath)) {
     // Keep HTML lean for marketplaces; full content is in the PDF.
     body += `<p>Full printable guide included in the download.</p>`;

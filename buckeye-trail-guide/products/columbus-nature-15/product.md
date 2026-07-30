@@ -134,7 +134,7 @@ Long paved trail for bikes or a purposeful walk under trees along the river corr
 | Heat advisory | Shade parks early (Blendon, Blacklick); skip open prairie midday |
 | Ice / freeze-thaw | Stick to paved Scioto Mile / Antrim; avoid gorge stairs |
 | Flooding | Skip creek-bottom trails; choose overlooks (Highbanks) |
-| Peak fall weekends | Arrive at open or pick less famous loops (Glacier Ridge, Three Creeks) |
+| Peak fall weekends | Arrive at opening or pick less famous loops (Glacier Ridge, Three Creeks) |
 
 ---
 

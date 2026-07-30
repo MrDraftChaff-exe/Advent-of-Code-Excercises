@@ -69,7 +69,7 @@ Common comparison set: Short North / Italian Village · German Village / Brewery
 | Transit | COTA routes near home + work |
 | Airport runs | CMH timing vs rideshare vs parking |
 | Recycling rules | Your hauler’s accepted list (don’t assume) |
-| Voters / records | Franklin County sites as needed |
+| Voter registration / records | Franklin County sites as needed |
 
 ## First-month budget worksheet
 

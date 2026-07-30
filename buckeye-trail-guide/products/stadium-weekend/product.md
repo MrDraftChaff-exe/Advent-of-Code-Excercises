@@ -1,6 +1,6 @@
 # Stadium Weekend Logistics Sheet
 
-Generic logistics for a big-event weekend in Columbus (campus / arena corridor). No ticket tipsy chaos.
+Generic logistics for a big-event weekend in Columbus (campus / arena corridor). No tipsy-ticket chaos.
 
 ## Friday (T-minus 1)
 
@@ -9,7 +9,7 @@ Generic logistics for a big-event weekend in Columbus (campus / arena corridor).
 - [ ] Decide: **drive + park** · **rideshare both ways** · **park remote + rideshare last mile**
 - [ ] Charge battery pack; pack portable charger
 - [ ] Check bag policy for the venue
-- [ ] Screenshot screenshots of tickets + parking map offline
+- [ ] Save screenshots of tickets + parking map offline
 - [ ] Set a hard “leave for venue” time alarm
 
 ## Saturday timeline (fill times)
@@ -26,7 +26,7 @@ Generic logistics for a big-event weekend in Columbus (campus / arena corridor).
 
 ## Parking vs rideshare decision tree
 
-1. Is anyone sober designated driver? → prefer pre-paid lot or remote lot  
+1. Is anyone a designated sober driver? → prefer pre-paid lot or remote lot  
 2. Staying walkable to Short North / campus edge? → rideshare or walk  
 3. Group larger than 4? → driving often wins on cost if parking is secured  
 4. Leaving exactly at peak exit? → walk farther before opening the rideshare app  

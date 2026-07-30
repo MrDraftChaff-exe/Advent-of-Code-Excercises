@@ -1,6 +1,6 @@
 # Buckeye Trail Guide
 
-A collection of guides curated by **Keith Householder**, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.
+Printable guides curated by **Keith Householder**, a Columbus, Ohio native. Topics span personal life, local know-how, settling in, planning, and everyday admin — whatever helps you get the next thing done with less friction.
 
 ## Project
 

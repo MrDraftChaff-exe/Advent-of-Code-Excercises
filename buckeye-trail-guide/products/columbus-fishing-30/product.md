@@ -10,7 +10,7 @@ Thirty places to wet a line within an easy drive of Columbus. Bring a valid **Oh
 - [ ] Sunscreen, water, bug spray (summer), warm layers (shoulder seasons)
 - [ ] Trash bag — pack out what you pack in
 
-**License note:** This guide is not a substitute for ODNR regulations. Access and rules change — confirm park/reservoir posts the morning of.
+**License note:** This guide is not a substitute for ODNR regulations. Access and rules change — confirm posted park/reservoir rules the morning of your trip.
 
 **How to use:** Circle 2–3 nearby spots, pick a half-day window, and leave if pressure or weather turns.
 
@@ -76,7 +76,7 @@ Thirty places to wet a line within an easy drive of Columbus. Bring a valid **Oh
 **Fish:** Largemouth bass, crappie, bluegill, channel catfish, saugeye / hybrid striped bass (check current ODNR notes).  
 **Bait:** Plastics & crankbaits for bass; minnows/jigs for crappie; cut bait for cats; spoons/jigs for open-water hybrids when active.  
 **Web:** [Deer Creek State Park](https://ohiodnr.gov/go-and-do/plan-a-visit/find-a-property/deer-creek-state-park)  
-**Local tip:** Plan a half- or full day — farther than metro ponds. Gas up in Columbus.  
+**Local tip:** Plan a half- or full-day trip — farther than metro ponds. Gas up in Columbus.  
 **Nearby:** Pack snacks; park amenities are the main food option.
 
 ### 8. Madison Lake — Madison Lake State Park

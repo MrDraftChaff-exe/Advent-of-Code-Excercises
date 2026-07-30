@@ -39,5 +39,5 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 
 ## Live on Gumroad (API)
 
-- Product thumbnails + covers: uploaded for all 4 SKUs
+- Product thumbnails + covers: uploaded for all live SKUs
 - Profile avatar: upload manually at [Settings → Profile](https://gumroad.com/settings) using `profiles/gumroad-avatar.png`

@@ -67,7 +67,7 @@ Skip Ash Cave if lots are full and you already got gorge time.
 - [ ] Screenshot the park map and your return route
 - [ ] Note restroom locations at the first stop
 - [ ] Keep valuables out of sight; take keys/phone/wallet on trail
-- [ ] Agree a meetup pin if the group splits
+- [ ] Agree on a meetup pin if the group splits
 
 **Backup trail if primary lot is full:** _______________________________
 
