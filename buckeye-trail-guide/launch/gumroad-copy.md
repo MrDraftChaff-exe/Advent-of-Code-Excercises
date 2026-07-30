@@ -124,6 +124,31 @@ File: `products/hocking-hills-day/product.pdf`
 
 ---
 
+## Product 5 — Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
+
+**Title:** Top 15 Super Natural Experiences in Columbus — Under $15 Each  
+**Price:** $9  
+**Summary:**  
+Fifteen outstanding outdoor Columbus experiences — parks, trails, water, and gardens — each free or under $15.
+
+**Description:**
+
+Skip the “what should we do outside?” spiral.
+
+This guide gives you:
+
+- 15 nature picks with what to go for and a practical tip  
+- Weekend sampler menus to chain nearby spots  
+- Under-$15 budget worksheet  
+- Gear checklist and weather/season swaps  
+
+**You get:** PDF download (print or phone)  
+**Perfect for:** locals, new residents, hosts planning a free afternoon  
+
+File: `products/columbus-nature-15/product.pdf`
+
+---
+
 ## Bundle (optional) — Central Ohio Starter Trio — $34
 
 First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
@@ -131,3 +156,7 @@ First three kits ($9 + $24 + $7 = $40). Bundle at **$34** (save $6).
 ## Bundle (optional) — Day-Trip Add-On — $14
 
 Weekend Field Kit + Hocking Hills Day Trip ($9 + $8 = $17). Bundle at **$14** (save $3).
+
+## Bundle (optional) — Outdoor Columbus Pair — $14
+
+Hocking Hills Day Trip + Top 15 Super Natural Experiences ($8 + $9 = $17). Bundle at **$14** (save $3).

@@ -45,4 +45,13 @@ export const products = [
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/hocking-hills-day',
     cover: '/covers/hocking-hills-day.png',
   },
+  {
+    id: 'columbus-nature-15',
+    title: 'Top 15 Super Natural Experiences',
+    subtitle: 'Columbus · Under $15 Each',
+    price: 9,
+    blurb: 'Parks, trails, water, and gardens — fifteen outdoor wins without spending much.',
+    gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-nature-15',
+    cover: '/covers/columbus-nature-15.png',
+  },
 ];

@@ -51,6 +51,7 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 - [x] Move to Columbus — $24
 - [x] Stadium Weekend — $7
 - [x] Hocking Hills Day Trip — $8
+- [x] Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
 
 ## 4) Deploy site
 

@@ -37,6 +37,7 @@ Personal / local
 - Apartment hunting scorecard (Columbus neighborhoods)
 - Short North gallery hop evening plan
 - ~~Hocking Hills day-trip from Columbus~~ → shipped as `products/hocking-hills-day`
+- ~~Top 15 super natural experiences in Columbus under $15~~ → shipped as `products/columbus-nature-15`
 - Holiday guest hosting timeline (central Ohio weather aware)
 
 Professional / life admin
