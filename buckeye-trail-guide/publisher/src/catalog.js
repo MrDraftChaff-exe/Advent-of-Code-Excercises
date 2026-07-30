@@ -69,7 +69,7 @@ function buildDescriptionHtml(meta, dir) {
   const bullets = (meta.bullets || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('');
   let body = `<p>${escapeHtml(meta.oneLiner || '')}</p>`;
   if (bullets) body += `<p><strong>Includes:</strong></p><ul>${bullets}</ul>`;
-  body += `<p>From <strong>Buckeye Trail Guide</strong> — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides span personal life, professional life, and anything that can make life easier.</p>`;
+  body += `<p>From <strong>Buckeye Trail Guide</strong> — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.</p>`;
   body += `<p><em>Personal use. Not affiliated with The Ohio State University or the City of Columbus.</em></p>`;
   if (fs.existsSync(mdPath)) {
     // Keep HTML lean for marketplaces; full content is in the PDF.

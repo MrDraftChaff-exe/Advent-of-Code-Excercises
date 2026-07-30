@@ -29,7 +29,7 @@ app.innerHTML = `
       <h2>One job: make the next step obvious.</h2>
       <p>
         Each guide is a short, practical download — checklists, plans, and worksheets
-        curated for real life in and beyond Columbus.
+        spanning personal life, professional life, and anything that makes the next step easier.
       </p>
     </section>
 

@@ -6,7 +6,7 @@ When you want a new product, paste this prompt into Cursor:
 
 Create a new Buckeye Trail Guide digital download.
 
-**Brand:** Buckeye Trail Guide — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Subject matter spans personal life, professional life, and anything that can make life easier.
+**Brand:** Buckeye Trail Guide — a collection of guides curated by Clayton Householder, a Columbus Ohio native. Guides will be a variety of subject matter that spans a large domain from personal life to professional and anything that can make life easier.
 
 **Constraints:** Never banking, cybersecurity, Wells Fargo, PAM, or employer topics. Avoid trademarked university/team logos; use generic wording where needed.
 
@@ -30,16 +30,19 @@ Create a new Buckeye Trail Guide digital download.
 
 ## SKU ideas backlog (pick any)
 
+Personal / local
 - Clintonville / German Village walking food crawl planner
 - Columbus farmers market seasonal calendar
 - First winter in Ohio car + home kit
 - Apartment hunting scorecard (Columbus neighborhoods)
 - Short North gallery hop evening plan
 - Hocking Hills day-trip from Columbus
-- New Albany / Dublin suburb settling checklist
 - Holiday guest hosting timeline (central Ohio weather aware)
-- Brewery + rideshare safe-night planner
-- Campus-area move-out sale playbook (May/August)
+
+Professional / life admin
 - First-job / interview week checklist
 - Remote-work day reset guide
 - Monthly personal finance reset worksheet (generic, non-advisory)
+- Home office setup checklist
+- Subscription & bills annual audit sheet
+- Travel packing + itinerary template (any city)
