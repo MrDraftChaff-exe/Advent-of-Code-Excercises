@@ -19,8 +19,8 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 
 | File | Use |
 | --- | --- |
-| `facebook-cover.png` | Facebook Page cover (1640×624) |
-| `facebook-cover-16x9-source.png` | Wider source before Facebook crop |
+| `buckeye-trail-guide-facebook-cover.png` | Facebook Page cover (1640×624) |
+| `buckeye-trail-guide-facebook-cover-source.png` | Wider source before Facebook crop |
 | `og-image.png` | Link previews |
 | `favicon-32/64.png` | Browser tabs |
 | `covers/<sku>.png` | Product cover / preview images |
@@ -31,7 +31,7 @@ Also: `icon-opaque.png` (master), `icon.png` (transparent corners for web).
 - [ ] Gumroad → Settings / Profile photo → `profiles/gumroad-avatar.png`
 - [ ] Gumroad → each product thumbnail → `covers/<sku>.png`
 - [ ] Etsy shop icon → `profiles/etsy-avatar.png`
-- [ ] Facebook Page cover → `facebook-cover.png` (1640×624)
+- [ ] Facebook Page cover → `buckeye-trail-guide-facebook-cover.png` (1640×624)
 - [ ] Soft-launch posts → attach `profiles/social-avatar.png` or a cover
 
 
