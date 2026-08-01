@@ -11,7 +11,8 @@
     "pinterest-auth": "node src/pinterest-auth.js",
     "pinterest-pins": "node src/pinterest-pins.js",
     "facebook-auth": "node src/facebook-auth.js",
-    "facebook-posts": "node src/facebook-posts.js"
+    "facebook-posts": "node src/facebook-posts.js",
+    "facebook-schedule": "node src/facebook-schedule.js"
   },
   "keywords": [],
   "author": "",

@@ -66,6 +66,19 @@ npm run facebook-posts -- --dry-run
 npm run facebook-posts
 ```
 
+### 6) 30-day calendar (2 posts/day)
+
+Plan + copy: [`../launch/facebook/CALENDAR-30D.md`](../launch/facebook/CALENDAR-30D.md)  
+JSON: [`../launch/facebook/schedule-30d.json`](../launch/facebook/schedule-30d.json)
+
+```bash
+npm run facebook-schedule -- --date 2026-08-02 --dry-run
+npm run facebook-schedule -- --date 2026-08-02          # both slots
+npm run facebook-schedule -- --date 2026-08-02 --slot am
+```
+
+Already-posted IDs are logged to `facebook-schedule-log.json` (gitignored) so re-runs skip duplicates.
+
 ---
 
 ## Alternate: Graph API Explorer (new UI)

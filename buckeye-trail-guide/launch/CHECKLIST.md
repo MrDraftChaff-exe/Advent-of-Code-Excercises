@@ -77,6 +77,8 @@ npm run build
 - [ ] 1 Facebook/Nextdoor post: movers + hosts angle  
 - [ ] 1 personal LinkedIn post (no WF confidential; no tagging employer)  
 - [ ] Offer weekend kit free to 5 friends for testimonials  
+- [ ] Run 30-day Page calendar (2/day) — `launch/facebook/CALENDAR-30D.md`  
+  - `npm run facebook-schedule -- --date YYYY-MM-DD`
 
 ## 6) Next SKUs
 
