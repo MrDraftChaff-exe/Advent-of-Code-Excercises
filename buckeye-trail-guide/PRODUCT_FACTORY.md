@@ -51,8 +51,8 @@ Before proposing or shipping any new SKU (free or paid), read live `products/*/p
 
 Personal / local
 - Clintonville / German Village walking food crawl planner
-- Columbus farmers market seasonal calendar
-- First winter in Ohio car + home kit
+- ~~Columbus farmers market seasonal calendar~~ → shipped free as `products/farmers-market-calendar`
+- ~~First winter in Ohio car + home kit~~ → shipped free as `products/first-winter-ohio`
 - Apartment hunting scorecard (Columbus neighborhoods)
 - Short North gallery hop evening plan
 - ~~Hocking Hills day-trip from Columbus~~ → shipped as `products/hocking-hills-day`
@@ -60,12 +60,19 @@ Personal / local
 - ~~Columbus supernatural / paranormal under $30~~ → shipped as `products/columbus-supernatural` ($2 guide)
 - ~~Top 30 fishing spots around Columbus~~ → shipped as `products/columbus-fishing-30`
 - ~~Top 20 roads to avoid + top 20 to use (Columbus)~~ → shipped as `products/columbus-roads-40` (free)
+- ~~Who to Call Columbus one-pager~~ → shipped free as `products/columbus-who-to-call`
+- ~~Subscription & bills annual audit~~ → shipped free as `products/subscription-bills-audit`
+- ~~Recycling & bulk trash cheat sheet~~ → shipped free as `products/recycling-bulk-trash`
+- ~~COTA / first-week transit card~~ → shipped free as `products/cota-transit-card`
+- ~~Metro Parks starter card~~ → shipped free as `products/metro-parks-starter`
+- ~~Apartment walkthrough photo checklist~~ → shipped free as `products/apartment-walkthrough`
+- ~~Pet weekend / vet & boarding planner~~ → shipped free as `products/pet-weekend-planner`
+- ~~Holiday lights drive loop~~ → shipped free as `products/holiday-lights-loop`
 - Holiday guest hosting timeline (central Ohio weather aware)
 
 Professional / life admin
 - First-job / interview week checklist
 - Remote-work day reset guide
-- Monthly personal finance reset worksheet (generic, non-advisory)
+- ~~Monthly personal finance reset worksheet (generic, non-advisory)~~ → related free SKU: `subscription-bills-audit`
 - Home office setup checklist
-- Subscription & bills annual audit sheet
 - Travel packing + itinerary template (any city)
