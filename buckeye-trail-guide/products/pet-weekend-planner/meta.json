@@ -1,0 +1,26 @@
+{
+  "id": "pet-weekend-planner",
+  "title": "Pet Weekend / Vet & Boarding Planner",
+  "price": 0,
+  "permalink": "pet-weekend-planner",
+  "oneLiner": "Free printable planner for pet weekends away \u2014 vet contacts, sitter vs board, packing, and Columbus-oriented blanks.",
+  "bullets": [
+    "Vet / emergency contacts card",
+    "Sitter vs boarding decision sheet",
+    "Pet packing checklist",
+    "Medication & feeding log"
+  ],
+  "tags": [
+    "pets",
+    "columbus",
+    "ohio",
+    "travel",
+    "free",
+    "printable",
+    "vet"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

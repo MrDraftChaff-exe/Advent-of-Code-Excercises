@@ -237,3 +237,191 @@ Weekend Field Kit + Hocking Hills Day Trip ($9 + $8 = $17). Bundle at **$14** (s
 ## Bundle (optional) — Outdoor Columbus Pair — $14
 
 Hocking Hills Day Trip + Top 15 Super Natural Experiences ($8 + $9 = $17). Bundle at **$14** (save $3).
+## Free — Who to Call — Columbus One-Pager — $0
+
+**Title:** Who to Call — Columbus One-Pager  
+**Price:** Free  
+**Summary:**  
+Free printable: non-emergency, utilities, trash, city services, and “who handles what” for Columbus / Franklin County.
+
+**Includes:**
+- Emergency vs non-emergency decision line
+- Utilities / trash / recycling starting points
+- City & county service contacts
+- Fill-in blanks for your addresses and account numbers
+
+**You get:** PDF download  
+**Permalink:** `columbus-who-to-call`  
+**File:** `products/columbus-who-to-call/product.pdf`
+
+---
+
+## Free — First Winter in Central Ohio Checklist — $0
+
+**Title:** First Winter in Central Ohio Checklist  
+**Price:** Free  
+**Summary:**  
+Free printable checklist for your first (or next) Central Ohio winter — car kit, home kit, and timing.
+
+**Includes:**
+- Car winter kit checklist
+- Home / apartment winter kit
+- Timing reminders before the first freeze
+- Notes for renters vs homeowners
+
+**You get:** PDF download  
+**Permalink:** `first-winter-ohio`  
+**File:** `products/first-winter-ohio/product.pdf`
+
+---
+
+## Free — Central Ohio Farmers Market Seasonal Calendar — $0
+
+**Title:** Central Ohio Farmers Market Seasonal Calendar  
+**Price:** Free  
+**Summary:**  
+Free seasonal produce calendar for Central Ohio plus a starter list of market types and a weekly shopping worksheet.
+
+**Includes:**
+- Month-by-month produce guide
+- Market-day planning worksheet
+- Starter list of market types around Columbus
+- Storage quick tips
+
+**You get:** PDF download  
+**Permalink:** `farmers-market-calendar`  
+**File:** `products/farmers-market-calendar/product.pdf`
+
+---
+
+## Free — Subscription & Bills Annual Audit Sheet — $0
+
+**Title:** Subscription & Bills Annual Audit Sheet  
+**Price:** Free  
+**Summary:**  
+Free printable annual audit for subscriptions and recurring bills — find waste, keep what you use. Not financial advice.
+
+**Includes:**
+- Subscription inventory table
+- Keep / cancel / pause decisions
+- Annual renewal calendar blanks
+- Household share checklist
+
+**You get:** PDF download  
+**Permalink:** `subscription-bills-audit`  
+**File:** `products/subscription-bills-audit/product.pdf`
+
+---
+
+## Free — Recycling & Bulk Trash Cheat Sheet — $0
+
+**Title:** Recycling & Bulk Trash Cheat Sheet  
+**Price:** Free  
+**Summary:**  
+Free printable cheat sheet for recycling, bulk trash, and “what do I do with this?” starting points in Columbus / Franklin County.
+
+**Includes:**
+- Recycling yes/no quick grid
+- Bulk / large-item planning checklist
+- Hazardous & odd-item starting points
+- Hauler info blanks
+
+**You get:** PDF download  
+**Permalink:** `recycling-bulk-trash`  
+**File:** `products/recycling-bulk-trash/product.pdf`
+
+---
+
+## Free — COTA / First-Week Transit Card — $0
+
+**Title:** COTA / First-Week Transit Card  
+**Price:** Free  
+**Summary:**  
+Free printable first-week transit card for Columbus — COTA apps, airport ideas, and a blank route worksheet. Confirm fares and schedules officially.
+
+**Includes:**
+- First-week transit setup checklist
+- Home ↔ work / school route worksheet
+- Airport trip planning blanks
+- Cash vs app payment notes
+
+**You get:** PDF download  
+**Permalink:** `cota-transit-card`  
+**File:** `products/cota-transit-card/product.pdf`
+
+---
+
+## Free — Metro Parks Starter Card — $0
+
+**Title:** Metro Parks Starter Card  
+**Price:** Free  
+**Summary:**  
+Free printable starter for Central Ohio metro parks — how to pick a park, etiquette, gear, and a blank “try three” tracker. Complements outing lists; doesn’t replace them.
+
+**Includes:**
+- How to choose a park for your mood/time
+- Etiquette + safety basics
+- Try-three tracker worksheet
+- Gear minimums
+
+**You get:** PDF download  
+**Permalink:** `metro-parks-starter`  
+**File:** `products/metro-parks-starter/product.pdf`
+
+---
+
+## Free — Apartment Walkthrough Photo Checklist — $0
+
+**Title:** Apartment Walkthrough Photo Checklist  
+**Price:** Free  
+**Summary:**  
+Free printable photo checklist for apartment walkthroughs — document defects on day one so move-out isn’t a he-said-she-said.
+
+**Includes:**
+- Room-by-room photo checklist
+- Utility / appliance test list
+- Timestamp + storage tips
+- Move-out mirror checklist
+
+**You get:** PDF download  
+**Permalink:** `apartment-walkthrough`  
+**File:** `products/apartment-walkthrough/product.pdf`
+
+---
+
+## Free — Pet Weekend / Vet & Boarding Planner — $0
+
+**Title:** Pet Weekend / Vet & Boarding Planner  
+**Price:** Free  
+**Summary:**  
+Free printable planner for pet weekends away — vet contacts, sitter vs board, packing, and Columbus-oriented blanks.
+
+**Includes:**
+- Vet / emergency contacts card
+- Sitter vs boarding decision sheet
+- Pet packing checklist
+- Medication & feeding log
+
+**You get:** PDF download  
+**Permalink:** `pet-weekend-planner`  
+**File:** `products/pet-weekend-planner/product.pdf`
+
+---
+
+## Free — Holiday Lights Drive Loop — $0
+
+**Title:** Holiday Lights Drive Loop  
+**Price:** Free  
+**Summary:**  
+Free printable December lights-drive planner for Central Ohio — build a loop, time it, pack the car, avoid melting down in traffic.
+
+**Includes:**
+- Loop-building worksheet
+- Timing & traffic tips
+- Car packing for cold nights
+- Kid / guest comfort checklist
+
+**You get:** PDF download  
+**Permalink:** `holiday-lights-loop`  
+**File:** `products/holiday-lights-loop/product.pdf`
+

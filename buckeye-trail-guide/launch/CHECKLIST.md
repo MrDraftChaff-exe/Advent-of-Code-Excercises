@@ -58,6 +58,16 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 - [x] Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
 - [x] Top 30 Fishing Spots Around Columbus, Ohio — $9
 - [x] Columbus Roads: Top 20 to Avoid + Top 20 to Use — Free
+- [x] Who to Call — Columbus One-Pager — Free
+- [x] First Winter in Central Ohio Checklist — Free
+- [x] Farmers Market Seasonal Calendar — Free
+- [x] Subscription & Bills Annual Audit — Free
+- [x] Recycling & Bulk Trash Cheat Sheet — Free
+- [x] COTA / First-Week Transit Card — Free
+- [x] Metro Parks Starter Card — Free
+- [x] Apartment Walkthrough Photo Checklist — Free
+- [x] Pet Weekend / Vet & Boarding Planner — Free
+- [x] Holiday Lights Drive Loop — Free
 
 ## 4) Deploy site
 

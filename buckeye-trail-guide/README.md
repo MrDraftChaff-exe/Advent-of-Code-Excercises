@@ -42,6 +42,16 @@ npm run dev
 | Columbus Supernatural / Paranormal Experiences — Under $30 Each | $2 | `products/columbus-supernatural` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-supernatural) |
 | Top 30 Fishing Spots Around Columbus, Ohio | $9 | `products/columbus-fishing-30` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30) |
 | Columbus Roads: Top 20 to Avoid + Top 20 to Use | Free | `products/columbus-roads-40` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-roads-40) |
+| Who to Call — Columbus One-Pager | Free | `products/columbus-who-to-call` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-who-to-call) |
+| First Winter in Central Ohio Checklist | Free | `products/first-winter-ohio` | [live](https://buckeyetrailguide.gumroad.com/l/first-winter-ohio) |
+| Central Ohio Farmers Market Seasonal Calendar | Free | `products/farmers-market-calendar` | [live](https://buckeyetrailguide.gumroad.com/l/farmers-market-calendar) |
+| Subscription & Bills Annual Audit Sheet | Free | `products/subscription-bills-audit` | [live](https://buckeyetrailguide.gumroad.com/l/subscription-bills-audit) |
+| Recycling & Bulk Trash Cheat Sheet | Free | `products/recycling-bulk-trash` | [live](https://buckeyetrailguide.gumroad.com/l/recycling-bulk-trash) |
+| COTA / First-Week Transit Card | Free | `products/cota-transit-card` | [live](https://buckeyetrailguide.gumroad.com/l/cota-transit-card) |
+| Metro Parks Starter Card | Free | `products/metro-parks-starter` | [live](https://buckeyetrailguide.gumroad.com/l/metro-parks-starter) |
+| Apartment Walkthrough Photo Checklist | Free | `products/apartment-walkthrough` | [live](https://buckeyetrailguide.gumroad.com/l/apartment-walkthrough) |
+| Pet Weekend / Vet & Boarding Planner | Free | `products/pet-weekend-planner` | [live](https://buckeyetrailguide.gumroad.com/l/pet-weekend-planner) |
+| Holiday Lights Drive Loop | Free | `products/holiday-lights-loop` | [live](https://buckeyetrailguide.gumroad.com/l/holiday-lights-loop) |
 
 ## Publisher (auto-deploy)
 

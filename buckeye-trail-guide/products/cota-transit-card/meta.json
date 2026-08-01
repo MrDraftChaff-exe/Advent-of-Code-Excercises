@@ -1,0 +1,26 @@
+{
+  "id": "cota-transit-card",
+  "title": "COTA / First-Week Transit Card",
+  "price": 0,
+  "permalink": "cota-transit-card",
+  "oneLiner": "Free printable first-week transit card for Columbus \u2014 COTA apps, airport ideas, and a blank route worksheet. Confirm fares and schedules officially.",
+  "bullets": [
+    "First-week transit setup checklist",
+    "Home \u2194 work / school route worksheet",
+    "Airport trip planning blanks",
+    "Cash vs app payment notes"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "cota",
+    "transit",
+    "bus",
+    "free",
+    "printable"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

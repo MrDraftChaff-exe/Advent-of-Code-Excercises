@@ -1,0 +1,26 @@
+{
+  "id": "farmers-market-calendar",
+  "title": "Central Ohio Farmers Market Seasonal Calendar",
+  "price": 0,
+  "permalink": "farmers-market-calendar",
+  "oneLiner": "Free seasonal produce calendar for Central Ohio plus a starter list of market types and a weekly shopping worksheet.",
+  "bullets": [
+    "Month-by-month produce guide",
+    "Market-day planning worksheet",
+    "Starter list of market types around Columbus",
+    "Storage quick tips"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "farmers-market",
+    "seasonal",
+    "free",
+    "printable",
+    "food"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "recycling-bulk-trash",
+  "title": "Recycling & Bulk Trash Cheat Sheet",
+  "price": 0,
+  "permalink": "recycling-bulk-trash",
+  "oneLiner": "Free printable cheat sheet for recycling, bulk trash, and \u201cwhat do I do with this?\u201d starting points in Columbus / Franklin County.",
+  "bullets": [
+    "Recycling yes/no quick grid",
+    "Bulk / large-item planning checklist",
+    "Hazardous & odd-item starting points",
+    "Hauler info blanks"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "recycling",
+    "trash",
+    "free",
+    "printable"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}
