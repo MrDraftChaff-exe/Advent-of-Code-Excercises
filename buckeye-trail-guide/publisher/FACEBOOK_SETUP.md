@@ -24,7 +24,10 @@ If OAuth says **Invalid Scopes: pages_manage_posts, pages_read_engagement**, the
    - `pages_show_list`
    - `pages_manage_posts`
    - `pages_read_engagement`
+   - `pages_manage_engagement` (needed to auto-post the suite links as the first comment)
 6. If the app type is **Consumer**, Page permissions won’t work — App Review → Permissions and features → **Remove App Type**, or create a Business / “Something else” app
+
+Without `pages_manage_engagement`, the scheduler still posts photo+caption and **appends suite links to the caption** as a fallback.
 
 ### 3) Turn on Facebook Login
 

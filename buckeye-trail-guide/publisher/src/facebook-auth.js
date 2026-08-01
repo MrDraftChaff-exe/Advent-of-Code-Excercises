@@ -34,7 +34,7 @@ const REDIRECT_URI =
   process.env.FACEBOOK_REDIRECT_URI || 'https://localhost:3458/oauth/callback';
 const SCOPES = (
   process.env.FACEBOOK_SCOPES ||
-  'pages_show_list,pages_manage_posts,pages_read_engagement,business_management'
+  'pages_show_list,pages_manage_posts,pages_read_engagement,pages_manage_engagement,business_management'
 ).trim();
 const STATE_FILE = path.join(ROOT, '.facebook-oauth-state');
 
