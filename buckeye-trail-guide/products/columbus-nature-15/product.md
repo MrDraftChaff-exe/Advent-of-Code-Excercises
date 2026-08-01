@@ -1,4 +1,4 @@
-# Top 15 Super Natural Experiences in Columbus — Under $15 Each
+# Outdoor Columbus — 15 Experiences Under $15 Each
 
 Outstanding outdoor moments in and around Columbus without spending much. Each pick is free or caps at about $15 per person for the core experience (parking meters and snacks extra).
 

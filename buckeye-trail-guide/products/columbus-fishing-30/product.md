@@ -1,4 +1,4 @@
-# Top 30 Fishing Spots Around Columbus, Ohio
+# Fishing Near Columbus — 30 Spots with Species & Bait
 
 Thirty places to wet a line within an easy drive of Columbus. Bring a valid **Ohio fishing license**, then use each spot’s **fish**, **bait**, **website** (when there is one), and local tip.
 

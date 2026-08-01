@@ -56,9 +56,9 @@ Personal / local
 - Apartment hunting scorecard (Columbus neighborhoods)
 - Short North gallery hop evening plan
 - ~~Hocking Hills day-trip from Columbus~~ → shipped as `products/hocking-hills-day`
-- ~~Top 15 super natural experiences in Columbus under $15~~ → shipped as `products/columbus-nature-15` (nature)
+- ~~Outdoor Columbus — 15 experiences under $15~~ → shipped as `products/columbus-nature-15`
 - ~~Columbus supernatural / paranormal under $30~~ → shipped as `products/columbus-supernatural` ($2 guide)
-- ~~Top 30 fishing spots around Columbus~~ → shipped as `products/columbus-fishing-30`
+- ~~Fishing Near Columbus — 30 spots~~ → shipped as `products/columbus-fishing-30`
 - ~~Top 20 roads to avoid + top 20 to use (Columbus)~~ → shipped as `products/columbus-roads-40` (free)
 - ~~Who to Call Columbus one-pager~~ → shipped free as `products/columbus-who-to-call`
 - ~~Subscription & bills annual audit~~ → shipped free as `products/subscription-bills-audit`

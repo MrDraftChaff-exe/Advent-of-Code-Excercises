@@ -49,8 +49,8 @@ Also in the suite:
 • move-in Settling Pack — https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 • Hocking Hills day-trip plan — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 • stadium logistics sheet — https://buckeyetrailguide.gumroad.com/l/stadium-weekend
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 • supernatural nights list — https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -133,7 +133,7 @@ A simple 48-hour block plan beats rebuilding the weekend in the group chat every
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -186,7 +186,7 @@ I built a Settling Pack (PDF + spreadsheet) around that first-30-days mess.
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -244,7 +244,7 @@ https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Also in the suite:
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -266,7 +266,7 @@ What do you still print (or wish you had on paper)?
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -347,7 +347,7 @@ I listed fifteen that stay cheap on purpose.
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
@@ -374,7 +374,7 @@ What ruins your outdoor plans most often?
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
@@ -400,11 +400,11 @@ I put together 30 spots with species, bait notes, and links — so the drive isn
 **First comment (links)**
 
 ```
-Top 30 Fishing Spots Around Columbus, Ohio ($9)
+Fishing Near Columbus — 30 Spots with Species & Bait ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • free roads guide — https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -429,7 +429,7 @@ Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)
 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Also in the suite:
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -459,7 +459,7 @@ https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
 
 Also in the suite:
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -481,7 +481,7 @@ Host or guest — which role stresses you more?
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -508,7 +508,7 @@ I'm stress-testing the 48-hour Columbus field kit against real host habits.
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -533,7 +533,7 @@ No judgment — I'm trying to make printables that help both without feeling lik
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -562,7 +562,7 @@ What task ate YOUR first week here?
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -619,7 +619,7 @@ Hocking Hills Day Trip — From Columbus ($8)
 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -642,7 +642,7 @@ What topic should be next on the shelf?
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -724,12 +724,12 @@ Comment a park/trail. I'm stress-testing the printable fifteen.
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
 • Hocking Hills day-trip plan — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -749,7 +749,7 @@ Trying to time tips for when people use them — not when blogs pretend people u
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
@@ -775,11 +775,11 @@ Curious how Columbus anglers actually decide.
 **First comment (links)**
 
 ```
-Top 30 Fishing Spots Around Columbus, Ohio ($9)
+Fishing Near Columbus — 30 Spots with Species & Bait ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • free roads guide — https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -806,7 +806,7 @@ Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)
 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Also in the suite:
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 • Hocking Hills day-trip plan — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -855,11 +855,11 @@ Do you scrap the whole weekend when the forecast wobbles, or pivot?
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • supernatural nights list — https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -882,7 +882,7 @@ Asking for the Settling Pack backlog (PDF + spreadsheet).
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -907,7 +907,7 @@ One grocery / pharmacy / hardware answer counts.
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -933,7 +933,7 @@ I made a printable 48-hour field kit for hosts who want structure without a tour
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -964,7 +964,7 @@ Hocking Hills Day Trip — From Columbus ($8)
 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -1095,7 +1095,7 @@ I'm keeping the under-$15 list practical, not Pinterest.
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
@@ -1120,11 +1120,11 @@ Vote in the comments. It changes which spots matter in the guide.
 **First comment (links)**
 
 ```
-Top 30 Fishing Spots Around Columbus, Ohio ($9)
+Fishing Near Columbus — 30 Spots with Species & Bait ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -1146,12 +1146,12 @@ I care because the Top 30 spots guide has to match how people actually fish arou
 **First comment (links)**
 
 ```
-Top 30 Fishing Spots Around Columbus, Ohio ($9)
+Fishing Near Columbus — 30 Spots with Species & Bait ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Also in the suite:
 • free roads guide — https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -1207,7 +1207,7 @@ https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
 
 Also in the suite:
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -1229,7 +1229,7 @@ What was your first "okay I live here now" errand?
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -1258,7 +1258,7 @@ Do you plan Friday night or Saturday morning?
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -1287,7 +1287,7 @@ Hocking Hills Day Trip — From Columbus ($8)
 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -1310,7 +1310,7 @@ The Settling Pack has both for the first 30 days. Curious which half wins.
 **First comment (links)**
 
 ```
-Move to Columbus — Settling Pack ($9)
+Move to Columbus — Settling Pack ($updated)
 https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 
 Also in the suite:
@@ -1367,7 +1367,7 @@ https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Also in the suite:
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -1394,7 +1394,7 @@ https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Also in the suite:
 • 48-hour weekend kit — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Full shop: https://buckeyetrailguide.gumroad.com
 ```
@@ -1441,7 +1441,7 @@ What fake prerequisite stops you from going outside?
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
@@ -1468,11 +1468,11 @@ Comment and I'll aim the next update there.
 **First comment (links)**
 
 ```
-Top 15 Super Natural Experiences in Columbus — Under $15 Each ($9)
+Outdoor Columbus — 15 Experiences Under $15 Each ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 
 Also in the suite:
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 • Hocking Hills day-trip plan — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -1493,7 +1493,7 @@ Weekends, move-in, roads, stadium, Hocking, nature, fishing, supernatural — vo
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -1520,11 +1520,11 @@ Favorite water within ~45 minutes? Drop it for the community (and for the next r
 **First comment (links)**
 
 ```
-Top 30 Fishing Spots Around Columbus, Ohio ($9)
+Fishing Near Columbus — 30 Spots with Species & Bait ($updated)
 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 
 Also in the suite:
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 • free roads guide — https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -1596,7 +1596,7 @@ What's on YOUR pre-guest checklist that guests never see?
 **First comment (links)**
 
 ```
-Weekend in Columbus — 48-Hour Field Kit ($9)
+Weekend in Columbus — 48-Hour Field Kit ($updated)
 https://buckeyetrailguide.gumroad.com/l/weekend-columbus
 
 Also in the suite:
@@ -1661,8 +1661,8 @@ Also in the suite:
 • move-in Settling Pack — https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 • stadium logistics sheet — https://buckeyetrailguide.gumroad.com/l/stadium-weekend
 • Hocking Hills day-trip plan — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
-• under-$15 nature list — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
-• 30 fishing spots guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+• Outdoor Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+• Fishing Near Columbus guide — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
 • supernatural nights list — https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
 
 Full shop: https://buckeyetrailguide.gumroad.com
@@ -1673,10 +1673,10 @@ Image: https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excerci
 ## SKU cheat sheet
 
 - **Columbus Roads: Top 20 to Avoid + Top 20 to Use** (Free) — https://buckeyetrailguide.gumroad.com/l/columbus-roads-40
-- **Weekend in Columbus — 48-Hour Field Kit** ($9) — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
-- **Move to Columbus — Settling Pack** ($9) — https://buckeyetrailguide.gumroad.com/l/move-to-columbus
+- **Weekend in Columbus — 48-Hour Field Kit** ($updated) — https://buckeyetrailguide.gumroad.com/l/weekend-columbus
+- **Move to Columbus — Settling Pack** ($updated) — https://buckeyetrailguide.gumroad.com/l/move-to-columbus
 - **Stadium Weekend Logistics Sheet** ($7) — https://buckeyetrailguide.gumroad.com/l/stadium-weekend
 - **Hocking Hills Day Trip — From Columbus** ($8) — https://buckeyetrailguide.gumroad.com/l/hocking-hills-day
-- **Top 15 Super Natural Experiences in Columbus — Under $15 Each** ($9) — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
+- **Outdoor Columbus — 15 Experiences Under $15 Each** ($updated) — https://buckeyetrailguide.gumroad.com/l/columbus-nature-15
 - **Columbus Supernatural / Paranormal Experiences — Under $30 Each** ($2) — https://buckeyetrailguide.gumroad.com/l/columbus-supernatural
-- **Top 30 Fishing Spots Around Columbus, Ohio** ($9) — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30
+- **Fishing Near Columbus — 30 Spots with Species & Bait** ($updated) — https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30

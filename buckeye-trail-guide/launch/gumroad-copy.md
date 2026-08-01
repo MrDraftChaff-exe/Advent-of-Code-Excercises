@@ -124,9 +124,9 @@ File: `products/hocking-hills-day/product.pdf`
 
 ---
 
-## Product 5 — Top 15 Super Natural Experiences in Columbus — Under $15 Each — (see meta.json price)
+## Product 5 — Outdoor Columbus — 15 Experiences Under $15 Each — (see meta.json price)
 
-**Title:** Top 15 Super Natural Experiences in Columbus — Under $15 Each  
+**Title:** Outdoor Columbus — 15 Experiences Under $15 Each  
 **Price:** $2.99  
 **Summary:**  
 Fifteen outstanding outdoor Columbus experiences — parks, trails, water, and gardens — each free or under $15.
@@ -174,9 +174,9 @@ File: `products/columbus-supernatural/product.pdf`
 
 ---
 
-## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $3.79
+## Product 7 — Fishing Near Columbus — 30 Spots with Species & Bait — $3.79
 
-**Title:** Top 30 Fishing Spots Around Columbus, Ohio  
+**Title:** Fishing Near Columbus — 30 Spots with Species & Bait  
 **Price:** $3.79  
 **Summary:**  
 Thirty fishing spots near Columbus — fish species, preferred bait, website links, and local tips. Bring your Ohio license.
@@ -236,7 +236,7 @@ Weekend Field Kit + Hocking Hills Day Trip ($9 + $8 = $17). Bundle at **$14** (s
 
 ## Bundle (optional) — Outdoor Columbus Pair — $6.78
 
-Hocking Hills Day Trip + Top 15 Super Natural Experiences ($8 + $9 = $17). Bundle at **$14** (save $3).
+Hocking Hills Day Trip + Outdoor Columbus ($8 + $9 = $17). Bundle at **$14** (save $3).
 ## Free — Who to Call — Columbus One-Pager — $0
 
 **Title:** Who to Call — Columbus One-Pager  

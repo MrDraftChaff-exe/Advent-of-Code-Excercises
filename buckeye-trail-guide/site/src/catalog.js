@@ -47,8 +47,8 @@ export const products = [
   },
   {
     id: 'columbus-nature-15',
-    title: 'Top 15 Super Natural Experiences',
-    subtitle: 'Columbus · Under $15 Each',
+    title: 'Outdoor Columbus',
+    subtitle: '15 Experiences Under $15',
     price: 2.99,
     blurb: 'Parks, trails, water, and gardens — fifteen outdoor wins without spending much.',
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-nature-15',
@@ -65,8 +65,8 @@ export const products = [
   },
   {
     id: 'columbus-fishing-30',
-    title: 'Top 30 Fishing Spots Around Columbus',
-    subtitle: 'License + Local Tips',
+    title: 'Fishing Near Columbus',
+    subtitle: '30 Spots · Species & Bait',
     price: 3.79,
     blurb: 'Fish species, bait tips, and website links for 30 spots — bring your license and go.',
     gumroad: 'https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30',
