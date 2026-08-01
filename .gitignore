@@ -11,3 +11,6 @@ dist/
 # OAuth temp state
 **/.facebook-oauth-state
 **/.pinterest-oauth-state
+
+# Facebook schedule post log (contains post IDs)
+**/facebook-schedule-log.json
