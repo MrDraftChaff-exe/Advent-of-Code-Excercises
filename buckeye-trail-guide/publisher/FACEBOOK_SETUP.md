@@ -12,20 +12,33 @@ App ID + App Secret are already in `publisher/.env`.
 
 https://www.facebook.com/pages/create → name **Buckeye Trail Guide**
 
-### 2) Turn on Facebook Login in your app
+### 2) Enable Page permissions on the Meta app (required)
+
+If OAuth says **Invalid Scopes: pages_manage_posts, pages_read_engagement**, the app doesn’t have those permissions in its use case yet.
 
 1. Open your app at [developers.facebook.com/apps](https://developers.facebook.com/apps/)
-2. **Add product** → **Facebook Login** (or **Facebook Login for Business**)
-3. Facebook Login → **Settings**
-4. Under **Valid OAuth Redirect URIs**, add exactly:
+2. Keep the app in **Development** mode (toggle at top) while testing
+3. Left menu → **Use cases** (or Dashboard)
+4. Add / open **Manage everything on your Page** → **Customize**
+5. Under permissions, **Add** (status should become **Ready for testing**):
+   - `pages_show_list`
+   - `pages_manage_posts`
+   - `pages_read_engagement`
+6. If the app type is **Consumer**, Page permissions won’t work — App Review → Permissions and features → **Remove App Type**, or create a Business / “Something else” app
+
+### 3) Turn on Facebook Login
+
+1. **Add product** → **Facebook Login** (or **Facebook Login for Business**)
+2. Facebook Login → **Settings**
+3. Under **Valid OAuth Redirect URIs**, add exactly:
 
 ```text
 https://localhost:3458/oauth/callback
 ```
 
-5. Save
+4. Save
 
-### 3) Authorize + paste the redirect URL back
+### 4) Authorize + paste the redirect URL back
 
 In this environment:
 
@@ -45,7 +58,7 @@ npm run facebook-auth -- --code 'PASTE_FULL_URL_OR_CODE'
 
 We’ll exchange it, find your Page, and write `FACEBOOK_PAGE_ID` + `FACEBOOK_PAGE_ACCESS_TOKEN` into `.env`.
 
-### 4) Verify + post
+### 5) Verify + post
 
 ```bash
 npm run facebook-auth

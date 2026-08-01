@@ -307,9 +307,13 @@ function printAuthorizeInstructions(appId) {
   console.log(`
 Buckeye Trail Guide — Facebook OAuth
 
-1) In your Meta app dashboard:
-   - Add product: Facebook Login (or Facebook Login for Business)
-   - Facebook Login → Settings → Valid OAuth Redirect URIs:
+1) In your Meta app dashboard (fixes "Invalid Scopes: pages_manage_posts…"):
+   - Keep app in Development mode
+   - Use cases → "Manage everything on your Page" → Customize
+   - Add permissions (Ready for testing):
+       pages_show_list, pages_manage_posts, pages_read_engagement
+   - If App Type is Consumer: remove it (Page perms won't work on Consumer)
+   - Add product: Facebook Login → Settings → Valid OAuth Redirect URIs:
      ${REDIRECT_URI}
    - Save changes
 
@@ -328,6 +332,11 @@ ${url}
 
 Also required: a Facebook Page that this account admins
   https://www.facebook.com/pages/create
+
+Alternate (Graph API Explorer):
+  https://developers.facebook.com/tools/explorer/
+  Meta App = yours → Get User Access Token → check the three pages_* perms
+  Query me/accounts → paste Page id + access_token
 `);
 }
 
