@@ -4,10 +4,10 @@ Replace `#weekend` / `#move-in` / `#stadium` in `site/src/catalog.js` with live 
 
 ---
 
-## Product 1 — Weekend in Columbus — 48-Hour Field Kit — $9
+## Product 1 — Weekend in Columbus — 48-Hour Field Kit — (see meta.json price)
 
 **Title:** Weekend in Columbus — 48-Hour Field Kit  
-**Price:** $9  
+**Price:** $4.99  
 **Summary:**  
 A printable plan for two strong days in Columbus — hour-by-hour skeletons, neighborhood pairings, weather swaps, and a guest packing list.
 
@@ -30,10 +30,10 @@ File to upload: export `products/weekend-columbus/product.md` → PDF
 
 ---
 
-## Product 2 — Move to Columbus — Settling Pack — $9
+## Product 2 — Move to Columbus — Settling Pack — (see meta.json price)
 
 **Title:** Move to Columbus — Settling Pack (PDF + Excel)  
-**Price:** $9  
+**Price:** $4.49  
 **Summary:**  
 First-30-days relocation pack for Columbus — printable PDF checklists **plus** a fillable Excel workbook (scorecard, budget, apartment compare, rolodex).
 
@@ -70,10 +70,10 @@ Files:
 
 ---
 
-## Product 3 — Stadium Weekend Logistics Sheet — $7
+## Product 3 — Stadium Weekend Logistics Sheet — $3.99
 
 **Title:** Stadium Weekend Logistics Sheet  
-**Price:** $7  
+**Price:** $3.99  
 **Summary:**  
 Meetup pins, parking vs rideshare, timelines, and exit strategy for a Columbus stadium weekend.
 
@@ -97,10 +97,10 @@ File: `products/stadium-weekend/product.md` → PDF
 
 ---
 
-## Product 4 — Hocking Hills Day Trip — From Columbus — $8
+## Product 4 — Hocking Hills Day Trip — From Columbus — $3.49
 
 **Title:** Hocking Hills Day Trip — From Columbus  
-**Price:** $8  
+**Price:** $3.49  
 **Summary:**  
 A printable one-day plan from Columbus to Hocking Hills — drive windows, two route options, packing, and weather swaps.
 
@@ -124,10 +124,10 @@ File: `products/hocking-hills-day/product.pdf`
 
 ---
 
-## Product 5 — Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
+## Product 5 — Top 15 Super Natural Experiences in Columbus — Under $15 Each — (see meta.json price)
 
 **Title:** Top 15 Super Natural Experiences in Columbus — Under $15 Each  
-**Price:** $9  
+**Price:** $2.99  
 **Summary:**  
 Fifteen outstanding outdoor Columbus experiences — parks, trails, water, and gardens — each free or under $15.
 
@@ -149,10 +149,10 @@ File: `products/columbus-nature-15/product.pdf`
 
 ---
 
-## Product 6 — Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
+## Product 6 — Columbus Supernatural / Paranormal Experiences — Under $30 Each — $1.49
 
 **Title:** Columbus Supernatural / Paranormal Experiences — Under $30 Each  
-**Price:** $2  
+**Price:** $1.49  
 **Summary:**  
 Haunted lore walks, cemeteries, historic sites, and affordable paranormal outings in Columbus — each free or under $30.
 
@@ -174,10 +174,10 @@ File: `products/columbus-supernatural/product.pdf`
 
 ---
 
-## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $9
+## Product 7 — Top 30 Fishing Spots Around Columbus, Ohio — $3.79
 
 **Title:** Top 30 Fishing Spots Around Columbus, Ohio  
-**Price:** $9  
+**Price:** $3.79  
 **Summary:**  
 Thirty fishing spots near Columbus — fish species, preferred bait, website links, and local tips. Bring your Ohio license.
 
@@ -226,15 +226,15 @@ File: `products/columbus-roads-40/product.pdf`
 
 ---
 
-## Bundle (optional) — Central Ohio Starter Trio — $22
+## Bundle (optional) — Central Ohio Starter Trio — $12.99
 
 First three kits ($9 + $9 + $7 = $25). Bundle at **$22** (save $3).
 
-## Bundle (optional) — Day-Trip Add-On — $14
+## Bundle (optional) — Day-Trip Add-On — $7.49
 
 Weekend Field Kit + Hocking Hills Day Trip ($9 + $8 = $17). Bundle at **$14** (save $3).
 
-## Bundle (optional) — Outdoor Columbus Pair — $14
+## Bundle (optional) — Outdoor Columbus Pair — $6.78
 
 Hocking Hills Day Trip + Top 15 Super Natural Experiences ($8 + $9 = $17). Bundle at **$14** (save $3).
 ## Free — Who to Call — Columbus One-Pager — $0

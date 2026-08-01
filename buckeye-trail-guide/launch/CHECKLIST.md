@@ -50,13 +50,13 @@ Manual fallback: paste copy from `gumroad-copy.md` and upload PDFs in each dashb
 
 ### Live on Gumroad
 
-- [x] Weekend in Columbus — $9
-- [x] Move to Columbus — $9
-- [x] Stadium Weekend — $7
-- [x] Hocking Hills Day Trip — $8
-- [x] Top 15 Super Natural Experiences in Columbus — Under $15 Each — $9
-- [x] Columbus Supernatural / Paranormal Experiences — Under $30 Each — $2
-- [x] Top 30 Fishing Spots Around Columbus, Ohio — $9
+- [x] Weekend in Columbus — $4.99
+- [x] Move to Columbus — $4.49
+- [x] Stadium Weekend — $3.99
+- [x] Hocking Hills Day Trip — $3.49
+- [x] Top 15 Super Natural Experiences in Columbus — Under $15 Each — $2.99
+- [x] Columbus Supernatural / Paranormal Experiences — Under $30 Each — $1.49
+- [x] Top 30 Fishing Spots Around Columbus, Ohio — $3.79
 - [x] Columbus Roads: Top 20 to Avoid + Top 20 to Use — Free
 - [x] Who to Call — Columbus One-Pager — Free
 - [x] First Winter in Central Ohio Checklist — Free

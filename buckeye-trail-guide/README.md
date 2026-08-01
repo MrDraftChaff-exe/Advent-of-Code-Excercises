@@ -34,13 +34,13 @@ npm run dev
 
 | SKU | Price | Folder | Gumroad |
 | --- | --- | --- | --- |
-| Weekend in Columbus — 48-Hour Field Kit | $9 | `products/weekend-columbus` | [live](https://buckeyetrailguide.gumroad.com/l/weekend-columbus) |
-| Move to Columbus — Settling Pack + Spreadsheet | $9 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
-| Stadium Weekend Logistics Sheet | $7 | `products/stadium-weekend` | [live](https://buckeyetrailguide.gumroad.com/l/stadium-weekend) |
-| Hocking Hills Day Trip — From Columbus | $8 | `products/hocking-hills-day` | [live](https://buckeyetrailguide.gumroad.com/l/hocking-hills-day) |
-| Top 15 Super Natural Experiences in Columbus — Under $15 Each | $9 | `products/columbus-nature-15` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-nature-15) |
-| Columbus Supernatural / Paranormal Experiences — Under $30 Each | $2 | `products/columbus-supernatural` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-supernatural) |
-| Top 30 Fishing Spots Around Columbus, Ohio | $9 | `products/columbus-fishing-30` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30) |
+| Weekend in Columbus — 48-Hour Field Kit | $4.99 | `products/weekend-columbus` | [live](https://buckeyetrailguide.gumroad.com/l/weekend-columbus) |
+| Move to Columbus — Settling Pack + Spreadsheet | $4.49 | `products/move-in-pack` | [live](https://buckeyetrailguide.gumroad.com/l/move-to-columbus) |
+| Stadium Weekend Logistics Sheet | $3.99 | `products/stadium-weekend` | [live](https://buckeyetrailguide.gumroad.com/l/stadium-weekend) |
+| Hocking Hills Day Trip — From Columbus | $3.49 | `products/hocking-hills-day` | [live](https://buckeyetrailguide.gumroad.com/l/hocking-hills-day) |
+| Top 15 Super Natural Experiences in Columbus — Under $15 Each | $2.99 | `products/columbus-nature-15` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-nature-15) |
+| Columbus Supernatural / Paranormal Experiences — Under $30 Each | $1.49 | `products/columbus-supernatural` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-supernatural) |
+| Top 30 Fishing Spots Around Columbus, Ohio | $3.79 | `products/columbus-fishing-30` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30) |
 | Columbus Roads: Top 20 to Avoid + Top 20 to Use | Free | `products/columbus-roads-40` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-roads-40) |
 | Who to Call — Columbus One-Pager | Free | `products/columbus-who-to-call` | [live](https://buckeyetrailguide.gumroad.com/l/columbus-who-to-call) |
 | First Winter in Central Ohio Checklist | Free | `products/first-winter-ohio` | [live](https://buckeyetrailguide.gumroad.com/l/first-winter-ohio) |
