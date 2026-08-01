@@ -42,6 +42,9 @@ Create a new Buckeye Trail Guide digital download.
 
 **Pricing guide:** every product **under $10** (typical $5–$9; free/$0 allowed for lead magnets). Prefer simple single-price digital downloads over premium packs.
 
+**Anti-redundancy (always):**
+Before proposing or shipping any new SKU (free or paid), read live `products/*/product.md` + `meta.json` and reject ideas that mostly duplicate an existing guide’s job (same decision, same checklist, thinner version of a paid pack). Complementary lead magnets are fine (narrower card that points into a paid suite). When listing candidates, call out drops explicitly.
+
 ---
 
 ## SKU ideas backlog (pick any)
