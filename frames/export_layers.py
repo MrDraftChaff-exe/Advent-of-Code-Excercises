@@ -101,7 +101,12 @@ def clear_outside_silhouette(arr: np.ndarray, *, alpha_threshold: int = 20) -> n
 
 
 def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, Image.Image]:
-    """Split a transparent frame into editable region layers."""
+    """Split a transparent frame into editable region layers.
+
+    Important: do NOT hard-wipe the locked art_window rectangle. Ornate bezels
+    often sit inside those coordinates; only already-transparent pixels form the
+    art hole, so the frame can overlay checker/gray boxing cleanly.
+    """
     canvas = layout["canvas"]
     w, h = canvas["width"], canvas["height"]
     arr = np.array(frame_rgba.convert("RGBA").resize((w, h), Image.Resampling.LANCZOS))
@@ -112,9 +117,11 @@ def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, I
     title_m = _rect_mask(h, w, regions["title_box"], inflate=10)
     bl_m = _rect_mask(h, w, regions["bottom_left_box"], inflate=10)
     br_m = _rect_mask(h, w, regions["bottom_right_box"], inflate=10)
-    bezel_m = _ring_mask(h, w, regions["art_window"], outer=30, inner_inset=0)
+    art = regions["art_window"]
+    art_m = _rect_mask(h, w, art)
+    # Bezel = opaque pixels near/inside the art rect rim + a ring just outside it.
+    bezel_m = _ring_mask(h, w, art, outer=34, inner_inset=0) | (art_m & opaque)
 
-    # Crest bands: top strip above title, and gap between bottom plaques.
     crest_m = np.zeros((h, w), dtype=bool)
     crest_m[0 : regions["title_box"]["y"] + 8, :] = True
     mid_x0 = regions["bottom_left_box"]["x"] + regions["bottom_left_box"]["width"]
@@ -126,21 +133,17 @@ def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, I
         mid_x0:mid_x1,
     ] = True
 
-    # Priority assignment so plaques/crests/bezel win over outer chrome.
     layers = {name: _blank(w, h) for name in LAYER_ORDER}
 
     def assign(name: str, mask: np.ndarray) -> None:
-        m = mask & opaque & (layers[name][:, :, 3] == 0)
-        # ensure not already taken by higher-priority filled layers
         taken = np.zeros((h, w), dtype=bool)
         for prev in LAYER_ORDER:
             if prev == name:
                 break
             taken |= layers[prev][:, :, 3] > 0
-        m = m & ~taken
+        m = mask & opaque & ~taken
         layers[name][m] = arr[m]
 
-    # Order: plaques and crests first, then bezel, then remaining outer frame.
     assign("title_plaque", title_m)
     assign("footer_left", bl_m)
     assign("footer_right", br_m)
@@ -150,18 +153,7 @@ def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, I
     taken = np.zeros((h, w), dtype=bool)
     for name in ("title_plaque", "footer_left", "footer_right", "crests", "art_bezel"):
         taken |= layers[name][:, :, 3] > 0
-    outer_m = opaque & ~taken
-    # Never put art-window interior into outer frame.
-    art = regions["art_window"]
-    art_m = _rect_mask(h, w, art, inflate=-2 if False else 0)
-    # hard clear art interior from outer
-    art_inner = _rect_mask(h, w, art)
-    outer_m &= ~art_inner
-    layers["outer_frame"][outer_m] = arr[outer_m]
-
-    # Guarantee art window stays empty on every layer.
-    for name in LAYER_ORDER:
-        layers[name][art_inner] = (0, 0, 0, 0)
+    layers["outer_frame"][opaque & ~taken] = arr[opaque & ~taken]
 
     return {k: Image.fromarray(v, "RGBA") for k, v in layers.items()}
 
@@ -188,6 +180,7 @@ def export_pack(
     layers_dir = out_dir / "layers"
     layers_dir.mkdir(exist_ok=True)
 
+    # Only clear empty fill (green/white). Never hard-wipe the art rect.
     punched = punch_art_hole(frame_rgba, layout, preserve_frame_detail=True)
     punched_arr = clear_outside_silhouette(np.array(punched))
     punched = Image.fromarray(punched_arr, "RGBA")
