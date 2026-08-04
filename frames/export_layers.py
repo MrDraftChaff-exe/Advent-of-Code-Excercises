@@ -85,6 +85,63 @@ def _ring_mask(h: int, w: int, box: dict[str, int], outer: int = 28, inner_inset
     return m
 
 
+def key_green_screen(image: Image.Image, layout: dict[str, Any]) -> Image.Image:
+    """Clear pure green-screen pixels only; never rectangular-wipe the bezel.
+
+    Detects the actual green art hole from the image center and flood-fills
+    only connected pure-green / empty pixels. Frame chrome that overlaps the
+    nominal layout art_window stays opaque.
+    """
+    from collections import deque
+
+    canvas = layout["canvas"]
+    art = layout["preserved_regions"]["art_window"]
+    title = layout["preserved_regions"]["title_box"]
+    footer = layout["preserved_regions"]["bottom_left_box"]
+    arr = np.array(
+        image.convert("RGBA").resize((canvas["width"], canvas["height"]), Image.Resampling.LANCZOS)
+    ).astype(np.float32)
+    r, g, b, a = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2], arr[:, :, 3]
+    pure = (g > 165) & (g > r + 50) & (g > b + 50) & ((g - np.maximum(r, b)) > 50)
+
+    # Detect hole top from green dominance under the title.
+    cx0, cx1 = canvas["width"] // 3, (2 * canvas["width"]) // 3
+    top = art["y"]
+    for y in range(title["y"] + title["height"], footer["y"]):
+        if pure[y, cx0:cx1].mean() > 0.55:
+            top = y
+            break
+
+    out = arr.copy()
+    out[pure] = 0
+    dom = g - np.maximum(r, b)
+    spill = (out[:, :, 3] > 0) & (dom > 12) & (g > r) & (g > b)
+    out[:, :, 1][spill] = np.minimum(g[spill], np.maximum(r[spill], b[spill]) + 8)
+    out[out[:, :, 3] > 0, 3] = 255
+    out[out[:, :, 3] < 12] = 0
+
+    rr, gg, bb, aa = out[:, :, 0], out[:, :, 1], out[:, :, 2], out[:, :, 3]
+    passable = (aa < 8) | ((gg > 165) & (gg > rr + 50) & (gg > bb + 50))
+    visited = np.zeros(aa.shape, dtype=bool)
+    q: deque[tuple[int, int]] = deque()
+    cy = (top + footer["y"]) // 2
+    cx = canvas["width"] // 2
+    for sy in range(max(top + 10, cy - 80), min(footer["y"] - 10, cy + 80), 8):
+        for sx in range(cx - 80, cx + 81, 8):
+            if 0 <= sy < canvas["height"] and 0 <= sx < canvas["width"] and passable[sy, sx]:
+                visited[sy, sx] = True
+                q.append((sx, sy))
+    while q:
+        x, y = q.popleft()
+        for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+            if 0 <= nx < canvas["width"] and 0 <= ny < canvas["height"] and not visited[ny, nx] and passable[ny, nx]:
+                visited[ny, nx] = True
+                q.append((nx, ny))
+    out[visited] = 0
+    out[out[:, :, 3] > 0, 3] = 255
+    return harden_opaque_alpha(Image.fromarray(out.astype(np.uint8), "RGBA"))
+
+
 def clear_outside_silhouette(arr: np.ndarray, *, alpha_threshold: int = 20) -> np.ndarray:
     """Keep only connected opaque silhouette; force true transparent exterior."""
     a = arr[:, :, 3]
@@ -187,9 +244,9 @@ def export_pack(
     layers_dir = out_dir / "layers"
     layers_dir.mkdir(exist_ok=True)
 
-    # Only clear empty fill (green/white). Never hard-wipe the art rect —
-    # ornate bezels often sit inside layout art_window coordinates.
-    punched = punch_art_hole(frame_rgba, layout, preserve_frame_detail=True)
+    # Clear pure green only. Never rectangular-wipe layout art_window —
+    # that eats ornate bezels/rivets that sit inside those coordinates.
+    punched = key_green_screen(frame_rgba, layout)
     punched = harden_opaque_alpha(Image.fromarray(clear_outside_silhouette(np.array(punched)), "RGBA"))
 
     layer_imgs = split_layers(punched, layout)
