@@ -2,6 +2,8 @@
 
 Fill this out and send it (or save as `frames/params/<id>.json` using the schema).
 
+Quality target: premium illustrated TCG frame (see `samples/sakura-shrine-v1.png`), not flat UI chrome.
+
 ```json
 {
   "id": "your-frame-id",

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Generate a card-frame SVG from layout.json + design params.
+"""Generate a LOW-FIDELITY layout wireframe SVG from layout.json + design params.
 
-Locked regions always come from layout.json. Design params only affect style.
+This is for checking locked slot positions only. Final frames must be high-quality
+illustrated assets produced via build_hq_frame.py prompts + image generation.
 """
 
 from __future__ import annotations
