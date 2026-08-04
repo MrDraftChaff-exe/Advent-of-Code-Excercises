@@ -1,38 +1,40 @@
 {
   "id": "fire-lava-v1",
   "theme": "fire",
-  "mood": "fierce",
+  "mood": "fierce, volcanic, mythic",
   "element": "lava",
   "palette": {
-    "primary": "#F5A623",
-    "secondary": "#E85D04",
-    "accent": "#FFED4A",
-    "border": "#2A2A2A",
-    "panel": "#3A3A3A",
-    "panel_stroke": "#F48C06",
+    "primary": "#FF9F1C",
+    "secondary": "#E71D36",
+    "accent": "#FFD166",
+    "border": "#1B1B1E",
+    "panel": "#2A2A2E",
+    "panel_stroke": "#FF9F1C",
     "glow": "#FFBA08"
   },
   "materials": {
-    "border": "charred jagged rock / cooling lava",
-    "panels": "dark grey slate with thin glowing orange inner border",
-    "ornament": "flowing yellow-orange-red flame"
+    "border": "charred volcanic rock with cracked cooling lava edges, ember glow in crevices",
+    "panels": "dark basalt plaques with thin molten-gold inner borders and forged metal corner caps",
+    "ornament": "flowing flame tongues, sparks, heat haze"
   },
   "border_style": "jagged",
-  "side_fill": "continuous flame graphic on left and right vertical borders",
+  "side_fill": "rich painted flames and molten rivulets filling left and right borders; jagged spiky outer silhouette like cooling lava rock",
   "crest": {
-    "motif": "stylized flame icon",
+    "motif": "stylized sacred flame emblem",
     "placement": ["top", "bottom_center"]
   },
-  "title_box_style": "dark horizontal panel, thin glowing orange inner stroke, centered under top crest",
-  "footer_box_style": "matching dark panels with glowing orange inner stroke; left and right, split by upward dark peak with flame crest",
+  "title_box_style": "empty dark basalt horizontal banner with glowing molten inner stroke and metal corner brackets, no text",
+  "footer_box_style": "matching empty dark banners left and right; sacred flame crest on upward rock peak between them",
   "ornaments": [
-    "spiky outer silhouette",
-    "molten glow along inner edges"
+    "ember sparks",
+    "molten edge glow",
+    "forged metal rivets",
+    "volumetric soft shading"
   ],
   "constraints": {
     "keep_art_fully_transparent": true,
     "allow_overlap_preserved_regions": false,
-    "notes": "Match the reference fire frame spirit while keeping all locked regions exactly on layout.json coordinates."
+    "notes": "Premium illustrated game asset quality matching the sakura reference bar — not flat shapes or simple gradients."
   },
-  "prompt_extras": "Fantasy TCG card frame template. Transparent center art hole. No text inside panels."
+  "prompt_extras": "Fantasy TCG fire frame. Empty plaques only — zero lettering. Transparent center art hole."
 }

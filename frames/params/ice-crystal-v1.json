@@ -13,9 +13,9 @@
     "glow": "#E0FBFC"
   },
   "materials": {
-    "border": "frost crystal and dark ice",
-    "panels": "cool slate with glowing cyan edges",
-    "ornament": "ice veins / snowflake crest"
+    "border": "frost crystal and dark ice with soft subsurface glow",
+    "panels": "cool slate plaques with icy cyan metal caps and rivets",
+    "ornament": "ice veins, snow crystals, frozen mist"
   },
   "border_style": "ornate",
   "side_fill": "ice veins and frost bloom along vertical borders",
@@ -35,7 +35,7 @@
   "constraints": {
     "keep_art_fully_transparent": true,
     "allow_overlap_preserved_regions": false,
-    "notes": "Match the reference fire frame spirit while keeping all locked regions exactly on layout.json coordinates."
+    "notes": "Needs HQ illustrated regeneration; legacy SVG wireframe only until then."
   },
-  "prompt_extras": "Fantasy TCG ice frame. Transparent center art hole. No text inside panels."
+  "prompt_extras": "Premium illustrated TCG ice frame matching sakura quality bar. Empty plaques. Transparent center."
 }
