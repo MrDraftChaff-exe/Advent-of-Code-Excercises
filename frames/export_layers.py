@@ -158,6 +158,13 @@ def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, I
     return {k: Image.fromarray(v, "RGBA") for k, v in layers.items()}
 
 
+def harden_opaque_alpha(img: Image.Image) -> Image.Image:
+    """Force surviving frame pixels to full opacity so underlays cannot show through."""
+    arr = np.array(img.convert("RGBA"))
+    arr[arr[:, :, 3] > 0, 3] = 255
+    return Image.fromarray(arr, "RGBA")
+
+
 def compose_layers(layer_imgs: dict[str, Image.Image], layout: dict[str, Any]) -> Image.Image:
     w, h = layout["canvas"]["width"], layout["canvas"]["height"]
     comp = Image.new("RGBA", (w, h), (0, 0, 0, 0))
@@ -167,7 +174,7 @@ def compose_layers(layer_imgs: dict[str, Image.Image], layout: dict[str, Any]) -
             if layer.size != (w, h):
                 layer = layer.resize((w, h), Image.Resampling.LANCZOS)
             comp = Image.alpha_composite(comp, layer)
-    return comp
+    return harden_opaque_alpha(comp)
 
 
 def export_pack(
@@ -180,10 +187,10 @@ def export_pack(
     layers_dir = out_dir / "layers"
     layers_dir.mkdir(exist_ok=True)
 
-    # Only clear empty fill (green/white). Never hard-wipe the art rect.
+    # Only clear empty fill (green/white). Never hard-wipe the art rect —
+    # ornate bezels often sit inside layout art_window coordinates.
     punched = punch_art_hole(frame_rgba, layout, preserve_frame_detail=True)
-    punched_arr = clear_outside_silhouette(np.array(punched))
-    punched = Image.fromarray(punched_arr, "RGBA")
+    punched = harden_opaque_alpha(Image.fromarray(clear_outside_silhouette(np.array(punched)), "RGBA"))
 
     layer_imgs = split_layers(punched, layout)
     for name, img in layer_imgs.items():
