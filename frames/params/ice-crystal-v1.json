@@ -1,0 +1,41 @@
+{
+  "id": "ice-crystal-v1",
+  "theme": "ice",
+  "mood": "serene",
+  "element": "frost",
+  "palette": {
+    "primary": "#7BDFF2",
+    "secondary": "#1B4965",
+    "accent": "#CAE9FF",
+    "border": "#0D1B2A",
+    "panel": "#243B4A",
+    "panel_stroke": "#7BDFF2",
+    "glow": "#E0FBFC"
+  },
+  "materials": {
+    "border": "frost crystal and dark ice",
+    "panels": "cool slate with glowing cyan edges",
+    "ornament": "ice veins / snowflake crest"
+  },
+  "border_style": "ornate",
+  "side_fill": "ice veins and frost bloom along vertical borders",
+  "crest": {
+    "motif": "snowflake / ice shard",
+    "placement": [
+      "top",
+      "bottom_center"
+    ]
+  },
+  "title_box_style": "cool slate panel with icy cyan inner stroke",
+  "footer_box_style": "matching cool panels split by crystalline peak",
+  "ornaments": [
+    "crystalline outer silhouette",
+    "frost glow along inner edges"
+  ],
+  "constraints": {
+    "keep_art_fully_transparent": true,
+    "allow_overlap_preserved_regions": false,
+    "notes": "Match the reference fire frame spirit while keeping all locked regions exactly on layout.json coordinates."
+  },
+  "prompt_extras": "Fantasy TCG ice frame. Transparent center art hole. No text inside panels."
+}

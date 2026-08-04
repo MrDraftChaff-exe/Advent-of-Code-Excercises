@@ -1,0 +1,60 @@
+{
+  "$schema": "./layout.schema.json",
+  "name": "standard-card-frame-v1",
+  "description": "Locked content regions for card frames. Design styling may change freely; these region positions and sizes must stay fixed.",
+  "canvas": {
+    "width": 750,
+    "height": 1050,
+    "aspect_ratio": "5:7",
+    "units": "px"
+  },
+  "preserved_regions": {
+    "title_box": {
+      "id": "title_box",
+      "role": "title_or_name",
+      "description": "Top-centered horizontal box for card title/name. Design of the box may change; position and size are locked.",
+      "x": 140,
+      "y": 55,
+      "width": 470,
+      "height": 70,
+      "anchor": "top-center"
+    },
+    "art_window": {
+      "id": "art_window",
+      "role": "primary_artwork",
+      "description": "Large central transparent rectangle for primary artwork. Must remain a clear, unobstructed opening at this location.",
+      "x": 95,
+      "y": 145,
+      "width": 560,
+      "height": 620,
+      "anchor": "center",
+      "transparent": true
+    },
+    "bottom_left_box": {
+      "id": "bottom_left_box",
+      "role": "secondary_content_left",
+      "description": "Bottom-left horizontal box for stats, abilities, or secondary text. Design may change; position and size are locked.",
+      "x": 95,
+      "y": 820,
+      "width": 240,
+      "height": 140,
+      "anchor": "bottom-left"
+    },
+    "bottom_right_box": {
+      "id": "bottom_right_box",
+      "role": "secondary_content_right",
+      "description": "Bottom-right horizontal box for stats, abilities, or secondary text. Design may change; position and size are locked.",
+      "x": 415,
+      "y": 820,
+      "width": 240,
+      "height": 140,
+      "anchor": "bottom-right"
+    }
+  },
+  "notes": [
+    "The three areas to preserve are: (1) title_box, (2) art_window, (3) the bottom footer pair (bottom_left_box + bottom_right_box).",
+    "Bottom left and right are separate slots but together form the single bottom footer area from the reference frame.",
+    "Decorative frame, borders, crests, and ornaments may be redesigned freely as long as they do not move or cover these regions.",
+    "A center bottom crest/peak may sit between the two bottom boxes (roughly x 335–415) without overlapping the locked boxes."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "fire-lava-v1",
+  "theme": "fire",
+  "mood": "fierce",
+  "element": "lava",
+  "palette": {
+    "primary": "#F5A623",
+    "secondary": "#E85D04",
+    "accent": "#FFED4A",
+    "border": "#2A2A2A",
+    "panel": "#3A3A3A",
+    "panel_stroke": "#F48C06",
+    "glow": "#FFBA08"
+  },
+  "materials": {
+    "border": "charred jagged rock / cooling lava",
+    "panels": "dark grey slate with thin glowing orange inner border",
+    "ornament": "flowing yellow-orange-red flame"
+  },
+  "border_style": "jagged",
+  "side_fill": "continuous flame graphic on left and right vertical borders",
+  "crest": {
+    "motif": "stylized flame icon",
+    "placement": ["top", "bottom_center"]
+  },
+  "title_box_style": "dark horizontal panel, thin glowing orange inner stroke, centered under top crest",
+  "footer_box_style": "matching dark panels with glowing orange inner stroke; left and right, split by upward dark peak with flame crest",
+  "ornaments": [
+    "spiky outer silhouette",
+    "molten glow along inner edges"
+  ],
+  "constraints": {
+    "keep_art_fully_transparent": true,
+    "allow_overlap_preserved_regions": false,
+    "notes": "Match the reference fire frame spirit while keeping all locked regions exactly on layout.json coordinates."
+  },
+  "prompt_extras": "Fantasy TCG card frame template. Transparent center art hole. No text inside panels."
+}

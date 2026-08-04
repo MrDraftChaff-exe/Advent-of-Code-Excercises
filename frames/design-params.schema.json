@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/frames/design-params.schema.json",
+  "title": "CardFrameDesignParams",
+  "description": "Design parameters for generating a card frame. Region positions come from layout.json and cannot be overridden.",
+  "type": "object",
+  "required": ["id", "theme"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Slug for this frame variant, e.g. fire-lava-v1",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "theme": {
+      "type": "string",
+      "description": "High-level theme name, e.g. fire, ice, forest, void, storm"
+    },
+    "mood": {
+      "type": "string",
+      "description": "Atmosphere / feeling, e.g. fierce, serene, corrupted, regal"
+    },
+    "element": {
+      "type": "string",
+      "description": "Elemental affinity if any"
+    },
+    "palette": {
+      "type": "object",
+      "description": "Core colors for the frame. Hex preferred (#RRGGBB).",
+      "properties": {
+        "primary": { "type": "string" },
+        "secondary": { "type": "string" },
+        "accent": { "type": "string" },
+        "border": { "type": "string" },
+        "panel": { "type": "string" },
+        "panel_stroke": { "type": "string" },
+        "glow": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "object",
+      "properties": {
+        "border": {
+          "type": "string",
+          "description": "e.g. charred rock, polished obsidian, living wood, frost crystal"
+        },
+        "panels": {
+          "type": "string",
+          "description": "e.g. dark slate with glowing edges"
+        },
+        "ornament": {
+          "type": "string",
+          "description": "e.g. molten metal, ethereal runes, thorns"
+        }
+      },
+      "additionalProperties": false
+    },
+    "border_style": {
+      "type": "string",
+      "enum": ["jagged", "ornate", "clean", "runic", "organic", "geometric"],
+      "default": "jagged"
+    },
+    "side_fill": {
+      "type": "string",
+      "description": "What fills the left/right vertical borders, e.g. flowing flames, ice veins, vines"
+    },
+    "crest": {
+      "type": "object",
+      "description": "Emblem used at top center and bottom center peak",
+      "properties": {
+        "motif": { "type": "string", "description": "e.g. stylized flame, crescent moon, oak leaf" },
+        "placement": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["top", "bottom_center"] },
+          "default": ["top", "bottom_center"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "title_box_style": {
+      "type": "string",
+      "description": "Visual treatment of the locked title box, e.g. dark panel with glowing inner stroke"
+    },
+    "footer_box_style": {
+      "type": "string",
+      "description": "Visual treatment of the locked bottom boxes"
+    },
+    "ornaments": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Extra decorative motifs allowed outside locked regions"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "keep_art_fully_transparent": { "type": "boolean", "default": true },
+        "allow_overlap_preserved_regions": { "type": "boolean", "default": false },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "prompt_extras": {
+      "type": "string",
+      "description": "Freeform notes for AI image generation beyond structured fields"
+    }
+  }
+}
