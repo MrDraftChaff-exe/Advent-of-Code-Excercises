@@ -150,37 +150,39 @@ def punch_art_hole(
     return Image.fromarray(arr, "RGBA")
 
 
-def make_slot_underlay(layout: dict[str, Any], *, cell: int = 16) -> Image.Image:
-    """Gray boxing for locked slots — drawn UNDER the frame."""
+def make_slot_underlay(layout: dict[str, Any], *, cell: int = 16, full_checker: bool = True) -> Image.Image:
+    """Gray boxing for locked slots — drawn UNDER the frame.
+
+    full_checker=True makes the entire canvas checkerboard so exterior
+    transparency of a frame cutout is obvious.
+    """
     c = layout["canvas"]
     w, h = c["width"], c["height"]
     under = np.zeros((h, w, 4), dtype=np.uint8)
 
-    # Subtle full-card backdrop so transparent areas outside slots read cleanly.
-    under[:, :] = (24, 24, 28, 255)
-
-    art = layout["preserved_regions"]["art_window"]
-    yy, xx = np.indices((art["height"], art["width"]))
+    yy, xx = np.indices((h, w))
     checker = ((xx // cell) + (yy // cell)) % 2 == 0
-    art_block = np.zeros((art["height"], art["width"], 4), dtype=np.uint8)
-    art_block[checker] = (186, 186, 186, 255)
-    art_block[~checker] = (128, 128, 128, 255)
-    under[
-        art["y"] : art["y"] + art["height"],
-        art["x"] : art["x"] + art["width"],
-    ] = art_block
+    if full_checker:
+        under[checker] = (186, 186, 186, 255)
+        under[~checker] = (128, 128, 128, 255)
+    else:
+        under[:, :] = (24, 24, 28, 255)
+        art = layout["preserved_regions"]["art_window"]
+        ay, ax = art["height"], art["width"]
+        yy2, xx2 = np.indices((ay, ax))
+        art_checker = ((xx2 // cell) + (yy2 // cell)) % 2 == 0
+        art_block = np.zeros((ay, ax, 4), dtype=np.uint8)
+        art_block[art_checker] = (186, 186, 186, 255)
+        art_block[~art_checker] = (128, 128, 128, 255)
+        under[art["y"] : art["y"] + ay, art["x"] : art["x"] + ax] = art_block
 
-    # Solid gray boxing for text plaques (behind plaque faces / under ornate rims).
-    for key, color in (
-        ("title_box", (72, 72, 78, 255)),
-        ("bottom_left_box", (72, 72, 78, 255)),
-        ("bottom_right_box", (72, 72, 78, 255)),
-    ):
+    # Slightly darker plaque underlays so empty plaque faces still read as slots.
+    for key in ("title_box", "bottom_left_box", "bottom_right_box"):
         box = layout["preserved_regions"][key]
         under[
             box["y"] : box["y"] + box["height"],
             box["x"] : box["x"] + box["width"],
-        ] = color
+        ] = (96, 96, 102, 255)
 
     return Image.fromarray(under, "RGBA")
 

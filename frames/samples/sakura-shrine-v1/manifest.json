@@ -1,0 +1,70 @@
+{
+  "id": "sakura-shrine-v1",
+  "format": "cursor-card-frame-layers-v1",
+  "canvas": {
+    "width": 750,
+    "height": 1050,
+    "aspect_ratio": "5:7",
+    "units": "px"
+  },
+  "transparent_background": true,
+  "editable": true,
+  "layer_order": [
+    "outer_frame",
+    "art_bezel",
+    "title_plaque",
+    "footer_left",
+    "footer_right",
+    "crests"
+  ],
+  "layers": [
+    {
+      "id": "outer_frame",
+      "file": "layers/outer_frame.png",
+      "blend": "normal",
+      "visible": true
+    },
+    {
+      "id": "art_bezel",
+      "file": "layers/art_bezel.png",
+      "blend": "normal",
+      "visible": true
+    },
+    {
+      "id": "title_plaque",
+      "file": "layers/title_plaque.png",
+      "blend": "normal",
+      "visible": true
+    },
+    {
+      "id": "footer_left",
+      "file": "layers/footer_left.png",
+      "blend": "normal",
+      "visible": true
+    },
+    {
+      "id": "footer_right",
+      "file": "layers/footer_right.png",
+      "blend": "normal",
+      "visible": true
+    },
+    {
+      "id": "crests",
+      "file": "layers/crests.png",
+      "blend": "normal",
+      "visible": true
+    }
+  ],
+  "outputs": {
+    "composite_png": "frame.png",
+    "preview_png": "preview.png",
+    "layered_tiff": null
+  },
+  "notes": [
+    "Edit any layers/*.png independently, then rerun with --compose-only to rebuild frame.png.",
+    "Art window and exterior remain fully transparent.",
+    "A flat generative illustration is split into editable region layers; this is possible and is the supported edit workflow.",
+    "PSD export is not required; transparent PNG layers are the portable editable format.",
+    "Layered TIFF skipped: function takes at most 4 arguments (8 given)"
+  ]
+}

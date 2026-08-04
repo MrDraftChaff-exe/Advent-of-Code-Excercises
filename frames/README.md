@@ -1,83 +1,64 @@
 # Card Frame System
 
-High-quality illustrated card frames with **three locked content slots**. Styling can change; region positions cannot.
+High-quality **frame cutout** assets with locked content slots. Styling can change; region positions cannot.
 
-## Quality bar
+## Possibility check
 
-Frames must look like premium game / TCG assets (detailed materials, soft shading, fine ornaments) — **not** flat UI shapes or simple gradient chrome.
+| Ask | Possible? | How |
+|-----|-----------|-----|
+| Fully transparent frame (no backdrop) | Yes | Green-screen / keyed PNG with transparent exterior + art hole |
+| Frame only (not a full scene) | Yes | No outer VFX trimming / fire halo / ground plate |
+| Editable layers | Yes | Delivered as a **transparent PNG layer pack** + `manifest.json` |
 
-Reference quality: sakura shrine sample (`samples/sakura-shrine-v1.png`).
+A single generative illustration is flat. Editability comes from exporting region layers (`layers/*.png`) you can open in Photoshop/Aseprite/ Affinity / etc., edit, then recompose.
+
+PSD multi-layer write is not required; PNG layers are the supported portable format.
 
 ## Preserved areas
 
 Locked in `layout.json` (canvas **750×1050**):
 
-| Area | Region IDs | Role |
-|------|------------|------|
-| 1. Top title box | `title_box` | Card name / title plaque |
-| 2. Central art window | `art_window` | Transparent artwork hole |
-| 3. Bottom footer | `bottom_left_box` + `bottom_right_box` | Stats / abilities plaques |
+1. `title_box`
+2. `art_window` (transparent)
+3. `bottom_left_box` + `bottom_right_box`
 
-## How to request a new frame
+## Layer pack layout
 
-Provide design parameters (JSON or chat). Do **not** override geometry.
-
-```json
-{
-  "id": "storm-rune-v1",
-  "theme": "storm",
-  "mood": "tempestuous",
-  "palette": { "primary": "#4CC9F0", "secondary": "#3A0CA3", "accent": "#F72585" },
-  "materials": { "border": "obsidian with storm-etched runes", "panels": "dark metal plaques", "ornament": "lightning veins" },
-  "border_style": "runic",
-  "side_fill": "lightning along left/right borders",
-  "crest": { "motif": "thunderbolt" },
-  "prompt_extras": "Premium illustrated TCG frame. Empty plaques. Transparent center."
-}
+```text
+frames/samples/<id>/
+  frame.png              # transparent composite
+  preview.png            # gray boxing UNDER the frame
+  manifest.json
+  layers/
+    outer_frame.png
+    art_bezel.png
+    title_plaque.png
+    footer_left.png
+    footer_right.png
+    crests.png
 ```
 
-Or copy `REQUEST_TEMPLATE.md` / add `frames/params/<id>.json`.
-
-### Generate prompt + finish PNG
+Recompose after edits:
 
 ```bash
-# 1) Build the image prompt from params + locked layout
-python3 frames/build_hq_frame.py --params frames/params/sakura-shrine-v1.json --print-prompt
-
-# 2) Generate a high-quality illustration from that prompt (agent / image model)
-#    Use frames/overlays/layout-reference.png as a layout reference.
-
-# 3) Punch empty art fill only (keeps bezel/ornaments) and preview with gray boxing UNDER the frame
-python3 frames/build_hq_frame.py \
-  --params frames/params/sakura-shrine-v1.json \
-  --punch path/to/raw.png \
-  --preview
+python3 frames/export_layers.py --params frames/params/<id>.json --punch unused.png --out-dir frames/samples/<id> --compose-only
 ```
 
-Layering: gray slot boxing / checker is an underlay; the illustrated frame composites on top so rivets, bezels, and ornaments are not covered.
+## Generate a new frame
 
-### Layout wireframe only (not final art)
+```bash
+python3 frames/build_hq_frame.py --params frames/params/<id>.json --print-prompt
+# generate illustrated cutout on green screen from that prompt
+python3 frames/export_layers.py --params frames/params/<id>.json --punch path/to/raw.png
+```
 
-`generate_frame.py` outputs a crude SVG schematic for checking slot positions. It is **not** the shipping visual style.
+Constraints for every frame:
 
-## Files
+- `frame_only: true`
+- `transparent_background: true`
+- `no_outer_vfx_trimming: true` (no fire sprays / particle halos outside the silhouette)
 
-| File | Purpose |
-|------|---------|
-| `layout.json` | Locked region coordinates |
-| `design-params.schema.json` | Allowed design parameter fields |
-| `build_hq_frame.py` | Prompt builder + art-hole punch / preview |
-| `generate_frame.py` | Low-fidelity layout wireframe SVG |
-| `overlays/layout-reference.png` | Layout guide for image models |
-| `REQUEST_TEMPLATE.md` | Fill-in template |
-| `params/` | Saved design parameter sets |
-| `samples/` | Final HQ PNG frames (+ previews) |
-| `samples/legacy-svg/` | Old wireframe SVGs (not quality targets) |
+## Samples
 
-## Rules
-
-- Design of panels, borders, crests, and ornaments may change.
-- Locations/sizes of preserved regions stay exactly as in `layout.json`.
-- `art_window` must be a clear transparent opening after punch.
-- No readable text inside plaques in template frames.
-- Visual quality must match the sakura / fire HQ samples.
+- `frames/samples/fire-lava-v1/` — volcanic frame cutout + layers
+- `frames/samples/sakura-shrine-v1/` — sakura frame + layers
