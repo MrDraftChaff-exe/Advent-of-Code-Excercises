@@ -47,12 +47,14 @@ python3 frames/build_hq_frame.py --params frames/params/sakura-shrine-v1.json --
 # 2) Generate a high-quality illustration from that prompt (agent / image model)
 #    Use frames/overlays/layout-reference.png as a layout reference.
 
-# 3) Punch the art window to exact layout coords and write sample PNG
+# 3) Punch empty art fill only (keeps bezel/ornaments) and preview with gray boxing UNDER the frame
 python3 frames/build_hq_frame.py \
   --params frames/params/sakura-shrine-v1.json \
   --punch path/to/raw.png \
   --preview
 ```
+
+Layering: gray slot boxing / checker is an underlay; the illustrated frame composites on top so rivets, bezels, and ornaments are not covered.
 
 ### Layout wireframe only (not final art)
 
