@@ -26,23 +26,15 @@ Locked in `layout.json` (canvas **750×1050**):
 
 ```text
 frames/samples/<id>/
+  frame.psd              # PRIMARY: single editable file (toggle/blend layers)
+  frame.ora              # optional GIMP/Krita layered file
   frame.png              # transparent composite
-  preview.png            # gray boxing UNDER the frame
+  preview.png
   manifest.json
-  layers/
-    outer_frame.png
-    art_bezel.png
-    title_plaque.png
-    footer_left.png
-    footer_right.png
-    crests.png
+  layers/*.png           # individual layer PNGs for scripting
 ```
 
-Recompose after edits:
-
-```bash
-python3 frames/export_layers.py --params frames/params/<id>.json --punch unused.png --out-dir frames/samples/<id> --compose-only
-```
+Open `frame.psd` in Photoshop, Affinity Photo, or Photopea — each layer can be shown/hidden and blend modes/opacity changed.
 
 ## Generate a new frame
 

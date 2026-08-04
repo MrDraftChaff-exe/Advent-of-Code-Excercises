@@ -21,50 +21,61 @@
     {
       "id": "outer_frame",
       "file": "layers/outer_frame.png",
+      "psd_name": "Outer Frame",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     },
     {
       "id": "art_bezel",
       "file": "layers/art_bezel.png",
+      "psd_name": "Art Bezel",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     },
     {
       "id": "title_plaque",
       "file": "layers/title_plaque.png",
+      "psd_name": "Title Plaque",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     },
     {
       "id": "footer_left",
       "file": "layers/footer_left.png",
+      "psd_name": "Footer Left",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     },
     {
       "id": "footer_right",
       "file": "layers/footer_right.png",
+      "psd_name": "Footer Right",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     },
     {
       "id": "crests",
       "file": "layers/crests.png",
+      "psd_name": "Crests",
       "blend": "normal",
-      "visible": true
+      "visible": true,
+      "opacity": 255
     }
   ],
   "outputs": {
     "composite_png": "frame.png",
     "preview_png": "preview.png",
-    "layered_tiff": null
+    "layered_psd": "frame.psd",
+    "layered_ora": "frame.ora"
   },
   "notes": [
-    "Edit any layers/*.png independently, then rerun with --compose-only to rebuild frame.png.",
-    "Art window and exterior remain fully transparent.",
-    "A flat generative illustration is split into editable region layers; this is possible and is the supported edit workflow.",
-    "PSD export is not required; transparent PNG layers are the portable editable format.",
-    "Layered TIFF skipped: function takes at most 4 arguments (8 given)"
+    "Primary editable file: frame.psd \u2014 toggle visibility and blend modes in Photoshop/Affinity/Photopea.",
+    "Optional frame.ora for GIMP/Krita.",
+    "Individual layers/*.png are also kept for scripting."
   ]
 }

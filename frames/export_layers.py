@@ -50,6 +50,72 @@ LAYER_ORDER = [
     "crests",
 ]
 
+# Friendly Photoshop layer names + default blend modes.
+LAYER_META = {
+    "outer_frame": {"name": "Outer Frame", "blend": "normal", "visible": True, "opacity": 255},
+    "art_bezel": {"name": "Art Bezel", "blend": "normal", "visible": True, "opacity": 255},
+    "title_plaque": {"name": "Title Plaque", "blend": "normal", "visible": True, "opacity": 255},
+    "footer_left": {"name": "Footer Left", "blend": "normal", "visible": True, "opacity": 255},
+    "footer_right": {"name": "Footer Right", "blend": "normal", "visible": True, "opacity": 255},
+    "crests": {"name": "Crests", "blend": "normal", "visible": True, "opacity": 255},
+}
+
+
+def _blend_mode(name: str):
+    from psd_tools.constants import BlendMode
+
+    mapping = {
+        "normal": BlendMode.NORMAL,
+        "multiply": BlendMode.MULTIPLY,
+        "screen": BlendMode.SCREEN,
+        "overlay": BlendMode.OVERLAY,
+        "soft_light": BlendMode.SOFT_LIGHT,
+        "hard_light": BlendMode.HARD_LIGHT,
+        "color_dodge": BlendMode.COLOR_DODGE,
+        "color_burn": BlendMode.COLOR_BURN,
+        "darken": BlendMode.DARKEN,
+        "lighten": BlendMode.LIGHTEN,
+        "difference": BlendMode.DIFFERENCE,
+        "linear_dodge": BlendMode.LINEAR_DODGE,
+        "linear_burn": BlendMode.LINEAR_BURN,
+    }
+    return mapping.get(name, BlendMode.NORMAL)
+
+
+def write_psd(
+    layer_imgs: dict[str, Image.Image],
+    layout: dict[str, Any],
+    out_path: Path,
+    *,
+    layer_meta: dict[str, dict[str, Any]] | None = None,
+) -> Path:
+    """Write one editable PSD with toggleable / blendable layers."""
+    from psd_tools import PSDImage
+
+    meta = layer_meta or LAYER_META
+    w, h = layout["canvas"]["width"], layout["canvas"]["height"]
+    psd = PSDImage.new("RGBA", (w, h), color=(0, 0, 0, 0))
+
+    # PSD stacks bottom→top in creation order for psd-tools create_pixel_layer.
+    for layer_id in LAYER_ORDER:
+        if layer_id not in layer_imgs:
+            continue
+        info = meta.get(layer_id, {})
+        img = layer_imgs[layer_id].convert("RGBA")
+        if img.size != (w, h):
+            img = img.resize((w, h), Image.Resampling.LANCZOS)
+        layer = psd.create_pixel_layer(
+            img,
+            name=str(info.get("name") or layer_id),
+            opacity=int(info.get("opacity", 255)),
+            blend_mode=_blend_mode(str(info.get("blend", "normal"))),
+        )
+        layer.visible = bool(info.get("visible", True))
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    psd.save(str(out_path))
+    return out_path
+
 
 def _blank(w: int, h: int) -> np.ndarray:
     return np.zeros((h, w, 4), dtype=np.uint8)
@@ -234,6 +300,64 @@ def compose_layers(layer_imgs: dict[str, Image.Image], layout: dict[str, Any]) -
     return harden_opaque_alpha(comp)
 
 
+def write_ora(
+    layer_imgs: dict[str, Image.Image],
+    layout: dict[str, Any],
+    out_path: Path,
+    *,
+    layer_meta: dict[str, dict[str, Any]] | None = None,
+) -> Path:
+    """Write OpenRaster (.ora) for GIMP/Krita with toggleable layers."""
+    import io
+    import zipfile
+    import xml.etree.ElementTree as ET
+
+    meta = layer_meta or LAYER_META
+    w, h = layout["canvas"]["width"], layout["canvas"]["height"]
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    stack = ET.Element("image", {"w": str(w), "h": str(h), "version": "0.0.3"})
+    root = ET.SubElement(stack, "stack", {"name": "Frame Layers"})
+    # ORA lists top layer first.
+    for layer_id in reversed(LAYER_ORDER):
+        if layer_id not in layer_imgs:
+            continue
+        info = meta.get(layer_id, {})
+        ET.SubElement(
+            root,
+            "layer",
+            {
+                "name": str(info.get("name") or layer_id),
+                "src": f"data/{layer_id}.png",
+                "composite-op": "svg:src-over",
+                "opacity": f"{float(info.get('opacity', 255)) / 255.0:.4f}",
+                "visibility": "visible" if info.get("visible", True) else "hidden",
+                "x": "0",
+                "y": "0",
+            },
+        )
+
+    xml_bytes = ET.tostring(stack, encoding="utf-8", xml_declaration=True)
+    with zipfile.ZipFile(out_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr("mimetype", "image/openraster", compress_type=zipfile.ZIP_STORED)
+        zf.writestr("stack.xml", xml_bytes)
+        # mergedimage + thumbnail
+        composed = compose_layers(layer_imgs, layout)
+        buf = io.BytesIO()
+        composed.save(buf, format="PNG")
+        zf.writestr("mergedimage.png", buf.getvalue())
+        thumb = composed.copy()
+        thumb.thumbnail((256, 256))
+        tbuf = io.BytesIO()
+        thumb.save(tbuf, format="PNG")
+        zf.writestr("Thumbnails/thumbnail.png", tbuf.getvalue())
+        for layer_id, img in layer_imgs.items():
+            lbuf = io.BytesIO()
+            img.convert("RGBA").save(lbuf, format="PNG")
+            zf.writestr(f"data/{layer_id}.png", lbuf.getvalue())
+    return out_path
+
+
 def export_pack(
     frame_rgba: Image.Image,
     layout: dict[str, Any],
@@ -257,23 +381,19 @@ def export_pack(
     composed.save(out_dir / "frame.png")
     make_preview_with_checker(composed, layout).save(out_dir / "preview.png")
 
-    # Layered TIFF is optional; Pillow/libtiff multi-page RGBA can fail on some builds.
-    tiff_path = out_dir / "frame_layers.tif"
-    tiff_ok = False
+    psd_path = out_dir / "frame.psd"
+    write_psd(layer_imgs, layout, psd_path)
+
+    # Optional ORA (GIMP/Krita) alongside PSD for open tooling.
+    ora_path = out_dir / "frame.ora"
+    ora_ok = False
     try:
-        pil_layers = [layer_imgs[name] for name in LAYER_ORDER]
-        pil_layers[0].save(
-            tiff_path,
-            save_all=True,
-            append_images=pil_layers[1:],
-            format="TIFF",
-        )
-        tiff_ok = True
-    except Exception as exc:  # noqa: BLE001 - optional export
-        if tiff_path.exists():
-            tiff_path.unlink()
-        tiff_ok = False
-        tiff_error = str(exc)
+        write_ora(layer_imgs, layout, ora_path)
+        ora_ok = True
+    except Exception as exc:  # noqa: BLE001
+        if ora_path.exists():
+            ora_path.unlink()
+        ora_error = str(exc)
 
     manifest = {
         "id": params.get("id"),
@@ -286,25 +406,28 @@ def export_pack(
             {
                 "id": name,
                 "file": f"layers/{name}.png",
-                "blend": "normal",
-                "visible": True,
+                "psd_name": LAYER_META[name]["name"],
+                "blend": LAYER_META[name]["blend"],
+                "visible": LAYER_META[name]["visible"],
+                "opacity": LAYER_META[name]["opacity"],
             }
             for name in LAYER_ORDER
         ],
         "outputs": {
             "composite_png": "frame.png",
             "preview_png": "preview.png",
-            "layered_tiff": "frame_layers.tif" if tiff_ok else None,
+            "layered_psd": "frame.psd",
+            "layered_ora": "frame.ora" if ora_ok else None,
         },
         "notes": [
-            "Edit any layers/*.png independently, then rerun with --compose-only to rebuild frame.png.",
+            "Primary editable file: frame.psd — toggle visibility and blend modes in Photoshop/Affinity/Photopea.",
+            "Optional frame.ora for GIMP/Krita.",
+            "Individual layers/*.png are also kept for scripting.",
             "Art window and exterior remain fully transparent.",
-            "A flat generative illustration is split into editable region layers; this is possible and is the supported edit workflow.",
-            "PSD export is not required; transparent PNG layers are the portable editable format.",
         ],
     }
-    if not tiff_ok:
-        manifest["notes"].append(f"Layered TIFF skipped: {tiff_error}")
+    if not ora_ok:
+        manifest["notes"].append(f"ORA skipped: {ora_error}")
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     return manifest
 
@@ -332,7 +455,12 @@ def main() -> None:
         composed = compose_layers(layer_imgs, layout)
         composed.save(out_dir / "frame.png")
         make_preview_with_checker(composed, layout).save(out_dir / "preview.png")
-        print(f"Recomposed {out_dir / 'frame.png'}")
+        write_psd(layer_imgs, layout, out_dir / "frame.psd")
+        try:
+            write_ora(layer_imgs, layout, out_dir / "frame.ora")
+        except Exception as exc:  # noqa: BLE001
+            print(f"ORA skipped: {exc}")
+        print(f"Recomposed {out_dir / 'frame.png'} and {out_dir / 'frame.psd'}")
         return
 
     manifest = export_pack(Image.open(args.punch), layout, params, out_dir)
