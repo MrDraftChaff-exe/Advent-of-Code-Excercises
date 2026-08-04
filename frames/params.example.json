@@ -18,17 +18,21 @@
     "ornament": "molten edge glow and ember light inside frame materials only"
   },
   "border_style": "jagged",
-  "side_fill": "lava veins and heat glow INSIDE the left/right frame pillars only — no external flame sprays",
+  "side_fill": "ornate irregular silhouette: jagged volcanic spikes and sculpted flame tongues as attached frame ornaments on left/right \u2014 part of the cutout, not a background scene",
   "crest": {
     "motif": "stylized sacred flame emblem",
-    "placement": ["top", "bottom_center"]
+    "placement": [
+      "top",
+      "bottom_center"
+    ]
   },
   "title_box_style": "empty dark basalt horizontal banner with glowing molten inner stroke and metal corner brackets, no text",
   "footer_box_style": "matching empty dark banners left and right; sacred flame crest between them on the frame, no text",
   "ornaments": [
-    "molten edge glow inside the frame",
-    "forged metal rivets",
-    "volumetric soft shading"
+    "irregular non-rectangular outer silhouette",
+    "jagged rock spikes",
+    "sculpted flame ornaments attached to the frame",
+    "molten cracks and rivets"
   ],
   "constraints": {
     "keep_art_fully_transparent": true,
@@ -36,7 +40,8 @@
     "frame_only": true,
     "transparent_background": true,
     "no_outer_vfx_trimming": true,
-    "notes": "Frame cutout asset only. No full-scene fire trimming, no floating embers outside the silhouette, no background plate."
+    "notes": "Ornate irregular cutout is desired. No busy full-scene background/ember field.",
+    "allow_irregular_silhouette": true
   },
-  "prompt_extras": "ASSET TYPE: UI/TCG FRAME CUTOUT — not a full picture or scene. Fully transparent background outside the frame silhouette. NO outer flame trimming, NO fire halo, NO sparks floating in empty space, NO ground, NO backdrop. Keep volcanic/lava detail inside the solid frame body and side pillars only. Include a recessed CARD ART WINDOW with forged-metal/stone bezel; interior EMPTY pure white/magenta. Title plaque above art window; two bottom plaques below; small flame crests on the frame only. Empty plaques, zero lettering. Premium illustrated game-frame asset."
+  "prompt_extras": "Ornate irregular TCG frame CUTOUT on green screen. Not a rigid rectangle. Beautiful jagged volcanic/metal silhouette with attached flame ornaments. No busy background. Empty opaque plaques. Transparent art hole."
 }
