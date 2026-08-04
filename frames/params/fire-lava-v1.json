@@ -21,7 +21,10 @@
   "side_fill": "rich painted flames and molten rivulets filling left and right borders; jagged spiky outer silhouette like cooling lava rock",
   "crest": {
     "motif": "stylized sacred flame emblem",
-    "placement": ["top", "bottom_center"]
+    "placement": [
+      "top",
+      "bottom_center"
+    ]
   },
   "title_box_style": "empty dark basalt horizontal banner with glowing molten inner stroke and metal corner brackets, no text",
   "footer_box_style": "matching empty dark banners left and right; sacred flame crest on upward rock peak between them",
@@ -34,7 +37,7 @@
   "constraints": {
     "keep_art_fully_transparent": true,
     "allow_overlap_preserved_regions": false,
-    "notes": "Premium illustrated game asset quality matching the sakura reference bar — not flat shapes or simple gradients."
+    "notes": "Must have a clearly framed central art aperture with visible inner rim/bezel; art interior empty for transparency punch."
   },
-  "prompt_extras": "Fantasy TCG fire frame. Empty plaques only — zero lettering. Transparent center art hole."
+  "prompt_extras": "CRITICAL: Include a proper recessed CARD ART WINDOW in the center \u2014 a clean rectangular picture-frame aperture with a thick forged-metal / carved-stone inner bezel that clearly frames where card artwork goes. The interior of that window must be EMPTY (pure white or pure magenta), not black fill, not flames, not rock. The bezel must fully surround the art opening on all four sides and sit BETWEEN the top title plaque and the two bottom plaques with clear separation \u2014 title above the art bezel, bottom plaques below it. Do not cover the title plaque or bottom plaques with the art hole. Empty plaques only \u2014 zero lettering. Premium illustrated TCG frame."
 }

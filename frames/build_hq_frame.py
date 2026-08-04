@@ -69,21 +69,43 @@ Full-bleed decorative frame on transparent or plain backdrop; center remains an 
 """.strip()
 
 
-def punch_art_hole(image: Image.Image, layout: dict[str, Any]) -> Image.Image:
-    """Force the locked art window to full transparency."""
+def punch_art_hole(image: Image.Image, layout: dict[str, Any], *, inset: int = 0) -> Image.Image:
+    """Make the art-window interior transparent while preserving a framed bezel.
+
+    Prefer clearing empty fill (white / magenta / near-black flat fill) inside the
+    locked art rect. A hard rect punch is used as fallback for remaining opaque
+    interior pixels, optionally inset so an illustrated rim can survive.
+    """
     art = layout["preserved_regions"]["art_window"]
     canvas = layout["canvas"]
     img = image.convert("RGBA").resize((canvas["width"], canvas["height"]), Image.Resampling.LANCZOS)
     pixels = img.load()
-    x0, y0 = art["x"], art["y"]
-    x1, y1 = x0 + art["width"], y0 + art["height"]
+    x0, y0 = art["x"] + inset, art["y"] + inset
+    x1, y1 = art["x"] + art["width"] - inset, art["y"] + art["height"] - inset
+
+    def is_empty_fill(r: int, g: int, b: int, a: int) -> bool:
+        if a < 16:
+            return True
+        # pure / near white
+        if r > 245 and g > 245 and b > 245:
+            return True
+        # layout magenta guide
+        if r > 230 and g < 40 and b > 230:
+            return True
+        # flat near-black placeholder (not textured rock)
+        if r < 28 and g < 28 and b < 28:
+            return True
+        return False
+
     for y in range(y0, y1):
         for x in range(x0, x1):
             r, g, b, a = pixels[x, y]
-            # also clear near-magenta / near-white leftovers from generation guides
-            if a == 0:
-                continue
-            pixels[x, y] = (0, 0, 0, 0)
+            if is_empty_fill(r, g, b, a):
+                pixels[x, y] = (0, 0, 0, 0)
+            else:
+                # hard-clear remaining interior so art can composite cleanly;
+                # bezel lives outside inset / outside empty-fill regions
+                pixels[x, y] = (0, 0, 0, 0)
     return img
 
 
@@ -107,7 +129,7 @@ def main() -> None:
     parser.add_argument("--print-prompt", action="store_true")
     parser.add_argument("--punch", type=Path, help="Input PNG/WebP to punch art hole into")
     parser.add_argument("--out", type=Path, help="Output path for punched PNG")
-    parser.add_argument("--preview", action="store_true", help="Also write checkerboard preview")
+    parser.add_argument("--inset", type=int, default=0, help="Keep N px of art-window rim when punching")
     args = parser.parse_args()
 
     layout = load_json(args.layout)
@@ -121,7 +143,7 @@ def main() -> None:
         frame_id = slugify(params.get("id") or "frame")
         out = args.out or (ROOT / "samples" / f"{frame_id}.png")
         out.parent.mkdir(parents=True, exist_ok=True)
-        punched = punch_art_hole(Image.open(args.punch), layout)
+        punched = punch_art_hole(Image.open(args.punch), layout, inset=args.inset)
         punched.save(out)
         print(f"Wrote {out}")
         if args.preview:
