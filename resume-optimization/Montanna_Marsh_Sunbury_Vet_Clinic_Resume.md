@@ -28,7 +28,7 @@ Dependable professional with hands-on experience supporting laboratory sample co
 
 ## Professional Experience
 
-### Store Team Member | Sheetz | Columbus, OH | 03/2026–Present
+### Store Team Member | Sheetz | Columbus, OH | 03/2026–07/2026
 - Assisted customers with transactions and provided clear, accurate information on available services.
 - Maintained inventory levels, restocked supplies, and kept work areas organized to support efficient daily operations.
 - Processed cash and card transactions with consistent attention to accuracy and accountability.
@@ -47,8 +47,3 @@ Dependable professional with hands-on experience supporting laboratory sample co
 - Managed inventory levels, restocked supplies, and maintained organization across the store section.
 - Processed cash and card transactions accurately.
 - Balanced registers at the end of shifts to uphold accountability and record accuracy.
-
----
-
-## Education & Additional Sections
-*No education or additional sections were present in the source resume; none added.*
