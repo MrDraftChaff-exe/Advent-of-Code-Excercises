@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 """Export / compose editable transparent frame layers.
 
-Possibility note
-----------------
-A single generative illustration is flat. Editable layers ARE possible when we
-deliver a layered package:
-  - transparent PNG per layer (always)
-  - optional layered TIFF
-  - optional PSD when writers are available
+Primary editable deliverable is a single PSD/ORA whose layers are:
+  - Greyscale Base (full stripped design)
+  - Color - * layers (each hue family toggleable)
 
-Layers are split by locked layout masks + silhouette so plaques, bezel, and
-outer chrome can be edited independently, then recomposed.
+Hide every Color layer to leave greyscale only. Individual PNG layers are
+also written for scripting.
 """
 
 from __future__ import annotations

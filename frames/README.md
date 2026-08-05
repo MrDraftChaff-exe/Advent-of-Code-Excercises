@@ -26,15 +26,16 @@ Locked in `layout.json` (canvas **750×1050**):
 
 ```text
 frames/samples/<id>/
-  frame.psd              # PRIMARY: single editable file (toggle/blend layers)
+  frame.psd              # PRIMARY: greyscale base + toggleable color layers
   frame.ora              # optional GIMP/Krita layered file
-  frame.png              # transparent composite
+  frame.png              # transparent color composite
   preview.png
+  preview-greyscale.png  # all color layers off
   manifest.json
-  layers/*.png           # individual layer PNGs for scripting
+  layers/*.png
 ```
 
-Open `frame.psd` in Photoshop, Affinity Photo, or Photopea — each layer can be shown/hidden and blend modes/opacity changed.
+Open `frame.psd` in Photopea/Photoshop/Affinity. Hide all **Color - *** layers to leave the stripped **Greyscale Base**.
 
 ## Generate a new frame
 
