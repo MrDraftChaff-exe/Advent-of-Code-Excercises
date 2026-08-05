@@ -42,6 +42,28 @@ except ImportError:  # when executed as frames/export_layers.py from repo root
 
 
 LAYER_ORDER = [
+    "greyscale_base",
+    "color_warm_stone",
+    "color_red",
+    "color_orange",
+    "color_yellow",
+    "color_gold",
+    "color_other",
+]
+
+# Friendly Photoshop layer names + default blend modes.
+LAYER_META = {
+    "greyscale_base": {"name": "Greyscale Base", "blend": "normal", "visible": True, "opacity": 255},
+    "color_warm_stone": {"name": "Color - Warm Stone", "blend": "normal", "visible": True, "opacity": 255},
+    "color_red": {"name": "Color - Red Ember", "blend": "normal", "visible": True, "opacity": 255},
+    "color_orange": {"name": "Color - Orange Lava", "blend": "normal", "visible": True, "opacity": 255},
+    "color_yellow": {"name": "Color - Yellow Highlights", "blend": "normal", "visible": True, "opacity": 255},
+    "color_gold": {"name": "Color - Gold Metal", "blend": "normal", "visible": True, "opacity": 255},
+    "color_other": {"name": "Color - Other", "blend": "normal", "visible": True, "opacity": 255},
+}
+
+# Legacy structural region layers (optional secondary export).
+STRUCT_LAYER_ORDER = [
     "outer_frame",
     "art_bezel",
     "title_plaque",
@@ -49,16 +71,6 @@ LAYER_ORDER = [
     "footer_right",
     "crests",
 ]
-
-# Friendly Photoshop layer names + default blend modes.
-LAYER_META = {
-    "outer_frame": {"name": "Outer Frame", "blend": "normal", "visible": True, "opacity": 255},
-    "art_bezel": {"name": "Art Bezel", "blend": "normal", "visible": True, "opacity": 255},
-    "title_plaque": {"name": "Title Plaque", "blend": "normal", "visible": True, "opacity": 255},
-    "footer_left": {"name": "Footer Left", "blend": "normal", "visible": True, "opacity": 255},
-    "footer_right": {"name": "Footer Right", "blend": "normal", "visible": True, "opacity": 255},
-    "crests": {"name": "Crests", "blend": "normal", "visible": True, "opacity": 255},
-}
 
 
 def _blend_mode(name: str):
@@ -88,16 +100,18 @@ def write_psd(
     out_path: Path,
     *,
     layer_meta: dict[str, dict[str, Any]] | None = None,
+    layer_order: list[str] | None = None,
 ) -> Path:
     """Write one editable PSD with toggleable / blendable layers."""
     from psd_tools import PSDImage
 
     meta = layer_meta or LAYER_META
+    order = layer_order or LAYER_ORDER
     w, h = layout["canvas"]["width"], layout["canvas"]["height"]
     psd = PSDImage.new("RGBA", (w, h), color=(0, 0, 0, 0))
 
     # PSD stacks bottom→top in creation order for psd-tools create_pixel_layer.
-    for layer_id in LAYER_ORDER:
+    for layer_id in order:
         if layer_id not in layer_imgs:
             continue
         info = meta.get(layer_id, {})
@@ -115,6 +129,74 @@ def write_psd(
     out_path.parent.mkdir(parents=True, exist_ok=True)
     psd.save(str(out_path))
     return out_path
+
+
+def split_color_layers(frame_rgba: Image.Image) -> dict[str, Image.Image]:
+    """Split a frame into greyscale base + exclusive hue/color layers.
+
+    Turning off every Color - * layer leaves Greyscale Base only.
+    """
+    frame = np.array(frame_rgba.convert("RGBA"))
+    rgb = frame[:, :, :3].astype(np.float32)
+    a = frame[:, :, 3]
+    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
+    mx = np.maximum(np.maximum(r, g), b)
+    mn = np.minimum(np.minimum(r, g), b)
+    sat = np.zeros_like(r)
+    np.divide(mx - mn, np.maximum(mx, 1), out=sat, where=mx > 0)
+    d = mx - mn
+    h = np.zeros_like(r)
+    m = (d > 0) & (mx == r)
+    h[m] = np.mod((g - b) / np.maximum(d, 1e-6), 6)[m]
+    m = (d > 0) & (mx == g)
+    h[m] = ((b - r) / np.maximum(d, 1e-6) + 2)[m]
+    m = (d > 0) & (mx == b)
+    h[m] = ((r - g) / np.maximum(d, 1e-6) + 4)[m]
+    hue = (h * 60) % 360
+    lum = 0.299 * r + 0.587 * g + 0.114 * b
+    opaque = a > 0
+
+    grey = np.zeros_like(frame)
+    grey[:, :, 0] = grey[:, :, 1] = grey[:, :, 2] = np.clip(lum, 0, 255)
+    grey[:, :, 3] = a
+
+    def from_mask(mask: np.ndarray) -> Image.Image:
+        out = np.zeros_like(frame)
+        sel = mask & opaque
+        out[sel, :3] = frame[sel, :3]
+        out[sel, 3] = 255
+        return harden_opaque_alpha(Image.fromarray(out, "RGBA"))
+
+    chromatic = opaque & (sat >= 0.10)
+    gold = (
+        chromatic
+        & (sat < 0.40)
+        & (lum > 55)
+        & (lum < 200)
+        & (((hue >= 18) & (hue < 58)) | ((hue >= 35) & (hue < 70) & (sat < 0.35)))
+    )
+    yellow = chromatic & (~gold) & (hue >= 48) & (hue < 75) & (sat >= 0.20)
+    orange = chromatic & (~gold) & (~yellow) & (hue >= 18) & (hue < 48)
+    red = chromatic & (~gold) & (~yellow) & (~orange) & (
+        ((hue >= 0) & (hue < 18))
+        | ((hue >= 330) & (hue < 360))
+        | ((hue >= 300) & (hue < 330) & (sat > 0.25))
+    )
+    warm_tint = chromatic & (~gold) & (~yellow) & (~orange) & (~red) & (
+        ((hue >= 0) & (hue < 80)) | ((hue >= 300) & (hue < 360))
+    )
+    other = chromatic & (~gold) & (~yellow) & (~orange) & (~red) & (~warm_tint)
+    warm_tint |= chromatic & ~(gold | yellow | orange | red | warm_tint | other)
+
+    return {
+        "greyscale_base": harden_opaque_alpha(Image.fromarray(grey.astype(np.uint8), "RGBA")),
+        "color_warm_stone": from_mask(warm_tint),
+        "color_red": from_mask(red),
+        "color_orange": from_mask(orange),
+        "color_yellow": from_mask(yellow),
+        "color_gold": from_mask(gold),
+        "color_other": from_mask(other),
+    }
 
 
 def _blank(w: int, h: int) -> np.ndarray:
@@ -256,11 +338,11 @@ def split_layers(frame_rgba: Image.Image, layout: dict[str, Any]) -> dict[str, I
         mid_x0:mid_x1,
     ] = True
 
-    layers = {name: _blank(w, h) for name in LAYER_ORDER}
+    layers = {name: _blank(w, h) for name in STRUCT_LAYER_ORDER}
 
     def assign(name: str, mask: np.ndarray) -> None:
         taken = np.zeros((h, w), dtype=bool)
-        for prev in LAYER_ORDER:
+        for prev in STRUCT_LAYER_ORDER:
             if prev == name:
                 break
             taken |= layers[prev][:, :, 3] > 0
@@ -288,10 +370,15 @@ def harden_opaque_alpha(img: Image.Image) -> Image.Image:
     return Image.fromarray(arr, "RGBA")
 
 
-def compose_layers(layer_imgs: dict[str, Image.Image], layout: dict[str, Any]) -> Image.Image:
+def compose_layers(
+    layer_imgs: dict[str, Image.Image],
+    layout: dict[str, Any],
+    *,
+    layer_order: list[str] | None = None,
+) -> Image.Image:
     w, h = layout["canvas"]["width"], layout["canvas"]["height"]
     comp = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    for name in LAYER_ORDER:
+    for name in (layer_order or LAYER_ORDER):
         if name in layer_imgs:
             layer = layer_imgs[name].convert("RGBA")
             if layer.size != (w, h):
@@ -306,6 +393,7 @@ def write_ora(
     out_path: Path,
     *,
     layer_meta: dict[str, dict[str, Any]] | None = None,
+    layer_order: list[str] | None = None,
 ) -> Path:
     """Write OpenRaster (.ora) for GIMP/Krita with toggleable layers."""
     import io
@@ -313,13 +401,14 @@ def write_ora(
     import xml.etree.ElementTree as ET
 
     meta = layer_meta or LAYER_META
+    order = layer_order or LAYER_ORDER
     w, h = layout["canvas"]["width"], layout["canvas"]["height"]
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     stack = ET.Element("image", {"w": str(w), "h": str(h), "version": "0.0.3"})
     root = ET.SubElement(stack, "stack", {"name": "Frame Layers"})
     # ORA lists top layer first.
-    for layer_id in reversed(LAYER_ORDER):
+    for layer_id in reversed(order):
         if layer_id not in layer_imgs:
             continue
         info = meta.get(layer_id, {})
@@ -338,11 +427,10 @@ def write_ora(
         )
 
     xml_bytes = ET.tostring(stack, encoding="utf-8", xml_declaration=True)
+    composed = compose_layers(layer_imgs, layout, layer_order=order)
     with zipfile.ZipFile(out_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         zf.writestr("mimetype", "image/openraster", compress_type=zipfile.ZIP_STORED)
         zf.writestr("stack.xml", xml_bytes)
-        # mergedimage + thumbnail
-        composed = compose_layers(layer_imgs, layout)
         buf = io.BytesIO()
         composed.save(buf, format="PNG")
         zf.writestr("mergedimage.png", buf.getvalue())
@@ -373,18 +461,19 @@ def export_pack(
     punched = key_green_screen(frame_rgba, layout)
     punched = harden_opaque_alpha(Image.fromarray(clear_outside_silhouette(np.array(punched)), "RGBA"))
 
-    layer_imgs = split_layers(punched, layout)
+    # Primary editable stack: greyscale base + toggleable color layers.
+    layer_imgs = split_color_layers(punched)
     for name, img in layer_imgs.items():
         img.save(layers_dir / f"{name}.png")
 
     composed = compose_layers(layer_imgs, layout)
     composed.save(out_dir / "frame.png")
     make_preview_with_checker(composed, layout).save(out_dir / "preview.png")
+    make_preview_with_checker(layer_imgs["greyscale_base"], layout).save(out_dir / "preview-greyscale.png")
 
     psd_path = out_dir / "frame.psd"
     write_psd(layer_imgs, layout, psd_path)
 
-    # Optional ORA (GIMP/Krita) alongside PSD for open tooling.
     ora_path = out_dir / "frame.ora"
     ora_ok = False
     try:
@@ -397,7 +486,7 @@ def export_pack(
 
     manifest = {
         "id": params.get("id"),
-        "format": "cursor-card-frame-layers-v1",
+        "format": "cursor-card-frame-color-layers-v2",
         "canvas": layout["canvas"],
         "transparent_background": True,
         "editable": True,
@@ -410,20 +499,21 @@ def export_pack(
                 "blend": LAYER_META[name]["blend"],
                 "visible": LAYER_META[name]["visible"],
                 "opacity": LAYER_META[name]["opacity"],
+                "role": "greyscale_base" if name == "greyscale_base" else "color",
             }
             for name in LAYER_ORDER
         ],
         "outputs": {
             "composite_png": "frame.png",
             "preview_png": "preview.png",
+            "greyscale_preview_png": "preview-greyscale.png",
             "layered_psd": "frame.psd",
             "layered_ora": "frame.ora" if ora_ok else None,
         },
         "notes": [
-            "Primary editable file: frame.psd — toggle visibility and blend modes in Photoshop/Affinity/Photopea.",
+            "Primary editable file: frame.psd — toggle Color layers off to leave Greyscale Base.",
+            "Each color family is a separate layer for recoloring/blending.",
             "Optional frame.ora for GIMP/Krita.",
-            "Individual layers/*.png are also kept for scripting.",
-            "Art window and exterior remain fully transparent.",
         ],
     }
     if not ora_ok:

@@ -1,6 +1,6 @@
 {
   "id": "fire-lava-v1",
-  "format": "cursor-card-frame-layers-v1",
+  "format": "cursor-card-frame-color-layers-v2",
   "canvas": {
     "width": 750,
     "height": 1050,
@@ -10,72 +10,89 @@
   "transparent_background": true,
   "editable": true,
   "layer_order": [
-    "outer_frame",
-    "art_bezel",
-    "title_plaque",
-    "footer_left",
-    "footer_right",
-    "crests"
+    "greyscale_base",
+    "color_warm_stone",
+    "color_red",
+    "color_orange",
+    "color_yellow",
+    "color_gold",
+    "color_other"
   ],
   "layers": [
     {
-      "id": "outer_frame",
-      "file": "layers/outer_frame.png",
-      "psd_name": "Outer Frame",
+      "id": "greyscale_base",
+      "file": "layers/greyscale_base.png",
+      "psd_name": "Greyscale Base",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "greyscale_base"
     },
     {
-      "id": "art_bezel",
-      "file": "layers/art_bezel.png",
-      "psd_name": "Art Bezel",
+      "id": "color_warm_stone",
+      "file": "layers/color_warm_stone.png",
+      "psd_name": "Color - Warm Stone",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "color"
     },
     {
-      "id": "title_plaque",
-      "file": "layers/title_plaque.png",
-      "psd_name": "Title Plaque",
+      "id": "color_red",
+      "file": "layers/color_red.png",
+      "psd_name": "Color - Red Ember",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "color"
     },
     {
-      "id": "footer_left",
-      "file": "layers/footer_left.png",
-      "psd_name": "Footer Left",
+      "id": "color_orange",
+      "file": "layers/color_orange.png",
+      "psd_name": "Color - Orange Lava",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "color"
     },
     {
-      "id": "footer_right",
-      "file": "layers/footer_right.png",
-      "psd_name": "Footer Right",
+      "id": "color_yellow",
+      "file": "layers/color_yellow.png",
+      "psd_name": "Color - Yellow Highlights",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "color"
     },
     {
-      "id": "crests",
-      "file": "layers/crests.png",
-      "psd_name": "Crests",
+      "id": "color_gold",
+      "file": "layers/color_gold.png",
+      "psd_name": "Color - Gold Metal",
       "blend": "normal",
       "visible": true,
-      "opacity": 255
+      "opacity": 255,
+      "role": "color"
+    },
+    {
+      "id": "color_other",
+      "file": "layers/color_other.png",
+      "psd_name": "Color - Other",
+      "blend": "normal",
+      "visible": true,
+      "opacity": 255,
+      "role": "color"
     }
   ],
   "outputs": {
+    "layered_psd": "frame.psd",
+    "layered_ora": "frame.ora",
     "composite_png": "frame.png",
     "preview_png": "preview.png",
-    "layered_psd": "frame.psd",
-    "layered_ora": "frame.ora"
+    "greyscale_preview_png": "preview-greyscale.png"
   },
   "notes": [
-    "Primary editable file: frame.psd \u2014 toggle visibility and blend modes in Photoshop/Affinity/Photopea.",
-    "Optional frame.ora for GIMP/Krita.",
-    "Individual layers/*.png are also kept for scripting."
+    "Hide all Color - * layers to leave Greyscale Base (stripped design).",
+    "Toggle individual color layers for recoloring/blending.",
+    "Open frame.psd in Photopea (free), Photoshop, or Affinity."
   ]
 }
