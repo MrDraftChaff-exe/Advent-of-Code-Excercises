@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T23:22:23.379374+00:00",
+  "generated_at": "2026-08-16T23:28:42.697026+00:00",
   "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
   "official_api": false,
   "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",

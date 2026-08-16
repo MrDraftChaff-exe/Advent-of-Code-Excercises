@@ -233,6 +233,13 @@ def close_line_gaps(
     closed = _fill_stroke_pinholes(closed, max_hole=80)
     closed = _fill_notches(closed, min_neighbors=4, passes=2)
 
+    # Final junction merge — closes remaining eye/mask micro-gaps
+    k4 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))
+    closed = cv2.dilate(closed, k4, iterations=1)
+    closed = _fill_notches(closed, min_neighbors=4, passes=3)
+    closed = _seal_thin_cracks(closed, length=13)
+    closed = _fill_stroke_pinholes(closed, max_hole=100)
+
     out = np.where(closed > 0, 0, 255).astype(np.uint8)
     return Image.fromarray(out, mode="L")
 
