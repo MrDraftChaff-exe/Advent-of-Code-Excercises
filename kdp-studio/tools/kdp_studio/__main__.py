@@ -101,13 +101,28 @@ def cmd_pages(args: argparse.Namespace) -> int:
     count = args.count or int(meta.get("designs", 30))
     trim = args.trim or meta.get("trim", "letter")
     theme = args.theme or meta.get("theme") or "geometry"
-    if theme in {"forest-animals", "forest", "animals"}:
+    art_dir = root / "art-source"
+    if art_dir.exists() and any(art_dir.glob("*.png")):
+        from kdp_studio.art_import import import_art_folder
+
+        paths = import_art_folder(art_dir, root / "pages", trim=trim)
+        theme = meta.get("theme") or theme
+        print(f"Imported {len(paths)} pages from art-source → {root / 'pages'}")
+    elif theme in {"forest-animals", "forest", "animals"}:
         paths = generate_forest_pages(root / "pages", count=count, trim=trim)
+        print(
+            "Warning: geometric forest placeholders used. "
+            "For viable art, place PNGs in products/<slug>/art-source/ then re-run pages."
+        )
+        print(f"Wrote {len(paths)} pages ({theme}) → {root / 'pages'}")
     else:
         paths = generate_pages(root / "pages", count=count, trim=trim)
+        print(f"Wrote {len(paths)} pages ({theme}) → {root / 'pages'}")
     meta["theme"] = theme
+    if art_dir.exists() and any(art_dir.glob("*.png")):
+        meta["ai_assisted"] = True
+        meta["art_source"] = "art-source"
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(paths)} pages ({theme}) → {root / 'pages'}")
     return 0
 
 
