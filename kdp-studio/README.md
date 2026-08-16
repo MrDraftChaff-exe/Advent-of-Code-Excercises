@@ -77,9 +77,10 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 
 ## Products
 
-| SKU | Type | Trim | Status | Folder |
-| --- | --- | --- | --- | --- |
-| Calm Geometry — 30 Easy Patterns | coloring-book | letter | draft | `products/calm-geometry-30` |
+| SKU | Type | Trim | Price | Status | Folder |
+| --- | --- | --- | --- | --- | --- |
+| Forest Animals — 30 Woodland Friends | coloring-book | letter | $9.99 | draft | `products/forest-animals-30` |
+| Calm Geometry — 30 Easy Patterns | coloring-book | letter | — | draft | `products/calm-geometry-30` |
 
 ## Other POD types
 

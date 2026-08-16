@@ -12,6 +12,7 @@ TOOLS = Path(__file__).resolve().parents[1]
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
+from kdp_studio.animals import generate_forest_pages
 from kdp_studio.build import build_interior_pdf, cover_dimensions
 from kdp_studio.cover_art import render_placeholder_cover
 from kdp_studio.pages import generate_pages
@@ -70,6 +71,7 @@ def cmd_new(args: argparse.Namespace) -> int:
         ],
         "ai_assisted": False,
         "status": "draft",
+        "theme": args.theme,
     }
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
     brief = root / "brief.md"
@@ -98,8 +100,14 @@ def cmd_pages(args: argparse.Namespace) -> int:
     meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
     count = args.count or int(meta.get("designs", 30))
     trim = args.trim or meta.get("trim", "letter")
-    paths = generate_pages(root / "pages", count=count, trim=trim)
-    print(f"Wrote {len(paths)} pages → {root / 'pages'}")
+    theme = args.theme or meta.get("theme") or "geometry"
+    if theme in {"forest-animals", "forest", "animals"}:
+        paths = generate_forest_pages(root / "pages", count=count, trim=trim)
+    else:
+        paths = generate_pages(root / "pages", count=count, trim=trim)
+    meta["theme"] = theme
+    (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {len(paths)} pages ({theme}) → {root / 'pages'}")
     return 0
 
 
@@ -147,6 +155,7 @@ def cmd_cover(args: argparse.Namespace) -> int:
                 page_count=pages,
                 trim=trim,
                 paper=paper,
+                theme=str(meta.get("theme") or "geometry"),
             )
             print(f"Wrote {art['path']} (replace with final art before KDP upload)")
         return 0
@@ -231,13 +240,15 @@ def build_parser() -> argparse.ArgumentParser:
     n.add_argument("--price", type=float, default=9.99)
     n.add_argument("--audience")
     n.add_argument("--one-liner")
+    n.add_argument("--theme", default="geometry", help="Page theme: geometry | forest-animals")
     n.add_argument("--force", action="store_true")
     n.set_defaults(func=cmd_new)
 
-    pg = sub.add_parser("pages", help="Generate geometric coloring page PNGs")
+    pg = sub.add_parser("pages", help="Generate coloring page PNGs")
     pg.add_argument("--slug", required=True)
     pg.add_argument("--count", type=int)
     pg.add_argument("--trim")
+    pg.add_argument("--theme", help="geometry | forest-animals (defaults to meta.theme)")
     pg.set_defaults(func=cmd_pages)
 
     interior = sub.add_parser("interior", help="Build interior.pdf from page PNGs")

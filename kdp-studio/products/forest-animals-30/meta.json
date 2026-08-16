@@ -1,0 +1,44 @@
+{
+  "id": "forest-animals-30",
+  "title": "Forest Animals",
+  "subtitle": "30 Woodland Friends to Color",
+  "type": "coloring-book",
+  "theme": "forest-animals",
+  "trim": "letter",
+  "bleed": false,
+  "single_sided": true,
+  "designs": 30,
+  "page_count_interior": 60,
+  "paper_color": "white",
+  "ink": "black",
+  "cover_finish": "matte",
+  "list_price_usd": 9.99,
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median",
+  "audience": "Kids, families, and adults who love nature and simple animal pages",
+  "one_liner": "Foxes, owls, deer, and more \u2014 bold woodland line art for calm coloring.",
+  "description": "Wander through the woods with 30 original forest-animal coloring pages. Meet foxes, deer, owls, bears, rabbits, squirrels, raccoons, hedgehogs, songbirds, and wolves \u2014 each drawn in bold, friendly line art with trees and woodland details to color. Single-sided pages help markers and gel pens stay on one design.",
+  "bullets": [
+    "30 original woodland animal designs",
+    "Fox, deer, owl, bear, rabbit, squirrel, raccoon, hedgehog, bird, wolf",
+    "Single-sided pages for markers",
+    "8.5 x 11 inch KDP paperback trim",
+    "Simple enough for kids, satisfying for adults",
+    "No characters or trademarks \u2014 original line art only"
+  ],
+  "keywords": [
+    "forest animals coloring book",
+    "woodland animals",
+    "kids coloring book",
+    "fox deer owl",
+    "nature coloring",
+    "animal coloring pages",
+    "wildlife coloring book"
+  ],
+  "categories": [
+    "Arts & Photography > Drawing > Coloring Books",
+    "Children's Books > Activities, Crafts & Games > Activity Books"
+  ],
+  "ai_assisted": false,
+  "status": "draft"
+}
