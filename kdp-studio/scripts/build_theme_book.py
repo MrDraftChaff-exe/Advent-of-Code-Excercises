@@ -7,17 +7,19 @@ import json
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
-
 TOOLS = Path(__file__).resolve().parents[1] / "tools"
 sys.path.insert(0, str(TOOLS))
 
 from kdp_studio.art_import import import_art_folder  # noqa: E402
-from kdp_studio.build import build_interior_pdf, cover_dimensions  # noqa: E402
+from kdp_studio.build import build_interior_pdf  # noqa: E402
+from kdp_studio.cover_art import THEMES as COVER_THEMES  # noqa: E402
+from kdp_studio.cover_art import render_theme_cover  # noqa: E402
 from kdp_studio.pricing import research_and_price  # noqa: E402
 from kdp_studio.publish import build_publish_package  # noqa: E402
 from kdp_studio.specs import ROOT, product_dir  # noqa: E402
 from kdp_studio.validate import validate_product  # noqa: E402
+
+COVER_HEROES = ROOT / "assets" / "covers"
 
 THEMES = {
     "forest-animals-30": {
@@ -231,50 +233,29 @@ def ensure_meta(slug: str) -> dict:
     return meta
 
 
-def render_cover(slug: str, page_count: int, hero_art: Path) -> Path:
+def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Path:
     cfg = THEMES[slug]
     root = product_dir(slug)
-    dims = cover_dimensions(page_count, trim="letter", paper="white")
-    dpi = int(dims["dpi"])
-    w, h = dims["cover_width_px"], dims["cover_height_px"]
-    light, dark = cfg["cover_rgb"]
-    img = Image.new("RGB", (w, h), tuple(min(255, c + 10) for c in light))
-    draw = ImageDraw.Draw(img)
-    bleed = float(dims["bleed_in"])
-    trim_w = float(dims["trim_width_in"])
-    spine = float(dims["spine_in"])
-    fl = int(round((bleed + trim_w + spine) * dpi))
-    ft = int(round(bleed * dpi))
-    fr = int(round((bleed + trim_w + spine + trim_w) * dpi))
-    fb = int(round((bleed + dims["trim_height_in"]) * dpi))
-    fw, fh = fr - fl, fb - ft
-    draw.rectangle((fl, ft, fr, fb), fill=light)
-    draw.rectangle((int(bleed * dpi), ft, int((bleed + trim_w) * dpi), fb), fill=tuple(max(0, c - 8) for c in light))
-
-    art = Image.open(hero_art)
-    fitted = ImageOps.contain(art, (fw - 100, int(fh * 0.62)), Image.Resampling.LANCZOS)
-    g = ImageEnhance.Contrast(fitted.convert("L")).enhance(1.6)
-    rgb = ImageOps.colorize(g, black=dark, white=light)
-    img.paste(rgb, (fl + (fw - rgb.width) // 2, ft + int(fh * 0.05)))
-
-    band_top = ft + int(fh * 0.72)
-    draw.rectangle((fl, band_top, fr, fb), fill=dark)
-    try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 58)
-        font_s = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 32)
-    except OSError:
-        font = ImageFont.load_default()
-        font_s = font
-    title, subtitle = cfg["title"], cfg["subtitle"]
-    tw = draw.textlength(title, font=font)
-    sw = draw.textlength(subtitle, font=font_s)
-    draw.text((fl + (fw - tw) // 2, band_top + 30), title, fill=(250, 250, 250), font=font)
-    draw.text((fl + (fw - sw) // 2, band_top + 110), subtitle, fill=(220, 230, 240), font=font_s)
-
+    cover_meta = COVER_THEMES.get(slug, {})
+    hero_name = cover_meta.get("hero")
+    hero = COVER_HEROES / hero_name if hero_name else None
+    if hero is None or not hero.exists():
+        # Fall back to first art-source page (should rarely happen)
+        hero = hero_art or next(sorted((root / "art-source").glob("*.png")))
+    # Keep a copy beside the wrap for publish packages / re-renders
+    local_hero = root / "cover" / "hero.png"
+    local_hero.parent.mkdir(parents=True, exist_ok=True)
+    local_hero.write_bytes(Path(hero).read_bytes())
     out = root / "cover" / "wrap-placeholder.png"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    img.save(out, dpi=(dpi, dpi))
-    (root / "cover" / "dimensions.json").write_text(json.dumps(dims, indent=2) + "\n")
+    render_theme_cover(
+        slug=slug,
+        title=cfg["title"],
+        subtitle=cfg["subtitle"],
+        one_liner=cfg["one_liner"],
+        page_count=page_count,
+        hero_path=local_hero,
+        out_path=out,
+    )
     return out
 
 
@@ -303,8 +284,7 @@ def build_slug(slug: str) -> dict:
     meta["designs"] = len(paths)
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
-    hero = sorted(art_dir.glob("*.png"))[0]
-    render_cover(slug, result["page_count"], hero)
+    render_cover(slug, result["page_count"])
     research_and_price(slug, query=THEMES[slug]["query"], apply=True, allow_demo=True)
     errors = validate_product(slug)
     pkg = build_publish_package(slug) if not errors else {"ok": False, "errors": errors}
@@ -317,7 +297,25 @@ def build_slug(slug: str) -> dict:
     }
 
 
+def rebuild_covers_only(slug: str) -> dict:
+    """Re-render cover wrap + publish package without regenerating interiors."""
+    if slug not in THEMES:
+        raise SystemExit(f"Unknown slug {slug}. Choose from: {', '.join(THEMES)}")
+    root = product_dir(slug)
+    meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
+    pages = int(meta.get("page_count_interior") or 60)
+    out = render_cover(slug, pages)
+    pkg = build_publish_package(slug)
+    return {"ok": True, "slug": slug, "cover": str(out), "publish": pkg.get("package_dir")}
+
+
 if __name__ == "__main__":
-    slugs = sys.argv[1:] or list(THEMES)
+    args = sys.argv[1:]
+    covers_only = False
+    if args and args[0] == "--covers-only":
+        covers_only = True
+        args = args[1:]
+    slugs = args or list(THEMES)
     for slug in slugs:
-        print(json.dumps(build_slug(slug), indent=2))
+        result = rebuild_covers_only(slug) if covers_only else build_slug(slug)
+        print(json.dumps(result, indent=2))
