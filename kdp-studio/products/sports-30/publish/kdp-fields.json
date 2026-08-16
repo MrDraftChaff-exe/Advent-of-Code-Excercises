@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-08-16T21:38:56.294561+00:00",
+  "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
+  "official_api": false,
+  "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",
+  "paperback": {
+    "title": "Sports",
+    "subtitle": "30 Action Pages to Color",
+    "description": "Soccer, basketball, and more \u2014 bold sports scenes ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+    "author": "Your Name",
+    "keywords": [
+      "sports coloring book",
+      "soccer basketball",
+      "kids sports",
+      "athletic coloring",
+      "ball games",
+      "sports activity book",
+      "outdoor sports"
+    ],
+    "categories": [
+      "Arts & Photography > Drawing > Coloring Books",
+      "Children's Books > Activities, Crafts & Games > Activity Books"
+    ],
+    "ai_assisted": true,
+    "trim": "letter",
+    "ink": "black",
+    "paper_color": "white",
+    "cover_finish": "matte",
+    "bleed": false,
+    "page_count_interior": 60,
+    "list_price_usd": 10.99,
+    "manuscript_file": "interior.pdf",
+    "cover_file_hint": "cover/wrap-placeholder.png (replace with final wrap PDF/PNG)",
+    "cover_dimensions": {
+      "trim": "letter",
+      "page_count": 60,
+      "paper": "white",
+      "bleed_in": 0.125,
+      "spine_in": 0.1351,
+      "trim_width_in": 8.5,
+      "trim_height_in": 11.0,
+      "cover_width_in": 17.3851,
+      "cover_height_in": 11.25,
+      "cover_width_px": 5216,
+      "cover_height_px": 3375,
+      "gutter_in": 0.375,
+      "spine_text_allowed": false,
+      "dpi": 300
+    }
+  },
+  "pricing_research": {
+    "list_price_usd": 10.99,
+    "strategy": "median",
+    "basis": "median",
+    "comp_count": 8,
+    "comp_min": 7.99,
+    "comp_median": 10.99,
+    "comp_max": 12.99,
+    "print_cost_estimate_usd": 1.57,
+    "royalty_50_estimate_usd": 3.92,
+    "niche_band": {
+      "low": 6.99,
+      "mid": 9.99,
+      "high": 12.99,
+      "label": "adult/kids coloring paperbacks"
+    },
+    "generated_at": "2026-08-16T21:38:56.265452+00:00"
+  },
+  "comps_source": "demo_seed",
+  "files": [
+    "interior.pdf",
+    "meta.json",
+    "pricing.json",
+    "brief.md",
+    "cover/",
+    "listing.md"
+  ]
+}
