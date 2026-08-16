@@ -2,4 +2,4 @@
 
 **Slug:** `sports-30`
 
-Soccer, basketball, and more — bold sports scenes ready to color.
+Soccer balls, gear, and more — simple sports subjects ready to color.

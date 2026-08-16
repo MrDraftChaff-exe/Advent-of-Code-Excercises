@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-16T21:27:02.723589+00:00",
+  "generated_at": "2026-08-16T22:35:21.166402+00:00",
   "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
   "official_api": false,
   "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",
   "paperback": {
     "title": "Forest Animals",
     "subtitle": "30 Woodland Friends to Color",
-    "description": "Wander through the woods with 30 original forest-animal coloring pages. Meet foxes, deer, owls, bears, rabbits, squirrels, raccoons, hedgehogs, birds, wolves, and more woodland friends \u2014 each in bold, friendly line art with trees, mushrooms, and nature details to color. Single-sided pages help markers and gel pens stay on one design. AI-assisted artwork \u2014 disclosed on KDP upload.",
+    "description": "Foxes, owls, deer, and more \u2014 bold woodland animals ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
     "author": "Your Name",
     "keywords": [
       "forest animals coloring book",
@@ -28,7 +28,7 @@
     "cover_finish": "matte",
     "bleed": false,
     "page_count_interior": 60,
-    "list_price_usd": 9.99,
+    "list_price_usd": 8.99,
     "manuscript_file": "interior.pdf",
     "cover_file_hint": "cover/wrap-placeholder.png (replace with final wrap PDF/PNG)",
     "cover_dimensions": {
@@ -49,22 +49,22 @@
     }
   },
   "pricing_research": {
-    "list_price_usd": 9.99,
+    "list_price_usd": 8.99,
     "strategy": "median",
     "basis": "median",
     "comp_count": 8,
-    "comp_min": 8.99,
-    "comp_median": 9.99,
+    "comp_min": 7.99,
+    "comp_median": 8.99,
     "comp_max": 12.99,
     "print_cost_estimate_usd": 1.57,
-    "royalty_50_estimate_usd": 3.42,
+    "royalty_50_estimate_usd": 2.92,
     "niche_band": {
       "low": 6.99,
       "mid": 9.99,
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-16T20:51:01.303274+00:00"
+    "generated_at": "2026-08-16T22:35:21.148682+00:00"
   },
   "comps_source": "demo_seed",
   "files": [

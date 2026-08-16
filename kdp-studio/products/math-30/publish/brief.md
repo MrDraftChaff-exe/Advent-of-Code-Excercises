@@ -2,4 +2,4 @@
 
 **Slug:** `math-30`
 
-Numbers, shapes, and playful math scenes for curious colorists.
+Numbers, shapes, and simple math objects for curious colorists.

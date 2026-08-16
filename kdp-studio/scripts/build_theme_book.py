@@ -20,10 +20,31 @@ from kdp_studio.specs import ROOT, product_dir  # noqa: E402
 from kdp_studio.validate import validate_product  # noqa: E402
 
 THEMES = {
+    "forest-animals-30": {
+        "title": "Forest Animals",
+        "subtitle": "30 Woodland Friends to Color",
+        "one_liner": "Foxes, owls, deer, and more — bold woodland animals ready to color.",
+        "audience": "Kids, families, and adults who love nature and simple animal pages",
+        "keywords": [
+            "forest animals coloring book",
+            "woodland animals",
+            "kids coloring book",
+            "fox deer owl",
+            "nature coloring",
+            "animal coloring pages",
+            "wildlife coloring book",
+        ],
+        "categories": [
+            "Arts & Photography > Drawing > Coloring Books",
+            "Children's Books > Activities, Crafts & Games > Activity Books",
+        ],
+        "query": "forest animals coloring book for kids woodland",
+        "cover_rgb": ((232, 240, 228), (45, 85, 50)),
+    },
     "sports-30": {
         "title": "Sports",
         "subtitle": "30 Action Pages to Color",
-        "one_liner": "Soccer, basketball, and more — bold sports scenes ready to color.",
+        "one_liner": "Soccer balls, gear, and more — simple sports subjects ready to color.",
         "audience": "Kids and families who love sports and active play",
         "keywords": [
             "sports coloring book",
@@ -45,7 +66,7 @@ THEMES = {
     "math-30": {
         "title": "Math Adventures",
         "subtitle": "30 Number & Shape Pages to Color",
-        "one_liner": "Numbers, shapes, and playful math scenes for curious colorists.",
+        "one_liner": "Numbers, shapes, and simple math objects for curious colorists.",
         "audience": "Kids learning numbers and shapes; parents and teachers",
         "keywords": [
             "math coloring book",
@@ -66,7 +87,7 @@ THEMES = {
     "physical-science-30": {
         "title": "Physical Science",
         "subtitle": "30 Wonder Pages to Color",
-        "one_liner": "Magnets, light, motion, and simple experiments in colorable line art.",
+        "one_liner": "Magnets, light bulbs, and simple science objects in bold line art.",
         "audience": "Curious kids and classrooms exploring how the world works",
         "keywords": [
             "science coloring book",
@@ -87,7 +108,7 @@ THEMES = {
     "chemistry-30": {
         "title": "Chemistry Lab",
         "subtitle": "30 Molecule & Flask Pages to Color",
-        "one_liner": "Beakers, bubbles, and friendly molecules — a playful chemistry coloring book.",
+        "one_liner": "Beakers, flasks, and lab tools — simple chemistry objects to color.",
         "audience": "Kids and tweens curious about chemistry and lab science",
         "keywords": [
             "chemistry coloring book",
@@ -108,7 +129,7 @@ THEMES = {
     "sea-life-30": {
         "title": "Sea Life",
         "subtitle": "30 Ocean Friends to Color",
-        "one_liner": "Dolphins, coral reefs, and ocean creatures in bold line art.",
+        "one_liner": "Dolphins, fish, and ocean friends — one animal per page.",
         "audience": "Kids and families who love the ocean and marine animals",
         "keywords": [
             "sea life coloring book",
@@ -129,7 +150,7 @@ THEMES = {
     "space-30": {
         "title": "Space Explorers",
         "subtitle": "30 Cosmic Pages to Color",
-        "one_liner": "Rockets, planets, and astronauts — outer space adventures to color.",
+        "one_liner": "Rockets, planets, and astronauts — one space subject per page.",
         "audience": "Kids who love rockets, planets, and exploring the stars",
         "keywords": [
             "space coloring book",

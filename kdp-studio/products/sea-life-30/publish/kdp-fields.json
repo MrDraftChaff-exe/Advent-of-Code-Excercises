@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-16T21:59:13.673108+00:00",
+  "generated_at": "2026-08-16T22:36:03.470772+00:00",
   "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
   "official_api": false,
   "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",
   "paperback": {
     "title": "Sea Life",
     "subtitle": "30 Ocean Friends to Color",
-    "description": "Dolphins, coral reefs, and ocean creatures in bold line art. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+    "description": "Dolphins, fish, and ocean friends \u2014 one animal per page. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
     "author": "Your Name",
     "keywords": [
       "sea life coloring book",
@@ -55,7 +55,7 @@
     "comp_count": 8,
     "comp_min": 7.99,
     "comp_median": 9.99,
-    "comp_max": 12.99,
+    "comp_max": 11.99,
     "print_cost_estimate_usd": 1.57,
     "royalty_50_estimate_usd": 3.42,
     "niche_band": {
@@ -64,7 +64,7 @@
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-16T21:59:13.650740+00:00"
+    "generated_at": "2026-08-16T22:36:03.453770+00:00"
   },
   "comps_source": "demo_seed",
   "files": [

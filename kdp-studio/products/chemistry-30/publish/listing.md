@@ -5,4 +5,4 @@
 
 ## Description
 
-Beakers, bubbles, and friendly molecules — a playful chemistry coloring book. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
+Beakers, flasks, and lab tools — simple chemistry objects to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.

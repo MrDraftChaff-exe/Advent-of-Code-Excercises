@@ -12,19 +12,17 @@
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
-  "list_price_usd": 9.99,
-  "pricing_source": "demo_seed",
-  "pricing_basis": "median",
+  "list_price_usd": 8.99,
   "audience": "Kids, families, and adults who love nature and simple animal pages",
-  "one_liner": "Foxes, owls, deer, and more \u2014 bold woodland line art for calm coloring.",
-  "description": "Wander through the woods with 30 original forest-animal coloring pages. Meet foxes, deer, owls, bears, rabbits, squirrels, raccoons, hedgehogs, birds, wolves, and more woodland friends \u2014 each in bold, friendly line art with trees, mushrooms, and nature details to color. Single-sided pages help markers and gel pens stay on one design. AI-assisted artwork \u2014 disclosed on KDP upload.",
+  "one_liner": "Foxes, owls, deer, and more \u2014 bold woodland animals ready to color.",
+  "description": "Foxes, owls, deer, and more \u2014 bold woodland animals ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
   "bullets": [
-    "30 unique woodland animal scenes",
-    "Fox, deer, owl, bear, rabbit, squirrel, raccoon, hedgehog, bird, wolf, and more",
-    "Bold line art with closed shapes ready to color",
+    "30 unique pages",
+    "Bold line art with closed shapes",
     "Single-sided pages for markers",
     "8.5 x 11 inch paperback format",
-    "Great for kids, families, and nature lovers"
+    "Great for kids, families, and classrooms",
+    "AI-assisted art (disclose on KDP)"
   ],
   "keywords": [
     "forest animals coloring book",
@@ -40,6 +38,8 @@
     "Children's Books > Activities, Crafts & Games > Activity Books"
   ],
   "ai_assisted": true,
+  "art_source": "art-source",
   "status": "draft",
-  "art_source": "ai-line-art"
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median"
 }

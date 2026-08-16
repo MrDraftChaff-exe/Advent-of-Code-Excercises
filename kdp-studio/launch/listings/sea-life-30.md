@@ -5,4 +5,4 @@
 
 ## Description
 
-Dolphins, coral reefs, and ocean creatures in bold line art. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
+Dolphins, fish, and ocean friends — one animal per page. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.

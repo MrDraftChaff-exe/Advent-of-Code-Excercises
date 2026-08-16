@@ -2,4 +2,4 @@
 
 **Slug:** `space-30`
 
-Rockets, planets, and astronauts — outer space adventures to color.
+Rockets, planets, and astronauts — one space subject per page.

@@ -2,4 +2,4 @@
 
 **Slug:** `chemistry-30`
 
-Beakers, bubbles, and friendly molecules — a playful chemistry coloring book.
+Beakers, flasks, and lab tools — simple chemistry objects to color.

@@ -80,7 +80,19 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 | SKU | Type | Trim | Price | Status | Folder |
 | --- | --- | --- | --- | --- | --- |
 | Forest Animals — 30 Woodland Friends | coloring-book | letter | $9.99 | draft | `products/forest-animals-30` |
+| Sports — 30 Action Pages | coloring-book | letter | comps | draft | `products/sports-30` |
+| Math Adventures — 30 Number & Shape Pages | coloring-book | letter | comps | draft | `products/math-30` |
+| Physical Science — 30 Wonder Pages | coloring-book | letter | comps | draft | `products/physical-science-30` |
+| Chemistry Lab — 30 Molecule & Flask Pages | coloring-book | letter | comps | draft | `products/chemistry-30` |
+| Sea Life — 30 Ocean Friends | coloring-book | letter | comps | draft | `products/sea-life-30` |
+| Space Explorers — 30 Cosmic Pages | coloring-book | letter | comps | draft | `products/space-30` |
 | Calm Geometry — 30 Easy Patterns | coloring-book | letter | — | draft | `products/calm-geometry-30` |
+
+All new themed books use **AI-assisted line art** (disclose on KDP). Rebuild from `art-source/` with:
+
+```bash
+python3 scripts/build_theme_book.py sports-30
+```
 
 ## Other POD types
 

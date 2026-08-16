@@ -2,4 +2,4 @@
 
 **Slug:** `sea-life-30`
 
-Dolphins, coral reefs, and ocean creatures in bold line art.
+Dolphins, fish, and ocean friends — one animal per page.

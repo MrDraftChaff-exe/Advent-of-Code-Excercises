@@ -5,4 +5,4 @@
 
 ## Description
 
-Numbers, shapes, and playful math scenes for curious colorists. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
+Numbers, shapes, and simple math objects for curious colorists. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
