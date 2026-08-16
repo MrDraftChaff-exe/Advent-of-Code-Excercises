@@ -1,5 +1,6 @@
 # Space Explorers — 30 Cosmic Pages to Color
 
+**Author:** Elsie Wren
 **Price target:** comps research
 **AI-assisted:** Yes
 

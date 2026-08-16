@@ -1,5 +1,6 @@
 # Chemistry Lab — 30 Molecule & Flask Pages to Color
 
+**Author:** Elsie Wren
 **Price target:** comps research
 **AI-assisted:** Yes
 

@@ -12,6 +12,7 @@ sys.path.insert(0, str(TOOLS))
 
 from kdp_studio.art_import import import_art_folder  # noqa: E402
 from kdp_studio.build import build_interior_pdf  # noqa: E402
+from kdp_studio.cover_art import PEN_NAME  # noqa: E402
 from kdp_studio.cover_art import THEMES as COVER_THEMES  # noqa: E402
 from kdp_studio.cover_art import render_theme_cover  # noqa: E402
 from kdp_studio.pricing import research_and_price  # noqa: E402
@@ -212,19 +213,21 @@ def ensure_meta(slug: str) -> dict:
         ],
         "keywords": cfg["keywords"],
         "categories": cfg["categories"],
+        "author": PEN_NAME,
         "ai_assisted": True,
         "art_source": "art-source",
         "status": "draft",
     }
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
     (root / "brief.md").write_text(
-        f"# {cfg['title']}\n\n**Slug:** `{slug}`\n\n{cfg['one_liner']}\n",
+        f"# {cfg['title']}\n\n**Slug:** `{slug}`  \n**Author:** {PEN_NAME}\n\n{cfg['one_liner']}\n",
         encoding="utf-8",
     )
     listing_dir = ROOT / "launch" / "listings"
     listing_dir.mkdir(parents=True, exist_ok=True)
     (listing_dir / f"{slug}.md").write_text(
         f"# {cfg['title']} — {cfg['subtitle']}\n\n"
+        f"**Author:** {PEN_NAME}\n"
         f"**Price target:** comps research\n"
         f"**AI-assisted:** Yes\n\n"
         f"## Description\n\n{meta['description']}\n",
@@ -246,6 +249,15 @@ def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Pa
     local_hero = root / "cover" / "hero.png"
     local_hero.parent.mkdir(parents=True, exist_ok=True)
     local_hero.write_bytes(Path(hero).read_bytes())
+    meta_path = root / "meta.json"
+    author = PEN_NAME
+    if meta_path.exists():
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        author = meta.get("author") or PEN_NAME
+        if meta.get("author") != PEN_NAME:
+            meta["author"] = PEN_NAME
+            author = PEN_NAME
+            meta_path.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
     out = root / "cover" / "wrap-placeholder.png"
     render_theme_cover(
         slug=slug,
@@ -255,6 +267,7 @@ def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Pa
         page_count=page_count,
         hero_path=local_hero,
         out_path=out,
+        author=author,
     )
     return out
 

@@ -88,7 +88,7 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 | Space Explorers — 30 Cosmic Pages | coloring-book | letter | comps | draft | `products/space-30` |
 | Calm Geometry — 30 Easy Patterns | coloring-book | letter | — | draft | `products/calm-geometry-30` |
 
-All new themed books use **AI-assisted line art** (disclose on KDP). Pages are **one clear subject** with thick closed outlines; import runs threshold + morphological close + endpoint bridging. Covers use full-bleed colored heroes with Fredoka/Nunito type on a full wrap (front, spine, back). Rebuild from `art-source/` with:
+All new themed books use **AI-assisted line art** (disclose on KDP). Pages are **one clear subject** with thick closed outlines; import runs threshold + morphological close + endpoint bridging. Covers use full-bleed colored heroes with **Lilita One** titles, **Source Sans 3** subtitles, and pen name **Elsie Wren** (Patrick Hand byline) on a full wrap. Rebuild from `art-source/` with:
 
 ```bash
 python3 scripts/build_theme_book.py sports-30

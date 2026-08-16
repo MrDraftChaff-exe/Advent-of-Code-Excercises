@@ -1,5 +1,6 @@
 # Forest Animals — 30 Woodland Friends to Color
 
+**Author:** Elsie Wren
 **Price target:** comps research
 **AI-assisted:** Yes
 

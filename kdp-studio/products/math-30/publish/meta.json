@@ -41,5 +41,6 @@
   "art_source": "art-source",
   "status": "draft",
   "pricing_source": "demo_seed",
-  "pricing_basis": "median"
+  "pricing_basis": "median",
+  "author": "Elsie Wren"
 }

@@ -1,5 +1,6 @@
 # Sea Life — 30 Ocean Friends to Color
 
+**Author:** Elsie Wren
 **Price target:** comps research
 **AI-assisted:** Yes
 

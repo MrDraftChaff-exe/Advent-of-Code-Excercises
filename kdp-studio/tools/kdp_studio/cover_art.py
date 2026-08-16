@@ -11,6 +11,19 @@ from .build import cover_dimensions
 
 FONTS = Path(__file__).resolve().parents[2] / "assets" / "fonts"
 
+# House pen name for KDP author field + cover byline
+PEN_NAME = "Elsie Wren"
+
+# Typography:
+# - Lilita One — chunky display with character (replaces generic Fredoka)
+# - Source Sans 3 — clean subtitle/body that stays readable at small sizes
+# - Patrick Hand — warm handwritten byline for the pen name
+TITLE_FONT = "LilitaOne-Regular.ttf"
+SUB_FONT = "SourceSans3-SemiBold.ttf"
+TAG_FONT = "SourceSans3-SemiBold.ttf"
+AUTHOR_FONT = "PatrickHand-Regular.ttf"
+BODY_FONT = "SourceSans3-Regular.ttf"
+
 # Theme palettes: (gradient_top, gradient_bottom, accent, title_fill, title_stroke)
 THEMES: dict[str, dict] = {
     "forest-animals-30": {
@@ -163,6 +176,7 @@ def render_theme_cover(
     page_count: int,
     hero_path: Path,
     out_path: Path,
+    author: str = PEN_NAME,
     trim: str = "letter",
     paper: str = "white",
 ) -> dict:
@@ -215,17 +229,17 @@ def render_theme_cover(
     draw = ImageDraw.Draw(img)
 
     # Title block — brand-first, large, top of front
-    title_font_size = 128 if len(title) < 14 else 104 if len(title) < 20 else 88
-    title_font = _font("Fredoka-Bold.ttf", title_font_size)
-    sub_font = _font("Nunito-Bold.ttf", 44)
-    tag_font = _font("Nunito-ExtraBold.ttf", 34)
+    title_font_size = 124 if len(title) < 14 else 100 if len(title) < 20 else 86
+    title_font = _font(TITLE_FONT, title_font_size)
+    sub_font = _font(SUB_FONT, 42)
+    tag_font = _font(TAG_FONT, 32)
 
     # Fit title to front width with padding
     pad = int(front_w * 0.06)
     max_title_w = front_w - 2 * pad
     while title_font_size > 64 and _text_size(draw, title, title_font)[0] > max_title_w:
         title_font_size -= 4
-        title_font = _font("Fredoka-Bold.ttf", title_font_size)
+        title_font = _font(TITLE_FONT, title_font_size)
 
     tw, th = _text_size(draw, title, title_font)
     title_x = front_l + (front_w - tw) // 2
@@ -258,15 +272,24 @@ def render_theme_cover(
     tag = "COLORING BOOK"
     tag_w, tag_h = _text_size(draw, tag, tag_font)
     tag_y = line_y + 28
+    # White + dark stroke (accent fill fails on bright sky/sun heroes)
     _draw_text_outlined(
         draw,
         (front_l + (front_w - tag_w) // 2, tag_y),
         tag,
         font=tag_font,
-        fill=accent,
+        fill=(255, 255, 255),
         stroke=tuple(theme["stroke"]),
         stroke_width=2,
     )
+    # Accent dots flanking the tag for color without hurting legibility
+    gap = 28
+    cy = tag_y + tag_h // 2
+    r = 7
+    left_x = front_l + (front_w - tag_w) // 2 - gap
+    right_x = front_l + (front_w + tag_w) // 2 + gap
+    draw.ellipse((left_x - r, cy - r, left_x + r, cy + r), fill=accent)
+    draw.ellipse((right_x - r, cy - r, right_x + r, cy + r), fill=accent)
 
     sw, sh = _text_size(draw, subtitle, sub_font)
     sub_x = front_l + (front_w - sw) // 2
@@ -278,14 +301,28 @@ def render_theme_cover(
         font=sub_font,
         fill=(255, 255, 255),
         stroke=tuple(theme["stroke"]),
-        stroke_width=3,
+        stroke_width=2,
+    )
+
+    byline = f"by {author}"
+    author_font = _font(AUTHOR_FONT, 56)
+    aw, ah = _text_size(draw, byline, author_font)
+    author_y = sub_y + sh + 26
+    _draw_text_outlined(
+        draw,
+        (front_l + (front_w - aw) // 2, author_y),
+        byline,
+        font=author_font,
+        fill=(255, 252, 240),
+        stroke=tuple(theme["stroke"]),
+        stroke_width=2,
     )
 
     # --- Spine ---
     spine_w = spine_r - spine_l
     if spine_w > 20:
-        spine_font = _font("Nunito-Bold.ttf", max(22, min(36, spine_w - 8)))
-        spine_text = title
+        spine_font = _font(SUB_FONT, max(22, min(36, spine_w - 8)))
+        spine_text = f"{title}  ·  {author}"
         # Vertical text via rotated strip
         tw2, th2 = _text_size(draw, spine_text, spine_font)
         strip_h = tw2 + 40
@@ -323,14 +360,15 @@ def render_theme_cover(
     img.paste(back_img.convert("RGB"), (back_l, top))
     draw = ImageDraw.Draw(img)
 
-    back_title_font = _font("Fredoka-Bold.ttf", 54)
-    body_font = _font("Nunito-Regular.ttf", 34)
-    small_font = _font("Nunito-Bold.ttf", 28)
+    back_title_font = _font(TITLE_FONT, 52)
+    body_font = _font(BODY_FONT, 34)
+    small_font = _font(SUB_FONT, 28)
+    back_author_font = _font(AUTHOR_FONT, 40)
 
     label = theme.get("back_label", "Coloring book")
     lw, lh = _text_size(draw, label, back_title_font)
     bx = back_l + (back_w - lw) // 2
-    by = top + int(back_h * 0.12)
+    by = top + int(back_h * 0.10)
     _draw_text_outlined(
         draw,
         (bx, by),
@@ -342,10 +380,10 @@ def render_theme_cover(
     )
 
     # Accent bar
-    aw = int(back_w * 0.22)
+    aw2 = int(back_w * 0.22)
     ay = by + lh + 22
     draw.rounded_rectangle(
-        (back_l + (back_w - aw) // 2, ay, back_l + (back_w + aw) // 2, ay + 8),
+        (back_l + (back_w - aw2) // 2, ay, back_l + (back_w + aw2) // 2, ay + 8),
         radius=4,
         fill=accent,
     )
@@ -381,17 +419,26 @@ def render_theme_cover(
         )
         text_y += lh2 + 14
 
+    author_line = f"by {author}"
+    aw3, _ = _text_size(draw, author_line, back_author_font)
+    draw.text(
+        (back_l + (back_w - aw3) // 2, bottom - int(back_h * 0.14)),
+        author_line,
+        font=back_author_font,
+        fill=(255, 255, 255),
+    )
+
     foot = "AI-assisted artwork — disclose on KDP"
     fw2, _ = _text_size(draw, foot, small_font)
     draw.text(
-        (back_l + (back_w - fw2) // 2, bottom - int(back_h * 0.08)),
+        (back_l + (back_w - fw2) // 2, bottom - int(back_h * 0.07)),
         foot,
         font=small_font,
         fill=(200, 210, 220),
     )
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    img.save(out_path, dpi=(dpi, dpi))
+    img.save(out_path, dpi=(dpi, dpi), optimize=True, compress_level=9)
     dims_path = out_path.parent / "dimensions.json"
     dims_path.write_text(json.dumps(dims, indent=2) + "\n", encoding="utf-8")
     return {"path": str(out_path), **dims}

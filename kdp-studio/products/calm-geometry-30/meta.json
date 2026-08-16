@@ -38,5 +38,6 @@
   "ai_assisted": false,
   "status": "draft",
   "pricing_source": "manual_import",
-  "pricing_basis": "median"
+  "pricing_basis": "median",
+  "author": "Elsie Wren"
 }

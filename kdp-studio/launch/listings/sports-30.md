@@ -1,5 +1,6 @@
 # Sports — 30 Action Pages to Color
 
+**Author:** Elsie Wren
 **Price target:** comps research
 **AI-assisted:** Yes
 
