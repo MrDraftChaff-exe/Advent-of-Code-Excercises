@@ -15,6 +15,8 @@ if str(TOOLS) not in sys.path:
 from kdp_studio.build import build_interior_pdf, cover_dimensions
 from kdp_studio.cover_art import render_placeholder_cover
 from kdp_studio.pages import generate_pages
+from kdp_studio.pricing import research_and_price
+from kdp_studio.publish import build_publish_package, run_assist
 from kdp_studio.specs import PRODUCTS, product_dir
 from kdp_studio.validate import validate_product
 
@@ -180,6 +182,41 @@ def cmd_list(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_price(args: argparse.Namespace) -> int:
+    result = research_and_price(
+        args.slug,
+        query=args.query,
+        strategy=args.strategy,
+        allow_demo=not args.live_only,
+        apply=args.apply,
+        comps_file=args.comps_file,
+    )
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("comps") else 1
+
+
+def cmd_publish(args: argparse.Namespace) -> int:
+    if args.assist or args.live:
+        result = run_assist(args.slug, live=bool(args.live))
+    else:
+        result = build_publish_package(args.slug)
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("ok") else 1
+
+
+def cmd_preview(args: argparse.Namespace) -> int:
+    import uvicorn
+
+    print(f"Preview Studio → http://127.0.0.1:{args.port}")
+    uvicorn.run(
+        "kdp_studio.preview_app:app",
+        host=args.host,
+        port=args.port,
+        reload=False,
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="kdp_studio", description="KDP Studio CLI")
     sub = p.add_subparsers(dest="command", required=True)
@@ -225,6 +262,41 @@ def build_parser() -> argparse.ArgumentParser:
 
     ls = sub.add_parser("list", help="List products")
     ls.set_defaults(func=cmd_list)
+
+    price = sub.add_parser("price", help="Research comparable prices and recommend list price")
+    price.add_argument("--slug", required=True)
+    price.add_argument("--query", help="Amazon search query override")
+    price.add_argument(
+        "--strategy",
+        choices=["median", "undercut", "premium"],
+        default="median",
+    )
+    price.add_argument("--apply", action="store_true", help="Write recommended price into meta.json")
+    price.add_argument(
+        "--comps-file",
+        help="JSON file of comps: [{title, price_usd, asin?, url?}] (skips Amazon fetch)",
+    )
+    price.add_argument(
+        "--live-only",
+        action="store_true",
+        help="Do not fall back to demo comps if Amazon fetch fails",
+    )
+    price.set_defaults(func=cmd_price)
+
+    pub = sub.add_parser("publish", help="Build KDP upload package (no official API)")
+    pub.add_argument("--slug", required=True)
+    pub.add_argument("--assist", action="store_true", help="Dry-run guided assist message")
+    pub.add_argument(
+        "--live",
+        action="store_true",
+        help="Experimental: open KDP Bookshelf in Playwright (manual upload still required)",
+    )
+    pub.set_defaults(func=cmd_publish)
+
+    prev = sub.add_parser("preview", help="Start local Preview Studio web UI")
+    prev.add_argument("--host", default="127.0.0.1")
+    prev.add_argument("--port", type=int, default=8765)
+    prev.set_defaults(func=cmd_preview)
     return p
 
 

@@ -1,0 +1,51 @@
+{
+  "slug": "calm-geometry-30",
+  "query": "coloring book adult coloring geometric patterns",
+  "fetch": {
+    "ok": false,
+    "error": null,
+    "url": null
+  },
+  "source": "manual_import",
+  "comps": [
+    {
+      "asin": "B0EXAMPLE01",
+      "title": "Example: Bold & Easy Patterns Coloring Book",
+      "price_usd": 9.99,
+      "url": "https://www.amazon.com/dp/B0EXAMPLE01",
+      "source": "manual_import"
+    },
+    {
+      "asin": "B0EXAMPLE02",
+      "title": "Example: Geometric Mandala Coloring for Adults",
+      "price_usd": 11.99,
+      "url": null,
+      "source": "manual_import"
+    },
+    {
+      "asin": "B0EXAMPLE03",
+      "title": "Example: Simple Shapes Stress Relief Coloring",
+      "price_usd": 8.99,
+      "url": null,
+      "source": "manual_import"
+    }
+  ],
+  "recommendation": {
+    "list_price_usd": 9.99,
+    "strategy": "median",
+    "basis": "median",
+    "comp_count": 3,
+    "comp_min": 8.99,
+    "comp_median": 9.99,
+    "comp_max": 11.99,
+    "print_cost_estimate_usd": 1.57,
+    "royalty_50_estimate_usd": 3.42,
+    "niche_band": {
+      "low": 6.99,
+      "mid": 9.99,
+      "high": 12.99,
+      "label": "adult/kids coloring paperbacks"
+    },
+    "generated_at": "2026-08-16T20:45:16.930642+00:00"
+  }
+}

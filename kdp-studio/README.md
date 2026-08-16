@@ -2,28 +2,38 @@
 
 Toolkit for creating **coloring books** and other useful **Amazon Kindle Direct Publishing (KDP)** print-on-demand paperbacks — planners, journals, logbooks, puzzle books, and workbooks.
 
-Built to be expanded by Cursor: scaffold a SKU, generate or drop in pages, build a print-ready interior PDF, compute cover wrap size, validate, then upload in KDP.
+## Preview everything locally
+
+```bash
+cd kdp-studio
+./scripts/preview.sh
+# → http://127.0.0.1:8765
+```
+
+Or: `cd tools && python3 -m kdp_studio preview`
+
+Preview Studio shows pages, cover wrap, listing copy, comparable-price research, and the KDP publish checklist.
 
 ## Structure
 
 ```text
 kdp-studio/
+  preview/             # Local Preview Studio UI
   specs/               # Trim sizes, bleed, gutter, print rules
   templates/           # Meta schema + type templates
-  tools/kdp_studio/    # CLI: new → pages → interior → cover → validate
+  tools/kdp_studio/    # CLI
   products/            # One folder per title
   launch/              # Upload checklist + listing copy
   PRODUCT_FACTORY.md   # Prompt for the next SKU
 ```
 
-## Quick start
+## Quick start (build a title)
 
 ```bash
 cd kdp-studio
 python3 -m pip install -r requirements.txt
 cd tools
 
-# Scaffold + generate first sample title
 python3 -m kdp_studio new --slug calm-geometry-30 \
   --title "Calm Geometry" \
   --subtitle "30 Easy Patterns to Color" \
@@ -31,11 +41,39 @@ python3 -m kdp_studio new --slug calm-geometry-30 \
 
 python3 -m kdp_studio pages --slug calm-geometry-30
 python3 -m kdp_studio interior --slug calm-geometry-30
-python3 -m kdp_studio cover --slug calm-geometry-30
+python3 -m kdp_studio cover --slug calm-geometry-30 --render
 python3 -m kdp_studio validate --slug calm-geometry-30
 ```
 
-Outputs land in `products/calm-geometry-30/` (`pages/`, `interior.pdf`, `cover/dimensions.json`).
+## Pricing from comparable sales
+
+```bash
+# Try live Amazon search (often blocked) → falls back to niche demo comps
+python3 -m kdp_studio price --slug calm-geometry-30 --apply
+
+# Best for real research: paste comps you gathered into a JSON file
+python3 -m kdp_studio price --slug calm-geometry-30 \
+  --comps-file ../templates/coloring-book/comps.example.json \
+  --apply
+```
+
+Strategies: `median` (default), `undercut`, `premium`. Writes `products/<slug>/pricing.json` and can update `list_price_usd`.
+
+## Publish to KDP (important)
+
+**Amazon does not provide a public KDP upload API** for indie paperbacks. Auto-upload tools that click the website are unofficial, brittle, and may conflict with Amazon’s terms.
+
+What KDP Studio does instead:
+
+```bash
+python3 -m kdp_studio publish --slug calm-geometry-30
+# → products/<slug>/publish/  (interior, cover dims, kdp-fields.json, UPLOAD.md)
+
+python3 -m kdp_studio publish --slug calm-geometry-30 --assist   # dry-run guidance
+# --live opens KDP Bookshelf in Playwright for manual paste (experimental)
+```
+
+Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using the package fields, or follow [`launch/CHECKLIST.md`](./launch/CHECKLIST.md).
 
 ## Products
 
@@ -44,8 +82,6 @@ Outputs land in `products/calm-geometry-30/` (`pages/`, `interior.pdf`, `cover/d
 | Calm Geometry — 30 Easy Patterns | coloring-book | letter | draft | `products/calm-geometry-30` |
 
 ## Other POD types
-
-Use the same pipeline; change `--type` and art source:
 
 | Type | Typical trim | Notes |
 | --- | --- | --- |
@@ -57,7 +93,3 @@ Use the same pipeline; change `--type` and art source:
 | `workbook` | letter | Larger type for kids |
 
 See [`specs/kdp-print-specs.md`](./specs/kdp-print-specs.md) and [`PRODUCT_FACTORY.md`](./PRODUCT_FACTORY.md).
-
-## Upload
-
-This repo builds files; you publish from your KDP account. Follow [`launch/CHECKLIST.md`](./launch/CHECKLIST.md).

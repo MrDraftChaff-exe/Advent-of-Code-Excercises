@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KDP Studio — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/studio.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <header class="top">
+    <div class="brand-block">
+      <p class="eyebrow">Print-on-demand workshop</p>
+      <h1 class="brand">KDP Studio</h1>
+      <p class="tagline">Preview interiors, research comparable prices, prepare your Kindle Direct Publishing upload.</p>
+    </div>
+    <div class="top-actions">
+      <label class="select-wrap">
+        <span>Title</span>
+        <select id="productSelect"></select>
+      </label>
+      <button type="button" id="refreshBtn" class="ghost">Refresh</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="overview" type="button">Overview</button>
+    <button class="tab" data-tab="pages" type="button">Pages</button>
+    <button class="tab" data-tab="cover" type="button">Cover</button>
+    <button class="tab" data-tab="listing" type="button">Listing</button>
+    <button class="tab" data-tab="pricing" type="button">Pricing</button>
+    <button class="tab" data-tab="publish" type="button">Publish</button>
+  </nav>
+
+  <main>
+    <section id="panel-overview" class="panel active">
+      <div class="split">
+        <div>
+          <h2 id="ovTitle">—</h2>
+          <p id="ovSubtitle" class="muted"></p>
+          <dl class="meta-grid" id="ovMeta"></dl>
+          <p id="ovValidation" class="status"></p>
+        </div>
+        <div class="hero-thumb">
+          <img id="ovCover" alt="Cover preview" hidden />
+          <p id="ovCoverEmpty" class="muted">No cover preview yet. Run cover --render.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-pages" class="panel">
+      <div class="pager-bar">
+        <button type="button" id="prevPage" class="ghost">Prev</button>
+        <p id="pageLabel" class="muted">Page 0 / 0</p>
+        <button type="button" id="nextPage" class="ghost">Next</button>
+      </div>
+      <div class="page-stage">
+        <img id="pageImage" alt="Coloring page preview" />
+      </div>
+      <p class="muted tip">Flip through generated page PNGs. Open the full interior PDF below when ready.</p>
+      <p><a id="pdfLink" href="#" target="_blank" rel="noopener">Open interior.pdf</a></p>
+    </section>
+
+    <section id="panel-cover" class="panel">
+      <h2>Cover wrap</h2>
+      <pre id="coverDims" class="codeblock"></pre>
+      <div class="cover-wide">
+        <img id="coverFull" alt="Full cover wrap" hidden />
+      </div>
+    </section>
+
+    <section id="panel-listing" class="panel">
+      <h2>Listing & brief</h2>
+      <div class="split">
+        <article>
+          <h3>Listing draft</h3>
+          <pre id="listingMd" class="codeblock prose"></pre>
+        </article>
+        <article>
+          <h3>Brief</h3>
+          <pre id="briefMd" class="codeblock prose"></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="panel-pricing" class="panel">
+      <h2>Comparable sales pricing</h2>
+      <p class="muted">Researches public Amazon search comps when available; falls back to niche demo bands if Amazon blocks bots. Always confirm in KDP before publishing.</p>
+      <div class="row">
+        <label>Strategy
+          <select id="priceStrategy">
+            <option value="median">Match median</option>
+            <option value="undercut">Undercut median ~$1</option>
+            <option value="premium">Upper quartile</option>
+          </select>
+        </label>
+        <label class="grow">Search query
+          <input id="priceQuery" type="text" placeholder="adult geometric coloring book" />
+        </label>
+        <button type="button" id="researchBtn" class="primary">Research comps</button>
+        <button type="button" id="applyPriceBtn" class="ghost">Apply to meta</button>
+      </div>
+      <div id="priceSummary" class="price-card"></div>
+      <table class="comps" id="compsTable">
+        <thead><tr><th>Title</th><th>Price</th><th>Source</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="panel-publish" class="panel">
+      <h2>Publish to Kindle Direct Publishing</h2>
+      <p class="callout">
+        Amazon does <strong>not</strong> offer a public KDP upload API for indie paperbacks.
+        KDP Studio builds a complete upload package and checklist. Use Preview Studio here, then upload in
+        <a href="https://kdp.amazon.com/en_US/bookshelf" target="_blank" rel="noopener">KDP Bookshelf</a>.
+        Browser auto-fill is experimental and intentionally limited.
+      </p>
+      <button type="button" id="packageBtn" class="primary">Build publish package</button>
+      <pre id="publishFields" class="codeblock"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>KDP Studio · local preview on port 8765 · files stay on your machine</p>
+  </footer>
+  <script src="/static/studio.js"></script>
+</body>
+</html>

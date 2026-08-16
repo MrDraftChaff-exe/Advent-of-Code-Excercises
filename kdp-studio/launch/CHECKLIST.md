@@ -4,6 +4,8 @@ Use once interior.pdf validates and cover art is ready.
 
 ## Before upload
 
+- [ ] Set price from `pricing.json` / Preview Studio comps research
+- [ ] `python3 -m kdp_studio publish --slug <slug>` → use `publish/` package
 - [ ] `python3 -m kdp_studio validate --slug <slug>` → OK
 - [ ] Trim in meta matches KDP paperback trim selection
 - [ ] Interior page count matches cover spine calculation
@@ -19,9 +21,15 @@ Use once interior.pdf validates and cover art is ready.
 
 | Asset | Source |
 | --- | --- |
-| Manuscript (interior) | `products/<slug>/interior.pdf` |
-| Cover | Full wrap PDF/PNG sized from `products/<slug>/cover/dimensions.json` |
+| Manuscript (interior) | `products/<slug>/publish/interior.pdf` (or `interior.pdf`) |
+| Cover | Full wrap sized from `cover/dimensions.json` |
+| Field checklist | `products/<slug>/publish/kdp-fields.json` |
 | Listing copy | `launch/listings/<slug>.md` |
+
+## Automatic upload?
+
+KDP has **no public upload API**. Prefer the publish package + manual Bookshelf upload.
+`--assist` / `--live` only help you open Bookshelf; they do not submit a book for you.
 
 ## After live
 
