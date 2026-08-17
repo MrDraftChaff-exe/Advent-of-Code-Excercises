@@ -1,0 +1,86 @@
+{
+  "slug": "chemistry-30",
+  "query": "chemistry coloring book for kids lab",
+  "fetch": {
+    "ok": false,
+    "error": "HTTP Error 503: Service Unavailable",
+    "url": "https://www.amazon.com/s?k=chemistry+coloring+book+for+kids+lab"
+  },
+  "source": "demo_seed",
+  "comps": [
+    {
+      "asin": "DEMO000000XX",
+      "title": "Bold Patterns \u2014 Easy Chemistry Coloring Book For Kids Lab Coloring",
+      "price_usd": 11.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000001XX",
+      "title": "Relaxing Line Art for Adults (Chemistry Coloring Book For Kids Lab)",
+      "price_usd": 7.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000002XX",
+      "title": "Simple Geometric Pages to Color",
+      "price_usd": 9.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000003XX",
+      "title": "Mindful Shapes Coloring Book",
+      "price_usd": 10.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000004XX",
+      "title": "Easy Mandala Moments",
+      "price_usd": 12.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000005XX",
+      "title": "Cozy Abstract Coloring for Stress Relief",
+      "price_usd": 9.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000006XX",
+      "title": "Large Print Pattern Coloring",
+      "price_usd": 10.99,
+      "url": null,
+      "source": "demo_seed"
+    },
+    {
+      "asin": "DEMO000007XX",
+      "title": "Calm Pages: Chemistry Coloring Book For Kids Lab Edition",
+      "price_usd": 10.99,
+      "url": null,
+      "source": "demo_seed"
+    }
+  ],
+  "recommendation": {
+    "list_price_usd": 10.99,
+    "strategy": "median",
+    "basis": "median",
+    "comp_count": 8,
+    "comp_min": 7.99,
+    "comp_median": 10.99,
+    "comp_max": 12.99,
+    "print_cost_estimate_usd": 1.57,
+    "royalty_50_estimate_usd": 3.92,
+    "niche_band": {
+      "low": 6.99,
+      "mid": 9.99,
+      "high": 12.99,
+      "label": "adult/kids coloring paperbacks"
+    },
+    "generated_at": "2026-08-17T17:45:00.751542+00:00"
+  }
+}

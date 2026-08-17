@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Example: Bold & Easy Patterns Coloring Book",
+    "price_usd": 9.99,
+    "asin": "B0EXAMPLE01",
+    "url": "https://www.amazon.com/dp/B0EXAMPLE01"
+  },
+  {
+    "title": "Example: Geometric Mandala Coloring for Adults",
+    "price_usd": 11.99,
+    "asin": "B0EXAMPLE02"
+  },
+  {
+    "title": "Example: Simple Shapes Stress Relief Coloring",
+    "price_usd": 8.99,
+    "asin": "B0EXAMPLE03"
+  }
+]
