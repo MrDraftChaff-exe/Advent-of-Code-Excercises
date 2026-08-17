@@ -34,25 +34,25 @@ cd kdp-studio
 python3 -m pip install -r requirements.txt
 cd tools
 
-python3 -m kdp_studio new --slug calm-geometry-30 \
-  --title "Calm Geometry" \
-  --subtitle "30 Easy Patterns to Color" \
+python3 -m kdp_studio new --slug forest-animals-30 \
+  --title "Forest Animals" \
+  --subtitle "30 Woodland Friends to Color" \
   --designs 30
 
-python3 -m kdp_studio pages --slug calm-geometry-30
-python3 -m kdp_studio interior --slug calm-geometry-30
-python3 -m kdp_studio cover --slug calm-geometry-30 --render
-python3 -m kdp_studio validate --slug calm-geometry-30
+python3 -m kdp_studio pages --slug forest-animals-30
+python3 -m kdp_studio interior --slug forest-animals-30
+python3 -m kdp_studio cover --slug forest-animals-30 --render
+python3 -m kdp_studio validate --slug forest-animals-30
 ```
 
 ## Pricing from comparable sales
 
 ```bash
 # Try live Amazon search (often blocked) → falls back to niche demo comps
-python3 -m kdp_studio price --slug calm-geometry-30 --apply
+python3 -m kdp_studio price --slug forest-animals-30 --apply
 
 # Best for real research: paste comps you gathered into a JSON file
-python3 -m kdp_studio price --slug calm-geometry-30 \
+python3 -m kdp_studio price --slug forest-animals-30 \
   --comps-file ../templates/coloring-book/comps.example.json \
   --apply
 ```
@@ -66,10 +66,10 @@ Strategies: `median` (default), `undercut`, `premium`. Writes `products/<slug>/p
 What KDP Studio does instead:
 
 ```bash
-python3 -m kdp_studio publish --slug calm-geometry-30
+python3 -m kdp_studio publish --slug forest-animals-30
 # → products/<slug>/publish/  (interior, cover dims, kdp-fields.json, UPLOAD.md)
 
-python3 -m kdp_studio publish --slug calm-geometry-30 --assist   # dry-run guidance
+python3 -m kdp_studio publish --slug forest-animals-30 --assist   # dry-run guidance
 # --live opens KDP Bookshelf in Playwright for manual paste (experimental)
 ```
 
@@ -79,14 +79,13 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 
 | SKU | Type | Trim | Price | Status | Folder |
 | --- | --- | --- | --- | --- | --- |
-| Forest Animals — 30 Woodland Friends | coloring-book | letter | $9.99 | draft | `products/forest-animals-30` |
-| Sports — 30 Action Pages | coloring-book | letter | comps | draft | `products/sports-30` |
-| Math Adventures — 30 Number & Shape Pages | coloring-book | letter | comps | draft | `products/math-30` |
-| Physical Science — 30 Wonder Pages | coloring-book | letter | comps | draft | `products/physical-science-30` |
-| Chemistry Lab — 30 Molecule & Flask Pages | coloring-book | letter | comps | draft | `products/chemistry-30` |
-| Sea Life — 30 Ocean Friends | coloring-book | letter | comps | draft | `products/sea-life-30` |
-| Space Explorers — 30 Cosmic Pages | coloring-book | letter | comps | draft | `products/space-30` |
-| Calm Geometry — 30 Easy Patterns | coloring-book | letter | — | draft | `products/calm-geometry-30` |
+| Forest Animals — 30 Woodland Friends | coloring-book | letter | $10.99 | draft | `products/forest-animals-30` |
+| Sports — 30 Action Pages | coloring-book | letter | $11.99 | draft | `products/sports-30` |
+| Math Adventures — 30 Number & Shape Pages | coloring-book | letter | $9.99 | draft | `products/math-30` |
+| Physical Science — 30 Wonder Pages | coloring-book | letter | $8.99 | draft | `products/physical-science-30` |
+| Chemistry Lab — 30 Molecule & Flask Pages | coloring-book | letter | $9.99 | draft | `products/chemistry-30` |
+| Sea Life — 30 Ocean Friends | coloring-book | letter | $8.99 | draft | `products/sea-life-30` |
+| Space Explorers — 30 Cosmic Pages | coloring-book | letter | $8.99 | draft | `products/space-30` |
 
 All new themed books use **AI-assisted line art** (disclose on KDP). Pages are **one clear subject** with thick closed outlines; import runs threshold + morphological close + endpoint bridging. Covers use full-bleed colored heroes with **Lilita One** titles, **Source Sans 3** subtitles, and pen name **Elsie Wren** (Patrick Hand byline) on a full wrap. Rebuild from `art-source/` with:
 
