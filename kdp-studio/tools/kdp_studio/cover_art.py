@@ -50,14 +50,6 @@ THEMES: dict[str, dict] = {
         "hero": "cover-hero-math.png",
         "back_label": "Count, shape, color",
     },
-    "physical-science-30": {
-        "gradient": ((180, 230, 245), (40, 90, 130)),
-        "accent": (255, 210, 90),
-        "title": (255, 255, 255),
-        "stroke": (20, 50, 80),
-        "hero": "cover-hero-physical.png",
-        "back_label": "Curious minds welcome",
-    },
     "chemistry-30": {
         "gradient": ((190, 235, 200), (25, 110, 70)),
         "accent": (120, 230, 170),

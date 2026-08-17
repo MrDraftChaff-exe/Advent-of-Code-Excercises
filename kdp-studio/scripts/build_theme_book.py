@@ -87,27 +87,6 @@ THEMES = {
         "query": "math coloring book for kids numbers shapes",
         "cover_rgb": ((245, 236, 220), (120, 60, 20)),
     },
-    "physical-science-30": {
-        "title": "Physical Science",
-        "subtitle": "30 Wonder Pages to Color",
-        "one_liner": "Magnets, light bulbs, and simple science objects in bold line art.",
-        "audience": "Curious kids and classrooms exploring how the world works",
-        "keywords": [
-            "science coloring book",
-            "physical science kids",
-            "STEM coloring",
-            "magnets electricity",
-            "science activity book",
-            "physics for kids",
-            "experiments coloring",
-        ],
-        "categories": [
-            "Arts & Photography > Drawing > Coloring Books",
-            "Children's Books > Education & Reference > Science & Nature",
-        ],
-        "query": "science coloring book for kids STEM",
-        "cover_rgb": ((230, 240, 245), (20, 70, 100)),
-    },
     "chemistry-30": {
         "title": "Chemistry Lab",
         "subtitle": "30 Molecule & Flask Pages to Color",

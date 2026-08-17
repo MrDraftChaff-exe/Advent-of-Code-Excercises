@@ -82,7 +82,6 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 | Forest Animals — 30 Woodland Friends | coloring-book | letter | $10.99 | draft | `products/forest-animals-30` |
 | Sports — 30 Action Pages | coloring-book | letter | $11.99 | draft | `products/sports-30` |
 | Math Adventures — 30 Number & Shape Pages | coloring-book | letter | $9.99 | draft | `products/math-30` |
-| Physical Science — 30 Wonder Pages | coloring-book | letter | $8.99 | draft | `products/physical-science-30` |
 | Chemistry Lab — 30 Molecule & Flask Pages | coloring-book | letter | $9.99 | draft | `products/chemistry-30` |
 | Sea Life — 30 Ocean Friends | coloring-book | letter | $8.99 | draft | `products/sea-life-30` |
 | Space Explorers — 30 Cosmic Pages | coloring-book | letter | $8.99 | draft | `products/space-30` |
@@ -93,7 +92,7 @@ All new themed books use **AI-assisted line art** (disclose on KDP). Pages are *
 python3 scripts/build_theme_book.py sports-30
 # covers only (faster):
 python3 scripts/build_theme_book.py --covers-only
-# also: forest-animals-30 math-30 physical-science-30 chemistry-30 sea-life-30 space-30
+# also: forest-animals-30 math-30 chemistry-30 sea-life-30 space-30
 ```
 
 ## Other POD types
