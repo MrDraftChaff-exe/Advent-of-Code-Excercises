@@ -11,14 +11,14 @@
     {
       "asin": "DEMO000000XX",
       "title": "Bold Patterns \u2014 Easy Space Coloring Book For Kids Rockets Planets Coloring",
-      "price_usd": 9.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000001XX",
       "title": "Relaxing Line Art for Adults (Space Coloring Book For Kids Rockets Planets)",
-      "price_usd": 7.99,
+      "price_usd": 8.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -32,21 +32,21 @@
     {
       "asin": "DEMO000003XX",
       "title": "Mindful Shapes Coloring Book",
-      "price_usd": 7.99,
+      "price_usd": 9.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000004XX",
       "title": "Easy Mandala Moments",
-      "price_usd": 11.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000005XX",
       "title": "Cozy Abstract Coloring for Stress Relief",
-      "price_usd": 12.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -60,7 +60,7 @@
     {
       "asin": "DEMO000007XX",
       "title": "Calm Pages: Space Coloring Book For Kids Rockets Planets Edition",
-      "price_usd": 7.99,
+      "price_usd": 9.99,
       "url": null,
       "source": "demo_seed"
     }
@@ -72,7 +72,7 @@
     "comp_count": 8,
     "comp_min": 7.99,
     "comp_median": 9.99,
-    "comp_max": 12.99,
+    "comp_max": 11.99,
     "print_cost_estimate_usd": 1.57,
     "royalty_50_estimate_usd": 3.42,
     "niche_band": {
@@ -81,6 +81,6 @@
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-17T15:56:59.191393+00:00"
+    "generated_at": "2026-08-17T17:14:15.041855+00:00"
   }
 }
