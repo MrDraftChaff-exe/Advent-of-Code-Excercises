@@ -140,9 +140,13 @@ def _trace_curves(ink: np.ndarray, *, opttolerance: float = 1.0):
     curves = []
     for curve in path:
         x0, y0, x1, y1 = _curve_bbox(curve)
-        # Only skip the true full-frame background path (touches all edges)
+        bw, bh = x1 - x0, y1 - y0
+        # Skip full-frame / near-full-page paths — even-odd fill turns them into
+        # solid black backgrounds (unacceptable for coloring pages).
         touches = x0 <= 2 and y0 <= 2 and x1 >= w - 3 and y1 >= h - 3
-        if touches and (x1 - x0) >= w * 0.98 and (y1 - y0) >= h * 0.98:
+        if touches and bw >= w * 0.98 and bh >= h * 0.98:
+            continue
+        if bw >= w * 0.85 and bh >= h * 0.85:
             continue
         curves.append(curve)
     return curves
@@ -300,8 +304,8 @@ def _enrich_sparse_canvas(
 ) -> np.ndarray:
     """If the subject leaves large empty bands, add extra closed shapes to color.
 
-    Prefer a single outer frame + dense companions over empty double frames.
-    Returns a full-page ink mask (1=ink) combining the main art and accents.
+    Companion motifs only — never a page-sized frame (those become solid black
+    under even-odd vector fill). Returns a full-page ink mask (1=ink).
     """
     page = np.zeros((canvas_h, canvas_w), dtype=np.uint8)
     h, w = ink.shape
@@ -318,21 +322,7 @@ def _enrich_sparse_canvas(
         return page
 
     rng = np.random.default_rng(seed)
-    edge = max(36, min(x0, canvas_w - 1 - x1, y0, canvas_h - 1 - y1) // 2)
-
-    # One colorable outer frame (no empty double-window look)
-    _draw_closed_poly(
-        page,
-        [
-            (edge, edge),
-            (canvas_w - 1 - edge, edge),
-            (canvas_w - 1 - edge, canvas_h - 1 - edge),
-            (edge, canvas_h - 1 - edge),
-        ],
-        width=8,
-    )
-
-    pad = edge + 36
+    pad = max(48, min(x0, canvas_w - 1 - x1, y0, canvas_h - 1 - y1, 120))
     bands: list[tuple[int, int, int, int]] = []
     top_gap = y0 - pad
     bot_gap = (canvas_h - 1 - pad) - y1
@@ -342,7 +332,6 @@ def _enrich_sparse_canvas(
         bands.append((pad, pad, canvas_w - pad, y0 - 28))
     if bot_gap > 110:
         bands.append((pad, y1 + 28, canvas_w - pad, canvas_h - pad))
-    # Side bands only when the subject is narrow and top/bottom already handled poorly
     if fill_w < 0.62 and left_gap > 120:
         bands.append((pad, max(pad, y0), x0 - 28, min(canvas_h - pad, y1)))
     if fill_w < 0.62 and right_gap > 120:
