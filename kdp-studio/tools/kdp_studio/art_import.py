@@ -381,7 +381,7 @@ def _draw_simple_star(page: np.ndarray, cx: int, cy: int, r: int) -> None:
 def _draw_motif(page: np.ndarray, cx: int, cy: int, r: int, kind: int, *, theme: str = "forest") -> None:
     """Theme-appropriate companions — never generic nuts-and-bolts geometry for nature books."""
     t = (theme or "forest").lower()
-    if "forest" in t or "animal" in t:
+    if "forest" in t or "animal" in t or "quiet" in t or "cozy" in t:
         # Prefer flowers & bushes; occasional leaf / mushroom / grass
         pick = kind % 10
         if pick <= 3:
@@ -439,7 +439,7 @@ def _fill_band_with_motifs(
     if bw < 100 or bh < 90:
         return
     t = (theme or "").lower()
-    foresty = "forest" in t or "animal" in t
+    foresty = "forest" in t or "animal" in t or "quiet" in t or "cozy" in t
     # Forest pages: fewer, larger bushes/flowers so they read as scenery
     if foresty:
         r_hi = max(70, min(160, int(bh * 0.48), int(bw * 0.18)))
