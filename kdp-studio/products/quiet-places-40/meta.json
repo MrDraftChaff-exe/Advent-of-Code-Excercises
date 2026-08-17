@@ -1,0 +1,46 @@
+{
+  "id": "quiet-places-40",
+  "title": "Quiet Places",
+  "subtitle": "40 Bold & Easy Designs for Stress Relief",
+  "type": "coloring-book",
+  "theme": "quiet-places",
+  "trim": "square",
+  "bleed": false,
+  "single_sided": true,
+  "designs": 40,
+  "page_count_interior": 80,
+  "paper_color": "white",
+  "ink": "black",
+  "cover_finish": "matte",
+  "list_price_usd": 10.99,
+  "audience": "Adults and kids who want simple, relaxing coloring without tiny details",
+  "one_liner": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines.",
+  "description": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines. 40 original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+  "bullets": [
+    "40 unique pages",
+    "Bold line art with closed shapes",
+    "Single-sided pages for markers",
+    "8.5 x 8.5 inch square format",
+    "Relaxing designs for adults and kids",
+    "AI-assisted art (disclose on KDP)"
+  ],
+  "keywords": [
+    "bold and easy coloring book",
+    "stress relief coloring",
+    "simple landscapes coloring",
+    "easy coloring for adults",
+    "cozy scenes coloring book",
+    "relaxation coloring pages",
+    "large print coloring book"
+  ],
+  "categories": [
+    "Arts & Photography > Drawing > Coloring Books",
+    "Self-Help > Stress Management"
+  ],
+  "author": "Elsie Wren",
+  "ai_assisted": true,
+  "art_source": "art-source",
+  "status": "draft",
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median"
+}

@@ -74,6 +74,14 @@ THEMES: dict[str, dict] = {
         "hero": "cover-hero-space.png",
         "back_label": "Blast off and color",
     },
+    "quiet-places-40": {
+        "gradient": ((190, 220, 200), (55, 100, 75)),
+        "accent": (255, 210, 130),
+        "title": (255, 255, 255),
+        "stroke": (30, 60, 40),
+        "hero": "cover-hero-quiet.png",
+        "back_label": "Breathe and color",
+    },
 }
 
 

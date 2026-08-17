@@ -150,6 +150,29 @@ THEMES = {
         "query": "space coloring book for kids rockets planets",
         "cover_rgb": ((225, 228, 245), (40, 30, 90)),
     },
+    "quiet-places-40": {
+        "title": "Quiet Places",
+        "subtitle": "40 Bold & Easy Designs for Stress Relief",
+        "one_liner": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines.",
+        "audience": "Adults and kids who want simple, relaxing coloring without tiny details",
+        "keywords": [
+            "bold and easy coloring book",
+            "stress relief coloring",
+            "simple landscapes coloring",
+            "easy coloring for adults",
+            "cozy scenes coloring book",
+            "relaxation coloring pages",
+            "large print coloring book",
+        ],
+        "categories": [
+            "Arts & Photography > Drawing > Coloring Books",
+            "Self-Help > Stress Management",
+        ],
+        "query": "bold and easy coloring book stress relief landscapes",
+        "cover_rgb": ((230, 240, 235), (50, 90, 70)),
+        "trim": "square",
+        "designs": 40,
+    },
 }
 
 
@@ -160,16 +183,19 @@ def ensure_meta(slug: str) -> dict:
     (root / "pages").mkdir(exist_ok=True)
     (root / "cover").mkdir(exist_ok=True)
     (root / "art-source").mkdir(exist_ok=True)
+    designs = int(cfg.get("designs", 30))
+    trim = str(cfg.get("trim", "letter"))
+    trim_label = "8.5 x 8.5 inch square" if trim == "square" else "8.5 x 11 inch paperback"
     meta = {
         "id": slug,
         "title": cfg["title"],
         "subtitle": cfg["subtitle"],
         "type": "coloring-book",
-        "theme": slug.replace("-30", ""),
-        "trim": "letter",
+        "theme": slug.rsplit("-", 1)[0],
+        "trim": trim,
         "bleed": False,
         "single_sided": True,
-        "designs": 30,
+        "designs": designs,
         "page_count_interior": None,
         "paper_color": "white",
         "ink": "black",
@@ -178,16 +204,16 @@ def ensure_meta(slug: str) -> dict:
         "audience": cfg["audience"],
         "one_liner": cfg["one_liner"],
         "description": (
-            f"{cfg['one_liner']} Thirty original pages with bold outlines and closed shapes "
+            f"{cfg['one_liner']} {designs} original pages with bold outlines and closed shapes "
             "ready to color. Single-sided so markers stay on one design. "
             "AI-assisted artwork — disclose on KDP upload."
         ),
         "bullets": [
-            "30 unique pages",
+            f"{designs} unique pages",
             "Bold line art with closed shapes",
             "Single-sided pages for markers",
-            "8.5 x 11 inch paperback format",
-            "Great for kids, families, and classrooms",
+            f"{trim_label} format",
+            "Relaxing designs for adults and kids",
             "AI-assisted art (disclose on KDP)",
         ],
         "keywords": cfg["keywords"],
@@ -215,7 +241,12 @@ def ensure_meta(slug: str) -> dict:
     return meta
 
 
-def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Path:
+def render_cover(
+    slug: str,
+    page_count: int,
+    hero_art: Path | None = None,
+    trim: str | None = None,
+) -> Path:
     cfg = THEMES[slug]
     root = product_dir(slug)
     cover_meta = COVER_THEMES.get(slug, {})
@@ -230,9 +261,11 @@ def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Pa
     local_hero.write_bytes(Path(hero).read_bytes())
     meta_path = root / "meta.json"
     author = PEN_NAME
+    trim_key = trim or str(cfg.get("trim", "letter"))
     if meta_path.exists():
         meta = json.loads(meta_path.read_text(encoding="utf-8"))
         author = meta.get("author") or PEN_NAME
+        trim_key = str(meta.get("trim") or trim_key)
         if meta.get("author") != PEN_NAME:
             meta["author"] = PEN_NAME
             author = PEN_NAME
@@ -247,6 +280,7 @@ def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Pa
         hero_path=local_hero,
         out_path=out,
         author=author,
+        trim=trim_key,
     )
     return out
 
@@ -254,30 +288,39 @@ def render_cover(slug: str, page_count: int, hero_art: Path | None = None) -> Pa
 def build_slug(slug: str) -> dict:
     if slug not in THEMES:
         raise SystemExit(f"Unknown slug {slug}. Choose from: {', '.join(THEMES)}")
+    cfg = THEMES[slug]
+    designs = int(cfg.get("designs", 30))
+    trim = str(cfg.get("trim", "letter"))
     ensure_meta(slug)
     root = product_dir(slug)
     art_dir = root / "art-source"
     pngs = sorted(art_dir.glob("*.png"))
-    if len(pngs) < 30:
-        return {"ok": False, "slug": slug, "error": f"Need 30 PNGs in {art_dir}, found {len(pngs)}"}
+    if len(pngs) < designs:
+        return {
+            "ok": False,
+            "slug": slug,
+            "error": f"Need {designs} PNGs in {art_dir}, found {len(pngs)}",
+        }
 
-    # Keep only first 30 sorted for stable page order
-    for extra in pngs[30:]:
+    # Keep only first N sorted for stable page order
+    for extra in pngs[designs:]:
         extra.unlink()
-    paths = import_art_folder(art_dir, root / "pages", trim="letter", theme=slug)
-    # Trim to 30 designs if more slipped in
-    for p in sorted((root / "pages").glob("page-*.png"))[30:]:
+    paths = import_art_folder(art_dir, root / "pages", trim=trim, theme=slug)
+    for p in sorted((root / "pages").glob("page-*.png"))[designs:]:
         p.unlink()
-    paths = sorted((root / "pages").glob("page-*.png"))[:30]
+    for p in sorted((root / "pages").glob("page-*.svg"))[designs:]:
+        p.unlink()
+    paths = sorted((root / "pages").glob("page-*.png"))[:designs]
 
-    result = build_interior_pdf(paths, root / "interior.pdf", trim="letter", single_sided=True)
+    result = build_interior_pdf(paths, root / "interior.pdf", trim=trim, single_sided=True)
     meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
     meta["page_count_interior"] = result["page_count"]
     meta["designs"] = len(paths)
+    meta["trim"] = trim
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
-    render_cover(slug, result["page_count"])
-    research_and_price(slug, query=THEMES[slug]["query"], apply=True, allow_demo=True)
+    render_cover(slug, result["page_count"], trim=trim)
+    research_and_price(slug, query=cfg["query"], apply=True, allow_demo=True)
     errors = validate_product(slug)
     pkg = build_publish_package(slug) if not errors else {"ok": False, "errors": errors}
     return {

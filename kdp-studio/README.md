@@ -85,6 +85,7 @@ Then upload from [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf) using t
 | Chemistry Lab — 30 Molecule & Flask Pages | coloring-book | letter | $9.99 | draft | `products/chemistry-30` |
 | Sea Life — 30 Ocean Friends | coloring-book | letter | $8.99 | draft | `products/sea-life-30` |
 | Space Explorers — 30 Cosmic Pages | coloring-book | letter | $8.99 | draft | `products/space-30` |
+| Quiet Places — 40 Bold & Easy Designs | coloring-book | square | $10.99 | draft | `products/quiet-places-40` |
 
 All new themed books use **AI-assisted line art** (disclose on KDP). Pages are **one clear subject** with thick closed outlines; import runs threshold + morphological close + endpoint bridging. Covers use full-bleed colored heroes with **Lilita One** titles, **Source Sans 3** subtitles, and pen name **Elsie Wren** (Patrick Hand byline) on a full wrap. Rebuild from `art-source/` with:
 
@@ -92,7 +93,7 @@ All new themed books use **AI-assisted line art** (disclose on KDP). Pages are *
 python3 scripts/build_theme_book.py sports-30
 # covers only (faster):
 python3 scripts/build_theme_book.py --covers-only
-# also: forest-animals-30 math-30 chemistry-30 sea-life-30 space-30
+# also: forest-animals-30 math-30 chemistry-30 sea-life-30 space-30 quiet-places-40
 ```
 
 ## Other POD types

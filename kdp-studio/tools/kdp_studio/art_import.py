@@ -381,7 +381,7 @@ def _draw_simple_star(page: np.ndarray, cx: int, cy: int, r: int) -> None:
 def _draw_motif(page: np.ndarray, cx: int, cy: int, r: int, kind: int, *, theme: str = "forest") -> None:
     """Theme-appropriate companions — never generic nuts-and-bolts geometry for nature books."""
     t = (theme or "forest").lower()
-    if "forest" in t or "animal" in t:
+    if "forest" in t or "animal" in t or "quiet" in t or "cozy" in t:
         # Prefer flowers & bushes; occasional leaf / mushroom / grass
         pick = kind % 10
         if pick <= 3:
@@ -482,6 +482,11 @@ def _enrich_sparse_canvas(
     page = np.zeros((canvas_h, canvas_w), dtype=np.uint8)
     h, w = ink.shape
     page[oy : oy + h, ox : ox + w] = ink
+
+    # Full illustrated scenes (Quiet Places / cozy) — never sprinkle companion junk
+    t = (theme or "").lower()
+    if "quiet" in t or "cozy" in t:
+        return page
 
     ys, xs = np.where(page > 0)
     if ys.size == 0:
