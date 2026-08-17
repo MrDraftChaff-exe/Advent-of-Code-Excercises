@@ -1,0 +1,57 @@
+{
+  "bleed_inches": 0.125,
+  "dpi": 300,
+  "paper": {
+    "white": { "thickness_inches_per_page": 0.002252 },
+    "cream": { "thickness_inches_per_page": 0.0025 }
+  },
+  "gutter_by_page_count": [
+    { "max_pages": 150, "gutter_inches": 0.375 },
+    { "max_pages": 300, "gutter_inches": 0.5 },
+    { "max_pages": 500, "gutter_inches": 0.625 },
+    { "max_pages": 700, "gutter_inches": 0.75 },
+    { "max_pages": 828, "gutter_inches": 0.875 }
+  ],
+  "trims": {
+    "letter": {
+      "label": "8.5 x 11 (letter)",
+      "width_in": 8.5,
+      "height_in": 11.0,
+      "use": "Adult coloring books, workbooks, planners"
+    },
+    "square": {
+      "label": "8.5 x 8.5 (square)",
+      "width_in": 8.5,
+      "height_in": 8.5,
+      "use": "Kids coloring, mandalas, gift books"
+    },
+    "large_square": {
+      "label": "8.25 x 8.25",
+      "width_in": 8.25,
+      "height_in": 8.25,
+      "use": "Alternate square trim"
+    },
+    "trade": {
+      "label": "6 x 9 (trade)",
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "use": "Journals, notebooks, low-ink planners"
+    },
+    "a5ish": {
+      "label": "5.5 x 8.5",
+      "width_in": 5.5,
+      "height_in": 8.5,
+      "use": "Pocket journals, travel planners"
+    }
+  },
+  "coloring_defaults": {
+    "trim": "letter",
+    "bleed": false,
+    "single_sided": true,
+    "designs": 30,
+    "paper_color": "white",
+    "ink": "black",
+    "cover_finish": "matte",
+    "list_price_usd": 9.99
+  }
+}
