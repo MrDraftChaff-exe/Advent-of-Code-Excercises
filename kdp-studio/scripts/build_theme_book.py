@@ -129,17 +129,40 @@ def ensure_meta(slug: str) -> dict:
 def build_one(slug: str, *, covers_only: bool = False) -> dict:
     cfg = THEMES[slug]
     root = product_dir(slug)
-    ensure_meta(slug)
+    meta = ensure_meta(slug)
     trim = str(cfg.get("trim", "letter"))
+    designs = int(cfg.get("designs", 40))
     if not covers_only:
         art_dir = root / "art-source"
         paths = import_art_folder(art_dir, root / "pages", trim=trim, theme=slug)
         result = build_interior_pdf(paths, root / "interior.pdf", trim=trim, single_sided=True)
+        # single-sided → designs*2 interior pages for cover spine
+        page_count = int(result.get("page_count", designs * 2))
     else:
         result = {"ok": True, "pages": 0}
-    hero = COVER_HEROES / COVER_THEMES.get(slug, {}).get("hero", f"cover-hero-{slug}.png")
-    if hero.exists() or COVER_THEMES.get(slug):
-        render_theme_cover(slug)
+        page_count = designs * 2
+
+    cover_meta = COVER_THEMES.get(slug, {})
+    hero_name = cover_meta.get("hero", f"cover-hero-{slug}.png")
+    hero = COVER_HEROES / hero_name
+    if not hero.exists():
+        # fallback soft gradient hero
+        from PIL import Image as _Image
+
+        hero = root / "cover" / "_tmp_hero.png"
+        _Image.new("RGB", (1200, 1200), cfg.get("cover_rgb", ((220, 230, 240), (80, 100, 120)))[0]).save(hero)
+
+    render_theme_cover(
+        slug=slug,
+        title=cfg["title"],
+        subtitle=cfg["subtitle"],
+        one_liner=cfg["one_liner"],
+        page_count=page_count,
+        hero_path=hero,
+        out_path=root / "cover" / "wrap-placeholder.png",
+        trim=trim,
+        paper="white",
+    )
     try:
         research_and_price(slug, query=cfg.get("query", cfg["title"]), apply=True)
     except Exception as exc:  # noqa: BLE001
@@ -149,7 +172,7 @@ def build_one(slug: str, *, covers_only: bool = False) -> dict:
     return {
         "ok": True,
         "slug": slug,
-        "pages": int(cfg.get("designs", 0)),
+        "pages": designs,
         "validation": validation,
         "publish": str(root / "publish"),
         **result,
