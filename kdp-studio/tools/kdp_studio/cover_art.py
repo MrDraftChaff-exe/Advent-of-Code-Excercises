@@ -24,56 +24,8 @@ TAG_FONT = "SourceSans3-SemiBold.ttf"
 AUTHOR_FONT = "PatrickHand-Regular.ttf"
 BODY_FONT = "SourceSans3-Regular.ttf"
 
-# Theme palettes: (gradient_top, gradient_bottom, accent, title_fill, title_stroke)
+# Theme palettes — Quiet Places only (STYLE.md is the art foundation).
 THEMES: dict[str, dict] = {
-    "forest-animals-30": {
-        "gradient": ((168, 210, 150), (62, 110, 70)),
-        "accent": (255, 214, 120),
-        "title": (255, 255, 255),
-        "stroke": (28, 55, 32),
-        "hero": "cover-hero-forest.png",
-        "back_label": "Wander the woods",
-    },
-    "sports-30": {
-        "gradient": ((160, 210, 245), (30, 85, 150)),
-        "accent": (255, 200, 70),
-        "title": (255, 255, 255),
-        "stroke": (18, 45, 90),
-        "hero": "cover-hero-sports.png",
-        "back_label": "Get in the game",
-    },
-    "math-30": {
-        "gradient": ((255, 230, 150), (20, 140, 145)),
-        "accent": (255, 120, 90),
-        "title": (255, 255, 255),
-        "stroke": (20, 70, 75),
-        "hero": "cover-hero-math.png",
-        "back_label": "Count, shape, color",
-    },
-    "chemistry-30": {
-        "gradient": ((190, 235, 200), (25, 110, 70)),
-        "accent": (120, 230, 170),
-        "title": (255, 255, 255),
-        "stroke": (15, 60, 40),
-        "hero": "cover-hero-chemistry.png",
-        "back_label": "Mix, bubble, color",
-    },
-    "sea-life-30": {
-        "gradient": ((150, 220, 240), (15, 110, 160)),
-        "accent": (255, 220, 100),
-        "title": (255, 255, 255),
-        "stroke": (10, 55, 90),
-        "hero": "cover-hero-sea.png",
-        "back_label": "Dive in and color",
-    },
-    "space-30": {
-        "gradient": ((140, 200, 220), (35, 70, 120)),
-        "accent": (255, 180, 90),
-        "title": (255, 255, 255),
-        "stroke": (20, 40, 80),
-        "hero": "cover-hero-space.png",
-        "back_label": "Blast off and color",
-    },
     "quiet-places-40": {
         "gradient": ((190, 220, 200), (55, 100, 75)),
         "accent": (255, 210, 130),

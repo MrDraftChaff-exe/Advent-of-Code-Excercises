@@ -6,6 +6,4 @@ Personal projects and experiments.
 
 | Project | Goal |
 | --- | --- |
-| **[kdp-studio/](./kdp-studio/README.md)** | Create coloring books and other useful Kindle Direct Publishing (print-on-demand) paperbacks |
-
-See `kdp-studio/PRODUCT_FACTORY.md` to ask Cursor for the next SKU.
+| **[kdp-studio/](./kdp-studio/README.md)** | Quiet Places–style bold & easy KDP coloring books (see `kdp-studio/STYLE.md`) |

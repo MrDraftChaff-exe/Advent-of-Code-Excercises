@@ -528,6 +528,55 @@ def prepare_line_art(gray: Image.Image) -> Image.Image:
     return rasterize_svg(svg, width=w, height=h, scale=2)
 
 
+def _normalize_quiet_raster(
+    src: Path,
+    out: Path,
+    *,
+    trim: str = "square",
+    dpi: int = 300,
+    margin_in: float = 0.375,
+) -> Path:
+    """Place already-inkified Quiet Places art on the page — no potrace/SDF.
+
+    Quiet Places sources are cleaned by scripts/inkify_quiet_places.py. Re-running
+    the forest vector pipeline shreds those lines into garbage.
+    """
+    width_in, height_in = trim_box(trim)
+    canvas_w = int(round(width_in * dpi))
+    canvas_h = int(round(height_in * dpi))
+    margin = int(round(margin_in * dpi))
+    inner = (canvas_w - 2 * margin, canvas_h - 2 * margin)
+
+    im = Image.open(src).convert("RGB")
+    im = _crop_to_ink(im, threshold=210)
+    fitted = ImageOps.contain(im, inner, Image.Resampling.LANCZOS)
+    gray = np.array(ImageOps.grayscale(fitted))
+    # Soft ink from inkify is ~28; keep medium lines without re-thickening
+    ink = (gray < 140).astype(np.uint8)
+    # Tiny speck cleanup only
+    num, labels, stats, _ = cv2.connectedComponentsWithStats(ink, connectivity=8)
+    cleaned = np.zeros_like(ink)
+    for i in range(1, num):
+        if stats[i, cv2.CC_STAT_AREA] >= 8:
+            cleaned[labels == i] = 1
+    ink = cleaned
+
+    page = np.full((canvas_h, canvas_w), 255, dtype=np.uint8)
+    h, w = ink.shape
+    ox = (canvas_w - w) // 2
+    oy = (canvas_h - h) // 2
+    # Soft black (not pure 0) — reads less “overly dark” on print
+    page[oy : oy + h, ox : ox + w] = np.where(ink > 0, 32, 255).astype(np.uint8)
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    Image.fromarray(page, mode="L").convert("RGB").save(out, dpi=(dpi, dpi))
+    # No SVG: Quiet Places prints from the PNG so potrace cannot shred the art.
+    svg_path = out.with_suffix(".svg")
+    if svg_path.exists():
+        svg_path.unlink()
+    return out
+
+
 def normalize_to_page(
     src: Path,
     out: Path,
@@ -539,6 +588,10 @@ def normalize_to_page(
     theme: str = "forest",
 ) -> Path:
     """Place art large on the page; add themed companions if still sparse."""
+    t = (theme or "").lower()
+    if "quiet" in t or "cozy" in t:
+        return _normalize_quiet_raster(src, out, trim=trim, dpi=dpi, margin_in=margin_in)
+
     width_in, height_in = trim_box(trim)
     canvas_w = int(round(width_in * dpi))
     canvas_h = int(round(height_in * dpi))

@@ -4,67 +4,33 @@ Paste this into Cursor when you want a new print-on-demand title.
 
 ---
 
-Create a new **KDP Studio** product (Kindle Direct Publishing paperback).
+Create a new **KDP Studio** product.
 
-**Imprint goal:** Coloring books and other useful print-on-demand items (planners, journals, logbooks, puzzle books, workbooks). Original art and copy only — no trademarked characters, logos, or scraped books.
+**Mandatory art style:** Follow [`STYLE.md`](./STYLE.md) exactly. The Quiet Places bold-and-easy look is the **only** allowed coloring-book interior style. Never procedural geometry, never letters/words on pages, never solid black fills or overly dark blob lines.
+
+**Imprint:** Coloring books and other useful POD (planners, journals, logbooks). Original art and copy only.
 
 **Defaults for coloring books:**
-- Trim: `letter` (8.5×11) unless kids/bold-easy → `square` (8.5×8.5)
+- Trim: `square` (8.5×8.5) for bold & easy; `letter` only if STYLE.md still fits
 - No interior bleed (art inside ~0.5" margin)
 - Single-sided (design + blank)
-- 300 DPI black line art
+- 300 DPI black line art via `scripts/inkify_quiet_places.py`
 - White paper, black ink, matte cover
 - List price often $7.99–$12.99
+- Pen name: Elsie Wren
 
 **Deliverables:**
-1. Scaffold with:
-   ```bash
-   cd kdp-studio/tools
-   python3 -m kdp_studio new --slug <slug> --title "..." --type coloring-book --designs 30
-   ```
-2. Fill `products/<slug>/brief.md` (concept, audience, cover notes, keyword research).
-3. Generate or place interior art in `products/<slug>/pages/page-XX.png`.
-4. Build + validate:
-   ```bash
-   python3 -m kdp_studio pages --slug <slug>      # procedural geometry demo
-   python3 -m kdp_studio interior --slug <slug>
-   python3 -m kdp_studio cover --slug <slug>
-   python3 -m kdp_studio validate --slug <slug>
-   ```
-5. Write KDP listing draft into `launch/listings/<slug>.md` (title, subtitle, description, 7 keywords, 2 categories).
-6. Update root `kdp-studio/README.md` product table.
-7. Set `meta.json` → `status: ready` only when interior PDF + cover dimensions exist.
+1. Scaffold under `products/<slug>/` with `art-source/`, `pages/`, `cover/`, `meta.json`, `brief.md`
+2. Generate illustrated scenes with **no text** in the image; inkify; build with `scripts/build_theme_book.py` (extend THEMES only for same-style titles)
+3. Listing in `launch/listings/<slug>.md`
+4. Update `README.md` product table
+5. `status: ready` only when interior PDF + cover exist
 
 **Quality bar:**
-- Every design unique; no near-duplicates across the catalog
-- Lines thick enough to color (avoid hairline 1px clutter)
-- Safe margins respected
+- Matches Quiet Places sample pages (cozy full scenes, medium-bold outlines)
+- No readable text on interiors
+- Black ink density roughly ≤14.5% after inkify
 - Cover title readable as an Amazon thumbnail
-- If AI art is used, set `ai_assisted: true` and disclose on KDP upload
+- If AI art is used, `ai_assisted: true` + KDP disclosure
 
-**Other useful POD ideas (non-coloring):**
-- Undated weekly planner (letter)
-- Habit tracker / gratitude journal (trade 6×9)
-- Garden / reading / hiking logbook (trade)
-- Large-print word search (letter)
-- Kids activity workbook (letter, simpler art)
-
-**Anti-redundancy:** Read existing `products/*/meta.json` before proposing a SKU. Reject titles that only re-theme an existing pattern set without a clear new audience or job-to-be-done.
-
----
-
-## Backlog seeds
-
-Coloring
-- Bold & Easy Cozy Kitchen Tools (square, thick lines)
-- Rainy Day Windows & Houseplants (letter)
-- Trail Signs & Woodland Patterns (letter) — nature geometric, not branded parks
-- Alphabet Animals for Kids (square)
-- Night Sky Constellations (simple, letter)
-
-Useful POD
-- Undated Student Weekly Planner
-- Home Maintenance Seasonal Log
-- Recipe Card Keeper (fill-in pages)
-- 90-Day Habit Journal
-- Road Trip Mileage & Memory Log
+**Anti-redundancy:** Do not resurrect deleted theme books (forest, sports, math, chemistry, sea, space). New titles must be new subjects in the same style.
