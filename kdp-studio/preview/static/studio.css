@@ -191,10 +191,16 @@ h2, h3 { font-family: var(--font-display); margin-top: 0; }
   max-width: 100%;
   height: auto;
   display: block;
+  image-rendering: auto;
 }
 
 .page-stage { min-height: 70vh; }
-.page-stage img { max-height: 68vh; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.page-stage img {
+  max-height: 68vh;
+  width: auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  background: #fff;
+}
 
 .pager-bar {
   display: flex;

@@ -1,19 +1,24 @@
-"""Normalize external/AI line-art into KDP page PNGs.
+"""Normalize external/AI line-art into KDP page PNGs + SVGs.
 
-Builds a colorable ink weight, then vector-traces (potrace) and re-rasterizes
-with anti-aliasing so printed curves stay smooth — no stair-step roughness.
+Builds a colorable ink weight, vector-traces with potrace, writes:
+  - page-XX.svg  — true vectors for Preview + print PDF
+  - page-XX.png  — Cairo-rasterized preview/fallback
 """
 
 from __future__ import annotations
 
+import io
 from pathlib import Path
 
+import cairosvg
 import cv2
 import numpy as np
 from PIL import Image, ImageOps
 from potrace import BezierSegment, Bitmap, CornerSegment
 
 from .specs import trim_box
+
+Image.MAX_IMAGE_PIXELS = None
 
 
 def _to_ink(gray: np.ndarray, threshold: int = 185) -> np.ndarray:
@@ -25,7 +30,6 @@ def _from_ink(ink: np.ndarray) -> Image.Image:
 
 
 def _lighten_overthick(ink: np.ndarray) -> np.ndarray:
-    """If source strokes are already very heavy, thin them slightly first."""
     frac = float(ink.mean())
     if frac < 0.10:
         return ink
@@ -65,7 +69,6 @@ def _gentle_thicken(ink: np.ndarray, *, px: int = 2) -> np.ndarray:
 
 
 def _smooth_mask_edges(ink: np.ndarray, *, sigma: float = 1.6, upscale: int = 2) -> np.ndarray:
-    """Round stair-step edges without heavy thickening."""
     h, w = ink.shape
     up = cv2.resize(
         ink.astype(np.float32),
@@ -78,135 +81,128 @@ def _smooth_mask_edges(ink: np.ndarray, *, sigma: float = 1.6, upscale: int = 2)
     return (down >= 0.50).astype(np.uint8)
 
 
-def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 5.5) -> np.ndarray:
-    """Round jagged silhouettes before vector tracing."""
+def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 6.5) -> np.ndarray:
+    target = float(ink.mean())
     dist_out = cv2.distanceTransform((1 - ink).astype(np.uint8), cv2.DIST_L2, 5)
     dist_in = cv2.distanceTransform(ink.astype(np.uint8), cv2.DIST_L2, 5)
-    sdf = (dist_out - dist_in).astype(np.float32)
-    sdf = cv2.GaussianBlur(sdf, (0, 0), sigmaX=sigma, sigmaY=sigma)
-    return (sdf < 0.0).astype(np.uint8)
+    sdf = cv2.GaussianBlur((dist_out - dist_in).astype(np.float32), (0, 0), sigmaX=sigma)
+    lo, hi = -4.0, 8.0
+    for _ in range(20):
+        tau = 0.5 * (lo + hi)
+        if float((sdf < tau).mean()) > target:
+            hi = tau
+        else:
+            lo = tau
+    return (sdf < 0.5 * (lo + hi)).astype(np.uint8)
 
 
-def _pt(p) -> np.ndarray:
-    return np.array([float(p.x), float(p.y)], dtype=np.float64)
+def _curve_bbox(curve) -> tuple[float, float, float, float]:
+    xs = [float(curve.start_point.x)]
+    ys = [float(curve.start_point.y)]
+    for seg in curve.segments:
+        pts = (seg.c1, seg.c2, seg.end_point) if isinstance(seg, BezierSegment) else (seg.c, seg.end_point)
+        for p in pts:
+            xs.append(float(p.x))
+            ys.append(float(p.y))
+    return min(xs), min(ys), max(xs), max(ys)
 
 
-def _curve_to_polygon(curve, *, samples: int = 18) -> np.ndarray | None:
-    """Sample potrace Bezier/corner segments into a dense polygon."""
-    pts: list[list[float]] = []
-    cur = _pt(curve.start_point)
+def _curve_to_svg_d(curve, *, dx: float = 0.0, dy: float = 0.0) -> str:
+    def t(p) -> tuple[float, float]:
+        return float(p.x) + dx, float(p.y) + dy
+
+    x0, y0 = t(curve.start_point)
+    parts = [f"M {x0:.3f} {y0:.3f}"]
     for seg in curve.segments:
         if isinstance(seg, BezierSegment):
-            c1, c2, end = _pt(seg.c1), _pt(seg.c2), _pt(seg.end_point)
-            t = np.linspace(0.0, 1.0, samples)[:, None]
-            bez = (
-                (1 - t) ** 3 * cur
-                + 3 * (1 - t) ** 2 * t * c1
-                + 3 * (1 - t) * t**2 * c2
-                + t**3 * end
-            )
-            pts.extend(bez[:-1].tolist())
-            cur = end
+            c1 = t(seg.c1)
+            c2 = t(seg.c2)
+            end = t(seg.end_point)
+            parts.append(f"C {c1[0]:.3f} {c1[1]:.3f} {c2[0]:.3f} {c2[1]:.3f} {end[0]:.3f} {end[1]:.3f}")
         elif isinstance(seg, CornerSegment):
-            # Soften sharp corners so raster edges don't look bitten
-            corner, end = _pt(seg.c), _pt(seg.end_point)
-            mid1 = 0.65 * cur + 0.35 * corner
-            mid2 = 0.35 * corner + 0.65 * end
-            pts.append(mid1.tolist())
-            pts.append(mid2.tolist())
-            pts.append(end.tolist())
-            cur = end
+            c = t(seg.c)
+            end = t(seg.end_point)
+            parts.append(f"Q {c[0]:.3f} {c[1]:.3f} {end[0]:.3f} {end[1]:.3f}")
         else:
-            end = _pt(getattr(seg, "end_point"))
-            pts.append(end.tolist())
-            cur = end
-    if len(pts) < 3:
-        return None
-    return np.asarray(pts, dtype=np.float64)
+            end = t(seg.end_point)
+            parts.append(f"L {end[0]:.3f} {end[1]:.3f}")
+    parts.append("Z")
+    return " ".join(parts)
 
 
-def _signed_area(poly: np.ndarray) -> float:
-    x, y = poly[:, 0], poly[:, 1]
-    return 0.5 * float(np.sum(x * np.roll(y, -1) - np.roll(x, -1) * y))
-
-
-def _vector_smooth_raster(
-    ink: np.ndarray,
-    *,
-    scale: int = 6,
-    opttolerance: float = 0.8,
-    alphamax: float = 1.334,
-    aa_sigma: float = 0.95,
-) -> np.ndarray:
-    """Trace ink to smooth Beziers, then supersample + downsample for AA gray page."""
+def _trace_curves(ink: np.ndarray, *, opttolerance: float = 1.0):
     h, w = ink.shape
-    if ink.mean() < 0.001:
-        return np.full((h, w), 255, dtype=np.uint8)
-
     path = Bitmap(ink.astype(bool)).trace(
         turdsize=5,
         opttolerance=opttolerance,
-        alphamax=alphamax,
+        alphamax=1.334,
     )
-    full = float(w * h)
-    polys: list[np.ndarray] = []
+    curves = []
     for curve in path:
-        poly = _curve_to_polygon(curve)
-        if poly is None:
+        x0, y0, x1, y1 = _curve_bbox(curve)
+        if (x1 - x0) >= w * 0.95 and (y1 - y0) >= h * 0.95:
             continue
-        # Potrace sometimes emits a full-frame background path — skip it
-        if abs(_signed_area(poly)) > 0.80 * full:
-            continue
-        polys.append(poly)
-
-    if not polys:
-        # Fallback: soft AA of the binary mask
-        return _anti_alias_mask(ink, upscale=scale, sigma=aa_sigma)
-
-    polys.sort(key=lambda p: abs(_signed_area(p)), reverse=True)
-    canvas = np.zeros((h * scale, w * scale), dtype=np.uint8)
-    layer = np.zeros_like(canvas)
-    for poly in polys:
-        layer.fill(0)
-        cv2.fillPoly(layer, [(poly * scale).astype(np.int32)], 1)
-        np.bitwise_xor(canvas, layer, out=canvas)
-
-    soft = cv2.GaussianBlur(canvas.astype(np.float32), (0, 0), sigmaX=aa_sigma)
-    down = cv2.resize(soft, (w, h), interpolation=cv2.INTER_AREA)
-    return np.clip((1.0 - down) * 255.0, 0, 255).astype(np.uint8)
+        curves.append(curve)
+    return curves
 
 
-def _anti_alias_mask(ink: np.ndarray, *, upscale: int = 4, sigma: float = 0.95) -> np.ndarray:
-    h, w = ink.shape
-    up = cv2.resize(
-        ink.astype(np.float32),
-        (w * upscale, h * upscale),
-        interpolation=cv2.INTER_NEAREST,
+def build_page_svg(
+    ink: np.ndarray,
+    *,
+    canvas_w: int,
+    canvas_h: int,
+    offset: tuple[int, int],
+    opttolerance: float = 1.0,
+) -> str:
+    """Full-page SVG (white canvas + even-odd black art)."""
+    ox, oy = offset
+    curves = _trace_curves(ink, opttolerance=opttolerance)
+    d = " ".join(_curve_to_svg_d(c, dx=ox, dy=oy) for c in curves)
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_w}" height="{canvas_h}" '
+        f'viewBox="0 0 {canvas_w} {canvas_h}" shape-rendering="geometricPrecision">'
+        f'<rect width="100%" height="100%" fill="white"/>'
+        f'<path fill="#000000" fill-rule="evenodd" d="{d}"/>'
+        f"</svg>\n"
     )
-    soft = cv2.GaussianBlur(up, (0, 0), sigmaX=sigma * upscale, sigmaY=sigma * upscale)
-    down = cv2.resize(soft, (w, h), interpolation=cv2.INTER_AREA)
-    return np.clip((1.0 - down) * 255.0, 0, 255).astype(np.uint8)
 
 
-def prepare_line_art(gray: Image.Image) -> Image.Image:
-    """Colorable weight, then vector-smooth re-raster with anti-aliased edges."""
+def rasterize_svg(svg: str, *, width: int, height: int, scale: int = 2) -> Image.Image:
+    png = cairosvg.svg2png(
+        bytestring=svg.encode("utf-8"),
+        output_width=max(1, width * scale),
+        output_height=max(1, height * scale),
+    )
+    im = Image.open(io.BytesIO(png)).convert("L")
+    if scale != 1:
+        im = im.resize((width, height), Image.Resampling.LANCZOS)
+    arr = np.array(im).astype(np.float32)
+    arr = np.where(arr < 28, 0.0, arr)
+    arr = np.where(arr > 242, 255.0, arr)
+    return Image.fromarray(arr.astype(np.uint8), mode="L")
+
+
+def _build_ink_mask(gray: Image.Image) -> np.ndarray:
     arr = np.array(gray.convert("L"))
     soft = cv2.GaussianBlur(arr, (5, 5), 0)
     ink = _to_ink(soft, threshold=178)
     ink = _lighten_overthick(ink)
     ink = _bridge_small_gaps(ink, close_px=5)
     ink = _fill_tiny_holes(ink, max_hole=20)
-
-    # Establish the approved colorable stroke weight
     ink = _smooth_mask_edges(ink, sigma=2.2, upscale=3)
     ink = _gentle_thicken(ink, px=2)
     ink = _smooth_mask_edges(ink, sigma=1.5, upscale=3)
     ink = _fill_tiny_holes(ink, max_hole=16)
     ink = _bridge_small_gaps(ink, close_px=3)
+    return _sdf_round_edges(ink, sigma=6.5)
 
-    # Round jagged raster geometry, then vector-trace + AA re-rasterize
-    ink = _sdf_round_edges(ink, sigma=5.5)
-    return Image.fromarray(_vector_smooth_raster(ink), mode="L")
+
+def prepare_line_art(gray: Image.Image) -> Image.Image:
+    """Fallback raster-only helper (prefer normalize_to_page for SVG+PNG)."""
+    ink = _build_ink_mask(gray)
+    h, w = ink.shape
+    svg = build_page_svg(ink, canvas_w=w, canvas_h=h, offset=(0, 0))
+    return rasterize_svg(svg, width=w, height=h, scale=2)
 
 
 def normalize_to_page(
@@ -225,12 +221,23 @@ def normalize_to_page(
 
     im = Image.open(src).convert("RGB")
     fitted = ImageOps.contain(im, inner, Image.Resampling.LANCZOS)
-    page_art = prepare_line_art(ImageOps.grayscale(fitted))
+    ink = _build_ink_mask(ImageOps.grayscale(fitted))
+    ox = (canvas_w - ink.shape[1]) // 2
+    oy = (canvas_h - ink.shape[0]) // 2
 
-    canvas = Image.new("L", (canvas_w, canvas_h), 255)
-    canvas.paste(page_art, ((canvas_w - page_art.width) // 2, (canvas_h - page_art.height) // 2))
+    svg = build_page_svg(
+        ink,
+        canvas_w=canvas_w,
+        canvas_h=canvas_h,
+        offset=(ox, oy),
+        opttolerance=1.0,
+    )
     out.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(out, dpi=(dpi, dpi))
+    svg_path = out.with_suffix(".svg")
+    svg_path.write_text(svg, encoding="utf-8")
+
+    page = rasterize_svg(svg, width=canvas_w, height=canvas_h, scale=2)
+    page.save(out, dpi=(dpi, dpi))
     return out
 
 
@@ -247,8 +254,9 @@ def import_art_folder(
         raise FileNotFoundError(f"No images in {art_dir}")
     paths: list[Path] = []
     pages_dir.mkdir(parents=True, exist_ok=True)
-    for old in pages_dir.glob("page-*.png"):
-        old.unlink()
+    for old in pages_dir.glob("page-*"):
+        if old.suffix.lower() in {".png", ".svg"}:
+            old.unlink()
     for i, src in enumerate(files, start=1):
         out = pages_dir / f"page-{i:02d}.png"
         normalize_to_page(src, out, trim=trim, dpi=dpi, margin_in=margin_in)

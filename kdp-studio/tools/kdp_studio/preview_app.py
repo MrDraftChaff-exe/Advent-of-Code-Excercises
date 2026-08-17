@@ -109,12 +109,24 @@ def api_product(slug: str) -> dict:
 
 @app.get("/api/products/{slug}/pages/{name}")
 def api_page_file(slug: str, name: str):
-    if "/" in name or ".." in name or not name.endswith(".png"):
+    if "/" in name or ".." in name:
         raise HTTPException(400, "Invalid page name")
-    path = product_dir(slug) / "pages" / name
-    if not path.exists():
+    # Prefer SVG (true vectors — stay smooth at any zoom); fall back to PNG
+    root = product_dir(slug) / "pages"
+    if name.endswith(".svg"):
+        path = root / name
+        if path.exists():
+            return FileResponse(path, media_type="image/svg+xml")
         raise HTTPException(404)
-    return FileResponse(path, media_type="image/png")
+    if name.endswith(".png"):
+        svg = root / name.replace(".png", ".svg")
+        if svg.exists():
+            return FileResponse(svg, media_type="image/svg+xml")
+        path = root / name
+        if path.exists():
+            return FileResponse(path, media_type="image/png")
+        raise HTTPException(404)
+    raise HTTPException(400, "Invalid page name")
 
 
 @app.get("/api/products/{slug}/cover.png")
