@@ -11,42 +11,42 @@
     {
       "asin": "DEMO000000XX",
       "title": "Bold Patterns \u2014 Easy Chemistry Coloring Book For Kids Lab Coloring",
-      "price_usd": 7.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000001XX",
       "title": "Relaxing Line Art for Adults (Chemistry Coloring Book For Kids Lab)",
-      "price_usd": 12.99,
+      "price_usd": 11.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000002XX",
       "title": "Simple Geometric Pages to Color",
-      "price_usd": 10.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000003XX",
       "title": "Mindful Shapes Coloring Book",
-      "price_usd": 8.99,
+      "price_usd": 12.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000004XX",
       "title": "Easy Mandala Moments",
-      "price_usd": 8.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000005XX",
       "title": "Cozy Abstract Coloring for Stress Relief",
-      "price_usd": 12.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -81,6 +81,6 @@
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-17T00:50:40.084337+00:00"
+    "generated_at": "2026-08-17T01:16:16.546302+00:00"
   }
 }
