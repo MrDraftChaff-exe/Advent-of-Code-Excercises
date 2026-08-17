@@ -236,30 +236,138 @@ def _motif_clearance_ok(page: np.ndarray, cx: int, cy: int, r: int, pad: int = 1
     return page[y_a:y_b, x_a:x_b].mean() <= 0.015
 
 
-def _draw_motif(page: np.ndarray, cx: int, cy: int, r: int, kind: int) -> None:
-    if kind == 0:
+def _draw_flower(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    """Daisy: round petals around a center circle."""
+    petals = 6
+    pr = max(16, int(r * 0.36))
+    for k in range(petals):
+        ang = -np.pi / 2 + k * 2 * np.pi / petals
+        px = int(cx + int(r * 0.55) * np.cos(ang))
+        py = int(cy + int(r * 0.55) * np.sin(ang))
+        _draw_ring(page, px, py, pr, width=6)
+    _draw_ring(page, cx, cy, max(14, r // 4), width=6)
+
+
+def _draw_bush(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    """Rounded hedge bush with three top bumps."""
+    base_y = cy + int(r * 0.55)
+    bumps = [
+        (cx - int(r * 0.55), cy + int(r * 0.05), int(r * 0.5)),
+        (cx, cy - int(r * 0.25), int(r * 0.62)),
+        (cx + int(r * 0.55), cy + int(r * 0.05), int(r * 0.5)),
+    ]
+    pts: list[tuple[int, int]] = [(cx - int(r * 0.95), base_y)]
+    for bx, by, br in bumps:
+        for ang in np.linspace(np.pi * 0.95, np.pi * 0.05, 12):
+            pts.append((int(bx + br * np.cos(ang)), int(by + br * np.sin(ang))))
+    pts.append((cx + int(r * 0.95), base_y))
+    _draw_closed_poly(page, pts, width=6)
+
+
+def _draw_leaf(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    tip = (cx, cy - r)
+    left = (cx - int(r * 0.65), cy + int(r * 0.2))
+    right = (cx + int(r * 0.65), cy + int(r * 0.2))
+    base = (cx, cy + int(r * 0.6))
+    _draw_closed_poly(page, [tip, right, base, left], width=6)
+    cv2.line(page, tip, base, 1, 5, cv2.LINE_AA)
+
+
+def _draw_mushroom(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    cap_r = max(24, int(r * 0.75))
+    cy_cap = cy - int(r * 0.05)
+    cv2.ellipse(
+        page,
+        (cx, cy_cap),
+        (cap_r, max(18, int(cap_r * 0.65))),
+        0,
+        180,
+        360,
+        1,
+        6,
+        cv2.LINE_AA,
+    )
+    cv2.line(page, (cx - cap_r, cy_cap), (cx + cap_r, cy_cap), 1, 6, cv2.LINE_AA)
+    stem_w = max(12, r // 5)
+    stem_h = max(28, int(r * 0.75))
+    _draw_closed_poly(
+        page,
+        [
+            (cx - stem_w, cy_cap),
+            (cx + stem_w, cy_cap),
+            (cx + stem_w + 4, cy_cap + stem_h),
+            (cx - stem_w - 4, cy_cap + stem_h),
+        ],
+        width=6,
+    )
+
+
+def _draw_grass_tuft(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    base = cy + int(r * 0.4)
+    for dx, hscale in (
+        (-int(r * 0.5), 0.8),
+        (-int(r * 0.2), 1.0),
+        (int(r * 0.15), 0.95),
+        (int(r * 0.45), 0.75),
+    ):
+        tip = (cx + dx, cy - int(r * hscale))
+        cv2.line(page, (cx, base), tip, 1, 6, cv2.LINE_AA)
+    cv2.line(page, (cx - r, base), (cx + r, base), 1, 5, cv2.LINE_AA)
+
+
+def _draw_simple_star(page: np.ndarray, cx: int, cy: int, r: int) -> None:
+    pts = []
+    for k in range(10):
+        ang = -np.pi / 2 + k * np.pi / 5
+        rr = r if k % 2 == 0 else max(10, int(r * 0.4))
+        pts.append((int(cx + rr * np.cos(ang)), int(cy + rr * np.sin(ang))))
+    _draw_closed_poly(page, pts, width=6)
+
+
+def _draw_motif(page: np.ndarray, cx: int, cy: int, r: int, kind: int, *, theme: str = "forest") -> None:
+    """Theme-appropriate companions — never generic nuts-and-bolts geometry for nature books."""
+    t = (theme or "forest").lower()
+    if "forest" in t or "animal" in t:
+        # Prefer flowers & bushes; occasional leaf / mushroom / grass
+        pick = kind % 10
+        if pick <= 3:
+            _draw_flower(page, cx, cy, r)
+        elif pick <= 6:
+            _draw_bush(page, cx, cy, r)
+        elif pick <= 7:
+            _draw_leaf(page, cx, cy, r)
+        elif pick <= 8:
+            _draw_mushroom(page, cx, cy, r)
+        else:
+            _draw_grass_tuft(page, cx, cy, r)
+        return
+    if "sea" in t or "ocean" in t:
+        if kind % 3 == 0:
+            _draw_ring(page, cx, cy, r, width=6)
+            _draw_ring(page, cx, cy, max(12, r // 3), width=5)
+        elif kind % 3 == 1:
+            # seashell swirl (nested arcs as closed petal)
+            _draw_flower(page, cx, cy, r)
+        else:
+            _draw_leaf(page, cx, cy, r)  # seaweed-ish
+        return
+    if "space" in t:
+        if kind % 2 == 0:
+            _draw_simple_star(page, cx, cy, r)
+        else:
+            _draw_ring(page, cx, cy, r, width=6)
+            _draw_ring(page, cx, cy, max(10, r // 4), width=5)
+        return
+    if "sport" in t:
         _draw_ring(page, cx, cy, r, width=7)
         _draw_ring(page, cx, cy, max(12, r // 3), width=6)
-    elif kind == 1:
-        pts = [(cx, cy - r), (cx + r, cy), (cx, cy + r), (cx - r, cy)]
-        _draw_closed_poly(page, pts, width=7)
-        _draw_ring(page, cx, cy, max(10, r // 4), width=5)
-    elif kind == 2:
-        petals = []
-        for k in range(5):
-            ang = -np.pi / 2 + k * 2 * np.pi / 5
-            petals.append((int(cx + r * np.cos(ang)), int(cy + r * np.sin(ang))))
-        _draw_closed_poly(page, petals, width=7)
-        _draw_ring(page, cx, cy, max(10, r // 4), width=5)
+        return
+    # Math / science / chemistry: soft organic dots & petals, not hex bolts
+    if kind % 2 == 0:
+        _draw_flower(page, cx, cy, r)
     else:
-        # Nested hexagon — extra closed regions to color
-        for scale, width in ((1.0, 7), (0.55, 6)):
-            rr = max(12, int(r * scale))
-            pts = []
-            for k in range(6):
-                ang = np.pi / 6 + k * np.pi / 3
-                pts.append((int(cx + rr * np.cos(ang)), int(cy + rr * np.sin(ang))))
-            _draw_closed_poly(page, pts, width=width)
+        _draw_ring(page, cx, cy, r, width=6)
+        _draw_ring(page, cx, cy, max(10, r // 4), width=5)
 
 
 def _fill_band_with_motifs(
@@ -270,16 +378,25 @@ def _fill_band_with_motifs(
     bx1: int,
     by1: int,
     rng: np.random.Generator,
+    theme: str = "forest",
 ) -> None:
     """Pack medium/large closed shapes into an empty rectangle."""
     bw, bh = bx1 - bx0, by1 - by0
     if bw < 100 or bh < 90:
         return
-    # Larger companions in a short grid — fill the band without sticker-sheet clutter
-    r_hi = max(48, min(120, int(bh * 0.42), int(bw * 0.14)))
-    r_lo = max(36, int(r_hi * 0.7))
-    cols = max(2, min(4, bw // max(140, r_hi * 2 + 40)))
-    rows = max(1, min(3, bh // max(120, r_hi * 2 + 36)))
+    t = (theme or "").lower()
+    foresty = "forest" in t or "animal" in t
+    # Forest pages: fewer, larger bushes/flowers so they read as scenery
+    if foresty:
+        r_hi = max(70, min(160, int(bh * 0.48), int(bw * 0.18)))
+        r_lo = max(55, int(r_hi * 0.72))
+        cols = max(2, min(3, bw // max(200, r_hi * 2 + 50)))
+        rows = max(1, min(2, bh // max(160, r_hi * 2 + 40)))
+    else:
+        r_hi = max(48, min(120, int(bh * 0.42), int(bw * 0.14)))
+        r_lo = max(36, int(r_hi * 0.7))
+        cols = max(2, min(4, bw // max(140, r_hi * 2 + 40)))
+        rows = max(1, min(3, bh // max(120, r_hi * 2 + 36)))
     for row in range(rows):
         for col in range(cols):
             cx = int(bx0 + (col + 0.5) * bw / cols + rng.integers(-22, 23))
@@ -289,7 +406,7 @@ def _fill_band_with_motifs(
             cy = int(np.clip(cy, by0 + r + 10, by1 - r - 10))
             if not _motif_clearance_ok(page, cx, cy, r, pad=22):
                 continue
-            _draw_motif(page, cx, cy, r, int(rng.integers(0, 4)))
+            _draw_motif(page, cx, cy, r, int(rng.integers(0, 5)), theme=theme)
 
 
 def _enrich_sparse_canvas(
@@ -301,8 +418,9 @@ def _enrich_sparse_canvas(
     oy: int,
     seed: int,
     min_fill: float = 0.72,
+    theme: str = "forest",
 ) -> np.ndarray:
-    """If the subject leaves large empty bands, add extra closed shapes to color.
+    """If the subject leaves large empty bands, add themed companions to color.
 
     Companion motifs only — never a page-sized frame (those become solid black
     under even-odd vector fill). Returns a full-page ink mask (1=ink).
@@ -338,7 +456,7 @@ def _enrich_sparse_canvas(
         bands.append((x1 + 28, max(pad, y0), canvas_w - pad, min(canvas_h - pad, y1)))
 
     for bx0, by0, bx1, by1 in bands:
-        _fill_band_with_motifs(page, bx0=bx0, by0=by0, bx1=bx1, by1=by1, rng=rng)
+        _fill_band_with_motifs(page, bx0=bx0, by0=by0, bx1=bx1, by1=by1, rng=rng, theme=theme)
 
     return page
 
@@ -359,8 +477,9 @@ def normalize_to_page(
     dpi: int = 300,
     margin_in: float = 0.375,
     page_index: int = 1,
+    theme: str = "forest",
 ) -> Path:
-    """Place art large on the page; add extra colorable shapes if still sparse."""
+    """Place art large on the page; add themed companions if still sparse."""
     width_in, height_in = trim_box(trim)
     canvas_w = int(round(width_in * dpi))
     canvas_h = int(round(height_in * dpi))
@@ -388,6 +507,7 @@ def normalize_to_page(
         oy=oy,
         seed=page_index * 997 + canvas_w,
         min_fill=0.72,
+        theme=theme,
     )
 
     svg = build_page_svg(
@@ -413,6 +533,7 @@ def import_art_folder(
     trim: str = "letter",
     dpi: int = 300,
     margin_in: float = 0.375,
+    theme: str = "forest",
 ) -> list[Path]:
     files = sorted(art_dir.glob("*.png")) + sorted(art_dir.glob("*.jpg"))
     if not files:
@@ -424,7 +545,9 @@ def import_art_folder(
             old.unlink()
     for i, src in enumerate(files, start=1):
         out = pages_dir / f"page-{i:02d}.png"
-        normalize_to_page(src, out, trim=trim, dpi=dpi, margin_in=margin_in, page_index=i)
+        normalize_to_page(
+            src, out, trim=trim, dpi=dpi, margin_in=margin_in, page_index=i, theme=theme
+        )
         paths.append(out)
     return paths
 

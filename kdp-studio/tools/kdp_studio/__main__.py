@@ -105,7 +105,7 @@ def cmd_pages(args: argparse.Namespace) -> int:
     if art_dir.exists() and any(art_dir.glob("*.png")):
         from kdp_studio.art_import import import_art_folder
 
-        paths = import_art_folder(art_dir, root / "pages", trim=trim)
+        paths = import_art_folder(art_dir, root / "pages", trim=trim, theme=str(theme))
         theme = meta.get("theme") or theme
         print(f"Imported {len(paths)} pages from art-source → {root / 'pages'}")
     elif theme in {"forest-animals", "forest", "animals"}:

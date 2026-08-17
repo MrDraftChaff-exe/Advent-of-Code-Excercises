@@ -9,7 +9,7 @@ Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).
 3. Disclose AI content if `ai_assisted` is true
 4. Upload `interior.pdf` as manuscript
 5. Upload final cover wrap sized per `cover/dimensions.json`
-6. Set list price to **$9.99** (from comps research if run)
+6. Set list price to **$8.99** (from comps research if run)
 7. Proof in KDP Previewer, then publish
 
 ## Optional assist

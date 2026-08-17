@@ -8,7 +8,7 @@
   "bleed": false,
   "single_sided": true,
   "designs": 30,
-  "page_count_interior": 60,
+  "page_count_interior": null,
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
@@ -40,7 +40,5 @@
   "author": "Elsie Wren",
   "ai_assisted": true,
   "art_source": "art-source",
-  "status": "draft",
-  "pricing_source": "demo_seed",
-  "pricing_basis": "median"
+  "status": "draft"
 }

@@ -285,7 +285,7 @@ def build_slug(slug: str) -> dict:
     # Keep only first 30 sorted for stable page order
     for extra in pngs[30:]:
         extra.unlink()
-    paths = import_art_folder(art_dir, root / "pages", trim="letter")
+    paths = import_art_folder(art_dir, root / "pages", trim="letter", theme=slug)
     # Trim to 30 designs if more slipped in
     for p in sorted((root / "pages").glob("page-*.png"))[30:]:
         p.unlink()
