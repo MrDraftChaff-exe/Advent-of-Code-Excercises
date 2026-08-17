@@ -483,9 +483,21 @@ def _enrich_sparse_canvas(
     h, w = ink.shape
     page[oy : oy + h, ox : ox + w] = ink
 
-    # Full illustrated scenes (Quiet Places / cozy) — never sprinkle companion junk
+    # Bold-and-easy STYLE.md titles — never sprinkle companion junk
     t = (theme or "").lower()
-    if "quiet" in t or "cozy" in t:
+    if any(
+        k in t
+        for k in (
+            "quiet",
+            "cozy",
+            "stained",
+            "cars",
+            "planes",
+            "buildings",
+            "food",
+            "mountains",
+        )
+    ):
         return page
 
     ys, xs = np.where(page > 0)
@@ -589,7 +601,19 @@ def normalize_to_page(
 ) -> Path:
     """Place art large on the page; add themed companions if still sparse."""
     t = (theme or "").lower()
-    if "quiet" in t or "cozy" in t:
+    if any(
+        k in t
+        for k in (
+            "quiet",
+            "cozy",
+            "stained",
+            "cars",
+            "planes",
+            "buildings",
+            "food",
+            "mountains",
+        )
+    ):
         return _normalize_quiet_raster(src, out, trim=trim, dpi=dpi, margin_in=margin_in)
 
     width_in, height_in = trim_box(trim)

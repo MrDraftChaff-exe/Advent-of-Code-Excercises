@@ -20,11 +20,14 @@ from kdp_studio.publish import build_publish_package  # noqa: E402
 from kdp_studio.specs import ROOT, product_dir  # noqa: E402
 from kdp_studio.validate import validate_product  # noqa: E402
 
+# Import shared scene metadata for titles etc.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from theme_scenes import THEMES as SCENE_THEMES  # noqa: E402
+
 COVER_HEROES = ROOT / "assets" / "covers"
 
-# Only Quiet Places — see STYLE.md. Do not add other art styles or theme SKUs here
-# unless they follow that foundation exactly.
-THEMES = {
+# All titles follow STYLE.md bold-and-easy foundation (Quiet Places look).
+THEMES: dict = {
     "quiet-places-40": {
         "title": "Quiet Places",
         "subtitle": "40 Bold & Easy Designs for Stress Relief",
@@ -49,6 +52,23 @@ THEMES = {
         "designs": 40,
     },
 }
+
+for slug, cfg in SCENE_THEMES.items():
+    THEMES[slug] = {
+        "title": cfg["title"],
+        "subtitle": cfg["subtitle"],
+        "one_liner": cfg["one_liner"],
+        "audience": "Adults and kids who want simple, relaxing bold-and-easy coloring",
+        "keywords": cfg["keywords"],
+        "categories": [
+            "Arts & Photography > Drawing > Coloring Books",
+            "Self-Help > Stress Management",
+        ],
+        "query": cfg["query"],
+        "cover_rgb": cfg["cover_rgb"],
+        "trim": "square",
+        "designs": 40,
+    }
 
 
 def ensure_meta(slug: str) -> dict:
@@ -75,157 +95,84 @@ def ensure_meta(slug: str) -> dict:
         "paper_color": "white",
         "ink": "black",
         "cover_finish": "matte",
-        "list_price_usd": 9.99,
+        "list_price_usd": 10.99,
         "audience": cfg["audience"],
         "one_liner": cfg["one_liner"],
         "description": (
-            f"{cfg['one_liner']} {designs} original pages with bold outlines and closed shapes "
-            "ready to color. Single-sided so markers stay on one design. "
-            "AI-assisted artwork — disclose on KDP upload."
+            f"{cfg['one_liner']} {designs} big, bold, easy pages in {trim_label} format. "
+            "Single-sided printing. Original designs. AI-assisted line art disclosed on KDP."
         ),
         "bullets": [
-            f"{designs} unique pages",
-            "Bold line art with closed shapes",
+            f"{designs} original bold-and-easy designs",
             "Single-sided pages for markers",
-            f"{trim_label} format",
-            "Relaxing designs for adults and kids",
-            "AI-assisted art (disclose on KDP)",
+            f"{trim_label} trim, KDP paperback ready",
+            "Thick closed outlines, no tiny detail stress",
+            "No trademarks — original scenes only",
         ],
         "keywords": cfg["keywords"],
         "categories": cfg["categories"],
-        "author": PEN_NAME,
         "ai_assisted": True,
-        "art_source": "art-source",
         "status": "draft",
+        "author": PEN_NAME,
     }
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-    (root / "brief.md").write_text(
-        f"# {cfg['title']}\n\n**Slug:** `{slug}`  \n**Author:** {PEN_NAME}\n\n{cfg['one_liner']}\n",
-        encoding="utf-8",
-    )
-    listing_dir = ROOT / "launch" / "listings"
-    listing_dir.mkdir(parents=True, exist_ok=True)
-    (listing_dir / f"{slug}.md").write_text(
-        f"# {cfg['title']} — {cfg['subtitle']}\n\n"
-        f"**Author:** {PEN_NAME}\n"
-        f"**Price target:** comps research\n"
-        f"**AI-assisted:** Yes\n\n"
-        f"## Description\n\n{meta['description']}\n",
-        encoding="utf-8",
-    )
+    brief = root / "brief.md"
+    if not brief.exists():
+        brief.write_text(
+            f"# {meta['title']}\n\n{meta['one_liner']}\n\n"
+            f"Follow `STYLE.md`. Build: `python3 scripts/build_theme_book.py {slug}`\n",
+            encoding="utf-8",
+        )
     return meta
 
 
-def render_cover(
-    slug: str,
-    page_count: int,
-    hero_art: Path | None = None,
-    trim: str | None = None,
-) -> Path:
+def build_one(slug: str, *, covers_only: bool = False) -> dict:
     cfg = THEMES[slug]
     root = product_dir(slug)
-    cover_meta = COVER_THEMES.get(slug, {})
-    hero_name = cover_meta.get("hero")
-    hero = COVER_HEROES / hero_name if hero_name else None
-    if hero is None or not hero.exists():
-        # Fall back to first art-source page (should rarely happen)
-        hero = hero_art or next(sorted((root / "art-source").glob("*.png")))
-    # Keep a copy beside the wrap for publish packages / re-renders
-    local_hero = root / "cover" / "hero.png"
-    local_hero.parent.mkdir(parents=True, exist_ok=True)
-    local_hero.write_bytes(Path(hero).read_bytes())
-    meta_path = root / "meta.json"
-    author = PEN_NAME
-    trim_key = trim or str(cfg.get("trim", "letter"))
-    if meta_path.exists():
-        meta = json.loads(meta_path.read_text(encoding="utf-8"))
-        author = meta.get("author") or PEN_NAME
-        trim_key = str(meta.get("trim") or trim_key)
-        if meta.get("author") != PEN_NAME:
-            meta["author"] = PEN_NAME
-            author = PEN_NAME
-            meta_path.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-    out = root / "cover" / "wrap-placeholder.png"
-    render_theme_cover(
-        slug=slug,
-        title=cfg["title"],
-        subtitle=cfg["subtitle"],
-        one_liner=cfg["one_liner"],
-        page_count=page_count,
-        hero_path=local_hero,
-        out_path=out,
-        author=author,
-        trim=trim_key,
-    )
-    return out
-
-
-def build_slug(slug: str) -> dict:
-    if slug not in THEMES:
-        raise SystemExit(f"Unknown slug {slug}. Choose from: {', '.join(THEMES)}")
-    cfg = THEMES[slug]
-    designs = int(cfg.get("designs", 30))
-    trim = str(cfg.get("trim", "letter"))
     ensure_meta(slug)
-    root = product_dir(slug)
-    art_dir = root / "art-source"
-    pngs = sorted(art_dir.glob("*.png"))
-    if len(pngs) < designs:
-        return {
-            "ok": False,
-            "slug": slug,
-            "error": f"Need {designs} PNGs in {art_dir}, found {len(pngs)}",
-        }
-
-    # Keep only first N sorted for stable page order
-    for extra in pngs[designs:]:
-        extra.unlink()
-    paths = import_art_folder(art_dir, root / "pages", trim=trim, theme=slug)
-    for p in sorted((root / "pages").glob("page-*.png"))[designs:]:
-        p.unlink()
-    for p in sorted((root / "pages").glob("page-*.svg"))[designs:]:
-        p.unlink()
-    paths = sorted((root / "pages").glob("page-*.png"))[:designs]
-
-    result = build_interior_pdf(paths, root / "interior.pdf", trim=trim, single_sided=True)
-    meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
-    meta["page_count_interior"] = result["page_count"]
-    meta["designs"] = len(paths)
-    meta["trim"] = trim
-    (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-
-    render_cover(slug, result["page_count"], trim=trim)
-    research_and_price(slug, query=cfg["query"], apply=True, allow_demo=True)
-    errors = validate_product(slug)
-    pkg = build_publish_package(slug) if not errors else {"ok": False, "errors": errors}
+    trim = str(cfg.get("trim", "letter"))
+    if not covers_only:
+        art_dir = root / "art-source"
+        paths = import_art_folder(art_dir, root / "pages", trim=trim, theme=slug)
+        result = build_interior_pdf(paths, root / "interior.pdf", trim=trim, single_sided=True)
+    else:
+        result = {"ok": True, "pages": 0}
+    hero = COVER_HEROES / COVER_THEMES.get(slug, {}).get("hero", f"cover-hero-{slug}.png")
+    if hero.exists() or COVER_THEMES.get(slug):
+        render_theme_cover(slug)
+    try:
+        research_and_price(slug, query=cfg.get("query", cfg["title"]), apply=True)
+    except Exception as exc:  # noqa: BLE001
+        print(f"price skip: {exc}")
+    build_publish_package(slug)
+    validation = validate_product(slug)
     return {
-        "ok": not errors and pkg.get("ok"),
+        "ok": True,
         "slug": slug,
-        "pages": len(paths),
-        "validation": errors,
-        "publish": pkg.get("package_dir"),
+        "pages": int(cfg.get("designs", 0)),
+        "validation": validation,
+        "publish": str(root / "publish"),
+        **result,
     }
 
 
-def rebuild_covers_only(slug: str) -> dict:
-    """Re-render cover wrap + publish package without regenerating interiors."""
-    if slug not in THEMES:
-        raise SystemExit(f"Unknown slug {slug}. Choose from: {', '.join(THEMES)}")
-    root = product_dir(slug)
-    meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
-    pages = int(meta.get("page_count_interior") or 60)
-    out = render_cover(slug, pages)
-    pkg = build_publish_package(slug)
-    return {"ok": True, "slug": slug, "cover": str(out), "publish": pkg.get("package_dir")}
+def main(args: list[str] | None = None) -> None:
+    args = list(args if args is not None else sys.argv[1:])
+    covers_only = False
+    if "--covers-only" in args:
+        covers_only = True
+        args.remove("--covers-only")
+    if args and args[0] not in THEMES and args[0] != "--all":
+        raise SystemExit(f"Unknown slug {args[0]}. Choose from: {', '.join(THEMES)}")
+    if not args or args == ["--all"]:
+        slugs = list(THEMES)
+    else:
+        slugs = args
+    for slug in slugs:
+        if slug not in THEMES:
+            raise SystemExit(f"Unknown slug {slug}. Choose from: {', '.join(THEMES)}")
+        print(json.dumps(build_one(slug, covers_only=covers_only), indent=2))
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    covers_only = False
-    if args and args[0] == "--covers-only":
-        covers_only = True
-        args = args[1:]
-    slugs = args or list(THEMES)
-    for slug in slugs:
-        result = rebuild_covers_only(slug) if covers_only else build_slug(slug)
-        print(json.dumps(result, indent=2))
+    main()

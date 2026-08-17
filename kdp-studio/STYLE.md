@@ -25,3 +25,7 @@ Do **not** use procedural geometry generators. Quiet Places pages are placed as 
 ## Future titles
 
 Any new coloring SKU must reuse this style and pipeline. If it would look different after removing the title, it is the wrong style — regenerate.
+
+## Current titles (same style, different subjects)
+
+Quiet Places, Stained Glass, Cars, Planes, Buildings, Food, Mountains — all 40-page square bold-and-easy books. Use `scripts/inkify_bold_easy.py` + `scripts/build_theme_book.py <slug>`.

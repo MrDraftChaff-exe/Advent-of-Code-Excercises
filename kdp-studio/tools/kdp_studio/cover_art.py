@@ -24,7 +24,7 @@ TAG_FONT = "SourceSans3-SemiBold.ttf"
 AUTHOR_FONT = "PatrickHand-Regular.ttf"
 BODY_FONT = "SourceSans3-Regular.ttf"
 
-# Theme palettes — Quiet Places only (STYLE.md is the art foundation).
+# Theme palettes — all titles share STYLE.md bold-and-easy art.
 THEMES: dict[str, dict] = {
     "quiet-places-40": {
         "gradient": ((190, 220, 200), (55, 100, 75)),
@@ -33,6 +33,54 @@ THEMES: dict[str, dict] = {
         "stroke": (30, 60, 40),
         "hero": "cover-hero-quiet.png",
         "back_label": "Breathe and color",
+    },
+    "stained-glass-40": {
+        "gradient": ((210, 195, 240), (80, 45, 120)),
+        "accent": (255, 200, 120),
+        "title": (255, 255, 255),
+        "stroke": (40, 20, 70),
+        "hero": "cover-hero-stained-glass.png",
+        "back_label": "Color the light",
+    },
+    "cars-40": {
+        "gradient": ((180, 210, 245), (30, 70, 130)),
+        "accent": (255, 180, 70),
+        "title": (255, 255, 255),
+        "stroke": (20, 40, 80),
+        "hero": "cover-hero-cars.png",
+        "back_label": "Hit the road",
+    },
+    "planes-40": {
+        "gradient": ((190, 220, 245), (40, 90, 150)),
+        "accent": (255, 200, 90),
+        "title": (255, 255, 255),
+        "stroke": (20, 50, 90),
+        "hero": "cover-hero-planes.png",
+        "back_label": "Up in the clouds",
+    },
+    "buildings-40": {
+        "gradient": ((230, 220, 210), (90, 70, 55)),
+        "accent": (255, 190, 120),
+        "title": (255, 255, 255),
+        "stroke": (50, 35, 25),
+        "hero": "cover-hero-buildings.png",
+        "back_label": "Color the skyline",
+    },
+    "food-40": {
+        "gradient": ((255, 230, 210), (170, 80, 55)),
+        "accent": (255, 210, 100),
+        "title": (255, 255, 255),
+        "stroke": (90, 40, 25),
+        "hero": "cover-hero-food.png",
+        "back_label": "Dig in and color",
+    },
+    "mountains-40": {
+        "gradient": ((200, 225, 235), (50, 80, 105)),
+        "accent": (255, 200, 120),
+        "title": (255, 255, 255),
+        "stroke": (25, 45, 60),
+        "hero": "cover-hero-mountains.png",
+        "back_label": "Reach the summit",
     },
 }
 
