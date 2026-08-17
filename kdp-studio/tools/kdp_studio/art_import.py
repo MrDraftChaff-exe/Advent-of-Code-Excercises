@@ -152,6 +152,35 @@ def _trace_curves(ink: np.ndarray, *, opttolerance: float = 1.0):
     return curves
 
 
+def _opencv_evenodd_svg(
+    ink: np.ndarray,
+    *,
+    canvas_w: int,
+    canvas_h: int,
+) -> str:
+    """Build page SVG from OpenCV contours (reliable even-odd holes)."""
+    cnts, _ = cv2.findContours(ink.astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
+    parts: list[str] = []
+    for cnt in cnts:
+        if len(cnt) < 3:
+            continue
+        pts = cnt.reshape(-1, 2)
+        if cv2.contourArea(cnt) < 20:
+            continue
+        d = f"M {pts[0, 0]:.2f} {pts[0, 1]:.2f} " + " ".join(
+            f"L {x:.2f} {y:.2f}" for x, y in pts[1:]
+        ) + " Z"
+        parts.append(d)
+    d_all = " ".join(parts)
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_w}" height="{canvas_h}" '
+        f'viewBox="0 0 {canvas_w} {canvas_h}" shape-rendering="geometricPrecision">'
+        f'<rect width="100%" height="100%" fill="white"/>'
+        f'<path fill="#000000" fill-rule="evenodd" d="{d_all}"/>'
+        f"</svg>\n"
+    )
+
+
 def build_page_svg(
     ink: np.ndarray,
     *,
@@ -162,15 +191,29 @@ def build_page_svg(
 ) -> str:
     """Full-page SVG (white canvas + even-odd black art)."""
     ox, oy = offset
-    curves = _trace_curves(ink, opttolerance=opttolerance)
-    d = " ".join(_curve_to_svg_d(c, dx=ox, dy=oy) for c in curves)
-    return (
+    # Ink may already be full-page (offset 0) or subject-sized
+    if ox or oy:
+        page = np.zeros((canvas_h, canvas_w), dtype=np.uint8)
+        h, w = ink.shape
+        page[oy : oy + h, ox : ox + w] = ink
+    else:
+        page = ink
+
+    curves = _trace_curves(page, opttolerance=opttolerance)
+    d = " ".join(_curve_to_svg_d(c) for c in curves)
+    svg = (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_w}" height="{canvas_h}" '
         f'viewBox="0 0 {canvas_w} {canvas_h}" shape-rendering="geometricPrecision">'
         f'<rect width="100%" height="100%" fill="white"/>'
         f'<path fill="#000000" fill-rule="evenodd" d="{d}"/>'
         f"</svg>\n"
     )
+    probe = np.array(
+        rasterize_svg(svg, width=max(1, canvas_w // 4), height=max(1, canvas_h // 4), scale=1)
+    )
+    if float(np.mean(probe < 40)) > 0.16:
+        return _opencv_evenodd_svg(page, canvas_w=canvas_w, canvas_h=canvas_h)
+    return svg
 
 
 def rasterize_svg(svg: str, *, width: int, height: int, scale: int = 2) -> Image.Image:
@@ -186,6 +229,17 @@ def rasterize_svg(svg: str, *, width: int, height: int, scale: int = 2) -> Image
     arr = np.where(arr < 28, 0.0, arr)
     arr = np.where(arr > 242, 255.0, arr)
     return Image.fromarray(arr.astype(np.uint8), mode="L")
+
+
+def _ensure_colorable_strokes(ink: np.ndarray) -> np.ndarray:
+    """Convert ink to explicit contour strokes safe for even-odd SVG fill.
+
+    Silhouette fills and broken outline rings otherwise become solid black pages.
+    """
+    cnts, _ = cv2.findContours(ink.astype(np.uint8), cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    out = np.zeros_like(ink)
+    cv2.drawContours(out, cnts, -1, 1, thickness=7)
+    return out
 
 
 def _build_ink_mask(gray: Image.Image) -> np.ndarray:
