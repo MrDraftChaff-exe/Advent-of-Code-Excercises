@@ -12,7 +12,7 @@
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
-  "list_price_usd": 8.99,
+  "list_price_usd": 11.99,
   "audience": "Kids, families, and adults who love nature and simple animal pages",
   "one_liner": "Foxes, owls, deer, and more \u2014 bold woodland animals ready to color.",
   "description": "Foxes, owls, deer, and more \u2014 bold woodland animals ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
@@ -37,10 +37,10 @@
     "Arts & Photography > Drawing > Coloring Books",
     "Children's Books > Activities, Crafts & Games > Activity Books"
   ],
+  "author": "Elsie Wren",
   "ai_assisted": true,
   "art_source": "art-source",
   "status": "draft",
   "pricing_source": "demo_seed",
-  "pricing_basis": "median",
-  "author": "Elsie Wren"
+  "pricing_basis": "median"
 }

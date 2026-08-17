@@ -12,7 +12,7 @@
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
-  "list_price_usd": 10.99,
+  "list_price_usd": 9.99,
   "audience": "Kids and tweens curious about chemistry and lab science",
   "one_liner": "Beakers, flasks, and lab tools \u2014 simple chemistry objects to color.",
   "description": "Beakers, flasks, and lab tools \u2014 simple chemistry objects to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
@@ -37,10 +37,10 @@
     "Arts & Photography > Drawing > Coloring Books",
     "Children's Books > Education & Reference > Science & Nature"
   ],
+  "author": "Elsie Wren",
   "ai_assisted": true,
   "art_source": "art-source",
   "status": "draft",
   "pricing_source": "demo_seed",
-  "pricing_basis": "median",
-  "author": "Elsie Wren"
+  "pricing_basis": "median"
 }

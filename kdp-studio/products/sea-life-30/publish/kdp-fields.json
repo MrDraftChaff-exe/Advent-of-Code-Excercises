@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T23:43:40.504721+00:00",
+  "generated_at": "2026-08-17T00:29:30.801393+00:00",
   "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
   "official_api": false,
   "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",
@@ -28,7 +28,7 @@
     "cover_finish": "matte",
     "bleed": false,
     "page_count_interior": 60,
-    "list_price_usd": 9.99,
+    "list_price_usd": 10.99,
     "manuscript_file": "interior.pdf",
     "cover_file_hint": "cover/wrap-placeholder.png (replace with final wrap PDF/PNG)",
     "cover_dimensions": {
@@ -49,22 +49,22 @@
     }
   },
   "pricing_research": {
-    "list_price_usd": 9.99,
+    "list_price_usd": 10.99,
     "strategy": "median",
     "basis": "median",
     "comp_count": 8,
     "comp_min": 7.99,
-    "comp_median": 9.99,
+    "comp_median": 10.99,
     "comp_max": 11.99,
     "print_cost_estimate_usd": 1.57,
-    "royalty_50_estimate_usd": 3.42,
+    "royalty_50_estimate_usd": 3.92,
     "niche_band": {
       "low": 6.99,
       "mid": 9.99,
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-16T22:36:03.453770+00:00"
+    "generated_at": "2026-08-17T00:29:30.771344+00:00"
   },
   "comps_source": "demo_seed",
   "files": [
