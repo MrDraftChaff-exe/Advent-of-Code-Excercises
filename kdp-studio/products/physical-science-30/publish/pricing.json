@@ -11,21 +11,21 @@
     {
       "asin": "DEMO000000XX",
       "title": "Bold Patterns \u2014 Easy Science Coloring Book For Kids Stem Coloring",
-      "price_usd": 12.99,
+      "price_usd": 8.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000001XX",
       "title": "Relaxing Line Art for Adults (Science Coloring Book For Kids Stem)",
-      "price_usd": 9.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000002XX",
       "title": "Simple Geometric Pages to Color",
-      "price_usd": 7.99,
+      "price_usd": 11.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -39,28 +39,28 @@
     {
       "asin": "DEMO000004XX",
       "title": "Easy Mandala Moments",
-      "price_usd": 8.99,
+      "price_usd": 11.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000005XX",
       "title": "Cozy Abstract Coloring for Stress Relief",
-      "price_usd": 8.99,
+      "price_usd": 12.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000006XX",
       "title": "Large Print Pattern Coloring",
-      "price_usd": 11.99,
+      "price_usd": 8.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000007XX",
       "title": "Calm Pages: Science Coloring Book For Kids Stem Edition",
-      "price_usd": 12.99,
+      "price_usd": 9.99,
       "url": null,
       "source": "demo_seed"
     }
@@ -81,6 +81,6 @@
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-17T00:28:04.319124+00:00"
+    "generated_at": "2026-08-17T00:49:01.456171+00:00"
   }
 }
