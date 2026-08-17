@@ -140,7 +140,9 @@ def _trace_curves(ink: np.ndarray, *, opttolerance: float = 1.0):
     curves = []
     for curve in path:
         x0, y0, x1, y1 = _curve_bbox(curve)
-        if (x1 - x0) >= w * 0.95 and (y1 - y0) >= h * 0.95:
+        # Only skip the true full-frame background path (touches all edges)
+        touches = x0 <= 2 and y0 <= 2 and x1 >= w - 3 and y1 >= h - 3
+        if touches and (x1 - x0) >= w * 0.98 and (y1 - y0) >= h * 0.98:
             continue
         curves.append(curve)
     return curves
@@ -197,6 +199,161 @@ def _build_ink_mask(gray: Image.Image) -> np.ndarray:
     return _sdf_round_edges(ink, sigma=6.5)
 
 
+def _crop_to_ink(im: Image.Image, *, pad_frac: float = 0.04, threshold: int = 200) -> Image.Image:
+    """Remove empty source padding so the subject can scale up on the page."""
+    gray = ImageOps.grayscale(im)
+    arr = np.array(gray)
+    ink = arr < threshold
+    if not np.any(ink):
+        return im
+    ys, xs = np.where(ink)
+    h, w = arr.shape
+    pad = max(8, int(round(pad_frac * max(w, h))))
+    x0 = max(0, int(xs.min()) - pad)
+    y0 = max(0, int(ys.min()) - pad)
+    x1 = min(w, int(xs.max()) + pad + 1)
+    y1 = min(h, int(ys.max()) + pad + 1)
+    return im.crop((x0, y0, x1, y1))
+
+
+def _draw_closed_poly(canvas: np.ndarray, pts: list[tuple[int, int]], width: int = 6) -> None:
+    arr = np.array(pts, dtype=np.int32).reshape(-1, 1, 2)
+    cv2.polylines(canvas, [arr], isClosed=True, color=1, thickness=max(3, width), lineType=cv2.LINE_AA)
+
+
+def _draw_ring(canvas: np.ndarray, cx: int, cy: int, r: int, width: int = 6) -> None:
+    cv2.circle(canvas, (cx, cy), r, 1, thickness=max(3, width), lineType=cv2.LINE_AA)
+
+
+def _motif_clearance_ok(page: np.ndarray, cx: int, cy: int, r: int, pad: int = 18) -> bool:
+    h, w = page.shape
+    y_a, y_b = max(0, cy - r - pad), min(h, cy + r + pad)
+    x_a, x_b = max(0, cx - r - pad), min(w, cx + r + pad)
+    return page[y_a:y_b, x_a:x_b].mean() <= 0.015
+
+
+def _draw_motif(page: np.ndarray, cx: int, cy: int, r: int, kind: int) -> None:
+    if kind == 0:
+        _draw_ring(page, cx, cy, r, width=7)
+        _draw_ring(page, cx, cy, max(12, r // 3), width=6)
+    elif kind == 1:
+        pts = [(cx, cy - r), (cx + r, cy), (cx, cy + r), (cx - r, cy)]
+        _draw_closed_poly(page, pts, width=7)
+        _draw_ring(page, cx, cy, max(10, r // 4), width=5)
+    elif kind == 2:
+        petals = []
+        for k in range(5):
+            ang = -np.pi / 2 + k * 2 * np.pi / 5
+            petals.append((int(cx + r * np.cos(ang)), int(cy + r * np.sin(ang))))
+        _draw_closed_poly(page, petals, width=7)
+        _draw_ring(page, cx, cy, max(10, r // 4), width=5)
+    else:
+        # Nested hexagon — extra closed regions to color
+        for scale, width in ((1.0, 7), (0.55, 6)):
+            rr = max(12, int(r * scale))
+            pts = []
+            for k in range(6):
+                ang = np.pi / 6 + k * np.pi / 3
+                pts.append((int(cx + rr * np.cos(ang)), int(cy + rr * np.sin(ang))))
+            _draw_closed_poly(page, pts, width=width)
+
+
+def _fill_band_with_motifs(
+    page: np.ndarray,
+    *,
+    bx0: int,
+    by0: int,
+    bx1: int,
+    by1: int,
+    rng: np.random.Generator,
+) -> None:
+    """Pack medium/large closed shapes into an empty rectangle."""
+    bw, bh = bx1 - bx0, by1 - by0
+    if bw < 100 or bh < 90:
+        return
+    # Larger companions in a short grid — fill the band without sticker-sheet clutter
+    r_hi = max(48, min(120, int(bh * 0.42), int(bw * 0.14)))
+    r_lo = max(36, int(r_hi * 0.7))
+    cols = max(2, min(4, bw // max(140, r_hi * 2 + 40)))
+    rows = max(1, min(3, bh // max(120, r_hi * 2 + 36)))
+    for row in range(rows):
+        for col in range(cols):
+            cx = int(bx0 + (col + 0.5) * bw / cols + rng.integers(-22, 23))
+            cy = int(by0 + (row + 0.5) * bh / rows + rng.integers(-18, 19))
+            r = int(rng.integers(r_lo, r_hi + 1))
+            cx = int(np.clip(cx, bx0 + r + 10, bx1 - r - 10))
+            cy = int(np.clip(cy, by0 + r + 10, by1 - r - 10))
+            if not _motif_clearance_ok(page, cx, cy, r, pad=22):
+                continue
+            _draw_motif(page, cx, cy, r, int(rng.integers(0, 4)))
+
+
+def _enrich_sparse_canvas(
+    ink: np.ndarray,
+    *,
+    canvas_w: int,
+    canvas_h: int,
+    ox: int,
+    oy: int,
+    seed: int,
+    min_fill: float = 0.72,
+) -> np.ndarray:
+    """If the subject leaves large empty bands, add extra closed shapes to color.
+
+    Prefer a single outer frame + dense companions over empty double frames.
+    Returns a full-page ink mask (1=ink) combining the main art and accents.
+    """
+    page = np.zeros((canvas_h, canvas_w), dtype=np.uint8)
+    h, w = ink.shape
+    page[oy : oy + h, ox : ox + w] = ink
+
+    ys, xs = np.where(page > 0)
+    if ys.size == 0:
+        return page
+    y0, y1 = int(ys.min()), int(ys.max())
+    x0, x1 = int(xs.min()), int(xs.max())
+    fill_h = (y1 - y0 + 1) / canvas_h
+    fill_w = (x1 - x0 + 1) / canvas_w
+    if fill_h >= min_fill and fill_w >= min_fill:
+        return page
+
+    rng = np.random.default_rng(seed)
+    edge = max(36, min(x0, canvas_w - 1 - x1, y0, canvas_h - 1 - y1) // 2)
+
+    # One colorable outer frame (no empty double-window look)
+    _draw_closed_poly(
+        page,
+        [
+            (edge, edge),
+            (canvas_w - 1 - edge, edge),
+            (canvas_w - 1 - edge, canvas_h - 1 - edge),
+            (edge, canvas_h - 1 - edge),
+        ],
+        width=8,
+    )
+
+    pad = edge + 36
+    bands: list[tuple[int, int, int, int]] = []
+    top_gap = y0 - pad
+    bot_gap = (canvas_h - 1 - pad) - y1
+    left_gap = x0 - pad
+    right_gap = (canvas_w - 1 - pad) - x1
+    if top_gap > 110:
+        bands.append((pad, pad, canvas_w - pad, y0 - 28))
+    if bot_gap > 110:
+        bands.append((pad, y1 + 28, canvas_w - pad, canvas_h - pad))
+    # Side bands only when the subject is narrow and top/bottom already handled poorly
+    if fill_w < 0.62 and left_gap > 120:
+        bands.append((pad, max(pad, y0), x0 - 28, min(canvas_h - pad, y1)))
+    if fill_w < 0.62 and right_gap > 120:
+        bands.append((x1 + 28, max(pad, y0), canvas_w - pad, min(canvas_h - pad, y1)))
+
+    for bx0, by0, bx1, by1 in bands:
+        _fill_band_with_motifs(page, bx0=bx0, by0=by0, bx1=bx1, by1=by1, rng=rng)
+
+    return page
+
+
 def prepare_line_art(gray: Image.Image) -> Image.Image:
     """Fallback raster-only helper (prefer normalize_to_page for SVG+PNG)."""
     ink = _build_ink_mask(gray)
@@ -211,8 +368,10 @@ def normalize_to_page(
     *,
     trim: str = "letter",
     dpi: int = 300,
-    margin_in: float = 0.5,
+    margin_in: float = 0.375,
+    page_index: int = 1,
 ) -> Path:
+    """Place art large on the page; add extra colorable shapes if still sparse."""
     width_in, height_in = trim_box(trim)
     canvas_w = int(round(width_in * dpi))
     canvas_h = int(round(height_in * dpi))
@@ -220,16 +379,33 @@ def normalize_to_page(
     inner = (canvas_w - 2 * margin, canvas_h - 2 * margin)
 
     im = Image.open(src).convert("RGB")
+    im = _crop_to_ink(im)
     fitted = ImageOps.contain(im, inner, Image.Resampling.LANCZOS)
     ink = _build_ink_mask(ImageOps.grayscale(fitted))
     ox = (canvas_w - ink.shape[1]) // 2
-    oy = (canvas_h - ink.shape[0]) // 2
+    # Short/wide art: pin toward the top so one large companion band fills below
+    subject_fill_h = ink.shape[0] / canvas_h
+    if subject_fill_h < 0.68:
+        oy = margin + max(0, int(round((inner[1] - ink.shape[0]) * 0.12)))
+    else:
+        oy = (canvas_h - ink.shape[0]) // 2
 
-    svg = build_page_svg(
+    # Full-page mask (may include companion shapes for short/wide subjects)
+    page_ink = _enrich_sparse_canvas(
         ink,
         canvas_w=canvas_w,
         canvas_h=canvas_h,
-        offset=(ox, oy),
+        ox=ox,
+        oy=oy,
+        seed=page_index * 997 + canvas_w,
+        min_fill=0.72,
+    )
+
+    svg = build_page_svg(
+        page_ink,
+        canvas_w=canvas_w,
+        canvas_h=canvas_h,
+        offset=(0, 0),
         opttolerance=1.0,
     )
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -247,7 +423,7 @@ def import_art_folder(
     *,
     trim: str = "letter",
     dpi: int = 300,
-    margin_in: float = 0.5,
+    margin_in: float = 0.375,
 ) -> list[Path]:
     files = sorted(art_dir.glob("*.png")) + sorted(art_dir.glob("*.jpg"))
     if not files:
@@ -259,7 +435,7 @@ def import_art_folder(
             old.unlink()
     for i, src in enumerate(files, start=1):
         out = pages_dir / f"page-{i:02d}.png"
-        normalize_to_page(src, out, trim=trim, dpi=dpi, margin_in=margin_in)
+        normalize_to_page(src, out, trim=trim, dpi=dpi, margin_in=margin_in, page_index=i)
         paths.append(out)
     return paths
 
