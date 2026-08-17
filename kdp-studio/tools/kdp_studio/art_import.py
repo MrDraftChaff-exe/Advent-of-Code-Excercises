@@ -1,7 +1,7 @@
 """Normalize external/AI line-art into KDP page PNGs.
 
-Goal: smooth, colorable outlines — sealed enough to avoid tears, but not so
-thick/blocky that white regions disappear.
+Keeps the current colorable line weight, then cleans jagged stair-step edges
+with signed-distance silhouette rounding and blur-downsample anti-aliasing.
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from PIL import Image, ImageFilter, ImageOps
+from PIL import Image, ImageOps
 
 from .specs import trim_box
 
@@ -28,24 +28,20 @@ def _lighten_overthick(ink: np.ndarray) -> np.ndarray:
     frac = float(ink.mean())
     if frac < 0.10:
         return ink
-    # One light erode for heavy AI fills so pages stay colorable
     k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     thinned = cv2.erode(ink, k, iterations=1 if frac < 0.16 else 2)
-    # Don't erase the drawing entirely
     if thinned.mean() < 0.02:
         return ink
     return thinned
 
 
 def _bridge_small_gaps(ink: np.ndarray, *, close_px: int = 5) -> np.ndarray:
-    """Light morphological close — only micro gaps, preserves open color areas."""
     size = max(3, close_px | 1)
     k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (size, size))
     return cv2.morphologyEx(ink, cv2.MORPH_CLOSE, k, iterations=1)
 
 
 def _fill_tiny_holes(ink: np.ndarray, *, max_hole: int = 24) -> np.ndarray:
-    """Fill only tiny white speckles inside strokes (not colorable pockets)."""
     white = (1 - ink).astype(np.uint8)
     n, labels, stats, _ = cv2.connectedComponentsWithStats(white, connectivity=8)
     out = ink.copy()
@@ -62,24 +58,72 @@ def _fill_tiny_holes(ink: np.ndarray, *, max_hole: int = 24) -> np.ndarray:
 
 
 def _gentle_thicken(ink: np.ndarray, *, px: int = 2) -> np.ndarray:
-    """Slight thicken for print without blocky blobs."""
     size = max(3, px | 1)
     k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (size, size))
     return cv2.dilate(ink, k, iterations=1)
 
 
+def _smooth_mask_edges(ink: np.ndarray, *, sigma: float = 1.6, upscale: int = 2) -> np.ndarray:
+    """Round stair-step edges without heavy thickening."""
+    h, w = ink.shape
+    up = cv2.resize(
+        ink.astype(np.float32),
+        (w * upscale, h * upscale),
+        interpolation=cv2.INTER_LINEAR,
+    )
+    blurred = cv2.GaussianBlur(up, (0, 0), sigmaX=sigma * upscale, sigmaY=sigma * upscale)
+    binary = (blurred >= 0.42).astype(np.float32)
+    down = cv2.resize(binary, (w, h), interpolation=cv2.INTER_AREA)
+    return (down >= 0.50).astype(np.uint8)
+
+
+def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 2.2) -> np.ndarray:
+    """Round jagged silhouettes by blurring the signed-distance field.
+
+    Re-thresholds at zero so stroke cores stay solid black — only the outline
+    geometry is smoothed, not the fill.
+    """
+    dist_out = cv2.distanceTransform((1 - ink).astype(np.uint8), cv2.DIST_L2, 5)
+    dist_in = cv2.distanceTransform(ink.astype(np.uint8), cv2.DIST_L2, 5)
+    sdf = (dist_out - dist_in).astype(np.float32)
+    sdf = cv2.GaussianBlur(sdf, (0, 0), sigmaX=sigma, sigmaY=sigma)
+    return (sdf < 0.0).astype(np.uint8)
+
+
+def _anti_alias_edges(ink: np.ndarray, *, upscale: int = 4, sigma: float = 0.95) -> np.ndarray:
+    """Return grayscale page (0=ink, 255=paper) with a rich soft edge ramp.
+
+    Upscale → blur → area-downsample produces a smooth coverage ramp instead of
+    a 1–2 level fringe that still looks stair-stepped in preview/print.
+    """
+    h, w = ink.shape
+    up = cv2.resize(
+        ink.astype(np.float32),
+        (w * upscale, h * upscale),
+        interpolation=cv2.INTER_NEAREST,
+    )
+    soft = cv2.GaussianBlur(up, (0, 0), sigmaX=sigma * upscale, sigmaY=sigma * upscale)
+    down = cv2.resize(soft, (w, h), interpolation=cv2.INTER_AREA)
+    return np.clip((1.0 - down) * 255.0, 0, 255).astype(np.uint8)
+
+
 def prepare_line_art(gray: Image.Image) -> Image.Image:
-    """Clean line art at whatever resolution it currently is."""
+    """Colorable weight + cleaned edges."""
     arr = np.array(gray.convert("L"))
-    # Mild blur before threshold reduces jagged stair-steps from AI rasters
-    soft = cv2.GaussianBlur(arr, (3, 3), 0)
-    ink = _to_ink(soft, threshold=180)
+    soft = cv2.GaussianBlur(arr, (5, 5), 0)
+    ink = _to_ink(soft, threshold=178)
     ink = _lighten_overthick(ink)
     ink = _bridge_small_gaps(ink, close_px=5)
     ink = _fill_tiny_holes(ink, max_hole=20)
+
+    # Establish colorable stroke weight, then round and anti-alias edges
+    ink = _smooth_mask_edges(ink, sigma=2.2, upscale=3)
     ink = _gentle_thicken(ink, px=2)
+    ink = _smooth_mask_edges(ink, sigma=1.5, upscale=3)
     ink = _fill_tiny_holes(ink, max_hole=16)
-    return _from_ink(ink)
+    ink = _bridge_small_gaps(ink, close_px=3)
+    ink = _sdf_round_edges(ink, sigma=2.2)
+    return Image.fromarray(_anti_alias_edges(ink, upscale=4, sigma=0.95), mode="L")
 
 
 def normalize_to_page(
@@ -96,21 +140,9 @@ def normalize_to_page(
     margin = int(round(margin_in * dpi))
     inner = (canvas_w - 2 * margin, canvas_h - 2 * margin)
 
-    # Upscale smoothly FIRST so curves stay smooth (NEAREST made lines blocky)
     im = Image.open(src).convert("RGB")
     fitted = ImageOps.contain(im, inner, Image.Resampling.LANCZOS)
-    # Slight unsharp after upscale to keep edges crisp before threshold
-    fitted = fitted.filter(ImageFilter.UnsharpMask(radius=1.2, percent=120, threshold=2))
-
-    gray = ImageOps.grayscale(fitted)
-    page_art = prepare_line_art(gray)
-
-    # One light page-scale seal for leftover micro gaps after upscale
-    arr = np.array(page_art)
-    ink = _to_ink(arr, threshold=200)
-    ink = _bridge_small_gaps(ink, close_px=3)
-    ink = _fill_tiny_holes(ink, max_hole=12)
-    page_art = _from_ink(ink)
+    page_art = prepare_line_art(ImageOps.grayscale(fitted))
 
     canvas = Image.new("L", (canvas_w, canvas_h), 255)
     canvas.paste(page_art, ((canvas_w - page_art.width) // 2, (canvas_h - page_art.height) // 2))
@@ -141,11 +173,11 @@ def import_art_folder(
     return paths
 
 
-# Back-compat alias used by older call sites / experiments
 def close_line_gaps(gray: Image.Image, *, close_px: int = 5, use_skeleton: bool = False) -> Image.Image:
     arr = np.array(gray.convert("L"))
     ink = _to_ink(arr)
     ink = _bridge_small_gaps(ink, close_px=close_px)
+    ink = _smooth_mask_edges(ink, sigma=1.5, upscale=2)
     ink = _fill_tiny_holes(ink, max_hole=20)
     if close_px >= 5:
         ink = _gentle_thicken(ink, px=2)
