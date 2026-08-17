@@ -1,7 +1,7 @@
 """Normalize external/AI line-art into KDP page PNGs.
 
-Keeps the current colorable line weight, then cleans jagged stair-step edges
-with signed-distance silhouette rounding and blur-downsample anti-aliasing.
+Builds a colorable ink weight, then vector-traces (potrace) and re-rasterizes
+with anti-aliasing so printed curves stay smooth — no stair-step roughness.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 from PIL import Image, ImageOps
+from potrace import BezierSegment, Bitmap, CornerSegment
 
 from .specs import trim_box
 
@@ -77,12 +78,8 @@ def _smooth_mask_edges(ink: np.ndarray, *, sigma: float = 1.6, upscale: int = 2)
     return (down >= 0.50).astype(np.uint8)
 
 
-def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 2.2) -> np.ndarray:
-    """Round jagged silhouettes by blurring the signed-distance field.
-
-    Re-thresholds at zero so stroke cores stay solid black — only the outline
-    geometry is smoothed, not the fill.
-    """
+def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 5.5) -> np.ndarray:
+    """Round jagged silhouettes before vector tracing."""
     dist_out = cv2.distanceTransform((1 - ink).astype(np.uint8), cv2.DIST_L2, 5)
     dist_in = cv2.distanceTransform(ink.astype(np.uint8), cv2.DIST_L2, 5)
     sdf = (dist_out - dist_in).astype(np.float32)
@@ -90,12 +87,96 @@ def _sdf_round_edges(ink: np.ndarray, *, sigma: float = 2.2) -> np.ndarray:
     return (sdf < 0.0).astype(np.uint8)
 
 
-def _anti_alias_edges(ink: np.ndarray, *, upscale: int = 4, sigma: float = 0.95) -> np.ndarray:
-    """Return grayscale page (0=ink, 255=paper) with a rich soft edge ramp.
+def _pt(p) -> np.ndarray:
+    return np.array([float(p.x), float(p.y)], dtype=np.float64)
 
-    Upscale → blur → area-downsample produces a smooth coverage ramp instead of
-    a 1–2 level fringe that still looks stair-stepped in preview/print.
-    """
+
+def _curve_to_polygon(curve, *, samples: int = 18) -> np.ndarray | None:
+    """Sample potrace Bezier/corner segments into a dense polygon."""
+    pts: list[list[float]] = []
+    cur = _pt(curve.start_point)
+    for seg in curve.segments:
+        if isinstance(seg, BezierSegment):
+            c1, c2, end = _pt(seg.c1), _pt(seg.c2), _pt(seg.end_point)
+            t = np.linspace(0.0, 1.0, samples)[:, None]
+            bez = (
+                (1 - t) ** 3 * cur
+                + 3 * (1 - t) ** 2 * t * c1
+                + 3 * (1 - t) * t**2 * c2
+                + t**3 * end
+            )
+            pts.extend(bez[:-1].tolist())
+            cur = end
+        elif isinstance(seg, CornerSegment):
+            # Soften sharp corners so raster edges don't look bitten
+            corner, end = _pt(seg.c), _pt(seg.end_point)
+            mid1 = 0.65 * cur + 0.35 * corner
+            mid2 = 0.35 * corner + 0.65 * end
+            pts.append(mid1.tolist())
+            pts.append(mid2.tolist())
+            pts.append(end.tolist())
+            cur = end
+        else:
+            end = _pt(getattr(seg, "end_point"))
+            pts.append(end.tolist())
+            cur = end
+    if len(pts) < 3:
+        return None
+    return np.asarray(pts, dtype=np.float64)
+
+
+def _signed_area(poly: np.ndarray) -> float:
+    x, y = poly[:, 0], poly[:, 1]
+    return 0.5 * float(np.sum(x * np.roll(y, -1) - np.roll(x, -1) * y))
+
+
+def _vector_smooth_raster(
+    ink: np.ndarray,
+    *,
+    scale: int = 6,
+    opttolerance: float = 0.8,
+    alphamax: float = 1.334,
+    aa_sigma: float = 0.95,
+) -> np.ndarray:
+    """Trace ink to smooth Beziers, then supersample + downsample for AA gray page."""
+    h, w = ink.shape
+    if ink.mean() < 0.001:
+        return np.full((h, w), 255, dtype=np.uint8)
+
+    path = Bitmap(ink.astype(bool)).trace(
+        turdsize=5,
+        opttolerance=opttolerance,
+        alphamax=alphamax,
+    )
+    full = float(w * h)
+    polys: list[np.ndarray] = []
+    for curve in path:
+        poly = _curve_to_polygon(curve)
+        if poly is None:
+            continue
+        # Potrace sometimes emits a full-frame background path — skip it
+        if abs(_signed_area(poly)) > 0.80 * full:
+            continue
+        polys.append(poly)
+
+    if not polys:
+        # Fallback: soft AA of the binary mask
+        return _anti_alias_mask(ink, upscale=scale, sigma=aa_sigma)
+
+    polys.sort(key=lambda p: abs(_signed_area(p)), reverse=True)
+    canvas = np.zeros((h * scale, w * scale), dtype=np.uint8)
+    layer = np.zeros_like(canvas)
+    for poly in polys:
+        layer.fill(0)
+        cv2.fillPoly(layer, [(poly * scale).astype(np.int32)], 1)
+        np.bitwise_xor(canvas, layer, out=canvas)
+
+    soft = cv2.GaussianBlur(canvas.astype(np.float32), (0, 0), sigmaX=aa_sigma)
+    down = cv2.resize(soft, (w, h), interpolation=cv2.INTER_AREA)
+    return np.clip((1.0 - down) * 255.0, 0, 255).astype(np.uint8)
+
+
+def _anti_alias_mask(ink: np.ndarray, *, upscale: int = 4, sigma: float = 0.95) -> np.ndarray:
     h, w = ink.shape
     up = cv2.resize(
         ink.astype(np.float32),
@@ -108,7 +189,7 @@ def _anti_alias_edges(ink: np.ndarray, *, upscale: int = 4, sigma: float = 0.95)
 
 
 def prepare_line_art(gray: Image.Image) -> Image.Image:
-    """Colorable weight + cleaned edges."""
+    """Colorable weight, then vector-smooth re-raster with anti-aliased edges."""
     arr = np.array(gray.convert("L"))
     soft = cv2.GaussianBlur(arr, (5, 5), 0)
     ink = _to_ink(soft, threshold=178)
@@ -116,14 +197,16 @@ def prepare_line_art(gray: Image.Image) -> Image.Image:
     ink = _bridge_small_gaps(ink, close_px=5)
     ink = _fill_tiny_holes(ink, max_hole=20)
 
-    # Establish colorable stroke weight, then round and anti-alias edges
+    # Establish the approved colorable stroke weight
     ink = _smooth_mask_edges(ink, sigma=2.2, upscale=3)
     ink = _gentle_thicken(ink, px=2)
     ink = _smooth_mask_edges(ink, sigma=1.5, upscale=3)
     ink = _fill_tiny_holes(ink, max_hole=16)
     ink = _bridge_small_gaps(ink, close_px=3)
-    ink = _sdf_round_edges(ink, sigma=2.2)
-    return Image.fromarray(_anti_alias_edges(ink, upscale=4, sigma=0.95), mode="L")
+
+    # Round jagged raster geometry, then vector-trace + AA re-rasterize
+    ink = _sdf_round_edges(ink, sigma=5.5)
+    return Image.fromarray(_vector_smooth_raster(ink), mode="L")
 
 
 def normalize_to_page(
