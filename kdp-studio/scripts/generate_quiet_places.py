@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Generate original bold-and-easy line art for Quiet Places coloring book.
+"""DEPRECATED — do not use for Quiet Places production art.
 
-Style goals (inspired by popular bold/easy stress-relief books, not copies):
-- Thick closed outlines, large shapes, high fill density
-- Landscapes, flowers, mushrooms, cozy objects, simple animals, patterns
-- Square canvas suitable for 8.5x8.5 KDP trim
+Procedural geometry here produced sparse clip-art (triangle mountains, hex junk)
+that does not match bold-and-easy hand-drawn stress-relief books.
+
+Production path:
+  1. Generate illustrated scenes (qp-gen-*.png)
+  2. python3 scripts/inkify_quiet_places.py [src_dir]
+  3. python3 scripts/build_theme_book.py quiet-places-40
 """
 
 from __future__ import annotations

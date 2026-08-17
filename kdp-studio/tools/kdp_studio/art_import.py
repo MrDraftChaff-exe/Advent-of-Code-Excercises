@@ -439,7 +439,7 @@ def _fill_band_with_motifs(
     if bw < 100 or bh < 90:
         return
     t = (theme or "").lower()
-    foresty = "forest" in t or "animal" in t or "quiet" in t or "cozy" in t
+    foresty = "forest" in t or "animal" in t
     # Forest pages: fewer, larger bushes/flowers so they read as scenery
     if foresty:
         r_hi = max(70, min(160, int(bh * 0.48), int(bw * 0.18)))
@@ -482,6 +482,11 @@ def _enrich_sparse_canvas(
     page = np.zeros((canvas_h, canvas_w), dtype=np.uint8)
     h, w = ink.shape
     page[oy : oy + h, ox : ox + w] = ink
+
+    # Full illustrated scenes (Quiet Places / cozy) — never sprinkle companion junk
+    t = (theme or "").lower()
+    if "quiet" in t or "cozy" in t:
+        return page
 
     ys, xs = np.where(page > 0)
     if ys.size == 0:
