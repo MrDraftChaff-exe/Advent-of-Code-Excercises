@@ -1,0 +1,44 @@
+{
+  "id": "buildings-40",
+  "title": "Buildings",
+  "subtitle": "40 Bold & Easy Designs to Color",
+  "type": "coloring-book",
+  "theme": "buildings",
+  "trim": "square",
+  "bleed": false,
+  "single_sided": true,
+  "designs": 40,
+  "page_count_interior": null,
+  "paper_color": "white",
+  "ink": "black",
+  "cover_finish": "matte",
+  "list_price_usd": 10.99,
+  "audience": "Adults and kids who want simple, relaxing bold-and-easy coloring",
+  "one_liner": "Cozy houses, shops, castles, and city scenes in big bold outlines.",
+  "description": "Cozy houses, shops, castles, and city scenes in big bold outlines. 40 big, bold, easy pages in 8.5 x 8.5 inch square format. Single-sided printing. Original designs. AI-assisted line art disclosed on KDP.",
+  "bullets": [
+    "40 original bold-and-easy designs",
+    "Single-sided pages for markers",
+    "8.5 x 8.5 inch square trim, KDP paperback ready",
+    "Thick closed outlines, no tiny detail stress",
+    "No trademarks \u2014 original scenes only"
+  ],
+  "keywords": [
+    "buildings coloring book",
+    "houses coloring pages",
+    "bold and easy architecture",
+    "city coloring book",
+    "cottage coloring",
+    "castle coloring book easy",
+    "cozy buildings coloring"
+  ],
+  "categories": [
+    "Arts & Photography > Drawing > Coloring Books",
+    "Self-Help > Stress Management"
+  ],
+  "ai_assisted": true,
+  "status": "draft",
+  "author": "Elsie Wren",
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median"
+}

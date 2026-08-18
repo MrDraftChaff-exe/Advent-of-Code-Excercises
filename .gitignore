@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# KDP build artifacts that are regenerable (keep interiors committed when ready to ship)
+# Uncomment if PDFs get too large for git:
+# kdp-studio/products/*/interior.pdf
+# kdp-studio/products/*/pages/*.png
+
+.DS_Store
+.env
+*.log

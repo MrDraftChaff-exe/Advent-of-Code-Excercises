@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KDP Studio product meta",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "subtitle",
+    "type",
+    "trim",
+    "designs",
+    "list_price_usd",
+    "keywords",
+    "categories",
+    "description"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["coloring-book", "planner", "journal", "puzzle", "logbook", "workbook"]
+    },
+    "trim": {
+      "type": "string",
+      "enum": ["letter", "square", "large_square", "trade", "a5ish"]
+    },
+    "bleed": { "type": "boolean", "default": false },
+    "single_sided": { "type": "boolean", "default": true },
+    "designs": { "type": "integer", "minimum": 1 },
+    "page_count_interior": { "type": "integer", "minimum": 24 },
+    "paper_color": { "type": "string", "enum": ["white", "cream"] },
+    "ink": { "type": "string", "enum": ["black", "color"] },
+    "cover_finish": { "type": "string", "enum": ["matte", "glossy"] },
+    "list_price_usd": { "type": "number", "minimum": 0 },
+    "audience": { "type": "string" },
+    "one_liner": { "type": "string" },
+    "description": { "type": "string" },
+    "bullets": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 7
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 7
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 2
+    },
+    "ai_assisted": { "type": "boolean", "default": false },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready", "uploaded", "live"],
+      "default": "draft"
+    }
+  }
+}
