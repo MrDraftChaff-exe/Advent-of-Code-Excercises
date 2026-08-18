@@ -98,33 +98,42 @@ def build_publish_package(slug: str) -> dict[str, Any]:
     (out / "kdp-fields.json").write_text(json.dumps(fields, indent=2) + "\n", encoding="utf-8")
 
     checklist = out / "UPLOAD.md"
-    checklist.write_text(
-        "\n".join(
-            [
-                f"# Upload checklist — {meta.get('title')}",
-                "",
-                "Amazon KDP does **not** provide a public API for paperback uploads.",
-                "Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).",
-                "",
-                "## Steps",
-                "1. Create paperback → paste title / subtitle / description from `kdp-fields.json`",
-                "2. Keywords + categories from the same file",
-                "3. Disclose AI content if `ai_assisted` is true",
-                "4. Upload `interior.pdf` as manuscript",
-                "5. Upload final cover wrap sized per `cover/dimensions.json`",
-                f"6. Set list price to **${fields['paperback']['list_price_usd']}** (from comps research if run)",
-                "7. Proof in KDP Previewer, then publish",
-                "",
-                "## Optional assist",
-                "```bash",
-                f"python3 -m kdp_studio publish --slug {slug} --assist",
-                "```",
-                "Dry-run opens a guided checklist browser page. `--live` is experimental.",
-                "",
-            ]
-        ),
-        encoding="utf-8",
-    )
+    lines = [
+        f"# Upload checklist — {meta.get('title')}",
+        "",
+        "Amazon KDP does **not** provide a public API for paperback uploads.",
+        "Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).",
+        "",
+    ]
+    if slug == "buildings-40":
+        lines += [
+            "## Fastest path",
+            "",
+            "```bash",
+            "./scripts/upload-buildings.sh",
+            "```",
+            "",
+            "Stages `products/buildings-40/upload-kit/` with numbered files + `00-UPLOAD-NOW.md`.",
+            "",
+        ]
+    lines += [
+        "## Steps",
+        "1. Create paperback → paste title / subtitle / description from `kdp-fields.json`",
+        "2. Keywords + categories from the same file",
+        "3. Disclose AI content if `ai_assisted` is true",
+        "4. Upload `interior.pdf` as manuscript",
+        "5. Upload final cover wrap sized per `cover/dimensions.json`",
+        f"6. Set list price to **${fields['paperback']['list_price_usd']}** (from comps research if run)",
+        "7. Proof in KDP Previewer, then publish",
+        "",
+        "## Optional assist",
+        "```bash",
+        f"python3 -m kdp_studio publish --slug {slug} --assist",
+        "```",
+        "Dry-run opens a guided checklist browser page. `--live` is experimental.",
+        "",
+    ]
+    checklist.write_text("\n".join(lines), encoding="utf-8")
 
     return {"ok": True, "package_dir": str(out), "fields": fields}
 
