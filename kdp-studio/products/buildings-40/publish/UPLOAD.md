@@ -3,6 +3,16 @@
 Amazon KDP does **not** provide a public API for paperback uploads.
 Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).
 
+## Fastest path
+
+```bash
+./scripts/upload-buildings.sh
+```
+
+Or in Preview Studio → Publish → **Stage upload kit**.
+
+Stages `products/buildings-40/upload-kit/` with numbered files + paste-ready fields.
+
 ## Steps
 1. Create paperback → paste title / subtitle / description from `kdp-fields.json`
 2. Keywords + categories from the same file

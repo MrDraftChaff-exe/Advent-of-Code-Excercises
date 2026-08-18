@@ -10,7 +10,7 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from kdp_studio.pricing import research_and_price
-from kdp_studio.publish import build_publish_package
+from kdp_studio.publish import build_publish_package, stage_upload_kit
 from kdp_studio.specs import PRODUCTS, ROOT, product_dir
 from kdp_studio.validate import validate_product
 
@@ -91,6 +91,13 @@ def api_product(slug: str) -> dict:
     publish_fields = None
     if (root / "publish" / "kdp-fields.json").exists():
         publish_fields = json.loads((root / "publish" / "kdp-fields.json").read_text(encoding="utf-8"))
+    kit = root / "upload-kit"
+    kit_files = sorted(p.name for p in kit.iterdir()) if kit.exists() else []
+    paste_fields = {}
+    paste_dir = kit / "paste-fields"
+    if paste_dir.exists():
+        for txt in sorted(paste_dir.glob("*.txt")):
+            paste_fields[txt.stem] = txt.read_text(encoding="utf-8")
     return {
         "meta": meta,
         "pages": [p.name for p in pages],
@@ -103,6 +110,13 @@ def api_product(slug: str) -> dict:
         "assets": {
             "interior_pdf": (root / "interior.pdf").exists(),
             "cover_png": (root / "cover" / "wrap-placeholder.png").exists(),
+            "upload_kit": kit.exists(),
+        },
+        "upload_kit": {
+            "ready": kit.exists(),
+            "files": kit_files,
+            "paste_fields": paste_fields,
+            "guide_url": f"/api/products/{slug}/upload-kit/00-UPLOAD-NOW.md" if kit.exists() else None,
         },
     }
 
@@ -162,6 +176,33 @@ def api_publish_package(slug: str):
     if not result.get("ok"):
         raise HTTPException(400, {"errors": result.get("errors")})
     return result
+
+
+@app.post("/api/products/{slug}/upload-kit")
+def api_stage_upload_kit(slug: str):
+    result = stage_upload_kit(slug)
+    if not result.get("ok"):
+        raise HTTPException(400, {"errors": result.get("errors")})
+    return result
+
+
+@app.get("/api/products/{slug}/upload-kit/{name:path}")
+def api_upload_kit_file(slug: str, name: str):
+    if ".." in name or name.startswith("/"):
+        raise HTTPException(400, "Invalid file name")
+    path = product_dir(slug) / "upload-kit" / name
+    if not path.exists() or not path.is_file():
+        raise HTTPException(404, "Upload-kit file not found — stage the kit first")
+    media = "application/octet-stream"
+    if name.endswith(".pdf"):
+        media = "application/pdf"
+    elif name.endswith(".png"):
+        media = "image/png"
+    elif name.endswith(".json"):
+        media = "application/json"
+    elif name.endswith(".md") or name.endswith(".txt"):
+        media = "text/plain; charset=utf-8"
+    return FileResponse(path, media_type=media, filename=path.name)
 
 
 def main() -> None:

@@ -8,7 +8,7 @@
   "bleed": false,
   "single_sided": true,
   "designs": 40,
-  "page_count_interior": null,
+  "page_count_interior": 80,
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
