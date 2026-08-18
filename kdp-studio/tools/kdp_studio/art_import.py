@@ -548,10 +548,10 @@ def _normalize_quiet_raster(
     dpi: int = 300,
     margin_in: float = 0.375,
 ) -> Path:
-    """Place already-inkified Quiet Places art on the page — no potrace/SDF.
+    """Place STYLE.md ink art on the page without re-binarizing.
 
-    Quiet Places sources are cleaned by scripts/inkify_quiet_places.py. Re-running
-    the forest vector pipeline shreds those lines into garbage.
+    Soft anti-aliased ink must be resized with LANCZOS and pasted as grayscale.
+    Re-thresholding after resize is what created torn/broken strokes.
     """
     width_in, height_in = trim_box(trim)
     canvas_w = int(round(width_in * dpi))
@@ -560,29 +560,24 @@ def _normalize_quiet_raster(
     inner = (canvas_w - 2 * margin, canvas_h - 2 * margin)
 
     im = Image.open(src).convert("RGB")
-    im = _crop_to_ink(im, threshold=210)
+    im = _crop_to_ink(im, threshold=230)
     fitted = ImageOps.contain(im, inner, Image.Resampling.LANCZOS)
-    gray = np.array(ImageOps.grayscale(fitted))
-    # Soft ink from inkify is ~28; keep medium lines without re-thickening
-    ink = (gray < 140).astype(np.uint8)
-    # Tiny speck cleanup only
-    num, labels, stats, _ = cv2.connectedComponentsWithStats(ink, connectivity=8)
-    cleaned = np.zeros_like(ink)
-    for i in range(1, num):
-        if stats[i, cv2.CC_STAT_AREA] >= 8:
-            cleaned[labels == i] = 1
-    ink = cleaned
 
-    page = np.full((canvas_h, canvas_w), 255, dtype=np.uint8)
-    h, w = ink.shape
-    ox = (canvas_w - w) // 2
-    oy = (canvas_h - h) // 2
-    # Soft black (not pure 0) — reads less “overly dark” on print
-    page[oy : oy + h, ox : ox + w] = np.where(ink > 0, 32, 255).astype(np.uint8)
+    page = Image.new("RGB", (canvas_w, canvas_h), (255, 255, 255))
+    ox = (canvas_w - fitted.size[0]) // 2
+    oy = (canvas_h - fitted.size[1]) // 2
+    page.paste(fitted, (ox, oy))
+
+    # Limit soft-AA gray levels after LANCZOS so PDFs stay compressible
+    # while edges remain continuous (not hard-binarized).
+    arr = np.asarray(page.convert("L"), dtype=np.float32)
+    aa_steps = 12
+    step = 255.0 / aa_steps
+    arr = np.clip(np.round(arr / step) * step, 0, 255).astype(np.uint8)
+    page = Image.fromarray(arr, mode="L").convert("RGB")
 
     out.parent.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(page, mode="L").convert("RGB").save(out, dpi=(dpi, dpi))
-    # No SVG: Quiet Places prints from the PNG so potrace cannot shred the art.
+    page.save(out, dpi=(dpi, dpi), optimize=True, compress_level=9)
     svg_path = out.with_suffix(".svg")
     if svg_path.exists():
         svg_path.unlink()

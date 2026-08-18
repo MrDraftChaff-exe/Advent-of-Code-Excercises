@@ -8,21 +8,20 @@
   "bleed": false,
   "single_sided": true,
   "designs": 40,
-  "page_count_interior": 80,
+  "page_count_interior": null,
   "paper_color": "white",
   "ink": "black",
   "cover_finish": "matte",
   "list_price_usd": 9.99,
   "audience": "Adults and kids who want simple, relaxing coloring without tiny details",
   "one_liner": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines.",
-  "description": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines. 40 original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+  "description": "Cozy landscapes, flowers, mushrooms, and calm little scenes in big bold outlines. 40 big, bold, easy pages in 8.5 x 8.5 inch square format. Single-sided printing. Original designs. AI-assisted line art disclosed on KDP.",
   "bullets": [
-    "40 unique pages",
-    "Bold line art with closed shapes",
+    "40 original bold-and-easy designs",
     "Single-sided pages for markers",
-    "8.5 x 8.5 inch square format",
-    "Relaxing designs for adults and kids",
-    "AI-assisted art (disclose on KDP)"
+    "8.5 x 8.5 inch square trim, KDP paperback ready",
+    "Thick closed outlines, no tiny detail stress",
+    "No trademarks \u2014 original scenes only"
   ],
   "keywords": [
     "bold and easy coloring book",
@@ -37,10 +36,9 @@
     "Arts & Photography > Drawing > Coloring Books",
     "Self-Help > Stress Management"
   ],
-  "author": "Elsie Wren",
   "ai_assisted": true,
-  "art_source": "art-source",
   "status": "draft",
+  "author": "Elsie Wren",
   "pricing_source": "demo_seed",
   "pricing_basis": "median"
 }

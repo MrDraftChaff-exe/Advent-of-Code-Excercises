@@ -3,7 +3,7 @@
   "query": "bold and easy coloring book stress relief landscapes",
   "fetch": {
     "ok": false,
-    "error": "HTTP Error 503: Service Unavailable",
+    "error": "No prices parsed (Amazon HTML may be blocked or changed)",
     "url": "https://www.amazon.com/s?k=bold+and+easy+coloring+book+stress+relief+landscapes"
   },
   "source": "demo_seed",
@@ -11,7 +11,7 @@
     {
       "asin": "DEMO000000XX",
       "title": "Bold Patterns \u2014 Easy Bold And Easy Coloring Book Stress Relief Landscapes Coloring",
-      "price_usd": 7.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -25,14 +25,14 @@
     {
       "asin": "DEMO000002XX",
       "title": "Simple Geometric Pages to Color",
-      "price_usd": 10.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000003XX",
       "title": "Mindful Shapes Coloring Book",
-      "price_usd": 9.99,
+      "price_usd": 12.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -46,21 +46,21 @@
     {
       "asin": "DEMO000005XX",
       "title": "Cozy Abstract Coloring for Stress Relief",
-      "price_usd": 9.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000006XX",
       "title": "Large Print Pattern Coloring",
-      "price_usd": 8.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000007XX",
       "title": "Calm Pages: Bold And Easy Coloring Book Stress Relief Landscapes Edition",
-      "price_usd": 11.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     }
@@ -72,7 +72,7 @@
     "comp_count": 8,
     "comp_min": 7.99,
     "comp_median": 9.99,
-    "comp_max": 11.99,
+    "comp_max": 12.99,
     "print_cost_estimate_usd": 1.81,
     "royalty_50_estimate_usd": 3.19,
     "niche_band": {
@@ -81,6 +81,6 @@
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-17T20:05:07.998226+00:00"
+    "generated_at": "2026-08-18T01:17:53.357889+00:00"
   }
 }

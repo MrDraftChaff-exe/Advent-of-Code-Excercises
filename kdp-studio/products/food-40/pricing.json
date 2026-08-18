@@ -11,7 +11,7 @@
     {
       "asin": "DEMO000000XX",
       "title": "Bold Patterns \u2014 Easy Food Desserts Bold Easy Coloring Book Coloring",
-      "price_usd": 10.99,
+      "price_usd": 11.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -25,35 +25,35 @@
     {
       "asin": "DEMO000002XX",
       "title": "Simple Geometric Pages to Color",
-      "price_usd": 11.99,
+      "price_usd": 7.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000003XX",
       "title": "Mindful Shapes Coloring Book",
-      "price_usd": 11.99,
+      "price_usd": 10.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000004XX",
       "title": "Easy Mandala Moments",
-      "price_usd": 11.99,
+      "price_usd": 12.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000005XX",
       "title": "Cozy Abstract Coloring for Stress Relief",
-      "price_usd": 11.99,
+      "price_usd": 9.99,
       "url": null,
       "source": "demo_seed"
     },
     {
       "asin": "DEMO000006XX",
       "title": "Large Print Pattern Coloring",
-      "price_usd": 11.99,
+      "price_usd": 9.99,
       "url": null,
       "source": "demo_seed"
     },
@@ -66,21 +66,21 @@
     }
   ],
   "recommendation": {
-    "list_price_usd": 11.99,
+    "list_price_usd": 10.99,
     "strategy": "median",
     "basis": "median",
     "comp_count": 8,
     "comp_min": 7.99,
-    "comp_median": 11.99,
-    "comp_max": 11.99,
+    "comp_median": 10.49,
+    "comp_max": 12.99,
     "print_cost_estimate_usd": 1.81,
-    "royalty_50_estimate_usd": 4.19,
+    "royalty_50_estimate_usd": 3.69,
     "niche_band": {
       "low": 6.99,
       "mid": 9.99,
       "high": 12.99,
       "label": "adult/kids coloring paperbacks"
     },
-    "generated_at": "2026-08-17T20:33:21.117983+00:00"
+    "generated_at": "2026-08-18T01:23:09.748030+00:00"
   }
 }
