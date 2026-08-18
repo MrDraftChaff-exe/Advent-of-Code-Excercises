@@ -341,34 +341,37 @@ def render_theme_cover(
         ry = top + (front_h - rotated.height) // 2
         img.paste(rotated, (rx, ry), rotated if rotated.mode == "RGBA" else None)
 
-    # --- Back ---
+    # --- Back (retail panel — no KDP process notes on the printed book) ---
     back_w = back_r - back_l
     back_h = bottom - top
-    # Soft panel atmosphere (gradient already present); add faint hero wash
-    wash = ImageOps.fit(hero, (back_w, back_h), centering=(0.5, 0.5)).filter(ImageFilter.GaussianBlur(18))
-    wash = ImageEnhance.Brightness(wash).enhance(0.55)
-    wash = ImageEnhance.Color(wash).enhance(0.7)
+    # Soft atmosphere from the hero; keep it calm so copy stays readable
+    wash = ImageOps.fit(hero, (back_w, back_h), centering=(0.5, 0.5)).filter(ImageFilter.GaussianBlur(22))
+    wash = ImageEnhance.Brightness(wash).enhance(0.48)
+    wash = ImageEnhance.Color(wash).enhance(0.65)
     back_base = img.crop((back_l, top, back_r, bottom))
-    blended = Image.blend(back_base, wash, 0.35)
+    blended = Image.blend(back_base, wash, 0.42)
     img.paste(blended, (back_l, top))
-    draw = ImageDraw.Draw(img)
 
-    # Darken for text
-    overlay = Image.new("RGBA", (back_w, back_h), (15, 30, 40, 110))
+    overlay = Image.new("RGBA", (back_w, back_h), (12, 28, 36, 128))
     back_img = img.crop((back_l, top, back_r, bottom)).convert("RGBA")
     back_img = Image.alpha_composite(back_img, overlay)
     img.paste(back_img.convert("RGB"), (back_l, top))
     draw = ImageDraw.Draw(img)
 
-    back_title_font = _font(TITLE_FONT, 52)
-    body_font = _font(BODY_FONT, 34)
-    small_font = _font(SUB_FONT, 28)
-    back_author_font = _font(AUTHOR_FONT, 40)
+    back_title_font = _font(TITLE_FONT, 56)
+    body_font = _font(BODY_FONT, 36)
+    small_font = _font(SUB_FONT, 30)
+    back_author_font = _font(AUTHOR_FONT, 44)
+
+    # Keep clear of KDP barcode zone (bottom-right ~2"×1.2")
+    content_bottom = bottom - int(back_h * 0.22)
+    pad_x = int(back_w * 0.10)
+    max_copy_w = back_w - 2 * pad_x
 
     label = theme.get("back_label", "Coloring book")
     lw, lh = _text_size(draw, label, back_title_font)
     bx = back_l + (back_w - lw) // 2
-    by = top + int(back_h * 0.10)
+    by = top + int(back_h * 0.09)
     _draw_text_outlined(
         draw,
         (bx, by),
@@ -379,19 +382,25 @@ def render_theme_cover(
         stroke_width=3,
     )
 
-    # Accent bar
-    aw2 = int(back_w * 0.22)
-    ay = by + lh + 22
+    aw2 = int(back_w * 0.20)
+    ay = by + lh + 20
     draw.rounded_rectangle(
         (back_l + (back_w - aw2) // 2, ay, back_l + (back_w + aw2) // 2, ay + 8),
         radius=4,
         fill=accent,
     )
 
-    blurb = one_liner
-    lines = _wrap_lines(draw, blurb, body_font, int(back_w * 0.78))
-    text_y = ay + 48
-    for line in lines:
+    # Customer-facing blurb (never print AI/KDP process language on the wrap)
+    blurb = one_liner.strip()
+    for junk in (
+        "AI-assisted artwork — disclose on KDP upload.",
+        "AI-assisted artwork — disclose on KDP.",
+        "AI-assisted art (disclose on KDP)",
+    ):
+        blurb = blurb.replace(junk, "").strip()
+    lines = _wrap_lines(draw, blurb, body_font, max_copy_w)
+    text_y = ay + 44
+    for line in lines[:5]:
         lw2, lh2 = _text_size(draw, line, body_font)
         draw.text(
             (back_l + (back_w - lw2) // 2, text_y),
@@ -401,14 +410,22 @@ def render_theme_cover(
         )
         text_y += lh2 + 10
 
+    designs = max(1, (page_count // 2) if page_count >= 24 else page_count)
+    trim_label = {
+        "letter": "8.5 × 11 inch paperback",
+        "square": "8.5 × 8.5 inch square paperback",
+        "square-8": "8.5 × 8.5 inch square paperback",
+    }.get(trim, f"{trim} paperback")
     bullets = [
-        "30 unique pages",
-        "Bold outlines, closed shapes",
-        "Single-sided for markers",
-        "8.5 × 11 inch paperback",
+        f"{designs} unique pages to color",
+        "Bold outlines and closed shapes",
+        "Single-sided pages for markers",
+        trim_label,
     ]
-    text_y += 36
+    text_y += 28
     for b in bullets:
+        if text_y + 40 > content_bottom:
+            break
         line = f"•  {b}"
         lw2, lh2 = _text_size(draw, line, small_font)
         draw.text(
@@ -420,21 +437,13 @@ def render_theme_cover(
         text_y += lh2 + 14
 
     author_line = f"by {author}"
-    aw3, _ = _text_size(draw, author_line, back_author_font)
+    aw3, ah3 = _text_size(draw, author_line, back_author_font)
+    author_y = min(content_bottom - ah3 - 8, bottom - int(back_h * 0.26))
     draw.text(
-        (back_l + (back_w - aw3) // 2, bottom - int(back_h * 0.14)),
+        (back_l + (back_w - aw3) // 2, author_y),
         author_line,
         font=back_author_font,
         fill=(255, 255, 255),
-    )
-
-    foot = "AI-assisted artwork — disclose on KDP"
-    fw2, _ = _text_size(draw, foot, small_font)
-    draw.text(
-        (back_l + (back_w - fw2) // 2, bottom - int(back_h * 0.07)),
-        foot,
-        font=small_font,
-        fill=(200, 210, 220),
     )
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
