@@ -239,9 +239,15 @@ def _draw_motif_at(
         draw.ellipse((ox - rx, oy - ry, ox + rx, oy + ry), outline=ink, width=width)
 
     if motif == "leaves":
-        oval(cx, cy, int(s * 0.72), int(s * 0.42), 6)
-        draw.arc((cx - s // 2, cy - s // 2, cx + s // 2, cy + s // 8), 200, 340, fill=ink, width=5)
-        draw.line((cx, cy - s // 5, cx, cy + s // 3), fill=ink, width=4)
+        pts = [
+            (cx, cy - s),
+            (cx + int(s * 0.58), cy + int(s * 0.1)),
+            (cx, cy + int(s * 0.9)),
+            (cx - int(s * 0.58), cy + int(s * 0.1)),
+        ]
+        draw.polygon(pts, outline=ink)
+        draw.line((cx, cy - int(s * 0.55), cx, cy + int(s * 0.55)), fill=ink, width=4)
+        draw.arc((cx, cy - int(s * 0.2), cx + int(s * 0.45), cy + int(s * 0.45)), 200, 320, fill=ink, width=3)
     elif motif == "glass":
         pts = [
             (cx, cy - s),
@@ -420,16 +426,16 @@ def render_theme_cover(
 
     # Unique back panel — theme gradient, not a copy of the front wash
     fill = theme.get("back_fill", theme["gradient"])
-    back_w_early = back_r - back_l
-    back_h_early = bottom - top
-    back_grad = _gradient((back_w_early, back_h_early), fill[0], fill[1])
-    wash = ImageOps.fit(hero, (back_w_early, back_h_early), centering=centering).filter(
+    back_full_w = back_r  # includes left bleed up to the spine
+    back_full_h = h
+    back_grad = _gradient((back_full_w, back_full_h), fill[0], fill[1])
+    wash = ImageOps.fit(hero, (back_full_w, back_full_h), centering=centering).filter(
         ImageFilter.GaussianBlur(28)
     )
     wash = ImageEnhance.Brightness(wash).enhance(0.72)
     wash = ImageEnhance.Color(wash).enhance(0.55)
     back_panel = Image.blend(back_grad, wash, 0.18)
-    img.paste(back_panel, (back_l, top))
+    img.paste(back_panel, (0, 0))
 
     # Solid spine so titles read on a shelf and each book reads as its own color
     spine_fill = tuple(theme["stroke"])
@@ -533,26 +539,26 @@ def render_theme_cover(
 
     # --- Spine ---
     spine_w = spine_r - spine_l
-    if spine_w > 20:
-        spine_font = _font(SUB_FONT, max(22, min(36, spine_w - 8)))
+    if spine_w > 18:
+        spine_font = _font(SUB_FONT, max(18, min(30, spine_w - 10)))
         spine_text = f"{title}  ·  {author}"
-        # Vertical text via rotated strip
         tw2, th2 = _text_size(draw, spine_text, spine_font)
-        strip_h = tw2 + 40
-        strip_w = max(spine_w - 4, th2 + 8)
-        strip = Image.new("RGBA", (strip_w, strip_h), (0, 0, 0, 0))
+        pad_s = 8
+        strip = Image.new("RGBA", (tw2 + pad_s * 2, th2 + pad_s * 2), (0, 0, 0, 0))
         sdraw = ImageDraw.Draw(strip)
-        sdraw.text(
-            ((strip_w - th2) // 2, 20),
-            spine_text,
-            font=spine_font,
-            fill=(255, 255, 255, 255),
-        )
-        # Rotate so text reads bottom→top when book is upright on shelf (common trade)
+        sdraw.text((pad_s, pad_s), spine_text, font=spine_font, fill=(255, 255, 255, 255))
+        # Rotate so text reads bottom→top when the book stands on a shelf
         rotated = strip.rotate(90, expand=True, resample=Image.Resampling.BICUBIC)
+        if rotated.width > spine_w - 2:
+            extra = rotated.width - (spine_w - 2)
+            rotated = rotated.crop((extra // 2, 0, rotated.width - extra // 2, rotated.height))
+        max_h = max(40, bottom - top - 24)
+        if rotated.height > max_h:
+            new_w = max(1, int(rotated.width * max_h / rotated.height))
+            rotated = rotated.resize((new_w, max_h), Image.Resampling.LANCZOS)
         rx = spine_l + (spine_w - rotated.width) // 2
         ry = top + (front_h - rotated.height) // 2
-        img.paste(rotated, (rx, ry), rotated if rotated.mode == "RGBA" else None)
+        img.paste(rotated, (rx, ry), rotated)
 
     # --- Back ---
     back_w = back_r - back_l
@@ -572,7 +578,7 @@ def render_theme_cover(
     body_font = _font(BODY_FONT, 34)
     small_font = _font(SUB_FONT, 28)
     back_author_font = _font(AUTHOR_FONT, 40)
-    kicker_font = _font(TAG_FONT, 26)
+    kicker_font = _font(TAG_FONT, 32)
 
     kicker = "A BOLD & EASY COLORING BOOK"
     kw, kh = _text_size(draw, kicker, kicker_font)
@@ -661,9 +667,11 @@ def render_theme_cover(
 
     author_line = f"by {author}"
     aw3, ah3 = _text_size(draw, author_line, back_author_font)
-    # Keep the byline left of the barcode well, above its top edge
+    # Bottom-left, clear of the barcode well
     author_x = back_l + int(back_w * 0.08)
-    author_y = min(text_y + 28, bc_t - ah3 - int(0.12 * dpi))
+    author_y = bc_t - ah3 - int(0.18 * dpi)
+    if author_y < text_y + 16:
+        author_y = text_y + 16
     draw.text((author_x, author_y), author_line, font=back_author_font, fill=(255, 255, 255))
 
     # Draw last so no motif or copy can land in KDP's barcode zone

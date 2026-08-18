@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import json
-import shutil
 import sys
 from pathlib import Path
 
@@ -82,6 +81,13 @@ def ensure_meta(slug: str) -> dict:
     designs = int(cfg.get("designs", 30))
     trim = str(cfg.get("trim", "letter"))
     trim_label = "8.5 x 8.5 inch square" if trim == "square" else "8.5 x 11 inch paperback"
+    existing: dict = {}
+    meta_path = root / "meta.json"
+    if meta_path.exists():
+        try:
+            existing = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            existing = {}
     meta = {
         "id": slug,
         "title": cfg["title"],
@@ -116,6 +122,9 @@ def ensure_meta(slug: str) -> dict:
         "status": "draft",
         "author": PEN_NAME,
     }
+    for key in ("page_count_interior", "list_price_usd", "pricing_source", "pricing_basis", "status"):
+        if existing.get(key) is not None:
+            meta[key] = existing[key]
     (root / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
     brief = root / "brief.md"
     if not brief.exists():
@@ -152,10 +161,6 @@ def build_one(slug: str, *, covers_only: bool = False) -> dict:
 
         hero = root / "cover" / "_tmp_hero.png"
         _Image.new("RGB", (1200, 1200), cfg.get("cover_rgb", ((220, 230, 240), (80, 100, 120)))[0]).save(hero)
-
-    dest_hero = root / "cover" / "hero.png"
-    if hero.exists() and hero.resolve() != dest_hero.resolve():
-        shutil.copy2(hero, dest_hero)
 
     render_theme_cover(
         slug=slug,
