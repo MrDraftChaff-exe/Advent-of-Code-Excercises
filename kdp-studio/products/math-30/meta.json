@@ -1,0 +1,46 @@
+{
+  "id": "math-30",
+  "title": "Math Adventures",
+  "subtitle": "30 Number & Shape Pages to Color",
+  "type": "coloring-book",
+  "theme": "math",
+  "trim": "letter",
+  "bleed": false,
+  "single_sided": true,
+  "designs": 30,
+  "page_count_interior": 60,
+  "paper_color": "white",
+  "ink": "black",
+  "cover_finish": "matte",
+  "list_price_usd": 9.99,
+  "audience": "Kids learning numbers and shapes; parents and teachers",
+  "one_liner": "Numbers, shapes, and simple math objects for curious colorists.",
+  "description": "Numbers, shapes, and simple math objects for curious colorists. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+  "bullets": [
+    "30 unique pages",
+    "Bold line art with closed shapes",
+    "Single-sided pages for markers",
+    "8.5 x 11 inch paperback format",
+    "Great for kids, families, and classrooms",
+    "AI-assisted art (disclose on KDP)"
+  ],
+  "keywords": [
+    "math coloring book",
+    "numbers shapes",
+    "educational coloring",
+    "geometry for kids",
+    "counting coloring",
+    "math activity book",
+    "learning numbers"
+  ],
+  "categories": [
+    "Arts & Photography > Drawing > Coloring Books",
+    "Children's Books > Education & Reference"
+  ],
+  "author": "Elsie Wren",
+  "ai_assisted": true,
+  "art_source": "art-source",
+  "status": "draft",
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median"
+}
