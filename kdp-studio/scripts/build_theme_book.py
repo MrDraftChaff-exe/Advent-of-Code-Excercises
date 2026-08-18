@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -152,6 +153,10 @@ def build_one(slug: str, *, covers_only: bool = False) -> dict:
         hero = root / "cover" / "_tmp_hero.png"
         _Image.new("RGB", (1200, 1200), cfg.get("cover_rgb", ((220, 230, 240), (80, 100, 120)))[0]).save(hero)
 
+    dest_hero = root / "cover" / "hero.png"
+    if hero.exists() and hero.resolve() != dest_hero.resolve():
+        shutil.copy2(hero, dest_hero)
+
     render_theme_cover(
         slug=slug,
         title=cfg["title"],
@@ -163,10 +168,11 @@ def build_one(slug: str, *, covers_only: bool = False) -> dict:
         trim=trim,
         paper="white",
     )
-    try:
-        research_and_price(slug, query=cfg.get("query", cfg["title"]), apply=True)
-    except Exception as exc:  # noqa: BLE001
-        print(f"price skip: {exc}")
+    if not covers_only:
+        try:
+            research_and_price(slug, query=cfg.get("query", cfg["title"]), apply=True)
+        except Exception as exc:  # noqa: BLE001
+            print(f"price skip: {exc}")
     build_publish_package(slug)
     validation = validate_product(slug)
     return {

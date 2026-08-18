@@ -25,4 +25,6 @@ python3 scripts/build_theme_book.py stained-glass-40
 python3 scripts/build_theme_book.py --all
 ```
 
-Pen name: **Elsie Wren**. Disclose AI-assisted art on KDP.
+Pen name: **Elsie Wren**. Disclose AI-assisted art on the KDP form (not on the printed wrap).
+
+Do **not** buy a barcode. Each wrap already has an empty 2.0" × 1.2" well; KDP prints a free EAN-13. A free KDP ISBN is enough for Amazon-only paperbacks.

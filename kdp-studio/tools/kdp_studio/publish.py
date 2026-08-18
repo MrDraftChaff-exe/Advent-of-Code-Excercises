@@ -137,6 +137,9 @@ def build_publish_package(slug: str) -> dict[str, Any]:
         "3. Disclose AI content if `ai_assisted` is true",
         "4. Upload `interior.pdf` as manuscript",
         "5. Upload final cover wrap sized per `cover/dimensions.json`",
+        "   - Do **not** buy or paste a barcode. Leave the white well empty; KDP prints a free EAN-13.",
+        "   - Choose a **free KDP ISBN** unless you already own an ISBN you want to use.",
+        "   - Disclose AI-assisted art in the KDP form (not as printed cover text).",
         f"6. Set list price to **${fields['paperback']['list_price_usd']}** (from comps research if run)",
         "7. Proof in KDP Previewer, then publish",
         "",
@@ -246,7 +249,8 @@ def stage_upload_kit(slug: str) -> dict[str, Any]:
         "2. **Cover:** final wrap sized "
         f"{dims.get('cover_width_in')}×{dims.get('cover_height_in')} in "
         f"({dims.get('cover_width_px')}×{dims.get('cover_height_px')} px @ 300 dpi) — "
-        "start from `02-cover-wrap-placeholder.png` (replace before going live if needed)",
+        "start from `02-cover-wrap-placeholder.png`. Leave the white barcode well empty; "
+        "KDP prints a free EAN-13. Do not buy a barcode.",
         "",
         "## Then",
         "- Run KDP Previewer",

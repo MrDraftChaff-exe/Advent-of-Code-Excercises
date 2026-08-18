@@ -11,7 +11,9 @@ Use once interior.pdf validates and cover art is ready.
 - [ ] Interior page count matches cover spine calculation
 - [ ] Single-sided coloring: blank page after each design
 - [ ] No trademarks / celebrity likenesses / copyrighted characters
-- [ ] AI disclosure decided (`meta.ai_assisted`) and ready to declare
+- [ ] AI disclosure decided (`meta.ai_assisted`) — declare it on the KDP form, not on the printed wrap
+- [ ] Cover wrap has an empty white barcode well (do **not** buy or paste a barcode)
+- [ ] Free KDP ISBN unless you already own an ISBN for this edition
 - [ ] Title + subtitle ≤ Amazon field limits; readable as thumbnail
 - [ ] 7 backend keywords researched (no stuffing competitor ASIN text)
 - [ ] Two browse categories chosen
@@ -44,3 +46,4 @@ KDP has **no public upload API**. Prefer the publish package + manual Bookshelf 
 - This toolkit does **not** upload to Amazon for you; publish from your KDP account.
 - Keep personal tax/banking info out of the repo.
 - Prefer original geometric or commissioned art over ambiguous “inspired by” IP.
+- Do not buy a barcode. Leave the wrap well empty; KDP prints a free EAN-13.
