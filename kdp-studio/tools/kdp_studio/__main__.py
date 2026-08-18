@@ -12,12 +12,8 @@ TOOLS = Path(__file__).resolve().parents[1]
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-from kdp_studio.animals import generate_forest_pages
-from kdp_studio.build import build_interior_pdf, cover_dimensions
-from kdp_studio.cover_art import render_placeholder_cover
-from kdp_studio.pages import generate_pages
-from kdp_studio.pricing import research_and_price
-from kdp_studio.publish import build_publish_package, run_assist
+# Keep startup imports light so `preview` can boot even when optional art
+# deps (Pillow, etc.) are mid-install. Heavy modules load inside commands.
 from kdp_studio.specs import PRODUCTS, product_dir
 from kdp_studio.validate import validate_product
 
@@ -96,6 +92,9 @@ def cmd_new(args: argparse.Namespace) -> int:
 
 
 def cmd_pages(args: argparse.Namespace) -> int:
+    from kdp_studio.animals import generate_forest_pages
+    from kdp_studio.pages import generate_pages
+
     root = product_dir(args.slug)
     meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
     count = args.count or int(meta.get("designs", 30))
@@ -127,6 +126,8 @@ def cmd_pages(args: argparse.Namespace) -> int:
 
 
 def cmd_interior(args: argparse.Namespace) -> int:
+    from kdp_studio.build import build_interior_pdf
+
     root = product_dir(args.slug)
     meta_path = root / "meta.json"
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
@@ -148,6 +149,9 @@ def cmd_interior(args: argparse.Namespace) -> int:
 
 
 def cmd_cover(args: argparse.Namespace) -> int:
+    from kdp_studio.build import cover_dimensions
+    from kdp_studio.cover_art import render_placeholder_cover
+
     if args.slug:
         root = product_dir(args.slug)
         meta = json.loads((root / "meta.json").read_text(encoding="utf-8"))
@@ -207,6 +211,8 @@ def cmd_list(_: argparse.Namespace) -> int:
 
 
 def cmd_price(args: argparse.Namespace) -> int:
+    from kdp_studio.pricing import research_and_price
+
     result = research_and_price(
         args.slug,
         query=args.query,
@@ -220,6 +226,8 @@ def cmd_price(args: argparse.Namespace) -> int:
 
 
 def cmd_publish(args: argparse.Namespace) -> int:
+    from kdp_studio.publish import build_publish_package, run_assist
+
     if args.assist or args.live:
         result = run_assist(args.slug, live=bool(args.live))
     else:
@@ -231,7 +239,8 @@ def cmd_publish(args: argparse.Namespace) -> int:
 def cmd_preview(args: argparse.Namespace) -> int:
     import uvicorn
 
-    print(f"Preview Studio → http://127.0.0.1:{args.port}")
+    # Ensure preview_app import works when started via `python -m kdp_studio`
+    print(f"Preview Studio → http://{args.host}:{args.port}")
     uvicorn.run(
         "kdp_studio.preview_app:app",
         host=args.host,
