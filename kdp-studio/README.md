@@ -13,6 +13,12 @@ Bold & easy KDP coloring books in the **Quiet Places** art foundation ([`STYLE.m
 | Buildings — 40 Bold & Easy Designs | square | `products/buildings-40` |
 | Food — 40 Bold & Easy Designs | square | `products/food-40` |
 | Mountains — 40 Bold & Easy Designs | square | `products/mountains-40` |
+| Fantasy — 40 Bold & Easy Designs | square | `products/fantasy-40` |
+| Princess Dresses — 40 Bold & Easy Designs | square | `products/dresses-40` |
+| Cryptids — 40 North American Legends | square | `products/cryptids-40` |
+| Yokai — 40 Japanese Folklore Friends | square | `products/yokai-40` |
+| World Cryptids — 40 Global Legends | square | `products/world-cryptids-40` |
+| Construction — 40 Bold & Easy Designs | square | `products/construction-40` |
 
 ## Build
 
