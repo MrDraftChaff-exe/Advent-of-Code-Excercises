@@ -209,7 +209,16 @@
   });
 
   (async () => {
-    await loadProductList();
-    if (state.slug) await loadProduct(state.slug);
+    try {
+      await loadProductList();
+      if (state.slug) await loadProduct(state.slug);
+    } catch (err) {
+      console.error(err);
+      const el = $("ovValidation");
+      if (el) {
+        el.className = "status bad";
+        el.textContent = `Preview failed to load: ${err.message || err}. Is the server running on port 8765?`;
+      }
+    }
   })();
 })();
