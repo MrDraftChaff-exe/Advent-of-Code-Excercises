@@ -9,7 +9,9 @@ Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).
 ./scripts/upload-buildings.sh
 ```
 
-Stages `products/buildings-40/upload-kit/` with numbered files + `00-UPLOAD-NOW.md`.
+Or in Preview Studio → Publish → **Stage upload kit**.
+
+Stages `products/buildings-40/upload-kit/` with numbered files + paste-ready fields.
 
 ## Steps
 1. Create paperback → paste title / subtitle / description from `kdp-fields.json`

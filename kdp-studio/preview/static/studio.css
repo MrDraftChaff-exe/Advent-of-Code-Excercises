@@ -266,6 +266,59 @@ h2, h3 { font-family: var(--font-display); margin-top: 0; }
   margin: 0 0 1rem;
 }
 
+.publish-actions { margin-bottom: 1rem; }
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(255,255,255,0.55);
+}
+.upload-kit {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.1rem 1.2rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 252, 246, 0.72);
+}
+.upload-kit h3 { margin: 0 0 0.35rem; font-family: var(--font-display); }
+.download-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+.paste-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.paste-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+}
+.paste-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  text-transform: capitalize;
+}
+.paste-body {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 0.82rem;
+  color: var(--ink);
+  max-height: 10rem;
+  overflow: auto;
+}
+
 footer {
   text-align: center;
   color: var(--muted);

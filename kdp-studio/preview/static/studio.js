@@ -136,7 +136,7 @@
   function renderPublish(p) {
     $("publishFields").textContent = p.publish_fields
       ? JSON.stringify(p.publish_fields, null, 2)
-      : "Build a publish package to see KDP fields checklist.";
+      : "Stage an upload kit or refresh the publish package to see KDP fields.";
     const pdf = $("pdfLink");
     if (p.assets.interior_pdf) {
       pdf.href = `/api/products/${state.slug}/interior.pdf`;
@@ -145,6 +145,80 @@
       pdf.removeAttribute("href");
       pdf.style.display = "none";
     }
+    renderUploadKit(p);
+  }
+
+  function renderUploadKit(p) {
+    const panel = $("uploadKitPanel");
+    const kit = p.upload_kit || {};
+    const paste = kit.paste_fields || {};
+    const hasPaste = Object.keys(paste).length > 0;
+    panel.hidden = !(kit.ready && hasPaste);
+    if (!kit.ready) {
+      $("uploadKitStatus").textContent =
+        state.slug === "buildings-40"
+          ? "Click Stage upload kit to prepare Buildings for KDP Bookshelf."
+          : "Click Stage upload kit to prepare numbered manuscript + paste-ready fields.";
+      panel.hidden = false;
+      $("uploadKitDownloads").innerHTML = "";
+      $("pasteFields").innerHTML = "";
+      return;
+    }
+    $("uploadKitStatus").textContent = `Ready · ${kit.files.length} files in upload-kit/`;
+    const downloads = [
+      ["Guide", "00-UPLOAD-NOW.md"],
+      ["Manuscript PDF", "01-manuscript-interior.pdf"],
+      ["Cover PNG", "02-cover-wrap-placeholder.png"],
+      ["All fields JSON", "03-kdp-fields.json"],
+    ];
+    $("uploadKitDownloads").innerHTML = downloads
+      .filter(([, name]) => kit.files.includes(name))
+      .map(
+        ([label, name]) =>
+          `<a class="ghost button-link" href="/api/products/${state.slug}/upload-kit/${name}" download>${label}</a>`
+      )
+      .join("");
+
+    const order = [
+      "title",
+      "subtitle",
+      "author",
+      "description",
+      "keywords",
+      "categories",
+      "list_price_usd",
+      "ai_assisted",
+      "trim",
+    ];
+    $("pasteFields").innerHTML = order
+      .filter((k) => paste[k] != null && paste[k] !== "")
+      .map((k) => {
+        const value = paste[k];
+        const safe = value.replaceAll("&", "&amp;").replaceAll("<", "&lt;");
+        return `<div class="paste-card">
+          <div class="paste-head">
+            <strong>${k.replaceAll("_", " ")}</strong>
+            <button type="button" class="ghost copy-btn" data-copy="${k}">Copy</button>
+          </div>
+          <pre class="paste-body" data-field="${k}">${safe}</pre>
+        </div>`;
+      })
+      .join("");
+    $("pasteFields").querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const key = btn.dataset.copy;
+        const text = paste[key] || "";
+        try {
+          await navigator.clipboard.writeText(text.trimEnd());
+          btn.textContent = "Copied";
+          setTimeout(() => {
+            btn.textContent = "Copy";
+          }, 1200);
+        } catch {
+          btn.textContent = "Select text";
+        }
+      });
+    });
   }
 
   async function loadProduct(slug) {
@@ -208,9 +282,28 @@
     await loadProduct(state.slug);
   });
 
+  $("uploadKitBtn").addEventListener("click", async () => {
+    $("uploadKitStatus").textContent = "Staging upload kit…";
+    $("uploadKitPanel").hidden = false;
+    const res = await fetch(`/api/products/${state.slug}/upload-kit`, { method: "POST" });
+    if (!res.ok) {
+      const err = await res.json();
+      $("uploadKitStatus").textContent = `Failed: ${JSON.stringify(err)}`;
+      return;
+    }
+    await loadProduct(state.slug);
+    activateTab("publish");
+  });
+
   (async () => {
     try {
       await loadProductList();
+      // Prefer Buildings when present so upload is one click away
+      const buildings = Array.from($("productSelect").options).find((o) => o.value === "buildings-40");
+      if (buildings) {
+        state.slug = "buildings-40";
+        $("productSelect").value = "buildings-40";
+      }
       if (state.slug) await loadProduct(state.slug);
     } catch (err) {
       console.error(err);

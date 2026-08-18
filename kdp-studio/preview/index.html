@@ -114,11 +114,21 @@
       <h2>Publish to Kindle Direct Publishing</h2>
       <p class="callout">
         Amazon does <strong>not</strong> offer a public KDP upload API for indie paperbacks.
-        KDP Studio builds a complete upload package and checklist. Use Preview Studio here, then upload in
-        <a href="https://kdp.amazon.com/en_US/bookshelf" target="_blank" rel="noopener">KDP Bookshelf</a>.
-        Browser auto-fill is experimental and intentionally limited.
+        Stage an upload kit here, paste the fields into
+        <a href="https://kdp.amazon.com/en_US/bookshelf" target="_blank" rel="noopener">KDP Bookshelf</a>,
+        then upload the manuscript and cover files.
       </p>
-      <button type="button" id="packageBtn" class="primary">Build publish package</button>
+      <div class="row publish-actions">
+        <button type="button" id="uploadKitBtn" class="primary">Stage upload kit</button>
+        <button type="button" id="packageBtn" class="ghost">Refresh publish package</button>
+        <a id="kdpBookshelfLink" class="ghost button-link" href="https://kdp.amazon.com/en_US/bookshelf" target="_blank" rel="noopener">Open KDP Bookshelf</a>
+      </div>
+      <div id="uploadKitPanel" class="upload-kit" hidden>
+        <h3>Upload kit</h3>
+        <p id="uploadKitStatus" class="muted"></p>
+        <div class="download-row" id="uploadKitDownloads"></div>
+        <div id="pasteFields" class="paste-grid"></div>
+      </div>
       <pre id="publishFields" class="codeblock"></pre>
     </section>
   </main>
