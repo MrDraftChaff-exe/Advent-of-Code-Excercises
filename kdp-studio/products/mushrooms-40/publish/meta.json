@@ -1,0 +1,44 @@
+{
+  "id": "mushrooms-40",
+  "title": "Mushrooms",
+  "subtitle": "40 Bold & Easy Designs for Cozy Coloring",
+  "type": "coloring-book",
+  "theme": "mushrooms",
+  "trim": "square",
+  "bleed": false,
+  "single_sided": true,
+  "designs": 40,
+  "page_count_interior": null,
+  "paper_color": "white",
+  "ink": "black",
+  "cover_finish": "matte",
+  "list_price_usd": 11.99,
+  "audience": "Adults and kids who want simple, relaxing bold-and-easy coloring",
+  "one_liner": "Toadstools, foraging baskets, and woodland mushroom cottages in big bold outlines.",
+  "description": "Toadstools, foraging baskets, and woodland mushroom cottages in big bold outlines. 40 big, bold, easy pages in 8.5 x 8.5 inch square format. Single-sided printing. Original designs. AI-assisted line art disclosed on KDP.",
+  "bullets": [
+    "40 original bold-and-easy designs",
+    "Single-sided pages for markers",
+    "8.5 x 8.5 inch square trim, KDP paperback ready",
+    "Thick closed outlines, no tiny detail stress",
+    "No trademarks \u2014 original scenes only"
+  ],
+  "keywords": [
+    "bold and easy mushrooms",
+    "mushroom coloring book",
+    "cozy woodland coloring",
+    "toadstool coloring pages",
+    "simple mushroom designs",
+    "stress relief coloring seniors",
+    "cottagecore mushroom coloring"
+  ],
+  "categories": [
+    "Arts & Photography > Drawing > Coloring Books",
+    "Self-Help > Stress Management"
+  ],
+  "ai_assisted": true,
+  "status": "draft",
+  "author": "Elsie Wren",
+  "pricing_source": "demo_seed",
+  "pricing_basis": "median"
+}
