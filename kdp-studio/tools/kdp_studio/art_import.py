@@ -496,6 +496,11 @@ def _enrich_sparse_canvas(
             "buildings",
             "food",
             "mountains",
+            "fantasy",
+            "dress",
+            "cryptid",
+            "yokai",
+            "construction",
         )
     ):
         return page
@@ -607,6 +612,11 @@ def normalize_to_page(
             "buildings",
             "food",
             "mountains",
+            "fantasy",
+            "dress",
+            "cryptid",
+            "yokai",
+            "construction",
         )
     ):
         return _normalize_quiet_raster(src, out, trim=trim, dpi=dpi, margin_in=margin_in)

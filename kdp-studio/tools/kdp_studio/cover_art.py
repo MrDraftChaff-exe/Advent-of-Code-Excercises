@@ -131,6 +131,90 @@ THEMES: dict[str, dict] = {
         "chips": [(90, 150, 186), (52, 92, 72), (244, 248, 250)],
         "designs": 40,
     },
+    "fantasy-40": {
+        "gradient": ((245, 210, 180), (140, 55, 45)),
+        "back_fill": ((236, 176, 140), (128, 48, 40)),
+        "accent": (255, 190, 80),
+        "title": (255, 255, 255),
+        "stroke": (80, 30, 25),
+        "hero": "cover-hero-fantasy.png",
+        "hero_center": (0.48, 0.42),
+        "back_label": "Enter the realm",
+        "motif": "castle",
+        "theme_bullet": "Dragons, castles, and cozy magic",
+        "chips": [(196, 52, 40), (255, 190, 80), (72, 120, 72)],
+        "designs": 40,
+    },
+    "dresses-40": {
+        "gradient": ((255, 220, 230), (150, 60, 100)),
+        "back_fill": ((242, 176, 196), (140, 52, 92)),
+        "accent": (255, 200, 140),
+        "title": (255, 255, 255),
+        "stroke": (90, 35, 60),
+        "hero": "cover-hero-dresses.png",
+        "hero_center": (0.50, 0.40),
+        "back_label": "Twirl and color",
+        "motif": "gown",
+        "theme_bullet": "Ballgowns, gardens, and castle days",
+        "chips": [(220, 80, 120), (255, 200, 140), (176, 92, 148)],
+        "designs": 40,
+    },
+    "cryptids-40": {
+        "gradient": ((190, 220, 195), (45, 85, 55)),
+        "back_fill": ((160, 196, 168), (40, 78, 50)),
+        "accent": (255, 200, 110),
+        "title": (255, 255, 255),
+        "stroke": (28, 55, 32),
+        "hero": "cover-hero-cryptids.png",
+        "hero_center": (0.48, 0.40),
+        "back_label": "Track the legend",
+        "motif": "paw",
+        "theme_bullet": "Bigfoot, Mothman, and forest legends",
+        "chips": [(90, 140, 80), (255, 200, 110), (48, 72, 48)],
+        "designs": 40,
+    },
+    "yokai-40": {
+        "gradient": ((250, 210, 180), (150, 45, 40)),
+        "back_fill": ((236, 176, 140), (132, 40, 36)),
+        "accent": (255, 200, 90),
+        "title": (255, 255, 255),
+        "stroke": (90, 30, 28),
+        "hero": "cover-hero-yokai.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Follow the foxfire",
+        "motif": "fox",
+        "theme_bullet": "Kitsune, kappa, and cozy yokai",
+        "chips": [(196, 56, 40), (255, 200, 90), (48, 92, 72)],
+        "designs": 40,
+    },
+    "world-cryptids-40": {
+        "gradient": ((180, 215, 230), (36, 78, 112)),
+        "back_fill": ((148, 188, 210), (32, 70, 100)),
+        "accent": (255, 200, 110),
+        "title": (255, 255, 255),
+        "stroke": (20, 50, 80),
+        "hero": "cover-hero-world-cryptids.png",
+        "hero_center": (0.45, 0.48),
+        "back_label": "Sail the loch",
+        "motif": "nessie",
+        "theme_bullet": "Nessie, yeti, and global legends",
+        "chips": [(40, 100, 140), (255, 200, 110), (72, 120, 72)],
+        "designs": 40,
+    },
+    "construction-40": {
+        "gradient": ((255, 220, 160), (180, 110, 35)),
+        "back_fill": ((236, 188, 96), (168, 96, 28)),
+        "accent": (255, 190, 60),
+        "title": (255, 255, 255),
+        "stroke": (90, 50, 20),
+        "hero": "cover-hero-construction.png",
+        "hero_center": (0.42, 0.52),
+        "back_label": "Dig in and build",
+        "motif": "crane",
+        "theme_bullet": "Diggers, dump trucks, and busy sites",
+        "chips": [(232, 168, 40), (64, 120, 176), (90, 50, 20)],
+        "designs": 40,
+    },
 }
 
 
@@ -281,7 +365,7 @@ def _draw_motif_at(
         oval(cx, cy, int(s * 0.28), int(s * 0.28), 4)
         draw.arc((cx - int(s * 0.7), cy - 8, cx + int(s * 0.7), cy + int(s * 0.85)), 200, 340, fill=ink, width=5)
         draw.line((cx + int(s * 0.15), cy - int(s * 0.7), cx + int(s * 0.15), cy - int(s * 0.2)), fill=ink, width=4)
-    else:  # peaks
+    elif motif == "peaks":
         draw.polygon(
             [(cx - int(s * 0.95), cy + int(s * 0.45)), (cx, cy - s), (cx + int(s * 0.95), cy + int(s * 0.45))],
             outline=ink,
@@ -290,6 +374,38 @@ def _draw_motif_at(
             [(cx + int(s * 0.15), cy + int(s * 0.45)), (cx + int(s * 0.7), cy - int(s * 0.35)), (cx + int(s * 1.2), cy + int(s * 0.45))],
             outline=ink,
         )
+    elif motif == "castle":
+        draw.rectangle((cx - int(s * 0.45), cy - int(s * 0.1), cx + int(s * 0.45), cy + int(s * 0.55)), outline=ink, width=4)
+        draw.polygon(
+            [(cx - int(s * 0.2), cy - int(s * 0.1)), (cx, cy - s), (cx + int(s * 0.2), cy - int(s * 0.1))],
+            outline=ink,
+        )
+        oval(cx, cy + int(s * 0.15), 12, 16, 3)
+    elif motif == "gown":
+        oval(cx, cy - int(s * 0.55), int(s * 0.18), int(s * 0.18), 4)
+        draw.polygon(
+            [(cx - int(s * 0.12), cy - int(s * 0.35)), (cx + int(s * 0.12), cy - int(s * 0.35)), (cx + int(s * 0.55), cy + int(s * 0.7)), (cx - int(s * 0.55), cy + int(s * 0.7))],
+            outline=ink,
+        )
+    elif motif == "paw":
+        oval(cx, cy + int(s * 0.15), int(s * 0.42), int(s * 0.32), 5)
+        for dx in (-0.45, -0.15, 0.15, 0.45):
+            oval(cx + int(s * dx), cy - int(s * 0.35), 14, 18, 4)
+    elif motif == "fox":
+        draw.polygon(
+            [(cx - int(s * 0.45), cy + int(s * 0.35)), (cx, cy - s), (cx + int(s * 0.45), cy + int(s * 0.35))],
+            outline=ink,
+        )
+        oval(cx, cy + int(s * 0.05), int(s * 0.18), int(s * 0.16), 4)
+    elif motif == "nessie":
+        oval(cx - int(s * 0.25), cy + int(s * 0.2), int(s * 0.45), int(s * 0.18), 4)
+        oval(cx + int(s * 0.35), cy - int(s * 0.15), int(s * 0.14), int(s * 0.35), 4)
+        oval(cx + int(s * 0.42), cy - int(s * 0.5), int(s * 0.16), int(s * 0.16), 4)
+    elif motif == "crane":
+        draw.rectangle((cx - 10, cy - int(s * 0.2), cx + 10, cy + int(s * 0.6)), outline=ink, width=4)
+        draw.line((cx, cy - int(s * 0.2), cx + int(s * 0.85), cy - int(s * 0.7)), fill=ink, width=4)
+        oval(cx - 18, cy + int(s * 0.65), 16, 16, 4)
+        oval(cx + 18, cy + int(s * 0.65), 16, 16, 4)
 
 
 def _back_motif(

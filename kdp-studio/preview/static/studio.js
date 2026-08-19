@@ -1,8 +1,18 @@
 (() => {
+  const NEW_TITLES = new Set([
+    "fantasy-40",
+    "dresses-40",
+    "cryptids-40",
+    "yokai-40",
+    "world-cryptids-40",
+    "construction-40",
+  ]);
+
   const state = {
     slug: null,
     product: null,
     pageIndex: 0,
+    products: [],
   };
 
   const $ = (id) => document.getElementById(id);
@@ -20,21 +30,53 @@
     tab.addEventListener("click", () => activateTab(tab.dataset.tab));
   });
 
+  function renderCatalog() {
+    const el = $("catalog");
+    if (!el) return;
+    el.innerHTML = state.products
+      .map((p) => {
+        const isNew = NEW_TITLES.has(p.id);
+        const active = p.id === state.slug ? " active" : "";
+        const badge = isNew ? '<span class="badge">New</span>' : "";
+        const thumb = p.has_cover
+          ? `<img class="thumb" src="/api/products/${p.id}/cover.png" alt="" />`
+          : `<div class="thumb"></div>`;
+        return `<button type="button" class="catalog-card${active}" data-slug="${p.id}">
+          ${thumb}
+          <span class="name">${p.title}${badge}</span>
+        </button>`;
+      })
+      .join("");
+    el.querySelectorAll(".catalog-card").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const slug = btn.dataset.slug;
+        $("productSelect").value = slug;
+        await loadProduct(slug);
+        renderCatalog();
+      });
+    });
+  }
+
   async function loadProductList() {
     const res = await fetch("/api/products");
     const data = await res.json();
+    state.products = data.products || [];
     const select = $("productSelect");
     select.innerHTML = "";
-    for (const p of data.products) {
+    for (const p of state.products) {
       const opt = document.createElement("option");
       opt.value = p.id;
-      opt.textContent = `${p.title} (${p.status})`;
+      opt.textContent = NEW_TITLES.has(p.id)
+        ? `${p.title} · New`
+        : `${p.title} (${p.status})`;
       select.appendChild(opt);
     }
-    if (!state.slug && data.products[0]) {
-      state.slug = data.products[0].id;
+    if (!state.slug) {
+      const newest = state.products.find((p) => NEW_TITLES.has(p.id));
+      state.slug = (newest || state.products[0] || {}).id || null;
     }
     if (state.slug) select.value = state.slug;
+    renderCatalog();
   }
 
   function renderOverview(p) {
@@ -233,6 +275,7 @@
     renderListing(state.product);
     renderPricing(state.product);
     renderPublish(state.product);
+    renderCatalog();
   }
 
   $("productSelect").addEventListener("change", (e) => loadProduct(e.target.value));
@@ -298,12 +341,6 @@
   (async () => {
     try {
       await loadProductList();
-      // Prefer Buildings when present so upload is one click away
-      const buildings = Array.from($("productSelect").options).find((o) => o.value === "buildings-40");
-      if (buildings) {
-        state.slug = "buildings-40";
-        $("productSelect").value = "buildings-40";
-      }
       if (state.slug) await loadProduct(state.slug);
     } catch (err) {
       console.error(err);
