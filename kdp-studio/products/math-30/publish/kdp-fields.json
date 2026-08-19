@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-17T01:12:37.423514+00:00",
+  "generated_at": "2026-08-18T03:42:02.819142+00:00",
   "kdp_url": "https://kdp.amazon.com/en_US/bookshelf",
   "official_api": false,
   "note": "KDP has no public upload API. Upload these files manually in Bookshelf, or use `kdp_studio publish --assist` for an experimental guided browser session.",
   "paperback": {
     "title": "Math Adventures",
     "subtitle": "30 Number & Shape Pages to Color",
-    "description": "Numbers, shapes, and simple math objects for curious colorists. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork \u2014 disclose on KDP upload.",
+    "description": "Numbers, shapes, and simple math objects for curious colorists. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design.",
     "author": "Elsie Wren",
     "keywords": [
       "math coloring book",

@@ -2,8 +2,8 @@
 
 **Author:** Elsie Wren
 **Price target:** comps research
-**AI-assisted:** Yes
+**AI-assisted:** Yes (disclose in KDP account settings — not printed on the cover)
 
 ## Description
 
-Soccer balls, gear, and more — simple sports subjects ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
+Soccer balls, gear, and more — simple sports subjects ready to color. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design.

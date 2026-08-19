@@ -2,8 +2,8 @@
 
 **Author:** Elsie Wren
 **Price target:** comps research
-**AI-assisted:** Yes
+**AI-assisted:** Yes (disclose in KDP account settings — not printed on the cover)
 
 ## Description
 
-Dolphins, fish, and ocean friends — one animal per page. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design. AI-assisted artwork — disclose on KDP upload.
+Dolphins, fish, and ocean friends — one animal per page. Thirty original pages with bold outlines and closed shapes ready to color. Single-sided so markers stay on one design.

@@ -200,8 +200,7 @@ def ensure_meta(slug: str) -> dict:
         "one_liner": cfg["one_liner"],
         "description": (
             f"{cfg['one_liner']} Thirty original pages with bold outlines and closed shapes "
-            "ready to color. Single-sided so markers stay on one design. "
-            "AI-assisted artwork — disclose on KDP upload."
+            "ready to color. Single-sided so markers stay on one design."
         ),
         "bullets": [
             "30 unique pages",
@@ -209,7 +208,6 @@ def ensure_meta(slug: str) -> dict:
             "Single-sided pages for markers",
             "8.5 x 11 inch paperback format",
             "Great for kids, families, and classrooms",
-            "AI-assisted art (disclose on KDP)",
         ],
         "keywords": cfg["keywords"],
         "categories": cfg["categories"],
@@ -229,7 +227,7 @@ def ensure_meta(slug: str) -> dict:
         f"# {cfg['title']} — {cfg['subtitle']}\n\n"
         f"**Author:** {PEN_NAME}\n"
         f"**Price target:** comps research\n"
-        f"**AI-assisted:** Yes\n\n"
+        f"**AI-assisted:** Yes (disclose in KDP account settings — not printed on the cover)\n\n"
         f"## Description\n\n{meta['description']}\n",
         encoding="utf-8",
     )
