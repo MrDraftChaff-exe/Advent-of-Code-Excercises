@@ -502,7 +502,7 @@ def _enrich_sparse_canvas(
             "yokai",
             "construction",
         )
-    ):
+    ) or "-40" in t:
         return page
 
     ys, xs = np.where(page > 0)
@@ -618,7 +618,7 @@ def normalize_to_page(
             "yokai",
             "construction",
         )
-    ):
+    ) or trim == "square" or "-40" in t:
         return _normalize_quiet_raster(src, out, trim=trim, dpi=dpi, margin_in=margin_in)
 
     width_in, height_in = trim_box(trim)

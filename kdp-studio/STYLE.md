@@ -28,4 +28,4 @@ Any new coloring SKU must reuse this style and pipeline. If it would look differ
 
 ## Current titles (same style, different subjects)
 
-Quiet Places, Stained Glass, Cars, Planes, Buildings, Food, Mountains, Fantasy, Princess Dresses, Cryptids, Yokai, World Cryptids, Construction — all 40-page square bold-and-easy books. Use `scripts/inkify_bold_easy.py` + `scripts/build_theme_book.py <slug>`.
+Quiet Places, Stained Glass, Cars, Planes, Buildings, Food, Mountains, Fantasy, Princess Dresses, Cryptids, Yokai, World Cryptids, Construction, Mushrooms, Botanicals, Celestial Mandalas, Cottagecore, Cozy Critters, Dragons, Spooky Cute, Holidays, Chapel Gardens, Slow Mornings, Moon Magic, Dark Academia, Corgis, Zen Gardens, Retro Days, Rest Easy, Dinosaurs, Star Signs — all 40-page square bold-and-easy books. Use `scripts/inkify_bold_easy.py` + `scripts/build_theme_book.py <slug>`.

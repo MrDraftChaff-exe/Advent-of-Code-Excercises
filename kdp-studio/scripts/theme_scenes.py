@@ -768,3 +768,7 @@ THEMES = {
         ],
     },
 }
+
+from theme_scenes_trends import TREND_THEMES  # noqa: E402
+
+THEMES.update(TREND_THEMES)
