@@ -1,0 +1,11 @@
+{
+  "name": "KDP Studio",
+  "install": "if [ -f ./kdp-studio/scripts/cloud-agent-install.sh ]; then bash ./kdp-studio/scripts/cloud-agent-install.sh; else echo \"kdp-studio install scripts missing on this ref; skipping\"; fi",
+  "start": "if [ -f ./kdp-studio/scripts/cloud-agent-start.sh ]; then bash ./kdp-studio/scripts/cloud-agent-start.sh; else echo \"kdp-studio start script missing on this ref; skipping\"; fi",
+  "ports": [
+    {
+      "name": "Preview Studio",
+      "port": 8765
+    }
+  ]
+}

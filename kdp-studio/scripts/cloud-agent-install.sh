@@ -3,20 +3,21 @@
 set -euo pipefail
 export PATH="${HOME}/.local/bin:${PATH}"
 
-ROOT="/workspace/kdp-studio"
-if [[ ! -d "$ROOT" ]]; then
-  echo "kdp-studio not found at $ROOT" >&2
-  exit 1
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+if [[ ! -f "$ROOT/requirements.txt" ]]; then
+  echo "kdp-studio/requirements.txt not present at $ROOT; skipping install"
+  exit 0
 fi
 
 python3 -m pip install --upgrade pip -q
-python3 -m pip install -r "$ROOT/requirements.txt" -q
+python3 -m pip install --user -r "$ROOT/requirements.txt" -q
 
-# Smoke-check the imports that previously crashed Preview Studio
 python3 - <<'PY'
 from PIL import Image  # noqa: F401
 import fastapi  # noqa: F401
 import uvicorn  # noqa: F401
+import reportlab  # noqa: F401
+import pypdf  # noqa: F401
 print("kdp-studio deps OK")
 PY
 
