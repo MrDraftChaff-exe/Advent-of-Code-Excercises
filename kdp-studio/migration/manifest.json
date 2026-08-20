@@ -1,0 +1,517 @@
+{
+  "generated_at": "2026-08-20T02:58:02.153917+00:00",
+  "pen_name": "Elsie Wren",
+  "style": "STYLE.md bold-and-easy Quiet Places foundation",
+  "git_branch": "cursor/kdp-migration-package-9aff",
+  "git_commit": "e348c23cabb33f50aa3b14f2a734beb89a90c5e3",
+  "source_branch": "cursor/trend-coloring-books-9aff",
+  "skus": [
+    {
+      "slug": "botanicals-40",
+      "title": "Botanicals",
+      "subtitle": "40 Bold & Easy Floral Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/botanicals-40/publish",
+      "cover_hero": "assets/covers/cover-hero-botanicals.png",
+      "sha256": {
+        "interior.pdf": "ddae36fdd8066197b7f2758434ac4ff3d6238c53b2bc5748c5ce8a7a6986daba",
+        "wrap": "34063fc835bdcfe3e7d4683d63ad454040896d91773d1b3f14d7aeb1fa841a0e",
+        "kdp-fields.json": "a12def5f8b2a71c6632eae20ee0592da4078eb37d8eda5aefc321392801cd13a"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "buildings-40",
+      "title": "Buildings",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/buildings-40/publish",
+      "cover_hero": "assets/covers/cover-hero-buildings.png",
+      "sha256": {
+        "interior.pdf": "c7c71726996c96e437f671b5407fcff0672cb1a03711d47636b82d6df852d1dc",
+        "wrap": "12d3ba53e61aea12e5e43638b4346d6b81efa239addd518b1cb1f0db576ac3a6",
+        "kdp-fields.json": "2f7042428da3d1c8eea43ca10c44a127a80a0991e7775ab78475f351361564ee"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "cars-40",
+      "title": "Cars",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 11.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/cars-40/publish",
+      "cover_hero": "assets/covers/cover-hero-cars.png",
+      "sha256": {
+        "interior.pdf": "54768145b97f7933f9ed964f2f2a5689d8882523c69c0626bdf7839926999359",
+        "wrap": "dd5bb8047318c362c69421aa64e50c1bf5a528ca03885ab16beaa11a7efbeab1",
+        "kdp-fields.json": "2f809752f95594c06846c834b9e89b6a9dc90474754accf0ca495113617500e1"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "construction-40",
+      "title": "Construction",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 9.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/construction-40/publish",
+      "cover_hero": "assets/covers/cover-hero-construction.png",
+      "sha256": {
+        "interior.pdf": "fe268937fff29685d1e19ddef90bf941f59de9e11bd7f86f668b7de2fd82b234",
+        "wrap": "1ebf90ca68af41e7836f9ac58430119975a0939c9ae87c022fc5fdb6d3d799e1",
+        "kdp-fields.json": "8f7765e9b94521f0e5c31c4f554b7fd30dbd3a05f8024b94ed0c55d68fa293a1"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "corgis-40",
+      "title": "Corgis",
+      "subtitle": "40 Bold & Easy Pembroke Days to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 11.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/corgis-40/publish",
+      "cover_hero": "assets/covers/cover-hero-corgis.png",
+      "sha256": {
+        "interior.pdf": "cb540096c0db78b373ab74170c8fec310b043936b001c713569281ee4513e22f",
+        "wrap": "873b44e6728d19925685e7c8d65c83467ee0aaebc89adc96fc8fd02bec6f8a70",
+        "kdp-fields.json": "958b5c5086fa33be79259e2e979346890cda25adae9a04d28edb3af4e53fb7bc"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "cottagecore-40",
+      "title": "Cottagecore",
+      "subtitle": "40 Bold & Easy Cozy Country Scenes",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/cottagecore-40/publish",
+      "cover_hero": "assets/covers/cover-hero-cottagecore.png",
+      "sha256": {
+        "interior.pdf": "d4da20addc19dada18f089988a858396c8b3503cdbbd1692c2d80ff9e10775f8",
+        "wrap": "ba671a9516077ff944dfc55c448f2f5cc265fb7ab474027c397631cb8726f6b4",
+        "kdp-fields.json": "40c12bb4dc6f93aa937d9a1cd403e98e30356c6f78121fc7ecb43a877cc8a341"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "cryptids-40",
+      "title": "Cryptids",
+      "subtitle": "40 North American Legends to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/cryptids-40/publish",
+      "cover_hero": "assets/covers/cover-hero-cryptids.png",
+      "sha256": {
+        "interior.pdf": "e2bab6543ecdd3dab555d588bbc0291984eb64725ecff072df1f12f950990cea",
+        "wrap": "92986579f6596072379c3ccb759bc9031efbc3725bc5aaabaf05c2586af327d7",
+        "kdp-fields.json": "7f848d178fe36563a39fe13cbfb5e5f0075e898e807ab71e58d40598687447b7"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "dresses-40",
+      "title": "Princess Dresses",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 8.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/dresses-40/publish",
+      "cover_hero": "assets/covers/cover-hero-dresses.png",
+      "sha256": {
+        "interior.pdf": "78a04b8cb2686352a9b36e69126f88c7422ff3d431e9ba50a2b6c94f79994011",
+        "wrap": "acc536bb2b689288398c2722f293be2370a6716f6108a5dfc2a789a96d55e422",
+        "kdp-fields.json": "ef71cd39a9f38a6cb40d3e1a2a423cc37f515886a45d9bed12fd99c84d623e69"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "fantasy-40",
+      "title": "Fantasy",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/fantasy-40/publish",
+      "cover_hero": "assets/covers/cover-hero-fantasy.png",
+      "sha256": {
+        "interior.pdf": "3dae76fc79bcf0242786acc5ff13faaa84cf0b51ee1e190f09049782b775cf85",
+        "wrap": "17558c59ff73debd2a01cd0d944203f2a071b53f72814eed6c9aee2e33e1e8e0",
+        "kdp-fields.json": "798ec319043084239c81f8f33235e9c3613ed66c9589eb5b8382c1e65cfb00e5"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "food-40",
+      "title": "Food",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/food-40/publish",
+      "cover_hero": "assets/covers/cover-hero-food.png",
+      "sha256": {
+        "interior.pdf": "f4d90c59798a8f3e43599e2f2d0f70cec95b988280bd9023990c7e595e196477",
+        "wrap": "bcee79810bce96cc78fa6a69692b3313340acf85e87af2b97d53838015ba1d8f",
+        "kdp-fields.json": "f3af0f612894f20a566b891896c73268e2fb41c65bf7bdc2958750da9e3f679f"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "mountains-40",
+      "title": "Mountains",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 9.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/mountains-40/publish",
+      "cover_hero": "assets/covers/cover-hero-mountains.png",
+      "sha256": {
+        "interior.pdf": "703303676272fb32bab4e0ce1ffce89a5e123327696685bb36e5ffad241a1159",
+        "wrap": "399385980e223eb9037f18f3714c86aaa26c4d1d5fdaf324c5d4659b2b06233d",
+        "kdp-fields.json": "8d0fe3b8076f89d12ec8f38ef7e5142f980cca3f3b9e2bb711a31dfee2132112"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "mushrooms-40",
+      "title": "Mushrooms",
+      "subtitle": "40 Bold & Easy Designs for Cozy Coloring",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 11.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/mushrooms-40/publish",
+      "cover_hero": "assets/covers/cover-hero-mushrooms.png",
+      "sha256": {
+        "interior.pdf": "ed90dfef40317d2622252ab82514f7088003b7a09cecdd9d54c882e3c2d2dfe8",
+        "wrap": "5d4c79f213d6ceeb620b60fc5a3d7dd0b9f46d92bdda00248b39d430a7d8a11c",
+        "kdp-fields.json": "ad755b1e72c6b534ea1be4d535f7502d747af6d303117d8a89884308f182500f"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "planes-40",
+      "title": "Planes",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 8.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/planes-40/publish",
+      "cover_hero": "assets/covers/cover-hero-planes.png",
+      "sha256": {
+        "interior.pdf": "df776fee3f435d304ef1cb9f0b43d68b9aed4eaac696ae677820b2ce4d4b3ff6",
+        "wrap": "915946e3c50487700156d8f8760e816831787a4119fea33d8e71c9420692379b",
+        "kdp-fields.json": "57faddecb938d24d4de46ba75fbf9467d36e3a0962c7fcfae6f9e8bb0cd52374"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "quiet-places-40",
+      "title": "Quiet Places",
+      "subtitle": "40 Bold & Easy Designs for Stress Relief",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 9.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/quiet-places-40/publish",
+      "cover_hero": "assets/covers/cover-hero-quiet.png",
+      "sha256": {
+        "interior.pdf": "edf112c27c709e367ba30b2359450e4a32f65f08135b87b352661a9fae913404",
+        "wrap": "5efef979bbd98ab309dd45bbe7f7bc7f5de98c9f0e37880138e16161807ad02a",
+        "kdp-fields.json": "5f7c3d94fd1d5672a34dbd545fe1f67987e58d22f89ac59560e24e2d55f396f1"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "stained-glass-40",
+      "title": "Stained Glass",
+      "subtitle": "40 Bold & Easy Designs to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/stained-glass-40/publish",
+      "cover_hero": "assets/covers/cover-hero-stained-glass.png",
+      "sha256": {
+        "interior.pdf": "da57495cc4e8f6afdeb7c92870f685d5c6daf7f95a3215dbdebf8959d68394c0",
+        "wrap": "1d8529f5cf5a7cf2396cc0ac0d735ddbbd94fde9d93f33c3fab311ce74146fb0",
+        "kdp-fields.json": "4bd1b2d5907ac75019fed70c334f3f991386dd285368c17ec60c1c2b169168f8"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "world-cryptids-40",
+      "title": "World Cryptids",
+      "subtitle": "40 Legends from Around the Globe",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 9.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/world-cryptids-40/publish",
+      "cover_hero": "assets/covers/cover-hero-world-cryptids.png",
+      "sha256": {
+        "interior.pdf": "0c78a56ebcb79441968507d43625854a771eb196dc3655769210c60c3f4f6ecd",
+        "wrap": "4018a1a0d9cee8c78a5329044b9314e06ff78e836665c0a95a16b65c2ee567e7",
+        "kdp-fields.json": "d67c0fd2b26ce6ac9b6aaa3ca1fa4ee57a98b564d7d02c9d167a4dd046ee2707"
+      },
+      "ready_to_upload": true
+    },
+    {
+      "slug": "yokai-40",
+      "title": "Yokai",
+      "subtitle": "40 Japanese Folklore Friends to Color",
+      "author": "Elsie Wren",
+      "designs": 40,
+      "trim": "square",
+      "list_price_usd": 10.99,
+      "ai_assisted": true,
+      "status": "draft",
+      "page_pngs": 40,
+      "art_source_pngs": 40,
+      "has_interior_pdf": true,
+      "has_wrap": true,
+      "has_kdp_fields": true,
+      "publish_dir": "products/yokai-40/publish",
+      "cover_hero": "assets/covers/cover-hero-yokai.png",
+      "sha256": {
+        "interior.pdf": "4d7d0f9dc32bf7366a630a35635f1774b6ba8d10ab6c2693c17a472194ea94f0",
+        "wrap": "c8e57da9367cb0ac78f8f97a348b347288affe3720285f227602af73908dab1b",
+        "kdp-fields.json": "e668451a4f599b8d0d0e6beddde575385ee98ef6e2baa7a5c916456df11d4a34"
+      },
+      "ready_to_upload": true
+    }
+  ],
+  "pending_interiors": [
+    {
+      "slug": "celestial-40",
+      "title": "Celestial Mandalas",
+      "cover_hero": "assets/covers/cover-hero-celestial.png",
+      "listing": "launch/listings/celestial-40.md"
+    },
+    {
+      "slug": "cozy-critters-40",
+      "title": "Cozy Critters",
+      "cover_hero": "assets/covers/cover-hero-cozy-critters.png",
+      "listing": "launch/listings/cozy-critters-40.md"
+    },
+    {
+      "slug": "dragons-40",
+      "title": "Dragons",
+      "cover_hero": "assets/covers/cover-hero-dragons.png",
+      "listing": "launch/listings/dragons-40.md"
+    },
+    {
+      "slug": "spooky-cute-40",
+      "title": "Spooky Cute",
+      "cover_hero": "assets/covers/cover-hero-spooky-cute.png",
+      "listing": "launch/listings/spooky-cute-40.md"
+    },
+    {
+      "slug": "holidays-40",
+      "title": "Holidays",
+      "cover_hero": "assets/covers/cover-hero-holidays.png",
+      "listing": "launch/listings/holidays-40.md"
+    },
+    {
+      "slug": "chapel-gardens-40",
+      "title": "Chapel Gardens",
+      "cover_hero": "assets/covers/cover-hero-chapel-gardens.png",
+      "listing": "launch/listings/chapel-gardens-40.md"
+    },
+    {
+      "slug": "slow-mornings-40",
+      "title": "Slow Mornings",
+      "cover_hero": "assets/covers/cover-hero-slow-mornings.png",
+      "listing": "launch/listings/slow-mornings-40.md"
+    },
+    {
+      "slug": "moon-magic-40",
+      "title": "Moon Magic",
+      "cover_hero": "assets/covers/cover-hero-moon-magic.png",
+      "listing": "launch/listings/moon-magic-40.md"
+    },
+    {
+      "slug": "dark-academia-40",
+      "title": "Dark Academia",
+      "cover_hero": "assets/covers/cover-hero-dark-academia.png",
+      "listing": "launch/listings/dark-academia-40.md"
+    },
+    {
+      "slug": "zen-gardens-40",
+      "title": "Zen Gardens",
+      "cover_hero": "assets/covers/cover-hero-zen-gardens.png",
+      "listing": "launch/listings/zen-gardens-40.md"
+    },
+    {
+      "slug": "retro-40",
+      "title": "Retro Days",
+      "cover_hero": "assets/covers/cover-hero-retro.png",
+      "listing": "launch/listings/retro-40.md"
+    },
+    {
+      "slug": "rest-easy-40",
+      "title": "Rest Easy",
+      "cover_hero": "assets/covers/cover-hero-rest-easy.png",
+      "listing": "launch/listings/rest-easy-40.md"
+    },
+    {
+      "slug": "dinosaurs-40",
+      "title": "Dinosaurs",
+      "cover_hero": "assets/covers/cover-hero-dinosaurs.png",
+      "listing": "launch/listings/dinosaurs-40.md"
+    },
+    {
+      "slug": "star-signs-40",
+      "title": "Star Signs",
+      "cover_hero": "assets/covers/cover-hero-star-signs.png",
+      "listing": "launch/listings/star-signs-40.md"
+    }
+  ],
+  "known_issues": [
+    "User reported sizing issues and random missing lines across books; QA pass not finished.",
+    "Do not buy barcodes. Leave the 2.0x1.2 in well empty; KDP prints a free EAN-13.",
+    "Disclose AI on the KDP form, never as printed wrap text.",
+    "Never letters/words/numbers on interiors. Never grayscale, hatching, or solid black fills."
+  ],
+  "resume": {
+    "checkout": "git fetch origin cursor/kdp-migration-package-9aff && git checkout cursor/kdp-migration-package-9aff",
+    "preview": "cd kdp-studio/tools && python3 -m kdp_studio preview --host 0.0.0.0 --port 8765",
+    "inkify_slot": "from inkify_bold_easy import to_ink; to_ink(src, dest)  # never CLI glob (renumbers)",
+    "build": "python3 scripts/build_theme_book.py <slug>",
+    "package": "python3 scripts/package_migration.py"
+  }
+}
