@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
@@ -215,6 +216,258 @@ THEMES: dict[str, dict] = {
         "chips": [(232, 168, 40), (64, 120, 176), (90, 50, 20)],
         "designs": 40,
     },
+    "mushrooms-40": {
+        "gradient": ((236, 210, 170), (128, 72, 42)),
+        "back_fill": ((220, 188, 140), (118, 64, 38)),
+        "accent": (255, 190, 110),
+        "title": (255, 255, 255),
+        "stroke": (80, 40, 22),
+        "hero": "cover-hero-mushrooms.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Forage and color",
+        "motif": "mushroom",
+        "theme_bullet": "Toadstools and woodland cottages",
+        "chips": [(196, 72, 48), (120, 150, 80), (255, 190, 110)],
+        "designs": 40,
+    },
+    "botanicals-40": {
+        "gradient": ((245, 236, 214), (62, 108, 72)),
+        "back_fill": ((226, 216, 186), (56, 98, 66)),
+        "accent": (255, 190, 130),
+        "title": (255, 255, 255),
+        "stroke": (40, 70, 45),
+        "hero": "cover-hero-botanicals.png",
+        "hero_center": (0.50, 0.45),
+        "back_label": "Bloom and color",
+        "motif": "bloom",
+        "theme_bullet": "Succulents, tropics, and wreaths",
+        "chips": [(70, 140, 90), (255, 190, 130), (236, 80, 90)],
+        "designs": 40,
+    },
+    "celestial-40": {
+        "gradient": ((48, 52, 110), (18, 18, 48)),
+        "back_fill": ((40, 44, 96), (16, 16, 42)),
+        "accent": (255, 210, 120),
+        "title": (255, 255, 255),
+        "stroke": (12, 12, 32),
+        "hero": "cover-hero-celestial.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Color the night",
+        "motif": "moon",
+        "theme_bullet": "Moon gardens and bloom wreaths",
+        "chips": [(255, 210, 120), (120, 90, 180), (40, 50, 110)],
+        "designs": 40,
+    },
+    "cottagecore-40": {
+        "gradient": ((230, 200, 165), (118, 70, 46)),
+        "back_fill": ((214, 180, 140), (108, 64, 42)),
+        "accent": (210, 140, 80),
+        "title": (255, 255, 255),
+        "stroke": (70, 40, 24),
+        "hero": "cover-hero-cottagecore.png",
+        "hero_center": (0.50, 0.40),
+        "back_label": "Come in and color",
+        "motif": "picnic",
+        "theme_bullet": "Cottages, jam kitchens, and tea",
+        "chips": [(176, 92, 56), (120, 148, 80), (255, 210, 140)],
+        "designs": 40,
+    },
+    "cozy-critters-40": {
+        "gradient": ((250, 214, 176), (148, 86, 50)),
+        "back_fill": ((236, 192, 148), (136, 76, 44)),
+        "accent": (255, 180, 90),
+        "title": (255, 255, 255),
+        "stroke": (80, 45, 25),
+        "hero": "cover-hero-cozy-critters.png",
+        "hero_center": (0.48, 0.42),
+        "back_label": "Snuggle and color",
+        "motif": "paw",
+        "theme_bullet": "Capybaras, otters, and grumpy cats",
+        "chips": [(210, 110, 60), (80, 140, 90), (255, 180, 90)],
+        "designs": 40,
+    },
+    "dragons-40": {
+        "gradient": ((28, 90, 80), (40, 28, 90)),
+        "back_fill": ((24, 78, 72), (36, 24, 82)),
+        "accent": (180, 120, 255),
+        "title": (255, 255, 255),
+        "stroke": (16, 16, 40),
+        "hero": "cover-hero-dragons.png",
+        "hero_center": (0.50, 0.40),
+        "back_label": "Wake the dragon",
+        "motif": "castle",
+        "theme_bullet": "Baby dragons to elder wyrms",
+        "chips": [(40, 160, 120), (120, 80, 200), (255, 180, 80)],
+        "designs": 40,
+    },
+    "spooky-cute-40": {
+        "gradient": ((255, 196, 140), (88, 36, 78)),
+        "back_fill": ((236, 170, 110), (80, 32, 72)),
+        "accent": (255, 160, 70),
+        "title": (255, 255, 255),
+        "stroke": (60, 20, 50),
+        "hero": "cover-hero-spooky-cute.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Boo, but make it cozy",
+        "motif": "pumpkin",
+        "theme_bullet": "Ghosts, pumpkins, and cocoa",
+        "chips": [(255, 140, 50), (120, 50, 110), (255, 220, 140)],
+        "designs": 40,
+    },
+    "holidays-40": {
+        "gradient": ((176, 42, 48), (28, 72, 48)),
+        "back_fill": ((160, 36, 42), (24, 64, 42)),
+        "accent": (255, 200, 90),
+        "title": (255, 255, 255),
+        "stroke": (40, 16, 16),
+        "hero": "cover-hero-holidays.png",
+        "hero_center": (0.50, 0.40),
+        "back_label": "Celebrate and color",
+        "motif": "wreath",
+        "theme_bullet": "Christmas cottages to harvest tables",
+        "chips": [(200, 40, 48), (40, 120, 70), (255, 200, 90)],
+        "designs": 40,
+    },
+    "chapel-gardens-40": {
+        "gradient": ((255, 220, 220), (110, 132, 92)),
+        "back_fill": ((240, 200, 200), (100, 122, 84)),
+        "accent": (212, 175, 90),
+        "title": (255, 255, 255),
+        "stroke": (70, 50, 40),
+        "hero": "cover-hero-chapel-gardens.png",
+        "hero_center": (0.50, 0.38),
+        "back_label": "Walk in peace",
+        "motif": "dove",
+        "theme_bullet": "Chapels, doves, and olive paths",
+        "chips": [(212, 175, 90), (140, 160, 110), (255, 200, 200)],
+        "designs": 40,
+    },
+    "slow-mornings-40": {
+        "gradient": ((255, 220, 224), (176, 132, 164)),
+        "back_fill": ((242, 200, 210), (164, 120, 152)),
+        "accent": (255, 200, 160),
+        "title": (255, 255, 255),
+        "stroke": (90, 50, 70),
+        "hero": "cover-hero-slow-mornings.png",
+        "hero_center": (0.50, 0.45),
+        "back_label": "Breathe in, color on",
+        "motif": "picnic",
+        "theme_bullet": "Coffee, baths, and quiet rituals",
+        "chips": [(255, 180, 170), (180, 140, 180), (255, 220, 180)],
+        "designs": 40,
+    },
+    "moon-magic-40": {
+        "gradient": ((28, 22, 48), (86, 40, 96)),
+        "back_fill": ((24, 18, 42), (78, 36, 88)),
+        "accent": (212, 175, 90),
+        "title": (255, 255, 255),
+        "stroke": (16, 10, 28),
+        "hero": "cover-hero-moon-magic.png",
+        "hero_center": (0.48, 0.40),
+        "back_label": "Light the candles",
+        "motif": "moon",
+        "theme_bullet": "Moons, crystals, and cauldrons",
+        "chips": [(212, 175, 90), (140, 80, 180), (40, 30, 70)],
+        "designs": 40,
+    },
+    "dark-academia-40": {
+        "gradient": ((72, 42, 32), (28, 18, 18)),
+        "back_fill": ((64, 36, 28), (24, 16, 16)),
+        "accent": (212, 175, 90),
+        "title": (255, 255, 255),
+        "stroke": (20, 12, 8),
+        "hero": "cover-hero-dark-academia.png",
+        "hero_center": (0.50, 0.38),
+        "back_label": "Study and color",
+        "motif": "book",
+        "theme_bullet": "Libraries, typewriters, and ivy",
+        "chips": [(160, 100, 50), (80, 40, 30), (212, 175, 90)],
+        "designs": 40,
+    },
+    "corgis-40": {
+        "gradient": ((255, 210, 170), (138, 78, 38)),
+        "back_fill": ((240, 190, 148), (128, 70, 34)),
+        "accent": (255, 170, 80),
+        "title": (255, 255, 255),
+        "stroke": (80, 40, 18),
+        "hero": "cover-hero-corgis.png",
+        "hero_center": (0.50, 0.48),
+        "back_label": "Sploot and color",
+        "motif": "paw",
+        "theme_bullet": "Sploots, gardens, and couch kings",
+        "chips": [(230, 150, 70), (80, 120, 70), (255, 220, 180)],
+        "designs": 40,
+    },
+    "zen-gardens-40": {
+        "gradient": ((200, 214, 200), (70, 100, 92)),
+        "back_fill": ((180, 198, 186), (62, 90, 84)),
+        "accent": (180, 200, 170),
+        "title": (255, 255, 255),
+        "stroke": (36, 56, 50),
+        "hero": "cover-hero-zen-gardens.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Sit and color",
+        "motif": "leaves",
+        "theme_bullet": "Koi ponds, bamboo, and tea",
+        "chips": [(90, 140, 120), (200, 210, 180), (70, 90, 100)],
+        "designs": 40,
+    },
+    "retro-40": {
+        "gradient": ((240, 220, 186), (138, 68, 48)),
+        "back_fill": ((226, 200, 160), (128, 60, 42)),
+        "accent": (220, 160, 70),
+        "title": (255, 255, 255),
+        "stroke": (80, 36, 24),
+        "hero": "cover-hero-retro.png",
+        "hero_center": (0.48, 0.45),
+        "back_label": "Then and now, color",
+        "motif": "road",
+        "theme_bullet": "Diners, vans, and vinyl nights",
+        "chips": [(200, 60, 50), (40, 90, 140), (220, 160, 70)],
+        "designs": 40,
+    },
+    "rest-easy-40": {
+        "gradient": ((190, 214, 224), (64, 104, 116)),
+        "back_fill": ((170, 196, 210), (56, 94, 106)),
+        "accent": (180, 210, 190),
+        "title": (255, 255, 255),
+        "stroke": (30, 50, 60),
+        "hero": "cover-hero-rest-easy.png",
+        "hero_center": (0.50, 0.42),
+        "back_label": "Rest here a while",
+        "motif": "clouds",
+        "theme_bullet": "Waves, meadows, and rainy windows",
+        "chips": [(90, 150, 160), (180, 210, 190), (70, 90, 110)],
+        "designs": 40,
+    },
+    "dinosaurs-40": {
+        "gradient": ((200, 214, 160), (76, 96, 46)),
+        "back_fill": ((184, 198, 140), (68, 88, 40)),
+        "accent": (255, 180, 80),
+        "title": (255, 255, 255),
+        "stroke": (40, 55, 25),
+        "hero": "cover-hero-dinosaurs.png",
+        "hero_center": (0.48, 0.45),
+        "back_label": "Walk with giants",
+        "motif": "dino",
+        "theme_bullet": "Friendly dinos and jungle nests",
+        "chips": [(80, 140, 70), (180, 90, 50), (255, 180, 80)],
+        "designs": 40,
+    },
+    "star-signs-40": {
+        "gradient": ((24, 28, 72), (78, 38, 88)),
+        "back_fill": ((20, 24, 64), (70, 34, 80)),
+        "accent": (255, 210, 120),
+        "title": (255, 255, 255),
+        "stroke": (12, 12, 36),
+        "hero": "cover-hero-star-signs.png",
+        "hero_center": (0.50, 0.40),
+        "back_label": "Follow your stars",
+        "motif": "star",
+        "theme_bullet": "Rams, lions, fishes, and night skies",
+        "chips": [(255, 210, 120), (100, 70, 160), (40, 50, 110)],
+        "designs": 40,
+    },
 }
 
 
@@ -406,6 +659,48 @@ def _draw_motif_at(
         draw.line((cx, cy - int(s * 0.2), cx + int(s * 0.85), cy - int(s * 0.7)), fill=ink, width=4)
         oval(cx - 18, cy + int(s * 0.65), 16, 16, 4)
         oval(cx + 18, cy + int(s * 0.65), 16, 16, 4)
+    elif motif == "mushroom":
+        oval(cx, cy - int(s * 0.15), int(s * 0.55), int(s * 0.32), 5)
+        draw.rectangle((cx - 14, cy - 4, cx + 14, cy + int(s * 0.55)), outline=ink, width=4)
+        oval(cx - 18, cy - int(s * 0.2), 6, 6, 3)
+        oval(cx + 16, cy - int(s * 0.08), 6, 6, 3)
+    elif motif == "bloom":
+        oval(cx, cy, int(s * 0.22), int(s * 0.22), 4)
+        for dx, dy in ((0, -1), (0.85, -0.4), (0.85, 0.4), (0, 1), (-0.85, 0.4), (-0.85, -0.4)):
+            oval(cx + int(s * 0.38 * dx), cy + int(s * 0.38 * dy), 16, 20, 3)
+    elif motif == "moon":
+        oval(cx, cy, int(s * 0.55), int(s * 0.55), 5)
+        oval(cx + int(s * 0.18), cy - 8, int(s * 0.42), int(s * 0.42), 4)
+    elif motif == "pumpkin":
+        oval(cx, cy + 6, int(s * 0.6), int(s * 0.48), 5)
+        draw.line((cx, cy - int(s * 0.42), cx, cy - int(s * 0.1)), fill=ink, width=4)
+        oval(cx - 22, cy + 6, 10, 28, 3)
+        oval(cx + 22, cy + 6, 10, 28, 3)
+    elif motif == "wreath":
+        oval(cx, cy, int(s * 0.62), int(s * 0.62), 5)
+        oval(cx, cy, int(s * 0.38), int(s * 0.38), 4)
+        oval(cx, cy - int(s * 0.62), 12, 16, 3)
+    elif motif == "dove":
+        oval(cx, cy, int(s * 0.42), int(s * 0.28), 4)
+        draw.polygon(
+            [(cx + int(s * 0.3), cy - 8), (cx + int(s * 0.75), cy - int(s * 0.45)), (cx + int(s * 0.15), cy + 6)],
+            outline=ink,
+        )
+        oval(cx - int(s * 0.35), cy - 6, 10, 8, 3)
+    elif motif == "book":
+        draw.rectangle((cx - int(s * 0.45), cy - int(s * 0.35), cx + int(s * 0.45), cy + int(s * 0.45)), outline=ink, width=4)
+        draw.line((cx, cy - int(s * 0.35), cx, cy + int(s * 0.45)), fill=ink, width=3)
+        draw.line((cx - int(s * 0.28), cy - 8, cx - 8, cy - 8), fill=ink, width=3)
+    elif motif == "star":
+        pts = []
+        for i in range(5):
+            a = -math.pi / 2 + i * 2 * math.pi / 5
+            pts.append((cx + int(s * 0.7 * math.cos(a)), cy + int(s * 0.7 * math.sin(a))))
+        draw.polygon(pts, outline=ink)
+    elif motif == "dino":
+        oval(cx, cy + 8, int(s * 0.5), int(s * 0.32), 4)
+        oval(cx + int(s * 0.45), cy - int(s * 0.2), int(s * 0.18), int(s * 0.22), 4)
+        draw.line((cx - int(s * 0.45), cy + 10, cx - int(s * 0.8), cy - 8), fill=ink, width=4)
 
 
 def _back_motif(

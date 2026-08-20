@@ -1,11 +1,23 @@
 (() => {
   const NEW_TITLES = new Set([
-    "fantasy-40",
-    "dresses-40",
-    "cryptids-40",
-    "yokai-40",
-    "world-cryptids-40",
-    "construction-40",
+    "mushrooms-40",
+    "botanicals-40",
+    "celestial-40",
+    "cottagecore-40",
+    "cozy-critters-40",
+    "dragons-40",
+    "spooky-cute-40",
+    "holidays-40",
+    "chapel-gardens-40",
+    "slow-mornings-40",
+    "moon-magic-40",
+    "dark-academia-40",
+    "corgis-40",
+    "zen-gardens-40",
+    "retro-40",
+    "rest-easy-40",
+    "dinosaurs-40",
+    "star-signs-40",
   ]);
 
   const state = {

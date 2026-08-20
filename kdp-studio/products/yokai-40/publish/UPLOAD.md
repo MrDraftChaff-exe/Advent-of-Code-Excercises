@@ -12,7 +12,7 @@ Use this package in [KDP Bookshelf](https://kdp.amazon.com/en_US/bookshelf).
    - Do **not** buy or paste a barcode. Leave the white well empty; KDP prints a free EAN-13.
    - Choose a **free KDP ISBN** unless you already own an ISBN you want to use.
    - Disclose AI-assisted art in the KDP form (not as printed cover text).
-6. Set list price to **$11.99** (from comps research if run)
+6. Set list price to **$10.99** (from comps research if run)
 7. Proof in KDP Previewer, then publish
 
 ## Optional assist
