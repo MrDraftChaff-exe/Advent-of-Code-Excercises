@@ -12,5 +12,12 @@
   "cover_height_px": 2625,
   "gutter_in": 0.375,
   "spine_text_allowed": true,
-  "dpi": 300
+  "dpi": 300,
+  "barcode_box_px": [
+    1913,
+    2153,
+    2513,
+    2513
+  ],
+  "barcode_note": "Leave this well empty. KDP prints a free EAN-13 barcode here. Do not buy or paste a barcode image. Use a free KDP ISBN unless you already own one."
 }

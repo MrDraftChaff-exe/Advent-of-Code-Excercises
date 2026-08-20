@@ -29,6 +29,31 @@ White paper ≈ **0.002252"** per page. Spine text only when page count ≥ **79
 
 Use `python3 -m kdp_studio cover --pages N --trim letter` for exact inches/pixels.
 
+## Barcode and ISBN (do not buy a barcode)
+
+KDP prints a **free EAN-13 barcode** on every paperback. Official help: [Barcodes](https://kdp.amazon.com/help/topic/G5HDYGP4BXLX4RUW) and [What is an ISBN and Imprint?](https://kdp.amazon.com/help/topic/G201834170).
+
+**Do not purchase a barcode file** (or a “barcode + ISBN” pack) for these books.
+
+Upload a wrap **without** a barcode. Amazon places one automatically. Covers with text or art in the barcode location are rejected.
+
+Leave a solid **white** rectangle on the **lower-right of the back cover**:
+
+| Spec | Value |
+| --- | --- |
+| Size | **2.0" × 1.2"** (50.8 × 30.5 mm) |
+| From spine | **0.25"** (right edge of the well is 0.25" left of the spine on LTR books) |
+| From bottom trim | **0.25"** |
+| Contents | Empty — no text, no motifs, no price |
+
+The studio renderer draws this well on `cover/wrap-placeholder.png` and records `barcode_box_px` in `cover/dimensions.json`.
+
+### ISBN
+
+- **Free KDP ISBN** is enough for Amazon-only paperbacks. Amazon becomes the imprint (“Independently published”).
+- Buy your **own ISBN** (Bowker in the US, etc.) only if you need your own imprint or the **same edition** sold outside Amazon. KDP still prints the barcode; you still should not buy a separate barcode image.
+- Disclose AI-assisted artwork in the **KDP form**, not as printed text on the wrap.
+
 ## Other useful POD SKUs
 
 | Type | Trim | Notes |
