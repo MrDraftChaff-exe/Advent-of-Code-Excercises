@@ -1,0 +1,12 @@
+{
+  "name": "discord-closed-messages-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Parse Discord UserAffinitiesStoreV2 cache to rank recent DMs, frequent chats, and VC partners.",
+  "scripts": {
+    "test": "node --test lib/affinities.test.js",
+    "start": "python3 -m http.server 8080",
+    "cli": "node cli.js"
+  }
+}

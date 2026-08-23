@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discord Closed Messages Finder</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>Closed messages finder</h1>
+        <p>
+          Rank people from your own Discord affinity cache: recent DMs, frequent
+          chats, and VC partners. This page never sends the dump anywhere.
+        </p>
+      </header>
+
+      <div class="grid">
+        <section class="card">
+          <label for="dump">Paste <code>UserAffinitiesStoreV2</code> JSON</label>
+          <textarea
+            id="dump"
+            placeholder='{"_state":{"userAffinities":[],"lastFetched":0}}'
+          ></textarea>
+          <div class="row">
+            <button id="parse" type="button">Parse dump</button>
+            <button id="sample" class="secondary" type="button">Load sample</button>
+            <button id="clear" class="secondary" type="button">Clear</button>
+          </div>
+          <p id="status" class="status">Waiting for a dump.</p>
+        </section>
+
+        <section class="card">
+          <p class="hint">How to copy the cache from Discord web:</p>
+          <ol>
+            <li>Open <code>https://discord.com/app</code> and sign in.</li>
+            <li>Press Ctrl+Shift+I / Cmd+Option+I.</li>
+            <li>Go to Application → Local Storage → <code>https://discord.com</code>.</li>
+            <li>Find <code>UserAffinitiesStoreV2</code>, copy the value, paste it here.</li>
+          </ol>
+          <p class="hint">
+            Console option: paste <code>main.js</code> into Discord’s console instead.
+          </p>
+        </section>
+      </div>
+
+      <div class="toolbar">
+        <div class="tabs" id="tabs">
+          <button class="active" data-rank="dmRank" type="button">Recent DMs</button>
+          <button data-rank="communicationRank" type="button">Most likely to talk</button>
+          <button data-rank="vcRank" type="button">Most likely to VC</button>
+        </div>
+        <input id="search" type="search" placeholder="Filter by user ID" />
+        <label>
+          <input id="friends-only" type="checkbox" />
+          Friends only
+        </label>
+        <button id="copy" class="secondary" type="button">Copy mentions</button>
+      </div>
+      <div id="meta" class="meta"></div>
+      <div id="results"></div>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
