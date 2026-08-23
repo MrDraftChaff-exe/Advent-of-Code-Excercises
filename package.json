@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 4173",
     "test": "vitest run",
-    "catalog:images": "python3 scripts/resolve_catalog_images.py"
+    "catalog:images": "python3 scripts/resolve_catalog_images.py",
+    "catalog:facts": "python3 scripts/expand_catalog_facts.py"
   },
   "dependencies": {
     "jszip": "^3.10.1",

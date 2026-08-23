@@ -14,6 +14,8 @@ export type CatalogEpisode = {
 const THEME_CYCLE: ThemeId[] = ["cosmic", "ocean", "ember"];
 const FILLER = /\s+[—–-]\s+a key part of the story of\s+.+$/i;
 
+export const TARGET_FACT_COUNT = 12;
+
 export function cleanBullet(text: string): string {
   return text.replace(FILLER, "").replace(/\s+/g, " ").trim();
 }

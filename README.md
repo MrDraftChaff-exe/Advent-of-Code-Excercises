@@ -14,9 +14,13 @@ First democratic elections held April 27, 1994 — Mandela became president
 At age 75, he chose reconciliation over revenge
 The Truth and Reconciliation Commission addressed past atrocities
 South Africa’s transition is studied as a model of peaceful revolution
+The African National Congress won that first open vote after decades banned
+A 1996 constitution locked in equal rights after apartheid collapsed
+Mandela and F. W. de Klerk shared the 1993 Nobel Peace Prize for the talks
+Black South Africans had been denied a national vote until those 1994 elections
 ```
 
-9:16 (1080×1920) frames: the photograph fills the phone canvas and the title, year, sentence facts, and credit overlay it. Episode numbers and hashtags stay off the image. Watermark defaults to `@FactsOrWhacks`. Save a PNG if you want to finish the video in another editor.
+9:16 (1080×1920) frames: the photograph fills the phone canvas and the title, year, **12 sentence facts**, and credit overlay it. A dark veil, per-line plates, and stroked type keep the copy readable on any photo. Episode numbers and hashtags stay off the image. Watermark defaults to `@FactsOrWhacks`. Save a PNG if you want to finish the video in another editor.
 
 The default template is that apartheid episode. The voting photograph is [Paul Weinberg, 1994, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Mandela_voting_in_1994.jpg); the credit is printed on the frame so exports keep the attribution.
 

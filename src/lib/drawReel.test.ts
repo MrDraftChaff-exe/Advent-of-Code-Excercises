@@ -19,15 +19,20 @@ function stubContext() {
     textBaseline: "top",
     globalAlpha: 1,
     globalCompositeOperation: "source-over",
+    lineJoin: "round",
+    miterLimit: 2,
     lineWidth: 1,
     shadowColor: "",
     shadowBlur: 0,
     shadowOffsetY: 0,
     fillRect() {},
     stroke() {},
+    strokeText() {},
     beginPath() {},
     moveTo() {},
     lineTo() {},
+    quadraticCurveTo() {},
+    closePath() {},
     arc() {},
     fill() {},
     save() {},
@@ -69,6 +74,7 @@ describe("canvas layout rules", () => {
     const painted = texts.join("");
     expect(painted).toContain("The End of Apartheid");
     expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).toContain("Nobel");
     expect(painted).not.toMatch(/#\w/);
     for (const tag of reel.hashtags.split(/\s+/).filter(Boolean)) {
       expect(painted).not.toContain(tag);

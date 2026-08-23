@@ -21,7 +21,7 @@ import {
 } from "./lib/catalog";
 import { zipReelExports } from "./lib/batchExport";
 
-const STORAGE_KEY = "facts-or-whacks-reel-v2";
+const STORAGE_KEY = "facts-or-whacks-reel-v3";
 
 function loadSaved(): ReelContent | null {
   try {
@@ -398,9 +398,10 @@ export default function App() {
             placeholder="The End of Apartheid"
           />
           <span className="hint">
-            Title and facts overlay the 9:16 photo. No episode number and no
-            hashtags on the video. Wrap a word in **asterisks** to paint it
-            green. Save PNG to edit locally.
+            Title and facts overlay the 9:16 photo. Twelve sentence facts fill
+            the phone frame. No episode number and no hashtags on the video.
+            Wrap a word in **asterisks** to paint it green. Save PNG to edit
+            locally.
           </span>
         </label>
 

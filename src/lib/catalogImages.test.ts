@@ -2,7 +2,7 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { parseCatalogCsv, parseCatalogJson } from "./catalog";
+import { parseCatalogCsv, parseCatalogJson, TARGET_FACT_COUNT } from "./catalog";
 
 const ROOT = fileURLToPath(new URL("../..", import.meta.url));
 
@@ -57,6 +57,15 @@ describe("bundled catalog stills", () => {
     for (let i = 0; i < 395; i++) {
       expect(csv[i].n).toBe(episodes[i].n);
       expect(csv[i].image).toBe(episodes[i].image);
+    }
+  });
+
+  it("stores twelve on-screen facts for every episode", () => {
+    for (const ep of episodes) {
+      expect(ep.bullets, `episode ${ep.n}`).toHaveLength(TARGET_FACT_COUNT);
+    }
+    for (const ep of csv) {
+      expect(ep.bullets, `csv ${ep.n}`).toHaveLength(TARGET_FACT_COUNT);
     }
   });
 });

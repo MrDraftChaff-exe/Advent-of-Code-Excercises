@@ -77,29 +77,66 @@ function drawPhotoPlaceholder(
   ctx.fillText(label || "Photo", x + w / 2, y + h / 2);
 }
 
-/** Phone-safe scrims: readable type, photo still visible in the middle. */
+/** Darken the whole photo so white type stays readable on any still. */
 function drawReadScrim(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const top = ctx.createLinearGradient(0, 0, 0, h * 0.34);
-  top.addColorStop(0, "rgba(6, 2, 12, 0.72)");
-  top.addColorStop(0.55, "rgba(6, 2, 12, 0.28)");
-  top.addColorStop(1, "rgba(6, 2, 12, 0)");
+  ctx.fillStyle = "rgba(4, 0, 10, 0.46)";
+  ctx.fillRect(0, 0, w, h);
+
+  const top = ctx.createLinearGradient(0, 0, 0, h * 0.3);
+  top.addColorStop(0, "rgba(4, 0, 10, 0.42)");
+  top.addColorStop(1, "rgba(4, 0, 10, 0)");
   ctx.fillStyle = top;
   ctx.fillRect(0, 0, w, h);
 
-  const bottom = ctx.createLinearGradient(0, h * 0.42, 0, h);
-  bottom.addColorStop(0, "rgba(6, 2, 12, 0)");
-  bottom.addColorStop(0.35, "rgba(6, 2, 12, 0.45)");
-  bottom.addColorStop(1, "rgba(6, 2, 12, 0.82)");
+  const bottom = ctx.createLinearGradient(0, h * 0.58, 0, h);
+  bottom.addColorStop(0, "rgba(4, 0, 10, 0)");
+  bottom.addColorStop(1, "rgba(4, 0, 10, 0.58)");
   ctx.fillStyle = bottom;
   ctx.fillRect(0, 0, w, h);
 }
 
-function withTextShadow(ctx: CanvasRenderingContext2D, draw: () => void) {
+function fillRoundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+) {
+  const radius = Math.max(0, Math.min(r, w / 2, h / 2));
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + w - radius, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+  ctx.lineTo(x + w, y + h - radius);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+  ctx.lineTo(x + radius, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function paintText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  fill: string,
+  strokeWidth: number,
+) {
   ctx.save();
-  ctx.shadowColor = "rgba(0, 0, 0, 0.88)";
-  ctx.shadowBlur = 16;
-  ctx.shadowOffsetY = 2;
-  draw();
+  ctx.shadowColor = "rgba(0, 0, 0, 0.85)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 1;
+  ctx.lineJoin = "round";
+  ctx.miterLimit = 2;
+  ctx.lineWidth = strokeWidth;
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.92)";
+  ctx.fillStyle = fill;
+  ctx.strokeText(text, x, y);
+  ctx.fillText(text, x, y);
   ctx.restore();
 }
 
@@ -121,27 +158,28 @@ export function drawFrame(
   }
   drawReadScrim(ctx, w, h);
 
-  const pad = 48;
+  const pad = 40;
   const copyX = pad;
   const copyW = w - pad * 2;
-  const safeTop = 108;
-  const safeBottom = 152;
+  const safeTop = 92;
+  const safeBottom = 138;
   const copyBottom = h - safeBottom;
-  const handleH = 30;
+  const handleH = 26;
   const bullets = reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
   const caption = reel.imageCaption.trim();
   const credit = reel.imageCredit.trim();
 
-  const titleSize = 52;
-  const yearSize = 28;
-  const bodySize = 28;
-  const captionSize = 22;
-  const creditSize = 16;
-  const titleLh = 62;
-  const yearLh = 38;
-  const bodyLh = 36;
-  const minBulletGap = 10;
+  const titleSize = 44;
+  const yearSize = 24;
+  const bodySize = 23;
+  const captionSize = 18;
+  const creditSize = 15;
+  const titleLh = 50;
+  const yearLh = 32;
+  const bodyLh = 29;
+  const minBulletGap = 6;
+  const platePad = 5;
   let scale = 1;
 
   const measureLayout = (s: number) => {
@@ -161,7 +199,7 @@ export function drawFrame(
     const bulletBlocks = bullets.map((bullet) =>
       wrapPlain(
         bullet.trim(),
-        copyW - 36 * s,
+        copyW - 44 * s,
         measureFactory(ctx, `600 ${bs}px Montserrat, sans-serif`),
       ),
     );
@@ -181,19 +219,20 @@ export function drawFrame(
       : [];
     const titleH = titleLines.length * tLh;
     const yearH = yearLabel ? yLh : 0;
+    const plateExtra = platePad * 2 * s * bulletBlocks.length;
     const bulletsH = bulletBlocks.reduce(
       (sum, lines) => sum + lines.length * bLh,
       0,
     );
-    const captionH = captionLines.length * 28 * s;
-    const creditH = creditLines.length * 22 * s;
-    const headerGap = 8 * s;
-    const ruleGap = 16 * s;
-    const captionGap = captionLines.length || creditLines.length ? 16 * s : 0;
+    const captionH = captionLines.length * 24 * s;
+    const creditH = creditLines.length * 20 * s;
+    const headerGap = 6 * s;
+    const ruleGap = 12 * s;
+    const captionGap = captionLines.length || creditLines.length ? 12 * s : 0;
     const minGaps = Math.max(0, bulletBlocks.length - 1) * minBulletGap * s;
     const headerH = titleH + yearH + headerGap + ruleGap;
     const footerH = captionGap + captionH + creditH + handleH;
-    const used = headerH + bulletsH + minGaps + footerH + 24 * s;
+    const used = headerH + bulletsH + plateExtra + minGaps + footerH + 16 * s;
     return {
       titleLines,
       bulletBlocks,
@@ -221,7 +260,7 @@ export function drawFrame(
 
   const available = copyBottom - safeTop;
   let layout = measureLayout(1);
-  while (layout.used > available && scale > 0.7) {
+  while (layout.used > available && scale > 0.58) {
     scale *= 0.94;
     layout = measureLayout(scale);
   }
@@ -229,68 +268,78 @@ export function drawFrame(
   const leftover = Math.max(0, available - layout.used);
   const spread =
     layout.bulletBlocks.length > 1
-      ? Math.min(16 * layout.s, leftover / layout.bulletBlocks.length)
+      ? Math.min(10 * layout.s, leftover / layout.bulletBlocks.length)
       : 0;
   const bulletGap = minBulletGap * layout.s + spread;
+  const titleStroke = Math.max(4, layout.ts * 0.16);
+  const bodyStroke = Math.max(3.5, layout.bs * 0.18);
 
   ctx.textBaseline = "top";
   ctx.textAlign = "left";
 
   let y = safeTop;
   ctx.globalAlpha = opacityFor(time, 0, reel.reveal);
-  withTextShadow(ctx, () => {
-    let ty = y;
-    for (const line of layout.titleLines) {
-      let x = copyX;
-      for (const tok of line) {
-        ctx.fillStyle = tok.highlight ? theme.accent : theme.text;
-        ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
-        ctx.fillText(tok.text, x, ty);
-        x += ctx.measureText(tok.text).width;
-      }
-      ty += layout.tLh;
+  let ty = y;
+  for (const line of layout.titleLines) {
+    let x = copyX;
+    for (const tok of line) {
+      ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
+      paintText(
+        ctx,
+        tok.text,
+        x,
+        ty,
+        tok.highlight ? theme.accent : theme.text,
+        titleStroke,
+      );
+      x += ctx.measureText(tok.text).width;
     }
-    y = ty;
-  });
+    ty += layout.tLh;
+  }
+  y = ty;
 
   if (yearLabel) {
     ctx.globalAlpha = opacityFor(time, 0, reel.reveal);
-    withTextShadow(ctx, () => {
-      ctx.fillStyle = theme.accent;
-      ctx.font = `600 ${layout.ys}px Montserrat, sans-serif`;
-      ctx.fillText(yearLabel, copyX, y);
-    });
+    ctx.font = `600 ${layout.ys}px Montserrat, sans-serif`;
+    paintText(ctx, yearLabel, copyX, y, theme.accent, Math.max(3, layout.ys * 0.18));
     y += layout.yLh;
   }
 
   y += layout.headerGap;
-  ctx.strokeStyle = "rgba(247, 242, 248, 0.35)";
+  ctx.strokeStyle = "rgba(247, 242, 248, 0.4)";
   ctx.lineWidth = 2;
   ctx.beginPath();
   ctx.moveTo(copyX, y);
-  ctx.lineTo(copyX + Math.min(copyW, 240), y);
+  ctx.lineTo(copyX + Math.min(copyW, 220), y);
   ctx.stroke();
   y += layout.ruleGap;
 
   let slot = 1;
   layout.bulletBlocks.forEach((lines, i) => {
     ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
-    withTextShadow(ctx, () => {
-      const markX = copyX + 7 * layout.s;
-      const markY = y + layout.bs * 0.42;
-      ctx.fillStyle = theme.accent;
-      ctx.beginPath();
-      ctx.arc(markX, markY, 5.5 * layout.s, 0, Math.PI * 2);
-      ctx.fill();
-      let ly = y;
-      for (const line of lines) {
-        ctx.fillStyle = theme.text;
-        ctx.font = `600 ${layout.bs}px Montserrat, sans-serif`;
-        ctx.fillText(line, copyX + 30 * layout.s, ly);
-        ly += layout.bLh;
-      }
-    });
-    y += lines.length * layout.bLh;
+    const blockH = lines.length * layout.bLh;
+    ctx.fillStyle = "rgba(0, 0, 0, 0.52)";
+    fillRoundRect(
+      ctx,
+      copyX - 8,
+      y - 3,
+      copyW + 16,
+      blockH + platePad * layout.s,
+      10 * layout.s,
+    );
+    const markX = copyX + 10 * layout.s;
+    const markY = y + layout.bs * 0.42;
+    ctx.fillStyle = theme.accent;
+    ctx.beginPath();
+    ctx.arc(markX, markY, 5 * layout.s, 0, Math.PI * 2);
+    ctx.fill();
+    let ly = y;
+    for (const line of lines) {
+      ctx.font = `600 ${layout.bs}px Montserrat, sans-serif`;
+      paintText(ctx, line, copyX + 28 * layout.s, ly, theme.text, bodyStroke);
+      ly += layout.bLh;
+    }
+    y += blockH + platePad * layout.s;
     if (i < layout.bulletBlocks.length - 1) y += bulletGap;
   });
 
@@ -303,34 +352,25 @@ export function drawFrame(
 
   if (layout.captionLines.length) {
     ctx.globalAlpha = 1;
-    withTextShadow(ctx, () => {
-      ctx.fillStyle = theme.text;
-      ctx.font = `600 ${layout.cs}px Montserrat, sans-serif`;
-      for (const line of layout.captionLines) {
-        ctx.fillText(line, copyX, my);
-        my += 28 * layout.s;
-      }
-    });
+    ctx.font = `600 ${layout.cs}px Montserrat, sans-serif`;
+    for (const line of layout.captionLines) {
+      paintText(ctx, line, copyX, my, theme.text, 3.5);
+      my += 24 * layout.s;
+    }
   }
 
   if (layout.creditLines.length) {
-    ctx.globalAlpha = 0.92;
-    withTextShadow(ctx, () => {
-      ctx.fillStyle = theme.mute;
-      ctx.font = `500 ${layout.ds}px Montserrat, sans-serif`;
-      for (const line of layout.creditLines) {
-        ctx.fillText(line, copyX, my);
-        my += 22 * layout.s;
-      }
-    });
+    ctx.globalAlpha = 0.95;
+    ctx.font = `500 ${layout.ds}px Montserrat, sans-serif`;
+    for (const line of layout.creditLines) {
+      paintText(ctx, line, copyX, my, "#F4EEF6", 3);
+      my += 20 * layout.s;
+    }
   }
 
-  ctx.globalAlpha = 0.92;
-  withTextShadow(ctx, () => {
-    ctx.fillStyle = theme.mute;
-    ctx.font = "600 22px Montserrat, sans-serif";
-    ctx.fillText(reel.handle, copyX, copyBottom - 22);
-  });
+  ctx.globalAlpha = 0.95;
+  ctx.font = "600 20px Montserrat, sans-serif";
+  paintText(ctx, reel.handle, copyX, copyBottom - 20, "#F4EEF6", 3);
   ctx.globalAlpha = 1;
 }
 

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { blankReel, cloneTemplate, TEMPLATES, THEMES } from "./templates";
 import { canvasHeadlineText } from "./lib/drawReel";
 import { formatHeadline, formatYear } from "./lib/text";
+import { TARGET_FACT_COUNT } from "./lib/catalog";
 
 describe("templates", () => {
   it("ships original fact copy, not a transcript of the source reel", () => {
@@ -30,17 +31,18 @@ describe("templates", () => {
     expect(reel.imageCaption).toBe("Nelson Mandela voting, 1994");
     expect(reel.imageUrl).toContain("mandela-voting-1994");
     expect(reel.imageCredit).toMatch(/Paul Weinberg/);
-    expect(reel.bullets).toHaveLength(8);
+    expect(reel.bullets).toHaveLength(12);
     expect(reel.bullets[0]).toMatch(/Apartheid was South Africa/);
     expect(reel.bullets[4]).toMatch(/April 27, 1994/);
+    expect(reel.bullets[11]).toMatch(/1994 elections/);
     expect(reel.hashtags).toBe(
       "#NelsonMandela #Apartheid #SouthAfrica #HistoryTok",
     );
   });
 
-  it("uses full-sentence bullets instead of labeled stats", () => {
+  it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
-      expect(template.bullets.length).toBeGreaterThan(0);
+      expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);
       for (const bullet of template.bullets) {
         expect(bullet).not.toMatch(/^\d+\)\s+\S+\s+—\s/);
       }
