@@ -1,8 +1,8 @@
-# Fact Nebula
+# Facts or Whacks
 
 A browser studio for **9:16 fact reels** — the short-form format with a dark nebula background, a two-line headline, a numbered list of statistics, a kicker line, and a green call-to-action.
 
-The look is inspired by viral “list of facts” Reels (vertical 1080×1920, lime highlights, slow-drifting cosmic bokeh). Every template ships **original copy**, not the source video’s script.
+The look is inspired by viral “list of facts” Reels (vertical 1080×1920, lime highlights, slow-drifting cosmic bokeh). Every template ships **original copy**, not the source video’s script. Watermark defaults to `@FactsOrWhacks`.
 
 ## Run
 

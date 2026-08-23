@@ -24,6 +24,12 @@ describe("templates", () => {
     expect(blankReel().title).toContain("\n");
   });
 
+  it("brands templates with the Facts or Whacks handle", () => {
+    for (const template of TEMPLATES) {
+      expect(template.handle).toBe("@FactsOrWhacks");
+    }
+  });
+
   it("creates a custom blank reel", () => {
     const reel = blankReel();
     expect(reel.id).toBe("custom");

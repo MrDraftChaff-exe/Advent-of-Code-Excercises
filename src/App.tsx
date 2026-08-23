@@ -13,7 +13,7 @@ import { loadReelFonts, downloadBlob, slugify } from "./lib/fonts";
 import { exportReelVideo } from "./lib/exportVideo";
 import { createAmbient } from "./lib/audio";
 
-const STORAGE_KEY = "fact-nebula-reel-v2";
+const STORAGE_KEY = "facts-or-whacks-reel-v1";
 
 function loadSaved(): ReelContent | null {
   try {
@@ -123,10 +123,10 @@ export default function App() {
     <div className="app">
       <aside className="editor">
         <div className="brand">
-          <div className="brand-mark">✦</div>
+          <div className="brand-mark">?</div>
           <div>
-            <h1>Fact Nebula</h1>
-            <p>15-second fact reels in the cosmic list format</p>
+            <h1>Facts or Whacks</h1>
+            <p>15-second reels. True fact, or total whack?</p>
           </div>
         </div>
 

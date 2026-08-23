@@ -40,6 +40,6 @@ export function slugify(name: string) {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "")
-      .slice(0, 48) || "fact-reel"
+      .slice(0, 48) || "facts-or-whacks"
   );
 }
