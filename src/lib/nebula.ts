@@ -62,12 +62,11 @@ export function drawNebula(
   }
   ctx.globalAlpha = 1;
 
-  // Vignette over the copy column; the photo panel covers the left side.
   const vig = ctx.createRadialGradient(
-    w * 0.74,
-    h * 0.48,
-    h * 0.12,
-    w * 0.74,
+    w * 0.5,
+    h * 0.42,
+    h * 0.16,
+    w * 0.5,
     h * 0.5,
     h * 0.82,
   );
