@@ -3,11 +3,6 @@ export type Word = {
   highlight: boolean;
 };
 
-export type Fact = {
-  label: string;
-  text: string;
-};
-
 export type ThemeId = "cosmic" | "ocean" | "ember";
 
 export type RevealMode = "hold" | "cascade";
@@ -15,10 +10,14 @@ export type RevealMode = "hold" | "cascade";
 export type ReelContent = {
   id: string;
   name: string;
+  episode: string;
   title: string;
-  facts: Fact[];
-  note: string;
-  cta: string;
+  year: string;
+  imageUrl: string;
+  imageCaption: string;
+  imageCredit: string;
+  bullets: string[];
+  hashtags: string;
   handle: string;
   durationSec: number;
   theme: ThemeId;

@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { clampDuration, parseHighlighted, wrapPlain, wrapTokens } from "./text";
+import {
+  clampDuration,
+  formatHeadline,
+  formatYear,
+  parseHighlighted,
+  wrapPlain,
+  wrapTokens,
+} from "./text";
 
 describe("parseHighlighted", () => {
   it("splits accent markers into highlight tokens", () => {
@@ -56,9 +63,27 @@ describe("wrapPlain", () => {
 
 describe("clampDuration", () => {
   it("clamps and rounds duration", () => {
-    expect(clampDuration(Number.NaN)).toBe(15);
+    expect(clampDuration(Number.NaN)).toBe(20);
     expect(clampDuration(3)).toBe(8);
     expect(clampDuration(90)).toBe(60);
     expect(clampDuration(15.4)).toBe(15);
+  });
+});
+
+describe("formatHeadline", () => {
+  it("joins episode number and title", () => {
+    expect(formatHeadline("30", "The End of Apartheid")).toBe(
+      "30. The End of Apartheid",
+    );
+    expect(formatHeadline("", "Untitled")).toBe("Untitled");
+    expect(formatHeadline("7", "")).toBe("7.");
+  });
+});
+
+describe("formatYear", () => {
+  it("wraps a year in parentheses", () => {
+    expect(formatYear("1994")).toBe("(1994)");
+    expect(formatYear("(1994)")).toBe("(1994)");
+    expect(formatYear("  ")).toBe("");
   });
 });

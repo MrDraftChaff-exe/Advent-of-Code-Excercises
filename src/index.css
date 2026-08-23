@@ -145,9 +145,55 @@ button {
   outline: none;
 }
 
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
 .field textarea {
   resize: vertical;
   min-height: 72px;
+}
+
+.field textarea:placeholder-shown,
+.fact-card textarea {
+  min-height: 64px;
+}
+
+.thumb {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  object-position: 50% 28%;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+}
+
+.file-chip {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.bullet-index {
+  flex: 1;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hint code {
+  font-size: 11px;
+  color: var(--accent);
 }
 
 .field input:focus,

@@ -1,6 +1,7 @@
 import { CANVAS_H, CANVAS_W, type ReelContent } from "../types";
 import { createAmbient } from "./audio";
 import { drawFrame } from "./drawReel";
+import { loadReelImage } from "./images";
 
 function pickMime(): string {
   const types = [
@@ -30,6 +31,7 @@ export async function exportReelVideo(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("No 2D context");
 
+  const photo = await loadReelImage(reel.imageUrl);
   const fps = 30;
   const duration = reel.durationSec;
   const videoStream = canvas.captureStream(fps);
@@ -62,7 +64,7 @@ export async function exportReelVideo(
     const tick = () => {
       const elapsed = (performance.now() - start) / 1000;
       const t = Math.min(elapsed, duration);
-      drawFrame(ctx, reel, t);
+      drawFrame(ctx, reel, t, photo);
       onProgress?.(Math.min(1, elapsed / duration));
       if (elapsed >= duration + 0.15) {
         if (recorder.state !== "inactive") recorder.stop();

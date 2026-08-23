@@ -85,9 +85,25 @@ export function wrapPlain(
   return lines;
 }
 
-export const DEFAULT_DURATION = 15;
+export const DEFAULT_DURATION = 20;
 
 export function clampDuration(n: number): number {
   if (!Number.isFinite(n)) return DEFAULT_DURATION;
   return Math.min(60, Math.max(8, Math.round(n)));
+}
+
+/** `30` + `The End of Apartheid` → `30. The End of Apartheid` */
+export function formatHeadline(episode: string, title: string): string {
+  const e = episode.trim();
+  const t = title.trim();
+  if (!e) return t;
+  if (!t) return `${e}.`;
+  return `${e}. ${t}`;
+}
+
+/** `1994` → `(1994)` */
+export function formatYear(year: string): string {
+  const y = year.trim();
+  if (!y) return "";
+  return y.startsWith("(") ? y : `(${y})`;
 }

@@ -1,7 +1,14 @@
-import { parseHighlighted, wrapPlain, wrapTokens } from "./text";
+import {
+  formatYear,
+  parseHighlighted,
+  wrapPlain,
+  wrapTokens,
+} from "./text";
+import { coverSourceRect } from "./cover";
+import { loadReelImage } from "./images";
 import { drawNebula } from "./nebula";
 import { THEMES } from "../templates";
-import type { Fact, ReelContent, Word } from "../types";
+import type { ReelContent, Word } from "../types";
 import { CANVAS_H, CANVAS_W } from "../types";
 
 function clamp(n: number, a: number, b: number) {
@@ -18,7 +25,7 @@ function opacityFor(
   reveal: ReelContent["reveal"],
 ) {
   if (reveal === "hold") return 1;
-  const start = 0.2 + slot * 0.48;
+  const start = 0.18 + slot * 0.38;
   return easeOut((time - start) / 0.4);
 }
 
@@ -29,157 +36,233 @@ function measureFactory(ctx: CanvasRenderingContext2D, font: string) {
   };
 }
 
-type FactLine = { prefix?: string; text: string; indent?: number };
-
-function layoutFact(
-  ctx: CanvasRenderingContext2D,
-  index: number,
-  fact: Fact,
-  maxW: number,
-  size: number,
-): FactLine[] {
-  const prefix = `${index}) ${fact.label} — `;
-  const bodyFont = `500 ${size}px Montserrat, sans-serif`;
-  const boldFont = `700 ${size}px Montserrat, sans-serif`;
-  ctx.font = boldFont;
-  const prefixW = ctx.measureText(prefix).width;
-  ctx.font = bodyFont;
-  const fullW = prefixW + ctx.measureText(fact.text).width;
-  if (fullW <= maxW) return [{ prefix, text: fact.text }];
-
-  const hang = Math.min(prefixW, maxW * 0.42);
-  const words = fact.text.split(/\s+/);
-  let first = "";
-  let used = 0;
-  for (let i = 0; i < words.length; i++) {
-    const trial = first ? `${first} ${words[i]}` : words[i];
-    ctx.font = bodyFont;
-    if (prefixW + ctx.measureText(trial).width > maxW && first) break;
-    first = trial;
-    used = i + 1;
+function headlineTokens(reel: ReelContent): Word[] {
+  const episode = reel.episode.trim();
+  const tokens: Word[] = [];
+  if (episode) {
+    tokens.push({ text: `${episode}.`, highlight: true });
+    tokens.push({ text: " ", highlight: false });
   }
-  const rest = words.slice(used).join(" ");
-  const restLines = wrapPlain(
-    rest,
-    maxW - hang,
-    measureFactory(ctx, bodyFont),
-  );
-  return [
-    { prefix, text: first },
-    ...restLines.map((text) => ({ text, indent: hang })),
-  ];
+  tokens.push(...parseHighlighted(reel.title.trim()));
+  return tokens.length ? tokens : [{ text: " ", highlight: false }];
 }
 
-function layoutTitle(
+function roundRectPath(
   ctx: CanvasRenderingContext2D,
-  title: string,
-  maxW: number,
-  size: number,
-): Word[][] {
-  const font = `800 ${size}px Montserrat, sans-serif`;
-  return wrapTokens(parseHighlighted(title), maxW, measureFactory(ctx, font));
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+) {
+  const radius = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  if (typeof ctx.roundRect === "function") {
+    ctx.roundRect(x, y, w, h, radius);
+    return;
+  }
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + w, y, x + w, y + h, radius);
+  ctx.arcTo(x + w, y + h, x, y + h, radius);
+  ctx.arcTo(x, y + h, x, y, radius);
+  ctx.arcTo(x, y, x + w, y, radius);
+  ctx.closePath();
+}
+
+function drawCoverImage(
+  ctx: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  radius: number,
+) {
+  const iw = image.naturalWidth || image.width;
+  const ih = image.naturalHeight || image.height;
+  const src = coverSourceRect(iw, ih, w, h, 0.28);
+  ctx.save();
+  roundRectPath(ctx, x, y, w, h, radius);
+  ctx.clip();
+  ctx.drawImage(image, src.sx, src.sy, src.sw, src.sh, x, y, w, h);
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.16)";
+  ctx.lineWidth = 2;
+  roundRectPath(ctx, x, y, w, h, radius);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawPhotoPlaceholder(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  radius: number,
+  label: string,
+) {
+  ctx.save();
+  roundRectPath(ctx, x, y, w, h, radius);
+  ctx.fillStyle = "rgba(8, 4, 14, 0.55)";
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = "rgba(247, 242, 248, 0.55)";
+  ctx.font = "600 26px Montserrat, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(label || "Photo", x + w / 2, y + h / 2);
+  ctx.restore();
 }
 
 export function drawFrame(
   ctx: CanvasRenderingContext2D,
   reel: ReelContent,
   time: number,
+  image: HTMLImageElement | null = null,
 ) {
   const w = CANVAS_W;
   const h = CANVAS_H;
   const theme = THEMES[reel.theme];
   drawNebula(ctx, w, h, time, theme);
 
-  const marginX = 92;
+  const marginX = 88;
   const maxW = w - marginX * 2;
   const handleY = h - 88;
+  const showPhoto = Boolean(reel.imageUrl);
+  const bullets = reel.bullets.filter((b) => b.trim());
+  const yearLabel = formatYear(reel.year);
+  const hashtags = reel.hashtags.trim();
 
-  const titleSize = 54;
-  const bodySize = 34;
-  const noteSize = 30;
-  const ctaSize = 32;
-  const titleLh = 66;
-  const bodyLh = 46;
-  const blockGap = 36;
-  const factGap = 18;
+  const titleSize = 46;
+  const yearSize = 28;
+  const bodySize = 28;
+  const tagSize = 24;
+  const captionSize = 22;
+  const creditSize = 16;
+  const titleLh = 56;
+  const yearLh = 40;
+  const bodyLh = 38;
+  const tagLh = 34;
+  const captionLh = 32;
+  const blockGap = 28;
+  const bulletGap = 12;
+  const photoRadius = 28;
   let scale = 1;
+  let photoH = showPhoto ? 400 : 0;
 
-  const measureLayout = (s: number) => {
+  const measureLayout = (s: number, ph: number) => {
     const ts = titleSize * s;
+    const ys = yearSize * s;
     const bs = bodySize * s;
-    const ns = noteSize * s;
-    const cs = ctaSize * s;
+    const gs = tagSize * s;
+    const cs = captionSize * s;
+    const ds = creditSize * s;
     const tLh = titleLh * s;
+    const yLh = yearLh * s;
     const bLh = bodyLh * s;
-    const titleLines = layoutTitle(ctx, reel.title, maxW, ts);
-    const facts = reel.facts.map((f, i) => layoutFact(ctx, i + 1, f, maxW, bs));
-    const noteLines = reel.note
+    const gLh = tagLh * s;
+    const cLh = captionLh * s;
+    const titleLines = wrapTokens(
+      headlineTokens(reel),
+      maxW,
+      measureFactory(ctx, `800 ${ts}px Montserrat, sans-serif`),
+    );
+    const bulletBlocks = bullets.map((bullet) =>
+      wrapPlain(
+        bullet.trim(),
+        maxW - 36 * s,
+        measureFactory(ctx, `500 ${bs}px Montserrat, sans-serif`),
+      ),
+    );
+    const captionLines = reel.imageCaption.trim()
       ? wrapPlain(
-          reel.note,
+          reel.imageCaption.trim(),
           maxW,
-          measureFactory(ctx, `500 ${ns}px Montserrat, sans-serif`),
+          measureFactory(ctx, `600 ${cs}px Montserrat, sans-serif`),
         )
       : [];
-    const ctaLines = reel.cta
-      ? reel.cta.split("\n").flatMap((line) =>
-          wrapPlain(
-            line,
-            maxW,
-            measureFactory(ctx, `700 ${cs}px Montserrat, sans-serif`),
-          ),
+    const creditLines = reel.imageCredit.trim()
+      ? wrapPlain(
+          reel.imageCredit.trim(),
+          maxW,
+          measureFactory(ctx, `500 ${ds}px Montserrat, sans-serif`),
+        )
+      : [];
+    const tagLines = hashtags
+      ? wrapPlain(
+          hashtags,
+          maxW,
+          measureFactory(ctx, `600 ${gs}px Montserrat, sans-serif`),
         )
       : [];
     const titleH = titleLines.length * tLh;
-    const factsH = facts.reduce((sum, lines) => sum + lines.length * bLh, 0);
-    const factGaps = Math.max(0, facts.length - 1) * factGap * s;
-    const noteH = noteLines.length * (bLh * 0.95);
-    const ctaH = ctaLines.length * (bLh * 0.95);
+    const yearH = yearLabel ? yLh : 0;
+    const bulletsH = bulletBlocks.reduce(
+      (sum, lines) => sum + lines.length * bLh,
+      0,
+    );
+    const bulletGaps = Math.max(0, bulletBlocks.length - 1) * bulletGap * s;
+    const captionH = captionLines.length * (cLh * 0.95);
+    const creditH = creditLines.length * (cLh * 0.75);
+    const tagsH = tagLines.length * gLh;
+    const photoBlock = ph
+      ? ph + (captionH || creditH ? 14 * s : 0) + captionH + creditH
+      : 0;
     const gaps =
-      (facts.length ? blockGap * s : 0) +
-      (noteLines.length ? blockGap * 0.7 * s : 0) +
-      (ctaLines.length ? blockGap * s : 0);
-    const height = titleH + factsH + factGaps + noteH + ctaH + gaps;
+      (ph ? blockGap * s : 0) +
+      (bulletBlocks.length ? blockGap * s : 0) +
+      (tagLines.length ? blockGap * 0.85 * s : 0);
+    const height =
+      titleH + yearH + photoBlock + bulletsH + bulletGaps + tagsH + gaps;
     return {
       titleLines,
-      facts,
-      noteLines,
-      ctaLines,
+      bulletBlocks,
+      captionLines,
+      creditLines,
+      tagLines,
       height,
       ts,
+      ys,
       bs,
-      ns,
+      gs,
       cs,
+      ds,
       tLh,
+      yLh,
       bLh,
+      gLh,
+      cLh,
       s,
+      ph,
     };
   };
 
-  let layout = measureLayout(1);
-  const available = handleY - 160;
-  while (layout.height > available && scale > 0.72) {
+  let layout = measureLayout(1, photoH);
+  const available = handleY - 150;
+  while (layout.height > available && photoH > 220) {
+    photoH -= 18;
+    layout = measureLayout(scale, photoH);
+  }
+  while (layout.height > available && scale > 0.7) {
     scale *= 0.94;
-    layout = measureLayout(scale);
+    layout = measureLayout(scale, photoH);
   }
 
-  let y = (h - 80 - layout.height) / 2 + 20;
-  y = Math.max(130, Math.min(y, handleY - layout.height - 40));
+  let y = (h - 80 - layout.height) / 2 + 16;
+  y = Math.max(118, Math.min(y, handleY - layout.height - 36));
 
   ctx.textBaseline = "top";
   ctx.textAlign = "left";
 
   let slot = 0;
   const titleAlpha = opacityFor(time, slot++, reel.reveal);
-  // Left-align tokens; x is already the left edge of a centered line.
-  // textAlign "center" would treat x as each word's midpoint and smash the title.
-  ctx.textAlign = "left";
+  ctx.globalAlpha = titleAlpha;
   for (const line of layout.titleLines) {
-    const lineWidth = line.reduce((sum, tok) => {
-      ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
-      return sum + ctx.measureText(tok.text).width;
-    }, 0);
-    let x = (w - lineWidth) / 2;
-    ctx.globalAlpha = titleAlpha;
+    let x = marginX;
     for (const tok of line) {
       ctx.fillStyle = tok.highlight ? theme.accent : theme.text;
       ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
@@ -189,47 +272,94 @@ export function drawFrame(
     y += layout.tLh;
   }
 
-  y += blockGap * layout.s;
+  if (yearLabel) {
+    ctx.globalAlpha = titleAlpha;
+    ctx.fillStyle = theme.accent;
+    ctx.font = `600 ${layout.ys}px Montserrat, sans-serif`;
+    ctx.fillText(yearLabel, marginX, y);
+    y += layout.yLh;
+  }
+
+  if (showPhoto) {
+    y += blockGap * layout.s * 0.45;
+    ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
+    const photoY = y;
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
+    ctx.shadowBlur = 36;
+    ctx.shadowOffsetY = 16;
+    if (image && (image.naturalWidth || image.width)) {
+      drawCoverImage(
+        ctx,
+        image,
+        marginX,
+        photoY,
+        maxW,
+        layout.ph,
+        photoRadius,
+      );
+    } else {
+      drawPhotoPlaceholder(
+        ctx,
+        marginX,
+        photoY,
+        maxW,
+        layout.ph,
+        photoRadius,
+        reel.imageCaption || "Photo",
+      );
+    }
+    ctx.restore();
+    y += layout.ph + 14 * layout.s;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    if (layout.captionLines.length) {
+      ctx.fillStyle = theme.text;
+      ctx.font = `600 ${layout.cs}px Montserrat, sans-serif`;
+      for (const line of layout.captionLines) {
+        ctx.fillText(line, marginX, y);
+        y += layout.cLh * 0.95;
+      }
+    }
+    if (layout.creditLines.length) {
+      ctx.fillStyle = theme.mute;
+      ctx.font = `500 ${layout.ds}px Montserrat, sans-serif`;
+      for (const line of layout.creditLines) {
+        ctx.fillText(line, marginX, y);
+        y += layout.cLh * 0.75;
+      }
+    }
+  }
+
+  y += blockGap * layout.s * 0.7;
   ctx.textAlign = "left";
 
-  for (const factLines of layout.facts) {
+  for (const lines of layout.bulletBlocks) {
     const a = opacityFor(time, slot++, reel.reveal);
     ctx.globalAlpha = a;
-    for (const line of factLines) {
-      let x = marginX + (line.indent ?? 0);
-      if (line.prefix) {
-        ctx.fillStyle = theme.text;
-        ctx.font = `700 ${layout.bs}px Montserrat, sans-serif`;
-        ctx.fillText(line.prefix, x, y);
-        x += ctx.measureText(line.prefix).width;
-      }
+    const markX = marginX + 6 * layout.s;
+    const markY = y + layout.bs * 0.42;
+    ctx.fillStyle = theme.accent;
+    ctx.beginPath();
+    ctx.arc(markX, markY, 5.5 * layout.s, 0, Math.PI * 2);
+    ctx.fill();
+    for (const line of lines) {
       ctx.fillStyle = theme.text;
       ctx.font = `500 ${layout.bs}px Montserrat, sans-serif`;
-      ctx.fillText(line.text, x, y);
+      ctx.fillText(line, marginX + 36 * layout.s, y);
       y += layout.bLh;
     }
-    y += factGap * layout.s;
+    y += bulletGap * layout.s;
   }
 
-  if (layout.noteLines.length) {
+  if (layout.tagLines.length) {
     y += blockGap * 0.35 * layout.s;
     ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
-    ctx.fillStyle = theme.text;
-    ctx.font = `500 ${layout.ns}px Montserrat, sans-serif`;
-    for (const line of layout.noteLines) {
-      ctx.fillText(line, marginX, y);
-      y += layout.bLh * 0.95;
-    }
-  }
-
-  if (layout.ctaLines.length) {
-    y += blockGap * 0.7 * layout.s;
-    ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
     ctx.fillStyle = theme.accent;
-    ctx.font = `700 ${layout.cs}px Montserrat, sans-serif`;
-    for (const line of layout.ctaLines) {
+    ctx.font = `600 ${layout.gs}px Montserrat, sans-serif`;
+    for (const line of layout.tagLines) {
       ctx.fillText(line, marginX, y);
-      y += layout.bLh * 0.95;
+      y += layout.gLh;
     }
   }
 
@@ -241,13 +371,17 @@ export function drawFrame(
   ctx.globalAlpha = 1;
 }
 
-export function snapshotPng(reel: ReelContent, time = 4): Promise<Blob> {
+export async function snapshotPng(
+  reel: ReelContent,
+  time = 4,
+): Promise<Blob> {
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_W;
   canvas.height = CANVAS_H;
   const ctx = canvas.getContext("2d");
   if (!ctx) return Promise.reject(new Error("No 2D context"));
-  drawFrame(ctx, reel, time);
+  const photo = await loadReelImage(reel.imageUrl);
+  drawFrame(ctx, reel, time, photo);
   return new Promise((resolve, reject) => {
     canvas.toBlob(
       (blob) => (blob ? resolve(blob) : reject(new Error("PNG export failed"))),
