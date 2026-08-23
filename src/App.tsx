@@ -247,7 +247,7 @@ export default function App() {
           <div className="brand-mark">?</div>
           <div>
             <h1>Facts or Whacks</h1>
-            <p>Episode, photo, bullets, hashtags.</p>
+            <p>16:9 history videos — title, photo, bullets.</p>
           </div>
         </div>
 
@@ -378,6 +378,7 @@ export default function App() {
               onChange={(e) => patch({ episode: e.target.value, id: "custom" })}
               placeholder="30"
             />
+            <span className="hint">Catalog and filenames only — not drawn on the video.</span>
           </label>
           <label className="field">
             <span className="field-label">Year</span>
@@ -397,8 +398,8 @@ export default function App() {
             placeholder="The End of Apartheid"
           />
           <span className="hint">
-            Renders as <code>30. The End of Apartheid (1994)</code>. Wrap a word
-            in **asterisks** to paint it green.
+            Renders as <code>The End of Apartheid (1994)</code> — no episode
+            number on the video. Wrap a word in **asterisks** to paint it green.
           </span>
         </label>
 

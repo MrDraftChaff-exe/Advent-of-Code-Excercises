@@ -35,5 +35,6 @@ export type Theme = {
   star: string;
 };
 
-export const CANVAS_W = 1080;
-export const CANVAS_H = 1920;
+/** 16:9 canvas used for both preview and export. */
+export const CANVAS_W = 1920;
+export const CANVAS_H = 1080;

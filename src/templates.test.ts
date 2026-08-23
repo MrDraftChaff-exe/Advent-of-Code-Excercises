@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { blankReel, cloneTemplate, TEMPLATES, THEMES } from "./templates";
+import { canvasHeadlineText } from "./lib/drawReel";
 import { formatHeadline, formatYear } from "./lib/text";
 
 describe("templates", () => {
@@ -23,6 +24,8 @@ describe("templates", () => {
     expect(formatHeadline(reel.episode, reel.title)).toBe(
       "30. The End of Apartheid",
     );
+    expect(canvasHeadlineText(reel)).toBe("The End of Apartheid");
+    expect(canvasHeadlineText(reel)).not.toMatch(/\b30\b/);
     expect(formatYear(reel.year)).toBe("(1994)");
     expect(reel.imageCaption).toBe("Nelson Mandela voting, 1994");
     expect(reel.imageUrl).toContain("mandela-voting-1994");

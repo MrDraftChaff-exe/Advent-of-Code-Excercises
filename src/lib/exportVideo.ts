@@ -44,7 +44,7 @@ export async function exportReelVideo(
   const mime = pickMime();
   const recorder = new MediaRecorder(mixed, {
     mimeType: mime,
-    videoBitsPerSecond: 8_000_000,
+    videoBitsPerSecond: 10_000_000,
   });
   const chunks: Blob[] = [];
   recorder.ondataavailable = (e) => {

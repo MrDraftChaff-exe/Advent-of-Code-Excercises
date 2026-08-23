@@ -92,7 +92,7 @@ export function clampDuration(n: number): number {
   return Math.min(60, Math.max(8, Math.round(n)));
 }
 
-/** `30` + `The End of Apartheid` → `30. The End of Apartheid` */
+/** Catalog / filename label only. Videos never draw the episode number. */
 export function formatHeadline(episode: string, title: string): string {
   const e = episode.trim();
   const t = title.trim();

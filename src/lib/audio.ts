@@ -27,12 +27,17 @@ export function createAmbient(preview: boolean): AmbientHandle {
     return osc;
   };
 
-  const a = makePad(110, 0.28, "sine");
-  const b = makePad(164.81, 0.16, "sine");
-  const c = makePad(246.94, 0.07, "triangle");
+  const a = makePad(110, 0.26, "sine");
+  const b = makePad(164.81, 0.14, "sine");
+  const c = makePad(246.94, 0.06, "triangle");
+  const d = makePad(329.63, 0.035, "sine");
 
   const lfo = ctx.createOscillator();
-  lfo.frequency.value = 0.11;
+  lfo.frequency.value = 0.09;
+  const lfoGain = ctx.createGain();
+  lfoGain.gain.value = 0.018;
+  lfo.connect(lfoGain);
+  lfoGain.connect(master.gain);
   lfo.start();
 
   void ctx.resume();
@@ -44,6 +49,7 @@ export function createAmbient(preview: boolean): AmbientHandle {
         a.stop();
         b.stop();
         c.stop();
+        d.stop();
         lfo.stop();
       } catch {
         /* already stopped */

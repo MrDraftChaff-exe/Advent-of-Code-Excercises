@@ -71,7 +71,7 @@ describe("clampDuration", () => {
 });
 
 describe("formatHeadline", () => {
-  it("joins episode number and title", () => {
+  it("joins episode number and title for catalog labels only", () => {
     expect(formatHeadline("30", "The End of Apartheid")).toBe(
       "30. The End of Apartheid",
     );

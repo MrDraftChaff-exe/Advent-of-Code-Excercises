@@ -36,37 +36,14 @@ function measureFactory(ctx: CanvasRenderingContext2D, font: string) {
   };
 }
 
-function headlineTokens(reel: ReelContent): Word[] {
-  const episode = reel.episode.trim();
-  const tokens: Word[] = [];
-  if (episode) {
-    tokens.push({ text: `${episode}.`, highlight: true });
-    tokens.push({ text: " ", highlight: false });
-  }
-  tokens.push(...parseHighlighted(reel.title.trim()));
-  return tokens.length ? tokens : [{ text: " ", highlight: false }];
+/** On-canvas title only. Episode numbers stay off the video. */
+export function canvasHeadlineText(reel: ReelContent): string {
+  return reel.title.trim();
 }
 
-function roundRectPath(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-) {
-  const radius = Math.min(r, w / 2, h / 2);
-  ctx.beginPath();
-  if (typeof ctx.roundRect === "function") {
-    ctx.roundRect(x, y, w, h, radius);
-    return;
-  }
-  ctx.moveTo(x + radius, y);
-  ctx.arcTo(x + w, y, x + w, y + h, radius);
-  ctx.arcTo(x + w, y + h, x, y + h, radius);
-  ctx.arcTo(x, y + h, x, y, radius);
-  ctx.arcTo(x, y, x + w, y, radius);
-  ctx.closePath();
+export function canvasHeadlineTokens(reel: ReelContent): Word[] {
+  const tokens = parseHighlighted(canvasHeadlineText(reel));
+  return tokens.length ? tokens : [{ text: " ", highlight: false }];
 }
 
 function drawCoverImage(
@@ -76,21 +53,15 @@ function drawCoverImage(
   y: number,
   w: number,
   h: number,
-  radius: number,
 ) {
   const iw = image.naturalWidth || image.width;
   const ih = image.naturalHeight || image.height;
   const src = coverSourceRect(iw, ih, w, h, 0.28);
   ctx.save();
-  roundRectPath(ctx, x, y, w, h, radius);
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
   ctx.clip();
   ctx.drawImage(image, src.sx, src.sy, src.sw, src.sh, x, y, w, h);
-  ctx.restore();
-  ctx.save();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.16)";
-  ctx.lineWidth = 2;
-  roundRectPath(ctx, x, y, w, h, radius);
-  ctx.stroke();
   ctx.restore();
 }
 
@@ -100,22 +71,75 @@ function drawPhotoPlaceholder(
   y: number,
   w: number,
   h: number,
-  radius: number,
   label: string,
 ) {
   ctx.save();
-  roundRectPath(ctx, x, y, w, h, radius);
-  ctx.fillStyle = "rgba(8, 4, 14, 0.55)";
-  ctx.fill();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
-  ctx.lineWidth = 2;
-  ctx.stroke();
+  ctx.fillStyle = "rgba(8, 4, 14, 0.72)";
+  ctx.fillRect(x, y, w, h);
   ctx.fillStyle = "rgba(247, 242, 248, 0.55)";
-  ctx.font = "600 26px Montserrat, sans-serif";
+  ctx.font = "600 28px Montserrat, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText(label || "Photo", x + w / 2, y + h / 2);
   ctx.restore();
+}
+
+function drawPhotoPanel(
+  ctx: CanvasRenderingContext2D,
+  reel: ReelContent,
+  image: HTMLImageElement | null,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  accent: string,
+  text: string,
+  mute: string,
+) {
+  if (image && (image.naturalWidth || image.width)) {
+    drawCoverImage(ctx, image, x, y, w, h);
+  } else {
+    drawPhotoPlaceholder(ctx, x, y, w, h, reel.imageCaption || "Photo");
+  }
+
+  const fade = ctx.createLinearGradient(x, y + h * 0.52, x, y + h);
+  fade.addColorStop(0, "rgba(6, 2, 12, 0)");
+  fade.addColorStop(0.45, "rgba(6, 2, 12, 0.18)");
+  fade.addColorStop(1, "rgba(6, 2, 12, 0.88)");
+  ctx.fillStyle = fade;
+  ctx.fillRect(x, y, w, h);
+
+  ctx.fillStyle = accent;
+  ctx.fillRect(x + w - 7, y, 7, h);
+
+  const pad = 28;
+  const maxW = w - pad * 2;
+  const caption = reel.imageCaption.trim();
+  const credit = reel.imageCredit.trim();
+  ctx.textAlign = "left";
+  ctx.textBaseline = "top";
+  const captionLines = caption
+    ? wrapPlain(caption, maxW, measureFactory(ctx, "700 26px Montserrat, sans-serif"))
+    : [];
+  const creditLines = credit
+    ? wrapPlain(credit, maxW, measureFactory(ctx, "500 16px Montserrat, sans-serif"))
+    : [];
+  const captionH = captionLines.length * 32;
+  const creditH = creditLines.length * 22;
+  let ty = y + h - pad - captionH - (creditH ? creditH + 6 : 0);
+  ctx.fillStyle = text;
+  ctx.font = "700 26px Montserrat, sans-serif";
+  for (const line of captionLines) {
+    ctx.fillText(line, x + pad, ty);
+    ty += 32;
+  }
+  ctx.fillStyle = mute;
+  ctx.font = "500 16px Montserrat, sans-serif";
+  if (captionLines.length) ty += 6;
+  for (const line of creditLines) {
+    ctx.fillText(line, x + pad, ty);
+    ty += 22;
+  }
 }
 
 export function drawFrame(
@@ -129,73 +153,71 @@ export function drawFrame(
   const theme = THEMES[reel.theme];
   drawNebula(ctx, w, h, time, theme);
 
-  const marginX = 88;
-  const maxW = w - marginX * 2;
-  const handleY = h - 88;
-  const showPhoto = Boolean(reel.imageUrl);
+  const photoW = Math.round(w * 0.48);
+  const copyX = photoW + 40;
+  const copyW = w - copyX - 36;
+  const copyTop = 28;
+  const copyBottom = h - 28;
+  const handleH = 36;
   const bullets = reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
   const hashtags = reel.hashtags.trim();
 
-  const titleSize = 46;
-  const yearSize = 28;
-  const bodySize = 28;
-  const tagSize = 24;
-  const captionSize = 22;
-  const creditSize = 16;
-  const titleLh = 56;
-  const yearLh = 40;
-  const bodyLh = 38;
-  const tagLh = 34;
-  const captionLh = 32;
-  const blockGap = 28;
-  const bulletGap = 12;
-  const photoRadius = 28;
-  let scale = 1;
-  let photoH = showPhoto ? 400 : 0;
+  ctx.save();
+  ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
+  ctx.shadowBlur = 28;
+  ctx.shadowOffsetX = 10;
+  ctx.globalAlpha = opacityFor(time, 1, reel.reveal);
+  drawPhotoPanel(
+    ctx,
+    reel,
+    image,
+    0,
+    0,
+    photoW,
+    h,
+    theme.accent,
+    theme.text,
+    theme.mute,
+  );
+  ctx.restore();
 
-  const measureLayout = (s: number, ph: number) => {
+  const titleSize = 54;
+  const yearSize = 30;
+  const bodySize = 26;
+  const tagSize = 22;
+  const titleLh = 64;
+  const yearLh = 40;
+  const bodyLh = 34;
+  const tagLh = 30;
+  const minBulletGap = 8;
+  let scale = 1;
+
+  const measureLayout = (s: number) => {
     const ts = titleSize * s;
     const ys = yearSize * s;
     const bs = bodySize * s;
     const gs = tagSize * s;
-    const cs = captionSize * s;
-    const ds = creditSize * s;
     const tLh = titleLh * s;
     const yLh = yearLh * s;
     const bLh = bodyLh * s;
     const gLh = tagLh * s;
-    const cLh = captionLh * s;
     const titleLines = wrapTokens(
-      headlineTokens(reel),
-      maxW,
+      canvasHeadlineTokens(reel),
+      copyW,
       measureFactory(ctx, `800 ${ts}px Montserrat, sans-serif`),
     );
     const bulletBlocks = bullets.map((bullet) =>
       wrapPlain(
         bullet.trim(),
-        maxW - 36 * s,
+        copyW - 36 * s,
         measureFactory(ctx, `500 ${bs}px Montserrat, sans-serif`),
       ),
     );
-    const captionLines = reel.imageCaption.trim()
-      ? wrapPlain(
-          reel.imageCaption.trim(),
-          maxW,
-          measureFactory(ctx, `600 ${cs}px Montserrat, sans-serif`),
-        )
-      : [];
-    const creditLines = reel.imageCredit.trim()
-      ? wrapPlain(
-          reel.imageCredit.trim(),
-          maxW,
-          measureFactory(ctx, `500 ${ds}px Montserrat, sans-serif`),
-        )
-      : [];
     const tagLines = hashtags
       ? wrapPlain(
           hashtags,
-          maxW,
+          copyW,
           measureFactory(ctx, `600 ${gs}px Montserrat, sans-serif`),
         )
       : [];
@@ -205,64 +227,64 @@ export function drawFrame(
       (sum, lines) => sum + lines.length * bLh,
       0,
     );
-    const bulletGaps = Math.max(0, bulletBlocks.length - 1) * bulletGap * s;
-    const captionH = captionLines.length * (cLh * 0.95);
-    const creditH = creditLines.length * (cLh * 0.75);
     const tagsH = tagLines.length * gLh;
-    const photoBlock = ph
-      ? ph + (captionH || creditH ? 14 * s : 0) + captionH + creditH
-      : 0;
-    const gaps =
-      (ph ? blockGap * s : 0) +
-      (bulletBlocks.length ? blockGap * s : 0) +
-      (tagLines.length ? blockGap * 0.85 * s : 0);
-    const height =
-      titleH + yearH + photoBlock + bulletsH + bulletGaps + tagsH + gaps;
+    const headerGap = 10 * s;
+    const ruleGap = 14 * s;
+    const tagsGap = tagLines.length ? 16 * s : 0;
+    const minGaps = Math.max(0, bulletBlocks.length - 1) * minBulletGap * s;
+    const used =
+      titleH +
+      yearH +
+      headerGap +
+      ruleGap +
+      bulletsH +
+      minGaps +
+      tagsGap +
+      tagsH +
+      handleH;
     return {
       titleLines,
       bulletBlocks,
-      captionLines,
-      creditLines,
       tagLines,
-      height,
+      yearH,
+      tagsH,
+      headerGap,
+      ruleGap,
+      tagsGap,
+      used,
       ts,
       ys,
       bs,
       gs,
-      cs,
-      ds,
       tLh,
       yLh,
       bLh,
       gLh,
-      cLh,
       s,
-      ph,
     };
   };
 
-  let layout = measureLayout(1, photoH);
-  const available = handleY - 150;
-  while (layout.height > available && photoH > 220) {
-    photoH -= 18;
-    layout = measureLayout(scale, photoH);
-  }
-  while (layout.height > available && scale > 0.7) {
+  const available = copyBottom - copyTop;
+  let layout = measureLayout(1);
+  while (layout.used > available && scale > 0.68) {
     scale *= 0.94;
-    layout = measureLayout(scale, photoH);
+    layout = measureLayout(scale);
   }
 
-  let y = (h - 80 - layout.height) / 2 + 16;
-  y = Math.max(118, Math.min(y, handleY - layout.height - 36));
+  const leftover = Math.max(0, available - layout.used);
+  const spread =
+    layout.bulletBlocks.length > 1
+      ? Math.min(22 * layout.s, leftover / layout.bulletBlocks.length)
+      : 0;
+  const bulletGap = minBulletGap * layout.s + spread;
 
   ctx.textBaseline = "top";
   ctx.textAlign = "left";
 
-  let slot = 0;
-  const titleAlpha = opacityFor(time, slot++, reel.reveal);
-  ctx.globalAlpha = titleAlpha;
+  let y = copyTop;
+  ctx.globalAlpha = opacityFor(time, 0, reel.reveal);
   for (const line of layout.titleLines) {
-    let x = marginX;
+    let x = copyX;
     for (const tok of line) {
       ctx.fillStyle = tok.highlight ? theme.accent : theme.text;
       ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
@@ -273,71 +295,25 @@ export function drawFrame(
   }
 
   if (yearLabel) {
-    ctx.globalAlpha = titleAlpha;
     ctx.fillStyle = theme.accent;
     ctx.font = `600 ${layout.ys}px Montserrat, sans-serif`;
-    ctx.fillText(yearLabel, marginX, y);
+    ctx.fillText(yearLabel, copyX, y);
     y += layout.yLh;
   }
 
-  if (showPhoto) {
-    y += blockGap * layout.s * 0.45;
+  y += layout.headerGap;
+  ctx.strokeStyle = "rgba(247, 242, 248, 0.16)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(copyX, y);
+  ctx.lineTo(copyX + Math.min(copyW, 280), y);
+  ctx.stroke();
+  y += layout.ruleGap;
+
+  let slot = 2;
+  layout.bulletBlocks.forEach((lines, i) => {
     ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
-    const photoY = y;
-    ctx.save();
-    ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
-    ctx.shadowBlur = 36;
-    ctx.shadowOffsetY = 16;
-    if (image && (image.naturalWidth || image.width)) {
-      drawCoverImage(
-        ctx,
-        image,
-        marginX,
-        photoY,
-        maxW,
-        layout.ph,
-        photoRadius,
-      );
-    } else {
-      drawPhotoPlaceholder(
-        ctx,
-        marginX,
-        photoY,
-        maxW,
-        layout.ph,
-        photoRadius,
-        reel.imageCaption || "Photo",
-      );
-    }
-    ctx.restore();
-    y += layout.ph + 14 * layout.s;
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    if (layout.captionLines.length) {
-      ctx.fillStyle = theme.text;
-      ctx.font = `600 ${layout.cs}px Montserrat, sans-serif`;
-      for (const line of layout.captionLines) {
-        ctx.fillText(line, marginX, y);
-        y += layout.cLh * 0.95;
-      }
-    }
-    if (layout.creditLines.length) {
-      ctx.fillStyle = theme.mute;
-      ctx.font = `500 ${layout.ds}px Montserrat, sans-serif`;
-      for (const line of layout.creditLines) {
-        ctx.fillText(line, marginX, y);
-        y += layout.cLh * 0.75;
-      }
-    }
-  }
-
-  y += blockGap * layout.s * 0.7;
-  ctx.textAlign = "left";
-
-  for (const lines of layout.bulletBlocks) {
-    const a = opacityFor(time, slot++, reel.reveal);
-    ctx.globalAlpha = a;
-    const markX = marginX + 6 * layout.s;
+    const markX = copyX + 6 * layout.s;
     const markY = y + layout.bs * 0.42;
     ctx.fillStyle = theme.accent;
     ctx.beginPath();
@@ -346,28 +322,28 @@ export function drawFrame(
     for (const line of lines) {
       ctx.fillStyle = theme.text;
       ctx.font = `500 ${layout.bs}px Montserrat, sans-serif`;
-      ctx.fillText(line, marginX + 36 * layout.s, y);
+      ctx.fillText(line, copyX + 28 * layout.s, y);
       y += layout.bLh;
     }
-    y += bulletGap * layout.s;
-  }
+    if (i < layout.bulletBlocks.length - 1) y += bulletGap;
+  });
 
+  const tagsH = layout.tagLines.length ? layout.tagLines.length * layout.gLh : 0;
   if (layout.tagLines.length) {
-    y += blockGap * 0.35 * layout.s;
     ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
     ctx.fillStyle = theme.accent;
     ctx.font = `600 ${layout.gs}px Montserrat, sans-serif`;
+    let ty = copyBottom - handleH - tagsH;
     for (const line of layout.tagLines) {
-      ctx.fillText(line, marginX, y);
-      y += layout.gLh;
+      ctx.fillText(line, copyX, ty);
+      ty += layout.gLh;
     }
   }
 
   ctx.globalAlpha = 0.9;
   ctx.fillStyle = theme.mute;
-  ctx.font = `600 30px Montserrat, sans-serif`;
-  ctx.textAlign = "center";
-  ctx.fillText(reel.handle, w / 2, handleY);
+  ctx.font = "600 22px Montserrat, sans-serif";
+  ctx.fillText(reel.handle, copyX, copyBottom - 22);
   ctx.globalAlpha = 1;
 }
 

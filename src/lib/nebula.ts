@@ -62,23 +62,17 @@ export function drawNebula(
   }
   ctx.globalAlpha = 1;
 
-  // Vignette so text stays readable
+  // Vignette over the copy column; the photo panel covers the left side.
   const vig = ctx.createRadialGradient(
-    w / 2,
+    w * 0.74,
     h * 0.48,
-    h * 0.15,
-    w / 2,
+    h * 0.12,
+    w * 0.74,
     h * 0.5,
-    h * 0.72,
+    h * 0.82,
   );
   vig.addColorStop(0, "rgba(0,0,0,0)");
-  vig.addColorStop(1, "rgba(0,0,0,0.55)");
+  vig.addColorStop(1, "rgba(0,0,0,0.5)");
   ctx.fillStyle = vig;
   ctx.fillRect(0, 0, w, h);
-
-  const top = ctx.createLinearGradient(0, 0, 0, h * 0.22);
-  top.addColorStop(0, "rgba(0,0,0,0.35)");
-  top.addColorStop(1, "rgba(0,0,0,0)");
-  ctx.fillStyle = top;
-  ctx.fillRect(0, 0, w, h * 0.22);
 }
