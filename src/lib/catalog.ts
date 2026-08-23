@@ -17,7 +17,11 @@ const FILLER = /\s+[—–-]\s+a key part of the story of\s+.+$/i;
 export const TARGET_FACT_COUNT = 12;
 
 export function cleanBullet(text: string): string {
-  return text.replace(FILLER, "").replace(/\s+/g, " ").trim();
+  return text
+    .replace(FILLER, "")
+    .replace(/#[\p{L}\p{N}_]+/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function splitBullets(raw: string): string[] {

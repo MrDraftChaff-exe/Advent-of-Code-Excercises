@@ -21,6 +21,14 @@ describe("catalog", () => {
     ).toBe("Boston Tea Party — 342 chests dumped");
   });
 
+  it("keeps hashtags off on-screen bullets", () => {
+    expect(
+      cleanBullet(
+        "They rewrote the rules. #HistoryTok #Enlightenment Reason changed the world.",
+      ),
+    ).toBe("They rewrote the rules. Reason changed the world.");
+  });
+
   it("splits pipe bullets and pulls a year", () => {
     const bullets = splitBullets(
       "Bastille — July 14 1789. | King Louis XVI guillotined.",
