@@ -3,12 +3,14 @@ Image: https://upload.wikimedia.org/wikipedia/commons/4/4e/Arpanet_1977.png
 
 Hook: First message: LO. System crashed.
 
-ARPANET 1969 US military.
-First message LO crashed.
-Email invented 1971.
-World Wide Web 1989 CERN.
-Dot-com boom trillion dollar companies.
-5 billion people online today.
+ARPANET — 1969 — a key part of the story of Invention of the Internet.
+First message: LO — a key part of the story of Invention of the Internet.
+World Wide Web — 1989 — a key part of the story of Invention of the Internet.
+Dot-com boom — a key part of the story of Invention of the Internet.
+5 billion people online — a key part of the story of Invention of the Internet.
+ARPANET, the military precursor to the internet, sent its first message in 1969.
+Tim Berners-Lee invented the World Wide Web at CERN in 1989, making the internet accessible to all.
+Today more than five billion people around the world are connected online.
 
 Caption: First message: LO. Now 5 billion online. The internet changed everything. #InternetHistory #TechHistory #WorldWideWeb #DidYouKnow
 

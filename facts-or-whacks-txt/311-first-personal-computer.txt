@@ -3,11 +3,14 @@ Image: https://upload.wikimedia.org/wikipedia/commons/4/4e/Altair_8800_Computer.
 
 Hook: Garage to DESKTOP.
 
-Altair 8800 released 1975.
+Altair 8800 released 1975 — a key part of the story of First Personal Computer.
 Bill Gates and Paul Allen wrote BASIC for it.
-Homebrew Computer Club inspired Jobs and Wozniak.
-Apple I followed 1976.
-Started personal computing revolution.
+Homebrew Computer Club inspired Jobs and Wozniak — a key part of the story of First Personal Computer.
+Apple I followed 1976 — a key part of the story of First Personal Computer.
+Started personal computing revolution — a key part of the story of First Personal Computer.
+From garage to every desk.
+The discovery behind First Personal Computer opened entirely new fields of science and medicine.
+Researchers today still extend the breakthrough that began with First Personal Computer.
 
 Caption: From garage to every desk. #PersonalComputer #TechHistory #SiliconValley #HistoryTok
 
