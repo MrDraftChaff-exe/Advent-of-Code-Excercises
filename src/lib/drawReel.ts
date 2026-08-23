@@ -158,30 +158,30 @@ export function drawFrame(
   }
   drawReadScrim(ctx, w, h);
 
-  const pad = 32;
+  const pad = 28;
   const copyX = pad;
   const copyW = w - pad * 2;
-  const safeTop = 56;
-  const safeBottom = 88;
+  const safeTop = 40;
+  const safeBottom = 72;
   const copyBottom = h - safeBottom;
-  const handleH = 28;
+  const handleH = 26;
   const bullets = reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
   const caption = reel.imageCaption.trim();
   const credit = reel.imageCredit.trim();
 
-  const titleSize = 72;
-  const yearSize = 38;
-  const bodySize = 44;
-  const captionSize = 22;
-  const creditSize = 18;
-  const titleLh = 80;
-  const yearLh = 46;
-  const bodyLh = 54;
-  const minBulletGap = 10;
-  const platePad = 10;
-  const minScale = 0.72;
-  const maxScale = 2.05;
+  const titleSize = 80;
+  const yearSize = 42;
+  const bodySize = 50;
+  const captionSize = 20;
+  const creditSize = 16;
+  const titleLh = 86;
+  const yearLh = 48;
+  const bodyLh = 60;
+  const minBulletGap = 8;
+  const platePad = 8;
+  const minScale = 0.7;
+  const maxScale = 2.2;
 
   const measureLayout = (s: number) => {
     const ts = titleSize * s;
@@ -227,13 +227,13 @@ export function drawFrame(
     );
     const captionH = captionLines.length * 28 * s;
     const creditH = creditLines.length * 22 * s;
-    const headerGap = 8 * s;
-    const ruleGap = 14 * s;
-    const captionGap = captionLines.length || creditLines.length ? 14 * s : 0;
+    const headerGap = 4 * s;
+    const ruleGap = 0;
+    const captionGap = captionLines.length || creditLines.length ? 8 * s : 0;
     const minGaps = Math.max(0, bulletBlocks.length - 1) * minBulletGap * s;
     const headerH = titleH + yearH + headerGap + ruleGap;
     const footerH = captionGap + captionH + creditH + handleH;
-    const used = headerH + bulletsH + plateExtra + minGaps + footerH + 8 * s;
+    const used = headerH + bulletsH + plateExtra + minGaps + footerH;
     return {
       titleLines,
       bulletBlocks,
@@ -315,13 +315,6 @@ export function drawFrame(
   }
 
   y += layout.headerGap;
-  ctx.strokeStyle = "rgba(247, 242, 248, 0.4)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(copyX, y);
-  ctx.lineTo(copyX + Math.min(copyW, 220), y);
-  ctx.stroke();
-  y += layout.ruleGap;
 
   let slot = 1;
   layout.bulletBlocks.forEach((lines, i) => {
