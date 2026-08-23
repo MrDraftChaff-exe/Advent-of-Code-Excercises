@@ -398,8 +398,9 @@ export default function App() {
             placeholder="The End of Apartheid"
           />
           <span className="hint">
-            Renders as <code>The End of Apartheid (1994)</code> — no episode
-            number on the video. Wrap a word in **asterisks** to paint it green.
+            Title and facts overlay the 16:9 photo. No episode number on the
+            video. Wrap a word in **asterisks** to paint it green. Save PNG to
+            edit locally.
           </span>
         </label>
 

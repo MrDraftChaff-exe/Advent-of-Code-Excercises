@@ -17,7 +17,7 @@ South Africa’s transition is studied as a model of peaceful revolution
 Hashtags: #NelsonMandela #Apartheid #SouthAfrica #HistoryTok
 ```
 
-Dark nebula background, lime accents, **title + year** (episode numbers stay off the video), a full-bleed photo with caption and credit, full-sentence bullets, then hashtags. Watermark defaults to `@FactsOrWhacks`. Exports are **1920×1080**.
+16:9 (1920×1080) frames: the photograph fills the canvas and the title, year, sentence facts, hashtags, and credit overlay it. Episode numbers stay off the video. Watermark defaults to `@FactsOrWhacks`. Save a PNG if you want to finish the video in another editor.
 
 The default template is that apartheid episode. The voting photograph is [Paul Weinberg, 1994, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Mandela_voting_in_1994.jpg); the credit is printed on the frame so exports keep the attribution.
 
@@ -37,7 +37,7 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 3. Add a photo (bundled path, URL, or upload), caption, and credit.
 4. Edit the sentence bullets and hashtags.
 5. Hit **Play** to preview (subtle original pad, not licensed music).
-6. **Download video** renders a WebM of the current episode.
+6. **Save PNG** for a 1920×1080 still you can edit locally. **Download video** renders a WebM.
 
 The bundled catalog is 395 original episode scripts (CSV + Wikimedia still URLs, not pre-made video files). Search an episode, load it, and download the WebM. **ZIP videos** encodes a number range in real time (~20 seconds per episode). **ZIP stills** is much faster.
 
