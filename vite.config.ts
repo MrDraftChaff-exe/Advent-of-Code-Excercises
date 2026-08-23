@@ -6,10 +6,24 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 5173,
+    proxy: {
+      "/wiki-media": {
+        target: "https://upload.wikimedia.org",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/wiki-media/, ""),
+      },
+    },
   },
   preview: {
     host: "0.0.0.0",
     port: 4173,
+    proxy: {
+      "/wiki-media": {
+        target: "https://upload.wikimedia.org",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/wiki-media/, ""),
+      },
+    },
   },
   test: {
     environment: "node",

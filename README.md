@@ -37,7 +37,9 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 3. Add a photo (bundled path, URL, or upload), caption, and credit.
 4. Edit the sentence bullets and hashtags.
 5. Hit **Play** to preview (subtle original pad, not licensed music).
-6. **Export WebM** for posting, or **Save PNG** for a still.
+6. **Download video** renders a WebM of the current episode.
+
+The bundled catalog is the 395-row `facts-or-whacks-395-videos.csv` (scripts + Wikimedia image URLs, not pre-made video files). Search an episode, load it, and download. **ZIP videos** encodes a number range in real time (~20 seconds per episode). **ZIP stills** is much faster.
 
 Themes: Cosmic, Ocean, Ember. Reveal modes: all-at-once or line-by-line cascade.
 

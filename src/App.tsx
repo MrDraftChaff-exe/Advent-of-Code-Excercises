@@ -13,6 +13,13 @@ import { loadReelFonts, downloadBlob, slugify } from "./lib/fonts";
 import { exportReelVideo } from "./lib/exportVideo";
 import { createAmbient } from "./lib/audio";
 import { loadReelImage, readImageFile } from "./lib/images";
+import {
+  type CatalogEpisode,
+  episodeToReel,
+  loadBundledCatalog,
+  parseCatalogCsv,
+} from "./lib/catalog";
+import { zipReelExports } from "./lib/batchExport";
 
 const STORAGE_KEY = "facts-or-whacks-reel-v2";
 
@@ -40,6 +47,12 @@ export default function App() {
   const [exporting, setExporting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [photo, setPhoto] = useState<HTMLImageElement | null>(null);
+  const [catalog, setCatalog] = useState<CatalogEpisode[]>([]);
+  const [query, setQuery] = useState("");
+  const [batchFrom, setBatchFrom] = useState(1);
+  const [batchTo, setBatchTo] = useState(1);
+  const [batching, setBatching] = useState(false);
+  const [batchNote, setBatchNote] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<ReturnType<typeof createAmbient> | null>(null);
 
@@ -47,6 +60,18 @@ export default function App() {
     loadReelFonts()
       .then(() => setFontsReady(true))
       .catch(() => setFontsReady(true));
+  }, []);
+
+  useEffect(() => {
+    loadBundledCatalog()
+      .then((rows) => {
+        setCatalog(rows);
+        if (rows.length) {
+          setBatchFrom(rows[0].n);
+          setBatchTo(rows[0].n);
+        }
+      })
+      .catch(() => setCatalog([]));
   }, []);
 
   useEffect(() => {
@@ -146,6 +171,75 @@ export default function App() {
     patch({ imageUrl: url });
   }
 
+  const filteredCatalog = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return catalog;
+    return catalog.filter(
+      (ep) =>
+        String(ep.n).includes(q) ||
+        ep.title.toLowerCase().includes(q) ||
+        ep.hook.toLowerCase().includes(q) ||
+        ep.tags.toLowerCase().includes(q),
+    );
+  }, [catalog, query]);
+
+  function loadEpisode(ep: CatalogEpisode) {
+    setReel(episodeToReel(ep));
+    setTime(0);
+    setPlaying(false);
+  }
+
+  async function onImportCsv(file: File | undefined) {
+    if (!file) return;
+    const text = await file.text();
+    const rows = parseCatalogCsv(text);
+    if (!rows.length) {
+      window.alert("No episodes found in that CSV.");
+      return;
+    }
+    setCatalog(rows);
+    setBatchFrom(rows[0].n);
+    setBatchTo(rows[0].n);
+    loadEpisode(rows[0]);
+  }
+
+  async function onBatch(kind: "webm" | "png") {
+    const lo = Math.min(batchFrom, batchTo);
+    const hi = Math.max(batchFrom, batchTo);
+    const slice = catalog.filter((ep) => ep.n >= lo && ep.n <= hi);
+    if (!slice.length) {
+      window.alert("No catalog episodes in that range.");
+      return;
+    }
+    if (kind === "webm" && slice.length > 10) {
+      const ok = window.confirm(
+        `WebM encodes in real time (~${slice[0] ? 20 : 20}s each). ${slice.length} videos ≈ ${Math.round((slice.length * 20) / 60)} min. Continue?`,
+      );
+      if (!ok) return;
+    }
+    setBatching(true);
+    setPlaying(false);
+    setBatchNote(`0 / ${slice.length}`);
+    try {
+      const blob = await zipReelExports(
+        slice.map(episodeToReel),
+        kind,
+        (done, total, name) =>
+          setBatchNote(`${done} / ${total}  ${name}`),
+      );
+      downloadBlob(blob, `facts-or-whacks-${lo}-${hi}.${kind}.zip`);
+      setBatchNote(`Saved ${slice.length} ${kind === "webm" ? "videos" : "stills"}`);
+    } catch (err) {
+      console.error(err);
+      window.alert(
+        "Batch export failed. Try a smaller range, Chrome/Edge, or PNG stills.",
+      );
+      setBatchNote("Failed");
+    } finally {
+      setBatching(false);
+    }
+  }
+
   return (
     <div className="app">
       <aside className="editor">
@@ -155,6 +249,98 @@ export default function App() {
             <h1>Facts or Whacks</h1>
             <p>Episode, photo, bullets, hashtags.</p>
           </div>
+        </div>
+
+        <div className="section">
+          <h2>395-episode catalog</h2>
+          <p className="hint">
+            The CSV is scripts + Wikimedia stills, not hosted video files. Load
+            an episode, then one-click download a WebM. A range ZIP encodes in
+            real time (~20s per video).
+          </p>
+          <label className="field">
+            <span className="field-label">Search</span>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="30 or apartheid"
+            />
+          </label>
+          <div className="catalog-list">
+            {filteredCatalog.slice(0, 80).map((ep) => (
+              <button
+                key={ep.n}
+                className={`catalog-item ${reel.id === `catalog-${ep.n}` ? "active" : ""}`}
+                onClick={() => loadEpisode(ep)}
+              >
+                <span>{ep.n}.</span> {ep.title}
+              </button>
+            ))}
+          </div>
+          {filteredCatalog.length > 80 ? (
+            <p className="hint">Showing 80 of {filteredCatalog.length}. Narrow the search.</p>
+          ) : null}
+          <div className="row-actions">
+            <label className="ghost file-chip">
+              Import CSV
+              <input
+                type="file"
+                accept=".csv,text/csv"
+                onChange={(e) => {
+                  void onImportCsv(e.target.files?.[0]);
+                  e.target.value = "";
+                }}
+              />
+            </label>
+            <button
+              className="primary"
+              onClick={() => void onExport()}
+              disabled={exporting || batching}
+            >
+              {exporting
+                ? `Rendering ${Math.round(progress * 100)}%`
+                : "Download this video"}
+            </button>
+          </div>
+          <div className="pair">
+            <label className="field">
+              <span className="field-label">From</span>
+              <input
+                type="number"
+                min={1}
+                max={999}
+                value={batchFrom}
+                onChange={(e) => setBatchFrom(Number(e.target.value) || 1)}
+              />
+            </label>
+            <label className="field">
+              <span className="field-label">To</span>
+              <input
+                type="number"
+                min={1}
+                max={999}
+                value={batchTo}
+                onChange={(e) => setBatchTo(Number(e.target.value) || 1)}
+              />
+            </label>
+          </div>
+          <div className="row-actions">
+            <button
+              className="ghost"
+              disabled={batching || exporting || !catalog.length}
+              onClick={() => void onBatch("png")}
+            >
+              ZIP stills
+            </button>
+            <button
+              className="ghost"
+              disabled={batching || exporting || !catalog.length}
+              onClick={() => void onBatch("webm")}
+            >
+              ZIP videos
+            </button>
+          </div>
+          {batchNote ? <p className="hint">{batchNote}</p> : null}
         </div>
 
         <div className="section">
@@ -417,8 +603,8 @@ export default function App() {
               disabled={exporting}
             >
               {exporting
-                ? `Exporting ${Math.round(progress * 100)}%`
-                : "Export WebM"}
+                ? `Rendering ${Math.round(progress * 100)}%`
+                : "Download video"}
             </button>
           </div>
         </div>
