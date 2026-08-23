@@ -158,29 +158,30 @@ export function drawFrame(
   }
   drawReadScrim(ctx, w, h);
 
-  const pad = 40;
+  const pad = 32;
   const copyX = pad;
   const copyW = w - pad * 2;
-  const safeTop = 92;
-  const safeBottom = 138;
+  const safeTop = 56;
+  const safeBottom = 88;
   const copyBottom = h - safeBottom;
-  const handleH = 26;
+  const handleH = 28;
   const bullets = reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
   const caption = reel.imageCaption.trim();
   const credit = reel.imageCredit.trim();
 
-  const titleSize = 44;
-  const yearSize = 24;
-  const bodySize = 23;
-  const captionSize = 18;
-  const creditSize = 15;
-  const titleLh = 50;
-  const yearLh = 32;
-  const bodyLh = 29;
-  const minBulletGap = 6;
-  const platePad = 5;
-  let scale = 1;
+  const titleSize = 72;
+  const yearSize = 38;
+  const bodySize = 44;
+  const captionSize = 22;
+  const creditSize = 18;
+  const titleLh = 80;
+  const yearLh = 46;
+  const bodyLh = 54;
+  const minBulletGap = 10;
+  const platePad = 10;
+  const minScale = 0.72;
+  const maxScale = 2.05;
 
   const measureLayout = (s: number) => {
     const ts = titleSize * s;
@@ -199,8 +200,8 @@ export function drawFrame(
     const bulletBlocks = bullets.map((bullet) =>
       wrapPlain(
         bullet.trim(),
-        copyW - 44 * s,
-        measureFactory(ctx, `600 ${bs}px Montserrat, sans-serif`),
+        copyW - 52 * s,
+        measureFactory(ctx, `700 ${bs}px Montserrat, sans-serif`),
       ),
     );
     const captionLines = caption
@@ -224,15 +225,15 @@ export function drawFrame(
       (sum, lines) => sum + lines.length * bLh,
       0,
     );
-    const captionH = captionLines.length * 24 * s;
-    const creditH = creditLines.length * 20 * s;
-    const headerGap = 6 * s;
-    const ruleGap = 12 * s;
-    const captionGap = captionLines.length || creditLines.length ? 12 * s : 0;
+    const captionH = captionLines.length * 28 * s;
+    const creditH = creditLines.length * 22 * s;
+    const headerGap = 8 * s;
+    const ruleGap = 14 * s;
+    const captionGap = captionLines.length || creditLines.length ? 14 * s : 0;
     const minGaps = Math.max(0, bulletBlocks.length - 1) * minBulletGap * s;
     const headerH = titleH + yearH + headerGap + ruleGap;
     const footerH = captionGap + captionH + creditH + handleH;
-    const used = headerH + bulletsH + plateExtra + minGaps + footerH + 16 * s;
+    const used = headerH + bulletsH + plateExtra + minGaps + footerH + 8 * s;
     return {
       titleLines,
       bulletBlocks,
@@ -259,20 +260,28 @@ export function drawFrame(
   };
 
   const available = copyBottom - safeTop;
-  let layout = measureLayout(1);
-  while (layout.used > available && scale > 0.58) {
-    scale *= 0.94;
-    layout = measureLayout(scale);
+  let lo = minScale;
+  let hi = maxScale;
+  let scale = minScale;
+  for (let i = 0; i < 16; i++) {
+    const mid = (lo + hi) / 2;
+    if (measureLayout(mid).used <= available) {
+      scale = mid;
+      lo = mid;
+    } else {
+      hi = mid;
+    }
   }
+  const layout = measureLayout(scale);
 
   const leftover = Math.max(0, available - layout.used);
   const spread =
     layout.bulletBlocks.length > 1
-      ? Math.min(10 * layout.s, leftover / layout.bulletBlocks.length)
-      : 0;
+      ? leftover / layout.bulletBlocks.length
+      : leftover;
   const bulletGap = minBulletGap * layout.s + spread;
-  const titleStroke = Math.max(4, layout.ts * 0.16);
-  const bodyStroke = Math.max(3.5, layout.bs * 0.18);
+  const titleStroke = Math.max(5, layout.ts * 0.14);
+  const bodyStroke = Math.max(4.5, layout.bs * 0.16);
 
   ctx.textBaseline = "top";
   ctx.textAlign = "left";
@@ -321,22 +330,22 @@ export function drawFrame(
     ctx.fillStyle = "rgba(0, 0, 0, 0.52)";
     fillRoundRect(
       ctx,
-      copyX - 8,
-      y - 3,
-      copyW + 16,
+      copyX - 10,
+      y - 4,
+      copyW + 20,
       blockH + platePad * layout.s,
-      10 * layout.s,
+      12 * layout.s,
     );
-    const markX = copyX + 10 * layout.s;
+    const markX = copyX + 14 * layout.s;
     const markY = y + layout.bs * 0.42;
     ctx.fillStyle = theme.accent;
     ctx.beginPath();
-    ctx.arc(markX, markY, 5 * layout.s, 0, Math.PI * 2);
+    ctx.arc(markX, markY, 7 * layout.s, 0, Math.PI * 2);
     ctx.fill();
     let ly = y;
     for (const line of lines) {
-      ctx.font = `600 ${layout.bs}px Montserrat, sans-serif`;
-      paintText(ctx, line, copyX + 28 * layout.s, ly, theme.text, bodyStroke);
+      ctx.font = `700 ${layout.bs}px Montserrat, sans-serif`;
+      paintText(ctx, line, copyX + 36 * layout.s, ly, theme.text, bodyStroke);
       ly += layout.bLh;
     }
     y += blockH + platePad * layout.s;
@@ -369,8 +378,8 @@ export function drawFrame(
   }
 
   ctx.globalAlpha = 0.95;
-  ctx.font = "600 20px Montserrat, sans-serif";
-  paintText(ctx, reel.handle, copyX, copyBottom - 20, "#F4EEF6", 3);
+  ctx.font = "700 24px Montserrat, sans-serif";
+  paintText(ctx, reel.handle, copyX, copyBottom - 24, "#F4EEF6", 3.5);
   ctx.globalAlpha = 1;
 }
 

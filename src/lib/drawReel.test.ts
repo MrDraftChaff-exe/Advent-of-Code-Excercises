@@ -9,6 +9,7 @@ import { CANVAS_H, CANVAS_W } from "../types";
 
 function stubContext() {
   const texts: string[] = [];
+  const fonts: string[] = [];
   const gradient = { addColorStop() {} };
   const ctx: Record<string, unknown> = {
     canvas: { width: CANVAS_W, height: CANVAS_H },
@@ -52,9 +53,10 @@ function stubContext() {
     },
     fillText(text: string) {
       texts.push(text);
+      fonts.push(String(ctx.font));
     },
   };
-  return { ctx: ctx as unknown as CanvasRenderingContext2D, texts };
+  return { ctx: ctx as unknown as CanvasRenderingContext2D, texts, fonts };
 }
 
 describe("canvas layout rules", () => {
@@ -79,6 +81,15 @@ describe("canvas layout rules", () => {
     for (const tag of reel.hashtags.split(/\s+/).filter(Boolean)) {
       expect(painted).not.toContain(tag);
     }
+  });
+
+  it("sizes fact type large enough to fill the phone frame", () => {
+    const { ctx, fonts } = stubContext();
+    drawFrame(ctx, TEMPLATES[0], 4, null);
+    const bodySizes = fonts
+      .filter((font) => font.includes("700"))
+      .map((font) => Number.parseFloat(font.match(/(\d+(?:\.\d+)?)px/)?.[1] ?? "0"));
+    expect(Math.max(0, ...bodySizes)).toBeGreaterThanOrEqual(36);
   });
 
   it("omits the episode number from the on-canvas title", () => {
