@@ -29,7 +29,7 @@ function measureFactory(ctx: CanvasRenderingContext2D, font: string) {
   };
 }
 
-type FactLine = { prefix?: string; text: string };
+type FactLine = { prefix?: string; text: string; indent?: number };
 
 function layoutFact(
   ctx: CanvasRenderingContext2D,
@@ -47,6 +47,7 @@ function layoutFact(
   const fullW = prefixW + ctx.measureText(fact.text).width;
   if (fullW <= maxW) return [{ prefix, text: fact.text }];
 
+  const hang = Math.min(prefixW, maxW * 0.42);
   const words = fact.text.split(/\s+/);
   let first = "";
   let used = 0;
@@ -58,8 +59,15 @@ function layoutFact(
     used = i + 1;
   }
   const rest = words.slice(used).join(" ");
-  const restLines = wrapPlain(rest, maxW, measureFactory(ctx, bodyFont));
-  return [{ prefix, text: first }, ...restLines.map((text) => ({ text }))];
+  const restLines = wrapPlain(
+    rest,
+    maxW - hang,
+    measureFactory(ctx, bodyFont),
+  );
+  return [
+    { prefix, text: first },
+    ...restLines.map((text) => ({ text, indent: hang })),
+  ];
 }
 
 function layoutTitle(
@@ -162,7 +170,9 @@ export function drawFrame(
 
   let slot = 0;
   const titleAlpha = opacityFor(time, slot++, reel.reveal);
-  ctx.textAlign = "center";
+  // Left-align tokens; x is already the left edge of a centered line.
+  // textAlign "center" would treat x as each word's midpoint and smash the title.
+  ctx.textAlign = "left";
   for (const line of layout.titleLines) {
     const lineWidth = line.reduce((sum, tok) => {
       ctx.font = `800 ${layout.ts}px Montserrat, sans-serif`;
@@ -186,7 +196,7 @@ export function drawFrame(
     const a = opacityFor(time, slot++, reel.reveal);
     ctx.globalAlpha = a;
     for (const line of factLines) {
-      let x = marginX;
+      let x = marginX + (line.indent ?? 0);
       if (line.prefix) {
         ctx.fillStyle = theme.text;
         ctx.font = `700 ${layout.bs}px Montserrat, sans-serif`;

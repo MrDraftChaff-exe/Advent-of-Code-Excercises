@@ -54,30 +54,15 @@ export const TEMPLATES: ReelContent[] = [
   {
     id: "universe",
     name: "Observable universe",
-    title: "THE SIZE **OF** THE **OBSERVABLE** UNIVERSE",
+    title: "THE SIZE **OF** THE\n**OBSERVABLE** UNIVERSE",
     facts: [
-      {
-        label: "Age",
-        text: "~13.8 billion years since the Big Bang.",
-      },
-      {
-        label: "Span",
-        text: "~93 billion light-years from edge to edge.",
-      },
-      {
-        label: "Galaxies",
-        text: "~2 trillion galaxies, each packed with stars.",
-      },
-      {
-        label: "Stars",
-        text: "~200 billion trillion suns in the observable cosmos.",
-      },
-      {
-        label: "Us",
-        text: "Earth is a pale pixel on one ordinary spiral arm.",
-      },
+      { label: "Age", text: "13.8 billion years since the Big Bang." },
+      { label: "Width", text: "93 billion light-years across." },
+      { label: "Galaxies", text: "About 2 trillion, each packed with stars." },
+      { label: "Stars", text: "More than all the sand on Earth." },
+      { label: "Us", text: "One planet, on one arm, of one galaxy." },
     ],
-    note: "And that is only the light that has had time to reach us.",
+    note: "And that's only the light that has had time to reach us.",
     cta: "REMINDER: 90% of people will scroll.\nBe the 10% who Like and Follow.",
     handle: "@FactNebula",
     durationSec: 15,
@@ -87,30 +72,15 @@ export const TEMPLATES: ReelContent[] = [
   {
     id: "oceans",
     name: "Earth's oceans",
-    title: "HOW **DEEP** EARTH'S **OCEANS** REALLY GO",
+    title: "HOW **DEEP** EARTH'S\n**OCEANS** REALLY GO",
     facts: [
-      {
-        label: "Coverage",
-        text: "Water hides ~71% of the planet's surface.",
-      },
-      {
-        label: "Average",
-        text: "The typical seafloor sits ~3.7 km down.",
-      },
-      {
-        label: "Challenger",
-        text: "The Marianas trench plunges ~10.9 km.",
-      },
-      {
-        label: "Mapped",
-        text: "Less than 30% of the seafloor is mapped in high detail.",
-      },
-      {
-        label: "Life",
-        text: "Most of Earth's living space is in the dark water column.",
-      },
+      { label: "Coverage", text: "Water covers ~71% of Earth." },
+      { label: "Average", text: "The seafloor sits ~3.7 km down." },
+      { label: "Deepest", text: "Mariana Trench: about 11 km." },
+      { label: "Mapped", text: "Less than 25% in high detail." },
+      { label: "Life", text: "Most of Earth's habitat is ocean." },
     ],
-    note: "We have better maps of Mars than of our own ocean floor.",
+    note: "We have better maps of Mars than of our own seafloor.",
     cta: "REMINDER: 90% of people will scroll.\nBe the 10% who Like and Follow.",
     handle: "@FactNebula",
     durationSec: 15,
@@ -120,28 +90,13 @@ export const TEMPLATES: ReelContent[] = [
   {
     id: "internet",
     name: "Internet in a day",
-    title: "WHAT THE INTERNET **MOVES** IN A **SINGLE** DAY",
+    title: "WHAT THE INTERNET\n**MOVES** IN ONE **DAY**",
     facts: [
-      {
-        label: "Email",
-        text: "~361 billion messages sent worldwide.",
-      },
-      {
-        label: "Search",
-        text: "~8.5 billion Google queries typed.",
-      },
-      {
-        label: "Video",
-        text: "Hundreds of millions of hours of video watched.",
-      },
-      {
-        label: "Photos",
-        text: "Billions of new images uploaded across apps.",
-      },
-      {
-        label: "Traffic",
-        text: "Exabytes of data — more than every book ever printed.",
-      },
+      { label: "Email", text: "~361 billion messages sent." },
+      { label: "Search", text: "~8.5 billion Google queries." },
+      { label: "Video", text: "Hundreds of millions of hours watched." },
+      { label: "Photos", text: "Billions of new images uploaded." },
+      { label: "Data", text: "More than every book ever printed." },
     ],
     note: "Most of that traffic is machines talking to machines.",
     cta: "REMINDER: 90% of people will scroll.\nBe the 10% who Like and Follow.",
@@ -153,30 +108,15 @@ export const TEMPLATES: ReelContent[] = [
   {
     id: "body",
     name: "Human body",
-    title: "THE **STRANGE** SCALE **OF** A HUMAN BODY",
+    title: "THE **STRANGE** SCALE\n**OF** A HUMAN BODY",
     facts: [
-      {
-        label: "Cells",
-        text: "~30 trillion human cells, plus even more microbes.",
-      },
-      {
-        label: "Blood",
-        text: "Your heart pumps ~7,500 liters every day.",
-      },
-      {
-        label: "Nerves",
-        text: "Signals race up to ~120 meters per second.",
-      },
-      {
-        label: "DNA",
-        text: "Stretched out, one body's DNA would reach the sun and back.",
-      },
-      {
-        label: "Brain",
-        text: "~86 billion neurons, using ~20% of your energy.",
-      },
+      { label: "Cells", text: "~30 trillion of yours, plus more microbes." },
+      { label: "Heart", text: "Pumps ~7,500 liters of blood a day." },
+      { label: "Nerves", text: "Signals fire at up to 120 m/s." },
+      { label: "DNA", text: "Uncoiled, it would reach the Sun." },
+      { label: "Brain", text: "~86 billion neurons, ~20% of your energy." },
     ],
-    note: "You replace most of your body — but keep the same story.",
+    note: "You replace most of your body. The story stays.",
     cta: "REMINDER: 90% of people will scroll.\nBe the 10% who Like and Follow.",
     handle: "@FactNebula",
     durationSec: 15,
@@ -196,12 +136,12 @@ export function blankReel(): ReelContent {
   return {
     id: "custom",
     name: "Custom",
-    title: "YOUR **HEADLINE** GOES **HERE**",
+    title: "YOUR **HEADLINE**\nGOES **HERE**",
     facts: [
       { label: "One", text: "A short, punchy statistic." },
-      { label: "Two", text: "Another fact people will read twice." },
-      { label: "Three", text: "Keep each line under ~90 characters." },
-      { label: "Four", text: "Numbers beat adjectives." },
+      { label: "Two", text: "A second fact people will reread." },
+      { label: "Three", text: "Keep each line to one breath." },
+      { label: "Four", text: "Lead with the number." },
       { label: "Five", text: "End on the biggest scale." },
     ],
     note: "One extra kicker line under the list.",

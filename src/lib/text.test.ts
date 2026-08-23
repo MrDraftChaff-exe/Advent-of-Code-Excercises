@@ -4,12 +4,19 @@ import { clampDuration, parseHighlighted, wrapPlain, wrapTokens } from "./text";
 describe("parseHighlighted", () => {
   it("splits accent markers into highlight tokens", () => {
     const tokens = parseHighlighted("THE SIZE **OF** THE **MOON**");
-    const joined = tokens.map((t) => `${t.highlight ? "#" : ""}${t.text}`).join("");
+    const joined = tokens
+      .map((t) => `${t.highlight ? "#" : ""}${t.text}`)
+      .join("");
     expect(joined.replace(/\s/g, "")).toBe("THESIZE#OFTHE#MOON");
     expect(tokens.filter((t) => t.highlight).map((t) => t.text)).toEqual([
       "OF",
       "MOON",
     ]);
+  });
+
+  it("keeps spaces around highlighted words", () => {
+    const tokens = parseHighlighted("HOW **DEEP** EARTH'S **OCEANS**");
+    expect(tokens.map((t) => t.text).join("")).toBe("HOW DEEP EARTH'S OCEANS");
   });
 
   it("keeps newlines as tokens", () => {

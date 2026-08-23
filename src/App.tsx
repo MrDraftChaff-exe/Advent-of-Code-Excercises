@@ -13,7 +13,7 @@ import { loadReelFonts, downloadBlob, slugify } from "./lib/fonts";
 import { exportReelVideo } from "./lib/exportVideo";
 import { createAmbient } from "./lib/audio";
 
-const STORAGE_KEY = "fact-nebula-reel-v1";
+const STORAGE_KEY = "fact-nebula-reel-v2";
 
 function loadSaved(): ReelContent | null {
   try {

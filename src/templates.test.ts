@@ -17,6 +17,13 @@ describe("templates", () => {
     expect(THEMES[a.theme]).toBeDefined();
   });
 
+  it("uses two-line titles so headlines do not wrap mid-phrase", () => {
+    for (const template of TEMPLATES) {
+      expect(template.title).toContain("\n");
+    }
+    expect(blankReel().title).toContain("\n");
+  });
+
   it("creates a custom blank reel", () => {
     const reel = blankReel();
     expect(reel.id).toBe("custom");
