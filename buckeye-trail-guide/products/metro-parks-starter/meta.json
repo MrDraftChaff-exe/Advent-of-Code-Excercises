@@ -1,0 +1,25 @@
+{
+  "id": "metro-parks-starter",
+  "title": "Metro Parks Starter Card",
+  "price": 0,
+  "permalink": "metro-parks-starter",
+  "oneLiner": "Free printable starter for Central Ohio metro parks \u2014 how to pick a park, etiquette, gear, and a blank \u201ctry three\u201d tracker. Complements outing lists; doesn\u2019t replace them.",
+  "bullets": [
+    "How to choose a park for your mood/time",
+    "Etiquette + safety basics",
+    "Try-three tracker worksheet",
+    "Gear minimums"
+  ],
+  "tags": [
+    "columbus",
+    "ohio",
+    "metro-parks",
+    "outdoors",
+    "free",
+    "printable"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

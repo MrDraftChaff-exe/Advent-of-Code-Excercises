@@ -1,0 +1,25 @@
+{
+  "id": "hocking-hills-day",
+  "title": "Hocking Hills Day Trip \u2014 From Columbus",
+  "price": 3.49,
+  "permalink": "hocking-hills-day",
+  "oneLiner": "A printable one-day plan from Columbus to Hocking Hills \u2014 timing, routes, packing, and weather swaps.",
+  "bullets": [
+    "Night-before checklist and drive timing windows",
+    "Route A (classic highlights) and Route B (deeper hike)",
+    "Parking backups and group meetup pins",
+    "Season/weather swaps and day-pack list"
+  ],
+  "tags": [
+    "columbus",
+    "hocking-hills",
+    "day-trip",
+    "ohio",
+    "hiking",
+    "printable"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

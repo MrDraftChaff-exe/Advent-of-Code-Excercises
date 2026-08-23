@@ -1,0 +1,25 @@
+{
+  "id": "subscription-bills-audit",
+  "title": "Subscription & Bills Annual Audit Sheet",
+  "price": 0,
+  "permalink": "subscription-bills-audit",
+  "oneLiner": "Free printable annual audit for subscriptions and recurring bills \u2014 find waste, keep what you use. Not financial advice.",
+  "bullets": [
+    "Subscription inventory table",
+    "Keep / cancel / pause decisions",
+    "Annual renewal calendar blanks",
+    "Household share checklist"
+  ],
+  "tags": [
+    "subscriptions",
+    "bills",
+    "admin",
+    "free",
+    "printable",
+    "checklist"
+  ],
+  "files": [
+    "product.pdf"
+  ],
+  "cover": "cover.png"
+}

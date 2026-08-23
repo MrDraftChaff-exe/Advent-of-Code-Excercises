@@ -1,0 +1,1257 @@
+{
+  "brand": "Buckeye Trail Guide",
+  "timezone": "America/New_York",
+  "cadence": "2 posts/day (+ launch post on 2026-08-01)",
+  "startDate": "2026-08-01",
+  "endDate": "2026-08-31",
+  "totalPosts": 61,
+  "algorithm": {
+    "principles": [
+      "Lead with a local question to earn comments (distribution signal)",
+      "Post as photo+caption, not bare link share (link posts are throttled)",
+      "Keep URLs out of the caption; put product + suite links in the first comment",
+      "Always cross-link related SKUs in the first comment so the suite compounds",
+      "Prefer free roads guide as top-of-funnel on launch and weekly lead days"
+    ]
+  },
+  "slots": [
+    {
+      "id": "am",
+      "localTime": "09:00",
+      "label": "Morning"
+    },
+    {
+      "id": "pm",
+      "localTime": "18:00",
+      "label": "Evening"
+    }
+  ],
+  "shop": "https://buckeyetrailguide.gumroad.com",
+  "skus": {
+    "roads": {
+      "id": "columbus-roads-40",
+      "title": "Columbus Roads: Top 20 to Avoid + Top 20 to Use",
+      "price": "Free",
+      "url": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "short": "free roads guide"
+    },
+    "weekend": {
+      "id": "weekend-columbus",
+      "title": "Weekend in Columbus \u2014 48-Hour Field Kit",
+      "price": "$4.99",
+      "url": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "short": "48-hour weekend kit"
+    },
+    "move": {
+      "id": "move-in-pack",
+      "title": "Move to Columbus \u2014 Settling Pack",
+      "price": "$4.49",
+      "url": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "short": "move-in Settling Pack"
+    },
+    "stadium": {
+      "id": "stadium-weekend",
+      "title": "Stadium Weekend Logistics Sheet",
+      "price": "$3.99",
+      "url": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "short": "stadium logistics sheet"
+    },
+    "hocking": {
+      "id": "hocking-hills-day",
+      "title": "Hocking Hills Day Trip \u2014 From Columbus",
+      "price": "$3.49",
+      "url": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "short": "Hocking Hills day-trip plan"
+    },
+    "nature": {
+      "id": "columbus-nature-15",
+      "title": "Outdoor Columbus \u2014 15 Experiences Under $15 Each",
+      "price": "$2.99",
+      "url": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "short": "Outdoor Columbus guide"
+    },
+    "spooky": {
+      "id": "columbus-supernatural",
+      "title": "Columbus Supernatural / Paranormal Experiences \u2014 Under $30 Each",
+      "price": "$1.49",
+      "url": "https://buckeyetrailguide.gumroad.com/l/columbus-supernatural",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-supernatural.png",
+      "short": "supernatural nights list"
+    },
+    "fish": {
+      "id": "columbus-fishing-30",
+      "title": "Fishing Near Columbus \u2014 30 Spots with Species & Bait",
+      "price": "$3.79",
+      "url": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "short": "Fishing Near Columbus guide"
+    }
+  },
+  "posts": [
+    {
+      "n": 0,
+      "day": 0,
+      "date": "2026-08-01",
+      "weekday": "Sat",
+      "slot": "pm",
+      "localTime": "15:00",
+      "pillar": "launch",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Columbus \u2014 honest question to kick this Page off:\n\nWhat's the one everyday friction you still haven't solved here? Roads, weekends with guests, move-in admin, day trips, finding cheap outdoor time\u2026\n\nI'm Keith Householder. Buckeye Trail Guide is printable PDFs for that stuff \u2014 practical, local, no fluff.\n\nComment your friction. I'll reply with the matching guide (there's a free roads list to start).",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\u2022 supernatural nights list \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 1,
+      "day": 1,
+      "date": "2026-08-02",
+      "weekday": "Sun",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "intro",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Columbus natives and transplants \u2014 quick question.\n\nWhat's the one local tip you wish someone had handed you on day one?\n\nI'm Keith Householder. I make printable Buckeye Trail Guide PDFs so weekends, move-ins, and day trips take less group-chat chaos.\n\nDrop your tip below \u2014 best ones get woven into the next guides.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 2,
+      "day": 1,
+      "date": "2026-08-02",
+      "weekday": "Sun",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "lead",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Which Columbus corridor do you avoid on purpose \u2014 and which \"boring\" road do you actually trust?\n\nI mapped 20 to avoid and 20 to use (quality, maintenance, crash patterns, travel time, local notes). The PDF is free.\n\nTell me if your corridor belongs on the list.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 3,
+      "day": 2,
+      "date": "2026-08-03",
+      "weekday": "Mon",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "tip",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Hosting out-of-town friends this month?\n\nWhat's harder for you \u2014 picking food, picking neighborhoods, or keeping Sunday from falling apart?\n\nA simple 48-hour block plan beats rebuilding the weekend in the group chat every time.",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 4,
+      "day": 2,
+      "date": "2026-08-03",
+      "weekday": "Mon",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Central Ohio check-in: if you could fix ONE everyday friction around Columbus, what would it be?\n\nRoads, weekends, move-in admin, day trips \u2014 I'm collecting real answers for the printable guides.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 5,
+      "day": 3,
+      "date": "2026-08-04",
+      "weekday": "Tue",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "Moved here in the last year \u2014 or helping someone who did?\n\nWhat burned the most time in month one: utilities, paperwork, or just figuring out where anything is?\n\nI built a Settling Pack (PDF + spreadsheet) around that first-30-days mess.",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 6,
+      "day": 3,
+      "date": "2026-08-04",
+      "weekday": "Tue",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Hot take: a \"fast\" road that's always under construction often loses to a boring arterial with predictable lights.\n\nAgree or disagree \u2014 and name the corridor.\n\n(That's the tradeoff behind the free avoid/use list.)",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 7,
+      "day": 4,
+      "date": "2026-08-05",
+      "weekday": "Wed",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "Day-trip people: when you leave Columbus for Hocking Hills, what usually goes wrong first \u2014 late start, parking, or packing?\n\nI made a one-day printable plan so the morning isn't a scramble.",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 8,
+      "day": 4,
+      "date": "2026-08-05",
+      "weekday": "Wed",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "behind",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Why printable guides in 2026?\n\nPhone signal dies. Screens glare. A folded page in the glove box still works when the map app is arguing with itself.\n\nWhat do you still print (or wish you had on paper)?",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 9,
+      "day": 5,
+      "date": "2026-08-06",
+      "weekday": "Thu",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Game weekend bottleneck vote:\n\nParking, timing, food, or finding your people afterward?\n\nComment your #1. I built a logistics sheet for the parts that shouldn't live in five group texts.",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 10,
+      "day": 5,
+      "date": "2026-08-06",
+      "weekday": "Thu",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Stadium regulars: do you pick the route the night before \u2014 or trust muscle memory and hope?\n\nBe honest. Columbus traffic does not care about your tradition.",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 11,
+      "day": 6,
+      "date": "2026-08-07",
+      "weekday": "Fri",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Need air without a big outing budget?\n\nWhat's your go-to under-$15 outdoor reset near Columbus \u2014 park loop, overlook, or trail?\n\nI listed fifteen that stay cheap on purpose.",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 12,
+      "day": 6,
+      "date": "2026-08-07",
+      "weekday": "Fri",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Micro-adventure rule that actually works: one park, one loop, 90 minutes, then leave.\n\nOverplanning is how a \"quick walk\" becomes a cancelled plan.\n\nWhat ruins your outdoor plans most often?",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 13,
+      "day": 7,
+      "date": "2026-08-08",
+      "weekday": "Sat",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-fishing-30",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "message": "Anglers around Columbus: do you pick water by habit, by a buddy tip, or by checking conditions first?\n\nI put together 30 spots with species, bait notes, and links \u2014 so the drive isn't a guess.",
+      "firstComment": "Fishing Near Columbus \u2014 30 Spots with Species & Bait ($3.79)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 14,
+      "day": 7,
+      "date": "2026-08-08",
+      "weekday": "Sat",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "lead",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Sunday reset question: which road wasted your time this week?\n\nDrop the name. I'm keeping the free 20-avoid / 20-use Columbus list honest with real feedback.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 15,
+      "day": 8,
+      "date": "2026-08-09",
+      "weekday": "Sun",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-supernatural",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-supernatural",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-supernatural.png",
+      "message": "Odd-evening crowd: haunted lore, historic cemeteries, or just a weird walk after dark?\n\nWhat's your Columbus \"something different\" pick \u2014 and did it stay under $30?\n\nI made a cheap supernatural list for curious nights.",
+      "firstComment": "Columbus Supernatural / Paranormal Experiences \u2014 Under $30 Each ($1.49)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 16,
+      "day": 8,
+      "date": "2026-08-09",
+      "weekday": "Sun",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Two-day visitor rule I swear by: one must, one local, one flexible block.\n\nThree musts in 48 hours is how everyone gets cranky by Sunday noon.\n\nHost or guest \u2014 which role stresses you more?",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 17,
+      "day": 9,
+      "date": "2026-08-10",
+      "weekday": "Mon",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "If friends land Friday at 5 p.m., where do you take them first \u2014 dinner, a neighborhood walk, or something else?\n\nI'm stress-testing the 48-hour Columbus field kit against real host habits.",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 18,
+      "day": 9,
+      "date": "2026-08-10",
+      "weekday": "Mon",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Columbus weekend people: are you a planner or an improviser?\n\nNo judgment \u2014 I'm trying to make printables that help both without feeling like a tour bus itinerary.",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 19,
+      "day": 10,
+      "date": "2026-08-11",
+      "weekday": "Tue",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "tip",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "Move-in week survival: max three admin tasks per day.\n\nUtilities + address changes + one orientation errand is already a full day.\n\nWhat task ate YOUR first week here?",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 20,
+      "day": 10,
+      "date": "2026-08-11",
+      "weekday": "Tue",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "product",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Still free on purpose: Columbus roads to avoid + roads to use.\n\nIf a corridor changed (construction, crashes, new normal), say so in the comments \u2014 the list gets sharper with locals.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 21,
+      "day": 11,
+      "date": "2026-08-12",
+      "weekday": "Wed",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "Leave Columbus early enough and Hocking still feels like a full day \u2014 not a rushed photo stop.\n\nWhat time do YOU aim to be in the car?\n\n(I wrote the day-trip timing around that reality.)",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 22,
+      "day": 11,
+      "date": "2026-08-12",
+      "weekday": "Wed",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "behind",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "Brand note: Buckeye Trail Guide isn't only trails.\n\nIt's practical printables for everyday Central Ohio life \u2014 settling in, weekends, logistics, local know-how.\n\nWhat topic should be next on the shelf?",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 23,
+      "day": 12,
+      "date": "2026-08-13",
+      "weekday": "Thu",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Tailgate energy is optional. Logistics aren't.\n\nDo you nail parking first, or meetup first?\n\nThe stadium weekend sheet is for the boring stuff that saves the fun stuff.",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 24,
+      "day": 12,
+      "date": "2026-08-13",
+      "weekday": "Thu",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Game-day truth: your weekday commute route is often the wrong stadium route.\n\nBuild the approach from where you're staying \u2014 not muscle memory.\n\nWho learned that the hard way?",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 25,
+      "day": 13,
+      "date": "2026-08-14",
+      "weekday": "Fri",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Under-$15 outdoor Columbus \u2014 what's missing from most \"best of\" lists that locals actually use?\n\nComment a park/trail. I'm stress-testing the printable fifteen.",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 26,
+      "day": 13,
+      "date": "2026-08-14",
+      "weekday": "Fri",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Morning people vs evening people: when do you actually get outside during a Columbus week?\n\nTrying to time tips for when people use them \u2014 not when blogs pretend people use them.",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 27,
+      "day": 14,
+      "date": "2026-08-15",
+      "weekday": "Sat",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-fishing-30",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "message": "Before you drive to \"that pond someone mentioned\" \u2014 do you check species/bait, or just show up?\n\nCurious how Columbus anglers actually decide.",
+      "firstComment": "Fishing Near Columbus \u2014 30 Spots with Species & Bait ($3.79)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 28,
+      "day": 14,
+      "date": "2026-08-15",
+      "weekday": "Sat",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "lead",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Mid-month freebie reminder without the spam energy:\n\nIf you drive Columbus daily, which road deserves a public roast?\n\nI'll keep updating the free avoid/use PDF from comments like yours.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 29,
+      "day": 15,
+      "date": "2026-08-16",
+      "weekday": "Sun",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-supernatural",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-supernatural",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-supernatural.png",
+      "message": "$2 question: best Columbus eerie evening that didn't feel touristy?\n\nLore walk, historic site, cemetery path \u2014 what worked?\n\nBuilding the under-$30 supernatural list from real nights out.",
+      "firstComment": "Columbus Supernatural / Paranormal Experiences \u2014 Under $30 Each ($1.49)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 30,
+      "day": 15,
+      "date": "2026-08-16",
+      "weekday": "Sun",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Rain plan for visitors: museum / market / neighborhood coffee walk \u2014 then reclaim outdoors later.\n\nDo you scrap the whole weekend when the forecast wobbles, or pivot?",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 supernatural nights list \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 31,
+      "day": 16,
+      "date": "2026-08-17",
+      "weekday": "Mon",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "Settling into Columbus: what's the most annoying admin task \u2014 plates, utilities, trash signup, something else?\n\nAsking for the Settling Pack backlog (PDF + spreadsheet).",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 32,
+      "day": 16,
+      "date": "2026-08-17",
+      "weekday": "Mon",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "New-to-town or long-time local: what should every Columbus transplant learn in the first two weeks?\n\nOne grocery / pharmacy / hardware answer counts.",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 33,
+      "day": 17,
+      "date": "2026-08-18",
+      "weekday": "Tue",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Guests flying in Friday \u2014 do you hand them a plan, or vibe it?\n\nI made a printable 48-hour field kit for hosts who want structure without a tour-bus itinerary.",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 34,
+      "day": 17,
+      "date": "2026-08-18",
+      "weekday": "Tue",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "Hocking day-trip packing: water, layers, real shoes, offline map screenshot.\n\nFancy gear optional. Bad shoes not optional.\n\nWhat did you forget last time?",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 35,
+      "day": 18,
+      "date": "2026-08-19",
+      "weekday": "Wed",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "Best month for Columbus \u2192 Hocking Hills, in your experience \u2014 and why?\n\nCrowds, water, leaves, heat\u2026 locals optimize for different things. I want the honest version.",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 36,
+      "day": 18,
+      "date": "2026-08-19",
+      "weekday": "Wed",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "behind",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "How these guides get made: start from a decision people argue about, strip the fluff, leave checkboxes and timing.\n\nIf it doesn't reduce friction, it doesn't ship.\n\nWhat decision do you argue about most around here?",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 37,
+      "day": 19,
+      "date": "2026-08-20",
+      "weekday": "Thu",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Stadium meetup rule that saves friendships: one pinned location + one backup + a leave-by time.\n\n\"We'll figure it out after\" is how people miss the first quarter.\n\nGot a better rule?",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 38,
+      "day": 19,
+      "date": "2026-08-20",
+      "weekday": "Thu",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Commute sanity: quitting ONE bad corridor can beat optimizing every light.\n\nWhich road did you personally quit \u2014 and what replaced it?",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 39,
+      "day": 20,
+      "date": "2026-08-21",
+      "weekday": "Fri",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Nature without the $40 \"experience\" tax \u2014 what does a good cheap outdoor hour look like for you in Columbus?\n\nI'm keeping the under-$15 list practical, not Pinterest.",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 40,
+      "day": 20,
+      "date": "2026-08-21",
+      "weekday": "Fri",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "columbus-fishing-30",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "message": "Bank fishing or boat \u2014 what's more realistic for most Columbus weeknights?\n\nVote in the comments. It changes which spots matter in the guide.",
+      "firstComment": "Fishing Near Columbus \u2014 30 Spots with Species & Bait ($3.79)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 41,
+      "day": 21,
+      "date": "2026-08-22",
+      "weekday": "Sat",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-fishing-30",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "message": "Weekend anglers: species first, or convenience first?\n\nI care because the Fishing Near Columbus guide has to match how people actually fish around Columbus.",
+      "firstComment": "Fishing Near Columbus \u2014 30 Spots with Species & Bait ($3.79)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 42,
+      "day": 21,
+      "date": "2026-08-22",
+      "weekday": "Sat",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "lead",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "Free again (always free): Columbus roads avoid/use.\n\nIf you're new to the Page, start there \u2014 then grab whatever matches your next weekend.\n\nWhat brought you to this corner of Facebook?",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 43,
+      "day": 22,
+      "date": "2026-08-23",
+      "weekday": "Sun",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-supernatural",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-supernatural",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-supernatural.png",
+      "message": "Affordable eerie Columbus nights \u2014 under $30.\n\nWould you rather a guided lore walk or a self-paced historic stop?\n\nHelps me order the printable list.",
+      "firstComment": "Columbus Supernatural / Paranormal Experiences \u2014 Under $30 Each ($1.49)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 44,
+      "day": 22,
+      "date": "2026-08-23",
+      "weekday": "Sun",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "New-to-town tip: learn one grocery, one pharmacy, one hardware store before you chase novelty.\n\nOrientation beats hopping.\n\nWhat was your first \"okay I live here now\" errand?",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 45,
+      "day": 23,
+      "date": "2026-08-24",
+      "weekday": "Mon",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Host tip: put the weekend on paper the night before guests arrive.\n\nMorning-of planning is how brunch slips to 2 p.m.\n\nDo you plan Friday night or Saturday morning?",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 46,
+      "day": 23,
+      "date": "2026-08-24",
+      "weekday": "Mon",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "Day trip from Columbus: Hocking Hills, or a closer nature loop when time is short?\n\nTell me your default \u2014 I'm balancing the suite between \"big day\" and \"near home.\"",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 47,
+      "day": 24,
+      "date": "2026-08-25",
+      "weekday": "Tue",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "move-in-pack",
+      "link": "https://buckeyetrailguide.gumroad.com/l/move-to-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/move-in-pack.png",
+      "message": "Move to Columbus people: PDF checklist or spreadsheet \u2014 which do you actually use?\n\nThe Settling Pack has both for the first 30 days. Curious which half wins.",
+      "firstComment": "Move to Columbus \u2014 Settling Pack ($4.49)\nhttps://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 48,
+      "day": 24,
+      "date": "2026-08-25",
+      "weekday": "Tue",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Logistics > vibes when the stadium clock is running.\n\nWhat's the one thing you double-check before you leave the house on game day?",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 49,
+      "day": 25,
+      "date": "2026-08-26",
+      "weekday": "Wed",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "hocking-hills-day",
+      "link": "https://buckeyetrailguide.gumroad.com/l/hocking-hills-day",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/hocking-hills-day.png",
+      "message": "One-day Hocking Hills from Columbus \u2014 printable timing and packing.\n\nIf you've done it as a day trip, what would you warn a first-timer about?",
+      "firstComment": "Hocking Hills Day Trip \u2014 From Columbus ($3.49)\nhttps://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 50,
+      "day": 25,
+      "date": "2026-08-26",
+      "weekday": "Wed",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "behind",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "The free roads guide stays free on purpose \u2014 trust builder + feedback loop.\n\nUse it, argue with it, tell me what's outdated.\n\nThat's how Buckeye Trail Guide stays useful.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 51,
+      "day": 26,
+      "date": "2026-08-27",
+      "weekday": "Thu",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "stadium-weekend",
+      "link": "https://buckeyetrailguide.gumroad.com/l/stadium-weekend",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/stadium-weekend.png",
+      "message": "Stadium weekend sheet: timing, parking approach, weather backup, meetups.\n\nIf you could only keep ONE section, which matters most?",
+      "firstComment": "Stadium Weekend Logistics Sheet ($3.99)\nhttps://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 52,
+      "day": 26,
+      "date": "2026-08-27",
+      "weekday": "Thu",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Micro-adventure: leave with water and a stop time. No gear shopping as a prerequisite.\n\nWhat fake prerequisite stops you from going outside?",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 53,
+      "day": 27,
+      "date": "2026-08-28",
+      "weekday": "Fri",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-nature-15",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-nature-15",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-nature-15.png",
+      "message": "Outdoor Columbus experiences under $15 \u2014 which category should expand next: parks, water, or views?\n\nComment and I'll aim the next update there.",
+      "firstComment": "Outdoor Columbus \u2014 15 Experiences Under $15 Each ($2.99)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\nAlso in the suite:\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 54,
+      "day": 27,
+      "date": "2026-08-28",
+      "weekday": "Fri",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "engage",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "If Buckeye Trail Guide could only keep three printables, which three should stay?\n\nWeekends, move-in, roads, stadium, Hocking, nature, fishing, supernatural \u2014 vote your top three.",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 55,
+      "day": 28,
+      "date": "2026-08-29",
+      "weekday": "Sat",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-fishing-30",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-fishing-30.png",
+      "message": "Fishing Near Columbus \u2014 30 spots \u2014 species, bait, links.\n\nFavorite water within ~45 minutes? Drop it for the community (and for the next revision).",
+      "firstComment": "Fishing Near Columbus \u2014 30 Spots with Species & Bait ($3.79)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\nAlso in the suite:\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 free roads guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 56,
+      "day": 28,
+      "date": "2026-08-29",
+      "weekday": "Sat",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "lead",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "End-of-month free download energy: Columbus Roads (20 avoid + 20 use).\n\nIf this Page helped even once, tell me which post type you want more of \u2014 tips, questions, or straight product drops.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 57,
+      "day": 29,
+      "date": "2026-08-30",
+      "weekday": "Sun",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "product",
+      "skuId": "columbus-supernatural",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-supernatural",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-supernatural.png",
+      "message": "Columbus supernatural nights under $30 \u2014 printable, cheap on purpose.\n\nFirst-timer friendly or locals-only weird: which should the list prioritize?",
+      "firstComment": "Columbus Supernatural / Paranormal Experiences \u2014 Under $30 Each ($1.49)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 58,
+      "day": 29,
+      "date": "2026-08-30",
+      "weekday": "Sun",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "tip",
+      "skuId": "weekend-columbus",
+      "link": "https://buckeyetrailguide.gumroad.com/l/weekend-columbus",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/weekend-columbus.png",
+      "message": "Host tip rematch: paper plan the night before > heroics the morning of.\n\nWhat's on YOUR pre-guest checklist that guests never see?",
+      "firstComment": "Weekend in Columbus \u2014 48-Hour Field Kit ($4.99)\nhttps://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\nAlso in the suite:\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 59,
+      "day": 30,
+      "date": "2026-08-31",
+      "weekday": "Mon",
+      "slot": "am",
+      "localTime": "09:00",
+      "pillar": "recap",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "30 days of Buckeye Trail Guide on this Page \u2014 weekends, movers, stadium days, Hocking trips, cheap nature, fishing spots, supernatural nights, and free roads help.\n\nWhich guide did you actually open \u2014 or which should we make next?\n\n\u2014 Keith Householder, Columbus native",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    },
+    {
+      "n": 60,
+      "day": 30,
+      "date": "2026-08-31",
+      "weekday": "Mon",
+      "slot": "pm",
+      "localTime": "18:00",
+      "pillar": "cta",
+      "skuId": "columbus-roads-40",
+      "link": "https://buckeyetrailguide.gumroad.com/l/columbus-roads-40",
+      "imageUrl": "https://raw.githubusercontent.com/MrDraftChaff-exe/Advent-of-Code-Excercises/cursor/buckeye-trail-guide-090f/buckeye-trail-guide/brand/covers/columbus-roads-40.png",
+      "message": "New here? Start free with Columbus roads to avoid + roads to use \u2014 then grab whatever matches your next weekend.\n\nWhat's your next Columbus plan: guests, game, day trip, or just surviving the commute?\n\nComment below and I'll point you to the right printable.",
+      "firstComment": "Columbus Roads: Top 20 to Avoid + Top 20 to Use (Free)\nhttps://buckeyetrailguide.gumroad.com/l/columbus-roads-40\n\nAlso in the suite:\n\u2022 48-hour weekend kit \u2014 https://buckeyetrailguide.gumroad.com/l/weekend-columbus\n\u2022 move-in Settling Pack \u2014 https://buckeyetrailguide.gumroad.com/l/move-to-columbus\n\u2022 stadium logistics sheet \u2014 https://buckeyetrailguide.gumroad.com/l/stadium-weekend\n\u2022 Hocking Hills day-trip plan \u2014 https://buckeyetrailguide.gumroad.com/l/hocking-hills-day\n\u2022 Outdoor Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-nature-15\n\u2022 Fishing Near Columbus guide \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-fishing-30\n\u2022 supernatural nights list \u2014 https://buckeyetrailguide.gumroad.com/l/columbus-supernatural\n\nFull shop: https://buckeyetrailguide.gumroad.com",
+      "algo": {
+        "format": "photo+question",
+        "linkPlacement": "first_comment",
+        "goal": "comments_then_clicks"
+      }
+    }
+  ]
+}
