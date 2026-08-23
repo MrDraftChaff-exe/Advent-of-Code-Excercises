@@ -35,6 +35,6 @@ export type Theme = {
   star: string;
 };
 
-/** 16:9 canvas used for both preview and export. */
-export const CANVAS_W = 1920;
-export const CANVAS_H = 1080;
+/** 9:16 phone canvas used for both preview and export. */
+export const CANVAS_W = 1080;
+export const CANVAS_H = 1920;

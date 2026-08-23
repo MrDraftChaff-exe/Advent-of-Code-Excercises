@@ -77,26 +77,27 @@ function drawPhotoPlaceholder(
   ctx.fillText(label || "Photo", x + w / 2, y + h / 2);
 }
 
+/** Phone-safe scrims: readable type, photo still visible in the middle. */
 function drawReadScrim(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const side = ctx.createLinearGradient(0, 0, w * 0.78, 0);
-  side.addColorStop(0, "rgba(6, 2, 12, 0.78)");
-  side.addColorStop(0.42, "rgba(6, 2, 12, 0.55)");
-  side.addColorStop(0.72, "rgba(6, 2, 12, 0.18)");
-  side.addColorStop(1, "rgba(6, 2, 12, 0)");
-  ctx.fillStyle = side;
+  const top = ctx.createLinearGradient(0, 0, 0, h * 0.34);
+  top.addColorStop(0, "rgba(6, 2, 12, 0.72)");
+  top.addColorStop(0.55, "rgba(6, 2, 12, 0.28)");
+  top.addColorStop(1, "rgba(6, 2, 12, 0)");
+  ctx.fillStyle = top;
   ctx.fillRect(0, 0, w, h);
 
-  const bottom = ctx.createLinearGradient(0, h * 0.55, 0, h);
+  const bottom = ctx.createLinearGradient(0, h * 0.42, 0, h);
   bottom.addColorStop(0, "rgba(6, 2, 12, 0)");
-  bottom.addColorStop(1, "rgba(6, 2, 12, 0.72)");
+  bottom.addColorStop(0.35, "rgba(6, 2, 12, 0.45)");
+  bottom.addColorStop(1, "rgba(6, 2, 12, 0.82)");
   ctx.fillStyle = bottom;
   ctx.fillRect(0, 0, w, h);
 }
 
 function withTextShadow(ctx: CanvasRenderingContext2D, draw: () => void) {
   ctx.save();
-  ctx.shadowColor = "rgba(0, 0, 0, 0.85)";
-  ctx.shadowBlur = 14;
+  ctx.shadowColor = "rgba(0, 0, 0, 0.88)";
+  ctx.shadowBlur = 16;
   ctx.shadowOffsetY = 2;
   draw();
   ctx.restore();
@@ -120,42 +121,38 @@ export function drawFrame(
   }
   drawReadScrim(ctx, w, h);
 
-  const pad = 56;
+  const pad = 48;
   const copyX = pad;
-  const copyW = Math.round(w * 0.58);
-  const copyTop = 48;
-  const copyBottom = h - 40;
-  const handleH = 32;
+  const copyW = w - pad * 2;
+  const safeTop = 108;
+  const safeBottom = 152;
+  const copyBottom = h - safeBottom;
+  const handleH = 30;
   const bullets = reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
-  const hashtags = reel.hashtags.trim();
   const caption = reel.imageCaption.trim();
   const credit = reel.imageCredit.trim();
 
-  const titleSize = 58;
-  const yearSize = 30;
-  const bodySize = 26;
-  const tagSize = 22;
-  const captionSize = 20;
+  const titleSize = 52;
+  const yearSize = 28;
+  const bodySize = 28;
+  const captionSize = 22;
   const creditSize = 16;
-  const titleLh = 68;
-  const yearLh = 40;
-  const bodyLh = 34;
-  const tagLh = 30;
-  const minBulletGap = 8;
+  const titleLh = 62;
+  const yearLh = 38;
+  const bodyLh = 36;
+  const minBulletGap = 10;
   let scale = 1;
 
   const measureLayout = (s: number) => {
     const ts = titleSize * s;
     const ys = yearSize * s;
     const bs = bodySize * s;
-    const gs = tagSize * s;
     const cs = captionSize * s;
     const ds = creditSize * s;
     const tLh = titleLh * s;
     const yLh = yearLh * s;
     const bLh = bodyLh * s;
-    const gLh = tagLh * s;
     const titleLines = wrapTokens(
       canvasHeadlineTokens(reel),
       copyW,
@@ -168,13 +165,6 @@ export function drawFrame(
         measureFactory(ctx, `600 ${bs}px Montserrat, sans-serif`),
       ),
     );
-    const tagLines = hashtags
-      ? wrapPlain(
-          hashtags,
-          copyW,
-          measureFactory(ctx, `600 ${gs}px Montserrat, sans-serif`),
-        )
-      : [];
     const captionLines = caption
       ? wrapPlain(
           caption,
@@ -195,58 +185,43 @@ export function drawFrame(
       (sum, lines) => sum + lines.length * bLh,
       0,
     );
-    const tagsH = tagLines.length * gLh;
-    const captionH = captionLines.length * 26 * s;
+    const captionH = captionLines.length * 28 * s;
     const creditH = creditLines.length * 22 * s;
     const headerGap = 8 * s;
-    const ruleGap = 14 * s;
-    const tagsGap = tagLines.length ? 14 * s : 0;
-    const captionGap = captionLines.length || creditLines.length ? 12 * s : 0;
+    const ruleGap = 16 * s;
+    const captionGap = captionLines.length || creditLines.length ? 16 * s : 0;
     const minGaps = Math.max(0, bulletBlocks.length - 1) * minBulletGap * s;
-    const used =
-      titleH +
-      yearH +
-      headerGap +
-      ruleGap +
-      bulletsH +
-      minGaps +
-      tagsGap +
-      tagsH +
-      captionGap +
-      captionH +
-      creditH +
-      handleH;
+    const headerH = titleH + yearH + headerGap + ruleGap;
+    const footerH = captionGap + captionH + creditH + handleH;
+    const used = headerH + bulletsH + minGaps + footerH + 24 * s;
     return {
       titleLines,
       bulletBlocks,
-      tagLines,
       captionLines,
       creditLines,
-      tagsH,
+      headerH,
+      footerH,
       captionH,
       creditH,
       headerGap,
       ruleGap,
-      tagsGap,
       captionGap,
       used,
       ts,
       ys,
       bs,
-      gs,
       cs,
       ds,
       tLh,
       yLh,
       bLh,
-      gLh,
       s,
     };
   };
 
-  const available = copyBottom - copyTop;
+  const available = copyBottom - safeTop;
   let layout = measureLayout(1);
-  while (layout.used > available && scale > 0.68) {
+  while (layout.used > available && scale > 0.7) {
     scale *= 0.94;
     layout = measureLayout(scale);
   }
@@ -254,14 +229,14 @@ export function drawFrame(
   const leftover = Math.max(0, available - layout.used);
   const spread =
     layout.bulletBlocks.length > 1
-      ? Math.min(18 * layout.s, leftover / layout.bulletBlocks.length)
+      ? Math.min(16 * layout.s, leftover / layout.bulletBlocks.length)
       : 0;
   const bulletGap = minBulletGap * layout.s + spread;
 
   ctx.textBaseline = "top";
   ctx.textAlign = "left";
 
-  let y = copyTop;
+  let y = safeTop;
   ctx.globalAlpha = opacityFor(time, 0, reel.reveal);
   withTextShadow(ctx, () => {
     let ty = y;
@@ -293,7 +268,7 @@ export function drawFrame(
   ctx.lineWidth = 2;
   ctx.beginPath();
   ctx.moveTo(copyX, y);
-  ctx.lineTo(copyX + Math.min(copyW, 280), y);
+  ctx.lineTo(copyX + Math.min(copyW, 240), y);
   ctx.stroke();
   y += layout.ruleGap;
 
@@ -301,7 +276,7 @@ export function drawFrame(
   layout.bulletBlocks.forEach((lines, i) => {
     ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
     withTextShadow(ctx, () => {
-      const markX = copyX + 6 * layout.s;
+      const markX = copyX + 7 * layout.s;
       const markY = y + layout.bs * 0.42;
       ctx.fillStyle = theme.accent;
       ctx.beginPath();
@@ -311,7 +286,7 @@ export function drawFrame(
       for (const line of lines) {
         ctx.fillStyle = theme.text;
         ctx.font = `600 ${layout.bs}px Montserrat, sans-serif`;
-        ctx.fillText(line, copyX + 28 * layout.s, ly);
+        ctx.fillText(line, copyX + 30 * layout.s, ly);
         ly += layout.bLh;
       }
     });
@@ -319,28 +294,12 @@ export function drawFrame(
     if (i < layout.bulletBlocks.length - 1) y += bulletGap;
   });
 
-  const metaH =
-    layout.tagsH +
-    layout.captionH +
-    layout.creditH +
-    (layout.tagLines.length ? layout.tagsGap : 0) +
-    layout.captionGap +
+  let my =
+    copyBottom -
+    layout.captionH -
+    layout.creditH -
+    layout.captionGap -
     handleH;
-  let my = copyBottom - metaH;
-
-  if (layout.tagLines.length) {
-    ctx.globalAlpha = opacityFor(time, slot++, reel.reveal);
-    withTextShadow(ctx, () => {
-      ctx.fillStyle = theme.accent;
-      ctx.font = `600 ${layout.gs}px Montserrat, sans-serif`;
-      let ty = my;
-      for (const line of layout.tagLines) {
-        ctx.fillText(line, copyX, ty);
-        ty += layout.gLh;
-      }
-    });
-    my += layout.tagsH + layout.tagsGap;
-  }
 
   if (layout.captionLines.length) {
     ctx.globalAlpha = 1;
@@ -349,7 +308,7 @@ export function drawFrame(
       ctx.font = `600 ${layout.cs}px Montserrat, sans-serif`;
       for (const line of layout.captionLines) {
         ctx.fillText(line, copyX, my);
-        my += 26 * layout.s;
+        my += 28 * layout.s;
       }
     });
   }

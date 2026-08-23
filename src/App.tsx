@@ -247,7 +247,7 @@ export default function App() {
           <div className="brand-mark">?</div>
           <div>
             <h1>Facts or Whacks</h1>
-            <p>16:9 history videos — title, photo, bullets.</p>
+            <p>9:16 phone videos — photo with facts overlaid.</p>
           </div>
         </div>
 
@@ -398,9 +398,9 @@ export default function App() {
             placeholder="The End of Apartheid"
           />
           <span className="hint">
-            Title and facts overlay the 16:9 photo. No episode number on the
-            video. Wrap a word in **asterisks** to paint it green. Save PNG to
-            edit locally.
+            Title and facts overlay the 9:16 photo. No episode number and no
+            hashtags on the video. Wrap a word in **asterisks** to paint it
+            green. Save PNG to edit locally.
           </span>
         </label>
 
@@ -511,6 +511,9 @@ export default function App() {
             onChange={(e) => patch({ hashtags: e.target.value, id: "custom" })}
             placeholder="#NelsonMandela #Apartheid #SouthAfrica #HistoryTok"
           />
+          <span className="hint">
+            Kept for your post caption. Not drawn on the image.
+          </span>
         </label>
 
         <label className="field">
