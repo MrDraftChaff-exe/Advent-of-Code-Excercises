@@ -58,4 +58,22 @@ describe("catalog", () => {
     expect(ep.title).toBe("The Enlightenment");
     expect(episodeToReel(ep).theme).toBe("cosmic");
   });
+
+  it("uses Commons credit from JSON when present", () => {
+    const [ep] = parseCatalogJson([
+      {
+        n: 2,
+        title: "American Revolution",
+        hook: "13 colonies said no.",
+        bullets: ["Declaration signed 1776."],
+        image: "/images/catalog/002-american-revolution.jpg",
+        tags: "#USHistory",
+        credit: "John Trumbull · Public domain",
+        source: "https://commons.wikimedia.org/wiki/File:Declaration_of_Independence_(1819),_by_John_Trumbull.jpg",
+      },
+    ]);
+    expect(ep.credit).toContain("Trumbull");
+    expect(episodeToReel(ep).imageCredit).toContain("Trumbull");
+    expect(episodeToReel(ep).imageUrl.startsWith("/images/catalog/")).toBe(true);
+  });
 });

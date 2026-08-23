@@ -7,6 +7,8 @@ export type CatalogEpisode = {
   bullets: string[];
   image: string;
   tags: string;
+  credit: string;
+  source: string;
 };
 
 const THEME_CYCLE: ThemeId[] = ["cosmic", "ocean", "ember"];
@@ -39,7 +41,7 @@ export function episodeToReel(ep: CatalogEpisode): ReelContent {
     year: extractYear(ep.title, ep.hook, ...bullets),
     imageUrl: ep.image,
     imageCaption: ep.hook,
-    imageCredit: "Wikimedia Commons",
+    imageCredit: ep.credit.trim() || "Wikimedia Commons",
     bullets: bullets.length ? bullets : ["Add a sentence fact."],
     hashtags: ep.tags,
     handle: "@FactsOrWhacks",
@@ -61,6 +63,8 @@ export function parseCatalogCsv(text: string): CatalogEpisode[] {
   const bullets = idx("on_screen_bullets");
   const image = idx("image_url");
   const tags = idx("hashtags");
+  const credit = idx("image_credit");
+  const source = idx("image_source");
   const out: CatalogEpisode[] = [];
   for (const row of rows.slice(1)) {
     const n = Number(row[topic] ?? "");
@@ -72,6 +76,8 @@ export function parseCatalogCsv(text: string): CatalogEpisode[] {
       bullets: splitBullets(row[bullets] ?? ""),
       image: (row[image] ?? "").trim(),
       tags: (row[tags] ?? "").trim(),
+      credit: credit >= 0 ? (row[credit] ?? "").trim() : "",
+      source: source >= 0 ? (row[source] ?? "").trim() : "",
     });
   }
   return out;
@@ -95,6 +101,8 @@ export function parseCatalogJson(data: unknown): CatalogEpisode[] {
         bullets,
         image: String(rec.image ?? "").trim(),
         tags: String(rec.tags ?? "").trim(),
+        credit: String(rec.credit ?? "").trim(),
+        source: String(rec.source ?? "").trim(),
       } satisfies CatalogEpisode;
     })
     .filter((ep): ep is CatalogEpisode => ep !== null);
