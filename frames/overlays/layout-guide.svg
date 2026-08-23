@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1050" viewBox="0 0 750 1050">
+  <!-- generated frame: fire-lava-v1 | layout: standard-card-frame-v1 -->
+  
+  <defs>
+    <linearGradient id="sideFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFED4A"/>
+      <stop offset="45%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#E85D04"/>
+    </linearGradient>
+    <radialGradient id="crestGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#FFBA08"/>
+      <stop offset="70%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#E85D04"/>
+    </radialGradient>
+    <linearGradient id="borderRock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="50%" stop-color="#2A2A2A"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer void stays transparent except frame chrome -->
+  <rect x="0" y="0" width="750" height="1050" fill="none"/>
+
+  <!-- top frame band -->
+  <path d="M 40,20 L 710,20 L 695,137 L 55,137 Z"
+        fill="url(#borderRock)" stroke="#2A2A2A" stroke-width="2"/>
+
+  <!-- bottom frame band -->
+  <path d="M 55,800 L 695,800 L 710,1030 L 40,1030 Z"
+        fill="url(#borderRock)" stroke="#2A2A2A" stroke-width="2"/>
+
+  <!-- side borders -->
+  <path d="M 18.0,40.0 L 0.0,109.3 L 18.0,178.6 L 0.0,247.9 L 18.0,317.1 L 0.0,386.4 L 18.0,455.7 L 0.0,525.0 L 18.0,594.3 L 0.0,663.6 L 18.0,732.9 L 0.0,802.1 L 18.0,871.4 L 0.0,940.7 L 18.0,1010.0 L 95.0,1010.0 L 95.0,40.0 Z" fill="url(#sideFill)" stroke="#2A2A2A" stroke-width="2"/>
+  <path d="M 732.0,40.0 L 750.0,109.3 L 732.0,178.6 L 750.0,247.9 L 732.0,317.1 L 750.0,386.4 L 732.0,455.7 L 750.0,525.0 L 732.0,594.3 L 750.0,663.6 L 732.0,732.9 L 750.0,802.1 L 732.0,871.4 L 750.0,940.7 L 732.0,1010.0 L 655.0,1010.0 L 655.0,40.0 Z" fill="url(#sideFill)" stroke="#2A2A2A" stroke-width="2"/>
+
+  <!-- bottom center peak -->
+  <path d="M 339,960 L 339,812 L 375.0,765 L 411,812 L 411,960 Z" fill="url(#borderRock)" stroke="#2A2A2A" stroke-width="2"/>
+
+  <!-- crests -->
+  <path d="M 375.0,26.1 C 382.6,39.4 390.2,48.9 384.5,60.3 C 380.7,66.0 375.9,67.9 375.0,64.1 C 374.1,67.9 369.3,66.0 365.5,60.3 C 359.8,48.9 367.4,39.4 375.0,26.1 Z" fill="url(#crestGlow)" stroke="#F48C06" stroke-width="1.5"/>
+  <path d="M 375.0,767.7 C 384.2,783.8 393.4,795.3 386.5,809.1 C 381.9,816.0 376.1,818.3 375.0,813.7 C 373.9,818.3 368.1,816.0 363.5,809.1 C 356.6,795.3 365.8,783.8 375.0,767.7 Z" fill="url(#crestGlow)" stroke="#F48C06" stroke-width="1.5"/>
+
+  <!-- locked panels (positions from layout.json) -->
+  <rect x="140" y="55" width="470" height="70" rx="4" ry="4" fill="#3A3A3A" stroke="#F48C06" stroke-width="3"/>
+  <rect x="95" y="820" width="240" height="140" rx="4" ry="4" fill="#3A3A3A" stroke="#F48C06" stroke-width="3"/>
+  <rect x="415" y="820" width="240" height="140" rx="4" ry="4" fill="#3A3A3A" stroke="#F48C06" stroke-width="3"/>
+
+  <!-- art window: intentional hole (transparent) -->
+  
+  <pattern id="checker" width="20" height="20" patternUnits="userSpaceOnUse">
+    <rect width="10" height="10" fill="#ddd"/>
+    <rect x="10" y="10" width="10" height="10" fill="#ddd"/>
+    <rect x="10" width="10" height="10" fill="#bbb"/>
+    <rect y="10" width="10" height="10" fill="#bbb"/>
+  </pattern>
+  <rect x="95" y="145" width="560" height="620" fill="url(#checker)"/>
+
+  <rect x="95" y="145" width="560" height="620"
+        fill="none" stroke="#F48C06" stroke-width="2" opacity="0.35"/>
+
+  <!-- subtle labels for empty panels (optional visual cue, not locked content) -->
+  <text x="375.0" y="95.0"
+        text-anchor="middle" fill="#F48C06" opacity="0.35"
+        font-family="Georgia, serif" font-size="18">FIRE</text>
+
+  
+  <g id="layout-guide" opacity="0.85">
+    <rect x="140" y="55" width="470" height="70"
+          fill="none" stroke="#00E5FF" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="95" y="145" width="560" height="620"
+          fill="none" stroke="#39FF14" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="95" y="820" width="240" height="140"
+          fill="none" stroke="#FF4D6D" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="415" y="820" width="240" height="140"
+          fill="none" stroke="#FF4D6D" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="148" y="73" fill="#00E5FF" font-size="14" font-family="monospace">title_box</text>
+    <text x="103" y="167" fill="#39FF14" font-size="14" font-family="monospace">art_window</text>
+    <text x="103" y="838" fill="#FF4D6D" font-size="14" font-family="monospace">bottom_left_box</text>
+    <text x="423" y="838" fill="#FF4D6D" font-size="14" font-family="monospace">bottom_right_box</text>
+  </g>
+
+</svg>

@@ -1,0 +1,47 @@
+{
+  "id": "fire-lava-v1",
+  "theme": "fire",
+  "mood": "fierce, volcanic, mythic",
+  "element": "lava",
+  "palette": {
+    "primary": "#FF9F1C",
+    "secondary": "#E71D36",
+    "accent": "#FFD166",
+    "border": "#1B1B1E",
+    "panel": "#2A2A2E",
+    "panel_stroke": "#FF9F1C",
+    "glow": "#FFBA08"
+  },
+  "materials": {
+    "border": "charred volcanic rock and dark forged metal with lava cracks contained inside the frame body",
+    "panels": "dark basalt plaques with thin molten-gold inner borders and forged metal corner caps",
+    "ornament": "molten edge glow and ember light inside frame materials only"
+  },
+  "border_style": "jagged",
+  "side_fill": "ornate irregular silhouette: jagged volcanic spikes and sculpted flame tongues as attached frame ornaments on left/right \u2014 part of the cutout, not a background scene",
+  "crest": {
+    "motif": "stylized sacred flame emblem",
+    "placement": [
+      "top",
+      "bottom_center"
+    ]
+  },
+  "title_box_style": "empty dark basalt horizontal banner with glowing molten inner stroke and metal corner brackets, no text",
+  "footer_box_style": "matching empty dark banners left and right; sacred flame crest between them on the frame, no text",
+  "ornaments": [
+    "irregular non-rectangular outer silhouette",
+    "jagged rock spikes",
+    "sculpted flame ornaments attached to the frame",
+    "molten cracks and rivets"
+  ],
+  "constraints": {
+    "keep_art_fully_transparent": true,
+    "allow_overlap_preserved_regions": false,
+    "frame_only": true,
+    "transparent_background": true,
+    "no_outer_vfx_trimming": true,
+    "notes": "Ornate irregular cutout is desired. No busy full-scene background/ember field.",
+    "allow_irregular_silhouette": true
+  },
+  "prompt_extras": "Ornate irregular TCG frame CUTOUT on green screen. Not a rigid rectangle. Beautiful jagged volcanic/metal silhouette with attached flame ornaments. No busy background. Empty opaque plaques. Transparent art hole."
+}

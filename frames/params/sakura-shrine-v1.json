@@ -1,0 +1,40 @@
+{
+  "id": "sakura-shrine-v1",
+  "theme": "sakura",
+  "mood": "serene, sacred, refined",
+  "element": "spring blossom",
+  "palette": {
+    "primary": "#F7CAD0",
+    "secondary": "#4A2C2A",
+    "accent": "#D4AF37",
+    "border": "#3B241F",
+    "panel": "#F8F1E9",
+    "panel_stroke": "#C4A35A",
+    "glow": "#FFE5EC"
+  },
+  "materials": {
+    "border": "dark reddish-brown lacquered wood with subtle grain",
+    "panels": "pale washi / ivory plaques with dark wood framing and gold-brass corner caps with tiny rivets",
+    "ornament": "pink cherry blossoms, falling petals, dark blossom branches"
+  },
+  "border_style": "ornate",
+  "side_fill": "thick dark brown sakura branches climbing left and right borders, dense pink blossoms of mixed bloom stages, scattered falling petals along inner edges; white shimenawa sacred rope with zigzag shide paper streamers tied on each side branch",
+  "crest": {
+    "motif": "large detailed cherry blossom flower",
+    "placement": ["top", "bottom_center"]
+  },
+  "title_box_style": "empty light pinkish-ivory horizontal banner, dark wood frame, golden-brass corner brackets, no text",
+  "footer_box_style": "matching empty ivory banners bottom-left and bottom-right with gold corner caps; large sakura blossom centered between them",
+  "ornaments": [
+    "gold metallic brackets",
+    "falling pink petals",
+    "shimenawa and shide",
+    "soft painted shading"
+  ],
+  "constraints": {
+    "keep_art_fully_transparent": true,
+    "allow_overlap_preserved_regions": false,
+    "notes": "Quality must match premium illustrated game-frame assets, not flat UI mockups."
+  },
+  "prompt_extras": "Japanese shrine / cherry-blossom aesthetic. Clean polished digital illustration. Empty plaques only — zero lettering."
+}
