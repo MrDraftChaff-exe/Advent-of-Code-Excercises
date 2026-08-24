@@ -117,6 +117,7 @@ HAS_FINITE = re.compile(
     rf"marched|remains|remain|called|named|showed|proved|created|"
     rf"caused|left|ruled|saved|failed|lasted|turned|would|could|can|"
     rf"occurred|approached|felled|destroyed|killed|suggested|"
+    rf"reached|advocated|emerged|promoted|established|laid|"
     rf"{MID_VERB})\b",
     re.I,
 )
@@ -396,7 +397,9 @@ def paraphrase(sentence: str, title: str) -> str:
         for sep in ("; ", ", which ", ", when ", ", having ", ", emerging ", ", and "):
             if sep in s:
                 head = s.split(sep, 1)[0].strip()
-                if 40 <= len(head) <= 155 and LOOSE_VERB.search(head):
+                if 40 <= len(head) <= 155 and (
+                    LOOSE_VERB.search(head) or HAS_FINITE.search(head)
+                ):
                     if re.search(
                         r"\b(and|who|to|for|with|from|or|served)\s*$",
                         head,
@@ -416,7 +419,7 @@ def paraphrase(sentence: str, title: str) -> str:
         s,
     ):
         return ""
-    if not LOOSE_VERB.search(s):
+    if not (LOOSE_VERB.search(s) or HAS_FINITE.search(s)):
         return ""
     return clean_fact(s, min_len=32)
 
