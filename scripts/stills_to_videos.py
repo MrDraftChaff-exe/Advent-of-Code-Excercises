@@ -11,7 +11,10 @@ import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-EPISODE_RE = re.compile(r"(?:^|/)(\d{3})-[^/]+\.(?:webp|png|jpg|jpeg)$", re.I)
+EPISODE_RE = re.compile(
+    r"(?:^|/)(\d{3})-[^/]+\.(?:webp|png|jpg|jpeg|mp4)$",
+    re.I,
+)
 PACK_SIZE = 50
 
 
@@ -42,6 +45,8 @@ def encode_one(
     seconds: float,
 ) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.is_file() and dest.stat().st_size > 50_000:
+        return dest
     cmd = [
         ffmpeg,
         "-y",
@@ -60,6 +65,8 @@ def encode_one(
         "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30",
         "-c:v",
         "libx264",
+        "-preset",
+        "veryfast",
         "-tune",
         "stillimage",
         "-pix_fmt",
