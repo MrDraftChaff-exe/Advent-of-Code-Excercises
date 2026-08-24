@@ -20,6 +20,15 @@ import {
   parseCatalogCsv,
 } from "./lib/catalog";
 import { zipReelExports } from "./lib/batchExport";
+import {
+  ALL_STILLS_NAME,
+  ALL_STILLS_URL,
+  fetchZip,
+  sleep,
+  stillPackFilename,
+  stillPackRanges,
+  stillPackUrl,
+} from "./lib/stillsPack";
 
 const STORAGE_KEY = "facts-or-whacks-reel-v3";
 
@@ -203,6 +212,103 @@ export default function App() {
     loadEpisode(rows[0]);
   }
 
+  async function saveZipOrBuild(
+    from: number,
+    to: number,
+    url: string,
+    filename: string,
+  ): Promise<boolean> {
+    const ready = await fetchZip(url, (got, total) => {
+      if (total) {
+        setBatchNote(
+          `Downloading ${filename} (${Math.round((got / total) * 100)}%)`,
+        );
+      } else {
+        setBatchNote(`Downloading ${filename} (${Math.round(got / 1e6)} MB)`);
+      }
+    });
+    if (ready) {
+      downloadBlob(ready, filename);
+      return true;
+    }
+    const slice = catalog.filter((ep) => ep.n >= from && ep.n <= to);
+    if (!slice.length) return false;
+    const blob = await zipReelExports(
+      slice.map(episodeToReel),
+      "webp",
+      (done, total, name) => setBatchNote(`${done} / ${total}  ${name}`),
+    );
+    downloadBlob(blob, filename);
+    return true;
+  }
+
+  async function onDownloadAllStills() {
+    setBatching(true);
+    setPlaying(false);
+    setBatchNote("Looking for the 395-still zip…");
+    try {
+      const full = await fetchZip(ALL_STILLS_URL, (got, total) => {
+        if (total) {
+          setBatchNote(
+            `Downloading 395 stills (${Math.round((got / total) * 100)}%)`,
+          );
+        } else {
+          setBatchNote(
+            `Downloading 395 stills (${Math.round(got / 1e6)} MB)`,
+          );
+        }
+      });
+      if (full) {
+        downloadBlob(full, ALL_STILLS_NAME);
+        setBatchNote("Saved 395 stills");
+        return;
+      }
+      const ranges = stillPackRanges(catalog.length || 395);
+      for (const { from, to } of ranges) {
+        setBatchNote(`Pack ${from}–${to}…`);
+        const ok = await saveZipOrBuild(
+          from,
+          to,
+          stillPackUrl(from, to),
+          stillPackFilename(from, to),
+        );
+        if (!ok) throw new Error(`no episodes ${from}-${to}`);
+        await sleep(700);
+      }
+      setBatchNote(`Saved ${ranges.length} smaller zip packs`);
+    } catch (err) {
+      console.error(err);
+      window.alert(
+        "Could not download the stills zip. Use the smaller packs below, or ZIP stills for a range.",
+      );
+      setBatchNote("Failed");
+    } finally {
+      setBatching(false);
+    }
+  }
+
+  async function onDownloadStillPack(from: number, to: number) {
+    setBatching(true);
+    setPlaying(false);
+    setBatchNote(`Pack ${from}–${to}…`);
+    try {
+      const ok = await saveZipOrBuild(
+        from,
+        to,
+        stillPackUrl(from, to),
+        stillPackFilename(from, to),
+      );
+      setBatchNote(ok ? `Saved stills ${from}–${to}` : "Failed");
+      if (!ok) window.alert("No catalog episodes in that range.");
+    } catch (err) {
+      console.error(err);
+      window.alert("Could not download that stills pack.");
+      setBatchNote("Failed");
+    } finally {
+      setBatching(false);
+    }
+  }
+
   async function onBatch(kind: "webm" | "png") {
     const lo = Math.min(batchFrom, batchTo);
     const hi = Math.max(batchFrom, batchTo);
@@ -255,17 +361,30 @@ export default function App() {
           <h2>395-episode catalog</h2>
           <p className="hint">
             The CSV is scripts + Wikimedia stills, not hosted video files.
-            Download all 395 stills is one zip of 9:16 frames. Load an episode
-            to preview, then download a WebM if you want motion.
+            Download all 395 stills is one zip of 9:16 frames. If the big file
+            is blocked, use the smaller packs. Load an episode to preview, then
+            download a WebM if you want motion.
           </p>
           <div className="row-actions">
-            <a
+            <button
               className="primary"
-              href="/catalog/facts-or-whacks-395-stills.zip"
-              download="facts-or-whacks-395-stills.zip"
+              disabled={batching || exporting}
+              onClick={() => void onDownloadAllStills()}
             >
               Download all 395 stills
-            </a>
+            </button>
+          </div>
+          <div className="pack-row">
+            {stillPackRanges(catalog.length || 395).map(({ from, to }) => (
+              <button
+                key={`${from}-${to}`}
+                className="ghost"
+                disabled={batching || exporting}
+                onClick={() => void onDownloadStillPack(from, to)}
+              >
+                {from}–{to}
+              </button>
+            ))}
           </div>
           <label className="field">
             <span className="field-label">Search</span>

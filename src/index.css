@@ -272,6 +272,18 @@ button {
   margin: 8px 0 16px;
 }
 
+.pack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -8px 0 16px;
+}
+
+.pack-row .ghost {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
 .ghost {
   background: transparent;
 }

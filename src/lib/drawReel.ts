@@ -376,9 +376,11 @@ export function drawFrame(
   ctx.globalAlpha = 1;
 }
 
-export async function snapshotPng(
+export async function snapshotBlob(
   reel: ReelContent,
   time = 4,
+  type: "image/png" | "image/webp" = "image/png",
+  quality = 0.8,
 ): Promise<Blob> {
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_W;
@@ -389,8 +391,17 @@ export async function snapshotPng(
   drawFrame(ctx, reel, time, photo);
   return new Promise((resolve, reject) => {
     canvas.toBlob(
-      (blob) => (blob ? resolve(blob) : reject(new Error("PNG export failed"))),
-      "image/png",
+      (blob) =>
+        blob ? resolve(blob) : reject(new Error(`${type} export failed`)),
+      type,
+      type === "image/webp" ? quality : undefined,
     );
   });
+}
+
+export async function snapshotPng(
+  reel: ReelContent,
+  time = 4,
+): Promise<Blob> {
+  return snapshotBlob(reel, time, "image/png");
 }
