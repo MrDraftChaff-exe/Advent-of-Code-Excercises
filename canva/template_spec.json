@@ -1,0 +1,60 @@
+{
+  "name": "Facts or Whacks — 30s 9:16",
+  "canva_create": "Instagram Video (1080 × 1920) or TikTok Video",
+  "page_duration_seconds": 30,
+  "pages": 1,
+  "brand": {
+    "handle": "@FactsOrWhacks",
+    "title_font": "serif, bold, white",
+    "body_font": "sans, semibold, white",
+    "text_boxes": "dark rounded rectangles, ~85% opacity"
+  },
+  "layers": [
+    {
+      "name": "photo",
+      "type": "frame",
+      "notes": "Full-bleed 9:16 frame. Connect Bulk Create column `image`. Add Animate → Pan and zoom (Ken Burns), duration 30s."
+    },
+    {
+      "name": "scrim",
+      "type": "gradient",
+      "notes": "Black gradient over the lower third so text stays readable."
+    },
+    {
+      "name": "handle",
+      "type": "text",
+      "default": "@FactsOrWhacks",
+      "notes": "Top center, y≈96. Optional Bulk Create column `handle`."
+    },
+    {
+      "name": "title",
+      "type": "text",
+      "notes": "Lower third. Connect Bulk Create column `title`."
+    },
+    {
+      "name": "hook",
+      "type": "text",
+      "notes": "Under title. Connect Bulk Create column `hook`."
+    },
+    {
+      "name": "audio",
+      "type": "royalty_free_upload",
+      "file": "canva/audio/royalty_free_30s.mp3",
+      "notes": "Do NOT use Canva Pro (crown) audio or Popular/chart songs. Uploads → upload royalty_free_30s.mp3 (original CC0-style bed shipped in this repo) or any other CC0/Pixabay/Mixkit/YouTube Audio Library track you have rights to. Drop it on the timeline, trim 0:00–0:30, fade the last second. Leave it on the template so every bulk copy inherits it."
+    }
+  ],
+  "bulk_create": {
+    "plan": "Canva Business (desktop editor)",
+    "app_row_limit": 300,
+    "recommended_path": "Canva Sheets → select range → Actions → Bulk Create designs (Sheets are not capped at 300 rows).",
+    "fallback_path": "Apps → Bulk Create → Upload data. Split into 300 + remainder xlsx files from this repo.",
+    "columns": ["title", "hook", "handle", "filename", "image"],
+    "image_rule": "Images must be Place-in-Cell embeds in the xlsx/Sheet (xlsxwriter embed_image). Public image URLs and floating Excel pictures are ignored.",
+    "prepare_script": "scripts/prepare_canva_bulk.py"
+  },
+  "export": {
+    "format": "MP4",
+    "size": "1080x1920",
+    "before_export": "Because the bed is royalty-free (not Canva Pro audio), you do not need Canva's Pro-music license or connected social accounts for the soundtrack. Keep Pro/Popular Canva tracks off the design."
+  }
+}
