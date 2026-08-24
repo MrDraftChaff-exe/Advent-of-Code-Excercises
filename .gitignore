@@ -1,0 +1,7 @@
+output/
+__pycache__/
+.DS_Store
+*.pyc
+.python-version
+canva/inbox/**
+!canva/inbox/README.txt
