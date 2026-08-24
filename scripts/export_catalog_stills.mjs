@@ -9,14 +9,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
-import { spawnSync } from "node:child_process";
 
 const require = createRequire(import.meta.url);
 const puppeteer = require("/tmp/node_modules/puppeteer-core");
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const OUT_DIR = path.join(ROOT, "dist/catalog-stills");
-const ZIP_PATH = "/opt/cursor/artifacts/facts-or-whacks-395-stills.zip";
 const BASE = "http://127.0.0.1:5173";
 const CHROME = "/usr/local/bin/google-chrome";
 
@@ -31,7 +29,6 @@ const toN = arg("to", 395);
 
 async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.mkdirSync(path.dirname(ZIP_PATH), { recursive: true });
 
   const browser = await puppeteer.launch({
     executablePath: CHROME,
@@ -94,18 +91,7 @@ async function main() {
   }
 
   await browser.close();
-
-  if (fromN === 1 && toN === 395) {
-    if (fs.existsSync(ZIP_PATH)) fs.unlinkSync(ZIP_PATH);
-    const zip = spawnSync(
-      "zip",
-      ["-r", "-q", ZIP_PATH, "catalog-stills"],
-      { cwd: path.join(ROOT, "dist"), stdio: "inherit" },
-    );
-    if (zip.status !== 0) throw new Error("zip failed");
-    const st = fs.statSync(ZIP_PATH);
-    console.log(`Wrote ${ZIP_PATH} (${st.size} bytes)`);
-  }
+  console.log(`Wrote stills ${start}–${end} to ${OUT_DIR}`);
 }
 
 main().catch((err) => {

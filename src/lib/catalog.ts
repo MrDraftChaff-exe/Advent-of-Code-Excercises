@@ -16,8 +16,13 @@ const FILLER = /\s+[—–-]\s+a key part of the story of\s+.+$/i;
 
 export const TARGET_FACT_COUNT = 12;
 
+const PROMPT_META = /^(hook|tone|cover|create|caption)\s*:/i;
+const ASPECT_OR_TONE = /9:16|documentary style|fast-paced/i;
+
 export function cleanBullet(text: string): string {
-  return text
+  const trimmed = text.trim();
+  if (PROMPT_META.test(trimmed) || ASPECT_OR_TONE.test(trimmed)) return "";
+  return trimmed
     .replace(FILLER, "")
     .replace(/#[\p{L}\p{N}_]+/gu, "")
     .replace(/\s+/g, " ")

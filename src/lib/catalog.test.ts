@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import {
   cleanBullet,
   episodeToReel,
@@ -6,6 +7,7 @@ import {
   parseCatalogCsv,
   parseCatalogJson,
   splitBullets,
+  TARGET_FACT_COUNT,
 } from "./catalog";
 
 const SAMPLE = `topic_number,title,hook,video_prompt,on_screen_bullets,image_url,hashtags,caption
@@ -27,6 +29,13 @@ describe("catalog", () => {
         "They rewrote the rules. #HistoryTok #Enlightenment Reason changed the world.",
       ),
     ).toBe("They rewrote the rules. Reason changed the world.");
+  });
+
+  it("drops prompt-meta leftover lines", () => {
+    expect(
+      cleanBullet("Tone: dramatic, fast-paced, documentary style. 9:16 vertical."),
+    ).toBe("");
+    expect(cleanBullet("Hook: Buried ALIVE in 24 hours.")).toBe("");
   });
 
   it("splits pipe bullets and pulls a year", () => {
@@ -83,5 +92,42 @@ describe("catalog", () => {
     expect(ep.credit).toContain("Trumbull");
     expect(episodeToReel(ep).imageCredit).toContain("Trumbull");
     expect(episodeToReel(ep).imageUrl.startsWith("/images/catalog/")).toBe(true);
+  });
+});
+
+describe("bundled catalog copy", () => {
+  const raw = JSON.parse(
+    readFileSync("public/catalog/episodes.json", "utf8"),
+  ) as unknown;
+  const catalog = parseCatalogJson(raw);
+
+  it("gives every episode twelve on-screen facts", () => {
+    expect(catalog).toHaveLength(395);
+    for (const ep of catalog) {
+      expect(ep.bullets, `episode ${ep.n}`).toHaveLength(TARGET_FACT_COUNT);
+    }
+  });
+
+  it("keeps leftover prompt and hashtag copy off the facts", () => {
+    for (const ep of catalog) {
+      for (const bullet of ep.bullets) {
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(/#/);
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(/9:16/);
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(
+          /^(Hook|Tone|Cover|Create):/i,
+        );
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(/documentary style/i);
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(
+          /from classrooms to documentaries/i,
+        );
+        expect(bullet, `${ep.n}: ${bullet}`).not.toMatch(/ the\.$/);
+      }
+    }
+  });
+
+  it("keeps the signed-off apartheid facts", () => {
+    const ep = catalog.find((row) => row.n === 30);
+    expect(ep?.bullets[0]).toMatch(/Apartheid was South Africa/);
+    expect(ep?.bullets[11]).toMatch(/1994 elections/);
   });
 });
