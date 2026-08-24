@@ -6,6 +6,7 @@ import {
   stillPackFilename,
   stillPackRanges,
   stillPackUrl,
+  videoPackFilename,
 } from "./stillsPack";
 
 describe("stills packs", () => {
@@ -19,6 +20,9 @@ describe("stills packs", () => {
     );
     expect(stillPackUrl(351, 395)).toBe(
       "/catalog/facts-or-whacks-stills-351-395.zip",
+    );
+    expect(videoPackFilename(1, 50)).toBe(
+      "facts-or-whacks-videos-001-050.zip",
     );
     expect(padEpisode(7)).toBe("007");
   });

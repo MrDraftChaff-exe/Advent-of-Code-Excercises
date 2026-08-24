@@ -28,6 +28,8 @@ import {
   stillPackFilename,
   stillPackRanges,
   stillPackUrl,
+  videoPackFilename,
+  videoPackUrl,
 } from "./lib/stillsPack";
 
 const STORAGE_KEY = "facts-or-whacks-reel-v3";
@@ -287,6 +289,39 @@ export default function App() {
     }
   }
 
+  async function onDownloadVideoPack(from: number, to: number) {
+    setBatching(true);
+    setPlaying(false);
+    setBatchNote(`Videos ${from}–${to}…`);
+    try {
+      const ready = await fetchZip(
+        videoPackUrl(from, to),
+        (got, total) => {
+          if (total) {
+            setBatchNote(
+              `Downloading videos ${from}–${to} (${Math.round((got / total) * 100)}%)`,
+            );
+          }
+        },
+      );
+      if (!ready) {
+        window.alert(
+          "Those 30s MP4 packs are not on this server yet. Run npm run catalog:videos, then retry.",
+        );
+        setBatchNote("Failed");
+        return;
+      }
+      downloadBlob(ready, videoPackFilename(from, to));
+      setBatchNote(`Saved videos ${from}–${to}`);
+    } catch (err) {
+      console.error(err);
+      window.alert("Could not download that video pack.");
+      setBatchNote("Failed");
+    } finally {
+      setBatching(false);
+    }
+  }
+
   async function onDownloadStillPack(from: number, to: number) {
     setBatching(true);
     setPlaying(false);
@@ -362,8 +397,9 @@ export default function App() {
           <p className="hint">
             The CSV is scripts + Wikimedia stills, not hosted video files.
             Download all 395 stills is one zip of 9:16 frames. If the big file
-            is blocked, use the smaller packs. Load an episode to preview, then
-            download a WebM if you want motion.
+            is blocked, use the smaller packs. 30s videos are H.264 MP4s with
+            an original royalty-free pad for Buffer. Load an episode to
+            preview, then download a WebM if you want motion.
           </p>
           <div className="row-actions">
             <button
@@ -383,6 +419,19 @@ export default function App() {
                 onClick={() => void onDownloadStillPack(from, to)}
               >
                 {from}–{to}
+              </button>
+            ))}
+          </div>
+          <p className="hint">30s MP4 packs (Buffer / Reels)</p>
+          <div className="pack-row">
+            {stillPackRanges(catalog.length || 395).map(({ from, to }) => (
+              <button
+                key={`v-${from}-${to}`}
+                className="ghost"
+                disabled={batching || exporting}
+                onClick={() => void onDownloadVideoPack(from, to)}
+              >
+                {from}–{to} video
               </button>
             ))}
           </div>

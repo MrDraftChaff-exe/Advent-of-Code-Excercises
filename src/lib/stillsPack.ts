@@ -28,6 +28,14 @@ export function stillPackUrl(from: number, to: number): string {
   return `/catalog/${stillPackFilename(from, to)}`;
 }
 
+export function videoPackFilename(from: number, to: number): string {
+  return `facts-or-whacks-videos-${padEpisode(from)}-${padEpisode(to)}.zip`;
+}
+
+export function videoPackUrl(from: number, to: number): string {
+  return `/catalog/${videoPackFilename(from, to)}`;
+}
+
 export async function isZipBlob(blob: Blob): Promise<boolean> {
   if (blob.size < 4) return false;
   const buf = new Uint8Array(await blob.slice(0, 4).arrayBuffer());
