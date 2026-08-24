@@ -45,6 +45,25 @@ APARTHEID_FACTS = [
     "Black South Africans had been denied a national vote until those 1994 elections.",
 ]
 
+# Extra on-screen sentences for episodes whose Wikipedia extract is too thin.
+HAND_FACTS = {
+    200: [
+        "Prussian troops under Blücher arrived late in the day and crushed Napoleon's right.",
+        "Napoleon abdicated after the defeat and was exiled to Saint Helena.",
+        "Tens of thousands were killed or wounded before nightfall on 18 June 1815.",
+    ],
+    250: [
+        "No impact crater was found, which later pointed to an airburst high above the trees.",
+        "Seismic stations thousands of kilometres away registered the shock that morning.",
+        "The blast is still the largest impact event on Earth in recorded history.",
+    ],
+    350: [
+        "The Beatles played The Ed Sullivan Show on 9 February 1964 to about 73 million viewers.",
+        "Their U.S. singles then occupied the top five spots on the Billboard Hot 100.",
+        "Other British acts followed them onto American radio and television that year.",
+    ],
+}
+
 FILLER_TAIL = re.compile(
     r"\s+[—–-]\s+a key part of the story of\s+.+$",
     re.I,
@@ -250,8 +269,13 @@ def expand_episode(
                 if not wiki_relevant(item, title, " ".join(facts)):
                     continue
                 add_fact(facts, seen, item, title)
-                if len(facts) >= TARGET:
-                    return facts[:TARGET]
+            if len(facts) >= TARGET:
+                return facts[:TARGET]
+
+    for item in HAND_FACTS.get(int(ep.get("n") or 0), []):
+        add_fact(facts, seen, item, title)
+        if len(facts) >= TARGET:
+            return facts[:TARGET]
     return facts[:TARGET]
 
 
@@ -297,6 +321,10 @@ def force_fill(
         add_fact(filled, seen, item, title)
     extract = wiki_extract(title, cache, allow_network=True)
     for item in ranked_wiki_facts(extract, title, filled):
+        add_fact(filled, seen, item, title)
+        if len(filled) >= TARGET:
+            return filled[:TARGET]
+    for item in HAND_FACTS.get(int(ep.get("n") or 0), []):
         add_fact(filled, seen, item, title)
         if len(filled) >= TARGET:
             return filled[:TARGET]
