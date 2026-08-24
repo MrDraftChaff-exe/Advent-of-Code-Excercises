@@ -1,8 +1,8 @@
 # Facts or Whacks — 30s video batch
 
-Turn each topic still (or any folder of images/videos) into a **30-second 9:16 clip** with a trendy-style audio bed underneath.
+Turn each topic still (or any folder of images/videos) into a **30-second 9:16 clip** with a **royalty-free** audio bed.
 
-Licensed TikTok/Reels sounds cannot be bundled here. The script generates an original royalty-free dark-cinematic trap bed timed to 30s (same bed as `canva/audio/royalty_free_30s.mp3`). Do not substitute Canva Pro audio.
+No Canva Pro music and no licensed TikTok/Reels sounds. The repo ships an original 30s bed (`canva/audio/royalty_free_30s.mp3`, CC0). The local renderer generates the same style of original audio.
 
 ## Batch the CSV (all 30 topics)
 
@@ -16,7 +16,7 @@ Writes `output/videos/01-….mp4` through `30-….mp4`.
 
 ```bash
 python3 scripts/overlay_trendy_audio.py --input-dir /path/to/clips
-python3 scripts/overlay_trendy_audio.py --input-dir /path/to/clips --audio /path/to/your-sound.mp3
+python3 scripts/overlay_trendy_audio.py --input-dir /path/to/clips --audio canva/audio/royalty_free_30s.mp3
 ```
 
 Images become a Ken Burns 9:16 clip. Videos are fitted to 9:16, trimmed/padded to 30s, and the soundtrack is replaced.
@@ -27,18 +27,18 @@ Needs `ffmpeg`, `python3`, `numpy`, `Pillow`, and `xlsxwriter`.
 python3 -m pip install --user pillow numpy xlsxwriter
 ```
 
-## Canva Business — 392 images → 30s videos with Pro music
+## Canva Business — 392 images → 30s videos (royalty-free audio)
 
-This environment has **no Canva MCP and no Canva login**. It cannot open your Canva Business account, Autofill 392 designs, or export MP4s for you. Canva Connect Autofill is **Enterprise-only**; Business is not enough for the API path.
+This environment has **no Canva MCP and no Canva login**, so it cannot open your account or export 392 MP4s. Canva Connect Autofill is **Enterprise-only**.
 
-What **does** work on Canva Business is one 30-second video template (music on the template) plus Bulk Create.
+On Canva Business, use **one 30s video template + Bulk Create**. Put **royalty-free** audio on the template — **not** Canva Pro (crown) tracks.
 
 ### Prepare the pack locally
 
 Drop the 392 images in `canva/inbox/` (jpg/png/webp; files with `-raw` in the name are skipped):
 
 ```bash
-python3 scripts/prepare_canva_bulk.py --images-dir canva/inbox --csv facts-or-whacks-30-videos.csv
+python3 scripts/prepare_canva_bulk.py --images-dir canva/inbox
 ```
 
 That writes `output/canva/`:
@@ -46,28 +46,25 @@ That writes `output/canva/`:
 - `stills/` — cover-cropped **1080×1920** JPEGs
 - `bulk-create-batch-01-of-02.xlsx` (300 rows) and `batch-02` (92 rows)
 - matching `.csv` text files
+- `royalty_free_30s.mp3` — original CC0 bed (also at `canva/audio/royalty_free_30s.mp3`)
 - `template-mock-1080x1920.jpg` — labeled layout guide (not a Canva export)
 - `manifest.json`
 
-Images are **embedded in the spreadsheet cells** (`xlsxwriter.embed_image`). Canva ignores photo URLs and floating Excel pictures.
+Images are **embedded in the spreadsheet cells**. Canva ignores photo URLs.
 
-`--max-rows` defaults to **300** (the Apps → Bulk Create cap). Use it to preview a split:
-
-```bash
-python3 scripts/prepare_canva_bulk.py --images-dir output/stills --csv facts-or-whacks-30-videos.csv --max-rows 12 --out output/canva-split
-```
+`--max-rows` defaults to **300** (the Apps → Bulk Create cap).
 
 ### Build the template once (Canva desktop)
 
-1. **Create a design** → **Instagram Video** or **TikTok Video** (1080×1920). This must be a **video**, not a static Instagram post.
-2. Click the page duration and set it to **30s**.
-3. **Elements → Frames** → stretch a frame full-bleed. This is the photo slot. **Animate → Pan and zoom** (Ken Burns) for the full 30s.
-4. Add **title** and **hook** text boxes over a dark lower-third. Optional handle `@FactsOrWhacks` at the top.
-5. **Elements → Audio** → filter **Pro (crown)** → pick a 30s+ **instrumental**. Trim **0:00–0:30**, fade the last second. Do **not** use Popular / chart tracks.
-6. Leave the music **on the template**. Every bulk copy inherits it. Do not map audio as a Bulk Create column.
-7. Canva Pro/Business audio is royalty-free under Canva’s Content License **when exported as part of the design**. Each MP4 gets its **own** license.
+1. **Create a design** → **Instagram Video** or **TikTok Video** (1080×1920). Must be a **video**, not a static post.
+2. Set page duration to **30s**.
+3. **Elements → Frames** → full-bleed frame. **Animate → Pan and zoom** for 30s.
+4. Add **title** and **hook** text over a dark lower-third.
+5. **Uploads** → upload `canva/audio/royalty_free_30s.mp3` (or any CC0 / Pixabay / Mixkit / YouTube Audio Library track you have rights to). Place it on the timeline, trim **0:00–0:30**, fade the last second.
+6. Do **not** use **Elements → Audio → Pro (crown)** or Popular/chart songs.
+7. Leave the uploaded track **on the template** so every bulk copy inherits it. Do not map audio as a Bulk Create column.
 
-Field list: `canva/template_spec.json`.
+License for the shipped bed: `canva/audio/LICENSE.txt`. Field list: `canva/template_spec.json`.
 
 ### Bulk Create (392 = two Apps batches, or one Sheet)
 
@@ -85,6 +82,4 @@ Field list: `canva/template_spec.json`.
 2. Select the data range → **Actions → Bulk Create designs**.
 3. Pick the 30s video template. Same field mapping. Generate once for all 392.
 
-Before export: **connect YouTube / Instagram / TikTok** in Canva settings so the Pro-audio license attaches and Content ID claims are easier to clear.
-
-To let an agent drive Canva from Cursor, connect the [official Canva MCP](https://www.canva.dev/docs/mcp/) (Business counts as Pro-and-above for uploads/exports; Autofill of 392 designs via API still needs Enterprise).
+To let an agent drive Canva from Cursor, connect the [official Canva MCP](https://www.canva.dev/docs/mcp/). Autofill of 392 designs via API still needs Enterprise.

@@ -11,11 +11,11 @@ embedded images (Canva ignores image URLs and floating Excel pictures).
 
 Then in Canva (desktop, Business):
   1. Create a 1080x1920 *video* (not a static post), page duration 30s.
-  2. Full-bleed frame + title/hook text + Pro (crown) audio trimmed to 30s.
-  3. Apps → Bulk Create → Upload data → pick batch-01.xlsx (max 300 rows).
-  4. Repeat for batch-02.xlsx if you have more than 300 images.
-  5. Export each design as MP4. Connect social accounts first so the
-     Canva Pro-audio license travels with the file.
+  2. Full-bleed frame + title/hook text.
+  3. Uploads → royalty_free_30s.mp3 (do NOT use Canva Pro/crown audio).
+  4. Apps → Bulk Create → Upload data → pick batch-01.xlsx (max 300 rows).
+  5. Repeat for batch-02.xlsx if you have more than 300 images.
+  6. Export each design as MP4.
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ import argparse
 import csv
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -36,6 +37,7 @@ HEIGHT = 1920
 CANVA_APP_ROW_LIMIT = 300
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
 HANDLE = "@FactsOrWhacks"
+RF_AUDIO_NAME = "royalty_free_30s.mp3"
 FONT_SERIF = Path("/usr/share/fonts/truetype/noto/NotoSerifDisplay-Bold.ttf")
 FONT_SANS = Path("/usr/share/fonts/truetype/macos/Inter-SemiBold.ttf")
 
@@ -183,10 +185,10 @@ def write_template_mock(still: Path, dest: Path, title: str, hook: str, handle: 
     draw.text((WIDTH // 2, y + 18), hook[:48] or "HOOK", font=sans, fill=(255, 255, 255, 245), anchor="mt")
     y = 1510
     draw.text((WIDTH // 2, y), "title / hook  →  Bulk Create text fields", font=small, fill=(200, 200, 200, 220), anchor="mt")
-    draw.text((WIDTH // 2, HEIGHT - 210), "AUDIO ON TEMPLATE (not a data column)", font=sans, fill=(255, 220, 80, 255), anchor="mt")
+    draw.text((WIDTH // 2, HEIGHT - 210), "ROYALTY-FREE AUDIO ON TEMPLATE (not a data column)", font=sans, fill=(255, 220, 80, 255), anchor="mt")
     draw.text(
         (WIDTH // 2, HEIGHT - 160),
-        "Elements → Audio → Pro (crown)  •  trim 0:00–0:30  •  skip Popular",
+        "Uploads → royalty_free_30s.mp3  •  not Canva Pro  •  trim 0:00–0:30",
         font=small,
         fill=(255, 240, 180, 230),
         anchor="mt",
@@ -239,6 +241,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help=f"Rows per xlsx (Canva Apps → Bulk Create cap is {CANVA_APP_ROW_LIMIT}).",
     )
     p.add_argument("--handle", dest="handle", default=HANDLE)
+    p.add_argument(
+        "--audio",
+        dest="audio",
+        type=Path,
+        help="Royalty-free mp3/wav to copy into the pack (default: canva/audio/royalty_free_30s.mp3).",
+    )
     p.add_argument(
         "--no-mock",
         dest="no_mock",
@@ -312,6 +320,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Wrote {mock_path.name} (layout guide, not a Canva export)", flush=True)
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
+    audio_src = (args.audio or (ROOT / "canva" / "audio" / RF_AUDIO_NAME)).resolve()
+    if not audio_src.exists():
+        raise SystemExit(
+            f"Royalty-free audio not found: {audio_src}\n"
+            "Generate it or pass --audio /path/to/cc0.mp3"
+        )
+    audio_dest = args.out_dir / audio_src.name
+    if audio_dest.resolve() != audio_src:
+        shutil.copy2(audio_src, audio_dest)
+    manifest["audio"] = str(audio_dest)
+    manifest["audio_license"] = "royalty-free upload — not Canva Pro"
+
     manifest_path = args.out_dir / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
@@ -327,12 +347,12 @@ def main(argv: list[str] | None = None) -> int:
     print("In Canva desktop (Business):")
     print("  1. Create Instagram/TikTok Video 1080×1920. Set page duration to 30s.")
     print("  2. Add a full-bleed Frame. Add title + hook text boxes.")
-    print("  3. Elements → Audio → Pro (crown) instrumental. Trim to 30s, fade out.")
-    print("     Skip Popular/chart songs. Leave audio on the template (not a data field).")
+    print(f"  3. Uploads → {audio_dest.name} (royalty-free). Trim to 30s, fade out.")
+    print("     Do NOT use Canva Pro (crown) or Popular/chart audio.")
     print("  4. Apps → Bulk Create → Upload data → bulk-create-batch-01-of-XX.xlsx")
     print("  5. Connect `image` → frame, `title` → title, `hook` → hook. Preview 1 row.")
     print("  6. Generate, then export MP4. Repeat for remaining batches.")
-    print("  7. Connect YouTube/Instagram/TikTok before export so Pro-audio licenses attach.")
+    print(f"Audio: {audio_dest}")
     print(f"Manifest: {manifest_path}")
     return 0
 
