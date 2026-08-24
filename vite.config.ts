@@ -1,7 +1,12 @@
 import { defineConfig } from "vitest/config";
 import type { Plugin } from "vite";
 import react from "@vitejs/plugin-react";
+import fs from "node:fs";
+import path from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 function zipAttachment(): Plugin {
   const middleware = (
@@ -9,14 +14,19 @@ function zipAttachment(): Plugin {
     res: ServerResponse,
     next: () => void,
   ) => {
-    const url = req.url ?? "";
-    if (!/\.zip(\?|$)/.test(url)) {
+    const urlPath = decodeURIComponent((req.url ?? "").split("?")[0] ?? "");
+    if (!urlPath.endsWith(".zip")) {
       next();
       return;
     }
-    const name = decodeURIComponent(
-      url.split("/").pop()?.split("?")[0] ?? "download.zip",
-    );
+    const name = path.basename(urlPath);
+    const file = path.join(ROOT, "public", urlPath.replace(/^\//, ""));
+    if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "text/plain; charset=utf-8");
+      res.end("zip not found");
+      return;
+    }
     res.setHeader("Content-Disposition", `attachment; filename="${name}"`);
     next();
   };
