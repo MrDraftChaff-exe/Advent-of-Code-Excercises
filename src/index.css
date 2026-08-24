@@ -283,6 +283,13 @@ button {
   font-weight: 700;
 }
 
+a.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .primary:disabled,
 .ghost:disabled {
   opacity: 0.5;

@@ -254,10 +254,19 @@ export default function App() {
         <div className="section">
           <h2>395-episode catalog</h2>
           <p className="hint">
-            The CSV is scripts + Wikimedia stills, not hosted video files. Load
-            an episode, then one-click download a WebM. A range ZIP encodes in
-            real time (~20s per video).
+            The CSV is scripts + Wikimedia stills, not hosted video files.
+            Download all 395 stills is one zip of 9:16 frames. Load an episode
+            to preview, then download a WebM if you want motion.
           </p>
+          <div className="row-actions">
+            <a
+              className="primary"
+              href="/catalog/facts-or-whacks-395-stills.zip"
+              download="facts-or-whacks-395-stills.zip"
+            >
+              Download all 395 stills
+            </a>
+          </div>
           <label className="field">
             <span className="field-label">Search</span>
             <input
