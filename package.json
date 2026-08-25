@@ -12,7 +12,8 @@
     "catalog:facts": "python3 scripts/expand_catalog_facts.py",
     "catalog:stills": "node scripts/export_catalog_stills.mjs",
     "catalog:pad": "python3 scripts/make_pad_audio.py",
-    "catalog:videos": "python3 scripts/stills_to_videos.py"
+    "catalog:videos": "python3 scripts/stills_to_videos.py",
+    "catalog:captions": "python3 scripts/write_video_captions_csv.py"
   },
   "dependencies": {
     "jszip": "^3.10.1",

@@ -53,6 +53,8 @@ npm run catalog:videos
 
 That writes `dist/catalog-videos/*.mp4` and 50-episode zips under `public/catalog/facts-or-whacks-videos-*.zip`.
 
+`npm run catalog:captions` writes `public/catalog/facts-or-whacks-videos-captions.csv`. Each row maps one MP4 (`video_filename` / `path_inside_zip` / `video_zip_pack`) to a paste-ready Buffer caption and hashtags.
+
 Themes: Cosmic, Ocean, Ember. Reveal modes: all-at-once or line-by-line cascade.
 
 ## Tests

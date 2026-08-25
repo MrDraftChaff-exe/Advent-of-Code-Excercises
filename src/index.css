@@ -295,7 +295,8 @@ button {
   font-weight: 700;
 }
 
-a.primary {
+a.primary,
+a.ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;

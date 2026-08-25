@@ -435,6 +435,15 @@ export default function App() {
               </button>
             ))}
           </div>
+          <div className="row-actions">
+            <a
+              className="ghost"
+              href="/catalog/facts-or-whacks-videos-captions.csv"
+              download="facts-or-whacks-videos-captions.csv"
+            >
+              Download captions CSV
+            </a>
+          </div>
           <label className="field">
             <span className="field-label">Search</span>
             <input
