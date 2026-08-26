@@ -9,3 +9,7 @@ How to match a file:
 3. Copy `paste_caption` into Buffer. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
 Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Buffer’s CSV bulk upload cannot attach these videos; paste captions in the composer.
+
+## Dolly Parton extra post
+
+Dolly is not in the 395 catalog. Load the **Dolly Parton** template in the studio, or paste [`dolly-parton-post.txt`](dolly-parton-post.txt). One-row Buffer helper: [`dolly-parton-post.csv`](dolly-parton-post.csv). Video filename: `396-dolly-parton.mp4`.

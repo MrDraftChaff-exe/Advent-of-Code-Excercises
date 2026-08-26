@@ -18,6 +18,8 @@ export type ReelContent = {
   imageCredit: string;
   bullets: string[];
   hashtags: string;
+  /** Full caption to paste under the Reel. Stays off the image. */
+  postCaption?: string;
   handle: string;
   durationSec: number;
   theme: ThemeId;

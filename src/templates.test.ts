@@ -40,6 +40,25 @@ describe("templates", () => {
     );
   });
 
+  it("ships a Dolly Parton post template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const dolly = TEMPLATES.find((t) => t.id === "dolly");
+    expect(dolly).toBeDefined();
+    expect(dolly?.title).toBe("Dolly Parton");
+    expect(dolly?.year).toBe("1973");
+    expect(dolly?.imageUrl).toContain("dolly-parton-2010");
+    expect(dolly?.imageCredit).toMatch(/Curtis Hilbun/);
+    expect(dolly?.theme).toBe("ember");
+    expect(dolly?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(dolly?.bullets[3]).toMatch(/Jolene/);
+    expect(dolly?.bullets[4]).toMatch(/Elvis/);
+    expect(dolly?.postCaption).toMatch(/The blueprint/);
+    expect(dolly?.postCaption).toContain("@FactsOrWhacks");
+    expect(dolly?.hashtags).toContain("#DollyParton");
+    expect(canvasHeadlineText(dolly!)).toBe("Dolly Parton");
+    expect(canvasHeadlineText(dolly!)).not.toMatch(/\b396\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

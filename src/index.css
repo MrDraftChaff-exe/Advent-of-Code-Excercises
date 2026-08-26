@@ -156,6 +156,11 @@ button {
   min-height: 72px;
 }
 
+.field textarea.post-caption {
+  min-height: 220px;
+  line-height: 1.45;
+}
+
 .field textarea:placeholder-shown,
 .fact-card textarea {
   min-height: 64px;

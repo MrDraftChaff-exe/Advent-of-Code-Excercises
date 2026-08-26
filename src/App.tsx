@@ -20,6 +20,7 @@ import {
   parseCatalogCsv,
 } from "./lib/catalog";
 import { zipReelExports } from "./lib/batchExport";
+import { buildPasteCaption } from "./lib/postCaption";
 import {
   ALL_STILLS_NAME,
   ALL_STILLS_URL,
@@ -64,6 +65,7 @@ export default function App() {
   const [batchTo, setBatchTo] = useState(1);
   const [batching, setBatching] = useState(false);
   const [batchNote, setBatchNote] = useState("");
+  const [copiedCaption, setCopiedCaption] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<ReturnType<typeof createAmbient> | null>(null);
 
@@ -174,6 +176,18 @@ export default function App() {
   async function onPng() {
     const blob = await snapshotPng(reel, Math.max(time, 3));
     downloadBlob(blob, `${slugify(reel.name || reel.title)}.png`);
+  }
+
+  async function onCopyCaption() {
+    const text = buildPasteCaption(reel);
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      window.prompt("Copy this caption", text);
+      return;
+    }
+    setCopiedCaption(true);
+    window.setTimeout(() => setCopiedCaption(false), 1600);
   }
 
   async function onPickImage(file: File | undefined) {
@@ -443,6 +457,13 @@ export default function App() {
             >
               Download captions CSV
             </a>
+            <a
+              className="ghost"
+              href="/catalog/dolly-parton-post.txt"
+              download="dolly-parton-post.txt"
+            >
+              Dolly Parton caption
+            </a>
           </div>
           <label className="field">
             <span className="field-label">Search</span>
@@ -702,6 +723,27 @@ export default function App() {
             Kept for your post caption. Not drawn on the image.
           </span>
         </label>
+
+        <label className="field">
+          <span className="field-label">Post caption</span>
+          <textarea
+            className="post-caption"
+            value={buildPasteCaption(reel)}
+            onChange={(e) =>
+              patch({ postCaption: e.target.value, id: "custom" })
+            }
+            placeholder="Paste-ready caption for Reels, TikTok, or Shorts"
+          />
+          <span className="hint">
+            Trendy description plus handle and hashtags. Copy this under the
+            video. Not drawn on the image.
+          </span>
+        </label>
+        <div className="row-actions">
+          <button className="ghost" onClick={() => void onCopyCaption()}>
+            {copiedCaption ? "Copied" : "Copy post caption"}
+          </button>
+        </div>
 
         <label className="field">
           <span className="field-label">Handle</span>

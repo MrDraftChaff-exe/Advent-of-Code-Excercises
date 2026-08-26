@@ -83,6 +83,20 @@ describe("canvas layout rules", () => {
     }
   });
 
+  it("keeps the Dolly post caption off the phone frame", () => {
+    const dolly = TEMPLATES.find((t) => t.id === "dolly");
+    expect(dolly?.postCaption).toMatch(/The blueprint/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, dolly!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Dolly Parton");
+    expect(painted).toContain("Jolene");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("The blueprint");
+    expect(painted).not.toContain("Whitney");
+    expect(painted).not.toMatch(/#DollyParton/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);
