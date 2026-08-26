@@ -59,6 +59,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(dolly!)).not.toMatch(/\b396\b/);
   });
 
+  it("ships a Tim Curry tribute template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const curry = TEMPLATES.find((t) => t.id === "tim-curry");
+    expect(curry).toBeDefined();
+    expect(curry?.title).toBe("Tim Curry");
+    expect(curry?.year).toBe("1946–2026");
+    expect(curry?.imageUrl).toContain("tim-curry-2025");
+    expect(curry?.imageCredit).toMatch(/Kevin Paul/);
+    expect(curry?.theme).toBe("cosmic");
+    expect(curry?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(curry?.bullets[3]).toMatch(/Rocky Horror/);
+    expect(curry?.bullets[11]).toMatch(/August 25, 2026/);
+    expect(curry?.postCaption).toMatch(/villain era/);
+    expect(curry?.postCaption).toContain("@FactsOrWhacks");
+    expect(curry?.hashtags).toContain("#TimCurry");
+    expect(canvasHeadlineText(curry!)).toBe("Tim Curry");
+    expect(canvasHeadlineText(curry!)).not.toMatch(/\b397\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

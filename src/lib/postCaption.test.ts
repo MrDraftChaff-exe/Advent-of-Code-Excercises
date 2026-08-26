@@ -14,6 +14,18 @@ describe("paste captions", () => {
     expect(caption.startsWith("She wrote")).toBe(true);
   });
 
+  it("uses the Tim Curry tribute caption as the paste block", () => {
+    const curry = TEMPLATES.find((t) => t.id === "tim-curry");
+    expect(curry).toBeDefined();
+    const caption = buildPasteCaption(curry!);
+    expect(caption).toContain("50-year party");
+    expect(caption).toContain("The villain era lasted five decades.");
+    expect(caption).toContain("1946–2026");
+    expect(caption).toContain("@FactsOrWhacks");
+    expect(caption).toContain("#TimCurry");
+    expect(caption.startsWith("He turned")).toBe(true);
+  });
+
   it("falls back to title, two facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

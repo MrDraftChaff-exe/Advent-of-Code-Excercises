@@ -13,3 +13,7 @@ Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Buffer’s CSV
 ## Dolly Parton extra post
 
 Dolly is not in the 395 catalog. Load the **Dolly Parton** template in the studio, or paste [`dolly-parton-post.txt`](dolly-parton-post.txt). One-row Buffer helper: [`dolly-parton-post.csv`](dolly-parton-post.csv). Video filename: `396-dolly-parton.mp4`.
+
+## Tim Curry extra post
+
+Tim Curry is not in the 395 catalog. Load the **Tim Curry** template, or paste [`tim-curry-post.txt`](tim-curry-post.txt). One-row Buffer helper: [`tim-curry-post.csv`](tim-curry-post.csv). Video filename: `397-tim-curry.mp4`.

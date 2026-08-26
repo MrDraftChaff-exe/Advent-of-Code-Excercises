@@ -464,6 +464,13 @@ export default function App() {
             >
               Dolly Parton caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/tim-curry-post.txt"
+              download="tim-curry-post.txt"
+            >
+              Tim Curry caption
+            </a>
           </div>
           <label className="field">
             <span className="field-label">Search</span>

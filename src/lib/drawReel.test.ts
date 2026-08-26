@@ -97,6 +97,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#DollyParton/);
   });
 
+  it("keeps the Tim Curry post caption off the phone frame", () => {
+    const curry = TEMPLATES.find((t) => t.id === "tim-curry");
+    expect(curry?.postCaption).toMatch(/villain era/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, curry!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Tim Curry");
+    expect(painted).toContain("Rocky Horror");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("villain era");
+    expect(painted).not.toContain("Zero repeats");
+    expect(painted).not.toMatch(/#TimCurry/);
+    expect(painted).not.toMatch(/#RipTimCurry/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

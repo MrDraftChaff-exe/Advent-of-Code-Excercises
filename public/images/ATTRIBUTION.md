@@ -17,6 +17,16 @@ The reel template prints the credit on-frame so exported videos and stills keep 
 
 The Dolly template prints the credit on-frame. Paste caption: [`../catalog/dolly-parton-post.txt`](../catalog/dolly-parton-post.txt).
 
+# Tim Curry, 2025
+
+- File: `tim-curry-2025.jpg`
+- Original: [Tim_Curry_-_Rocky_Horror_50th.jpg](https://commons.wikimedia.org/wiki/File:Tim_Curry_-_Rocky_Horror_50th.jpg)
+- Photographer: Kevin Paul
+- Date: 26 September 2025, Rocky Horror Picture Show 50th anniversary Q&A, Los Angeles
+- License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+The Tim Curry template prints the credit on-frame. Paste caption: [`../catalog/tim-curry-post.txt`](../catalog/tim-curry-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
