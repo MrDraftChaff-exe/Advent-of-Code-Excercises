@@ -20,7 +20,7 @@ import {
   parseCatalogCsv,
 } from "./lib/catalog";
 import { zipReelExports } from "./lib/batchExport";
-import { buildPasteCaption } from "./lib/postCaption";
+import { buildPasteCaption, catalogCopyCaption } from "./lib/postCaption";
 import {
   ALL_STILLS_NAME,
   ALL_STILLS_URL,
@@ -66,6 +66,7 @@ export default function App() {
   const [batching, setBatching] = useState(false);
   const [batchNote, setBatchNote] = useState("");
   const [copiedCaption, setCopiedCaption] = useState(false);
+  const [copiedEpisode, setCopiedEpisode] = useState<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<ReturnType<typeof createAmbient> | null>(null);
 
@@ -178,16 +179,26 @@ export default function App() {
     downloadBlob(blob, `${slugify(reel.name || reel.title)}.png`);
   }
 
-  async function onCopyCaption() {
-    const text = buildPasteCaption(reel);
+  async function copyText(text: string): Promise<boolean> {
     try {
       await navigator.clipboard.writeText(text);
+      return true;
     } catch {
       window.prompt("Copy this caption", text);
-      return;
+      return false;
     }
+  }
+
+  async function onCopyCaption() {
+    if (!(await copyText(buildPasteCaption(reel)))) return;
     setCopiedCaption(true);
     window.setTimeout(() => setCopiedCaption(false), 1600);
+  }
+
+  async function onCopyCatalogCaption(ep: CatalogEpisode) {
+    if (!(await copyText(catalogCopyCaption(ep)))) return;
+    setCopiedEpisode(ep.n);
+    window.setTimeout(() => setCopiedEpisode(null), 1600);
   }
 
   async function onPickImage(file: File | undefined) {
@@ -472,6 +483,11 @@ export default function App() {
               Tim Curry caption
             </a>
           </div>
+          <p className="hint">
+            CSV column <code>copy_caption</code> is description + handle +
+            hashtags on one line. Click a cell and copy. Or tap Copy next to an
+            episode.
+          </p>
           <label className="field">
             <span className="field-label">Search</span>
             <input
@@ -482,13 +498,24 @@ export default function App() {
           </label>
           <div className="catalog-list">
             {filteredCatalog.slice(0, 80).map((ep) => (
-              <button
+              <div
                 key={ep.n}
-                className={`catalog-item ${reel.id === `catalog-${ep.n}` ? "active" : ""}`}
-                onClick={() => loadEpisode(ep)}
+                className={`catalog-row ${reel.id === `catalog-${ep.n}` ? "active" : ""}`}
               >
-                <span>{ep.n}.</span> {ep.title}
-              </button>
+                <button
+                  className="catalog-item"
+                  onClick={() => loadEpisode(ep)}
+                >
+                  <span>{ep.n}.</span> {ep.title}
+                </button>
+                <button
+                  type="button"
+                  className="ghost catalog-copy"
+                  onClick={() => void onCopyCatalogCaption(ep)}
+                >
+                  {copiedEpisode === ep.n ? "Copied" : "Copy"}
+                </button>
+              </div>
             ))}
           </div>
           {filteredCatalog.length > 80 ? (

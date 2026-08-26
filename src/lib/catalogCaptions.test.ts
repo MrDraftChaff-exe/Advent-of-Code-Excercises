@@ -52,7 +52,7 @@ function parseCsv(text: string): string[][] {
 }
 
 describe("video captions CSV", () => {
-  it("maps every episode to a unique MP4 name, caption, and hashtags", () => {
+  it("maps every video to a one-line copy_caption with description and hashtags", () => {
     const dir = mkdtempSync(join(tmpdir(), "caps-"));
     const out = join(dir, "captions.csv");
     const run = spawnSync(
@@ -67,23 +67,30 @@ describe("video captions CSV", () => {
       { encoding: "utf8" },
     );
     expect(run.status, run.stderr).toBe(0);
-    const rows = parseCsv(readFileSync(out, "utf8"));
+    const raw = readFileSync(out, "utf8");
+    const physicalLines = raw.replace(/^\uFEFF/, "").trimEnd().split("\n");
+    expect(physicalLines).toHaveLength(398);
+
+    const rows = parseCsv(raw);
     const header = rows[0];
     const body = rows.slice(1);
-    expect(header).toContain("video_filename");
-    expect(header).toContain("paste_caption");
+    expect(header[0]).toBe("video_filename");
+    expect(header[1]).toBe("copy_caption");
     expect(header).toContain("hashtags");
-    expect(body).toHaveLength(395);
+    expect(header).toContain("description");
+    expect(header).not.toContain("paste_caption");
+    expect(body).toHaveLength(397);
 
     const fileIdx = header.indexOf("video_filename");
+    const copyIdx = header.indexOf("copy_caption");
     const packIdx = header.indexOf("video_zip_pack");
     const hashIdx = header.indexOf("hashtags");
-    const pasteIdx = header.indexOf("paste_caption");
+    const descIdx = header.indexOf("description");
     const titleIdx = header.indexOf("title");
     const numIdx = header.indexOf("episode_number");
 
     const names = body.map((r) => r[fileIdx]);
-    expect(new Set(names).size).toBe(395);
+    expect(new Set(names).size).toBe(397);
     expect(body[0][fileIdx]).toBe("001-the-enlightenment.mp4");
     expect(body[0][packIdx]).toBe("facts-or-whacks-videos-001-050.zip");
     const apartheid = body.find((r) => r[numIdx] === "30");
@@ -91,10 +98,28 @@ describe("video captions CSV", () => {
     expect(apartheid?.[titleIdx]).toMatch(/apartheid/i);
     expect(apartheid?.[packIdx]).toBe("facts-or-whacks-videos-001-050.zip");
     expect(apartheid?.[hashIdx]).toContain("#NelsonMandela");
-    expect(apartheid?.[pasteIdx]).toContain("@FactsOrWhacks");
-    expect(apartheid?.[pasteIdx]).toContain("#");
+    expect(apartheid?.[copyIdx]).toContain("@FactsOrWhacks");
+    expect(apartheid?.[copyIdx]).toContain("#NelsonMandela");
+    expect(apartheid?.[copyIdx]).toContain(apartheid?.[descIdx] ?? "missing");
+    expect(apartheid?.[copyIdx]).not.toMatch(/\r|\n/);
     expect(body.every((r) => r[hashIdx].includes("#FactsOrWhacks"))).toBe(true);
-    expect(body[394][fileIdx]).toMatch(/^395-/);
-    expect(body[394][packIdx]).toBe("facts-or-whacks-videos-351-395.zip");
+    expect(body.every((r) => !r[copyIdx].includes("\n"))).toBe(true);
+    expect(body.every((r) => r[copyIdx].includes("@FactsOrWhacks"))).toBe(true);
+    expect(body.every((r) => r[copyIdx].includes("#"))).toBe(true);
+
+    const catalog = body.filter((r) => Number(r[numIdx]) <= 395);
+    expect(catalog).toHaveLength(395);
+    expect(catalog[394][fileIdx]).toMatch(/^395-/);
+    expect(catalog[394][packIdx]).toBe("facts-or-whacks-videos-351-395.zip");
+
+    const dolly = body.find((r) => r[numIdx] === "396");
+    expect(dolly?.[fileIdx]).toBe("396-dolly-parton.mp4");
+    expect(dolly?.[copyIdx]).toContain("#DollyParton");
+    expect(dolly?.[copyIdx]).not.toMatch(/\r|\n/);
+
+    const curry = body.find((r) => r[numIdx] === "397");
+    expect(curry?.[fileIdx]).toBe("397-tim-curry.mp4");
+    expect(curry?.[copyIdx]).toContain("#TimCurry");
+    expect(curry?.[copyIdx]).not.toMatch(/\r|\n/);
   });
 });

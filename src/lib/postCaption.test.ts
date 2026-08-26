@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { TEMPLATES } from "../templates";
-import { buildPasteCaption } from "./postCaption";
+import {
+  brandHashtags,
+  buildPasteCaption,
+  catalogCopyCaption,
+  oneLine,
+} from "./postCaption";
+import type { CatalogEpisode } from "./catalog";
 
 describe("paste captions", () => {
   it("uses the Dolly trendy caption as the paste block", () => {
@@ -26,7 +32,7 @@ describe("paste captions", () => {
     expect(caption.startsWith("He turned")).toBe(true);
   });
 
-  it("falls back to title, two facts, handle, and hashtags", () => {
+  it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],
       postCaption: undefined,
@@ -35,5 +41,32 @@ describe("paste captions", () => {
     expect(caption).toContain(TEMPLATES[0].bullets[0]);
     expect(caption).toContain("@FactsOrWhacks");
     expect(caption).toContain("#NelsonMandela");
+    expect(caption).not.toMatch(/\r|\n/);
+  });
+
+  it("builds a one-click catalog copy caption", () => {
+    const ep: CatalogEpisode = {
+      n: 2,
+      title: "American Revolution",
+      hook: "1776: 13 colonies said NO to a king.",
+      bullets: [
+        "Boston Tea Party — 342 chests dumped.",
+        "Declaration signed July 4, 1776.",
+      ],
+      image: "/images/x.jpg",
+      tags: "#AmericanRevolution #USHistory",
+      credit: "Public domain",
+      source: "https://example.com",
+    };
+    const caption = catalogCopyCaption(ep);
+    expect(caption).toBe(
+      oneLine(
+        "American Revolution (1776). 1776: 13 colonies said NO to a king. Boston Tea Party — 342 chests dumped. Declaration signed July 4, 1776.",
+        "@FactsOrWhacks",
+        brandHashtags(ep.tags),
+      ),
+    );
+    expect(caption).toContain("#FactsOrWhacks");
+    expect(caption).not.toMatch(/\r|\n/);
   });
 });

@@ -248,9 +248,22 @@ button {
   background: var(--panel);
 }
 
+.catalog-row {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+  border-radius: 8px;
+}
+
+.catalog-row.active,
+.catalog-row:hover {
+  background: var(--accent-dim);
+}
+
 .catalog-item {
   display: block;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   text-align: left;
   border: 0;
   background: transparent;
@@ -266,9 +279,11 @@ button {
   margin-right: 6px;
 }
 
-.catalog-item.active,
-.catalog-item:hover {
-  background: var(--accent-dim);
+.catalog-copy {
+  flex: 0 0 auto;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 2px;
 }
 
 .row-actions {
