@@ -177,6 +177,14 @@ def extra_rows() -> list[dict[str, str]]:
             caption_path=catalog / "tim-curry-post.txt",
             credit="Photo: Kevin Paul, 2025 · CC BY 4.0",
         ),
+        extra_row(
+            n=398,
+            title="Peter Cullen",
+            year="1941–2026",
+            filename="398-peter-cullen.mp4",
+            caption_path=catalog / "peter-cullen-post.txt",
+            credit="Photo: Pedro Heshike, 2023 · CC BY 2.0",
+        ),
     ]
 
 
@@ -254,6 +262,7 @@ def main() -> None:
         by_n = {int(row["episode_number"]): row for row in extras}
         write_rows(ROOT / "public/catalog/dolly-parton-post.csv", [by_n[396]])
         write_rows(ROOT / "public/catalog/tim-curry-post.csv", [by_n[397]])
+        write_rows(ROOT / "public/catalog/peter-cullen-post.csv", [by_n[398]])
     print(args.out, args.out.stat().st_size)
 
 

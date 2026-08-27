@@ -78,6 +78,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(curry!)).not.toMatch(/\b397\b/);
   });
 
+  it("ships a Peter Cullen tribute template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const cullen = TEMPLATES.find((t) => t.id === "peter-cullen");
+    expect(cullen).toBeDefined();
+    expect(cullen?.title).toBe("Peter Cullen");
+    expect(cullen?.year).toBe("1941–2026");
+    expect(cullen?.imageUrl).toContain("peter-cullen-2023");
+    expect(cullen?.imageCredit).toMatch(/Pedro Heshike/);
+    expect(cullen?.theme).toBe("ocean");
+    expect(cullen?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(cullen?.bullets[5]).toMatch(/Optimus Prime/);
+    expect(cullen?.bullets[11]).toMatch(/August 26, 2026/);
+    expect(cullen?.postCaption).toMatch(/quiet hero/);
+    expect(cullen?.postCaption).toContain("@FactsOrWhacks");
+    expect(cullen?.hashtags).toContain("#PeterCullen");
+    expect(canvasHeadlineText(cullen!)).toBe("Peter Cullen");
+    expect(canvasHeadlineText(cullen!)).not.toMatch(/\b398\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

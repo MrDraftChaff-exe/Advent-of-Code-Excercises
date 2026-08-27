@@ -27,6 +27,16 @@ The Dolly template prints the credit on-frame. Paste caption: [`../catalog/dolly
 
 The Tim Curry template prints the credit on-frame. Paste caption: [`../catalog/tim-curry-post.txt`](../catalog/tim-curry-post.txt).
 
+# Peter Cullen, 2023
+
+- File: `peter-cullen-2023.jpg`
+- Original: [Peter_Cullen_(53394384000).jpg](https://commons.wikimedia.org/wiki/File:Peter_Cullen_(53394384000).jpg)
+- Photographer: Pedro Heshike for Galaxy Con
+- Date: 2 December 2023, GalaxyCon Columbus
+- License: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+
+The Peter Cullen template prints the credit on-frame. Paste caption: [`../catalog/peter-cullen-post.txt`](../catalog/peter-cullen-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -482,6 +482,13 @@ export default function App() {
             >
               Tim Curry caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/peter-cullen-post.txt"
+              download="peter-cullen-post.txt"
+            >
+              Peter Cullen caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

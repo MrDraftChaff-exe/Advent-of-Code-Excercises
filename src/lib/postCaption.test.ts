@@ -32,6 +32,18 @@ describe("paste captions", () => {
     expect(caption.startsWith("He turned")).toBe(true);
   });
 
+  it("uses the Peter Cullen tribute caption as the paste block", () => {
+    const cullen = TEMPLATES.find((t) => t.id === "peter-cullen");
+    expect(cullen).toBeDefined();
+    const caption = buildPasteCaption(cullen!);
+    expect(caption).toContain("tough enough to be gentle");
+    expect(caption).toContain("The quiet hero in a thousand living rooms.");
+    expect(caption).toContain("1941–2026");
+    expect(caption).toContain("@FactsOrWhacks");
+    expect(caption).toContain("#PeterCullen");
+    expect(caption.startsWith("He based")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

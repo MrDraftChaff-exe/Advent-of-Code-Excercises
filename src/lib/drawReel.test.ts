@@ -112,6 +112,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#RipTimCurry/);
   });
 
+  it("keeps the Peter Cullen post caption off the phone frame", () => {
+    const cullen = TEMPLATES.find((t) => t.id === "peter-cullen");
+    expect(cullen?.postCaption).toMatch(/quiet hero/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, cullen!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Peter Cullen");
+    expect(painted).toContain("Optimus Prime");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("quiet hero");
+    expect(painted).not.toContain("thousand living rooms");
+    expect(painted).not.toMatch(/#PeterCullen/);
+    expect(painted).not.toMatch(/#RipPeterCullen/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);
