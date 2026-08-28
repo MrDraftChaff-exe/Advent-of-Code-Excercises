@@ -39,12 +39,12 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 2. Set the title and year. The episode number is for the catalog and filenames only — it is not drawn on the video.
 3. Add a photo (bundled path, URL, or upload), caption, and credit.
 4. Edit the sentence bullets. Hashtags are for your caption, not the frame.
-5. Hit **Play** to preview (subtle original pad, not licensed music).
+5. Hit **Play** to preview (subtle original pad unique to that episode, not licensed music).
 6. **Save PNG** for a 1080×1920 still you can edit locally. **Download video** renders a WebM.
 
 The bundled catalog is 395 original episode scripts (CSV + Wikimedia still URLs, not pre-made video files). Search an episode, load it, and download the WebM. **Download all 395 stills** fetches the prebuilt 9:16 WebP zip when it is on disk (`public/catalog/*.zip`, gitignored because it is ~82 MB). If that file is missing or the browser blocks it, use the smaller 50-episode packs, or **ZIP stills** for a range. **ZIP videos** encodes in real time (~20 seconds per episode).
 
-To bake Buffer-ready 30s MP4s (1080×1920 H.264 + original royalty-free pad, not a licensed track):
+To bake Buffer-ready 30s MP4s (1080×1920 H.264 + a unique original royalty-free pad per episode, not a licensed track):
 
 ```bash
 npm run catalog:pad

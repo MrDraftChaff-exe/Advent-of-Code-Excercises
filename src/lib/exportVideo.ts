@@ -1,5 +1,5 @@
 import { CANVAS_H, CANVAS_W, type ReelContent } from "../types";
-import { createAmbient } from "./audio";
+import { ambientSeed, createAmbient } from "./audio";
 import { drawFrame } from "./drawReel";
 import { loadReelImage } from "./images";
 
@@ -35,7 +35,7 @@ export async function exportReelVideo(
   const fps = 30;
   const duration = reel.durationSec;
   const videoStream = canvas.captureStream(fps);
-  const ambient = createAmbient(false);
+  const ambient = createAmbient(false, ambientSeed(reel));
   const mixed = new MediaStream([
     ...videoStream.getVideoTracks(),
     ...ambient.stream.getAudioTracks(),

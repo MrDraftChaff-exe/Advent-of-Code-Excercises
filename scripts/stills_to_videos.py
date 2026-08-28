@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
-"""Turn 9:16 catalog stills into 30s H.264 MP4s with the original pad."""
+"""Turn 9:16 catalog stills into 30s H.264 MP4s with a unique original pad."""
 
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import re
 import shutil
 import subprocess
 import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+
+_PAD_SPEC = importlib.util.spec_from_file_location(
+    "make_pad_audio",
+    Path(__file__).with_name("make_pad_audio.py"),
+)
+_PAD = importlib.util.module_from_spec(_PAD_SPEC)
+assert _PAD_SPEC and _PAD_SPEC.loader
+_PAD_SPEC.loader.exec_module(_PAD)
 
 EPISODE_RE = re.compile(
     r"(?:^|/)(\d{3})-[^/]+\.(?:webp|png|jpg|jpeg|mp4)$",
@@ -40,13 +49,20 @@ def ffmpeg_bin() -> str:
 def encode_one(
     ffmpeg: str,
     still: Path,
-    audio: Path,
+    audio: Path | None,
     dest: Path,
     seconds: float,
+    seed: str | None = None,
 ) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.is_file() and dest.stat().st_size > 50_000:
         return dest
+    tmp_pad: Path | None = None
+    pad_path = audio
+    if pad_path is None:
+        tmp_pad = dest.with_suffix(".pad.wav")
+        _PAD.write_wav(tmp_pad, seconds, seed or still.stem)
+        pad_path = tmp_pad
     cmd = [
         ffmpeg,
         "-y",
@@ -58,7 +74,7 @@ def encode_one(
         "-i",
         str(still),
         "-i",
-        str(audio),
+        str(pad_path),
         "-t",
         f"{seconds:.3f}",
         "-vf",
@@ -86,7 +102,11 @@ def encode_one(
         "+faststart",
         str(dest),
     ]
-    subprocess.run(cmd, check=True)
+    try:
+        subprocess.run(cmd, check=True)
+    finally:
+        if tmp_pad is not None:
+            tmp_pad.unlink(missing_ok=True)
     return dest
 
 
@@ -135,7 +155,8 @@ def main() -> None:
     parser.add_argument(
         "--audio",
         type=Path,
-        default=Path("public/audio/facts-or-whacks-pad-30s.wav"),
+        default=None,
+        help="Shared pad WAV. Default: unique sine pad per episode stem.",
     )
     parser.add_argument("--out", type=Path, default=Path("dist/catalog-videos"))
     parser.add_argument("--packs", type=Path, default=Path("public/catalog"))
@@ -144,18 +165,6 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--skip-packs", action="store_true")
     args = parser.parse_args()
-    if not args.audio.is_file():
-        subprocess.run(
-            [
-                "python3",
-                str(Path(__file__).with_name("make_pad_audio.py")),
-                "--out",
-                str(args.audio),
-                "--seconds",
-                str(args.seconds),
-            ],
-            check=True,
-        )
     stills = collect_stills(args.stills)
     if args.limit:
         stills = stills[: args.limit]
@@ -166,9 +175,15 @@ def main() -> None:
     print(f"encoding {len(stills)} clips to {args.out}", flush=True)
 
     def job(still: Path) -> Path:
-        n = episode_num(still.name)
         dest = args.out / f"{still.stem}.mp4"
-        return encode_one(ffmpeg, still, args.audio, dest, args.seconds)
+        return encode_one(
+            ffmpeg,
+            still,
+            args.audio,
+            dest,
+            args.seconds,
+            seed=None if args.audio else still.stem,
+        )
 
     done = 0
     with ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
