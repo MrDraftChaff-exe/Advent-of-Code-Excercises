@@ -11,7 +11,7 @@ import { clampDuration } from "./lib/text";
 import { drawFrame, snapshotPng } from "./lib/drawReel";
 import { loadReelFonts, downloadBlob, slugify } from "./lib/fonts";
 import { exportReelVideo } from "./lib/exportVideo";
-import { createAmbient } from "./lib/audio";
+import { ambientSeed, createAmbient } from "./lib/audio";
 import { loadReelImage, readImageFile } from "./lib/images";
 import {
   type CatalogEpisode,
@@ -120,7 +120,7 @@ export default function App() {
       audioRef.current = null;
       return;
     }
-    audioRef.current = createAmbient(true);
+    audioRef.current = createAmbient(true, ambientSeed(reel));
     let frame = 0;
     let last = performance.now();
     const tick = (now: number) => {
@@ -138,7 +138,7 @@ export default function App() {
       audioRef.current?.stop();
       audioRef.current = null;
     };
-  }, [playing, reel.durationSec]);
+  }, [playing, reel.durationSec, reel.id, reel.episode, reel.title]);
 
   const patch = (partial: Partial<ReelContent>) =>
     setReel((r) => ({ ...r, ...partial }));
@@ -423,7 +423,7 @@ export default function App() {
             The CSV is scripts + Wikimedia stills, not hosted video files.
             Download all 395 stills is one zip of 9:16 frames. If the big file
             is blocked, use the smaller packs. 30s videos are H.264 MP4s with
-            an original royalty-free pad for Buffer. Load an episode to
+            an original royalty-free pad unique to that episode. Load an episode to
             preview, then download a WebM if you want motion.
           </p>
           <div className="row-actions">
@@ -495,6 +495,13 @@ export default function App() {
               download="hayden-panettiere-post.txt"
             >
               Hayden Panettiere caption
+            </a>
+            <a
+              className="ghost"
+              href="/catalog/btk-post.txt"
+              download="btk-post.txt"
+            >
+              BTK caption
             </a>
           </div>
           <p className="hint">

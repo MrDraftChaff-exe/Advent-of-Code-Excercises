@@ -142,6 +142,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#RipHaydenPanettiere/);
   });
 
+  it("keeps the BTK post caption off the phone frame", () => {
+    const btk = TEMPLATES.find((t) => t.id === "btk");
+    expect(btk?.postCaption).toMatch(/skip in class/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, btk!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("BTK");
+    expect(painted).toContain("floppy disk");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("skip in class");
+    expect(painted).not.toContain("Also BTK");
+    expect(painted).not.toMatch(/#TrueCrimeTok/);
+    expect(painted).not.toMatch(/#DennisRader/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

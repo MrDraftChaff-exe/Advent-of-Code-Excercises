@@ -56,6 +56,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("She made")).toBe(true);
   });
 
+  it("uses the BTK follow-hook caption as the paste block", () => {
+    const btk = TEMPLATES.find((t) => t.id === "btk");
+    expect(btk).toBeDefined();
+    const caption = buildPasteCaption(btk!);
+    expect(caption).toContain("Church president");
+    expect(caption).toContain("The cases they skip in class");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#BTK");
+    expect(caption.startsWith("Church president")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

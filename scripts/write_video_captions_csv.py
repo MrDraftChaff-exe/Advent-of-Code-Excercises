@@ -193,6 +193,14 @@ def extra_rows() -> list[dict[str, str]]:
             caption_path=catalog / "hayden-panettiere-post.txt",
             credit="Photo: Tabercil, 2011 · CC BY-SA 2.0",
         ),
+        extra_row(
+            n=400,
+            title="BTK",
+            year="1974–2005",
+            filename="400-btk.mp4",
+            caption_path=catalog / "btk-post.txt",
+            credit="Photo: U.S. Air Force, 1966 · Public domain",
+        ),
     ]
 
 
@@ -272,6 +280,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/tim-curry-post.csv", [by_n[397]])
         write_rows(ROOT / "public/catalog/peter-cullen-post.csv", [by_n[398]])
         write_rows(ROOT / "public/catalog/hayden-panettiere-post.csv", [by_n[399]])
+        write_rows(ROOT / "public/catalog/btk-post.csv", [by_n[400]])
     print(args.out, args.out.stat().st_size)
 
 

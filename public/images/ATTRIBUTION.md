@@ -47,6 +47,16 @@ The Peter Cullen template prints the credit on-frame. Paste caption: [`../catalo
 
 The Hayden Panettiere template prints the credit on-frame. Paste caption: [`../catalog/hayden-panettiere-post.txt`](../catalog/hayden-panettiere-post.txt).
 
+# Dennis Rader, U.S. Air Force, 1966
+
+- File: `dennis-rader-airman.jpg`
+- Original: [Dennis_Rader_Airman_Portrait.jpg](https://commons.wikimedia.org/wiki/File:Dennis_Rader_Airman_Portrait.jpg)
+- Photographer: United States Air Force
+- Date: 1966
+- License: Public domain (U.S. government work)
+
+The BTK template prints the credit on-frame. Paste caption: [`../catalog/btk-post.txt`](../catalog/btk-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

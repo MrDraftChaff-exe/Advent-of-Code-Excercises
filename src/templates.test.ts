@@ -116,6 +116,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(hayden!)).not.toMatch(/\b399\b/);
   });
 
+  it("ships a BTK template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const btk = TEMPLATES.find((t) => t.id === "btk");
+    expect(btk).toBeDefined();
+    expect(btk?.title).toBe("BTK");
+    expect(btk?.year).toBe("1974–2005");
+    expect(btk?.imageUrl).toContain("dennis-rader-airman");
+    expect(btk?.imageCredit).toMatch(/Air Force/);
+    expect(btk?.theme).toBe("ember");
+    expect(btk?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(btk?.bullets[9]).toMatch(/floppy|metadata/i);
+    expect(btk?.bullets[10]).toMatch(/February 25, 2005/);
+    expect(btk?.postCaption).toMatch(/skip in class/);
+    expect(btk?.postCaption).toContain("@FactsOrWhacks");
+    expect(btk?.hashtags).toContain("#BTK");
+    expect(canvasHeadlineText(btk!)).toBe("BTK");
+    expect(canvasHeadlineText(btk!)).not.toMatch(/\b400\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);
