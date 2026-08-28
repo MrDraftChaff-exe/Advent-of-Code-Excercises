@@ -37,6 +37,16 @@ The Tim Curry template prints the credit on-frame. Paste caption: [`../catalog/t
 
 The Peter Cullen template prints the credit on-frame. Paste caption: [`../catalog/peter-cullen-post.txt`](../catalog/peter-cullen-post.txt).
 
+# Hayden Panettiere, 2011
+
+- File: `hayden-panettiere-2011.jpg`
+- Original: [Hayden_Panettiere_in_2011_04_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Hayden_Panettiere_in_2011_04_(cropped).jpg)
+- Photographer: Tabercil
+- Date: 27 August 2011, Fan Expo Toronto
+- License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)
+
+The Hayden Panettiere template prints the credit on-frame. Paste caption: [`../catalog/hayden-panettiere-post.txt`](../catalog/hayden-panettiere-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -97,6 +97,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(cullen!)).not.toMatch(/\b398\b/);
   });
 
+  it("ships a Hayden Panettiere tribute template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const hayden = TEMPLATES.find((t) => t.id === "hayden-panettiere");
+    expect(hayden).toBeDefined();
+    expect(hayden?.title).toBe("Hayden Panettiere");
+    expect(hayden?.year).toBe("1989–2026");
+    expect(hayden?.imageUrl).toContain("hayden-panettiere-2011");
+    expect(hayden?.imageCredit).toMatch(/Tabercil/);
+    expect(hayden?.theme).toBe("cosmic");
+    expect(hayden?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(hayden?.bullets[2]).toMatch(/Claire Bennet/);
+    expect(hayden?.bullets[11]).toMatch(/August 16, 2026/);
+    expect(hayden?.postCaption).toMatch(/Same fire/);
+    expect(hayden?.postCaption).toContain("@FactsOrWhacks");
+    expect(hayden?.hashtags).toContain("#HaydenPanettiere");
+    expect(canvasHeadlineText(hayden!)).toBe("Hayden Panettiere");
+    expect(canvasHeadlineText(hayden!)).not.toMatch(/\b399\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

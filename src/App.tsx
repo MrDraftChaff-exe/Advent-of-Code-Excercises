@@ -489,6 +489,13 @@ export default function App() {
             >
               Peter Cullen caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/hayden-panettiere-post.txt"
+              download="hayden-panettiere-post.txt"
+            >
+              Hayden Panettiere caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

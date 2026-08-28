@@ -127,6 +127,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#RipPeterCullen/);
   });
 
+  it("keeps the Hayden Panettiere post caption off the phone frame", () => {
+    const hayden = TEMPLATES.find((t) => t.id === "hayden-panettiere");
+    expect(hayden?.postCaption).toMatch(/Same fire/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, hayden!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Hayden Panettiere");
+    expect(painted).toContain("Claire Bennet");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("Same fire");
+    expect(painted).not.toContain("Thirty-six years was not enough");
+    expect(painted).not.toMatch(/#HaydenPanettiere/);
+    expect(painted).not.toMatch(/#RipHaydenPanettiere/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -44,6 +44,18 @@ describe("paste captions", () => {
     expect(caption.startsWith("He based")).toBe(true);
   });
 
+  it("uses the Hayden Panettiere tribute caption as the paste block", () => {
+    const hayden = TEMPLATES.find((t) => t.id === "hayden-panettiere");
+    expect(hayden).toBeDefined();
+    const caption = buildPasteCaption(hayden!);
+    expect(caption).toContain("cheerleaders superheroes");
+    expect(caption).toContain("Thirty-six years was not enough.");
+    expect(caption).toContain("1989–2026");
+    expect(caption).toContain("@FactsOrWhacks");
+    expect(caption).toContain("#HaydenPanettiere");
+    expect(caption.startsWith("She made")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

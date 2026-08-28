@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), and `398` (Peter Cullen) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), and `399` (Hayden Panettiere) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
 
 ## Dolly Parton extra post
 
@@ -21,3 +21,7 @@ Load the **Tim Curry** template, or copy row `397`. Caption file: [`tim-curry-po
 ## Peter Cullen extra post
 
 Load the **Peter Cullen** template, or copy row `398`. Caption file: [`peter-cullen-post.txt`](peter-cullen-post.txt). Video filename: `398-peter-cullen.mp4`.
+
+## Hayden Panettiere extra post
+
+Load the **Hayden Panettiere** template, or copy row `399`. Caption file: [`hayden-panettiere-post.txt`](hayden-panettiere-post.txt). Video filename: `399-hayden-panettiere.mp4`.
