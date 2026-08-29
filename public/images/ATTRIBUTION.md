@@ -57,6 +57,16 @@ The Hayden Panettiere template prints the credit on-frame. Paste caption: [`../c
 
 The BTK template prints the credit on-frame. Paste caption: [`../catalog/btk-post.txt`](../catalog/btk-post.txt).
 
+# Hurricane Katrina, New Orleans, 2005
+
+- File: `katrina-new-orleans-2005.jpg`
+- Original: [KatrinaNewOrleansFlooded_edit2.jpg](https://commons.wikimedia.org/wiki/File:KatrinaNewOrleansFlooded_edit2.jpg)
+- Photographer: Petty Officer 2nd Class Kyle Niemi, U.S. Coast Guard
+- Date: 29 August 2005, New Orleans looking toward Lake Pontchartrain
+- License: Public domain (U.S. government work)
+
+The Hurricane Katrina template prints the credit on-frame. Paste caption: [`../catalog/hurricane-katrina-post.txt`](../catalog/hurricane-katrina-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

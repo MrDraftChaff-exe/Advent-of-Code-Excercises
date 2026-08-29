@@ -135,6 +135,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(btk!)).not.toMatch(/\b400\b/);
   });
 
+  it("ships a Hurricane Katrina anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const katrina = TEMPLATES.find((t) => t.id === "katrina");
+    expect(katrina).toBeDefined();
+    expect(katrina?.title).toBe("Hurricane Katrina");
+    expect(katrina?.year).toBe("2005");
+    expect(katrina?.imageUrl).toContain("katrina-new-orleans-2005");
+    expect(katrina?.imageCredit).toMatch(/Coast Guard/);
+    expect(katrina?.theme).toBe("ocean");
+    expect(katrina?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(katrina?.bullets[0]).toMatch(/August 29, 2005/);
+    expect(katrina?.bullets[4]).toMatch(/80 percent/);
+    expect(katrina?.postCaption).toMatch(/21 years ago today/);
+    expect(katrina?.postCaption).toContain("@FactsOrWhacks");
+    expect(katrina?.hashtags).toContain("#HurricaneKatrina");
+    expect(canvasHeadlineText(katrina!)).toBe("Hurricane Katrina");
+    expect(canvasHeadlineText(katrina!)).not.toMatch(/\b401\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

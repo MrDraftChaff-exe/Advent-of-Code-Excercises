@@ -157,6 +157,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#DennisRader/);
   });
 
+  it("keeps the Katrina post caption off the phone frame", () => {
+    const katrina = TEMPLATES.find((t) => t.id === "katrina");
+    expect(katrina?.postCaption).toMatch(/21 years ago today/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, katrina!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Hurricane Katrina");
+    expect(painted).toContain("80 percent");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("21 years ago today");
+    expect(painted).not.toContain("didn’t drown New Orleans");
+    expect(painted).not.toMatch(/#HurricaneKatrina/);
+    expect(painted).not.toMatch(/#OnThisDay/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

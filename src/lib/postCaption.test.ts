@@ -67,6 +67,18 @@ describe("paste captions", () => {
     expect(caption.startsWith("Church president")).toBe(true);
   });
 
+  it("uses the Katrina anniversary caption as the paste block", () => {
+    const katrina = TEMPLATES.find((t) => t.id === "katrina");
+    expect(katrina).toBeDefined();
+    const caption = buildPasteCaption(katrina!);
+    expect(caption).toContain("didn’t drown New Orleans");
+    expect(caption).toContain("The levees did.");
+    expect(caption).toContain("21 years ago today");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#HurricaneKatrina");
+    expect(caption.startsWith("The hurricane")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

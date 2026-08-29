@@ -503,6 +503,13 @@ export default function App() {
             >
               BTK caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/hurricane-katrina-post.txt"
+              download="hurricane-katrina-post.txt"
+            >
+              Hurricane Katrina caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
