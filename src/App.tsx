@@ -510,6 +510,13 @@ export default function App() {
             >
               Hurricane Katrina caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/thurgood-marshall-post.txt"
+              download="thurgood-marshall-post.txt"
+            >
+              Thurgood Marshall caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

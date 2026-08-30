@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), and `401` (Hurricane Katrina) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), and `402` (Thurgood Marshall) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
 
 ## Dolly Parton extra post
 
@@ -33,3 +33,7 @@ Load the **BTK** template, or copy row `400`. Caption file: [`btk-post.txt`](btk
 ## Hurricane Katrina extra post
 
 Load the **Hurricane Katrina** template, or copy row `401`. Caption file: [`hurricane-katrina-post.txt`](hurricane-katrina-post.txt). Video filename: `401-hurricane-katrina.mp4`.
+
+## Thurgood Marshall extra post
+
+Load the **Thurgood Marshall** template, or copy row `402`. Caption file: [`thurgood-marshall-post.txt`](thurgood-marshall-post.txt). Video filename: `402-thurgood-marshall.mp4`.

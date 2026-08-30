@@ -79,6 +79,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("The hurricane")).toBe(true);
   });
 
+  it("uses the Thurgood Marshall confirmation caption as the paste block", () => {
+    const marshall = TEMPLATES.find((t) => t.id === "thurgood-marshall");
+    expect(marshall).toBeDefined();
+    const caption = buildPasteCaption(marshall!);
+    expect(caption).toContain("wasn’t allowed");
+    expect(caption).toContain("59 years ago today");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#ThurgoodMarshall");
+    expect(caption.startsWith("He wasn’t allowed")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

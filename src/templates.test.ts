@@ -154,6 +154,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(katrina!)).not.toMatch(/\b401\b/);
   });
 
+  it("ships a Thurgood Marshall confirmation template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const marshall = TEMPLATES.find((t) => t.id === "thurgood-marshall");
+    expect(marshall).toBeDefined();
+    expect(marshall?.title).toBe("Thurgood Marshall");
+    expect(marshall?.year).toBe("1967");
+    expect(marshall?.imageUrl).toContain("thurgood-marshall-1967");
+    expect(marshall?.imageCredit).toMatch(/Okamoto/);
+    expect(marshall?.theme).toBe("ember");
+    expect(marshall?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(marshall?.bullets[1]).toMatch(/Maryland Law School/);
+    expect(marshall?.bullets[11]).toMatch(/August 30, 1967/);
+    expect(marshall?.postCaption).toMatch(/59 years ago today/);
+    expect(marshall?.postCaption).toContain("@FactsOrWhacks");
+    expect(marshall?.hashtags).toContain("#ThurgoodMarshall");
+    expect(canvasHeadlineText(marshall!)).toBe("Thurgood Marshall");
+    expect(canvasHeadlineText(marshall!)).not.toMatch(/\b402\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

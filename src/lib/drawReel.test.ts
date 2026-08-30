@@ -172,6 +172,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#OnThisDay/);
   });
 
+  it("keeps the Thurgood Marshall post caption off the phone frame", () => {
+    const marshall = TEMPLATES.find((t) => t.id === "thurgood-marshall");
+    expect(marshall?.postCaption).toMatch(/59 years ago today/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, marshall!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Thurgood Marshall");
+    expect(painted).toContain("69–11");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("59 years ago today");
+    expect(painted).not.toContain("wasn’t allowed");
+    expect(painted).not.toMatch(/#ThurgoodMarshall/);
+    expect(painted).not.toMatch(/#OnThisDay/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

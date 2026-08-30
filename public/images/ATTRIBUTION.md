@@ -67,6 +67,16 @@ The BTK template prints the credit on-frame. Paste caption: [`../catalog/btk-pos
 
 The Hurricane Katrina template prints the credit on-frame. Paste caption: [`../catalog/hurricane-katrina-post.txt`](../catalog/hurricane-katrina-post.txt).
 
+# Thurgood Marshall, White House, 1967
+
+- File: `thurgood-marshall-1967.jpg`
+- Original: [Thurgoodmarshall1967.jpg](https://commons.wikimedia.org/wiki/File:Thurgoodmarshall1967.jpg)
+- Photographer: Yoichi R. Okamoto
+- Date: 13 June 1967, White House, nomination day
+- License: Public domain (U.S. government work; National Archives 2803441)
+
+The Thurgood Marshall template prints the credit on-frame. Paste caption: [`../catalog/thurgood-marshall-post.txt`](../catalog/thurgood-marshall-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
