@@ -135,7 +135,9 @@ describe("paste captions", () => {
         brandHashtags(ep.tags),
       ),
     );
-    expect(caption).toContain("#FactsOrWhacks");
+    expect(caption).toContain("#AmericanRevolution");
+    expect(caption).not.toContain("#FactsOrWhacks");
+    expect(caption).not.toContain("#HistoryTok");
     expect(caption).not.toMatch(/\r|\n/);
   });
 });

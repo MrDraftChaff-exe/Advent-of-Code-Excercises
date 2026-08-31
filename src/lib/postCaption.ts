@@ -1,9 +1,9 @@
 import type { CatalogEpisode } from "./catalog";
 import { extractYear } from "./catalog";
 import type { ReelContent } from "../types";
+import { sanitizeHashtags } from "./hashtags";
 
 const HANDLE = "@FactsOrWhacks";
-const BRAND_TAG = "#FactsOrWhacks";
 
 /** Collapse caption pieces to one line so a CSV cell copies in one click. */
 export function oneLine(...chunks: string[]): string {
@@ -13,20 +13,7 @@ export function oneLine(...chunks: string[]): string {
     .join(" ");
 }
 
-export function brandHashtags(raw: string): string {
-  const tags: string[] = [];
-  const seen = new Set<string>();
-  for (const token of raw.split(/\s+/)) {
-    if (!token) continue;
-    const tag = token.startsWith("#") ? token : `#${token}`;
-    const key = tag.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    tags.push(tag);
-  }
-  if (!seen.has(BRAND_TAG.toLowerCase())) tags.push(BRAND_TAG);
-  return tags.join(" ");
-}
+export { sanitizeHashtags, sanitizeHashtags as brandHashtags };
 
 /** Caption to paste under a Reel. Custom postCaption keeps its line breaks. */
 export function buildPasteCaption(reel: ReelContent): string {
@@ -37,7 +24,7 @@ export function buildPasteCaption(reel: ReelContent): string {
     reel.year,
     "",
     reel.bullets,
-    reel.hashtags,
+    sanitizeHashtags(reel.hashtags, reel.title),
     reel.handle,
   );
 }
@@ -50,7 +37,7 @@ export function catalogCopyCaption(ep: CatalogEpisode): string {
     year,
     ep.hook,
     ep.bullets,
-    ep.tags,
+    sanitizeHashtags(ep.tags, ep.title),
     HANDLE,
   );
 }
@@ -81,6 +68,6 @@ export function catalogStyleCaption(
   return oneLine(
     glueSentences(headline, hook, ...facts),
     handle.trim() || HANDLE,
-    brandHashtags(tags),
+    sanitizeHashtags(tags, title),
   );
 }

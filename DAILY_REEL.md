@@ -51,8 +51,8 @@ Next extra number is one higher than the current max extra (`403` → `404`, …
 - Canvas `1080×1920`. Photograph cover-fills the frame.
 - **12** full-sentence facts. No terminal periods. Last fact is the money shot.
 - On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`.
-- Off-frame: episode numbers, hashtags, follow CTA. Custom `postCaption` is the paste block; include a follow line and `#FactsOrWhacks`.
-- Unique warm stereo sine pad seeded by the still stem. Never reuse the old shared triangle drone.
+- Off-frame: episode numbers, hashtags, follow CTA. Custom `postCaption` is the paste block; include a follow line. **Exactly 5 hashtags**, all specific to this episode. No `*Tok`, `#FYP`, `#Reels`, `#Shorts`, `#DidYouKnow`, `#OnThisDay`, or `#FactsOrWhacks`. Do not reuse the same five tags from yesterday. The `@FactsOrWhacks` handle stays in the caption body, not as a hashtag.
+- Unique quiet low sine pad seeded by the still stem. No triangle drone, no chorus detune, no 7ths.
 - Photo: Wikimedia Commons **public domain or CC**, downloaded locally. Credit on-frame. Prefer a portrait that cover-fills 9:16.
 - Do not copy other reels’ scripts. Do not put conspiracy, pending autopsy, or unverified death-toll numbers on the still.
 

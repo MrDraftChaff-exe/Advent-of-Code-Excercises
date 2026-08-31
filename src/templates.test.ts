@@ -20,7 +20,7 @@ describe("templates", () => {
     expect(THEMES[a.theme]).toBeDefined();
   });
 
-  it("defaults to the HistoryTok apartheid episode", () => {
+  it("defaults to the apartheid episode", () => {
     const reel = TEMPLATES[0];
     expect(formatHeadline(reel.episode, reel.title)).toBe(
       "30. The End of Apartheid",
@@ -36,7 +36,7 @@ describe("templates", () => {
     expect(reel.bullets[4]).toMatch(/April 27, 1994/);
     expect(reel.bullets[11]).toMatch(/1994 elections/);
     expect(reel.hashtags).toBe(
-      "#NelsonMandela #Apartheid #SouthAfrica #HistoryTok",
+      "#NelsonMandela #Apartheid #SouthAfrica #ANC #1994",
     );
   });
 

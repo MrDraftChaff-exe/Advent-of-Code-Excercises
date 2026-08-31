@@ -1,4 +1,5 @@
 import type { ReelContent, ThemeId } from "../types";
+import { sanitizeHashtags } from "./hashtags";
 
 export type CatalogEpisode = {
   n: number;
@@ -54,7 +55,7 @@ export function episodeToReel(ep: CatalogEpisode): ReelContent {
     imageCaption: ep.hook,
     imageCredit: ep.credit.trim() || "Wikimedia Commons",
     bullets: bullets.length ? bullets : ["Add a sentence fact."],
-    hashtags: ep.tags,
+    hashtags: sanitizeHashtags(ep.tags, ep.title),
     handle: "@FactsOrWhacks",
     durationSec: 20,
     theme: THEME_CYCLE[(Math.max(1, ep.n) - 1) % THEME_CYCLE.length],

@@ -102,7 +102,17 @@ describe("video captions CSV", () => {
     expect(apartheid?.[copyIdx]).toContain("#NelsonMandela");
     expect(apartheid?.[copyIdx]).toContain(apartheid?.[descIdx] ?? "missing");
     expect(apartheid?.[copyIdx]).not.toMatch(/\r|\n/);
-    expect(body.every((r) => r[hashIdx].includes("#FactsOrWhacks"))).toBe(true);
+    expect(
+      body.every((r) => {
+        const tags = r[hashIdx].split(/\s+/).filter(Boolean);
+        if (tags.length > 5) return false;
+        return tags.every(
+          (tag) =>
+            !/tok$/i.test(tag) &&
+            !/^#(didyouknow|factsorwhacks|onthisday|fyp|foryou)$/i.test(tag),
+        );
+      }),
+    ).toBe(true);
     expect(body.every((r) => !r[copyIdx].includes("\n"))).toBe(true);
     expect(body.every((r) => r[copyIdx].includes("@FactsOrWhacks"))).toBe(true);
     expect(body.every((r) => r[copyIdx].includes("#"))).toBe(true);

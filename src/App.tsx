@@ -793,7 +793,7 @@ export default function App() {
           <textarea
             value={reel.hashtags}
             onChange={(e) => patch({ hashtags: e.target.value, id: "custom" })}
-            placeholder="#NelsonMandela #Apartheid #SouthAfrica #HistoryTok"
+            placeholder="#NelsonMandela #Apartheid #SouthAfrica #ANC #1994"
           />
           <span className="hint">
             Kept for your post caption. Not drawn on the image.

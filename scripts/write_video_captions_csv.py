@@ -53,7 +53,55 @@ def one_line(*chunks: str) -> str:
     return " ".join(words)
 
 
-def hashtag_list(raw: str) -> list[str]:
+MAX_HASHTAGS = 5
+BANNED_TAGS = {
+    "didyouknow",
+    "factsorwhacks",
+    "onthisday",
+    "fyp",
+    "foryou",
+    "foryoupage",
+    "viral",
+    "trending",
+    "reels",
+    "shorts",
+    "tiktok",
+    "instagram",
+    "youtube",
+    "youtubeshorts",
+    "historymatters",
+    "historyfacts",
+    "weirdhistory",
+}
+
+
+def is_banned_hashtag(tag: str) -> bool:
+    key = tag.lstrip("#").lower()
+    if not key:
+        return True
+    if key.endswith("tok"):
+        return True
+    return key in BANNED_TAGS
+
+
+def title_fallback(title: str) -> list[str]:
+    tags: list[str] = []
+    seen: set[str] = set()
+    for word in re.split(r"[^A-Za-z0-9]+", title or ""):
+        if len(word) < 4 or is_banned_hashtag(word):
+            continue
+        tag = f"#{word}"
+        key = tag.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        tags.append(tag)
+        if len(tags) >= MAX_HASHTAGS:
+            break
+    return tags
+
+
+def hashtag_list(raw: str, fallback: str = "") -> list[str]:
     tags: list[str] = []
     seen: set[str] = set()
     for token in (raw or "").split():
@@ -62,14 +110,17 @@ def hashtag_list(raw: str) -> list[str]:
             continue
         if not tag.startswith("#"):
             tag = f"#{tag}"
+        if is_banned_hashtag(tag):
+            continue
         key = tag.lower()
         if key in seen:
             continue
         seen.add(key)
         tags.append(tag)
-    brand = "#FactsOrWhacks"
-    if brand.lower() not in seen:
-        tags.append(brand)
+        if len(tags) >= MAX_HASHTAGS:
+            break
+    if not tags:
+        tags = title_fallback(fallback)
     return tags
 
 
@@ -102,7 +153,7 @@ def catalog_row(ep: dict, count: int) -> dict[str, str]:
     bullets = [str(b).strip() for b in (ep.get("bullets") or []) if str(b).strip()]
     year = extract_year(title, hook, *bullets)
     stem = video_stem(n, title)
-    tags = hashtag_list(str(ep.get("tags") or ""))
+    tags = hashtag_list(str(ep.get("tags") or ""), fallback=title)
     desc = description(title, year, hook, bullets)
     caption = copy_caption(desc, tags)
     return {
@@ -134,7 +185,10 @@ def extra_row(
     credit: str,
 ) -> dict[str, str]:
     raw = caption_path.read_text(encoding="utf-8")
-    tags = hashtag_list(" ".join(tok for tok in raw.split() if tok.startswith("#")))
+    tags = hashtag_list(
+        " ".join(tok for tok in raw.split() if tok.startswith("#")),
+        fallback=title,
+    )
     caption = one_line(raw)
     skip = {HANDLE.lower(), *(tag.lower() for tag in tags)}
     desc = " ".join(word for word in caption.split() if word.lower() not in skip)
