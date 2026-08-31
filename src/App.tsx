@@ -517,6 +517,13 @@ export default function App() {
             >
               Thurgood Marshall caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/princess-diana-post.txt"
+              download="princess-diana-post.txt"
+            >
+              Princess Diana caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

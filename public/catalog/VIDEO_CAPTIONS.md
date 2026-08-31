@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), and `402` (Thurgood Marshall) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), and `403` (Princess Diana) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer.
 
 ## Dolly Parton extra post
 
@@ -37,3 +37,7 @@ Load the **Hurricane Katrina** template, or copy row `401`. Caption file: [`hurr
 ## Thurgood Marshall extra post
 
 Load the **Thurgood Marshall** template, or copy row `402`. Caption file: [`thurgood-marshall-post.txt`](thurgood-marshall-post.txt). Video filename: `402-thurgood-marshall.mp4`.
+
+## Princess Diana extra post
+
+Load the **Princess Diana** template, or copy row `403`. Caption file: [`princess-diana-post.txt`](princess-diana-post.txt). Video filename: `403-princess-diana.mp4`.

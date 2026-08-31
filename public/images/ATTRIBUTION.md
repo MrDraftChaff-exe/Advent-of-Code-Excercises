@@ -77,6 +77,17 @@ The Hurricane Katrina template prints the credit on-frame. Paste caption: [`../c
 
 The Thurgood Marshall template prints the credit on-frame. Paste caption: [`../catalog/thurgood-marshall-post.txt`](../catalog/thurgood-marshall-post.txt).
 
+# Princess Diana, White House, 1985
+
+- File: `princess-diana-1985.jpg`
+- Original: [Princess_Diana_Dancing_with_John_Travolta_in_Cross_Hall_at_The_White_House_-_DPLA_-_3842af096c213b9aca61e06931ee8150.jpg](https://commons.wikimedia.org/wiki/File:Princess_Diana_Dancing_with_John_Travolta_in_Cross_Hall_at_The_White_House_-_DPLA_-_3842af096c213b9aca61e06931ee8150.jpg)
+- Photographer: White House Photographic Office (Reagan administration)
+- Date: 9 November 1985, Cross Hall, White House
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop of Diana from that photograph.
+
+The Princess Diana template prints the credit on-frame. Paste caption: [`../catalog/princess-diana-post.txt`](../catalog/princess-diana-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -187,6 +187,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#OnThisDay/);
   });
 
+  it("keeps the Princess Diana post caption off the phone frame", () => {
+    const diana = TEMPLATES.find((t) => t.id === "princess-diana");
+    expect(diana?.postCaption).toMatch(/29 years ago tonight/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, diana!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Princess Diana");
+    expect(painted).toContain("Pitié-Salpêtrière");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("29 years ago tonight");
+    expect(painted).not.toContain("most famous woman");
+    expect(painted).not.toMatch(/#PrincessDiana/);
+    expect(painted).not.toMatch(/#OnThisDay/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

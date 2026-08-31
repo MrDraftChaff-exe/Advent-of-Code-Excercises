@@ -173,6 +173,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(marshall!)).not.toMatch(/\b402\b/);
   });
 
+  it("ships a Princess Diana anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const diana = TEMPLATES.find((t) => t.id === "princess-diana");
+    expect(diana).toBeDefined();
+    expect(diana?.title).toBe("Princess Diana");
+    expect(diana?.year).toBe("1961–1997");
+    expect(diana?.imageUrl).toContain("princess-diana-1985");
+    expect(diana?.imageCredit).toMatch(/White House/);
+    expect(diana?.theme).toBe("cosmic");
+    expect(diana?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(diana?.bullets[3]).toMatch(/AIDS/);
+    expect(diana?.bullets[11]).toMatch(/August 31, 1997/);
+    expect(diana?.postCaption).toMatch(/29 years ago tonight/);
+    expect(diana?.postCaption).toContain("@FactsOrWhacks");
+    expect(diana?.hashtags).toContain("#PrincessDiana");
+    expect(canvasHeadlineText(diana!)).toBe("Princess Diana");
+    expect(canvasHeadlineText(diana!)).not.toMatch(/\b403\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

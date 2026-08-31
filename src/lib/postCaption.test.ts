@@ -90,6 +90,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("He wasn’t allowed")).toBe(true);
   });
 
+  it("uses the Princess Diana anniversary caption as the paste block", () => {
+    const diana = TEMPLATES.find((t) => t.id === "princess-diana");
+    expect(diana).toBeDefined();
+    const caption = buildPasteCaption(diana!);
+    expect(caption).toContain("most famous woman");
+    expect(caption).toContain("29 years ago tonight");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#PrincessDiana");
+    expect(caption.startsWith("29 years ago tonight")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],
