@@ -11,7 +11,8 @@ describe("unique ambient pads", () => {
     const b = padParams("400-btk");
     expect(a).not.toEqual(b);
     expect(a.root).toBeGreaterThan(50);
-    expect(b.cutoff).toBeLessThan(600);
+    expect(b.cutoff).toBeLessThan(230);
+    expect(a.cutoff).toBeGreaterThan(140);
   });
 
   it("seeds studio preview from episode identity", () => {
