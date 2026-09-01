@@ -202,6 +202,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#OnThisDay/);
   });
 
+  it("keeps the Tupac post caption off the phone frame", () => {
+    const tupac = TEMPLATES.find((t) => t.id === "tupac");
+    expect(tupac?.postCaption).toMatch(/hunted this case/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, tupac!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Tupac");
+    expect(painted).toContain("Keffe D");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("hunted this case");
+    expect(painted).not.toContain("ordered the hit");
+    expect(painted).not.toMatch(/#Tupac/);
+    expect(painted).not.toMatch(/#KeffeD/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -101,6 +101,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("29 years ago tonight")).toBe(true);
   });
 
+  it("uses the Tupac verdict caption as the paste block", () => {
+    const tupac = TEMPLATES.find((t) => t.id === "tupac");
+    expect(tupac).toBeDefined();
+    const caption = buildPasteCaption(tupac!);
+    expect(caption).toContain("hunted this case");
+    expect(caption).toContain("ordered the hit");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#Tupac");
+    expect(caption.startsWith("They hunted")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

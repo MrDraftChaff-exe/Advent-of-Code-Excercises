@@ -43,8 +43,9 @@ Already-shipped extras (do not silently replace them):
 | 401 | `katrina` | Aug 29 landfall anniversary |
 | 402 | `thurgood-marshall` | Senate confirmation Aug 30, 1967 |
 | 403 | `princess-diana` | Death Aug 31, 1997 |
+| 404 | `tupac` | Keffe D guilty verdict Aug 31, 2026 |
 
-Next extra number is one higher than the current max extra (`403` → `404`, …).
+Next extra number is one higher than the current max extra (`404` → `405`, …).
 
 ## House style
 

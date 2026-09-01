@@ -192,6 +192,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(diana!)).not.toMatch(/\b403\b/);
   });
 
+  it("ships a Tupac verdict template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const tupac = TEMPLATES.find((t) => t.id === "tupac");
+    expect(tupac).toBeDefined();
+    expect(tupac?.title).toBe("Tupac");
+    expect(tupac?.year).toBe("1971–1996");
+    expect(tupac?.imageUrl).toContain("tupac-shakur-1995");
+    expect(tupac?.imageCredit).toMatch(/Department of State/);
+    expect(tupac?.theme).toBe("ember");
+    expect(tupac?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(tupac?.bullets[5]).toMatch(/All Eyez on Me/);
+    expect(tupac?.bullets[11]).toMatch(/August 31, 2026/);
+    expect(tupac?.postCaption).toMatch(/hunted this case/);
+    expect(tupac?.postCaption).toContain("@FactsOrWhacks");
+    expect(tupac?.hashtags).toContain("#Tupac");
+    expect(canvasHeadlineText(tupac!)).toBe("Tupac");
+    expect(canvasHeadlineText(tupac!)).not.toMatch(/\b404\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

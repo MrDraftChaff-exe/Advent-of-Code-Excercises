@@ -88,6 +88,16 @@ The Thurgood Marshall template prints the credit on-frame. Paste caption: [`../c
 
 The Princess Diana template prints the credit on-frame. Paste caption: [`../catalog/princess-diana-post.txt`](../catalog/princess-diana-post.txt).
 
+# Tupac Shakur, passport photo, 1995
+
+- File: `tupac-shakur-1995.jpg`
+- Original: [Tupac_Shakur_passport_photo.png](https://commons.wikimedia.org/wiki/File:Tupac_Shakur_passport_photo.png)
+- Photographer: U.S. Department of State
+- Date: 8 December 1995
+- License: Public domain (U.S. government work)
+
+The Tupac template prints the credit on-frame. Paste caption: [`../catalog/tupac-post.txt`](../catalog/tupac-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

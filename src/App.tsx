@@ -524,6 +524,13 @@ export default function App() {
             >
               Princess Diana caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/tupac-post.txt"
+              download="tupac-post.txt"
+            >
+              Tupac caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
