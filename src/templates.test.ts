@@ -211,6 +211,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(tupac!)).not.toMatch(/\b404\b/);
   });
 
+  it("ships a Japan surrender anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const japan = TEMPLATES.find((t) => t.id === "japan-surrender");
+    expect(japan).toBeDefined();
+    expect(japan?.title).toBe("Japan Surrenders");
+    expect(japan?.year).toBe("1945");
+    expect(japan?.imageUrl).toContain("uss-missouri-surrender-1945");
+    expect(japan?.imageCredit).toMatch(/U\.S\. Navy/);
+    expect(japan?.theme).toBe("cosmic");
+    expect(japan?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(japan?.bullets[3]).toMatch(/USS Missouri/);
+    expect(japan?.bullets[11]).toMatch(/81 years ago today/);
+    expect(japan?.postCaption).toMatch(/ended in 23 minutes/);
+    expect(japan?.postCaption).toContain("@FactsOrWhacks");
+    expect(japan?.hashtags).toContain("#USSMissouri");
+    expect(canvasHeadlineText(japan!)).toBe("Japan Surrenders");
+    expect(canvasHeadlineText(japan!)).not.toMatch(/\b405\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

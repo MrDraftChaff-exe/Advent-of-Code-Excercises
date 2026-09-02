@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), and `404` (Tupac) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), and `405` (Japan Surrenders) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
 
 ## Dolly Parton extra post
 
@@ -45,3 +45,7 @@ Load the **Princess Diana** template, or copy row `403`. Caption file: [`princes
 ## Tupac extra post
 
 Load the **Tupac** template, or copy row `404`. Caption file: [`tupac-post.txt`](tupac-post.txt). Video filename: `404-tupac.mp4`.
+
+## Japan Surrenders extra post
+
+Load the **Japan Surrenders** template, or copy row `405`. Caption file: [`japan-surrender-post.txt`](japan-surrender-post.txt). Video filename: `405-japan-surrenders.mp4`.

@@ -98,6 +98,17 @@ The Princess Diana template prints the credit on-frame. Paste caption: [`../cata
 
 The Tupac template prints the credit on-frame. Paste caption: [`../catalog/tupac-post.txt`](../catalog/tupac-post.txt).
 
+# MacArthur signs Japan’s surrender, USS Missouri, 1945
+
+- File: `uss-missouri-surrender-1945.jpg`
+- Original: [Douglas_MacArthur_signs_formal_surrender.jpg](https://commons.wikimedia.org/wiki/File:Douglas_MacArthur_signs_formal_surrender.jpg)
+- Photographer: U.S. Navy
+- Date: 2 September 1945, Tokyo Bay
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop around MacArthur at the signing table.
+
+The Japan Surrenders template prints the credit on-frame. Paste caption: [`../catalog/japan-surrender-post.txt`](../catalog/japan-surrender-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

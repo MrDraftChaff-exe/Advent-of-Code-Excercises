@@ -112,6 +112,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("They hunted")).toBe(true);
   });
 
+  it("uses the Japan surrender anniversary caption as the paste block", () => {
+    const japan = TEMPLATES.find((t) => t.id === "japan-surrender");
+    expect(japan).toBeDefined();
+    const caption = buildPasteCaption(japan!);
+    expect(caption).toContain("ended in 23 minutes");
+    expect(caption).toContain("81 years ago today");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#USSMissouri");
+    expect(caption.startsWith("81 years ago today")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

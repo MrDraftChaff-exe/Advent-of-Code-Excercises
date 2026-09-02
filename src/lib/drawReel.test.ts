@@ -217,6 +217,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#KeffeD/);
   });
 
+  it("keeps the Japan surrender post caption off the phone frame", () => {
+    const japan = TEMPLATES.find((t) => t.id === "japan-surrender");
+    expect(japan?.postCaption).toMatch(/ended in 23 minutes/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, japan!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Japan Surrenders");
+    expect(painted).toContain("USS Missouri");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("ended in 23 minutes");
+    expect(painted).not.toContain("guns went silent");
+    expect(painted).not.toMatch(/#USSMissouri/);
+    expect(painted).not.toMatch(/#VJDay/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

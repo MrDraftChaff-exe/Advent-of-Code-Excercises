@@ -287,6 +287,14 @@ def extra_rows() -> list[dict[str, str]]:
             caption_path=catalog / "tupac-post.txt",
             credit="Photo: U.S. Department of State, 1995 · Public domain",
         ),
+        extra_row(
+            n=405,
+            title="Japan Surrenders",
+            year="1945",
+            filename="405-japan-surrenders.mp4",
+            caption_path=catalog / "japan-surrender-post.txt",
+            credit="Photo: U.S. Navy, 1945 · Public domain",
+        ),
     ]
 
 
@@ -371,6 +379,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/thurgood-marshall-post.csv", [by_n[402]])
         write_rows(ROOT / "public/catalog/princess-diana-post.csv", [by_n[403]])
         write_rows(ROOT / "public/catalog/tupac-post.csv", [by_n[404]])
+        write_rows(ROOT / "public/catalog/japan-surrender-post.csv", [by_n[405]])
     print(args.out, args.out.stat().st_size)
 
 
