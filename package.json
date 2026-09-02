@@ -14,7 +14,8 @@
     "template:still": "node scripts/export_template_still.mjs",
     "catalog:pad": "python3 scripts/make_pad_audio.py",
     "catalog:videos": "python3 scripts/stills_to_videos.py",
-    "catalog:captions": "python3 scripts/write_video_captions_csv.py"
+    "catalog:captions": "python3 scripts/write_video_captions_csv.py",
+    "daily:pack": "node scripts/export_daily.mjs"
   },
   "dependencies": {
     "jszip": "^3.10.1",

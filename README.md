@@ -35,7 +35,7 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 
 ## Use
 
-1. Pick a template or start from a blank reel.
+1. Pick **Today’s reel** for the dated extra, or another template, or start from a blank reel.
 2. Set the title and year. The episode number is for the catalog and filenames only — it is not drawn on the video.
 3. Add a photo (bundled path, URL, or upload), caption, and credit.
 4. Edit the sentence bullets. Hashtags are for your caption, not the frame.

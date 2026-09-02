@@ -21,6 +21,7 @@ import {
 } from "./lib/catalog";
 import { zipReelExports } from "./lib/batchExport";
 import { buildPasteCaption, catalogCopyCaption } from "./lib/postCaption";
+import { pickDailyTemplate } from "./lib/dailyReel";
 import {
   ALL_STILLS_NAME,
   ALL_STILLS_URL,
@@ -218,6 +219,19 @@ export default function App() {
         ep.tags.toLowerCase().includes(q),
     );
   }, [catalog, query]);
+
+  function loadToday() {
+    const today = pickDailyTemplate();
+    if (!today) {
+      window.alert(
+        "No dated extra for today. Search the catalog or pick a template. Only ask a cloud agent when you need a brand-new newsjack extra.",
+      );
+      return;
+    }
+    setReel(cloneTemplate(today));
+    setTime(0);
+    setPlaying(false);
+  }
 
   function loadEpisode(ep: CatalogEpisode) {
     setReel(episodeToReel(ep));
@@ -531,6 +545,13 @@ export default function App() {
             >
               Tupac caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/japan-surrender-post.txt"
+              download="japan-surrender-post.txt"
+            >
+              Japan Surrenders caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
@@ -636,6 +657,9 @@ export default function App() {
         <div className="section">
           <h2>Templates</h2>
           <div className="template-row">
+            <button className="primary" onClick={loadToday}>
+              Today’s reel
+            </button>
             {TEMPLATES.map((t) => (
               <button
                 key={t.id}
@@ -658,6 +682,11 @@ export default function App() {
               Blank
             </button>
           </div>
+          <p className="hint">
+            Today’s reel loads the dated extra for this calendar day. Save PNG,
+            download video, copy the caption — that is the app, not a cloud
+            agent. If this date has no extra, search the catalog.
+          </p>
         </div>
 
         <div className="pair">
