@@ -230,6 +230,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(japan!)).not.toMatch(/\b405\b/);
   });
 
+  it("ships a Gloria Steinem tribute template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const gloria = TEMPLATES.find((t) => t.id === "gloria-steinem");
+    expect(gloria).toBeDefined();
+    expect(gloria?.title).toBe("Gloria Steinem");
+    expect(gloria?.year).toBe("1934–2026");
+    expect(gloria?.imageUrl).toContain("gloria-steinem-1972");
+    expect(gloria?.imageCredit).toMatch(/Women's Action Alliance/);
+    expect(gloria?.theme).toBe("ember");
+    expect(gloria?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(gloria?.bullets[2]).toMatch(/Playboy Bunny/);
+    expect(gloria?.bullets[11]).toMatch(/September 2, 2026/);
+    expect(gloria?.postCaption).toMatch(/Playboy Bunny/);
+    expect(gloria?.postCaption).toContain("@FactsOrWhacks");
+    expect(gloria?.hashtags).toContain("#GloriaSteinem");
+    expect(canvasHeadlineText(gloria!)).toBe("Gloria Steinem");
+    expect(canvasHeadlineText(gloria!)).not.toMatch(/\b406\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

@@ -123,6 +123,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("81 years ago today")).toBe(true);
   });
 
+  it("uses the Gloria Steinem tribute caption as the paste block", () => {
+    const gloria = TEMPLATES.find((t) => t.id === "gloria-steinem");
+    expect(gloria).toBeDefined();
+    const caption = buildPasteCaption(gloria!);
+    expect(caption).toContain("Playboy Bunny");
+    expect(caption).toContain("feminism on newsstands");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#GloriaSteinem");
+    expect(caption.startsWith("She went undercover")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

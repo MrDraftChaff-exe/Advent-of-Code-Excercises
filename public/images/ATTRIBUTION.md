@@ -109,6 +109,17 @@ The Tupac template prints the credit on-frame. Paste caption: [`../catalog/tupac
 
 The Japan Surrenders template prints the credit on-frame. Paste caption: [`../catalog/japan-surrender-post.txt`](../catalog/japan-surrender-post.txt).
 
+# Gloria Steinem, Women's Action Alliance, 1972
+
+- File: `gloria-steinem-1972.jpg`
+- Original: [Gloria_Steinem_at_news_conference,_Women's_Action_Alliance,_January_12,_1972.jpg](https://commons.wikimedia.org/wiki/File:Gloria_Steinem_at_news_conference,_Women%27s_Action_Alliance,_January_12,_1972.jpg)
+- Photographer: Women's Action Alliance
+- Date: 12 January 1972
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop centering on the portrait.
+
+The Gloria Steinem template prints the credit on-frame. Paste caption: [`../catalog/gloria-steinem-post.txt`](../catalog/gloria-steinem-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

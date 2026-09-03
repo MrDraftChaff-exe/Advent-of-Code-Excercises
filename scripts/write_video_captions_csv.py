@@ -295,6 +295,14 @@ def extra_rows() -> list[dict[str, str]]:
             caption_path=catalog / "japan-surrender-post.txt",
             credit="Photo: U.S. Navy, 1945 · Public domain",
         ),
+        extra_row(
+            n=406,
+            title="Gloria Steinem",
+            year="1934–2026",
+            filename="406-gloria-steinem.mp4",
+            caption_path=catalog / "gloria-steinem-post.txt",
+            credit="Photo: Women's Action Alliance, 1972 · Public domain",
+        ),
     ]
 
 
@@ -380,6 +388,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/princess-diana-post.csv", [by_n[403]])
         write_rows(ROOT / "public/catalog/tupac-post.csv", [by_n[404]])
         write_rows(ROOT / "public/catalog/japan-surrender-post.csv", [by_n[405]])
+        write_rows(ROOT / "public/catalog/gloria-steinem-post.csv", [by_n[406]])
     print(args.out, args.out.stat().st_size)
 
 

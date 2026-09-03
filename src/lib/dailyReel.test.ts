@@ -17,8 +17,14 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("japan-surrender")).toBe("japan_surrender");
   });
 
+  it("maps September 3 to the Gloria Steinem extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-03"));
+    expect(reel?.id).toBe("gloria-steinem");
+    expect(dailyArtifactStem("gloria-steinem")).toBe("gloria_steinem");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
-    expect(pickDailyTemplate(parseIsoDate("2026-09-03"))).toBeUndefined();
+    expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });
 
   it("formats local month-day with leading zeros", () => {

@@ -232,6 +232,20 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#VJDay/);
   });
 
+  it("keeps the Gloria Steinem post caption off the phone frame", () => {
+    const gloria = TEMPLATES.find((t) => t.id === "gloria-steinem");
+    expect(gloria?.postCaption).toMatch(/Playboy Bunny/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, gloria!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Gloria Steinem");
+    expect(painted).toContain("Ms. Magazine");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("feminism on newsstands");
+    expect(painted).not.toMatch(/#GloriaSteinem/);
+    expect(painted).not.toMatch(/#MsMagazine/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

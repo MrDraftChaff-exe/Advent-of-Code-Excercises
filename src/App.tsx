@@ -552,6 +552,13 @@ export default function App() {
             >
               Japan Surrenders caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/gloria-steinem-post.txt"
+              download="gloria-steinem-post.txt"
+            >
+              Gloria Steinem caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
