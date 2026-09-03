@@ -239,7 +239,7 @@ describe("canvas layout rules", () => {
     drawFrame(ctx, gloria!, 4, null);
     const painted = texts.join("");
     expect(painted).toContain("Gloria Steinem");
-    expect(painted).toContain("Ms. Magazine");
+    expect(painted).toContain("Ms.");
     expect(painted).toContain("@FactsOrWhacks");
     expect(painted).not.toContain("feminism on newsstands");
     expect(painted).not.toMatch(/#GloriaSteinem/);

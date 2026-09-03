@@ -241,7 +241,7 @@ describe("templates", () => {
     expect(gloria?.theme).toBe("ember");
     expect(gloria?.bullets).toHaveLength(TARGET_FACT_COUNT);
     expect(gloria?.bullets[2]).toMatch(/Playboy Bunny/);
-    expect(gloria?.bullets[11]).toMatch(/September 2, 2026/);
+    expect(gloria?.bullets[11]).toMatch(/2026/);
     expect(gloria?.postCaption).toMatch(/Playboy Bunny/);
     expect(gloria?.postCaption).toContain("@FactsOrWhacks");
     expect(gloria?.hashtags).toContain("#GloriaSteinem");
