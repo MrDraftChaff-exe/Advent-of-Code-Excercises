@@ -134,6 +134,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("She went undercover")).toBe(true);
   });
 
+  it("uses the Squeaky Fromme caption as the paste block", () => {
+    const fromme = TEMPLATES.find((t) => t.id === "squeaky-fromme");
+    expect(fromme).toBeDefined();
+    const caption = buildPasteCaption(fromme!);
+    expect(caption).toContain("Manson girl");
+    expect(caption).toContain("never chambered one");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#SqueakyFromme");
+    expect(caption.startsWith("A Manson girl")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

@@ -249,6 +249,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(gloria!)).not.toMatch(/\b406\b/);
   });
 
+  it("ships a Squeaky Fromme anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const fromme = TEMPLATES.find((t) => t.id === "squeaky-fromme");
+    expect(fromme).toBeDefined();
+    expect(fromme?.title).toBe("Squeaky Fromme");
+    expect(fromme?.year).toBe("1975");
+    expect(fromme?.imageUrl).toContain("ford-fromme-1975");
+    expect(fromme?.imageCredit).toMatch(/Ricardo Thomas/);
+    expect(fromme?.theme).toBe("ember");
+    expect(fromme?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(fromme?.bullets[1]).toMatch(/Manson/);
+    expect(fromme?.bullets[11]).toMatch(/never pulled the slide/);
+    expect(fromme?.postCaption).toMatch(/Manson girl/);
+    expect(fromme?.postCaption).toContain("@FactsOrWhacks");
+    expect(fromme?.hashtags).toContain("#SqueakyFromme");
+    expect(canvasHeadlineText(fromme!)).toBe("Squeaky Fromme");
+    expect(canvasHeadlineText(fromme!)).not.toMatch(/\b407\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

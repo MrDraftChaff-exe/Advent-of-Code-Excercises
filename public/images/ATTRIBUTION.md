@@ -120,6 +120,17 @@ The Japan Surrenders template prints the credit on-frame. Paste caption: [`../ca
 
 The Gloria Steinem template prints the credit on-frame. Paste caption: [`../catalog/gloria-steinem-post.txt`](../catalog/gloria-steinem-post.txt).
 
+# Secret Service rushes President Ford, Sacramento, 1975
+
+- File: `ford-fromme-1975.jpg`
+- Original: [Ford_rushed_from_Sacramento_assassination_attempt_image_A6320-23A.jpg](https://commons.wikimedia.org/wiki/File:Ford_rushed_from_Sacramento_assassination_attempt_image_A6320-23A.jpg)
+- Photographer: Ricardo Thomas, White House Photographic Office
+- Date: 5 September 1975, Sacramento, California
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop around Ford and the Secret Service detail.
+
+The Squeaky Fromme template prints the credit on-frame. Paste caption: [`../catalog/squeaky-fromme-post.txt`](../catalog/squeaky-fromme-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -246,6 +246,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#MsMagazine/);
   });
 
+  it("keeps the Squeaky Fromme post caption off the phone frame", () => {
+    const fromme = TEMPLATES.find((t) => t.id === "squeaky-fromme");
+    expect(fromme?.postCaption).toMatch(/Manson girl/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, fromme!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Squeaky Fromme");
+    expect(painted).toContain("Colt");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("Manson girl");
+    expect(painted).not.toContain("Two feet away");
+    expect(painted).not.toMatch(/#SqueakyFromme/);
+    expect(painted).not.toMatch(/#CharlesManson/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

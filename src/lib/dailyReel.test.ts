@@ -23,6 +23,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("gloria-steinem")).toBe("gloria_steinem");
   });
 
+  it("maps September 5 to the Squeaky Fromme extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-05"));
+    expect(reel?.id).toBe("squeaky-fromme");
+    expect(dailyArtifactStem("squeaky-fromme")).toBe("squeaky_fromme");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

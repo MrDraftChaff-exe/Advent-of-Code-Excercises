@@ -559,6 +559,13 @@ export default function App() {
             >
               Gloria Steinem caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/squeaky-fromme-post.txt"
+              download="squeaky-fromme-post.txt"
+            >
+              Squeaky Fromme caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
