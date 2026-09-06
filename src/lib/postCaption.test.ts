@@ -145,6 +145,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("A Manson girl")).toBe(true);
   });
 
+  it("uses the Magellan circumnavigation caption as the paste block", () => {
+    const magellan = TEMPLATES.find((t) => t.id === "magellan");
+    expect(magellan).toBeDefined();
+    const caption = buildPasteCaption(magellan!);
+    expect(caption).toContain("Five ships");
+    expect(caption).toContain("Eighteen walked off");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#Magellan");
+    expect(caption.startsWith("Five ships")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

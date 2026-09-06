@@ -29,6 +29,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("squeaky-fromme")).toBe("squeaky_fromme");
   });
 
+  it("maps September 6 to the Magellan extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-06"));
+    expect(reel?.id).toBe("magellan");
+    expect(dailyArtifactStem("magellan")).toBe("magellan");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

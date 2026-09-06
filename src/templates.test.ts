@@ -268,6 +268,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(fromme!)).not.toMatch(/\b407\b/);
   });
 
+  it("ships a Magellan circumnavigation template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const magellan = TEMPLATES.find((t) => t.id === "magellan");
+    expect(magellan).toBeDefined();
+    expect(magellan?.title).toBe("Magellan");
+    expect(magellan?.year).toBe("1522");
+    expect(magellan?.imageUrl).toContain("nao-victoria-sete");
+    expect(magellan?.imageCredit).toMatch(/Christian Ferrer/);
+    expect(magellan?.theme).toBe("ocean");
+    expect(magellan?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(magellan?.bullets[4]).toMatch(/Mactan/);
+    expect(magellan?.bullets[11]).toMatch(/504 years ago today/);
+    expect(magellan?.postCaption).toMatch(/Eighteen walked off/);
+    expect(magellan?.postCaption).toContain("@FactsOrWhacks");
+    expect(magellan?.hashtags).toContain("#Magellan");
+    expect(canvasHeadlineText(magellan!)).toBe("Magellan");
+    expect(canvasHeadlineText(magellan!)).not.toMatch(/\b408\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

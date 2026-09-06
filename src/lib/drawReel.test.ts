@@ -261,6 +261,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#CharlesManson/);
   });
 
+  it("keeps the Magellan post caption off the phone frame", () => {
+    const magellan = TEMPLATES.find((t) => t.id === "magellan");
+    expect(magellan?.postCaption).toMatch(/Eighteen walked off/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, magellan!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Magellan");
+    expect(painted).toContain("Victoria");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("Eighteen walked off");
+    expect(painted).not.toContain("Five ships");
+    expect(painted).not.toMatch(/#Magellan/);
+    expect(painted).not.toMatch(/#Elcano/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -75,8 +75,9 @@ Already-shipped extras (do not silently replace them):
 | 405 | `japan-surrender` | V-J Day / USS Missouri, Sep 2, 1945 |
 | 406 | `gloria-steinem` | Died Sep 2, 2026, age 92 |
 | 407 | `squeaky-fromme` | Ford assassination attempt Sep 5, 1975 |
+| 408 | `magellan` | Victoria completes first circumnavigation Sep 6, 1522 |
 
-Next extra number is one higher than the current max extra (`407` → `408`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`408` → `409`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

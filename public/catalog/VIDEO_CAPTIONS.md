@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), and `407` (Squeaky Fromme) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), and `408` (Magellan) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
 
 ## Dolly Parton extra post
 
@@ -57,3 +57,7 @@ Load the **Gloria Steinem** template, or copy row `406`. Caption file: [`gloria-
 ## Squeaky Fromme extra post
 
 Load the **Squeaky Fromme** template, or copy row `407`. Caption file: [`squeaky-fromme-post.txt`](squeaky-fromme-post.txt). Video filename: `407-squeaky-fromme.mp4`.
+
+## Magellan extra post
+
+Load the **Magellan** template, or copy row `408`. Caption file: [`magellan-post.txt`](magellan-post.txt). Video filename: `408-magellan.mp4`.

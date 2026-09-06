@@ -566,6 +566,13 @@ export default function App() {
             >
               Squeaky Fromme caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/magellan-post.txt"
+              download="magellan-post.txt"
+            >
+              Magellan caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

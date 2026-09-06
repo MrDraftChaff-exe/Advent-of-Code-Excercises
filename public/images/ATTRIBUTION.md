@@ -131,6 +131,17 @@ The Gloria Steinem template prints the credit on-frame. Paste caption: [`../cata
 
 The Squeaky Fromme template prints the credit on-frame. Paste caption: [`../catalog/squeaky-fromme-post.txt`](../catalog/squeaky-fromme-post.txt).
 
+# Replica of Magellan’s Victoria, Sète, 2016
+
+- File: `nao-victoria-sete.jpg`
+- Original: [Nao_Victoria_(ship,_1992),_Sète_cf04.jpg](https://commons.wikimedia.org/wiki/File:Nao_Victoria_(ship,_1992),_S%C3%A8te_cf04.jpg)
+- Photographer: Christian Ferrer
+- Date: 26 March 2016, Escale à Sète, Hérault, France
+- License: CC BY 4.0
+- Note: Local file is a 9:16 crop of the replica of Magellan’s nao Victoria.
+
+The Magellan template prints the credit on-frame. Paste caption: [`../catalog/magellan-post.txt`](../catalog/magellan-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
