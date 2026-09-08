@@ -1,0 +1,9 @@
+.cache/
+runtime/
+*.jar
+*.log
+*.secret
+playit.toml
+.DS_Store
+__pycache__/
+*.pyc
