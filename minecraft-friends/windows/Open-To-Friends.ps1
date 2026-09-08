@@ -29,7 +29,10 @@ if (-not (Test-Path $playit)) {
 
 $secret = Join-Path $Runtime "playit.secret"
 $log = Join-Path $Runtime "playit.log"
-Start-Process -FilePath $playit -ArgumentList @("--secret-path", $secret, "--log-path", $log)
+# Named pipe / socket lives next to the secret so the agent can start without
+# a system runtime directory.
+$socket = Join-Path $Runtime "playit.sock"
+Start-Process -FilePath $playit -ArgumentList @("--secret-path", $secret, "--socket-path", $socket, "--log-path", $log)
 
 Write-Host ""
 Write-Host "Server is starting locally. Friends on the same Wi-Fi can use your LAN IP on port $port."
