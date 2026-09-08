@@ -156,6 +156,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Five ships")).toBe(true);
   });
 
+  it("uses the Star Trek anniversary caption as the paste block", () => {
+    const trek = TEMPLATES.find((t) => t.id === "star-trek");
+    expect(trek).toBeDefined();
+    const caption = buildPasteCaption(trek!);
+    expect(caption).toContain("three-season flop");
+    expect(caption).toContain("took over the planet");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#StarTrek");
+    expect(caption.startsWith("NBC cancelled")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

@@ -142,6 +142,17 @@ The Squeaky Fromme template prints the credit on-frame. Paste caption: [`../cata
 
 The Magellan template prints the credit on-frame. Paste caption: [`../catalog/magellan-post.txt`](../catalog/magellan-post.txt).
 
+# Shuttle Enterprise rollout with Star Trek cast, Palmdale, 1976
+
+- File: `shuttle-enterprise-1976.jpg`
+- Original: [The_Shuttle_Enterprise_-_GPN-2000-001363.jpg](https://commons.wikimedia.org/wiki/File:The_Shuttle_Enterprise_-_GPN-2000-001363.jpg)
+- Photographer: NASA (GPN-2000-001363)
+- Date: 17 September 1976, Palmdale, California
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop of the original series cast and Gene Roddenberry in front of orbiter Enterprise.
+
+The Star Trek template prints the credit on-frame. Paste caption: [`../catalog/star-trek-post.txt`](../catalog/star-trek-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

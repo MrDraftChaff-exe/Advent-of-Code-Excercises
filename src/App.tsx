@@ -573,6 +573,13 @@ export default function App() {
             >
               Magellan caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/star-trek-post.txt"
+              download="star-trek-post.txt"
+            >
+              Star Trek caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

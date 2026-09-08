@@ -276,6 +276,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#Elcano/);
   });
 
+  it("keeps the Star Trek post caption off the phone frame", () => {
+    const trek = TEMPLATES.find((t) => t.id === "star-trek");
+    expect(trek?.postCaption).toMatch(/three-season flop/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, trek!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Star Trek");
+    expect(painted).toContain("Enterprise");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("three-season flop");
+    expect(painted).not.toContain("took over the planet");
+    expect(painted).not.toMatch(/#StarTrek/);
+    expect(painted).not.toMatch(/#LiveLongAndProsper/);
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

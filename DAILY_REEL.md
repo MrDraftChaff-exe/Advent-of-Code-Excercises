@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Japan Surrenders on Sep 2).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Star Trek on Sep 8).
 2. **Save PNG** for the 9:16 still. **Download video** for a studio WebM, or run `npm run daily:pack` for the 30s MP4 + unique pad.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-09-02
+# optional: npm run daily:pack -- --date 2026-09-08
 ```
 
 That writes `*_9x16_still.png`, `*_30s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -76,8 +76,9 @@ Already-shipped extras (do not silently replace them):
 | 406 | `gloria-steinem` | Died Sep 2, 2026, age 92 |
 | 407 | `squeaky-fromme` | Ford assassination attempt Sep 5, 1975 |
 | 408 | `magellan` | Victoria completes first circumnavigation Sep 6, 1522 |
+| 409 | `star-trek` | Original series premiere Sep 8, 1966 — 60th anniversary |
 
-Next extra number is one higher than the current max extra (`408` → `409`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`409` → `410`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

@@ -14,6 +14,7 @@ export const DAILY_TEMPLATE_BY_MD: Record<string, string> = {
   "09-03": "gloria-steinem",
   "09-05": "squeaky-fromme",
   "09-06": "magellan",
+  "09-08": "star-trek",
 };
 
 export function monthDay(date: Date = new Date()): string {

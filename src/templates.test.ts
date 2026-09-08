@@ -287,6 +287,25 @@ describe("templates", () => {
     expect(canvasHeadlineText(magellan!)).not.toMatch(/\b408\b/);
   });
 
+  it("ships a Star Trek 60th anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const trek = TEMPLATES.find((t) => t.id === "star-trek");
+    expect(trek).toBeDefined();
+    expect(trek?.title).toBe("Star Trek");
+    expect(trek?.year).toBe("1966");
+    expect(trek?.imageUrl).toContain("shuttle-enterprise-1976");
+    expect(trek?.imageCredit).toMatch(/NASA/);
+    expect(trek?.theme).toBe("cosmic");
+    expect(trek?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(trek?.bullets[5]).toMatch(/Uhura/);
+    expect(trek?.bullets[11]).toMatch(/60 years ago tonight/);
+    expect(trek?.postCaption).toMatch(/three-season flop/);
+    expect(trek?.postCaption).toContain("@FactsOrWhacks");
+    expect(trek?.hashtags).toContain("#StarTrek");
+    expect(canvasHeadlineText(trek!)).toBe("Star Trek");
+    expect(canvasHeadlineText(trek!)).not.toMatch(/\b409\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);
