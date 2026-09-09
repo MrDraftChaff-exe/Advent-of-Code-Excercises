@@ -13,6 +13,7 @@ import { loadReelFonts, downloadBlob, slugify } from "./lib/fonts";
 import { exportReelVideo } from "./lib/exportVideo";
 import { ambientSeed, createAmbient } from "./lib/audio";
 import { loadReelImage, readImageFile } from "./lib/images";
+import { beatAtTime, kenBurnsAt, usesCollage } from "./lib/collage";
 import {
   type CatalogEpisode,
   episodeToReel,
@@ -60,6 +61,9 @@ export default function App() {
   const [exporting, setExporting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [photo, setPhoto] = useState<HTMLImageElement | null>(null);
+  const [photos, setPhotos] = useState<Record<string, HTMLImageElement | null>>(
+    {},
+  );
   const [catalog, setCatalog] = useState<CatalogEpisode[]>([]);
   const [query, setQuery] = useState("");
   const [batchFrom, setBatchFrom] = useState(1);
@@ -95,25 +99,53 @@ export default function App() {
 
   useEffect(() => {
     let live = true;
-    if (!reel.imageUrl) {
+    const urls = Array.from(
+      new Set(
+        [reel.imageUrl, ...(reel.images ?? []).map((s) => s.imageUrl)].filter(
+          Boolean,
+        ),
+      ),
+    );
+    if (!urls.length) {
       setPhoto(null);
+      setPhotos({});
       return;
     }
-    loadReelImage(reel.imageUrl).then((img) => {
-      if (live) setPhoto(img);
+    Promise.all(urls.map((url) => loadReelImage(url))).then((imgs) => {
+      if (!live) return;
+      const next: Record<string, HTMLImageElement | null> = {};
+      urls.forEach((url, i) => {
+        next[url] = imgs[i];
+      });
+      setPhotos(next);
+      setPhoto(imgs[0] ?? null);
     });
     return () => {
       live = false;
     };
-  }, [reel.imageUrl]);
+  }, [reel.imageUrl, reel.images]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    drawFrame(ctx, reel, time, photo);
-  }, [reel, time, fontsReady, photo]);
+    if (usesCollage(reel) && (playing || time > 0.05)) {
+      const beat = beatAtTime(reel, time);
+      const img = photos[beat.imageUrl] ?? photo;
+      drawFrame(ctx, reel, time, img, {
+        mode: "beat",
+        kenBurns: kenBurnsAt(beat, time),
+        slide: {
+          facts: beat.facts,
+          imageCaption: beat.imageCaption,
+          imageCredit: beat.imageCredit,
+        },
+      });
+    } else {
+      drawFrame(ctx, reel, time, photo);
+    }
+  }, [reel, time, fontsReady, photo, photos, playing]);
 
   useEffect(() => {
     if (!playing) {
@@ -580,6 +612,13 @@ export default function App() {
             >
               Star Trek caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/elvis-post.txt"
+              download="elvis-post.txt"
+            >
+              Elvis caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
@@ -895,15 +934,18 @@ export default function App() {
 
         <label className="field">
           <span className="field-label">Duration ({reel.durationSec}s)</span>
-          <input
+            <input
             type="range"
             min={8}
-            max={45}
+            max={60}
             value={reel.durationSec}
             onChange={(e) =>
               patch({ durationSec: clampDuration(Number(e.target.value)) })
             }
           />
+          <span className="hint">
+            Daily posts are 60 seconds with a photo collage. Catalog clips can stay shorter.
+          </span>
         </label>
 
         <div className="section">

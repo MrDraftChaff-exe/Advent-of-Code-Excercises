@@ -41,6 +41,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("star-trek")).toBe("star_trek");
   });
 
+  it("maps September 9 to the Elvis extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-09"));
+    expect(reel?.id).toBe("elvis");
+    expect(dailyArtifactStem("elvis")).toBe("elvis");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

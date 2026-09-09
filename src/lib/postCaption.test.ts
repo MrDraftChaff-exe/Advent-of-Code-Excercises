@@ -167,6 +167,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("NBC cancelled")).toBe(true);
   });
 
+  it("uses the Elvis Sullivan anniversary caption as the paste block", () => {
+    const elvis = TEMPLATES.find((t) => t.id === "elvis");
+    expect(elvis).toBeDefined();
+    const caption = buildPasteCaption(elvis!);
+    expect(caption).toContain("never book him");
+    expect(caption).toContain("60 million people watched");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#Elvis");
+    expect(caption.startsWith("Ed Sullivan swore")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

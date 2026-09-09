@@ -153,6 +153,18 @@ The Magellan template prints the credit on-frame. Paste caption: [`../catalog/ma
 
 The Star Trek template prints the credit on-frame. Paste caption: [`../catalog/star-trek-post.txt`](../catalog/star-trek-post.txt).
 
+# Elvis Presley collage, 1958–1970
+
+Poster still: `elvis-1958.jpg`. Collage slides:
+
+- `elvis-1958.jpg` — [Elvis_Presley,_June_1958_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Elvis_Presley,_June_1958_(cropped).jpg). Modern Screen, June 1958. Public domain (not renewed). 9:16 crop of the portrait.
+- `elvis-army-1958.jpg` — [Elvis_sworn_into_army_1958.jpg](https://commons.wikimedia.org/wiki/File:Elvis_sworn_into_army_1958.jpg). Associated Press, Fort Chaffee, 25 March 1958. Public domain (not renewed). 9:16 crop around Elvis taking the oath.
+- `elvis-nixon-1970.jpg` — [Elvis-nixon.jpg](https://commons.wikimedia.org/wiki/File:Elvis-nixon.jpg). Ollie Atkins, White House, 21 December 1970. Public domain (U.S. government work). 9:16 crop of the handshake.
+- `elvis-nixon-elvis.jpg` — same White House photograph, 9:16 crop on Elvis.
+- `elvis-oval-1970.jpg` — [Elvis_Presley_1970.jpg](https://commons.wikimedia.org/wiki/File:Elvis_Presley_1970.jpg). Ollie Atkins, White House, 1970. Public domain (U.S. government work). 9:16 crop of the portrait.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/elvis-post.txt`](../catalog/elvis-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

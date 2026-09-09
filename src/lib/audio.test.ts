@@ -10,9 +10,11 @@ describe("unique ambient pads", () => {
     const a = padParams("396-dolly-parton");
     const b = padParams("400-btk");
     expect(a).not.toEqual(b);
+    expect(a.breathHz).toBeGreaterThan(0.1);
+    expect(b.pulseHz).toBeGreaterThan(0.4);
     expect(a.root).toBeGreaterThan(50);
-    expect(b.cutoff).toBeLessThan(230);
-    expect(a.cutoff).toBeGreaterThan(140);
+    expect(b.cutoff).toBeLessThan(290);
+    expect(a.cutoff).toBeGreaterThan(180);
   });
 
   it("seeds studio preview from episode identity", () => {

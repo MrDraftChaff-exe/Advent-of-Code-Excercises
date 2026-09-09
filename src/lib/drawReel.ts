@@ -4,11 +4,12 @@ import {
   wrapPlain,
   wrapTokens,
 } from "./text";
-import { coverSourceRect } from "./cover";
+import { coverSourceRect, kenBurnsRect } from "./cover";
 import { loadReelImage } from "./images";
+import { collageBeats } from "./collage";
 import { drawNebula } from "./nebula";
 import { THEMES } from "../templates";
-import type { ReelContent, Word } from "../types";
+import type { DrawFrameOptions, KenBurns, ReelContent, Word } from "../types";
 import { CANVAS_H, CANVAS_W } from "../types";
 
 function clamp(n: number, a: number, b: number) {
@@ -53,10 +54,15 @@ function drawCoverImage(
   y: number,
   w: number,
   h: number,
+  ken?: KenBurns,
 ) {
   const iw = image.naturalWidth || image.width;
   const ih = image.naturalHeight || image.height;
-  const src = coverSourceRect(iw, ih, w, h, 0.28);
+  const focusY = ken?.focusY ?? 0.28;
+  const cover = coverSourceRect(iw, ih, w, h, focusY);
+  const src = ken
+    ? kenBurnsRect(cover, ken.scale, ken.focusX, ken.focusY)
+    : cover;
   ctx.drawImage(image, src.sx, src.sy, src.sw, src.sh, x, y, w, h);
 }
 
@@ -145,6 +151,7 @@ export function drawFrame(
   reel: ReelContent,
   time: number,
   image: HTMLImageElement | null = null,
+  options: DrawFrameOptions = {},
 ) {
   const w = CANVAS_W;
   const h = CANVAS_H;
@@ -152,9 +159,16 @@ export function drawFrame(
   drawNebula(ctx, w, h, time, theme);
 
   if (image && (image.naturalWidth || image.width)) {
-    drawCoverImage(ctx, image, 0, 0, w, h);
+    drawCoverImage(ctx, image, 0, 0, w, h, options.kenBurns);
   } else {
-    drawPhotoPlaceholder(ctx, 0, 0, w, h, reel.imageCaption || "Photo");
+    drawPhotoPlaceholder(
+      ctx,
+      0,
+      0,
+      w,
+      h,
+      options.slide?.imageCaption || reel.imageCaption || "Photo",
+    );
   }
   drawReadScrim(ctx, w, h);
 
@@ -165,14 +179,26 @@ export function drawFrame(
   const safeBottom = 72;
   const copyBottom = h - safeBottom;
   const handleH = 26;
-  const bullets = reel.bullets.filter((b) => b.trim());
+  const beatFacts = options.slide?.facts?.map((b) => b.trim()).filter(Boolean);
+  const bullets =
+    options.mode === "beat" && beatFacts
+      ? beatFacts
+      : reel.bullets.filter((b) => b.trim());
   const yearLabel = formatYear(reel.year);
-  const caption = reel.imageCaption.trim();
-  const credit = reel.imageCredit.trim();
+  const caption = (
+    options.mode === "beat" && options.slide
+      ? options.slide.imageCaption
+      : reel.imageCaption
+  ).trim();
+  const credit = (
+    options.mode === "beat" && options.slide
+      ? options.slide.imageCredit
+      : reel.imageCredit
+  ).trim();
 
-  const titleSize = 80;
-  const yearSize = 42;
-  const bodySize = 50;
+  const titleSize = options.mode === "beat" ? 86 : 80;
+  const yearSize = options.mode === "beat" ? 46 : 42;
+  const bodySize = options.mode === "beat" ? 62 : 50;
   const captionSize = 20;
   const creditSize = 16;
   const titleLh = 86;
@@ -404,4 +430,34 @@ export async function snapshotPng(
   time = 4,
 ): Promise<Blob> {
   return snapshotBlob(reel, time, "image/png");
+}
+
+/** One collage beat as a 9:16 PNG. Ken Burns happens in ffmpeg, not here. */
+export async function snapshotBeatPng(
+  reel: ReelContent,
+  beatIndex: number,
+): Promise<Blob> {
+  const beats = collageBeats({ ...reel, durationSec: reel.durationSec || 60 });
+  const beat = beats[Math.max(0, Math.min(beats.length - 1, beatIndex))];
+  const canvas = document.createElement("canvas");
+  canvas.width = CANVAS_W;
+  canvas.height = CANVAS_H;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return Promise.reject(new Error("No 2D context"));
+  const photo = await loadReelImage(beat.imageUrl || reel.imageUrl);
+  const time = (beat.start + beat.end) / 2;
+  drawFrame(ctx, reel, time, photo, {
+    mode: "beat",
+    slide: {
+      facts: beat.facts,
+      imageCaption: beat.imageCaption,
+      imageCredit: beat.imageCredit,
+    },
+  });
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => (blob ? resolve(blob) : reject(new Error("png export failed"))),
+      "image/png",
+    );
+  });
 }

@@ -7,6 +7,30 @@ export type ThemeId = "cosmic" | "ocean" | "ember";
 
 export type RevealMode = "hold" | "cascade";
 
+/** One photograph in a collage extra. Credit stays on-frame. */
+export type ReelSlide = {
+  imageUrl: string;
+  imageCaption: string;
+  imageCredit: string;
+};
+
+export type KenBurns = {
+  scale: number;
+  focusX: number;
+  focusY: number;
+};
+
+export type DrawFrameOptions = {
+  /** Poster still shows every fact. Beat mode is one collage cut. */
+  mode?: "poster" | "beat";
+  kenBurns?: KenBurns;
+  slide?: {
+    facts: string[];
+    imageCaption: string;
+    imageCredit: string;
+  };
+};
+
 export type ReelContent = {
   id: string;
   name: string;
@@ -16,6 +40,8 @@ export type ReelContent = {
   imageUrl: string;
   imageCaption: string;
   imageCredit: string;
+  /** Extra photographs for the minute-long collage. Hero `imageUrl` is the poster. */
+  images?: ReelSlide[];
   bullets: string[];
   hashtags: string;
   /** Full caption to paste under the Reel. Stays off the image. */

@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Turn 9:16 catalog stills into 30s H.264 MP4s with a unique original pad."""
+"""Turn 9:16 catalog stills into 30s H.264 MP4s with a unique original pad.
+
+Daily extras use encode_collage() for 60s Ken Burns + fact beats.
+"""
 
 from __future__ import annotations
 
@@ -102,6 +105,99 @@ def encode_one(
         "+faststart",
         str(dest),
     ]
+    try:
+        subprocess.run(cmd, check=True)
+    finally:
+        if tmp_pad is not None:
+            tmp_pad.unlink(missing_ok=True)
+    return dest
+
+
+def _zoompan_filter(index: int, frames: int) -> str:
+    if index % 2 == 0:
+        z = f"min(1+0.00038*on,1.12)"
+    else:
+        z = f"max(1.12-0.00038*on,1.0)"
+    return (
+        f"[{index}:v]scale=1296:2304:force_original_aspect_ratio=increase,"
+        f"crop=1296:2304,zoompan=z='{z}':x='iw/2-(iw/zoom/2)':"
+        f"y='ih/2-(ih/zoom/2)':d={frames}:s=1080x1920:fps=30,format=yuv420p,setsar=1[v{index}]"
+    )
+
+
+def encode_collage(
+    ffmpeg: str,
+    stills: list[Path],
+    dest: Path,
+    seconds: float = 60.0,
+    seed: str | None = None,
+    audio: Path | None = None,
+) -> Path:
+    """Ken Burns + crossfade a set of beat stills into a minute-long MP4."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.is_file() and dest.stat().st_size > 50_000:
+        return dest
+    if not stills:
+        raise ValueError("encode_collage needs at least one still")
+    n = len(stills)
+    fade = 0.6 if n > 1 and seconds >= 8 else 0.0
+    clip = (seconds + fade * max(0, n - 1)) / n
+    frames = max(2, int(round(clip * 30)))
+    tmp_pad: Path | None = None
+    pad_path = audio
+    if pad_path is None:
+        tmp_pad = dest.with_suffix(".pad.wav")
+        _PAD.write_wav(tmp_pad, seconds, seed or dest.stem)
+        pad_path = tmp_pad
+
+    cmd: list[str] = [ffmpeg, "-y", "-hide_banner", "-loglevel", "error"]
+    for still in stills:
+        cmd.extend(["-loop", "1", "-t", f"{clip:.3f}", "-i", str(still)])
+    cmd.extend(["-i", str(pad_path)])
+    filters = [_zoompan_filter(i, frames) for i in range(n)]
+    if n == 1:
+        filters.append("[v0]fps=30,format=yuv420p[vout]")
+    else:
+        last = "v0"
+        for i in range(1, n):
+            offset = i * (clip - fade)
+            out = "vout" if i == n - 1 else f"x{i}"
+            filters.append(
+                f"[{last}][v{i}]xfade=transition=fade:duration={fade:.3f}:offset={offset:.3f}[{out}]"
+            )
+            last = out
+    cmd.extend(
+        [
+            "-filter_complex",
+            ";".join(filters),
+            "-map",
+            "[vout]",
+            "-map",
+            f"{n}:a",
+            "-t",
+            f"{seconds:.3f}",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "veryfast",
+            "-pix_fmt",
+            "yuv420p",
+            "-crf",
+            "23",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "128k",
+            "-ac",
+            "2",
+            "-ar",
+            "44100",
+            "-shortest",
+            "-movflags",
+            "+faststart",
+            str(dest),
+        ]
+    )
     try:
         subprocess.run(cmd, check=True)
     finally:

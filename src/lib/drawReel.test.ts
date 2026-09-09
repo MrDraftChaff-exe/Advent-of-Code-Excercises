@@ -291,6 +291,40 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#LiveLongAndProsper/);
   });
 
+  it("keeps the Elvis post caption off the phone frame", () => {
+    const elvis = TEMPLATES.find((t) => t.id === "elvis");
+    expect(elvis?.postCaption).toMatch(/never book him/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, elvis!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Elvis");
+    expect(painted).toContain("Sixty million");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("never book him");
+    expect(painted).not.toContain("watched anyway");
+    expect(painted).not.toMatch(/#Elvis/);
+    expect(painted).not.toMatch(/#EdSullivan/);
+  });
+
+  it("paints only the current collage beat facts in beat mode", () => {
+    const elvis = TEMPLATES.find((t) => t.id === "elvis");
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, elvis!, 5, null, {
+      mode: "beat",
+      slide: {
+        facts: ["Ed Sullivan said he would never book Elvis", "Then he paid $50,000 for three Sunday nights"],
+        imageCaption: "Elvis Presley, June 1958",
+        imageCredit: "Photo: Modern Screen, 1958 · Public domain",
+      },
+    });
+    const painted = texts.join(" ");
+    expect(painted).toContain("never book Elvis");
+    expect(painted).toContain("$50,000");
+    expect(painted).not.toContain("Sixty million");
+    expect(painted).not.toContain("Hound Dog");
+    expect(painted).not.toContain("watched anyway");
+  });
+
   it("sizes fact type large enough to fill the phone frame", () => {
     const { ctx, fonts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
  * Export today's dated studio extra through the running Vite app:
- * 9:16 PNG, 30s MP4 with a unique pad, paste caption.
+ * 9:16 poster PNG, 60s collage MP4 with Ken Burns + unique pad, paste caption.
  *
  * Usage:
  *   npm run dev   # already listening on http://127.0.0.1:5173
  *   npm run daily:pack
- *   npm run daily:pack -- --date 2026-09-02
- *   npm run daily:pack -- --id japan-surrender
+ *   npm run daily:pack -- --date 2026-09-09
+ *   npm run daily:pack -- --id elvis
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -21,6 +21,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const OUT_DIR = path.join(ROOT, "dist/template-stills");
 const BASE = "http://127.0.0.1:5173";
 const CHROME = "/usr/local/bin/google-chrome";
+const VIDEO_SECONDS = 60;
 
 function arg(name, fallback = "") {
   const idx = process.argv.indexOf(`--${name}`);
@@ -31,6 +32,12 @@ function arg(name, fallback = "") {
 function copyIfDir(src, destDir, name) {
   if (!fs.existsSync(destDir)) return;
   fs.copyFileSync(src, path.join(destDir, name));
+}
+
+function writePng(file, dataUrl) {
+  const buf = Buffer.from(String(dataUrl).split(",")[1], "base64");
+  fs.writeFileSync(file, buf);
+  return buf.length;
 }
 
 async function studioUp() {
@@ -59,7 +66,7 @@ async function main() {
     args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
   });
   const page = await browser.newPage();
-  page.setDefaultTimeout(120_000);
+  page.setDefaultTimeout(180_000);
   await page.goto(BASE, { waitUntil: "networkidle0" });
   await page.evaluate(async () => {
     const fonts = await import("/src/lib/fonts.ts");
@@ -69,11 +76,12 @@ async function main() {
   });
 
   const result = await page.evaluate(
-    async ({ forcedId, dateArg }) => {
+    async ({ forcedId, dateArg, videoSeconds }) => {
       const templates = await import("/src/templates.ts");
       const daily = await import("/src/lib/dailyReel.ts");
       const draw = await import("/src/lib/drawReel.ts");
       const fonts = await import("/src/lib/fonts.ts");
+      const collage = await import("/src/lib/collage.ts");
       const reel = forcedId
         ? templates.TEMPLATES.find((t) => t.id === forcedId)
         : daily.pickDailyTemplate(
@@ -86,31 +94,47 @@ async function main() {
             : "No dated extra for this calendar day. Search the catalog in the studio, or pass --id.",
         );
       }
-      const blob = await draw.snapshotPng(reel, 4);
-      const dataUrl = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(String(reader.result));
-        reader.onerror = () => reject(new Error("read failed"));
-        reader.readAsDataURL(blob);
-      });
+      const videoReel = { ...reel, durationSec: videoSeconds };
+      const poster = await draw.snapshotPng(reel, 4);
+      const toUrl = (blob) =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result));
+          reader.onerror = () => reject(new Error("read failed"));
+          reader.readAsDataURL(blob);
+        });
+      const beats = collage.collageBeats(videoReel);
+      const beatUrls = [];
+      for (let i = 0; i < beats.length; i++) {
+        const blob = await draw.snapshotBeatPng(videoReel, i);
+        beatUrls.push(await toUrl(blob));
+      }
       const slug = fonts.slugify(`${reel.episode}-${reel.title}`);
       return {
         id: reel.id,
         slug,
         caption: reel.postCaption || "",
         stem: daily.dailyArtifactStem(reel.id),
-        dataUrl,
+        posterUrl: await toUrl(poster),
+        beatUrls,
       };
     },
-    { forcedId, dateArg },
+    { forcedId, dateArg, videoSeconds: VIDEO_SECONDS },
   );
 
   await browser.close();
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const still = path.join(OUT_DIR, `${result.slug}.png`);
-  const buf = Buffer.from(result.dataUrl.split(",")[1], "base64");
-  fs.writeFileSync(still, buf);
+  const posterBytes = writePng(still, result.posterUrl);
+
+  const beatDir = path.join(OUT_DIR, `${result.slug}-beats`);
+  fs.mkdirSync(beatDir, { recursive: true });
+  const beatFiles = result.beatUrls.map((url, i) => {
+    const file = path.join(beatDir, `beat-${String(i).padStart(2, "0")}.png`);
+    writePng(file, url);
+    return file;
+  });
 
   const captionName = `${result.stem}_post.txt`;
   const captionPath = path.join(OUT_DIR, captionName);
@@ -127,9 +151,9 @@ async function main() {
     "spec = importlib.util.spec_from_file_location('stills', 'scripts/stills_to_videos.py')",
     "mod = importlib.util.module_from_spec(spec)",
     "spec.loader.exec_module(mod)",
-    `still = Path(${JSON.stringify(still)})`,
+    `stills = [Path(p) for p in ${JSON.stringify(beatFiles)}]`,
     `dest = Path(${JSON.stringify(destMp4)})`,
-    `mod.encode_one(mod.ffmpeg_bin(), still, None, dest, 30.0, seed=${JSON.stringify(result.slug)})`,
+    `mod.encode_collage(mod.ffmpeg_bin(), stills, dest, ${VIDEO_SECONDS}, seed=${JSON.stringify(result.slug)})`,
     "print(dest, dest.stat().st_size)",
   ].join("\n");
   const encode = spawnSync("python3", ["-c", encodePy], {
@@ -143,7 +167,7 @@ async function main() {
   }
 
   const stillName = `${result.stem}_9x16_still.png`;
-  const videoName = `${result.stem}_30s.mp4`;
+  const videoName = `${result.stem}_60s.mp4`;
   const packedStill = path.join(OUT_DIR, stillName);
   const packedVideo = path.join(OUT_DIR, videoName);
   fs.copyFileSync(still, packedStill);
@@ -155,7 +179,8 @@ async function main() {
     copyIfDir(captionPath, dir, captionName);
   }
 
-  console.log(`Wrote ${still} (${buf.length} bytes)`);
+  console.log(`Wrote ${still} (${posterBytes} bytes)`);
+  console.log(`Beats ${beatFiles.length} in ${beatDir}`);
   console.log(encode.stdout.trim());
   console.log(`Caption ${captionPath}`);
   console.log(`Pack ${stillName} ${videoName} ${captionName}`);

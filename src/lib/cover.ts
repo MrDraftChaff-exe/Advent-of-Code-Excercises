@@ -25,3 +25,20 @@ export function coverSourceRect(
   const sy = Math.max(0, Math.min(maxSy, imgH * focusY - sh / 2));
   return { sx: 0, sy, sw: imgW, sh };
 }
+
+/** Zoom into an already-computed cover crop without sampling outside the image. */
+export function kenBurnsRect(
+  src: { sx: number; sy: number; sw: number; sh: number },
+  scale: number,
+  focusX: number,
+  focusY: number,
+): { sx: number; sy: number; sw: number; sh: number } {
+  const zoom = Math.max(1, scale);
+  const sw = src.sw / zoom;
+  const sh = src.sh / zoom;
+  const fx = Math.max(0, Math.min(1, focusX));
+  const fy = Math.max(0, Math.min(1, focusY));
+  const sx = src.sx + (src.sw - sw) * fx;
+  const sy = src.sy + (src.sh - sh) * fy;
+  return { sx, sy, sw, sh };
+}

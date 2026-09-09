@@ -183,6 +183,7 @@ def extra_row(
     filename: str,
     caption_path: Path,
     credit: str,
+    duration_sec: str = "30",
 ) -> dict[str, str]:
     raw = caption_path.read_text(encoding="utf-8")
     tags = hashtag_list(
@@ -207,7 +208,7 @@ def extra_row(
         "title": title,
         "year": year,
         "handle": HANDLE,
-        "duration_sec": "30",
+        "duration_sec": duration_sec,
         "image_credit": credit,
     }
 
@@ -327,6 +328,15 @@ def extra_rows() -> list[dict[str, str]]:
             caption_path=catalog / "star-trek-post.txt",
             credit="Photo: NASA, 1976 · Public domain",
         ),
+        extra_row(
+            n=410,
+            title="Elvis",
+            year="1956",
+            filename="410-elvis.mp4",
+            caption_path=catalog / "elvis-post.txt",
+            credit="Photo: Modern Screen, 1958 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -416,6 +426,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/squeaky-fromme-post.csv", [by_n[407]])
         write_rows(ROOT / "public/catalog/magellan-post.csv", [by_n[408]])
         write_rows(ROOT / "public/catalog/star-trek-post.csv", [by_n[409]])
+        write_rows(ROOT / "public/catalog/elvis-post.csv", [by_n[410]])
     print(args.out, args.out.stat().st_size)
 
 

@@ -306,6 +306,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(trek!)).not.toMatch(/\b409\b/);
   });
 
+  it("ships an Elvis 70th Sullivan template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const elvis = TEMPLATES.find((t) => t.id === "elvis");
+    expect(elvis).toBeDefined();
+    expect(elvis?.title).toBe("Elvis");
+    expect(elvis?.year).toBe("1956");
+    expect(elvis?.imageUrl).toContain("elvis-1958");
+    expect(elvis?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(elvis?.imageCredit).toMatch(/Modern Screen/);
+    expect(elvis?.theme).toBe("ember");
+    expect(elvis?.durationSec).toBe(60);
+    expect(elvis?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(elvis?.bullets[5]).toMatch(/Sixty million/);
+    expect(elvis?.bullets[11]).toMatch(/70 years ago tonight/);
+    expect(elvis?.postCaption).toMatch(/never book him/);
+    expect(elvis?.postCaption).toContain("@FactsOrWhacks");
+    expect(elvis?.hashtags).toContain("#Elvis");
+    expect(canvasHeadlineText(elvis!)).toBe("Elvis");
+    expect(canvasHeadlineText(elvis!)).not.toMatch(/\b410\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

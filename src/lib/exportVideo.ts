@@ -1,5 +1,10 @@
 import { CANVAS_H, CANVAS_W, type ReelContent } from "../types";
 import { ambientSeed, createAmbient } from "./audio";
+import {
+  beatAtTime,
+  kenBurnsAt,
+  usesCollage,
+} from "./collage";
 import { drawFrame } from "./drawReel";
 import { loadReelImage } from "./images";
 
@@ -31,7 +36,21 @@ export async function exportReelVideo(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("No 2D context");
 
-  const photo = await loadReelImage(reel.imageUrl);
+  const collage = usesCollage(reel);
+  const urls = Array.from(
+    new Set(
+      [reel.imageUrl, ...(reel.images ?? []).map((s) => s.imageUrl)].filter(
+        Boolean,
+      ),
+    ),
+  );
+  const photos = new Map<string, HTMLImageElement | null>();
+  await Promise.all(
+    urls.map(async (url) => {
+      photos.set(url, await loadReelImage(url));
+    }),
+  );
+  const hero = photos.get(reel.imageUrl) ?? null;
   const fps = 30;
   const duration = reel.durationSec;
   const videoStream = canvas.captureStream(fps);
@@ -64,7 +83,21 @@ export async function exportReelVideo(
     const tick = () => {
       const elapsed = (performance.now() - start) / 1000;
       const t = Math.min(elapsed, duration);
-      drawFrame(ctx, reel, t, photo);
+      if (collage) {
+        const beat = beatAtTime(reel, t);
+        const img = photos.get(beat.imageUrl) ?? hero;
+        drawFrame(ctx, reel, t, img, {
+          mode: "beat",
+          kenBurns: kenBurnsAt(beat, t),
+          slide: {
+            facts: beat.facts,
+            imageCaption: beat.imageCaption,
+            imageCredit: beat.imageCredit,
+          },
+        });
+      } else {
+        drawFrame(ctx, reel, t, hero);
+      }
       onProgress?.(Math.min(1, elapsed / duration));
       if (elapsed >= duration + 0.15) {
         if (recorder.state !== "inactive") recorder.stop();

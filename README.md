@@ -44,7 +44,7 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 
 The bundled catalog is 395 original episode scripts (CSV + Wikimedia still URLs, not pre-made video files). Search an episode, load it, and download the WebM. **Download all 395 stills** fetches the prebuilt 9:16 WebP zip when it is on disk (`public/catalog/*.zip`, gitignored because it is ~82 MB). If that file is missing or the browser blocks it, use the smaller 50-episode packs, or **ZIP stills** for a range. **ZIP videos** encodes in real time (~20 seconds per episode).
 
-To bake Buffer-ready 30s MP4s (1080×1920 H.264 + a unique original royalty-free pad per episode, not a licensed track):
+Daily growth posts are 60-second collages (`npm run daily:pack`). Catalog Buffer packs stay 30s stills:
 
 ```bash
 npm run catalog:pad

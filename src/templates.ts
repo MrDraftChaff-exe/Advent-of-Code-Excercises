@@ -630,6 +630,76 @@ export const TEMPLATES: ReelContent[] = [
     reveal: "hold",
   },
   {
+    id: "elvis",
+    name: "Elvis",
+    episode: "410",
+    title: "Elvis",
+    year: "1956",
+    imageUrl: "/images/elvis-1958.jpg",
+    imageCaption: "Elvis Presley, June 1958",
+    imageCredit: "Photo: Modern Screen, 1958 · Public domain",
+    images: [
+      {
+        imageUrl: "/images/elvis-1958.jpg",
+        imageCaption: "Elvis Presley, June 1958",
+        imageCredit: "Photo: Modern Screen, 1958 · Public domain",
+      },
+      {
+        imageUrl: "/images/elvis-army-1958.jpg",
+        imageCaption: "Elvis sworn into the Army, Fort Chaffee, 1958",
+        imageCredit: "Photo: Associated Press, 1958 · Public domain",
+      },
+      {
+        imageUrl: "/images/elvis-nixon-1970.jpg",
+        imageCaption: "Elvis meets Nixon, Oval Office, 1970",
+        imageCredit: "Photo: Ollie Atkins / White House, 1970 · Public domain",
+      },
+      {
+        imageUrl: "/images/elvis-nixon-elvis.jpg",
+        imageCaption: "Elvis at the White House, 1970",
+        imageCredit: "Photo: Ollie Atkins / White House, 1970 · Public domain",
+      },
+      {
+        imageUrl: "/images/elvis-oval-1970.jpg",
+        imageCaption: "Elvis Presley, White House, 1970",
+        imageCredit: "Photo: Ollie Atkins / White House, 1970 · Public domain",
+      },
+      {
+        imageUrl: "/images/elvis-1958.jpg",
+        imageCaption: "Elvis Presley, June 1958",
+        imageCredit: "Photo: Modern Screen, 1958 · Public domain",
+      },
+    ],
+    bullets: [
+      "Ed Sullivan said he would never book Elvis",
+      "Then he paid $50,000 for three Sunday nights",
+      "Sullivan was in a hospital bed after a car crash",
+      "Charles Laughton introduced Elvis from New York",
+      "Elvis was in Hollywood, filming Love Me Tender",
+      "He was 21. Sixty million people tuned in",
+      "That was 82 percent of every television set",
+      "He sang Don’t Be Cruel, Ready Teddy, and Hound Dog",
+      "Love Me Tender had a million orders before release",
+      "The third Sullivan show later cut him off at the waist",
+      "Sullivan called him a real decent, fine boy on air",
+      "70 years ago tonight, America met the King on Sunday TV",
+    ],
+    hashtags: "#Elvis #EdSullivan #HoundDog #LoveMeTender #Graceland",
+    postCaption: [
+      "Ed Sullivan swore he would never book him.",
+      "",
+      "Then 60 million people watched anyway. 70 years ago tonight.",
+      "",
+      "Follow @FactsOrWhacks.",
+      "",
+      "#Elvis #EdSullivan #HoundDog #LoveMeTender #Graceland",
+    ].join("\n"),
+    handle: "@FactsOrWhacks",
+    durationSec: 60,
+    theme: "ember",
+    reveal: "hold",
+  },
+  {
     id: "universe",
     name: "Observable universe",
     episode: "12",
@@ -751,6 +821,7 @@ export function cloneTemplate(template: ReelContent): ReelContent {
   return {
     ...template,
     bullets: [...template.bullets],
+    images: template.images?.map((slide) => ({ ...slide })),
   };
 }
 
