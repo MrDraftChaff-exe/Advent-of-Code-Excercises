@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Turn 9:16 catalog stills into 30s H.264 MP4s with a unique original pad.
 
-Daily extras use encode_collage() for 60s Ken Burns + fact beats.
+Daily extras use encode_collage() for Ken Burns + fact beats. Growth clips
+must probe at least 60s; the encoder targets 62s.
 """
 
 from __future__ import annotations
 
 import argparse
 import importlib.util
+import math
 import re
 import shutil
 import subprocess
@@ -49,6 +51,44 @@ def ffmpeg_bin() -> str:
     return path
 
 
+def ffprobe_bin() -> str:
+    path = shutil.which("ffprobe")
+    if not path:
+        raise SystemExit("ffprobe is required")
+    return path
+
+
+def probe_duration(path: Path) -> float:
+    out = subprocess.check_output(
+        [
+            ffprobe_bin(),
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            str(path),
+        ],
+        text=True,
+    )
+    return float(out.strip())
+
+
+def collage_timeline(n: int, seconds: float) -> tuple[float, int, float]:
+    """Clip length, zoompan frames, and fade so the graph outlasts `seconds`.
+
+    Image inputs default to 25 fps unless `-framerate 30` is set. Combined with
+    `-shortest`, that used to cut minute-long collages to ~58s.
+    """
+    fade = 0.6 if n > 1 and seconds >= 8 else 0.0
+    extra = 1.5 if seconds >= 20 else 0.4
+    target = seconds + extra
+    clip = (target + fade * max(0, n - 1)) / max(1, n)
+    frames = max(2, int(math.ceil(clip * 30.0)) + 8)
+    return frames / 30.0, frames, fade
+
+
 def encode_one(
     ffmpeg: str,
     still: Path,
@@ -72,6 +112,8 @@ def encode_one(
         "-hide_banner",
         "-loglevel",
         "error",
+        "-framerate",
+        "30",
         "-loop",
         "1",
         "-i",
@@ -100,7 +142,6 @@ def encode_one(
         "2",
         "-ar",
         "44100",
-        "-shortest",
         "-movflags",
         "+faststart",
         str(dest),
@@ -129,43 +170,62 @@ def encode_collage(
     ffmpeg: str,
     stills: list[Path],
     dest: Path,
-    seconds: float = 60.0,
+    seconds: float = 62.0,
     seed: str | None = None,
     audio: Path | None = None,
 ) -> Path:
-    """Ken Burns + crossfade a set of beat stills into a minute-long MP4."""
+    """Ken Burns + crossfade beat stills into an MP4 that is at least `seconds`.
+
+    Daily growth clips must probe at >= 60s. The default is 62s so players that
+    round down still show a full minute.
+    """
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.is_file() and dest.stat().st_size > 50_000:
         return dest
     if not stills:
         raise ValueError("encode_collage needs at least one still")
     n = len(stills)
-    fade = 0.6 if n > 1 and seconds >= 8 else 0.0
-    clip = (seconds + fade * max(0, n - 1)) / n
-    frames = max(2, int(round(clip * 30)))
+    clip, frames, fade = collage_timeline(n, seconds)
     tmp_pad: Path | None = None
     pad_path = audio
     if pad_path is None:
         tmp_pad = dest.with_suffix(".pad.wav")
-        _PAD.write_wav(tmp_pad, seconds, seed or dest.stem)
+        _PAD.write_wav(tmp_pad, seconds + 4.0, seed or dest.stem)
         pad_path = tmp_pad
 
     cmd: list[str] = [ffmpeg, "-y", "-hide_banner", "-loglevel", "error"]
     for still in stills:
-        cmd.extend(["-loop", "1", "-t", f"{clip:.3f}", "-i", str(still)])
+        cmd.extend(
+            [
+                "-framerate",
+                "30",
+                "-loop",
+                "1",
+                "-t",
+                f"{clip:.3f}",
+                "-i",
+                str(still),
+            ]
+        )
     cmd.extend(["-i", str(pad_path)])
     filters = [_zoompan_filter(i, frames) for i in range(n)]
     if n == 1:
-        filters.append("[v0]fps=30,format=yuv420p[vout]")
+        filters.append(
+            "[v0]fps=30,format=yuv420p,tpad=stop_mode=clone:stop_duration=2[vout]"
+        )
     else:
         last = "v0"
         for i in range(1, n):
             offset = i * (clip - fade)
-            out = "vout" if i == n - 1 else f"x{i}"
+            out = f"x{i}"
             filters.append(
                 f"[{last}][v{i}]xfade=transition=fade:duration={fade:.3f}:offset={offset:.3f}[{out}]"
             )
             last = out
+        filters.append(
+            f"[{last}]fps=30,format=yuv420p,tpad=stop_mode=clone:stop_duration=2[vout]"
+        )
+    filters.append(f"[{n}:a]aresample=44100,apad=pad_dur=2[aout]")
     cmd.extend(
         [
             "-filter_complex",
@@ -173,9 +233,11 @@ def encode_collage(
             "-map",
             "[vout]",
             "-map",
-            f"{n}:a",
+            "[aout]",
             "-t",
             f"{seconds:.3f}",
+            "-r",
+            "30",
             "-c:v",
             "libx264",
             "-preset",
@@ -192,7 +254,6 @@ def encode_collage(
             "2",
             "-ar",
             "44100",
-            "-shortest",
             "-movflags",
             "+faststart",
             str(dest),
@@ -200,6 +261,13 @@ def encode_collage(
     )
     try:
         subprocess.run(cmd, check=True)
+        duration = probe_duration(dest)
+        floor = 60.0 if seconds >= 60 else max(0.0, seconds - 0.08)
+        if duration + 1e-3 < floor:
+            dest.unlink(missing_ok=True)
+            raise RuntimeError(
+                f"collage {dest.name} is {duration:.3f}s, need >= {floor:.3f}s"
+            )
     finally:
         if tmp_pad is not None:
             tmp_pad.unlink(missing_ok=True)

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Export today's dated studio extra through the running Vite app:
- * 9:16 poster PNG, 60s collage MP4 with Ken Burns + unique pad, paste caption.
+ * 9:16 poster PNG, 62s collage MP4 (probes >= 60s) with Ken Burns + unique pad, paste caption.
  *
  * Usage:
  *   npm run dev   # already listening on http://127.0.0.1:5173
@@ -21,7 +21,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const OUT_DIR = path.join(ROOT, "dist/template-stills");
 const BASE = "http://127.0.0.1:5173";
 const CHROME = "/usr/local/bin/google-chrome";
-const VIDEO_SECONDS = 60;
+const VIDEO_SECONDS = 62;
 
 function arg(name, fallback = "") {
   const idx = process.argv.indexOf(`--${name}`);
@@ -166,6 +166,27 @@ async function main() {
     process.exit(encode.status || 1);
   }
 
+  const probe = spawnSync(
+    "ffprobe",
+    [
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration",
+      "-of",
+      "default=noprint_wrappers=1:nokey=1",
+      destMp4,
+    ],
+    { encoding: "utf8" },
+  );
+  const duration = Number.parseFloat(String(probe.stdout).trim());
+  if (probe.status !== 0 || !Number.isFinite(duration) || duration < 60) {
+    console.error(
+      `Packed MP4 must be at least 60s, got ${String(probe.stdout).trim() || probe.stderr}`,
+    );
+    process.exit(1);
+  }
+
   const stillName = `${result.stem}_9x16_still.png`;
   const videoName = `${result.stem}_60s.mp4`;
   const packedStill = path.join(OUT_DIR, stillName);
@@ -182,6 +203,7 @@ async function main() {
   console.log(`Wrote ${still} (${posterBytes} bytes)`);
   console.log(`Beats ${beatFiles.length} in ${beatDir}`);
   console.log(encode.stdout.trim());
+  console.log(`Duration ${duration.toFixed(3)}s`);
   console.log(`Caption ${captionPath}`);
   console.log(`Pack ${stillName} ${videoName} ${captionName}`);
 }
