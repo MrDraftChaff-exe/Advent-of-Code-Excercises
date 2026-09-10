@@ -47,6 +47,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("elvis")).toBe("elvis");
   });
 
+  it("maps September 10 to the LHC extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-10"));
+    expect(reel?.id).toBe("lhc");
+    expect(dailyArtifactStem("lhc")).toBe("lhc");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

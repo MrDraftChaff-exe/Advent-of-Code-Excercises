@@ -26,6 +26,17 @@ describe("collage beats", () => {
     expect(beats.at(-1)?.end).toBe(VIDEO_DURATION_SEC);
   });
 
+  it("collages the LHC extra across six detector stills", () => {
+    const lhc = TEMPLATES.find((t) => t.id === "lhc");
+    expect(lhc).toBeDefined();
+    expect(usesCollage(lhc!)).toBe(true);
+    expect(reelSlides(lhc!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(lhc!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/17-mile/);
+    expect(beats[5].facts[1]).toMatch(/18 years ago today/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

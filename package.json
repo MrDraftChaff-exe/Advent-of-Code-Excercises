@@ -15,7 +15,8 @@
     "catalog:pad": "python3 scripts/make_pad_audio.py",
     "catalog:videos": "python3 scripts/stills_to_videos.py",
     "catalog:captions": "python3 scripts/write_video_captions_csv.py",
-    "daily:pack": "node scripts/export_daily.mjs"
+    "daily:pack": "node scripts/export_daily.mjs",
+    "trends": "python3 scripts/fetch_trends.py"
   },
   "dependencies": {
     "jszip": "^3.10.1",

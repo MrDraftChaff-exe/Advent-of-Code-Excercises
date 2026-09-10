@@ -619,6 +619,13 @@ export default function App() {
             >
               Elvis caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/lhc-post.txt"
+              download="lhc-post.txt"
+            >
+              LHC caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

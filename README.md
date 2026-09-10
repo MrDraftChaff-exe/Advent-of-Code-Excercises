@@ -44,7 +44,7 @@ Then open the local URL Vite prints (default `http://localhost:5173`).
 
 The bundled catalog is 395 original episode scripts (CSV + Wikimedia still URLs, not pre-made video files). Search an episode, load it, and download the WebM. **Download all 395 stills** fetches the prebuilt 9:16 WebP zip when it is on disk (`public/catalog/*.zip`, gitignored because it is ~82 MB). If that file is missing or the browser blocks it, use the smaller 50-episode packs, or **ZIP stills** for a range. **ZIP videos** encodes in real time (~20 seconds per episode).
 
-Daily growth posts are 60-second collages (`npm run daily:pack`). Catalog Buffer packs stay 30s stills:
+Daily growth posts are collages that must **probe at least 60 seconds** (`npm run daily:pack` encodes 62s so players do not round down to 58). Catalog Buffer packs stay 30s stills:
 
 ```bash
 npm run catalog:pad
@@ -54,6 +54,8 @@ npm run catalog:videos
 That writes `dist/catalog-videos/*.mp4` and 50-episode zips under `public/catalog/facts-or-whacks-videos-*.zip`.
 
 `npm run catalog:captions` writes `public/catalog/facts-or-whacks-videos-captions.csv`. Each row maps one MP4 (`video_filename` / `path_inside_zip` / `video_zip_pack`) to a paste-ready Buffer caption and hashtags.
+
+`npm run trends` prints today’s Google Trends (US) classified for the daily pick. It is a filter, not an auto-poster. See `DAILY_REEL.md`.
 
 Themes: Cosmic, Ocean, Ember. Reveal modes: all-at-once or line-by-line cascade.
 

@@ -15,8 +15,8 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Elvis on Sep 9).
-2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the 60s collage MP4 + unique pad.
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: LHC on Sep 10).
+2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
 If Today’s reel says this date has no extra, **search the 395-episode catalog** in the same sidebar and load one. Still zero tokens.
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-09-09
+# optional: npm run daily:pack -- --date 2026-09-10
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -48,16 +48,19 @@ If you still want an agent for newsjack days only, the prompt is:
 ```
 Read DAILY_REEL.md and follow it exactly.
 
-Ship today’s @FactsOrWhacks growth reel only if it is a newsjack extra that is not already in src/lib/dailyReel.ts. Use the studio: add a TEMPLATES extra, then npm run daily:pack (Vite still + 60s collage MP4). Put the still, mp4, and caption on /opt/cursor/artifacts and /home/ubuntu/Desktop. Commit, push this branch, update the existing draft PR. Do not mention the PR in the user-facing reply. Do not make a screen recording.
+Ship today’s @FactsOrWhacks growth reel only if it is a newsjack extra that is not already in src/lib/dailyReel.ts. Use the studio: add a TEMPLATES extra, then npm run daily:pack (Vite still + collage MP4 that probes >= 60s). Put the still, mp4, and caption on /opt/cursor/artifacts and /home/ubuntu/Desktop. Commit, push this branch, update the existing draft PR. Do not mention the PR in the user-facing reply. Do not make a screen recording.
 
 Stay on the current feature branch. Do not replace TEMPLATES[0] (apartheid).
 ```
 
-## Pick (newsjack > anniversary > catalog)
+## Pick (Trends > newsjack > anniversary > catalog)
 
-1. **Newsjack** a still-moving story that HistoryTok will search today (death, verdict, disaster, royal/pop-culture spike). Skip if facts, death tolls, or cause are still moving, or if a licensed photo is messy. Cause of death stays off the still unless it is settled public record and not pending investigation.
-2. **On-this-day anniversary** the AP “Today in History” lead, or the date people will actually search. Skip if we posted that subject yesterday.
-3. **Catalog** only if 1 and 2 fail. Do not dump the 395 pack. Do not post two similar 12-fact stills in one day.
+Run `npm run trends` first (US Google Trends RSS). It does not post anything. It classifies each query as `candidate`, `hold`, `weak`, or `skip`. `daily:pack` stays token-free and does not call Trends.
+
+1. **Google Trends (US)** that can be a Facts or Whacks extra: 12 short facts, a PD/CC photograph, not pending death facts. Skip sports scores, weather, gadget launches, licensed games/film stills, celebrity gossip, and crypto memes. If Trends is **tomorrow’s** bigger anniversary, **hold it** and pick today’s extra instead (example: 9/11 search on Sep 10 waits for Sep 11).
+2. **Newsjack** a still-moving story that HistoryTok will search today (death, verdict, disaster, royal/pop-culture spike). Skip if facts, death tolls, or cause are still moving, or if a licensed photo is messy. Cause of death stays off the still unless it is settled public record and not pending investigation.
+3. **On-this-day anniversary** the AP “Today in History” lead, or the date people will actually search. Skip if we posted that subject yesterday.
+4. **Catalog** only if 1–3 fail. Do not dump the 395 pack. Do not post two similar 12-fact stills in one day.
 
 Already-shipped extras (do not silently replace them):
 
@@ -78,14 +81,15 @@ Already-shipped extras (do not silently replace them):
 | 408 | `magellan` | Victoria completes first circumnavigation Sep 6, 1522 |
 | 409 | `star-trek` | Original series premiere Sep 8, 1966 — 60th anniversary |
 | 410 | `elvis` | Ed Sullivan debut Sep 9, 1956 — 70th anniversary. 60s collage |
+| 411 | `lhc` | LHC first beam Sep 10, 2008 — 18 years. Trends held 9/11 for Sep 11 |
 
-Next extra number is one higher than the current max extra (`410` → `411`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`411` → `412`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 
 - Canvas `1080×1920`. Photograph cover-fills the frame.
 - **12** full-sentence facts. No terminal periods. Last fact is the money shot.
-- Daily **growth video is 60 seconds** (platform monetization). The poster PNG still shows all 12 facts. The MP4 is a collage: six beats, two facts each, Ken Burns zoom, crossfade between public-domain photographs. Prefer 4–6 local Commons photos; a single photo still gets fact beats and zoom.
+- Daily **growth video is at least 60 seconds** (platform monetization). Encode the collage at **62 seconds** so `ffprobe` reports >= 60.0 after xfade. The poster PNG still shows all 12 facts. The MP4 is a collage: six beats, two facts each, Ken Burns zoom, crossfade between public-domain photographs. Prefer 4–6 local Commons photos; a single photo still gets fact beats and zoom.
 - On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`.
 - Off-frame: episode numbers, hashtags, follow CTA. Custom `postCaption` is the paste block; include a follow line. **Exactly 5 hashtags**, all specific to this episode. No `*Tok`, `#FYP`, `#Reels`, `#Shorts`, `#DidYouKnow`, `#OnThisDay`, or `#FactsOrWhacks`. Do not reuse the same five tags from yesterday. The `@FactsOrWhacks` handle stays in the caption body, not as a hashtag.
 - Unique quiet sine pad seeded by the still stem. It should breathe, change chords, and pulse. No triangle drone, no chorus detune, no 7ths.
@@ -102,7 +106,7 @@ Next extra number is one higher than the current max extra (`410` → `411`, …
 6. `npm run catalog:captions`
 7. `npx vitest run`
 8. Vite on `http://127.0.0.1:5173`. `npm run daily:pack` (or `node scripts/export_template_still.mjs --id <id>` then encode).
-9. Encode 60s collage with `encode_collage(..., seconds=60, seed="<stem>")` from `scripts/stills_to_videos.py` if you are not using `daily:pack`. Delete an existing dest first if it is a stale skip (`size > 50k`).
+9. Encode the collage with `encode_collage(..., seconds=62, seed="<stem>")` from `scripts/stills_to_videos.py` if you are not using `daily:pack`. Confirm `ffprobe` duration is **>= 60**. Delete an existing dest first if it is a stale skip (`size > 50k`).
 10. Copy `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts/` and `/home/ubuntu/Desktop/`.
 11. Commit, push, update the existing draft PR. User-facing reply: why this pick, paste caption, still/video tags, Desktop filenames.
 

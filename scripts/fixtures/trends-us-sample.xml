@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:ht="https://trends.google.com/trending/rss" version="2.0">
+  <channel>
+    <title>Daily Search Trends</title>
+    <item>
+      <title>games</title>
+      <ht:approx_traffic>20000+</ht:approx_traffic>
+      <ht:news_item>
+        <ht:news_item_title>Marvel’s Wolverine review on PS5</ht:news_item_title>
+      </ht:news_item>
+    </item>
+    <item>
+      <title>duolingo</title>
+      <ht:approx_traffic>10000+</ht:approx_traffic>
+      <ht:news_item>
+        <ht:news_item_title>Apple unveils iPhone Duo foldable</ht:news_item_title>
+      </ht:news_item>
+    </item>
+    <item>
+      <title>jaclyn smith on farrah fawcett</title>
+      <ht:approx_traffic>1000+</ht:approx_traffic>
+      <ht:news_item>
+        <ht:news_item_title>Jaclyn Smith reveals why she skipped Farrah Fawcett’s funeral</ht:news_item_title>
+      </ht:news_item>
+    </item>
+    <item>
+      <title>september 11 2001</title>
+      <ht:approx_traffic>200+</ht:approx_traffic>
+      <ht:news_item>
+        <ht:news_item_title>Associated Press journalists remember Sept. 11, 25 years later</ht:news_item_title>
+      </ht:news_item>
+    </item>
+    <item>
+      <title>thurgood marshall</title>
+      <ht:approx_traffic>500+</ht:approx_traffic>
+      <ht:news_item>
+        <ht:news_item_title>The Senate confirmation that seated Justice Marshall</ht:news_item_title>
+      </ht:news_item>
+    </item>
+  </channel>
+</rss>

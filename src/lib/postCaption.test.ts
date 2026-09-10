@@ -178,6 +178,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Ed Sullivan swore")).toBe(true);
   });
 
+  it("uses the LHC first-beam caption as the paste block", () => {
+    const lhc = TEMPLATES.find((t) => t.id === "lhc");
+    expect(lhc).toBeDefined();
+    const caption = buildPasteCaption(lhc!);
+    expect(caption).toContain("17-mile racetrack");
+    expect(caption).toContain("first beam made the lap");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#LHC");
+    expect(caption.startsWith("CERN switched on")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

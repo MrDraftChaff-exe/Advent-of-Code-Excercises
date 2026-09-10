@@ -165,6 +165,19 @@ Poster still: `elvis-1958.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/elvis-post.txt`](../catalog/elvis-post.txt).
 
+# LHC first beam collage, 2007–2021
+
+Poster still: `lhc-aerial-2008.jpg`. Collage slides:
+
+- `lhc-aerial-2008.jpg` — [CERN_Aerial_View.jpg](https://commons.wikimedia.org/wiki/File:CERN_Aerial_View.jpg). Maximilien Brice / CERN, 15 July 2008. CC BY-SA 3.0. 9:16 crop of the Geneva basin with the 27 km ring overlay.
+- `lhc-tunnel-2009.jpg` — [Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg). Maximilien Brice / CERN, 5 October 2009. CC BY-SA 3.0. 9:16 crop down the tunnel.
+- `lhc-cms-2019.jpg` — [CERN_LHC_CMS_07.jpg](https://commons.wikimedia.org/wiki/File:CERN_LHC_CMS_07.jpg). SimonWaldherr, 15 September 2019. CC BY-SA 4.0. 9:16 crop of CMS at Point 5.
+- `lhc-atlas-2007.jpg` — [Atlas_detector_CERN_feb2007.jpg](https://commons.wikimedia.org/wiki/File:Atlas_detector_CERN_feb2007.jpg). Sindre Skrede, 13 February 2007. Public domain. 9:16 crop of ATLAS under construction.
+- `lhc-atlas-2019.jpg` — [CERN_LHC_ATLAS_Detector.jpg](https://commons.wikimedia.org/wiki/File:CERN_LHC_ATLAS_Detector.jpg). SimonWaldherr, 14 September 2019. CC BY-SA 4.0. 9:16 crop of ATLAS at Point 1.
+- `lhc-alice-2021.jpg` — [ALICE_experiment_at_CERN.jpg](https://commons.wikimedia.org/wiki/File:ALICE_experiment_at_CERN.jpg). Andres T, 14 December 2021. CC BY-SA 2.0. 9:16 crop of ALICE at Point 2.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/lhc-post.txt`](../catalog/lhc-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

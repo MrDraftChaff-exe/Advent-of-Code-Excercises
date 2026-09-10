@@ -327,6 +327,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(elvis!)).not.toMatch(/\b410\b/);
   });
 
+  it("ships an LHC first-beam template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const lhc = TEMPLATES.find((t) => t.id === "lhc");
+    expect(lhc).toBeDefined();
+    expect(lhc?.title).toBe("LHC");
+    expect(lhc?.year).toBe("2008");
+    expect(lhc?.imageUrl).toContain("lhc-aerial-2008");
+    expect(lhc?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(lhc?.imageCredit).toMatch(/Maximilien Brice/);
+    expect(lhc?.theme).toBe("cosmic");
+    expect(lhc?.durationSec).toBe(60);
+    expect(lhc?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(lhc?.bullets[9]).toMatch(/Higgs/);
+    expect(lhc?.bullets[11]).toMatch(/18 years ago today/);
+    expect(lhc?.postCaption).toMatch(/17-mile racetrack/);
+    expect(lhc?.postCaption).toContain("@FactsOrWhacks");
+    expect(lhc?.hashtags).toContain("#LHC");
+    expect(canvasHeadlineText(lhc!)).toBe("LHC");
+    expect(canvasHeadlineText(lhc!)).not.toMatch(/\b411\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

@@ -306,6 +306,20 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#EdSullivan/);
   });
 
+  it("keeps the LHC post caption off the phone frame", () => {
+    const lhc = TEMPLATES.find((t) => t.id === "lhc");
+    expect(lhc?.postCaption).toMatch(/17-mile racetrack/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, lhc!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("LHC");
+    expect(painted).toContain("Higgs");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("first beam made the lap");
+    expect(painted).not.toMatch(/#LHC/);
+    expect(painted).not.toMatch(/#ParticlePhysics/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();
