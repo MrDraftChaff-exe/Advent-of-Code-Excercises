@@ -189,6 +189,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("CERN switched on")).toBe(true);
   });
 
+  it("uses the 9/11 anniversary caption as the paste block", () => {
+    const nineEleven = TEMPLATES.find((t) => t.id === "september-11");
+    expect(nineEleven).toBeDefined();
+    const caption = buildPasteCaption(nineEleven!);
+    expect(caption).toContain("Three cities");
+    expect(caption).toContain("seventh silence");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#September11");
+    expect(caption.startsWith("Four planes")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

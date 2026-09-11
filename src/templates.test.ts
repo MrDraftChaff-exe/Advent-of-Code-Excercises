@@ -348,6 +348,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(lhc!)).not.toMatch(/\b411\b/);
   });
 
+  it("ships a 9/11 25th anniversary template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const nineEleven = TEMPLATES.find((t) => t.id === "september-11");
+    expect(nineEleven).toBeDefined();
+    expect(nineEleven?.title).toBe("9/11");
+    expect(nineEleven?.year).toBe("2001");
+    expect(nineEleven?.imageUrl).toContain("wtc-aerial-2001");
+    expect(nineEleven?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(nineEleven?.imageCredit).toMatch(/Jeffmock/);
+    expect(nineEleven?.theme).toBe("ember");
+    expect(nineEleven?.durationSec).toBe(60);
+    expect(nineEleven?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(nineEleven?.bullets[5]).toMatch(/rushed the cockpit/);
+    expect(nineEleven?.bullets[11]).toMatch(/25 years later/);
+    expect(nineEleven?.postCaption).toMatch(/seventh silence/);
+    expect(nineEleven?.postCaption).toContain("@FactsOrWhacks");
+    expect(nineEleven?.hashtags).toContain("#September11");
+    expect(canvasHeadlineText(nineEleven!)).toBe("9/11");
+    expect(canvasHeadlineText(nineEleven!)).not.toMatch(/\b412\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

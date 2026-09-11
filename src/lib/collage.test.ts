@@ -37,6 +37,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/18 years ago today/);
   });
 
+  it("collages the 9/11 extra across six public-domain stills", () => {
+    const nineEleven = TEMPLATES.find((t) => t.id === "september-11");
+    expect(nineEleven).toBeDefined();
+    expect(usesCollage(nineEleven!)).toBe(true);
+    expect(reelSlides(nineEleven!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(nineEleven!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/Four planes/);
+    expect(beats[5].facts[1]).toMatch(/25 years later/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

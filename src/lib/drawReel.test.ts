@@ -320,6 +320,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#ParticlePhysics/);
   });
 
+  it("keeps the 9/11 post caption off the phone frame", () => {
+    const nineEleven = TEMPLATES.find((t) => t.id === "september-11");
+    expect(nineEleven?.postCaption).toMatch(/seventh silence/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, nineEleven!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("9/11");
+    expect(painted).toContain("2,977");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("Three cities");
+    expect(painted).not.toContain("One Tuesday");
+    expect(painted).not.toMatch(/#September11/);
+    expect(painted).not.toMatch(/#GroundZero/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

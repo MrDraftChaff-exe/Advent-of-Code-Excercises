@@ -53,6 +53,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("lhc")).toBe("lhc");
   });
 
+  it("maps September 11 to the 9/11 extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-11"));
+    expect(reel?.id).toBe("september-11");
+    expect(dailyArtifactStem("september-11")).toBe("september_11");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

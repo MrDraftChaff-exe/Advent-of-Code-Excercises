@@ -626,6 +626,13 @@ export default function App() {
             >
               LHC caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/september-11-post.txt"
+              download="september-11-post.txt"
+            >
+              9/11 caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

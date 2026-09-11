@@ -25,12 +25,13 @@ UA = "FactsOrWhacks/1.0 (daily topic pick; +https://github.com)"
 # MM-DD hooks that explode on the calendar day, not the eve.
 HOLD_ANNIVERSARIES: dict[tuple[int, int], tuple[str, ...]] = {
     (9, 11): (
-        "september 11",
-        "sept. 11",
-        "sept 11",
         "9/11",
         "9-11",
-        "9 11",
+        "september 11 2001",
+        "september 11, 2001",
+        "sept. 11, 2001",
+        "world trade center",
+        "flight 93",
     ),
 }
 

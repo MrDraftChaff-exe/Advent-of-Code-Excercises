@@ -178,6 +178,19 @@ Poster still: `lhc-aerial-2008.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/lhc-post.txt`](../catalog/lhc-post.txt).
 
+# 9/11 25th anniversary collage, 2001–2024
+
+Poster still: `wtc-aerial-2001.jpg`. Collage slides:
+
+- `wtc-aerial-2001.jpg` — [World_Trade_Center,_New_York_City_-_aerial_view_(March_2001).jpg](https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York_City_-_aerial_view_(March_2001).jpg). Jeffmock, March 2001. Public domain. 9:16 crop of both towers.
+- `911-iss-plume.jpg` — [Manhattan_smoke_plume_on_September_11,_2001_from_International_Space_Station_(Expedition_3_crew).jpg](https://commons.wikimedia.org/wiki/File:Manhattan_smoke_plume_on_September_11,_2001_from_International_Space_Station_(Expedition_3_crew).jpg). NASA / ISS Expedition 3, 11 September 2001. Public domain. 9:16 crop on the plume over Lower Manhattan.
+- `911-pentagon.jpg` — [US_Navy_010911-N-1350W-022_Pentagon_on_night_of_Sep._11_attack.jpg](https://commons.wikimedia.org/wiki/File:US_Navy_010911-N-1350W-022_Pentagon_on_night_of_Sep._11_attack.jpg). Photographer’s Mate 2nd Class Lisa Borges / U.S. Navy, 11 September 2001. Public domain. 9:16 crop of the Pentagon and Capitol.
+- `911-ground-zero.jpg` — [September_17_2001_Ground_Zero_01.jpg](https://commons.wikimedia.org/wiki/File:September_17_2001_Ground_Zero_01.jpg). Chief Photographer’s Mate Eric J. Tilford / U.S. Navy, 17 September 2001. Public domain. 9:16 crop of the remaining facade.
+- `911-flight93.jpg` — [Flight_93_National_Memorial_aerial_20241223_(12).jpg](https://commons.wikimedia.org/wiki/File:Flight_93_National_Memorial_aerial_20241223_(12).jpg). Designism, 23 December 2024. CC0. 9:16 crop of the circular memorial at Shanksville.
+- `911-fema-booher.jpg` — [FEMA_-_5374_-_Photograph_by_Andrea_Booher_taken_on_09-22-2001_in_New_York.jpg](https://commons.wikimedia.org/wiki/File:FEMA_-_5374_-_Photograph_by_Andrea_Booher_taken_on_09-22-2001_in_New_York.jpg). Andrea Booher / FEMA, 22 September 2001. Public domain. 9:16 crop of search teams.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/september-11-post.txt`](../catalog/september-11-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
