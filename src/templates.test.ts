@@ -369,6 +369,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(nineEleven!)).not.toMatch(/\b412\b/);
   });
 
+  it("ships a Star-Spangled Banner template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const banner = TEMPLATES.find((t) => t.id === "star-spangled-banner");
+    expect(banner).toBeDefined();
+    expect(banner?.title).toBe("Fort McHenry");
+    expect(banner?.year).toBe("1814");
+    expect(banner?.imageUrl).toContain("star-spangled-flag-1873");
+    expect(banner?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(banner?.imageCredit).toMatch(/George Henry Preble/);
+    expect(banner?.theme).toBe("ember");
+    expect(banner?.durationSec).toBe(60);
+    expect(banner?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(banner?.bullets[2]).toMatch(/Congreve/);
+    expect(banner?.bullets[11]).toMatch(/212 years ago tonight/);
+    expect(banner?.postCaption).toMatch(/shelled the fort/);
+    expect(banner?.postCaption).toContain("@FactsOrWhacks");
+    expect(banner?.hashtags).toContain("#StarSpangledBanner");
+    expect(canvasHeadlineText(banner!)).toBe("Fort McHenry");
+    expect(canvasHeadlineText(banner!)).not.toMatch(/\b413\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

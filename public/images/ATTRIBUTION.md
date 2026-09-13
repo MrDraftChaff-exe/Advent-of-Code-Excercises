@@ -191,6 +191,19 @@ Poster still: `wtc-aerial-2001.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/september-11-post.txt`](../catalog/september-11-post.txt).
 
+# Star-Spangled Banner collage, 1814–2024
+
+Poster still: `star-spangled-flag-1873.jpg`. Collage slides:
+
+- `star-spangled-flag-1873.jpg` — [Fort_McHenry_flag.jpg](https://commons.wikimedia.org/wiki/File:Fort_McHenry_flag.jpg). George Henry Preble, 1873. Public domain. 9:16 crop of the garrison flag with a soldier for scale.
+- `fort-mchenry-bombardment.jpg` — John Bower, *A view of the bombardment of Fort McHenry*, morning of 13 September 1814. Library of Congress. Public domain. 9:16 crop on the harbor, ships, and bombs bursting in air.
+- `francis-scott-key.jpg` — [Francis_Scott_Key_(NPG).jpg](https://commons.wikimedia.org/wiki/File:Francis_Scott_Key_(NPG).jpg). Rembrandt Peale, c. 1796. National Portrait Gallery. Public domain. 9:16 crop of the portrait.
+- `fort-mchenry-interior.jpg` — [Fort_McHenry_Interior.jpg](https://commons.wikimedia.org/wiki/File:Fort_McHenry_Interior.jpg). Northern-Virginia-Photographer, 25 August 2024. CC0. 9:16 crop of the 15-star flag on the parade ground.
+- `star-spangled-repair.jpg` — [Repair_Work_on_Star-Spangled_Banner.jpg](https://commons.wikimedia.org/wiki/File:Repair_Work_on_Star-Spangled_Banner.jpg). Smithsonian Institution, 1914. Public domain. 9:16 crop of seamstresses stitching the flag.
+- `star-spangled-smithsonian.jpg` — [Star-Spangled_Banner_in_West_Wing_of_Smithsonian_Institution_Building.jpg](https://commons.wikimedia.org/wiki/File:Star-Spangled_Banner_in_West_Wing_of_Smithsonian_Institution_Building.jpg). Smithsonian Institution, 1914. Public domain. 9:16 crop of the flag laid out in the Castle.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/star-spangled-banner-post.txt`](../catalog/star-spangled-banner-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -59,6 +59,14 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("september-11")).toBe("september_11");
   });
 
+  it("maps September 13 to the Star-Spangled Banner extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-13"));
+    expect(reel?.id).toBe("star-spangled-banner");
+    expect(dailyArtifactStem("star-spangled-banner")).toBe(
+      "star_spangled_banner",
+    );
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

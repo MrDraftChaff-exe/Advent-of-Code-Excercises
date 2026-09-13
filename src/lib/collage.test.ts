@@ -48,6 +48,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/25 years later/);
   });
 
+  it("collages the Star-Spangled Banner extra across six public-domain stills", () => {
+    const banner = TEMPLATES.find((t) => t.id === "star-spangled-banner");
+    expect(banner).toBeDefined();
+    expect(usesCollage(banner!)).toBe(true);
+    expect(reelSlides(banner!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(banner!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/sunrise/);
+    expect(beats[5].facts[1]).toMatch(/212 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

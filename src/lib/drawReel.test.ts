@@ -335,6 +335,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#GroundZero/);
   });
 
+  it("keeps the Star-Spangled Banner post caption off the phone frame", () => {
+    const banner = TEMPLATES.find((t) => t.id === "star-spangled-banner");
+    expect(banner?.postCaption).toMatch(/shelled the fort/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, banner!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Fort McHenry");
+    expect(painted).toContain("Congreve");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("shelled the fort");
+    expect(painted).not.toContain("At dawn the flag was still there");
+    expect(painted).not.toMatch(/#StarSpangledBanner/);
+    expect(painted).not.toMatch(/#FortMcHenry/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

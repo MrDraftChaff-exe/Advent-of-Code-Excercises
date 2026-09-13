@@ -200,6 +200,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Four planes")).toBe(true);
   });
 
+  it("uses the Star-Spangled Banner caption as the paste block", () => {
+    const banner = TEMPLATES.find((t) => t.id === "star-spangled-banner");
+    expect(banner).toBeDefined();
+    const caption = buildPasteCaption(banner!);
+    expect(caption).toContain("shelled the fort");
+    expect(caption).toContain("212 years ago tonight");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#StarSpangledBanner");
+    expect(caption.startsWith("The British shelled")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

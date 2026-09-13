@@ -633,6 +633,13 @@ export default function App() {
             >
               9/11 caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/star-spangled-banner-post.txt"
+              download="star-spangled-banner-post.txt"
+            >
+              Fort McHenry caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
