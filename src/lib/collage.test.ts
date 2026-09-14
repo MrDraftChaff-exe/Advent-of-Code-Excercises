@@ -59,6 +59,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/212 years ago tonight/);
   });
 
+  it("collages the Teddy Roosevelt extra across six public-domain stills", () => {
+    const teddy = TEMPLATES.find((t) => t.id === "teddy-roosevelt");
+    expect(teddy).toBeDefined();
+    expect(usesCollage(teddy!)).toBe(true);
+    expect(reelSlides(teddy!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(teddy!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/Buffalo/);
+    expect(beats[5].facts[1]).toMatch(/125 years ago today/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

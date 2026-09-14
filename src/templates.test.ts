@@ -390,6 +390,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(banner!)).not.toMatch(/\b413\b/);
   });
 
+  it("ships a Teddy Roosevelt youngest-president template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const teddy = TEMPLATES.find((t) => t.id === "teddy-roosevelt");
+    expect(teddy).toBeDefined();
+    expect(teddy?.title).toBe("Teddy Roosevelt");
+    expect(teddy?.year).toBe("1901");
+    expect(teddy?.imageUrl).toContain("teddy-roosevelt-1904");
+    expect(teddy?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(teddy?.imageCredit).toMatch(/Pach Brothers/);
+    expect(teddy?.theme).toBe("ember");
+    expect(teddy?.durationSec).toBe(60);
+    expect(teddy?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(teddy?.bullets[8]).toMatch(/youngest/);
+    expect(teddy?.bullets[11]).toMatch(/125 years ago today/);
+    expect(teddy?.postCaption).toMatch(/borrowed a suit/);
+    expect(teddy?.postCaption).toContain("@FactsOrWhacks");
+    expect(teddy?.hashtags).toContain("#TeddyRoosevelt");
+    expect(canvasHeadlineText(teddy!)).toBe("Teddy Roosevelt");
+    expect(canvasHeadlineText(teddy!)).not.toMatch(/\b414\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

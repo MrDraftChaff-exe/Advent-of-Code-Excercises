@@ -640,6 +640,13 @@ export default function App() {
             >
               Fort McHenry caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/teddy-roosevelt-post.txt"
+              download="teddy-roosevelt-post.txt"
+            >
+              Teddy Roosevelt caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

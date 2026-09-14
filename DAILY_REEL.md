@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Star-Spangled Banner on Sep 13).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Teddy Roosevelt on Sep 14).
 2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-09-13
+# optional: npm run daily:pack -- --date 2026-09-14
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -84,8 +84,9 @@ Already-shipped extras (do not silently replace them):
 | 411 | `lhc` | LHC first beam Sep 10, 2008 — 18 years. Trends held 9/11 for Sep 11 |
 | 412 | `september-11` | 9/11 25th anniversary. Seventh moment of silence. 60s collage |
 | 413 | `star-spangled-banner` | Fort McHenry bombardment Sep 13, 1814 — 212 years. 60s collage |
+| 414 | `teddy-roosevelt` | Youngest president Sep 14, 1901 — 125 years. 60s collage |
 
-Next extra number is one higher than the current max extra (`413` → `414`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`414` → `415`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

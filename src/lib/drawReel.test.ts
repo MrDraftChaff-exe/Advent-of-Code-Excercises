@@ -350,6 +350,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#FortMcHenry/);
   });
 
+  it("keeps the Teddy Roosevelt post caption off the phone frame", () => {
+    const teddy = TEMPLATES.find((t) => t.id === "teddy-roosevelt");
+    expect(teddy?.postCaption).toMatch(/borrowed a suit/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, teddy!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Teddy Roosevelt");
+    expect(painted).toContain("Mount Marcy");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("borrowed a suit and took the oath");
+    expect(painted).not.toContain("took the oath at 3:30");
+    expect(painted).not.toMatch(/#TeddyRoosevelt/);
+    expect(painted).not.toMatch(/#PanamaCanal/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

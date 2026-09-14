@@ -211,6 +211,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("The British shelled")).toBe(true);
   });
 
+  it("uses the Teddy Roosevelt caption as the paste block", () => {
+    const teddy = TEMPLATES.find((t) => t.id === "teddy-roosevelt");
+    expect(teddy).toBeDefined();
+    const caption = buildPasteCaption(teddy!);
+    expect(caption).toContain("borrowed a suit");
+    expect(caption).toContain("125 years ago today");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#TeddyRoosevelt");
+    expect(caption.startsWith("He borrowed a suit")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

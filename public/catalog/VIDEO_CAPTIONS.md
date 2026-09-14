@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), and `413` (Star-Spangled Banner) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), `413` (Star-Spangled Banner), and `414` (Teddy Roosevelt) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
 
 ## Dolly Parton extra post
 
@@ -81,3 +81,7 @@ Load the **9/11** template, or copy row `412`. Caption file: [`september-11-post
 ## Star-Spangled Banner extra post
 
 Load the **Star-Spangled Banner** template, or copy row `413`. Caption file: [`star-spangled-banner-post.txt`](star-spangled-banner-post.txt). Video filename: `413-fort-mchenry.mp4`. The growth clip is a 60s collage, not a frozen still.
+
+## Teddy Roosevelt extra post
+
+Load the **Teddy Roosevelt** template, or copy row `414`. Caption file: [`teddy-roosevelt-post.txt`](teddy-roosevelt-post.txt). Video filename: `414-teddy-roosevelt.mp4`. The growth clip is a 60s collage, not a frozen still.

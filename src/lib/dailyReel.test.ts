@@ -62,9 +62,15 @@ describe("daily reel calendar", () => {
   it("maps September 13 to the Star-Spangled Banner extra", () => {
     const reel = pickDailyTemplate(parseIsoDate("2026-09-13"));
     expect(reel?.id).toBe("star-spangled-banner");
-    expect(dailyArtifactStem("star-spangled-banner")).toBe(
-      "star_spangled_banner",
-    );
+    expect(
+      dailyArtifactStem("star-spangled-banner"),
+    ).toBe("star_spangled_banner");
+  });
+
+  it("maps September 14 to the Teddy Roosevelt extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-14"));
+    expect(reel?.id).toBe("teddy-roosevelt");
+    expect(dailyArtifactStem("teddy-roosevelt")).toBe("teddy_roosevelt");
   });
 
   it("returns nothing on a day with no dated extra", () => {

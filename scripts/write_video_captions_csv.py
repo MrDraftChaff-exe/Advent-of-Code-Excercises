@@ -364,6 +364,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Photo: George Henry Preble, 1873 · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=414,
+            title="Teddy Roosevelt",
+            year="1901",
+            filename="414-teddy-roosevelt.mp4",
+            caption_path=catalog / "teddy-roosevelt-post.txt",
+            credit="Photo: Pach Brothers, 1904 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -459,6 +468,7 @@ def main() -> None:
         write_rows(
             ROOT / "public/catalog/star-spangled-banner-post.csv", [by_n[413]]
         )
+        write_rows(ROOT / "public/catalog/teddy-roosevelt-post.csv", [by_n[414]])
     print(args.out, args.out.stat().st_size)
 
 

@@ -204,6 +204,19 @@ Poster still: `star-spangled-flag-1873.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/star-spangled-banner-post.txt`](../catalog/star-spangled-banner-post.txt).
 
+# Teddy Roosevelt collage, 1898–2023
+
+Poster still: `teddy-roosevelt-1904.jpg`. Collage slides:
+
+- `teddy-roosevelt-1904.jpg` — [President_Theodore_Roosevelt,_1904.jpg](https://commons.wikimedia.org/wiki/File:President_Theodore_Roosevelt,_1904.jpg). Pach Brothers, 1904. Public domain. 9:16 crop of the portrait.
+- `teddy-wilcox-house.jpg` — [Theodore_Roosevelt_Inaugural_National_Historic_Site.jpg](https://commons.wikimedia.org/wiki/File:Theodore_Roosevelt_Inaugural_National_Historic_Site.jpg). Kenneth C. Zirkel, 14 October 2023. CC BY 4.0. 9:16 crop of the statue and Wilcox House in Buffalo.
+- `teddy-rough-riders.jpg` — [Colonel Roosevelt and his Rough Riders at the top of the hill which they captured, Battle of San Juan](https://commons.wikimedia.org/wiki/File:Colonel_Roosevelt_and_his_Rough_Riders_at_the_top_of_the_hill_which_they_captured,_Battle_of_San_Juan)_-_by_William_Dinwiddie_LCCN96521936.jpg). William Dinwiddie, 1898. Public domain. 9:16 crop on Roosevelt and the flag.
+- `teddy-rough-rider.jpg` — [Portrait of Theodore Roosevelt in his Rough Rider Uniform](https://commons.wikimedia.org/wiki/File:Portrait_of_Theodore_Roosevelt_in_his_Rough_Rider_Uniform_(48341021-0c13-4f5e-8700-1101b046f578).jpg). Fedor Encke, 1902 (NPS photograph of the painting). Public domain. 9:16 crop inside the frame.
+- `teddy-panama-canal.jpg` — [Pres. Theodore Roosevelt on steam-powered digging machine during construction of the Panama Canal](https://commons.wikimedia.org/wiki/File:Pres._Theodore_Roosevelt_on_steam-powered_digging_machine_during_construction_of_the_Panama_Canal_LCCN2002714444.jpg). Underwood & Underwood, 1906. Public domain. 9:16 crop on Roosevelt in the cab.
+- `teddy-muir-yosemite.jpg` — [Muir_and_Roosevelt_restored.jpg](https://commons.wikimedia.org/wiki/File:Muir_and_Roosevelt_restored.jpg). Underwood & Underwood, 1903. Public domain. 9:16 crop of Roosevelt and Muir at Glacier Point.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/teddy-roosevelt-post.txt`](../catalog/teddy-roosevelt-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
