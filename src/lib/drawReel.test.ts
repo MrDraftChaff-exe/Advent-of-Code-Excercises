@@ -365,6 +365,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#PanamaCanal/);
   });
 
+  it("keeps the El Grito post caption off the phone frame", () => {
+    const grito = TEMPLATES.find((t) => t.id === "el-grito");
+    expect(grito?.postCaption).toMatch(/rang the bell before dawn and shouted/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, grito!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("El Grito");
+    expect(painted).toContain("Alhóndiga");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("rang the bell before dawn and shouted");
+    expect(painted).not.toContain("small church");
+    expect(painted).not.toMatch(/#ElGrito/);
+    expect(painted).not.toMatch(/#MexicanIndependence/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

@@ -217,6 +217,19 @@ Poster still: `teddy-roosevelt-1904.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/teddy-roosevelt-post.txt`](../catalog/teddy-roosevelt-post.txt).
 
+# El Grito collage, 1810–2021
+
+Poster still: `hidalgo-estandarte.jpg`. Collage slides:
+
+- `hidalgo-estandarte.jpg` — [Miguel_Hidalgo_con_estandarte.jpg](https://commons.wikimedia.org/wiki/File:Miguel_Hidalgo_con_estandarte.jpg). Antonio Fabrés, 1905. Public domain. 9:16 crop of Hidalgo with the Guadalupe banner.
+- `dolores-church.jpg` — [Parroquia_de_Nuestra_Señora_de_los_Dolores_-_Dolores_Hidalgo,_Guanajuato,_México.jpg](https://commons.wikimedia.org/wiki/File:Parroquia_de_Nuestra_Se%C3%B1ora_de_los_Dolores_-_Dolores_Hidalgo,_Guanajuato,_M%C3%A9xico.jpg). Juan Carlos Fonseca Mata, 2019. CC BY-SA 4.0. 9:16 crop of the parish facade.
+- `hidalgo-grito.jpg` — [El_cura_D._Miguel_Hidalgo_proclama_la_Independencia_Nacional_en_Dolores.jpg](https://commons.wikimedia.org/wiki/File:El_cura_D._Miguel_Hidalgo_proclama_la_Independencia_Nacional_en_Dolores,_a_la_madrugada_del_16_de_septiembre_de_1810,_no_obstante_que_no_ten%C3%ADa_terminados_a%C3%BAn_los_preparativos_para_la_revoluci%C3%B3n.jpg). Adrián Unzueta, 1910. Public domain. 9:16 crop of the dawn shout.
+- `hidalgo-1865.jpg` — [Generalísimo_Miguel_Hidalgo_y_Costilla.png](https://commons.wikimedia.org/wiki/File:General%C3%ADsimo_Miguel_Hidalgo_y_Costilla.png). Joaquín Ramírez, 1865. Public domain. 9:16 crop of the seated priest.
+- `hidalgo-guadalupe.jpg` — [Estandarte_2_de_Miguel_Hidalgo_MNH.jpg](https://commons.wikimedia.org/wiki/File:Estandarte_2_de_Miguel_Hidalgo_MNH.jpg). Sarumo74, 2014. CC BY-SA 4.0. 9:16 crop of Hidalgo’s Guadalupe standard.
+- `angel-independencia.jpg` — [Angel_de_la_independencia170409.jpg](https://commons.wikimedia.org/wiki/File:Angel_de_la_independencia170409.jpg). Cvmontuy, 2017. CC BY-SA 4.0. 9:16 crop of the Angel of Independence column.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/el-grito-post.txt`](../catalog/el-grito-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

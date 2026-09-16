@@ -73,6 +73,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("teddy-roosevelt")).toBe("teddy_roosevelt");
   });
 
+  it("maps September 16 to the El Grito extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-16"));
+    expect(reel?.id).toBe("el-grito");
+    expect(dailyArtifactStem("el-grito")).toBe("el_grito");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

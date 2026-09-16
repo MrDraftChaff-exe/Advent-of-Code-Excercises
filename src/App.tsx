@@ -647,6 +647,13 @@ export default function App() {
             >
               Teddy Roosevelt caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/el-grito-post.txt"
+              download="el-grito-post.txt"
+            >
+              El Grito caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

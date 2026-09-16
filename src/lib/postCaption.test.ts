@@ -222,6 +222,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("He borrowed a suit")).toBe(true);
   });
 
+  it("uses the El Grito caption as the paste block", () => {
+    const grito = TEMPLATES.find((t) => t.id === "el-grito");
+    expect(grito).toBeDefined();
+    const caption = buildPasteCaption(grito!);
+    expect(caption).toContain("rang the bell");
+    expect(caption).toContain("small church");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#ElGrito");
+    expect(caption.startsWith("He rang the bell")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

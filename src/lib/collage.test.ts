@@ -70,6 +70,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/125 years ago today/);
   });
 
+  it("collages the El Grito extra across six public-domain stills", () => {
+    const grito = TEMPLATES.find((t) => t.id === "el-grito");
+    expect(grito).toBeDefined();
+    expect(usesCollage(grito!)).toBe(true);
+    expect(reelSlides(grito!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(grito!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/Dolores/);
+    expect(beats[5].facts[1]).toMatch(/216 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

@@ -373,6 +373,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Photo: Pach Brothers, 1904 · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=415,
+            title="El Grito",
+            year="1810",
+            filename="415-el-grito.mp4",
+            caption_path=catalog / "el-grito-post.txt",
+            credit="Painting: Antonio Fabrés, 1905 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -469,6 +478,7 @@ def main() -> None:
             ROOT / "public/catalog/star-spangled-banner-post.csv", [by_n[413]]
         )
         write_rows(ROOT / "public/catalog/teddy-roosevelt-post.csv", [by_n[414]])
+        write_rows(ROOT / "public/catalog/el-grito-post.csv", [by_n[415]])
     print(args.out, args.out.stat().st_size)
 
 

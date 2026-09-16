@@ -411,6 +411,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(teddy!)).not.toMatch(/\b414\b/);
   });
 
+  it("ships an El Grito Mexican Independence template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const grito = TEMPLATES.find((t) => t.id === "el-grito");
+    expect(grito).toBeDefined();
+    expect(grito?.title).toBe("El Grito");
+    expect(grito?.year).toBe("1810");
+    expect(grito?.imageUrl).toContain("hidalgo-estandarte");
+    expect(grito?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(grito?.imageCredit).toMatch(/Antonio Fabrés/);
+    expect(grito?.theme).toBe("ember");
+    expect(grito?.durationSec).toBe(60);
+    expect(grito?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(grito?.bullets[0]).toMatch(/Dolores/);
+    expect(grito?.bullets[11]).toMatch(/216 years ago tonight/);
+    expect(grito?.postCaption).toMatch(/small church/);
+    expect(grito?.postCaption).toContain("@FactsOrWhacks");
+    expect(grito?.hashtags).toContain("#ElGrito");
+    expect(canvasHeadlineText(grito!)).toBe("El Grito");
+    expect(canvasHeadlineText(grito!)).not.toMatch(/\b415\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);
