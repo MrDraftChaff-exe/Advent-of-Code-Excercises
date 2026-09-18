@@ -1,0 +1,386 @@
+{
+  "generated_at": "2026-09-18T02:00:29.739915+00:00",
+  "home_zip": "43068",
+  "criteria": {
+    "min_hourly": 18,
+    "full_time": true,
+    "radius_minutes": 30,
+    "remote_ok": true,
+    "avoid_physical": true
+  },
+  "jobs": [
+    {
+      "id": "remotive-1680495",
+      "title": "Remote Office Assistant",
+      "company": "Coalition Technologies ",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/marketing/remote-office-assistant-1680495",
+      "source": "Remotive",
+      "wage_guess": 25.0,
+      "distance_mi": null,
+      "score": 82,
+      "reasons": [
+        "skill-fit: administrative, office assistant, data entry, records",
+        "remote",
+        "$25.0+/hr likely",
+        "full-time"
+      ],
+      "snippet": "Coalition Technologies is seeking a reliable, detail-oriented, and highly organized Remote Office Assistant to support administrative, bookkeeping, billing, reporting, data entry, and internal operations tasks. This role is ideal for someone with strong communication skills, dis"
+    },
+    {
+      "id": "remotive-1919265",
+      "title": "Senior Independent Software Developer",
+      "company": "A.Team",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/senior-independent-software-developer-1919265",
+      "source": "Remotive",
+      "wage_guess": 20.0,
+      "distance_mi": null,
+      "score": 50,
+      "reasons": [
+        "remote",
+        "$20.0+/hr likely",
+        "full-time"
+      ],
+      "snippet": "You must be located in the Americas, Europe, or Israel to apply.     A\u00b7Team  is a VC-backed, stealth, application-only home on the internet for senior independent software builders to team up with hand-picked, high-growth companies on their next big thing.\u00a0 \n After talking with"
+    },
+    {
+      "id": "arbeitnow-75739542",
+      "title": "Support Coordinators",
+      "company": "LILT (Production)",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://www.arbeitnow.fr/jobs/companies/lilt-production/remote-support-coordinators-5281",
+      "source": "Arbeitnow",
+      "wage_guess": 30.0,
+      "distance_mi": null,
+      "score": 48,
+      "reasons": [
+        "skill-fit: coordinator",
+        "remote",
+        "$30.0+/hr likely"
+      ],
+      "snippet": "About the role   We're looking for two Payment Support Coordinators to join our Expert Services &amp; Operations (ES&amp;O) team on a short-term contract basis. You'll work directly on our linguist payment queue, helping to clear a backlog of payment requests and restoring a re"
+    },
+    {
+      "id": "arbeitnow-3929616842",
+      "title": "Account Executive, Defence & Intelligence, France",
+      "company": "planetlabs",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://www.arbeitnow.fr/jobs/companies/planetlabs/remote-account-executive-defence-intelligence-france-261538",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 43,
+      "reasons": [
+        "skill-fit: records",
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;strong&gt;Welcome to Planet. We believe in using space to help life on Earth.&lt;/strong&gt;&lt;/p&gt;\n&lt;p&gt;Planet designs, builds, and operates the largest constellation of imaging satellites in history. This constellat"
+    },
+    {
+      "id": "arbeitnow-943743741",
+      "title": "Strategic Account Executive - Germany",
+      "company": "Saviynt",
+      "location": "Remote Germany",
+      "remote": true,
+      "url": "https://www.arbeitnow.com/jobs/companies/saviynt/remote-strategic-account-executive-germany-209723",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 41,
+      "reasons": [
+        "skill-fit: customer service, records",
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "Saviynt's AI-powered identity platform manages and governs human and non-human access to all of an organization's applications, data, and business processes. Customers trust Saviynt to safeguard their digital assets, drive operational efficiency, and reduce compliance costs. Bu"
+    },
+    {
+      "id": "remotive-1919266",
+      "title": "Senior Independent AI Engineer / Architect",
+      "company": "A.Team",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
+      "source": "Remotive",
+      "wage_guess": 70.0,
+      "distance_mi": null,
+      "score": 40,
+      "reasons": [
+        "remote",
+        "$70.0+/hr likely"
+      ],
+      "snippet": "Senior Independent AI Engineer / Architect \n  Remote | Americas, Europe, or Israel  \n \u00a0 \n Most AI engineers can find work. \n \u00a0 \n Finding work worth doing is harder. \n \u00a0 \n A.Team is an invite-only network of senior AI engineers, ML engineers, and AI architects building production"
+    },
+    {
+      "id": "remotive-1185979",
+      "title": "Freelance Writer",
+      "company": "IAPWE",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/writing/freelance-writer-1185979",
+      "source": "Remotive",
+      "wage_guess": 50.0,
+      "distance_mi": null,
+      "score": 40,
+      "reasons": [
+        "remote",
+        "$50.0+/hr likely"
+      ],
+      "snippet": "Our organization is seeking content writers to create articles and blog posts on a variety of topics. \n \u00a0 \n The rate of pay is $20 per 100 words (this comes out to approximately $100 per article or $50 per hour). \n \u00a0 \n Some topics you may be asked to write about include the foll"
+    },
+    {
+      "id": "remotive-2091101",
+      "title": "Senior React Full-stack Developer",
+      "company": "Lemon.io",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/senior-react-full-stack-developer-2091101",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Are you a talented Senior Developer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  \u2014 the marketplace that connects you with hand-picked startups in the US and Europe. \n  \u00a0  \n  What we offer:  \n \n The rate depe"
+    },
+    {
+      "id": "remotive-2091100",
+      "title": "Senior QA Engineer",
+      "company": "Lemon.io",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/qa/senior-qa-engineer-2091100",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Are you a talented QA looking for a remote job that lets you show your skills and get better compensation and career growth? Look no further than  Lemon.io  - the marketplace that connects you with hand-picked startups in the US and Europe. \n  \u00a0  \n  Requirements:  \n \n \n 3+ years"
+    },
+    {
+      "id": "remotive-2091099",
+      "title": "Senior DevOps Engineer",
+      "company": "Lemon.io",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/devops/senior-devops-engineer-2091099",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Are you a talented Senior DevOps looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  \u2014 the marketplace that connects you with hand-picked startups in the US and Europe. \n \u00a0 \n \u00a0 \n We currently have multiple DevOps o"
+    },
+    {
+      "id": "remotive-2091098",
+      "title": "Senior Golang Developer",
+      "company": "Lemon.io",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/senior-golang-developer-2091098",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Are you a talented Senior Developer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  \u2014 the marketplace that connects you with hand-picked startups in the US and Europe. \n \u00a0 \n We are currently seeking a Senior So"
+    },
+    {
+      "id": "remotive-2091097",
+      "title": "Senior Data Engineer",
+      "company": "Lemon.io",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Are you a talented Senior Data Engineer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  \u2014 the marketplace that connects you with hand-picked startups in the US and Europe. \n  \u00a0  \n  What we offer:  \n \n The rate"
+    },
+    {
+      "id": "arbeitnow-6773218630",
+      "title": "QA Tester - Brookhaven",
+      "company": "Voldex",
+      "location": "Remote - UK",
+      "remote": true,
+      "url": "https://www.arbeitnow.co.uk/jobs/companies/voldex/qa-tester-brookhaven-london-449280",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 35,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+",
+        "full-time"
+      ],
+      "snippet": "Voldex is a leading gaming company focused on Roblox, the most exciting ecosystem in gaming today. We are home to several of Roblox's top games, including Brookhaven, Driving Empire, and NFL Universe Football. With over 160 million monthly active players across our games, we are"
+    },
+    {
+      "id": "remotive-2091045",
+      "title": "Tier III Service Desk Engineer",
+      "company": "Unio Digital",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/information-technology/tier-iii-service-desk-engineer-2091045",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 33,
+      "reasons": [
+        "skill-fit: customer service",
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "Uni\u00f3 Digital is an Arizona-based managed service provider (MSP) delivering Managed IT Services, Low Voltage Cabling, Access Control, Video Surveillance, and Intrusion Services. We believe technology should be intuitive, not intimidating. \n \u00a0 \n We are looking for an experienced T"
+    },
+    {
+      "id": "arbeitnow-2737380681",
+      "title": "Creative Designer (m/w/d)",
+      "company": "Neolymp",
+      "location": "Berlin",
+      "remote": true,
+      "url": "https://www.arbeitnow.com/jobs/companies/neolymp/creative-designer-berlin-164745",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 33,
+      "reasons": [
+        "skill-fit: teller",
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "Dich begeistern Creatives, die nicht nur gut aussehen, sondern skalieren? Du willst von grafischer Seite unmittelbar daran mitwirken, dass ein Onlineshop w\u00e4chst \u2013 und in den Zahlen sehen, was dein Hook, dein Static, dein Banner bewegt? Dann bist du bei NEOLYMP richtig. Wir skali"
+    },
+    {
+      "id": "arbeitnow-6058928558",
+      "title": "Technical Lead - GPU Infrastructure",
+      "company": "Tether Operations Limited",
+      "location": "Remote job",
+      "remote": true,
+      "url": "https://www.arbeitnow.co.uk/jobs/companies/tether-operations-limited/remote-technical-lead-gpu-infrastructure-london-392611",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 33,
+      "reasons": [
+        "skill-fit: scheduler",
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "Join Tether and Shape the Future of Digital Finance    At Tether, we\u2019re not just building products, we\u2019re pioneering a global financial revolution. Our cutting-edge solutions empower businesses\u2014from exchanges and wallets to payment processors and ATMs\u2014to seamlessly integrate r"
+    },
+    {
+      "id": "arbeitnow-4555852324",
+      "title": "Senior Conference & Events Manager- Live Events, New Opening!",
+      "company": "Convene Hospitality Group",
+      "location": "London, England, United Kingdom",
+      "remote": false,
+      "url": "https://www.arbeitnow.co.uk/jobs/companies/convene-hospitality-group/senior-conference-events-manager-live-events-new-opening-london-269922",
+      "source": "Arbeitnow",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 29,
+      "reasons": [
+        "skill-fit: customer service, client service, records",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "Senior Conference &amp; Events Manager- New Opening!&nbsp;  \n Located in the heart of London's iconic West End, Convene Rathbone is set to open in Spring 2027 as one of the city's most anticipated new Meetings &amp; Events destinations. The 54,000-square-foot venue at One Rathb"
+    },
+    {
+      "id": "remotive-2069746",
+      "title": "Tech Lead Full-Stack Rails Engineer",
+      "company": "Mitre Media",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/software-development/tech-lead-full-stack-rails-engineer-2069746",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 25,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "About Mitre Media  \n  Mitre Media is redefining FinTech with AI-driven tools that empower millions of investors. Our portfolio, including Dividend.com and MutualFunds.com, leverages LLMs to deliver novel data insights and visually rich user experiences. For over a decade, we\u2019ve"
+    },
+    {
+      "id": "remotive-2091126",
+      "title": "AI Response Evaluator",
+      "company": "iMerit Technology",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/artificial-intelligence/ai-response-evaluator-2091126",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 25,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "iMerit is looking for detail oriented analysts to evaluate and rank AI generated responses to image based prompts. You will judge answers on accuracy, relevance, clarity, conciseness, safety, localization, and how well they follow the user's instructions, then explain your reaso"
+    },
+    {
+      "id": "remotive-2086540",
+      "title": "Inside Sales Contractor",
+      "company": "Credit Wellness, LLC",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/sales/inside-sales-contractor-2086540",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 25,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "About Us  \n  We are a financial services start up focusing on helping to improve consumer credit profiles. We are currently seeking KPI driven sales representatives looking to earn up to 45K in their first year while working remotely. We offer comprehensive training and continu"
+    },
+    {
+      "id": "remotive-1749306",
+      "title": "Freelance Copywriter",
+      "company": "Coalition Technologies ",
+      "location": "Remote",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",
+      "source": "Remotive",
+      "wage_guess": null,
+      "distance_mi": null,
+      "score": 25,
+      "reasons": [
+        "remote",
+        "pay not listed \u2014 verify $18+"
+      ],
+      "snippet": "CT Marketing Agency is seeking skilled Freelance Copywriters to write high-quality, SEO-driven content for eCommerce and lead generation websites. This is a freelance, project-based writing role. \n \u00a0 \n The ideal candidate has excellent English writing skills, strong research abi"
+    }
+  ]
+}
