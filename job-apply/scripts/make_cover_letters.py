@@ -12,7 +12,7 @@ CURATED = ROOT / "data" / "curated_jobs.json"
 
 HEADER = """Montanna Marsh
 Reynoldsburg, OH 43068
-(380) 237-2454 | montannamarsh@gmail.com
+[phone] | [email]
 
 {date}
 

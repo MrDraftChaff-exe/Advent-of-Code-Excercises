@@ -1,0 +1,4 @@
+
+# Job-apply personal artifacts (PII)
+job-apply/resume/*.docx
+job-apply/output/cover_letters/
