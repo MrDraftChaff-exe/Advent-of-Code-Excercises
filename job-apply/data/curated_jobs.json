@@ -1,0 +1,76 @@
+{
+  "jobs": [
+    {
+      "title": "Patient Service Representative",
+      "company": "Quantum Health",
+      "location": "Dublin, OH (hybrid after onboarding)",
+      "pay": "$19/hr",
+      "remote": false,
+      "url": "https://jobs.lever.co/quantum-health/78028d5f-e18e-4c29-8274-aacfcaa46a90",
+      "source": "Company Site",
+      "fit_score": 95,
+      "stage": "Ready to Apply",
+      "notes": "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35-45 min)."
+    },
+    {
+      "title": "Patient Service Representative — Suburban Internal Medicine",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Reynoldsburg, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.linkedin.com/jobs/view/patient-service-representative-suburban-internal-medicine-at-central-ohio-primary-care-4173131777",
+      "source": "LinkedIn",
+      "fit_score": 92,
+      "stage": "Ready to Apply",
+      "notes": "Best local commute. Front desk/check-in, phones, copays. FT Mon-Fri 8a-5p."
+    },
+    {
+      "title": "Customer Service Representative — Insurance (Remote OH)",
+      "company": "AAA Auto Club Enterprises",
+      "location": "Remote (must live in Ohio)",
+      "pay": "$21/hr (+$1 bilingual)",
+      "remote": true,
+      "url": "https://ace.wd5.myworkdayjobs.com/en-US/careers/job/Independence-OH-Remote/Customer-Service-Representative-Insurance_JR202638895",
+      "source": "Company Site",
+      "fit_score": 90,
+      "stage": "Ready to Apply",
+      "notes": "Remote FT. Needs Ethernet internet. Company provides computer."
+    },
+    {
+      "title": "Donor Center Phlebotomist",
+      "company": "American Red Cross",
+      "location": "Gahanna / Columbus area donor centers",
+      "pay": "$20.29/hr",
+      "remote": false,
+      "url": "https://americanredcross.wd1.myworkdayjobs.com/en-US/American_Red_Cross_Careers",
+      "source": "Company Site",
+      "fit_score": 78,
+      "stage": "Saved",
+      "notes": "Strong skill match. Fixed sites better than mobile drives. Confirm physical comfort (standing/lifting)."
+    },
+    {
+      "title": "Remote Office Assistant",
+      "company": "Coalition Technologies",
+      "location": "Remote",
+      "pay": "Verify $18+",
+      "remote": true,
+      "url": "https://remotive.com/remote-jobs/marketing/remote-office-assistant-2091994",
+      "source": "Remotive",
+      "fit_score": 70,
+      "stage": "Saved",
+      "notes": "Remote admin. Verify pay and US eligibility."
+    },
+    {
+      "title": "Front Desk / Medical Receptionist (local search)",
+      "company": "OrthoNeuro & similar clinics",
+      "location": "Columbus metro",
+      "pay": "$16–$25.25/hr (filter ≥$18 FT)",
+      "remote": false,
+      "url": "https://www.indeed.com/q-medical-receptionist-l-columbus,-oh-jobs.html",
+      "source": "Indeed",
+      "fit_score": 72,
+      "stage": "Saved",
+      "notes": "Use as search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
+    }
+  ]
+}

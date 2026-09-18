@@ -1,0 +1,37 @@
+{
+  "candidate": {
+    "name": "Montanna Marsh",
+    "email": "montannamarsh@gmail.com",
+    "phone": "(380) 237-2454",
+    "zip": "43068",
+    "city": "Reynoldsburg",
+    "state": "OH",
+    "lat": 39.9551,
+    "lon": -82.8035
+  },
+  "targets": {
+    "min_hourly_usd": 18,
+    "employment_type": "full_time",
+    "max_commute_minutes": 30,
+    "remote_ok": true,
+    "avoid_extreme_physical": true
+  },
+  "preferred_titles": [
+    "Patient Service Representative",
+    "Medical Receptionist",
+    "Front Desk",
+    "Donor Center Phlebotomist",
+    "Collections Tech",
+    "Customer Service Representative",
+    "Administrative Assistant",
+    "Office Assistant",
+    "Patient Access",
+    "Call Center"
+  ],
+  "notion": {
+    "hub_url": "https://app.notion.com/p/3df24afc3e6081698029fff967f94049",
+    "database_url": "https://app.notion.com/p/1345ba1e1f6a45fb918a61d31736de4a",
+    "data_source_id": "8402b795-bbf3-4a2a-9e3c-b7f3d1c17364",
+    "board_view": "view://3df24afc-3e60-811e-b8a4-000cdbc18052"
+  }
+}
