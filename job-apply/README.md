@@ -15,8 +15,7 @@ Human-in-the-loop job search for **Montanna Marsh** (Reynoldsburg, OH `43068`).
 Stages: Saved → Ready to Apply → Applied → Interview → Offer / Rejected / Skipped
 
 ## Resume
-- Original: `resume/Montanna_Marsh_Sunbury_Vet_Clinic_Resume_2030.docx`
-- Enhanced: `resume/Montanna_Marsh_Enhanced_Resume.docx` (+ `.md`)
+Enhanced resume is attached on the **private Notion hub** (not committed here — avoids putting personal contact info in a public GitHub repo). Local DOCX copies are gitignored under `job-apply/resume/`.
 
 Enhancements (truthful only):
 - Clearer target roles (patient services / medical admin / collections / remote CSR)
