@@ -23,7 +23,22 @@ Enhancements (truthful only):
 - Fixed city spelling to Pataskala
 - Added target-role line for ATS keyword coverage
 
-## Local workflow
+## 1-Click Apply Center
+```bash
+# one-time: set street address in the UI (required for Lever forms)
+python3 job-apply/scripts/apply_center.py
+# open http://127.0.0.1:8787 → click "1-Click Apply"
+```
+
+Or CLI:
+```bash
+python3 job-apply/scripts/apply_engine.py --job-url 'https://jobs.lever.co/quantum-health/78028d5f-e18e-4c29-8274-aacfcaa46a90'
+python3 job-apply/scripts/apply_engine.py --all-ready
+```
+
+Lever (Quantum Health) auto-fills + uploads resume + clicks submit. If hCaptcha appears, status is `filled_needs_captcha` and you finish that one human check. Workday is best-effort. LinkedIn Easy Apply needs her LinkedIn login.
+
+## Other local tools
 ```bash
 python3 job-apply/scripts/match_jobs.py
 python3 job-apply/scripts/make_cover_letters.py
