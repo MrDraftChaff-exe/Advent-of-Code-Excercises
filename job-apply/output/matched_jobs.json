@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T02:21:20.837742+00:00",
+  "generated_at": "2026-09-18T03:46:26.977685+00:00",
   "home_zip": "43068",
   "criteria": {
     "min_hourly": 18.0,
@@ -10,7 +10,7 @@
   },
   "jobs": [
     {
-      "id": "curated-297035793",
+      "id": "curated-5089851245",
       "title": "Patient Service Representative",
       "company": "Quantum Health",
       "location": "Dublin, OH (hybrid after onboarding)",
@@ -27,75 +27,92 @@
       "pay": "$19/hr"
     },
     {
-      "id": "curated-5964001841",
-      "title": "Patient Service Representative \u2014 Building Blocks Pediatrics",
-      "company": "Central Ohio Primary Care (COPC)",
-      "location": "8050 E Main St, Reynoldsburg, OH",
+      "id": "curated-6530704554",
+      "title": "Physician Office Specialist \u2014 Pickerington/Reynoldsburg OBGYN",
+      "company": "OhioHealth",
+      "location": "Pickerington / Reynoldsburg, OH",
       "remote": false,
-      "url": "https://www.career.com/job/copc-brand/patient-service-representative-building-blocks-pediatrics/j202607250105434011593",
-      "source": "Other",
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/OBGYN-BALTIMORE-REYNOLDSBURG/Pickerington-Reynoldsburg-OBGYN-Physician-Office-Specialist_JR157034",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 94,
       "reasons": [
-        "LOCAL. FT benefits Mon\u2013Thu 8:30\u20135:30. Front desk + light clinical training. Apply via COPC careers: https://www.copcp.com/careers/"
+        "LOCAL dual-site OBGYN front desk. Direct Workday (verified open)."
       ],
-      "snippet": "LOCAL. FT benefits Mon\u2013Thu 8:30\u20135:30. Front desk + light clinical training. Apply via COPC careers: https://www.copcp.com/careers/",
+      "snippet": "LOCAL dual-site OBGYN front desk. Direct Workday (verified open).",
       "stage": "Ready to Apply",
-      "pay": "Verify $18+ (est. ~$18\u2013$22/hr)"
+      "pay": "Verify $18+"
     },
     {
-      "id": "curated-491596340",
+      "id": "curated-2637903090",
       "title": "Patient Service Representative \u2014 Eastglen Pediatrics",
       "company": "Central Ohio Primary Care (COPC)",
       "location": "Reynoldsburg, OH",
       "remote": false,
-      "url": "https://www.career.com/job/central-ohio-primary-care/patient-service-representative-eastglen-pediatrics/j202507152009074586599",
-      "source": "Other",
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=9991aaef-e046-4829-87cc-87e77ec8c2b3",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 93,
       "reasons": [
-        "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance."
+        "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance. Direct employer apply link verified."
       ],
-      "snippet": "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance.",
+      "snippet": "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance. Direct employer apply link verified.",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-9185098000",
+      "id": "curated-5320169771",
+      "title": "Patient Service Representative \u2014 New Albany Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "New Albany, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=fc22cbcc-3cf6-4f27-971f-d5dd8d3f99b7",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 93,
+      "reasons": [
+        "~15\u201320 min. FT COPC PSR. Direct Ultipro apply (verified)."
+      ],
+      "snippet": "~15\u201320 min. FT COPC PSR. Direct Ultipro apply (verified).",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-4604545532",
       "title": "Patient Service Representative \u2014 Suburban Internal Medicine",
       "company": "Central Ohio Primary Care (COPC)",
       "location": "Reynoldsburg, OH",
       "remote": false,
-      "url": "https://www.linkedin.com/jobs/view/patient-service-representative-suburban-internal-medicine-at-central-ohio-primary-care-4173131777",
-      "source": "LinkedIn",
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/?q=&o=postedDateDesc",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 92,
       "reasons": [
-        "Best local commute. Front desk/check-in, phones, copays. FT Mon\u2013Fri 8a\u20135p."
+        "LinkedIn listing 404; only Medical Assistant open at Suburban IM on Ultipro. Skipped."
       ],
-      "snippet": "Best local commute. Front desk/check-in, phones, copays. FT Mon\u2013Fri 8a\u20135p.",
-      "stage": "Ready to Apply",
+      "snippet": "LinkedIn listing 404; only Medical Assistant open at Suburban IM on Ultipro. Skipped.",
+      "stage": "Skipped",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-6700671307",
+      "id": "curated-3534134884",
       "title": "Physician Office Specialist \u2014 PCP Davidson Dr",
       "company": "OhioHealth",
       "location": "Reynoldsburg, OH",
       "remote": false,
-      "url": "https://careers.ohiohealth.com/job-search/?keyword=Physician%20Office%20Specialist&location=Reynoldsburg,%20OH",
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/PCP-DAVIDSON-DR/Physician-Office-Specialist---PCP-Davidson-Dr_JR157070",
       "source": "Company Site",
       "wage_guess": null,
       "score": 91,
       "reasons": [
-        "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred."
+        "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred. Direct employer apply link verified."
       ],
-      "snippet": "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred.",
+      "snippet": "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred. Direct employer apply link verified.",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-1043447300",
+      "id": "curated-961892801",
       "title": "Customer Service Representative \u2014 Insurance (Remote OH)",
       "company": "AAA Auto Club Enterprises",
       "location": "Remote (must live in Ohio)",
@@ -112,41 +129,109 @@
       "pay": "$21/hr (+$1 bilingual)"
     },
     {
-      "id": "curated-9456915595",
+      "id": "curated-3414522729",
+      "title": "Phlebotomist \u2014 Canyon Medical Center",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=4ffba039-512a-49e9-9b29-caae8e0f4d4c",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 90,
+      "reasons": [
+        "LOCAL Reynoldsburg. Confirm physical comfort (standing/draws)."
+      ],
+      "snippet": "LOCAL Reynoldsburg. Confirm physical comfort (standing/draws).",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-5511323371",
+      "title": "Phlebotomist \u2014 East Draw Station",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=2ad491ef-b045-4d26-8e9c-46cda73a8c81",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 90,
+      "reasons": [
+        "LOCAL Reynoldsburg draw station. Confirm physical comfort."
+      ],
+      "snippet": "LOCAL Reynoldsburg draw station. Confirm physical comfort.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-239738110",
       "title": "Patient Service Representative \u2014 Family Physicians of Gahanna",
       "company": "Central Ohio Primary Care (COPC)",
       "location": "Gahanna, OH",
       "remote": false,
-      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-family-physicians-of-gahanna-fnpwq4k7yoos",
-      "source": "Other",
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=809a0f97-d48e-43c7-be69-8879eb63b98c",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 89,
       "reasons": [
-        "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track."
+        "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track. Direct employer apply link verified."
       ],
-      "snippet": "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track.",
+      "snippet": "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track. Direct employer apply link verified.",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-607230003",
+      "id": "curated-6351922894",
+      "title": "Customer Care Specialist I (must live in Ohio)",
+      "company": "CareSource",
+      "location": "Remote / Ohio",
+      "remote": true,
+      "url": "https://careers.caresource.com/search/jobdetails/customer-care-specialist-i-must-live-in-ohio/af198126-9e57-458c-bdb9-919d2fe0592c",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 89,
+      "reasons": [
+        "OH-resident member services CSR. Confirm remote vs Dayton + pay."
+      ],
+      "snippet": "OH-resident member services CSR. Confirm remote vs Dayton + pay.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-4604545532",
+      "title": "Patient Service Representative \u2014 Building Blocks Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "8050 E Main St, Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/?q=&o=postedDateDesc",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 88,
+      "reasons": [
+        "Prior Building Blocks PSR posting not on Ultipro now. Watch COPC board; Eastglen/New Albany/Gahanna PSRs are live alternatives."
+      ],
+      "snippet": "Prior Building Blocks PSR posting not on Ultipro now. Watch COPC board; Eastglen/New Albany/Gahanna PSRs are live alternatives.",
+      "stage": "Saved",
+      "pay": "Verify $18+ (est. ~$18\u2013$22/hr)"
+    },
+    {
+      "id": "curated-4604545532",
       "title": "Patient Service Representative \u2014 Pediatric & Adolescent Practitioners",
       "company": "Central Ohio Primary Care (COPC)",
       "location": "Gahanna, OH",
       "remote": false,
-      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-pediatric-and-adolescent-practitioners-0l66yclesudh",
-      "source": "Other",
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/?q=&o=postedDateDesc",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 88,
       "reasons": [
-        "Gahanna (~10\u201315 min). Mon\u2013Thu 8\u20134:30, Fri 8\u20133 + late closer 1\u20132 days/week."
+        "Prior Clera listing 404; PSR not on Ultipro (MA only). Prefer Gahanna Family Physicians Ultipro link."
       ],
-      "snippet": "Gahanna (~10\u201315 min). Mon\u2013Thu 8\u20134:30, Fri 8\u20133 + late closer 1\u20132 days/week.",
-      "stage": "Ready to Apply",
+      "snippet": "Prior Clera listing 404; PSR not on Ultipro (MA only). Prefer Gahanna Family Physicians Ultipro link.",
+      "stage": "Skipped",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-3527658434",
+      "id": "curated-2425720040",
       "title": "Patient Intake & Registration Specialist",
       "company": "The Ohio State University (College of Dentistry)",
       "location": "Columbus, OH (Postle Hall)",
@@ -163,7 +248,41 @@
       "pay": "$18.37\u2013$23.99/hr"
     },
     {
-      "id": "curated-9335178369",
+      "id": "curated-7357590401",
+      "title": "Patient Service Representative \u2014 Westerville Internal Medicine",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Westerville, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=8e140bb3-cf3c-4293-be77-e2027a3a6795",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 88,
+      "reasons": [
+        "~20\u201325 min. FT PSR. Ultipro verified."
+      ],
+      "snippet": "~20\u201325 min. FT PSR. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-8232978169",
+      "title": "Patient Access Representative \u2014 Emergency Room (Main Campus)",
+      "company": "Nationwide Children's Hospital",
+      "location": "Main Campus, Columbus, OH",
+      "remote": false,
+      "url": "https://nationwidechildrens.wd5.myworkdayjobs.com/en-US/NCHCareers/job/Main-Campus-Columbus-OH/Patient-Access-Representative-Patient-Access-Emergency-Room_R-27484-1",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 88,
+      "reasons": [
+        "Registration/phones. Confirm ER pace + shift fit."
+      ],
+      "snippet": "Registration/phones. Confirm ER pace + shift fit.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-3846632596",
       "title": "Customer Service Representative (Remote)",
       "company": "Kelly Services",
       "location": "Remote (EST/CST)",
@@ -180,7 +299,24 @@
       "pay": "$24/hr"
     },
     {
-      "id": "curated-903903606",
+      "id": "curated-3191086060",
+      "title": "Patient Service Representative \u2014 River's Edge Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Westerville, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=6ed95f86-179b-483a-90f5-85663eb5692e",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 87,
+      "reasons": [
+        "Westerville pediatrics PSR. Ultipro verified."
+      ],
+      "snippet": "Westerville pediatrics PSR. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-4090068092",
       "title": "EV Concierge / Call Center Chat Agent (Remote)",
       "company": "TEKsystems",
       "location": "Remote (Columbus, OH based contract)",
@@ -197,7 +333,7 @@
       "pay": "$19/hr (+$2 evening differential)"
     },
     {
-      "id": "curated-9403736746",
+      "id": "curated-9150631055",
       "title": "Patient Registration Representative \u2014 Pickerington Methodist",
       "company": "OhioHealth",
       "location": "Pickerington, OH",
@@ -214,7 +350,75 @@
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-4173205643",
+      "id": "curated-2176157158",
+      "title": "Physician Office Specialist \u2014 Millhon Clinic",
+      "company": "OhioHealth",
+      "location": "Columbus, OH 43235",
+      "remote": false,
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/MILLHON-CLINIC/Physician-Office-Specialist_JR157098",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 86,
+      "reasons": [
+        "North Columbus clinic front desk. Workday verified."
+      ],
+      "snippet": "North Columbus clinic front desk. Workday verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-8262398726",
+      "title": "Patient Service Representative \u2014 COPC Rheumatology",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=69a8f8f3-4eec-418f-ae13-584db0649064",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 86,
+      "reasons": [
+        "Specialty clinic PSR. Ultipro verified."
+      ],
+      "snippet": "Specialty clinic PSR. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-6171453447",
+      "title": "Patient Service Representative \u2014 Columbus Endocrinology",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=a261ec26-7043-4d42-af12-837bc62f06ab",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 85,
+      "reasons": [
+        "Endocrinology PSR. Ultipro verified."
+      ],
+      "snippet": "Endocrinology PSR. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-8535046855",
+      "title": "Patient Service Representative \u2014 Central Ohio Medicine",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=6f708fea-e597-4c3b-8ca6-63e8ef8281aa",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 85,
+      "reasons": [
+        "Primary care PSR. Ultipro verified."
+      ],
+      "snippet": "Primary care PSR. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-6025656566",
       "title": "Patient Registration Representative (MOCVC)",
       "company": "OhioHealth",
       "location": "Columbus / float to Hilliard, OH",
@@ -231,24 +435,75 @@
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-623789580",
+      "id": "curated-5420543390",
       "title": "Customer Experience Banker",
       "company": "Huntington Bank",
       "location": "Reynoldsburg, OH",
       "remote": false,
-      "url": "https://www.indeed.com/q-Huntington-Bank-Customer-Experience-Banker-l-reynoldsburg,-oh-jobs.html",
-      "source": "Indeed",
+      "url": "https://huntington-careers.com/search/?q=Reynoldsburg",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 84,
       "reasons": [
-        "LOCAL branch. Transactions + product education. Cash-handling fit from retail. Confirm FT pay \u2265$18 on apply."
+        "Apply via Huntington careers search for Reynoldsburg branch banker roles (verified landing page)."
       ],
-      "snippet": "LOCAL branch. Transactions + product education. Cash-handling fit from retail. Confirm FT pay \u2265$18 on apply.",
+      "snippet": "Apply via Huntington careers search for Reynoldsburg branch banker roles (verified landing page).",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-6018269388",
+      "id": "curated-6821579580",
+      "title": "Representative, Solutions Center \u2014 Financial Services",
+      "company": "Nationwide",
+      "location": "Grandview Heights, OH (hybrid)",
+      "remote": true,
+      "url": "https://nationwide.wd1.myworkdayjobs.com/en-US/Nationwide_Career/job/Ohio---Grandview-Heights-1000-Yard-Street-H-Building/Representative--Solutions-Center---Financial-Services_100400",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 84,
+      "reasons": [
+        "Live Nationwide Workday posting (verified). Confirm pay + hybrid schedule."
+      ],
+      "snippet": "Live Nationwide Workday posting (verified). Confirm pay + hybrid schedule.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-3178527939",
+      "title": "Patient Service Representative \u2014 Family Medicine North",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=db75a9ad-7876-4585-a8e3-423ae047343e",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 84,
+      "reasons": [
+        "North Columbus PSR. Confirm address/commute."
+      ],
+      "snippet": "North Columbus PSR. Confirm address/commute.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-4544732290",
+      "title": "Insurance Claims Coordinator",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Westerville, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=2a1c537f-a3bc-49ff-b4b2-ff965fcb07fc",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 84,
+      "reasons": [
+        "Desk claims/admin role. Ultipro verified."
+      ],
+      "snippet": "Desk claims/admin role. Ultipro verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-2915222175",
       "title": "Full-Time Teller \u2014 Blacklick / Reynoldsburg",
       "company": "Telhio Credit Union",
       "location": "8010 E Broad St, Blacklick/Reynoldsburg, OH",
@@ -265,58 +520,143 @@
       "pay": "~$18\u2013$22/hr (verify)"
     },
     {
-      "id": "curated-993467461",
+      "id": "curated-4873389437",
       "title": "City of Reynoldsburg \u2014 current openings",
       "company": "City of Reynoldsburg",
       "location": "Reynoldsburg City Hall (7232 E Main St)",
       "remote": false,
-      "url": "https://www.governmentjobs.com/careers/reynoldsburg",
+      "url": "https://www.ci.reynoldsburg.oh.us/jobs",
       "source": "Other",
       "wage_guess": null,
       "score": 83,
       "reasons": [
-        "Watch this board. Front Desk Admin listing recently closed; Account Clerk / Parks Admin and similar reopen periodically. Excellent local pay."
+        "City jobs page (governmentjobs.com timed out from this env). Watch for admin reopenings."
       ],
-      "snippet": "Watch this board. Front Desk Admin listing recently closed; Account Clerk / Parks Admin and similar reopen periodically. Excellent local pay.",
+      "snippet": "City jobs page (governmentjobs.com timed out from this env). Watch for admin reopenings.",
       "stage": "Saved",
       "pay": "Often $21\u2013$26/hr for admin roles"
     },
     {
-      "id": "curated-6035112802",
-      "title": "Bank Teller",
-      "company": "Union Savings Bank",
-      "location": "Reynoldsburg, OH 43068",
+      "id": "curated-2079262135",
+      "title": "Physician Office Specialist \u2014 PCP Neil",
+      "company": "OhioHealth",
+      "location": "Columbus, OH 43215",
       "remote": false,
-      "url": "https://www.indeed.com/q-union-savings-bank-teller-l-reynoldsburg,-oh-jobs.html",
-      "source": "Indeed",
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/PCP-NEIL/Physician-Office-Specialist_JR156239-1",
+      "source": "Company Site",
       "wage_guess": null,
-      "score": 80,
+      "score": 83,
       "reasons": [
-        "LOCAL branch teller. Deposits/withdrawals, customer service, balancing. Confirm FT pay \u2265$18 on apply."
+        "Neil Ave PCP. Confirm commute (~25\u201335 min)."
       ],
-      "snippet": "LOCAL branch teller. Deposits/withdrawals, customer service, balancing. Confirm FT pay \u2265$18 on apply.",
+      "snippet": "Neil Ave PCP. Confirm commute (~25\u201335 min).",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-9178269375",
-      "title": "Financial Services Representative (Hybrid)",
-      "company": "Nationwide",
-      "location": "Grandview Heights / Columbus, OH (2 days office / 3 remote)",
-      "remote": true,
-      "url": "https://careers.nationwide.com/financial-services-representative/job/DCFDEAA16BF93D702B407255E5817AF2",
+      "id": "curated-6275613345",
+      "title": "Physician Office Specialist \u2014 Bing Cancer Center",
+      "company": "OhioHealth",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/BING-CANCER-CENTER/Physician-Office-Specialist---Bing-Cancer-Center_JR155037-1",
       "source": "Company Site",
       "wage_guess": null,
-      "score": 78,
+      "score": 82,
       "reasons": [
-        "Hybrid within 35 mi of Grandview. Strong brand. Confirm starting pay \u2265$18 equiv before applying."
+        "Cancer center office specialist. Workday verified."
       ],
-      "snippet": "Hybrid within 35 mi of Grandview. Strong brand. Confirm starting pay \u2265$18 equiv before applying.",
-      "stage": "Saved",
-      "pay": "Verify $18+ (salaried FSR)"
+      "snippet": "Cancer center office specialist. Workday verified.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
     },
     {
-      "id": "curated-1117773906",
+      "id": "curated-5681274662",
+      "title": "Physician Office Specialist \u2014 Southwest MOB",
+      "company": "OhioHealth",
+      "location": "Grove City, OH 43123",
+      "remote": false,
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/SOUTHWEST-MOB/Physician-Office-Specialist_JR151320",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 81,
+      "reasons": [
+        "Grove City (~30\u201340 min). Confirm commute comfort."
+      ],
+      "snippet": "Grove City (~30\u201340 min). Confirm commute comfort.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-5544054077",
+      "title": "Physician Office Specialist OBGYN \u2014 Southwest MOB",
+      "company": "OhioHealth",
+      "location": "Grove City, OH 43123",
+      "remote": false,
+      "url": "https://ohiohealth.wd5.myworkdayjobs.com/en-US/OhioHealthJobs/job/SOUTHWEST-MOB/Physician-Office-Specialist-OBGYN_JR149476",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 81,
+      "reasons": [
+        "Grove City OBGYN office. Confirm commute."
+      ],
+      "snippet": "Grove City OBGYN office. Confirm commute.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-6160810789",
+      "title": "Bank Teller",
+      "company": "Union Savings Bank",
+      "location": "Reynoldsburg, OH 43068",
+      "remote": false,
+      "url": "https://www.unionsavings.com/careers",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 80,
+      "reasons": [
+        "OH Union Savings careers page (Indeed blocked bots). Confirm Reynoldsburg teller still listed."
+      ],
+      "snippet": "OH Union Savings careers page (Indeed blocked bots). Confirm Reynoldsburg teller still listed.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-3809745166",
+      "title": "Office Manager \u2014 New Albany Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "New Albany, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=a5a1da55-eb61-4715-bac6-e7f9c155d1a1",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 80,
+      "reasons": [
+        "Step-up admin leadership. Confirm experience bar + pay."
+      ],
+      "snippet": "Step-up admin leadership. Confirm experience bar + pay.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-9519542515",
+      "title": "Patient Service Representative \u2014 Northwest Internal Medicine",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Columbus, OH",
+      "remote": false,
+      "url": "https://recruiting.ultipro.com/CEN1032COHP/JobBoard/14b4a75f-f5ce-4e30-822d-7266b16aa02e/OpportunityDetail?opportunityId=5ab6e673-3067-4d48-b9f1-0cf4ee5192bf",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 80,
+      "reasons": [
+        "NW Columbus PSR. Confirm commute (~30+ min)."
+      ],
+      "snippet": "NW Columbus PSR. Confirm commute (~30+ min).",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-823672195",
       "title": "Donor Center Phlebotomist",
       "company": "American Red Cross",
       "location": "Gahanna / Columbus area donor centers",
@@ -333,19 +673,19 @@
       "pay": "$20.29/hr"
     },
     {
-      "id": "curated-4964719049",
+      "id": "curated-4282116575",
       "title": "Member Services Representative (Remote after training)",
       "company": "Encode Inc",
       "location": "Remote after training (Akron, OH training)",
       "remote": true,
-      "url": "https://www.indeed.com/q-member-services-representative-encode-l-ohio-jobs.html",
-      "source": "Indeed",
+      "url": "https://encodeinc.com/",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 75,
       "reasons": [
-        "Pay fits. Training may be in Akron \u2014 only pursue if temporary commute/training travel is OK."
+        "Indeed link blocked; company site only. Confirm open Member Services role + Akron training."
       ],
-      "snippet": "Pay fits. Training may be in Akron \u2014 only pursue if temporary commute/training travel is OK.",
+      "snippet": "Indeed link blocked; company site only. Confirm open Member Services role + Akron training.",
       "stage": "Saved",
       "pay": "$19\u2013$20/hr"
     },
@@ -368,7 +708,7 @@
       "snippet": "Coalition Technologies is seeking a reliable, detail-oriented, and highly organized Remote Office Assistant to support administrative, bookkeeping, billing, reporting, data entry, and internal operations tasks. This role is ideal for someone with strong communication skills, dis"
     },
     {
-      "id": "curated-7570951782",
+      "id": "curated-9090647266",
       "title": "Teller \u2014 Georgesville Rd branch",
       "company": "PNC Bank",
       "location": "Columbus, OH 43228 (west side)",
@@ -385,24 +725,24 @@
       "pay": "$30k\u2013$50k (~$14\u2013$24/hr band)"
     },
     {
-      "id": "curated-6685517958",
+      "id": "curated-8553225847",
       "title": "Medical Receptionist / Front Desk (metro sweep)",
       "company": "OrthoNeuro & similar clinics",
       "location": "Columbus metro",
       "remote": false,
-      "url": "https://www.indeed.com/q-medical-receptionist-l-columbus,-oh-jobs.html",
-      "source": "Indeed",
+      "url": "https://orthoneuro.com/career-opportunities/",
+      "source": "Company Site",
       "wage_guess": null,
       "score": 72,
       "reasons": [
-        "Search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
+        "OrthoNeuro careers portal (SCA Health). Filter FT front desk / medical secretary \u2265$18."
       ],
-      "snippet": "Search seed. Prefer FT medical front desk; skip heavy clinical/vet tech.",
+      "snippet": "OrthoNeuro careers portal (SCA Health). Filter FT front desk / medical secretary \u2265$18.",
       "stage": "Saved",
       "pay": "$16\u2013$25.25/hr (filter \u2265$18 FT)"
     },
     {
-      "id": "arbeitnow-6724434643",
+      "id": "arbeitnow-1881068832",
       "title": "Support Coordinators",
       "company": "LILT (Production)",
       "location": "Remote",
@@ -419,7 +759,7 @@
       "snippet": "About the role   We're looking for two Payment Support Coordinators to join our Expert Services &amp; Operations (ES&amp;O) team on a short-term contract basis. You'll work directly on our linguist payment queue, helping to clear a backlog of payment requests and restoring a re"
     },
     {
-      "id": "arbeitnow-7910652009",
+      "id": "arbeitnow-7583138022",
       "title": "Endear - Product Designer",
       "company": "Eleve Talent",
       "location": "Remote",
@@ -454,7 +794,7 @@
       "snippet": "Uni\u00f3 Digital is an Arizona-based managed service provider (MSP) delivering Managed IT Services, Low Voltage Cabling, Access Control, Video Surveillance, and Intrusion Services. We believe technology should be intuitive, not intimidating. \n \u00a0 \n We are looking for an experienced T"
     },
     {
-      "id": "arbeitnow-4521963136",
+      "id": "arbeitnow-4750318008",
       "title": "Creative Designer (m/w/d)",
       "company": "Neolymp",
       "location": "Berlin",
@@ -469,23 +809,6 @@
         "pay not listed \u2014 verify $18+"
       ],
       "snippet": "Dich begeistern Creatives, die nicht nur gut aussehen, sondern skalieren? Du willst von grafischer Seite unmittelbar daran mitwirken, dass ein Onlineshop w\u00e4chst \u2013 und in den Zahlen sehen, was dein Hook, dein Static, dein Banner bewegt? Dann bist du bei NEOLYMP richtig. Wir skali"
-    },
-    {
-      "id": "arbeitnow-7505944828",
-      "title": "Strategic Account Executive - Germany",
-      "company": "Saviynt",
-      "location": "Remote Germany",
-      "remote": true,
-      "url": "https://www.arbeitnow.com/jobs/companies/saviynt/remote-strategic-account-executive-germany-209723",
-      "source": "Arbeitnow",
-      "wage_guess": null,
-      "score": 33,
-      "reasons": [
-        "skill-fit: customer service",
-        "remote",
-        "pay not listed \u2014 verify $18+"
-      ],
-      "snippet": "Saviynt's AI-powered identity platform manages and governs human and non-human access to all of an organization's applications, data, and business processes. Customers trust Saviynt to safeguard their digital assets, drive operational efficiency, and reduce compliance costs. Bu"
     }
   ]
 }
