@@ -5,3 +5,5 @@ job-apply/output/cover_letters/
 job-apply/output/apply_logs/
 job-apply/data/candidate.local.json
 job-apply/data/apply_state.json
+__pycache__/
+*.pyc
