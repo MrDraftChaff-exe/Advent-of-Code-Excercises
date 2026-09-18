@@ -10,7 +10,19 @@
       "source": "Company Site",
       "fit_score": 95,
       "stage": "Ready to Apply",
-      "notes": "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35-45 min)."
+      "notes": "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35–45 min)."
+    },
+    {
+      "title": "Patient Service Representative — Building Blocks Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "8050 E Main St, Reynoldsburg, OH",
+      "pay": "Verify $18+ (est. ~$18–$22/hr)",
+      "remote": false,
+      "url": "https://www.career.com/job/copc-brand/patient-service-representative-building-blocks-pediatrics/j202607250105434011593",
+      "source": "Other",
+      "fit_score": 94,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL. FT benefits Mon–Thu 8:30–5:30. Front desk + light clinical training. Apply via COPC careers: https://www.copcp.com/careers/"
     },
     {
       "title": "Patient Service Representative — Suburban Internal Medicine",
@@ -22,7 +34,31 @@
       "source": "LinkedIn",
       "fit_score": 92,
       "stage": "Ready to Apply",
-      "notes": "Best local commute. Front desk/check-in, phones, copays. FT Mon-Fri 8a-5p."
+      "notes": "Best local commute. Front desk/check-in, phones, copays. FT Mon–Fri 8a–5p."
+    },
+    {
+      "title": "Patient Service Representative — Eastglen Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Reynoldsburg, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.career.com/job/central-ohio-primary-care/patient-service-representative-eastglen-pediatrics/j202507152009074586599",
+      "source": "Other",
+      "fit_score": 93,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL. FT 32–40 hrs Mon–Fri ~7:45–5:30 + 1 rotating Sat/month. Check-in, phones, insurance."
+    },
+    {
+      "title": "Physician Office Specialist — PCP Davidson Dr",
+      "company": "OhioHealth",
+      "location": "Reynoldsburg, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://careers.ohiohealth.com/job-search/?keyword=Physician%20Office%20Specialist&location=Reynoldsburg,%20OH",
+      "source": "Company Site",
+      "fit_score": 91,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1–2 yrs medical office/CS preferred."
     },
     {
       "title": "Customer Service Representative — Insurance (Remote OH)",
@@ -37,6 +73,162 @@
       "notes": "Remote FT. Needs Ethernet internet. Company provides computer."
     },
     {
+      "title": "Patient Service Representative — Family Physicians of Gahanna",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Gahanna, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-family-physicians-of-gahanna-fnpwq4k7yoos",
+      "source": "Other",
+      "fit_score": 89,
+      "stage": "Ready to Apply",
+      "notes": "Short commute (~10–15 min). FT Mon–Fri varied 8-hr shifts 7:30–6:00. Same COPC PSR track."
+    },
+    {
+      "title": "Patient Service Representative — Pediatric & Adolescent Practitioners",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Gahanna, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-pediatric-and-adolescent-practitioners-0l66yclesudh",
+      "source": "Other",
+      "fit_score": 88,
+      "stage": "Ready to Apply",
+      "notes": "Gahanna (~10–15 min). Mon–Thu 8–4:30, Fri 8–3 + late closer 1–2 days/week."
+    },
+    {
+      "title": "Patient Intake & Registration Specialist",
+      "company": "The Ohio State University (College of Dentistry)",
+      "location": "Columbus, OH (Postle Hall)",
+      "pay": "$18.37–$23.99/hr",
+      "remote": false,
+      "url": "https://notify.careers/postings/f22f66b2-f416-45fb-bfe5-8dbcf6f754e4",
+      "source": "Other",
+      "fit_score": 88,
+      "stage": "Ready to Apply",
+      "notes": "Patient check-in, scheduling, clerical support Mon–Fri ~7:30–4:30. Confirm commute (~25–35 min)."
+    },
+    {
+      "title": "Customer Service Representative (Remote)",
+      "company": "Kelly Services",
+      "location": "Remote (EST/CST)",
+      "pay": "$24/hr",
+      "remote": true,
+      "url": "https://www.ihirecustomerservice.com/jobs/view/534764701",
+      "source": "Other",
+      "fit_score": 87,
+      "stage": "Ready to Apply",
+      "notes": "Remote FT Mon–Fri 9:00–5:30. Strong pay. Confirm still open and US-based eligibility."
+    },
+    {
+      "title": "EV Concierge / Call Center Chat Agent (Remote)",
+      "company": "TEKsystems",
+      "location": "Remote (Columbus, OH based contract)",
+      "pay": "$19/hr (+$2 evening differential)",
+      "remote": true,
+      "url": "https://www.linkedin.com/jobs/view/call-center-chat-agent-remote-at-teksystems-4457820413",
+      "source": "LinkedIn",
+      "fit_score": 86,
+      "stage": "Ready to Apply",
+      "notes": "Remote FT contract. Phone/chat customer support. Company computer. Confirm still open (some mirrors show Aug close)."
+    },
+    {
+      "title": "Patient Registration Representative — Pickerington Methodist",
+      "company": "OhioHealth",
+      "location": "Pickerington, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://notify.careers/postings/458c17e9-9647-4b7f-a69d-217d815449d2",
+      "source": "Other",
+      "fit_score": 86,
+      "stage": "Ready to Apply",
+      "notes": "~15–20 min south. Registration, insurance verification, payments, MyChart. May include weekend/holiday rotation — confirm schedule fit."
+    },
+    {
+      "title": "Patient Registration Representative (MOCVC)",
+      "company": "OhioHealth",
+      "location": "Columbus / float to Hilliard, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://careers.ohiohealth.com/job-search/?keyword=Patient%20Reg%20Rep&location=Columbus,%20OH",
+      "source": "Company Site",
+      "fit_score": 84,
+      "stage": "Ready to Apply",
+      "notes": "FT days 8:00–4:30 Mon–Fri. Registration + customer service. Floats 2–3 days to Hilliard — confirm commute comfort."
+    },
+    {
+      "title": "Customer Experience Banker",
+      "company": "Huntington Bank",
+      "location": "Reynoldsburg, OH",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.indeed.com/q-Huntington-Bank-Customer-Experience-Banker-l-reynoldsburg,-oh-jobs.html",
+      "source": "Indeed",
+      "fit_score": 84,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL branch. Transactions + product education. Cash-handling fit from retail. Confirm FT pay ≥$18 on apply."
+    },
+    {
+      "title": "Full-Time Teller — Blacklick / Reynoldsburg",
+      "company": "Telhio Credit Union",
+      "location": "8010 E Broad St, Blacklick/Reynoldsburg, OH",
+      "pay": "~$18–$22/hr (verify)",
+      "remote": false,
+      "url": "https://www.telhio.org/careers",
+      "source": "Company Site",
+      "fit_score": 83,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL. Cash handling + member service. Mon–Fri 9–6 + rotating Sat 9–1. Strong fit for register experience."
+    },
+    {
+      "title": "Bank Teller",
+      "company": "Union Savings Bank",
+      "location": "Reynoldsburg, OH 43068",
+      "pay": "Verify $18+",
+      "remote": false,
+      "url": "https://www.indeed.com/q-union-savings-bank-teller-l-reynoldsburg,-oh-jobs.html",
+      "source": "Indeed",
+      "fit_score": 80,
+      "stage": "Ready to Apply",
+      "notes": "LOCAL branch teller. Deposits/withdrawals, customer service, balancing. Confirm FT pay ≥$18 on apply."
+    },
+    {
+      "title": "Financial Services Representative (Hybrid)",
+      "company": "Nationwide",
+      "location": "Grandview Heights / Columbus, OH (2 days office / 3 remote)",
+      "pay": "Verify $18+ (salaried FSR)",
+      "remote": true,
+      "url": "https://careers.nationwide.com/financial-services-representative/job/DCFDEAA16BF93D702B407255E5817AF2",
+      "source": "Company Site",
+      "fit_score": 78,
+      "stage": "Saved",
+      "notes": "Hybrid within 35 mi of Grandview. Strong brand. Confirm starting pay ≥$18 equiv before applying."
+    },
+    {
+      "title": "Teller — Georgesville Rd branch",
+      "company": "PNC Bank",
+      "location": "Columbus, OH 43228 (west side)",
+      "pay": "$30k–$50k (~$14–$24/hr band)",
+      "remote": false,
+      "url": "https://pnc.wd5.myworkdayjobs.com/en-US/External/job/OH---Columbus-43228/Teller_R234715-1",
+      "source": "Company Site",
+      "fit_score": 72,
+      "stage": "Saved",
+      "notes": "West-side commute ~30–40+ min. Only pursue if pay lands ≥$18 and commute OK."
+    },
+    {
+      "title": "Member Services Representative (Remote after training)",
+      "company": "Encode Inc",
+      "location": "Remote after training (Akron, OH training)",
+      "pay": "$19–$20/hr",
+      "remote": true,
+      "url": "https://www.indeed.com/q-member-services-representative-encode-l-ohio-jobs.html",
+      "source": "Indeed",
+      "fit_score": 75,
+      "stage": "Saved",
+      "notes": "Pay fits. Training may be in Akron — only pursue if temporary commute/training travel is OK."
+    },
+    {
       "title": "Donor Center Phlebotomist",
       "company": "American Red Cross",
       "location": "Gahanna / Columbus area donor centers",
@@ -47,6 +239,18 @@
       "fit_score": 78,
       "stage": "Saved",
       "notes": "Strong skill match. Fixed sites better than mobile drives. Confirm physical comfort (standing/lifting)."
+    },
+    {
+      "title": "City of Reynoldsburg — current openings",
+      "company": "City of Reynoldsburg",
+      "location": "Reynoldsburg City Hall (7232 E Main St)",
+      "pay": "Often $21–$26/hr for admin roles",
+      "remote": false,
+      "url": "https://www.governmentjobs.com/careers/reynoldsburg",
+      "source": "Other",
+      "fit_score": 83,
+      "stage": "Saved",
+      "notes": "Watch this board. Front Desk Admin listing recently closed; Account Clerk / Parks Admin and similar reopen periodically. Excellent local pay."
     },
     {
       "title": "Remote Office Assistant",
@@ -61,7 +265,7 @@
       "notes": "Remote admin. Verify pay and US eligibility."
     },
     {
-      "title": "Front Desk / Medical Receptionist (local search)",
+      "title": "Medical Receptionist / Front Desk (metro sweep)",
       "company": "OrthoNeuro & similar clinics",
       "location": "Columbus metro",
       "pay": "$16–$25.25/hr (filter ≥$18 FT)",
@@ -70,7 +274,7 @@
       "source": "Indeed",
       "fit_score": 72,
       "stage": "Saved",
-      "notes": "Use as search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
+      "notes": "Search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
     }
   ]
 }

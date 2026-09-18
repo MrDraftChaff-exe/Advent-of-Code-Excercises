@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T02:03:57.228605+00:00",
+  "generated_at": "2026-09-18T02:21:20.837742+00:00",
   "home_zip": "43068",
   "criteria": {
     "min_hourly": 18.0,
@@ -10,7 +10,7 @@
   },
   "jobs": [
     {
-      "id": "curated-1422010400",
+      "id": "curated-297035793",
       "title": "Patient Service Representative",
       "company": "Quantum Health",
       "location": "Dublin, OH (hybrid after onboarding)",
@@ -20,14 +20,48 @@
       "wage_guess": null,
       "score": 95,
       "reasons": [
-        "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35-45 min)."
+        "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35\u201345 min)."
       ],
-      "snippet": "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35-45 min).",
+      "snippet": "TOP PICK. FT Mon-Fri, no weekends. Healthcare navigation. Confirm commute from Reynoldsburg (~35\u201345 min).",
       "stage": "Ready to Apply",
       "pay": "$19/hr"
     },
     {
-      "id": "curated-7510056270",
+      "id": "curated-5964001841",
+      "title": "Patient Service Representative \u2014 Building Blocks Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "8050 E Main St, Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://www.career.com/job/copc-brand/patient-service-representative-building-blocks-pediatrics/j202607250105434011593",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 94,
+      "reasons": [
+        "LOCAL. FT benefits Mon\u2013Thu 8:30\u20135:30. Front desk + light clinical training. Apply via COPC careers: https://www.copcp.com/careers/"
+      ],
+      "snippet": "LOCAL. FT benefits Mon\u2013Thu 8:30\u20135:30. Front desk + light clinical training. Apply via COPC careers: https://www.copcp.com/careers/",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+ (est. ~$18\u2013$22/hr)"
+    },
+    {
+      "id": "curated-491596340",
+      "title": "Patient Service Representative \u2014 Eastglen Pediatrics",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://www.career.com/job/central-ohio-primary-care/patient-service-representative-eastglen-pediatrics/j202507152009074586599",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 93,
+      "reasons": [
+        "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance."
+      ],
+      "snippet": "LOCAL. FT 32\u201340 hrs Mon\u2013Fri ~7:45\u20135:30 + 1 rotating Sat/month. Check-in, phones, insurance.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-9185098000",
       "title": "Patient Service Representative \u2014 Suburban Internal Medicine",
       "company": "Central Ohio Primary Care (COPC)",
       "location": "Reynoldsburg, OH",
@@ -37,14 +71,31 @@
       "wage_guess": null,
       "score": 92,
       "reasons": [
-        "Best local commute. Front desk/check-in, phones, copays. FT Mon-Fri 8a-5p."
+        "Best local commute. Front desk/check-in, phones, copays. FT Mon\u2013Fri 8a\u20135p."
       ],
-      "snippet": "Best local commute. Front desk/check-in, phones, copays. FT Mon-Fri 8a-5p.",
+      "snippet": "Best local commute. Front desk/check-in, phones, copays. FT Mon\u2013Fri 8a\u20135p.",
       "stage": "Ready to Apply",
       "pay": "Verify $18+"
     },
     {
-      "id": "curated-4959518586",
+      "id": "curated-6700671307",
+      "title": "Physician Office Specialist \u2014 PCP Davidson Dr",
+      "company": "OhioHealth",
+      "location": "Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://careers.ohiohealth.com/job-search/?keyword=Physician%20Office%20Specialist&location=Reynoldsburg,%20OH",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 91,
+      "reasons": [
+        "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred."
+      ],
+      "snippet": "LOCAL. Front desk/registration, phones, insurance verification, EMR. FT day shift, 40 hrs. HS + 1\u20132 yrs medical office/CS preferred.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-1043447300",
       "title": "Customer Service Representative \u2014 Insurance (Remote OH)",
       "company": "AAA Auto Club Enterprises",
       "location": "Remote (must live in Ohio)",
@@ -61,7 +112,211 @@
       "pay": "$21/hr (+$1 bilingual)"
     },
     {
-      "id": "curated-384166243",
+      "id": "curated-9456915595",
+      "title": "Patient Service Representative \u2014 Family Physicians of Gahanna",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Gahanna, OH",
+      "remote": false,
+      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-family-physicians-of-gahanna-fnpwq4k7yoos",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 89,
+      "reasons": [
+        "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track."
+      ],
+      "snippet": "Short commute (~10\u201315 min). FT Mon\u2013Fri varied 8-hr shifts 7:30\u20136:00. Same COPC PSR track.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-607230003",
+      "title": "Patient Service Representative \u2014 Pediatric & Adolescent Practitioners",
+      "company": "Central Ohio Primary Care (COPC)",
+      "location": "Gahanna, OH",
+      "remote": false,
+      "url": "https://www.getclera.com/jobs/central-ohio-primary-care-physicians/patient-service-representative-pediatric-and-adolescent-practitioners-0l66yclesudh",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 88,
+      "reasons": [
+        "Gahanna (~10\u201315 min). Mon\u2013Thu 8\u20134:30, Fri 8\u20133 + late closer 1\u20132 days/week."
+      ],
+      "snippet": "Gahanna (~10\u201315 min). Mon\u2013Thu 8\u20134:30, Fri 8\u20133 + late closer 1\u20132 days/week.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-3527658434",
+      "title": "Patient Intake & Registration Specialist",
+      "company": "The Ohio State University (College of Dentistry)",
+      "location": "Columbus, OH (Postle Hall)",
+      "remote": false,
+      "url": "https://notify.careers/postings/f22f66b2-f416-45fb-bfe5-8dbcf6f754e4",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 88,
+      "reasons": [
+        "Patient check-in, scheduling, clerical support Mon\u2013Fri ~7:30\u20134:30. Confirm commute (~25\u201335 min)."
+      ],
+      "snippet": "Patient check-in, scheduling, clerical support Mon\u2013Fri ~7:30\u20134:30. Confirm commute (~25\u201335 min).",
+      "stage": "Ready to Apply",
+      "pay": "$18.37\u2013$23.99/hr"
+    },
+    {
+      "id": "curated-9335178369",
+      "title": "Customer Service Representative (Remote)",
+      "company": "Kelly Services",
+      "location": "Remote (EST/CST)",
+      "remote": true,
+      "url": "https://www.ihirecustomerservice.com/jobs/view/534764701",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 87,
+      "reasons": [
+        "Remote FT Mon\u2013Fri 9:00\u20135:30. Strong pay. Confirm still open and US-based eligibility."
+      ],
+      "snippet": "Remote FT Mon\u2013Fri 9:00\u20135:30. Strong pay. Confirm still open and US-based eligibility.",
+      "stage": "Ready to Apply",
+      "pay": "$24/hr"
+    },
+    {
+      "id": "curated-903903606",
+      "title": "EV Concierge / Call Center Chat Agent (Remote)",
+      "company": "TEKsystems",
+      "location": "Remote (Columbus, OH based contract)",
+      "remote": true,
+      "url": "https://www.linkedin.com/jobs/view/call-center-chat-agent-remote-at-teksystems-4457820413",
+      "source": "LinkedIn",
+      "wage_guess": null,
+      "score": 86,
+      "reasons": [
+        "Remote FT contract. Phone/chat customer support. Company computer. Confirm still open (some mirrors show Aug close)."
+      ],
+      "snippet": "Remote FT contract. Phone/chat customer support. Company computer. Confirm still open (some mirrors show Aug close).",
+      "stage": "Ready to Apply",
+      "pay": "$19/hr (+$2 evening differential)"
+    },
+    {
+      "id": "curated-9403736746",
+      "title": "Patient Registration Representative \u2014 Pickerington Methodist",
+      "company": "OhioHealth",
+      "location": "Pickerington, OH",
+      "remote": false,
+      "url": "https://notify.careers/postings/458c17e9-9647-4b7f-a69d-217d815449d2",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 86,
+      "reasons": [
+        "~15\u201320 min south. Registration, insurance verification, payments, MyChart. May include weekend/holiday rotation \u2014 confirm schedule fit."
+      ],
+      "snippet": "~15\u201320 min south. Registration, insurance verification, payments, MyChart. May include weekend/holiday rotation \u2014 confirm schedule fit.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-4173205643",
+      "title": "Patient Registration Representative (MOCVC)",
+      "company": "OhioHealth",
+      "location": "Columbus / float to Hilliard, OH",
+      "remote": false,
+      "url": "https://careers.ohiohealth.com/job-search/?keyword=Patient%20Reg%20Rep&location=Columbus,%20OH",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 84,
+      "reasons": [
+        "FT days 8:00\u20134:30 Mon\u2013Fri. Registration + customer service. Floats 2\u20133 days to Hilliard \u2014 confirm commute comfort."
+      ],
+      "snippet": "FT days 8:00\u20134:30 Mon\u2013Fri. Registration + customer service. Floats 2\u20133 days to Hilliard \u2014 confirm commute comfort.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-623789580",
+      "title": "Customer Experience Banker",
+      "company": "Huntington Bank",
+      "location": "Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://www.indeed.com/q-Huntington-Bank-Customer-Experience-Banker-l-reynoldsburg,-oh-jobs.html",
+      "source": "Indeed",
+      "wage_guess": null,
+      "score": 84,
+      "reasons": [
+        "LOCAL branch. Transactions + product education. Cash-handling fit from retail. Confirm FT pay \u2265$18 on apply."
+      ],
+      "snippet": "LOCAL branch. Transactions + product education. Cash-handling fit from retail. Confirm FT pay \u2265$18 on apply.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-6018269388",
+      "title": "Full-Time Teller \u2014 Blacklick / Reynoldsburg",
+      "company": "Telhio Credit Union",
+      "location": "8010 E Broad St, Blacklick/Reynoldsburg, OH",
+      "remote": false,
+      "url": "https://www.telhio.org/careers",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 83,
+      "reasons": [
+        "LOCAL. Cash handling + member service. Mon\u2013Fri 9\u20136 + rotating Sat 9\u20131. Strong fit for register experience."
+      ],
+      "snippet": "LOCAL. Cash handling + member service. Mon\u2013Fri 9\u20136 + rotating Sat 9\u20131. Strong fit for register experience.",
+      "stage": "Ready to Apply",
+      "pay": "~$18\u2013$22/hr (verify)"
+    },
+    {
+      "id": "curated-993467461",
+      "title": "City of Reynoldsburg \u2014 current openings",
+      "company": "City of Reynoldsburg",
+      "location": "Reynoldsburg City Hall (7232 E Main St)",
+      "remote": false,
+      "url": "https://www.governmentjobs.com/careers/reynoldsburg",
+      "source": "Other",
+      "wage_guess": null,
+      "score": 83,
+      "reasons": [
+        "Watch this board. Front Desk Admin listing recently closed; Account Clerk / Parks Admin and similar reopen periodically. Excellent local pay."
+      ],
+      "snippet": "Watch this board. Front Desk Admin listing recently closed; Account Clerk / Parks Admin and similar reopen periodically. Excellent local pay.",
+      "stage": "Saved",
+      "pay": "Often $21\u2013$26/hr for admin roles"
+    },
+    {
+      "id": "curated-6035112802",
+      "title": "Bank Teller",
+      "company": "Union Savings Bank",
+      "location": "Reynoldsburg, OH 43068",
+      "remote": false,
+      "url": "https://www.indeed.com/q-union-savings-bank-teller-l-reynoldsburg,-oh-jobs.html",
+      "source": "Indeed",
+      "wage_guess": null,
+      "score": 80,
+      "reasons": [
+        "LOCAL branch teller. Deposits/withdrawals, customer service, balancing. Confirm FT pay \u2265$18 on apply."
+      ],
+      "snippet": "LOCAL branch teller. Deposits/withdrawals, customer service, balancing. Confirm FT pay \u2265$18 on apply.",
+      "stage": "Ready to Apply",
+      "pay": "Verify $18+"
+    },
+    {
+      "id": "curated-9178269375",
+      "title": "Financial Services Representative (Hybrid)",
+      "company": "Nationwide",
+      "location": "Grandview Heights / Columbus, OH (2 days office / 3 remote)",
+      "remote": true,
+      "url": "https://careers.nationwide.com/financial-services-representative/job/DCFDEAA16BF93D702B407255E5817AF2",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 78,
+      "reasons": [
+        "Hybrid within 35 mi of Grandview. Strong brand. Confirm starting pay \u2265$18 equiv before applying."
+      ],
+      "snippet": "Hybrid within 35 mi of Grandview. Strong brand. Confirm starting pay \u2265$18 equiv before applying.",
+      "stage": "Saved",
+      "pay": "Verify $18+ (salaried FSR)"
+    },
+    {
+      "id": "curated-1117773906",
       "title": "Donor Center Phlebotomist",
       "company": "American Red Cross",
       "location": "Gahanna / Columbus area donor centers",
@@ -76,6 +331,23 @@
       "snippet": "Strong skill match. Fixed sites better than mobile drives. Confirm physical comfort (standing/lifting).",
       "stage": "Saved",
       "pay": "$20.29/hr"
+    },
+    {
+      "id": "curated-4964719049",
+      "title": "Member Services Representative (Remote after training)",
+      "company": "Encode Inc",
+      "location": "Remote after training (Akron, OH training)",
+      "remote": true,
+      "url": "https://www.indeed.com/q-member-services-representative-encode-l-ohio-jobs.html",
+      "source": "Indeed",
+      "wage_guess": null,
+      "score": 75,
+      "reasons": [
+        "Pay fits. Training may be in Akron \u2014 only pursue if temporary commute/training travel is OK."
+      ],
+      "snippet": "Pay fits. Training may be in Akron \u2014 only pursue if temporary commute/training travel is OK.",
+      "stage": "Saved",
+      "pay": "$19\u2013$20/hr"
     },
     {
       "id": "remotive-1680495",
@@ -96,8 +368,25 @@
       "snippet": "Coalition Technologies is seeking a reliable, detail-oriented, and highly organized Remote Office Assistant to support administrative, bookkeeping, billing, reporting, data entry, and internal operations tasks. This role is ideal for someone with strong communication skills, dis"
     },
     {
-      "id": "curated-990140388",
-      "title": "Front Desk / Medical Receptionist (local search)",
+      "id": "curated-7570951782",
+      "title": "Teller \u2014 Georgesville Rd branch",
+      "company": "PNC Bank",
+      "location": "Columbus, OH 43228 (west side)",
+      "remote": false,
+      "url": "https://pnc.wd5.myworkdayjobs.com/en-US/External/job/OH---Columbus-43228/Teller_R234715-1",
+      "source": "Company Site",
+      "wage_guess": null,
+      "score": 72,
+      "reasons": [
+        "West-side commute ~30\u201340+ min. Only pursue if pay lands \u2265$18 and commute OK."
+      ],
+      "snippet": "West-side commute ~30\u201340+ min. Only pursue if pay lands \u2265$18 and commute OK.",
+      "stage": "Saved",
+      "pay": "$30k\u2013$50k (~$14\u2013$24/hr band)"
+    },
+    {
+      "id": "curated-6685517958",
+      "title": "Medical Receptionist / Front Desk (metro sweep)",
       "company": "OrthoNeuro & similar clinics",
       "location": "Columbus metro",
       "remote": false,
@@ -106,14 +395,14 @@
       "wage_guess": null,
       "score": 72,
       "reasons": [
-        "Use as search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
+        "Search seed. Prefer FT medical front desk; skip heavy clinical/vet tech."
       ],
-      "snippet": "Use as search seed. Prefer FT medical front desk; skip heavy clinical/vet tech.",
+      "snippet": "Search seed. Prefer FT medical front desk; skip heavy clinical/vet tech.",
       "stage": "Saved",
       "pay": "$16\u2013$25.25/hr (filter \u2265$18 FT)"
     },
     {
-      "id": "arbeitnow-9211748027",
+      "id": "arbeitnow-6724434643",
       "title": "Support Coordinators",
       "company": "LILT (Production)",
       "location": "Remote",
@@ -130,7 +419,7 @@
       "snippet": "About the role   We're looking for two Payment Support Coordinators to join our Expert Services &amp; Operations (ES&amp;O) team on a short-term contract basis. You'll work directly on our linguist payment queue, helping to clear a backlog of payment requests and restoring a re"
     },
     {
-      "id": "arbeitnow-6788933127",
+      "id": "arbeitnow-7910652009",
       "title": "Endear - Product Designer",
       "company": "Eleve Talent",
       "location": "Remote",
@@ -165,7 +454,7 @@
       "snippet": "Uni\u00f3 Digital is an Arizona-based managed service provider (MSP) delivering Managed IT Services, Low Voltage Cabling, Access Control, Video Surveillance, and Intrusion Services. We believe technology should be intuitive, not intimidating. \n \u00a0 \n We are looking for an experienced T"
     },
     {
-      "id": "arbeitnow-1070165069",
+      "id": "arbeitnow-4521963136",
       "title": "Creative Designer (m/w/d)",
       "company": "Neolymp",
       "location": "Berlin",
@@ -182,7 +471,7 @@
       "snippet": "Dich begeistern Creatives, die nicht nur gut aussehen, sondern skalieren? Du willst von grafischer Seite unmittelbar daran mitwirken, dass ein Onlineshop w\u00e4chst \u2013 und in den Zahlen sehen, was dein Hook, dein Static, dein Banner bewegt? Dann bist du bei NEOLYMP richtig. Wir skali"
     },
     {
-      "id": "arbeitnow-9770664016",
+      "id": "arbeitnow-7505944828",
       "title": "Strategic Account Executive - Germany",
       "company": "Saviynt",
       "location": "Remote Germany",
