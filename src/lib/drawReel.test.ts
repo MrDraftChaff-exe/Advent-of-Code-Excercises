@@ -380,6 +380,22 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#MexicanIndependence/);
   });
 
+  it("keeps the Pirates post caption off the phone frame", () => {
+    const pirates = TEMPLATES.find((t) => t.id === "pirate-day");
+    expect(pirates?.postCaption).toMatch(/racquetball/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, pirates!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Pirates");
+    expect(painted).toContain("Edward Teach");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("racquetball");
+    expect(painted).not.toContain("whole internet");
+    expect(painted).not.toMatch(/#Pirates/);
+    expect(painted).not.toMatch(/#TalkLikeAPirateDay/);
+    expect(painted).not.toMatch(/#JollyRoger/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

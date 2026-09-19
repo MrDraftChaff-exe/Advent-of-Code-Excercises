@@ -654,6 +654,13 @@ export default function App() {
             >
               El Grito caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/pirate-day-post.txt"
+              download="pirate-day-post.txt"
+            >
+              Pirates caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

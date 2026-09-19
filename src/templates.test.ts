@@ -432,6 +432,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(grito!)).not.toMatch(/\b415\b/);
   });
 
+  it("ships a Talk Like a Pirate Day template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const pirates = TEMPLATES.find((t) => t.id === "pirate-day");
+    expect(pirates).toBeDefined();
+    expect(pirates?.title).toBe("Pirates");
+    expect(pirates?.year).toBe("1718");
+    expect(pirates?.imageUrl).toContain("blackbeard-capture");
+    expect(pirates?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(pirates?.imageCredit).toMatch(/Ferris/);
+    expect(pirates?.theme).toBe("ocean");
+    expect(pirates?.durationSec).toBe(60);
+    expect(pirates?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(pirates?.bullets[3]).toMatch(/Edward Teach/);
+    expect(pirates?.bullets[11]).toMatch(/31 years later/);
+    expect(pirates?.postCaption).toMatch(/racquetball/);
+    expect(pirates?.postCaption).toContain("@FactsOrWhacks");
+    expect(pirates?.hashtags).toContain("#Pirates");
+    expect(canvasHeadlineText(pirates!)).toBe("Pirates");
+    expect(canvasHeadlineText(pirates!)).not.toMatch(/\b416\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

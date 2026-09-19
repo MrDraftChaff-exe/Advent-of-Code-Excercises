@@ -233,6 +233,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("He rang the bell")).toBe(true);
   });
 
+  it("uses the Pirates caption as the paste block", () => {
+    const pirates = TEMPLATES.find((t) => t.id === "pirate-day");
+    expect(pirates).toBeDefined();
+    const caption = buildPasteCaption(pirates!);
+    expect(caption).toContain("racquetball");
+    expect(caption).toContain("whole internet");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#Pirates");
+    expect(caption.startsWith("Two friends made it up")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

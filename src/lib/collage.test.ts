@@ -81,6 +81,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/216 years ago tonight/);
   });
 
+  it("collages the Pirates extra across six public-domain stills", () => {
+    const pirates = TEMPLATES.find((t) => t.id === "pirate-day");
+    expect(pirates).toBeDefined();
+    expect(usesCollage(pirates!)).toBe(true);
+    expect(reelSlides(pirates!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(pirates!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/golden age/);
+    expect(beats[5].facts[1]).toMatch(/31 years later/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

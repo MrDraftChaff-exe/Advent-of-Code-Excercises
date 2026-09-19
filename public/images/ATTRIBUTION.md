@@ -230,6 +230,19 @@ Poster still: `hidalgo-estandarte.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/el-grito-post.txt`](../catalog/el-grito-post.txt).
 
+# Pirates collage, 1724–1920
+
+Poster still: `blackbeard-capture.jpg`. Collage slides:
+
+- `blackbeard-capture.jpg` — [The_Capture_of_the_Pirate_Blackbeard.jpg](https://commons.wikimedia.org/wiki/File:The_Capture_of_the_Pirate_Blackbeard.jpg). Jean Leon Gerome Ferris, 1920. Public domain. 9:16 crop of Blackbeard and Maynard.
+- `pirate-galleon.jpg` — [Attack_on_a_Galleon.jpg](https://commons.wikimedia.org/wiki/File:Attack_on_a_Galleon.jpg). Howard Pyle, 1905. Public domain. 9:16 crop of the pirate sloop under the galleon stern.
+- `blackbeard-1724.jpg` — [Blackbeard_the_Pirate.jpg](https://commons.wikimedia.org/wiki/File:Blackbeard_the_Pirate.jpg). Benjamin Cole, 1724. Public domain. 9:16 crop of the engraving, fuses in the hat.
+- `pirate-handsome.jpg` — [Pyle_pirate_handsome.jpg](https://commons.wikimedia.org/wiki/File:Pyle_pirate_handsome.jpg). Howard Pyle, 1905. Public domain. 9:16 crop of the buccaneer with a red cloak.
+- `pirate-duel.jpg` — [Pg_104_-_Who_Shall_be_Captain_(color).jpg](https://commons.wikimedia.org/wiki/File:Pg_104_-_Who_Shall_be_Captain_(color).jpg). Howard Pyle, 1911. Public domain. 9:16 crop of the beach fight over the chest.
+- `pirate-fight.jpg` — [Pyle_Barbe_Noire.jpg](https://commons.wikimedia.org/wiki/File:Pyle_Barbe_Noire.jpg). Howard Pyle, 1894. Public domain. 9:16 crop of the boarding fight.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/pirate-day-post.txt`](../catalog/pirate-day-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -79,6 +79,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("el-grito")).toBe("el_grito");
   });
 
+  it("maps September 19 to the Pirates extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-19"));
+    expect(reel?.id).toBe("pirate-day");
+    expect(dailyArtifactStem("pirate-day")).toBe("pirate_day");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });
