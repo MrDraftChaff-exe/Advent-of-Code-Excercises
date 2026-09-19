@@ -42,11 +42,18 @@ class NextCodeTests(unittest.TestCase):
     def test_carry_when_last_char_is_final_digit(self) -> None:
         # w is the last alphabet char; it wraps to g and carries into c -> y
         self.assertEqual(next_code("3ppscw"), "3ppsyg")
+        self.assertEqual(next_code("w"), "rg")
+        self.assertEqual(next_code("gw"), "rg")
+        self.assertEqual(next_code("ww"), "rgg")
 
     def test_full_width_overflow_grows_a_digit(self) -> None:
         # w is 29; six w's are 30^6 - 1, so +1 is 1 followed by six zeros
         # with g as zero and r as one: rgggggg
         self.assertEqual(next_code("wwwwww"), "rgggggg")
+
+    def test_rejects_empty_code(self) -> None:
+        with self.assertRaises(ValueError):
+            next_code("")
 
     def test_round_trip_integer_conversion(self) -> None:
         code = "3ppscy"
