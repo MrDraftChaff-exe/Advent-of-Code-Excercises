@@ -15,4 +15,4 @@ python3 next_code.py 3ppscy -n 1000 --prefixes tv,tstats,tci
 python3 -m unittest test_next_code.py
 ```
 
-`-n 1000 --prefixes tv,tstats,tci` prints the next codes after the given start with `tv`, `tstats`, and `tci` prepended in that order. Every paste group is one set of those three prefixes. A requested count that is not a multiple of 3 is rounded up so the last group is complete (1000 becomes 1002 codes / 334 groups).
+`-n 1000 --prefixes tv,tstats,tci` prints the next codes after the given start with `tv`, `tstats`, and `tci` prepended in that order, with a space before each code. Every paste group is one set of those three prefixes. A requested count that is not a multiple of 3 is rounded up so the last group is complete (1000 becomes 1002 codes / 334 groups).

@@ -80,7 +80,7 @@ class BatchPrefixTests(unittest.TestCase):
         tagged = apply_rotating_prefixes(["3ppsc0", "3ppscf", "3ppscj", "3ppsc7"])
         self.assertEqual(
             tagged,
-            ["tv3ppsc0", "tstats3ppscf", "tci3ppscj", "tv3ppsc7"],
+            ["tv 3ppsc0", "tstats 3ppscf", "tci 3ppscj", "tv 3ppsc7"],
         )
 
     def test_parse_prefixes(self) -> None:
@@ -93,13 +93,13 @@ class BatchPrefixTests(unittest.TestCase):
         self.assertEqual(
             groups,
             [
-                ["tva", "tstatsb", "tcic"],
-                ["tvd", "tstatse", "tcif"],
+                ["tv a", "tstats b", "tci c"],
+                ["tv d", "tstats e", "tci f"],
             ],
         )
         self.assertEqual(
             format_paste_groups(groups),
-            "tva\ntstatsb\ntcic\n\ntvd\ntstatse\ntcif",
+            "tv a\ntstats b\ntci c\n\ntv d\ntstats e\ntci f",
         )
 
     def test_count_rounds_up_to_complete_prefix_sets(self) -> None:

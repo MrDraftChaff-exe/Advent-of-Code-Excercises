@@ -119,11 +119,11 @@ def complete_group_count(count: int, group_size: int) -> int:
 def apply_rotating_prefixes(
     codes: list[str], prefixes: tuple[str, ...] = DEFAULT_PREFIXES
 ) -> list[str]:
-    """Prepend prefixes in repeating order: tv, tstats, tci, tv, ..."""
+    """Prepend prefixes in repeating order with a space: tv 3ppsc0, ..."""
     if not prefixes:
         return list(codes)
     return [
-        f"{prefixes[index % len(prefixes)]}{code}"
+        f"{prefixes[index % len(prefixes)]} {code}"
         for index, code in enumerate(codes)
     ]
 
