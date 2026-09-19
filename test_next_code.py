@@ -5,14 +5,16 @@ import unittest
 
 from next_code import (
     DEFAULT_ALPHABET,
-    apply_rotating_suffixes,
+    apply_rotating_prefixes,
     code_to_int,
+    complete_group_count,
+    format_paste_groups,
+    grouped,
     int_to_code,
     next_code,
     next_codes,
     parse_alphabet,
-    parse_suffixes,
-    split_groups,
+    parse_prefixes,
 )
 
 
@@ -70,28 +72,39 @@ class NextCodeTests(unittest.TestCase):
             next_code("apple")  # vowels are not in the alphabet
 
 
-class BatchSuffixTests(unittest.TestCase):
+class BatchPrefixTests(unittest.TestCase):
     def test_next_codes_starts_after_given_code(self) -> None:
         self.assertEqual(next_codes("3ppscy", 3), ["3ppsc0", "3ppscf", "3ppscj"])
 
-    def test_rotating_suffixes_tv_tstats_tci(self) -> None:
-        tagged = apply_rotating_suffixes(["3ppsc0", "3ppscf", "3ppscj", "3ppsc7"])
+    def test_rotating_prefixes_tv_tstats_tci(self) -> None:
+        tagged = apply_rotating_prefixes(["3ppsc0", "3ppscf", "3ppscj", "3ppsc7"])
         self.assertEqual(
             tagged,
-            ["3ppsc0tv", "3ppscftstats", "3ppscjtci", "3ppsc7tv"],
+            ["tv3ppsc0", "tstats3ppscf", "tci3ppscj", "tv3ppsc7"],
         )
 
-    def test_parse_suffixes(self) -> None:
-        self.assertEqual(parse_suffixes("tv,tstats,tci"), ("tv", "tstats", "tci"))
-        self.assertEqual(parse_suffixes(""), ())
+    def test_parse_prefixes(self) -> None:
+        self.assertEqual(parse_prefixes("tv,tstats,tci"), ("tv", "tstats", "tci"))
+        self.assertEqual(parse_prefixes(""), ())
 
-    def test_split_1000_into_three_groups(self) -> None:
-        items = [str(i) for i in range(1000)]
-        groups = split_groups(items, 3)
-        self.assertEqual([len(group) for group in groups], [334, 333, 333])
-        self.assertEqual(groups[0][0], "0")
-        self.assertEqual(groups[-1][-1], "999")
-        self.assertEqual(sum(len(group) for group in groups), 1000)
+    def test_each_group_is_one_tv_tstats_tci_set(self) -> None:
+        tagged = apply_rotating_prefixes(["a", "b", "c", "d", "e", "f"])
+        groups = grouped(tagged, 3)
+        self.assertEqual(
+            groups,
+            [
+                ["tva", "tstatsb", "tcic"],
+                ["tvd", "tstatse", "tcif"],
+            ],
+        )
+        self.assertEqual(
+            format_paste_groups(groups),
+            "tva\ntstatsb\ntcic\n\ntvd\ntstatse\ntcif",
+        )
+
+    def test_count_rounds_up_to_complete_prefix_sets(self) -> None:
+        self.assertEqual(complete_group_count(1000, 3), 1002)
+        self.assertEqual(complete_group_count(999, 3), 999)
 
 
 if __name__ == "__main__":

@@ -69,7 +69,7 @@ def int_to_code(value: int, alphabet: str = DEFAULT_ALPHABET, width: int = 1) ->
     return "".join(reversed(digits))
 
 
-DEFAULT_SUFFIXES = ("tv", "tstats", "tci")
+DEFAULT_PREFIXES = ("tv", "tstats", "tci")
 
 
 def next_code(code: str, alphabet: str = DEFAULT_ALPHABET) -> str:
@@ -95,8 +95,8 @@ def next_codes(
     return results
 
 
-def parse_suffixes(raw: str) -> tuple[str, ...]:
-    """Parse a comma/space-separated suffix list. Empty means no suffixes."""
+def parse_prefixes(raw: str) -> tuple[str, ...]:
+    """Parse a comma/space-separated prefix list. Empty means no prefixes."""
     raw = raw.strip()
     if not raw:
         return ()
@@ -106,29 +106,38 @@ def parse_suffixes(raw: str) -> tuple[str, ...]:
     return tuple(parts)
 
 
-def apply_rotating_suffixes(
-    codes: list[str], suffixes: tuple[str, ...] = DEFAULT_SUFFIXES
+def complete_group_count(count: int, group_size: int) -> int:
+    """Round *count* up so every paste group has *group_size* items."""
+    if group_size <= 1:
+        return count
+    remainder = count % group_size
+    if remainder:
+        return count + (group_size - remainder)
+    return count
+
+
+def apply_rotating_prefixes(
+    codes: list[str], prefixes: tuple[str, ...] = DEFAULT_PREFIXES
 ) -> list[str]:
-    """Append suffixes in repeating order: tv, tstats, tci, tv, ..."""
-    if not suffixes:
+    """Prepend prefixes in repeating order: tv, tstats, tci, tv, ..."""
+    if not prefixes:
         return list(codes)
-    return [f"{code}{suffixes[index % len(suffixes)]}" for index, code in enumerate(codes)]
+    return [
+        f"{prefixes[index % len(prefixes)]}{code}"
+        for index, code in enumerate(codes)
+    ]
 
 
-def split_groups(items: list[str], group_count: int = 3) -> list[list[str]]:
-    """Split items into *group_count* contiguous paste groups."""
-    if group_count < 1:
-        raise ValueError("group count must be at least 1")
-    if not items:
-        return [[] for _ in range(group_count)]
-    size, extra = divmod(len(items), group_count)
-    groups: list[list[str]] = []
-    start = 0
-    for index in range(group_count):
-        length = size + (1 if index < extra else 0)
-        groups.append(items[start : start + length])
-        start += length
-    return groups
+def grouped(items: list[str], group_size: int) -> list[list[str]]:
+    """Split items into consecutive groups of *group_size*."""
+    if group_size < 1:
+        raise ValueError("group size must be at least 1")
+    return [items[index : index + group_size] for index in range(0, len(items), group_size)]
+
+
+def format_paste_groups(groups: list[list[str]]) -> str:
+    """Join groups with a blank line so each tv/tstats/tci set is easy to copy."""
+    return "\n\n".join("\n".join(group) for group in groups if group)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -150,15 +159,9 @@ def build_parser() -> argparse.ArgumentParser:
         help="how many successive codes to print (default: 1)",
     )
     parser.add_argument(
-        "--suffixes",
+        "--prefixes",
         default="",
-        help="comma-separated suffixes to append in rotating order, e.g. tv,tstats,tci",
-    )
-    parser.add_argument(
-        "--groups",
-        type=int,
-        default=1,
-        help="split output into this many contiguous paste groups (default: 1)",
+        help="comma-separated prefixes to prepend in rotating order, e.g. tv,tstats,tci",
     )
     return parser
 
@@ -167,11 +170,13 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         alphabet = parse_alphabet(args.alphabet)
-        suffixes = parse_suffixes(args.suffixes)
-        codes = apply_rotating_suffixes(next_codes(args.code, args.count, alphabet), suffixes)
-        groups = split_groups(codes, args.groups)
-        blocks = ["\n".join(group) for group in groups if group]
-        print("\n\n".join(blocks))
+        prefixes = parse_prefixes(args.prefixes)
+        count = args.count
+        if prefixes:
+            count = complete_group_count(count, len(prefixes))
+        tagged = apply_rotating_prefixes(next_codes(args.code, count, alphabet), prefixes)
+        group_size = len(prefixes) if prefixes else count
+        print(format_paste_groups(grouped(tagged, group_size)))
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
