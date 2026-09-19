@@ -2,7 +2,7 @@
 
 ## Next code in a custom alphabet
 
-Codes are sequential numbers written with this 30-symbol alphabet (left = least significant increment happens on the right):
+Codes are sequential numbers written with this 30-symbol alphabet. The rightmost symbol increments first, like an odometer:
 
 `g r d x v c y 0 f j 7 5 p 4 q 3 s 6 2 8 z t m b h 9 n 1 k w`
 
