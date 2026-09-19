@@ -15,6 +15,7 @@ from next_code import (
     next_codes,
     parse_alphabet,
     parse_prefixes,
+    resolve_group_size,
 )
 
 
@@ -105,6 +106,24 @@ class BatchPrefixTests(unittest.TestCase):
     def test_count_rounds_up_to_complete_prefix_sets(self) -> None:
         self.assertEqual(complete_group_count(1000, 3), 1002)
         self.assertEqual(complete_group_count(999, 3), 999)
+        self.assertEqual(complete_group_count(1000, 2), 1000)
+
+    def test_groups_of_two(self) -> None:
+        tagged = apply_rotating_prefixes(["a", "b", "c", "d"])
+        groups = grouped(tagged, 2)
+        self.assertEqual(
+            groups,
+            [
+                ["tv a", "tstats b"],
+                ["tci c", "tv d"],
+            ],
+        )
+        self.assertEqual(
+            format_paste_groups(groups),
+            "tv a\ntstats b\n\ntci c\ntv d",
+        )
+        self.assertEqual(resolve_group_size(("tv", "tstats", "tci"), 2, 1000), 2)
+        self.assertEqual(resolve_group_size(("tv", "tstats", "tci"), None, 1000), 3)
 
 
 if __name__ == "__main__":

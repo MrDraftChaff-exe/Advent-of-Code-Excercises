@@ -163,7 +163,23 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="comma-separated prefixes to prepend in rotating order, e.g. tv,tstats,tci",
     )
+    parser.add_argument(
+        "--group-size",
+        type=int,
+        default=None,
+        help="lines per paste group (default: number of prefixes, or 1)",
+    )
     return parser
+
+
+def resolve_group_size(
+    prefixes: tuple[str, ...], group_size: int | None, count: int
+) -> int:
+    if group_size is None:
+        return len(prefixes) if prefixes else max(count, 1)
+    if group_size < 1:
+        raise ValueError("group size must be at least 1")
+    return group_size
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -171,11 +187,9 @@ def main(argv: list[str] | None = None) -> int:
     try:
         alphabet = parse_alphabet(args.alphabet)
         prefixes = parse_prefixes(args.prefixes)
-        count = args.count
-        if prefixes:
-            count = complete_group_count(count, len(prefixes))
+        group_size = resolve_group_size(prefixes, args.group_size, args.count)
+        count = complete_group_count(args.count, group_size)
         tagged = apply_rotating_prefixes(next_codes(args.code, count, alphabet), prefixes)
-        group_size = len(prefixes) if prefixes else count
         print(format_paste_groups(grouped(tagged, group_size)))
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
