@@ -5,10 +5,14 @@ import unittest
 
 from next_code import (
     DEFAULT_ALPHABET,
+    apply_rotating_suffixes,
     code_to_int,
     int_to_code,
     next_code,
+    next_codes,
     parse_alphabet,
+    parse_suffixes,
+    split_groups,
 )
 
 
@@ -64,6 +68,30 @@ class NextCodeTests(unittest.TestCase):
     def test_rejects_unknown_character(self) -> None:
         with self.assertRaises(ValueError):
             next_code("apple")  # vowels are not in the alphabet
+
+
+class BatchSuffixTests(unittest.TestCase):
+    def test_next_codes_starts_after_given_code(self) -> None:
+        self.assertEqual(next_codes("3ppscy", 3), ["3ppsc0", "3ppscf", "3ppscj"])
+
+    def test_rotating_suffixes_tv_tstats_tci(self) -> None:
+        tagged = apply_rotating_suffixes(["3ppsc0", "3ppscf", "3ppscj", "3ppsc7"])
+        self.assertEqual(
+            tagged,
+            ["3ppsc0tv", "3ppscftstats", "3ppscjtci", "3ppsc7tv"],
+        )
+
+    def test_parse_suffixes(self) -> None:
+        self.assertEqual(parse_suffixes("tv,tstats,tci"), ("tv", "tstats", "tci"))
+        self.assertEqual(parse_suffixes(""), ())
+
+    def test_split_1000_into_three_groups(self) -> None:
+        items = [str(i) for i in range(1000)]
+        groups = split_groups(items, 3)
+        self.assertEqual([len(group) for group in groups], [334, 333, 333])
+        self.assertEqual(groups[0][0], "0")
+        self.assertEqual(groups[-1][-1], "999")
+        self.assertEqual(sum(len(group) for group in groups), 1000)
 
 
 if __name__ == "__main__":

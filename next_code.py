@@ -69,12 +69,66 @@ def int_to_code(value: int, alphabet: str = DEFAULT_ALPHABET, width: int = 1) ->
     return "".join(reversed(digits))
 
 
+DEFAULT_SUFFIXES = ("tv", "tstats", "tci")
+
+
 def next_code(code: str, alphabet: str = DEFAULT_ALPHABET) -> str:
     """Return the next code in sequence (rightmost digit increments first)."""
     if not code:
         raise ValueError("code must be non-empty")
     alphabet = parse_alphabet(alphabet)
     return int_to_code(code_to_int(code, alphabet) + 1, alphabet, width=len(code))
+
+
+def next_codes(
+    code: str, count: int, alphabet: str = DEFAULT_ALPHABET
+) -> list[str]:
+    """Return the next *count* codes after *code*."""
+    if count < 1:
+        raise ValueError("count must be at least 1")
+    alphabet = parse_alphabet(alphabet)
+    current = code
+    results: list[str] = []
+    for _ in range(count):
+        current = next_code(current, alphabet)
+        results.append(current)
+    return results
+
+
+def parse_suffixes(raw: str) -> tuple[str, ...]:
+    """Parse a comma/space-separated suffix list. Empty means no suffixes."""
+    raw = raw.strip()
+    if not raw:
+        return ()
+    parts = [part.strip() for part in raw.replace(" ", ",").split(",") if part.strip()]
+    if not parts:
+        return ()
+    return tuple(parts)
+
+
+def apply_rotating_suffixes(
+    codes: list[str], suffixes: tuple[str, ...] = DEFAULT_SUFFIXES
+) -> list[str]:
+    """Append suffixes in repeating order: tv, tstats, tci, tv, ..."""
+    if not suffixes:
+        return list(codes)
+    return [f"{code}{suffixes[index % len(suffixes)]}" for index, code in enumerate(codes)]
+
+
+def split_groups(items: list[str], group_count: int = 3) -> list[list[str]]:
+    """Split items into *group_count* contiguous paste groups."""
+    if group_count < 1:
+        raise ValueError("group count must be at least 1")
+    if not items:
+        return [[] for _ in range(group_count)]
+    size, extra = divmod(len(items), group_count)
+    groups: list[list[str]] = []
+    start = 0
+    for index in range(group_count):
+        length = size + (1 if index < extra else 0)
+        groups.append(items[start : start + length])
+        start += length
+    return groups
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -95,6 +149,17 @@ def build_parser() -> argparse.ArgumentParser:
         default=1,
         help="how many successive codes to print (default: 1)",
     )
+    parser.add_argument(
+        "--suffixes",
+        default="",
+        help="comma-separated suffixes to append in rotating order, e.g. tv,tstats,tci",
+    )
+    parser.add_argument(
+        "--groups",
+        type=int,
+        default=1,
+        help="split output into this many contiguous paste groups (default: 1)",
+    )
     return parser
 
 
@@ -102,12 +167,11 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         alphabet = parse_alphabet(args.alphabet)
-        code = args.code
-        if args.count < 1:
-            raise ValueError("count must be at least 1")
-        for _ in range(args.count):
-            code = next_code(code, alphabet)
-            print(code)
+        suffixes = parse_suffixes(args.suffixes)
+        codes = apply_rotating_suffixes(next_codes(args.code, args.count, alphabet), suffixes)
+        groups = split_groups(codes, args.groups)
+        blocks = ["\n".join(group) for group in groups if group]
+        print("\n\n".join(blocks))
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
