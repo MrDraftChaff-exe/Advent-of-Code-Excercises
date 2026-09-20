@@ -453,6 +453,27 @@ describe("templates", () => {
     expect(canvasHeadlineText(pirates!)).not.toMatch(/\b416\b/);
   });
 
+  it("ships a Billie Jean Battle of the Sexes template without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const king = TEMPLATES.find((t) => t.id === "billie-jean");
+    expect(king).toBeDefined();
+    expect(king?.title).toBe("Billie Jean");
+    expect(king?.year).toBe("1973");
+    expect(king?.imageUrl).toContain("billie-jean-litter");
+    expect(king?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(king?.imageCredit).toMatch(/Associated Press/);
+    expect(king?.theme).toBe("ember");
+    expect(king?.durationSec).toBe(60);
+    expect(king?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(king?.bullets[1]).toMatch(/gold litter/);
+    expect(king?.bullets[11]).toMatch(/53 years ago tonight/);
+    expect(king?.postCaption).toMatch(/any woman on the planet/);
+    expect(king?.postCaption).toContain("@FactsOrWhacks");
+    expect(king?.hashtags).toContain("#BillieJeanKing");
+    expect(canvasHeadlineText(king!)).toBe("Billie Jean");
+    expect(canvasHeadlineText(king!)).not.toMatch(/\b417\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

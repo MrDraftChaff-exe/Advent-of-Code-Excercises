@@ -391,6 +391,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Painting: Jean Leon Gerome Ferris, 1920 · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=417,
+            title="Billie Jean",
+            year="1973",
+            filename="417-billie-jean.mp4",
+            caption_path=catalog / "billie-jean-post.txt",
+            credit="Photo: Associated Press, 1973 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -489,6 +498,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/teddy-roosevelt-post.csv", [by_n[414]])
         write_rows(ROOT / "public/catalog/el-grito-post.csv", [by_n[415]])
         write_rows(ROOT / "public/catalog/pirate-day-post.csv", [by_n[416]])
+        write_rows(ROOT / "public/catalog/billie-jean-post.csv", [by_n[417]])
     print(args.out, args.out.stat().st_size)
 
 

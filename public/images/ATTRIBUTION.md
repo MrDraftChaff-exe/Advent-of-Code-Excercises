@@ -243,6 +243,19 @@ Poster still: `blackbeard-capture.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/pirate-day-post.txt`](../catalog/pirate-day-post.txt).
 
+# Billie Jean collage, 1951–2016
+
+Poster still: `billie-jean-litter.jpg`. Collage slides:
+
+- `billie-jean-litter.jpg` — [Billie_Jean_King_carried_onto_court.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_carried_onto_court.jpg). Associated Press, 20 September 1973. Public domain (PD-US-no-notice). 9:16 crop of King on the gold litter.
+- `billie-jean-riggs-1973.jpg` — [Billie_Jean_King_and_Bobby_Riggs_1973.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_and_Bobby_Riggs_1973.jpg). 1973 press still. Public domain (PD-US-no-notice). 9:16 crop of the duo portrait.
+- `bobby-riggs-1951.jpg` — [Bobby_Riggs_1951.jpg](https://commons.wikimedia.org/wiki/File:Bobby_Riggs_1951.jpg). *Los Angeles Daily News*, 1951. Public domain (PD-US-no-notice). 9:16 crop of the tennis hustler.
+- `astrodome-houston.jpg` — [The_Astrodome_the_world's_first_domed_stadium_Houston_Texas_LCCN2011633917.jpg](https://commons.wikimedia.org/wiki/File:The_Astrodome_the_world%27s_first_domed_stadium_Houston_Texas_LCCN2011633917.jpg). Carol M. Highsmith / Library of Congress. Public domain. 9:16 crop of the dome.
+- `billie-jean-2009.jpg` — [Billie_Jean_King_Cover_Photo.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_Cover_Photo.jpg). Jonathan Exley, 2009. CC0. 9:16 crop of the posed portrait.
+- `billie-jean-2016.jpg` — [Billie_Jean_King,_2016.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King,_2016.jpg). Gage Skidmore, 2016. CC BY-SA 2.0. 9:16 crop of King laughing.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/billie-jean-post.txt`](../catalog/billie-jean-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -661,6 +661,13 @@ export default function App() {
             >
               Pirates caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/billie-jean-post.txt"
+              download="billie-jean-post.txt"
+            >
+              Billie Jean caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

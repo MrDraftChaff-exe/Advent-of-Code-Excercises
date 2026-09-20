@@ -396,6 +396,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#JollyRoger/);
   });
 
+  it("keeps the Billie Jean post caption off the phone frame", () => {
+    const king = TEMPLATES.find((t) => t.id === "billie-jean");
+    expect(king?.postCaption).toMatch(/any woman on the planet/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, king!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Billie Jean");
+    expect(painted).toContain("Cleopatra");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("any woman on the planet");
+    expect(painted).not.toContain("shut him up");
+    expect(painted).not.toMatch(/#BillieJeanKing/);
+    expect(painted).not.toMatch(/#BattleOfTheSexes/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

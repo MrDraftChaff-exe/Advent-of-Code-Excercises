@@ -85,6 +85,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("pirate-day")).toBe("pirate_day");
   });
 
+  it("maps September 20 to the Billie Jean extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-20"));
+    expect(reel?.id).toBe("billie-jean");
+    expect(dailyArtifactStem("billie-jean")).toBe("billie_jean");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

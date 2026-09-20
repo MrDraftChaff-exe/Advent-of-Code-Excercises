@@ -92,6 +92,17 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/31 years later/);
   });
 
+  it("collages the Billie Jean extra across six public-domain stills", () => {
+    const king = TEMPLATES.find((t) => t.id === "billie-jean");
+    expect(king).toBeDefined();
+    expect(usesCollage(king!)).toBe(true);
+    expect(reelSlides(king!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(king!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/Bobby Riggs/);
+    expect(beats[5].facts[1]).toMatch(/53 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), `413` (Star-Spangled Banner), `414` (Teddy Roosevelt), `415` (El Grito), and `416` (Pirates) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), `413` (Star-Spangled Banner), `414` (Teddy Roosevelt), `415` (El Grito), `416` (Pirates), and `417` (Billie Jean) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
 
 ## Dolly Parton extra post
 
@@ -93,3 +93,7 @@ Load the **El Grito** template, or copy row `415`. Caption file: [`el-grito-post
 ## Pirates extra post
 
 Load the **Pirates** template, or copy row `416`. Caption file: [`pirate-day-post.txt`](pirate-day-post.txt). Video filename: `416-pirates.mp4`. The growth clip is a 60s collage, not a frozen still.
+
+## Billie Jean extra post
+
+Load the **Billie Jean** template, or copy row `417`. Caption file: [`billie-jean-post.txt`](billie-jean-post.txt). Video filename: `417-billie-jean.mp4`. The growth clip is a 60s collage, not a frozen still.

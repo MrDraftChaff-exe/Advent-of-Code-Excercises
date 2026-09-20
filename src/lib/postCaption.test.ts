@@ -244,6 +244,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Two friends made it up")).toBe(true);
   });
 
+  it("uses the Billie Jean caption as the paste block", () => {
+    const king = TEMPLATES.find((t) => t.id === "billie-jean");
+    expect(king).toBeDefined();
+    const caption = buildPasteCaption(king!);
+    expect(caption).toContain("any woman on the planet");
+    expect(caption).toContain("shut him up");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#BillieJeanKing");
+    expect(caption.startsWith("He bet he could beat")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],
