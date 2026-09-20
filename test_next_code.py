@@ -15,6 +15,8 @@ from next_code import (
     next_codes,
     parse_alphabet,
     parse_prefixes,
+    previous_code,
+    previous_codes,
     resolve_group_size,
 )
 
@@ -72,6 +74,15 @@ class NextCodeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             next_code("apple")  # vowels are not in the alphabet
 
+    def test_previous_code_is_inverse_of_next(self) -> None:
+        self.assertEqual(previous_code("3ppsc0"), "3ppscy")
+        self.assertEqual(next_code(previous_code("3ppm3d")), "3ppm3d")
+        self.assertEqual(previous_code("3ppm3d"), "3ppm3r")
+
+    def test_previous_cannot_go_below_zero(self) -> None:
+        with self.assertRaises(ValueError):
+            previous_code("g")
+
 
 class BatchPrefixTests(unittest.TestCase):
     def test_next_codes_starts_after_given_code(self) -> None:
@@ -124,6 +135,9 @@ class BatchPrefixTests(unittest.TestCase):
         )
         self.assertEqual(resolve_group_size(("tv", "tstats", "tci"), 2, 1000), 2)
         self.assertEqual(resolve_group_size(("tv", "tstats", "tci"), None, 1000), 3)
+
+    def test_previous_codes_from_3ppm3d(self) -> None:
+        self.assertEqual(previous_codes("3ppm3d", 3), ["3ppm3r", "3ppm3g", "3ppmqw"])
 
 
 if __name__ == "__main__":

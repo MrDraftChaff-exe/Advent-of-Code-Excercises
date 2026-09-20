@@ -72,27 +72,59 @@ def int_to_code(value: int, alphabet: str = DEFAULT_ALPHABET, width: int = 1) ->
 DEFAULT_PREFIXES = ("tv", "tstats", "tci")
 
 
-def next_code(code: str, alphabet: str = DEFAULT_ALPHABET) -> str:
-    """Return the next code in sequence (rightmost digit increments first)."""
+def step_code(code: str, delta: int, alphabet: str = DEFAULT_ALPHABET) -> str:
+    """Move *code* by *delta* steps in the custom base."""
     if not code:
         raise ValueError("code must be non-empty")
     alphabet = parse_alphabet(alphabet)
-    return int_to_code(code_to_int(code, alphabet) + 1, alphabet, width=len(code))
+    value = code_to_int(code, alphabet) + delta
+    if value < 0:
+        raise ValueError("code sequence cannot go below the first alphabet symbol")
+    return int_to_code(value, alphabet, width=len(code))
+
+
+def next_code(code: str, alphabet: str = DEFAULT_ALPHABET) -> str:
+    """Return the next code in sequence (rightmost digit increments first)."""
+    return step_code(code, 1, alphabet)
+
+
+def previous_code(code: str, alphabet: str = DEFAULT_ALPHABET) -> str:
+    """Return the previous code in sequence (rightmost digit decrements first)."""
+    return step_code(code, -1, alphabet)
+
+
+def walk_codes(
+    code: str,
+    count: int,
+    alphabet: str = DEFAULT_ALPHABET,
+    *,
+    backward: bool = False,
+) -> list[str]:
+    """Return the next or previous *count* codes from *code*."""
+    if count < 1:
+        raise ValueError("count must be at least 1")
+    alphabet = parse_alphabet(alphabet)
+    delta = -1 if backward else 1
+    current = code
+    results: list[str] = []
+    for _ in range(count):
+        current = step_code(current, delta, alphabet)
+        results.append(current)
+    return results
 
 
 def next_codes(
     code: str, count: int, alphabet: str = DEFAULT_ALPHABET
 ) -> list[str]:
     """Return the next *count* codes after *code*."""
-    if count < 1:
-        raise ValueError("count must be at least 1")
-    alphabet = parse_alphabet(alphabet)
-    current = code
-    results: list[str] = []
-    for _ in range(count):
-        current = next_code(current, alphabet)
-        results.append(current)
-    return results
+    return walk_codes(code, count, alphabet, backward=False)
+
+
+def previous_codes(
+    code: str, count: int, alphabet: str = DEFAULT_ALPHABET
+) -> list[str]:
+    """Return the previous *count* codes before *code*, newest first."""
+    return walk_codes(code, count, alphabet, backward=True)
 
 
 def parse_prefixes(raw: str) -> tuple[str, ...]:
@@ -169,6 +201,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="lines per paste group (default: number of prefixes, or 1)",
     )
+    parser.add_argument(
+        "-b",
+        "--backward",
+        action="store_true",
+        help="walk the sequence backwards from the given code",
+    )
     return parser
 
 
@@ -189,7 +227,10 @@ def main(argv: list[str] | None = None) -> int:
         prefixes = parse_prefixes(args.prefixes)
         group_size = resolve_group_size(prefixes, args.group_size, args.count)
         count = complete_group_count(args.count, group_size)
-        tagged = apply_rotating_prefixes(next_codes(args.code, count, alphabet), prefixes)
+        tagged = apply_rotating_prefixes(
+            walk_codes(args.code, count, alphabet, backward=args.backward),
+            prefixes,
+        )
         print(format_paste_groups(grouped(tagged, group_size)))
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
