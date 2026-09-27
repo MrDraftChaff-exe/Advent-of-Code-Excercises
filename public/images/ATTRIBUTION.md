@@ -256,6 +256,19 @@ Poster still: `billie-jean-litter.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/billie-jean-post.txt`](../catalog/billie-jean-post.txt).
 
+# Rosetta FACT/WHACK collage, 1803–2014
+
+Poster still: `rosetta-stone.jpg`. Collage slides:
+
+- `rosetta-stone.jpg` — [The_Rosetta_Stone.jpg](https://commons.wikimedia.org/wiki/File:The_Rosetta_Stone.jpg). Donald Macbeth, 1922. Public domain. 9:16 crop of the broken slab.
+- `champollion-1831.jpg` — [Jean-François_Champollion,_by_Léon_Cogniet.jpg](https://commons.wikimedia.org/wiki/File:Jean-Fran%C3%A7ois_Champollion,_by_L%C3%A9on_Cogniet.jpg). Léon Cogniet, 1831. Public domain. 9:16 crop of the portrait.
+- `fort-julien.jpg` — [Fort_Julien_with_an_Egyptian_Boat.jpg](https://commons.wikimedia.org/wiki/File:Fort_Julien_with_an_Egyptian_Boat.jpg). After Francis Brockell Spilsbury, 1803. Public domain. 9:16 crop of the Nile fort.
+- `rosetta-glyphs.jpg` — [Detail_of_Rosetta_Stone.JPG](https://commons.wikimedia.org/wiki/File:Detail_of_Rosetta_Stone.JPG). ProtoplasmaKid, 2014. CC BY-SA 4.0. 9:16 crop of the three scripts.
+- `lettre-dacier.jpg` — [Lettre_à_M._Dacier_(1822).jpg](https://commons.wikimedia.org/wiki/File:Lettre_%C3%A0_M._Dacier_(1822).jpg). Firmin Didot, 1822. Public domain. 9:16 crop of the title page.
+- `philae-temple.jpg` — [Philae_Temple_R03.jpg](https://commons.wikimedia.org/wiki/File:Philae_Temple_R03.jpg). Marc Ryckaert, 2012. CC BY 3.0. 9:16 crop of the Isis pylon.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/rosetta-post.txt`](../catalog/rosetta-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

@@ -91,6 +91,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("billie-jean")).toBe("billie_jean");
   });
 
+  it("maps September 27 to the Rosetta extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-27"));
+    expect(reel?.id).toBe("rosetta");
+    expect(dailyArtifactStem("rosetta")).toBe("rosetta");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

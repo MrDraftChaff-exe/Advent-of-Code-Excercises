@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Billie Jean on Sep 20).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Rosetta on Sep 27).
 2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-09-20
+# optional: npm run daily:pack -- --date 2026-09-27
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -88,15 +88,17 @@ Already-shipped extras (do not silently replace them):
 | 415 | `el-grito` | Grito de Dolores Sep 16, 1810 — 216 years. 60s collage |
 | 416 | `pirate-day` | Talk Like a Pirate Day / Blackbeard 1718. 60s collage |
 | 417 | `billie-jean` | Battle of the Sexes, Sep 20 1973 — 53 years. 60s collage |
+| 418 | `rosetta` | Champollion reads hieroglyphs, Sep 27 1822 — 204 years. FACT/WHACK collage |
 
-Next extra number is one higher than the current max extra (`417` → `418`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`418` → `419`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 
 - Canvas `1080×1920`. Photograph cover-fills the frame.
 - **12** full-sentence facts. No terminal periods. Last fact is the money shot.
 - Daily **growth video is at least 60 seconds** (platform monetization). Encode the collage at **62 seconds** so `ffprobe` reports >= 60.0 after xfade. The poster PNG still shows all 12 facts. The MP4 is a collage: six beats, two facts each, Ken Burns zoom, crossfade between public-domain photographs. Prefer 4–6 local Commons photos; a single photo still gets fact beats and zoom.
-- On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`.
+- Optional `format: "whack"` on an extra: each beat is a WHACK myth then a FACT, with chips on-frame and the photograph left open. Lecture extras stay unchanged.
+- On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`. Whack extras also paint `WHACK` / `FACT` chips.
 - Off-frame: episode numbers, hashtags, follow CTA. Custom `postCaption` is the paste block; include a follow line. **Exactly 5 hashtags**, all specific to this episode. No `*Tok`, `#FYP`, `#Reels`, `#Shorts`, `#DidYouKnow`, `#OnThisDay`, or `#FactsOrWhacks`. Do not reuse the same five tags from yesterday. The `@FactsOrWhacks` handle stays in the caption body, not as a hashtag.
 - Unique quiet sine pad seeded by the still stem. It should breathe, change chords, and pulse. No triangle drone, no chorus detune, no 7ths.
 - Photo: Wikimedia Commons **public domain or CC**, downloaded locally. Credit on-frame. Prefer a portrait that cover-fills 9:16.

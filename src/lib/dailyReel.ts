@@ -23,6 +23,7 @@ export const DAILY_TEMPLATE_BY_MD: Record<string, string> = {
   "09-16": "el-grito",
   "09-19": "pirate-day",
   "09-20": "billie-jean",
+  "09-27": "rosetta",
 };
 
 export function monthDay(date: Date = new Date()): string {

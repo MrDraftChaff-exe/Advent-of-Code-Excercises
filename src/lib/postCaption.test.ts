@@ -255,6 +255,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("He bet he could beat")).toBe(true);
   });
 
+  it("uses the Rosetta caption as the paste block", () => {
+    const rosetta = TEMPLATES.find((t) => t.id === "rosetta");
+    expect(rosetta).toBeDefined();
+    const caption = buildPasteCaption(rosetta!);
+    expect(caption).toContain("dead code");
+    expect(caption).toContain("read it out loud");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#RosettaStone");
+    expect(caption.startsWith("Everyone said Egyptian")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

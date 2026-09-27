@@ -474,6 +474,29 @@ describe("templates", () => {
     expect(canvasHeadlineText(king!)).not.toMatch(/\b417\b/);
   });
 
+  it("ships a Rosetta FACT/WHACK extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const rosetta = TEMPLATES.find((t) => t.id === "rosetta");
+    expect(rosetta).toBeDefined();
+    expect(rosetta?.title).toBe("Rosetta");
+    expect(rosetta?.year).toBe("1822");
+    expect(rosetta?.format).toBe("whack");
+    expect(rosetta?.imageUrl).toContain("rosetta-stone");
+    expect(rosetta?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(rosetta?.imageCredit).toMatch(/Donald Macbeth/);
+    expect(rosetta?.theme).toBe("cosmic");
+    expect(rosetta?.durationSec).toBe(60);
+    expect(rosetta?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(rosetta?.bullets[0]).toMatch(/lost code/);
+    expect(rosetta?.bullets[1]).toMatch(/French teacher/);
+    expect(rosetta?.bullets[11]).toMatch(/204 years ago tonight/);
+    expect(rosetta?.postCaption).toMatch(/dead code/);
+    expect(rosetta?.postCaption).toContain("@FactsOrWhacks");
+    expect(rosetta?.hashtags).toContain("#RosettaStone");
+    expect(canvasHeadlineText(rosetta!)).toBe("Rosetta");
+    expect(canvasHeadlineText(rosetta!)).not.toMatch(/\b418\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

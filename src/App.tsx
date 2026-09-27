@@ -668,6 +668,13 @@ export default function App() {
             >
               Billie Jean caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/rosetta-post.txt"
+              download="rosetta-post.txt"
+            >
+              Rosetta caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

@@ -9,7 +9,13 @@ import { loadReelImage } from "./images";
 import { collageBeats } from "./collage";
 import { drawNebula } from "./nebula";
 import { THEMES } from "../templates";
-import type { DrawFrameOptions, KenBurns, ReelContent, Word } from "../types";
+import type {
+  DrawFrameOptions,
+  KenBurns,
+  ReelContent,
+  ReelFormat,
+  Word,
+} from "../types";
 import { CANVAS_H, CANVAS_W } from "../types";
 
 function clamp(n: number, a: number, b: number) {
@@ -45,6 +51,14 @@ export function canvasHeadlineText(reel: ReelContent): string {
 export function canvasHeadlineTokens(reel: ReelContent): Word[] {
   const tokens = parseHighlighted(canvasHeadlineText(reel));
   return tokens.length ? tokens : [{ text: " ", highlight: false }];
+}
+
+export function reelFormat(reel: ReelContent): ReelFormat {
+  return reel.format === "whack" ? "whack" : "lecture";
+}
+
+export function pairKind(index: number): "WHACK" | "FACT" {
+  return index % 2 === 0 ? "WHACK" : "FACT";
 }
 
 function drawCoverImage(
@@ -101,6 +115,24 @@ function drawReadScrim(ctx: CanvasRenderingContext2D, w: number, h: number) {
   ctx.fillRect(0, 0, w, h);
 }
 
+/** Keep the photograph visible. Only veil the top title and the bottom cards. */
+function drawWhackScrim(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  ctx.fillStyle = "rgba(4, 0, 10, 0.16)";
+  ctx.fillRect(0, 0, w, h);
+
+  const top = ctx.createLinearGradient(0, 0, 0, h * 0.22);
+  top.addColorStop(0, "rgba(4, 0, 10, 0.55)");
+  top.addColorStop(1, "rgba(4, 0, 10, 0)");
+  ctx.fillStyle = top;
+  ctx.fillRect(0, 0, w, h);
+
+  const bottom = ctx.createLinearGradient(0, h * 0.48, 0, h);
+  bottom.addColorStop(0, "rgba(4, 0, 10, 0)");
+  bottom.addColorStop(1, "rgba(4, 0, 10, 0.78)");
+  ctx.fillStyle = bottom;
+  ctx.fillRect(0, 0, w, h);
+}
+
 function fillRoundRect(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -146,6 +178,163 @@ function paintText(
   ctx.restore();
 }
 
+function drawWhackOverlay(
+  ctx: CanvasRenderingContext2D,
+  reel: ReelContent,
+  time: number,
+  options: DrawFrameOptions,
+) {
+  const w = CANVAS_W;
+  const h = CANVAS_H;
+  const theme = THEMES[reel.theme];
+  const pad = 28;
+  const copyX = pad;
+  const copyW = w - pad * 2;
+  const beatFacts = options.slide?.facts?.map((b) => b.trim()).filter(Boolean);
+  const bullets =
+    options.mode === "beat" && beatFacts
+      ? beatFacts
+      : reel.bullets.filter((b) => b.trim());
+  const yearLabel = formatYear(reel.year);
+  const caption = (
+    options.mode === "beat" && options.slide
+      ? options.slide.imageCaption
+      : reel.imageCaption
+  ).trim();
+  const credit = (
+    options.mode === "beat" && options.slide
+      ? options.slide.imageCredit
+      : reel.imageCredit
+  ).trim();
+  const isBeat = options.mode === "beat";
+  const titleSize = isBeat ? 72 : 58;
+  const yearSize = isBeat ? 36 : 30;
+  const bodySize = isBeat ? 48 : 30;
+  const badgeSize = isBeat ? 22 : 16;
+  const titleStroke = Math.max(5, titleSize * 0.14);
+  const bodyStroke = Math.max(4, bodySize * 0.16);
+  const startIndex =
+    isBeat && beatFacts
+      ? Math.max(
+          0,
+          reel.bullets.findIndex((b) => b.trim() === beatFacts[0]),
+        )
+      : 0;
+
+  ctx.textBaseline = "top";
+  ctx.textAlign = "left";
+  ctx.globalAlpha = opacityFor(time, 0, reel.reveal);
+
+  const titleLines = wrapTokens(
+    canvasHeadlineTokens(reel),
+    copyW,
+    measureFactory(ctx, `800 ${titleSize}px Montserrat, sans-serif`),
+  );
+  let y = 40;
+  for (const line of titleLines) {
+    let x = copyX;
+    for (const tok of line) {
+      ctx.font = `800 ${titleSize}px Montserrat, sans-serif`;
+      paintText(
+        ctx,
+        tok.text,
+        x,
+        y,
+        tok.highlight ? theme.accent : theme.text,
+        titleStroke,
+      );
+      x += ctx.measureText(tok.text).width;
+    }
+    y += titleSize + 4;
+  }
+  if (yearLabel) {
+    ctx.font = `600 ${yearSize}px Montserrat, sans-serif`;
+    paintText(ctx, yearLabel, copyX, y, theme.accent, Math.max(3, yearSize * 0.18));
+    y += yearSize + 10;
+  }
+
+  const cardW = copyW + 16;
+  const badgeH = badgeSize + 10;
+  const lineH = bodySize + 10;
+  const pairs = bullets.map((text, i) => ({
+    kind: pairKind(startIndex + i),
+    text,
+  }));
+
+  if (isBeat) {
+    y = Math.max(y + 24, h * 0.52);
+  } else {
+    y = Math.max(y + 16, 430);
+  }
+
+  pairs.forEach((pair, i) => {
+    const isFact = pair.kind === "FACT";
+    const wrapW = copyW - 36;
+    const lines = wrapPlain(
+      pair.text,
+      wrapW,
+      measureFactory(ctx, `700 ${bodySize}px Montserrat, sans-serif`),
+    );
+    const blockH = badgeH + lines.length * lineH + 16;
+    ctx.globalAlpha = opacityFor(time, i + 1, reel.reveal);
+    ctx.fillStyle = isFact ? "rgba(0, 0, 0, 0.58)" : "rgba(72, 12, 22, 0.7)";
+    fillRoundRect(ctx, copyX - 8, y, cardW, blockH, 14);
+    ctx.font = `800 ${badgeSize}px Montserrat, sans-serif`;
+    paintText(
+      ctx,
+      pair.kind,
+      copyX + 16,
+      y + 8,
+      isFact ? theme.accent : "#FF8A96",
+      3,
+    );
+    let ly = y + badgeH + 2;
+    for (const line of lines) {
+      ctx.font = `700 ${bodySize}px Montserrat, sans-serif`;
+      paintText(ctx, line, copyX + 16, ly, theme.text, bodyStroke);
+      ly += lineH;
+    }
+    y += blockH + (isBeat ? 18 : 10);
+  });
+
+  let my = h - 72 - 26;
+  const captionLines = caption
+    ? wrapPlain(
+        caption,
+        copyW,
+        measureFactory(ctx, "600 18px Montserrat, sans-serif"),
+      )
+    : [];
+  const creditLines = credit
+    ? wrapPlain(
+        credit,
+        copyW,
+        measureFactory(ctx, "500 15px Montserrat, sans-serif"),
+      )
+    : [];
+  my -= captionLines.length * 24 + creditLines.length * 20;
+  if (captionLines.length) {
+    ctx.globalAlpha = 1;
+    ctx.font = "600 18px Montserrat, sans-serif";
+    for (const line of captionLines) {
+      paintText(ctx, line, copyX, my, theme.text, 3.2);
+      my += 24;
+    }
+  }
+  if (creditLines.length) {
+    ctx.globalAlpha = 0.95;
+    ctx.font = "500 15px Montserrat, sans-serif";
+    for (const line of creditLines) {
+      paintText(ctx, line, copyX, my, "#F4EEF6", 3);
+      my += 20;
+    }
+  }
+  ctx.globalAlpha = 0.95;
+  ctx.font = "700 24px Montserrat, sans-serif";
+  paintText(ctx, reel.handle, copyX, h - 72, "#F4EEF6", 3.5);
+  ctx.globalAlpha = 1;
+}
+
 export function drawFrame(
   ctx: CanvasRenderingContext2D,
   reel: ReelContent,
@@ -169,6 +358,11 @@ export function drawFrame(
       h,
       options.slide?.imageCaption || reel.imageCaption || "Photo",
     );
+  }
+  if (reelFormat(reel) === "whack") {
+    drawWhackScrim(ctx, w, h);
+    drawWhackOverlay(ctx, reel, time, options);
+    return;
   }
   drawReadScrim(ctx, w, h);
 

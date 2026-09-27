@@ -411,6 +411,54 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#BattleOfTheSexes/);
   });
 
+  it("paints FACT and WHACK chips on the Rosetta extra and leaves the caption off", () => {
+    const rosetta = TEMPLATES.find((t) => t.id === "rosetta");
+    expect(rosetta?.format).toBe("whack");
+    expect(rosetta?.postCaption).toMatch(/dead code/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, rosetta!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Rosetta");
+    expect(painted).toContain("WHACK");
+    expect(painted).toContain("FACT");
+    expect(painted).toContain("lost code");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("dead code");
+    expect(painted).not.toContain("read it out loud");
+    expect(painted).not.toMatch(/#RosettaStone/);
+    expect(painted).not.toMatch(/#Champollion/);
+  });
+
+  it("paints a WHACK then a FACT on each Rosetta beat", () => {
+    const rosetta = TEMPLATES.find((t) => t.id === "rosetta")!;
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, rosetta, 5, null, {
+      mode: "beat",
+      slide: {
+        facts: [
+          "Egyptian writing is a lost code",
+          "A French teacher reads it in 1822",
+        ],
+        imageCaption: "The Rosetta Stone, 1922",
+        imageCredit: "Photo: Donald Macbeth, 1922 · Public domain",
+      },
+    });
+    const painted = texts.join(" ");
+    expect(painted).toContain("WHACK");
+    expect(painted).toContain("FACT");
+    expect(painted).toContain("lost code");
+    expect(painted).toContain("French teacher");
+    expect(painted).not.toContain("Napoleon");
+  });
+
+  it("keeps lecture extras from painting FACT/WHACK chips", () => {
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, TEMPLATES[0], 4, null);
+    const painted = texts.join(" ");
+    expect(painted).not.toMatch(/\bWHACK\b/);
+    expect(painted).not.toMatch(/\bFACT\b/);
+  });
+
   it("paints only the current collage beat facts in beat mode", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis");
     const { ctx, texts } = stubContext();

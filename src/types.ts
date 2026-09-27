@@ -7,6 +7,9 @@ export type ThemeId = "cosmic" | "ocean" | "ember";
 
 export type RevealMode = "hold" | "cascade";
 
+/** Lecture fills the frame with facts. Whack pins a myth/fact pair over the photo. */
+export type ReelFormat = "lecture" | "whack";
+
 /** One photograph in a collage extra. Credit stays on-frame. */
 export type ReelSlide = {
   imageUrl: string;
@@ -50,6 +53,8 @@ export type ReelContent = {
   durationSec: number;
   theme: ThemeId;
   reveal: RevealMode;
+  /** Defaults to lecture. Whack extras paint FACT/WHACK chips and leave the photo open. */
+  format?: ReelFormat;
 };
 
 export type Theme = {

@@ -103,6 +103,18 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/53 years ago tonight/);
   });
 
+  it("collages the Rosetta extra as six FACT/WHACK beats", () => {
+    const rosetta = TEMPLATES.find((t) => t.id === "rosetta");
+    expect(rosetta).toBeDefined();
+    expect(usesCollage(rosetta!)).toBe(true);
+    expect(reelSlides(rosetta!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(rosetta!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/lost code/);
+    expect(beats[0].facts[1]).toMatch(/French teacher/);
+    expect(beats[5].facts[1]).toMatch(/204 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);
