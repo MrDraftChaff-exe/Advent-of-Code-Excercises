@@ -1,4 +1,0 @@
-__pycache__/
-*.pyc
-prints/**/preview/unsupported.npy
-prints/**/preview/voxel-*.png
