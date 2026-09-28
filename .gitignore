@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+prints/muscled-duck/preview/unsupported.npy
+prints/muscled-duck/preview/voxel-*.png

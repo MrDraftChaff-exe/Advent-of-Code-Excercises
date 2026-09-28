@@ -1,0 +1,76 @@
+{
+  "parts": {
+    "yellow": {
+      "name": "Body",
+      "slot": 1,
+      "hex": "#F5C518",
+      "material": "PLA",
+      "volume_cm3": 42.55,
+      "approx_grams_without_purge": 20.7,
+      "triangles": 14834,
+      "components": 2
+    },
+    "orange": {
+      "name": "Bill, legs and feet",
+      "slot": 2,
+      "hex": "#FF6A00",
+      "material": "PLA",
+      "volume_cm3": 21.75,
+      "approx_grams_without_purge": 15.8,
+      "triangles": 10324,
+      "components": 3
+    },
+    "black": {
+      "name": "Belt, gloves and eyes",
+      "slot": 3,
+      "hex": "#1A1A1A",
+      "material": "PLA",
+      "volume_cm3": 7.81,
+      "approx_grams_without_purge": 5.4,
+      "triangles": 7064,
+      "components": 3
+    },
+    "red": {
+      "name": "Trunks and sweatband",
+      "slot": 4,
+      "hex": "#E10600",
+      "material": "PLA",
+      "volume_cm3": 14.96,
+      "approx_grams_without_purge": 9.8,
+      "triangles": 3582,
+      "components": 2
+    }
+  },
+  "solid_volume_cm3": 87.07,
+  "approx_filament_g": 51.7,
+  "size_mm": {
+    "x": 68.0,
+    "y": 68.4,
+    "z": 112.2
+  },
+  "bbox_min_mm": [
+    -34.0,
+    -34.2,
+    0.0
+  ],
+  "approx_note": "Filament mass is a rough shell-and-infill estimate at 3 walls of 0.4 mm and 12% infill. It does not include IFS purge. The slicer total is the one to trust.",
+  "quality": "final",
+  "unsupported_voxels": 131,
+  "sole_margin_mm": 18.59,
+  "center_of_mass_mm": [
+    -0.01,
+    -4.39,
+    60.38
+  ],
+  "printer": {
+    "model": "Flashforge AD5X",
+    "build_mm": [
+      220,
+      220,
+      220
+    ],
+    "nozzle_mm": 0.4,
+    "filament": "PLA 1.75 mm",
+    "ifs_colors": 4
+  }
+}

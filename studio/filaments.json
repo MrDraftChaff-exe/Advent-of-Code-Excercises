@@ -1,0 +1,30 @@
+{
+  "material": "PLA",
+  "diameter_mm": 1.75,
+  "slots": [
+    {
+      "slot": 1,
+      "name": "Duck yellow",
+      "hex": "#F5C518",
+      "role": "Body, head, arms, tail"
+    },
+    {
+      "slot": 2,
+      "name": "Orange",
+      "hex": "#FF6A00",
+      "role": "Bill, muscular legs, webbed feet"
+    },
+    {
+      "slot": 3,
+      "name": "Black",
+      "hex": "#1A1A1A",
+      "role": "Power belt, lifting gloves, eyes"
+    },
+    {
+      "slot": 4,
+      "name": "Red",
+      "hex": "#E10600",
+      "role": "Posing trunks, forehead sweatband"
+    }
+  ]
+}

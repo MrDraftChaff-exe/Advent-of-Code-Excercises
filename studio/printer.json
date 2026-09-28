@@ -1,0 +1,16 @@
+{
+  "model": "Flashforge AD5X",
+  "model_id": "Flashforge-AD5X",
+  "build_volume_mm": [220, 220, 220],
+  "default_nozzle_mm": 0.4,
+  "nozzle_options_mm": [0.25, 0.4, 0.6, 0.8],
+  "bed": "PEI sheet",
+  "filament_diameter_mm": 1.75,
+  "ifs_channels": 4,
+  "slicers": [
+    "Flash Studio",
+    "Orca-Flashforge",
+    "Orca Slicer"
+  ],
+  "material_rule": "Every IFS channel used in one print must be the same material family. This studio uses PLA in all four slots."
+}
