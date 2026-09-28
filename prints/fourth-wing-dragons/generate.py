@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Tairn, Sgaeyl, and Andarna for the Flashforge AD5X.
 
-Three dragons share one stone perch. Each dragon is its own PLA filament,
-and the perch is the fourth channel.
+Three dragons share one red perch. Each dragon is its own PLA filament,
+and the perch is the fourth channel. The loaded colors are white, black,
+red, and blue.
 
   1  black   Tairn, large, morningstar tail
   2  blue    Sgaeyl, dagger tail
-  3  gold    Andarna, small, feather tail
-  4  stone   the perch
+  3  white   Andarna, small, feather tail
+  4  red     the perch
 
 The pose is a low crouch. Bellies, feet, wing elbows, and tails sit in the
-stone so the print does not need support.
+perch so the print does not need support.
 
 Run:
   python3 generate.py --quality preview
@@ -53,23 +54,23 @@ PALETTE = [
         "key": "sgaeyl",
         "name": "Sgaeyl",
         "detail": "blue dragon, dagger tail",
-        "hex": "#1A4FD0",
+        "hex": "#1E4FFF",
         "material": "PLA",
     },
     {
         "slot": 3,
         "key": "andarna",
         "name": "Andarna",
-        "detail": "small gold dragon, feather tail",
-        "hex": "#E2B007",
+        "detail": "small white dragon, feather tail",
+        "hex": "#F4F4F4",
         "material": "PLA",
     },
     {
         "slot": 4,
-        "key": "stone",
-        "name": "Stone perch",
+        "key": "perch",
+        "name": "Red perch",
         "detail": "shared base",
-        "hex": "#8D7963",
+        "hex": "#E10600",
         "material": "PLA",
     },
 ]
@@ -77,11 +78,12 @@ PALETTE = [
 
 def set_quality(name: str) -> None:
     if name == "preview":
-        mf.set_min_circular_angle(20.0)
-        mf.set_min_circular_edge_length(0.85)
+        mf.set_min_circular_angle(8.0)
+        mf.set_min_circular_edge_length(0.55)
     elif name == "final":
-        mf.set_min_circular_angle(10.0)
-        mf.set_min_circular_edge_length(0.38)
+        # 4 degrees keeps horns, snouts, and the perch round instead of faceted.
+        mf.set_min_circular_angle(4.0)
+        mf.set_min_circular_edge_length(0.30)
     else:
         raise SystemExit(f"unknown quality {name}")
     mf.set_circular_segments(0)
@@ -160,18 +162,27 @@ def build_dragon(scale: float, kind: str, slender: float = 1.0) -> mf.Manifold:
     )
     parts.append(body)
 
-    # Chest, skull, snout, and jaw in one hull so the throat cannot float.
-    head = mf.Manifold.batch_hull(
-        [
-            ball(P(s, 0.0, 10.0, 7.0), R(s, 8.0)),
-            ball(P(s, 0.0, 24.0, 12.0), R(s, 7.2)),
-            ball(P(s, 0.0, 34.0, 13.2), R(s, 6.6)),
-            ball(P(s, 0.0, 46.0, 11.2), R(s, 4.4)),
-            ball(P(s, 0.0, 53.0, 10.2), R(s, 2.8)),
-            ball(P(s, 0.0, 42.0, 2.0), R(s, 5.8)),
-        ]
+    # Neck and snout are a chain of spheres so the profile stays round, then
+    # a chin hull fills the cusps under them. Bare sphere bottoms print as ledges.
+    for x, y, z, radius in (
+        (0.0, 10.0, 7.2, 7.6),
+        (0.0, 20.0, 10.4, 6.8),
+        (0.0, 30.0, 12.2, 6.2),
+        (0.0, 38.0, 12.4, 5.4),
+        (0.0, 46.0, 11.0, 4.2),
+        (0.0, 52.0, 10.2, 3.0),
+    ):
+        parts.append(ball(P(s, x, y, z), R(s, radius)))
+    parts.append(
+        mf.Manifold.batch_hull(
+            [
+                ball(P(s, 0.0, 10.0, 6.0), R(s, 7.4)),
+                ball(P(s, 0.0, 28.0, 8.0), R(s, 6.0)),
+                ball(P(s, 0.0, 42.0, 2.0), R(s, 5.8)),
+                ball(P(s, 0.0, 50.0, 4.0), R(s, 3.6)),
+            ]
+        )
     )
-    parts.append(head)
 
     for side in (-1.0, 1.0):
         parts.append(
@@ -356,7 +367,7 @@ def build_scene() -> dict:
         "tairn": tairn,
         "sgaeyl": sgaeyl,
         "andarna": andarna,
-        "stone_src": build_perch(),
+        "perch_src": build_perch(),
     }
 
 
@@ -378,12 +389,12 @@ def assign_colors(raw: dict) -> dict[str, mf.Manifold]:
     tairn = drop_dust(raw["tairn"])
     sgaeyl = drop_dust(cut_overlap(raw["sgaeyl"], tairn))
     andarna = drop_dust(cut_overlap(cut_overlap(raw["andarna"], tairn), sgaeyl))
-    stone = drop_dust(raw["stone_src"] - tairn - sgaeyl - andarna)
+    perch = drop_dust(raw["perch_src"] - tairn - sgaeyl - andarna)
     parts = {
         "tairn": tairn,
         "sgaeyl": sgaeyl,
         "andarna": andarna,
-        "stone": stone,
+        "perch": perch,
     }
     for key, solid in parts.items():
         require_ok(solid, key)
@@ -458,7 +469,7 @@ def voxel_report(parts: dict[str, mf.Manifold], pitch: float = 0.85):
     volume = np.zeros((*dims, 4), dtype=np.float32)
     zs = vmin[2] + (np.arange(dims[2]) + 0.5) * pitch
 
-    order = ["stone", "andarna", "sgaeyl", "tairn"]
+    order = ["perch", "andarna", "sgaeyl", "tairn"]
     for key in order:
         color = hex_to_rgb(next(p["hex"] for p in PALETTE if p["key"] == key))
         solid = parts[key]

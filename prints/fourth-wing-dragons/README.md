@@ -1,6 +1,6 @@
 # Tairn, Sgaeyl, and Andarna (AD5X, 4 colors)
 
-The three central dragons from the Fourth Wing series, modeled as an original figurine for a Flashforge AD5X. Tairn is the large black dragon with a morningstar tail, Sgaeyl is the blue dragon with a dagger tail, and Andarna is the small gold dragon with a feather tail. They crouch on one sandstone perch, which is the fourth filament.
+The three central dragons from the Fourth Wing series, modeled as an original figurine for a Flashforge AD5X. Tairn is the large black dragon with a morningstar tail, Sgaeyl is the blue dragon with a dagger tail, and Andarna is the small white dragon with a feather tail. They crouch on one red perch, which is the fourth filament. The curves are tessellated at 4 degrees so horns, snouts, and the perch rim stay round on a 0.4 mm nozzle.
 
 | | |
 | --- | --- |
@@ -17,9 +17,9 @@ Separate shells are in `output/stl/` if you need to inspect one color. Import th
 | Slot | Name in the 3MF | PLA | Parts |
 | --- | --- | --- | --- |
 | 1 | Tairn | `#161616` black | Body, folded wings, morningstar tail |
-| 2 | Sgaeyl | `#1A4FD0` blue | Body, folded wings, dagger tail |
-| 3 | Andarna | `#E2B007` gold | Body, folded wings, feather tail |
-| 4 | Stone perch | `#8D7963` sandstone | Shared base |
+| 2 | Sgaeyl | `#1E4FFF` blue | Body, folded wings, dagger tail |
+| 3 | Andarna | `#F4F4F4` white | Body, folded wings, feather tail |
+| 4 | Red perch | `#E10600` red | Shared base |
 
 Loaded spool colors can differ. In Flash Studio, map each sliced filament to the channel that actually holds that color. Keep the material type PLA on every channel. Mixing PLA with ABS or PETG will fail slicing, and an empty channel cannot be selected.
 
@@ -33,7 +33,7 @@ Loaded spool colors can differ. In Flash Studio, map each sliced filament to the
 
 `output/print.json` estimates about 118 g of filament before purge, at 3 walls and 12% infill. Most of that is the perch. The slicer total, including the prime tower, is the one to trust.
 
-Wings are folded, and the feet, bellies, and tails sit in the stone so the group prints without support. Leave supports off unless the sliced preview shows a floating island.
+Wings are folded, and the feet, bellies, and tails sit in the perch so the group prints without support. Leave supports off unless the sliced preview shows a floating island.
 
 ## Rebuild
 

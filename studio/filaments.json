@@ -11,20 +11,20 @@
     {
       "slot": 2,
       "name": "Blue",
-      "hex": "#1A4FD0",
+      "hex": "#1E4FFF",
       "role": "Sgaeyl, dagger tail"
     },
     {
       "slot": 3,
-      "name": "Gold",
-      "hex": "#E2B007",
+      "name": "White",
+      "hex": "#F4F4F4",
       "role": "Andarna, feather tail"
     },
     {
       "slot": 4,
-      "name": "Sandstone",
-      "hex": "#8D7963",
-      "role": "Stone perch"
+      "name": "Red",
+      "hex": "#E10600",
+      "role": "Perch"
     }
   ]
 }
