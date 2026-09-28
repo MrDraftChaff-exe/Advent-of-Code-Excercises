@@ -1,4 +1,4 @@
 __pycache__/
 *.pyc
-prints/muscled-duck/preview/unsupported.npy
-prints/muscled-duck/preview/voxel-*.png
+prints/**/preview/unsupported.npy
+prints/**/preview/voxel-*.png

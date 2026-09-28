@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Muscled duck for the Flashforge AD5X (4-color IFS).
+"""Tairn, Sgaeyl, and Andarna for the Flashforge AD5X.
 
-Builds a standing, support-friendly figurine and splits it into four
-manifold shells, one per filament slot:
+Three dragons share one stone perch. Each dragon is its own PLA filament,
+and the perch is the fourth channel.
 
-  1  duck yellow   body, head, arms, tail
-  2  orange        bill, legs, webbed feet
-  3  black         lifting belt, gloves, eyes
-  4  red           posing trunks, sweatband
+  1  black   Tairn, large, morningstar tail
+  2  blue    Sgaeyl, dagger tail
+  3  gold    Andarna, small, feather tail
+  4  stone   the perch
+
+The pose is a low crouch. Bellies, feet, wing elbows, and tails sit in the
+stone so the print does not need support.
 
 Run:
   python3 generate.py --quality preview
@@ -26,46 +29,47 @@ import manifold3d as mf
 import numpy as np
 import trimesh
 from numba import njit
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 from scipy.spatial import ConvexHull
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
 PREVIEW = HERE / "preview"
 
-# Intended IFS colors. Remap slots to loaded channels in Flash Studio;
-# keep every slot PLA so the temperatures match.
+# Local z = 0 is the top of the perch. Negative z is buried in the stone.
+BASE_TOP = 10.0
+
 PALETTE = [
     {
         "slot": 1,
-        "key": "yellow",
-        "name": "Body",
-        "detail": "head, torso, arms, tail",
-        "hex": "#F5C518",
+        "key": "tairn",
+        "name": "Tairn",
+        "detail": "large black dragon, morningstar tail",
+        "hex": "#161616",
         "material": "PLA",
     },
     {
         "slot": 2,
-        "key": "orange",
-        "name": "Bill, legs and feet",
-        "detail": "bill, muscular legs, webbed feet",
-        "hex": "#FF6A00",
+        "key": "sgaeyl",
+        "name": "Sgaeyl",
+        "detail": "blue dragon, dagger tail",
+        "hex": "#1A4FD0",
         "material": "PLA",
     },
     {
         "slot": 3,
-        "key": "black",
-        "name": "Belt, gloves and eyes",
-        "detail": "power belt, lifting gloves, eyes",
-        "hex": "#1A1A1A",
+        "key": "andarna",
+        "name": "Andarna",
+        "detail": "small gold dragon, feather tail",
+        "hex": "#E2B007",
         "material": "PLA",
     },
     {
         "slot": 4,
-        "key": "red",
-        "name": "Trunks and sweatband",
-        "detail": "posing trunks, forehead sweatband",
-        "hex": "#E10600",
+        "key": "stone",
+        "name": "Stone perch",
+        "detail": "shared base",
+        "hex": "#8D7963",
         "material": "PLA",
     },
 ]
@@ -133,329 +137,254 @@ def require_ok(solid: mf.Manifold, label: str) -> None:
         raise RuntimeError(f"{label} boolean status {status}")
 
 
-def capsule(a, b, radius) -> mf.Manifold:
-    return link(a, radius, b, radius)
+def P(s: float, x: float, y: float, z: float):
+    return (x * s, y * s, z * s)
+
+
+def R(s: float, radius: float, floor: float = 0.0) -> float:
+    return max(floor, radius * s)
 
 
 # ---------------------------------------------------------------------------
-# Sculpt
+# Dragons
 # ---------------------------------------------------------------------------
 
-def build_foot(side: float) -> mf.Manifold:
-    """Flat-soled webbed foot. Local +Y is forward before it is placed."""
-    heel = mf.CrossSection.circle(7.2).translate((0.0, -9.0))
-    ball_cs = mf.CrossSection.circle(8.0).translate((0.0, 4.0))
-    toes = [
-        mf.CrossSection.circle(4.3).translate((-6.4, 14.5)),
-        mf.CrossSection.circle(4.8).translate((0.0, 17.5)),
-        mf.CrossSection.circle(4.3).translate((6.4, 14.5)),
+def build_dragon(scale: float, kind: str, slender: float = 1.0) -> mf.Manifold:
+    """Low crouch. z = 0 is the perch top; anything below that is buried."""
+    s = scale
+    parts: list[mf.Manifold] = []
+
+    body = ell(
+        P(s, 0.0, -2.0, 4.2),
+        (R(s, 13.0 / slender), R(s, 22.0 * slender), R(s, 12.0)),
+    )
+    parts.append(body)
+
+    # Chest, skull, snout, and jaw in one hull so the throat cannot float.
+    head = mf.Manifold.batch_hull(
+        [
+            ball(P(s, 0.0, 10.0, 7.0), R(s, 8.0)),
+            ball(P(s, 0.0, 24.0, 12.0), R(s, 7.2)),
+            ball(P(s, 0.0, 34.0, 13.2), R(s, 6.6)),
+            ball(P(s, 0.0, 46.0, 11.2), R(s, 4.4)),
+            ball(P(s, 0.0, 53.0, 10.2), R(s, 2.8)),
+            ball(P(s, 0.0, 42.0, 2.0), R(s, 5.8)),
+        ]
+    )
+    parts.append(head)
+
+    for side in (-1.0, 1.0):
+        parts.append(
+            link(
+                P(s, side * 2.4, 32.0, 14.5),
+                R(s, 2.2, 1.8),
+                P(s, side * 3.6, 23.0, 27.0),
+                R(s, 1.15, 1.35),
+            )
+        )
+
+    for y in (-14.0, -6.0, 2.0, 10.0):
+        parts.append(
+            link(
+                P(s, 0.0, y, 11.5),
+                R(s, 2.1, 1.6),
+                P(s, 0.0, y - 1.2, 19.5),
+                R(s, 0.95, 1.25),
+            )
+        )
+
+    for side in (-1.0, 1.0):
+        # Folded wing: shoulder in the ribs, wrist raised, elbow and tip on the stone.
+        shoulder = (P(s, side * 5.5, 8.0, 9.5), R(s, 4.4))
+        wrist = (P(s, side * 8.2, 1.5, 17.2), R(s, 2.9, 2.0))
+        elbow = (P(s, side * 14.5, -5.0, 0.0), R(s, 3.3, 2.4))
+        tip = (P(s, side * 11.0, -18.0, 0.0), R(s, 2.6, 2.0))
+        trail = (P(s, side * 6.0, -14.0, 0.0), R(s, 2.7, 2.0))
+        parts.append(link(*shoulder, *wrist))
+        parts.append(link(*wrist, *elbow))
+        parts.append(link(*elbow, *tip))
+        parts.append(link(*tip, *trail))
+        parts.append(
+            link(
+                P(s, side * 8.2, 1.5, 16.4),
+                R(s, 2.0, 1.6),
+                P(s, side * 10.2, -0.5, 24.5),
+                R(s, 1.1, 1.3),
+            )
+        )
+
+    feet = (
+        (8.0, 12.0, 5.0, 8.4, 16.0),
+        (-8.0, 12.0, 5.0, -8.4, 16.0),
+        (8.5, -12.0, 4.0, 9.2, -16.0),
+        (-8.5, -12.0, 4.0, -9.2, -16.0),
+    )
+    for hx, hy, hz, fx, fy in feet:
+        parts.append(
+            link(
+                P(s, hx, hy, hz),
+                R(s, 4.5),
+                P(s, fx, fy, -0.6),
+                R(s, 3.8, 2.6),
+            )
+        )
+
+    if kind == "morningstar":
+        parts.extend(_morningstar_tail(s))
+    elif kind == "dagger":
+        parts.extend(_dagger_tail(s))
+    elif kind == "feather":
+        parts.extend(_feather_tail(s))
+    else:
+        raise SystemExit(f"unknown dragon kind {kind}")
+
+    solid = union_all(parts)
+    solid = _carve_face(solid, s)
+    require_ok(solid, kind)
+    return drop_dust(solid)
+
+
+def _chain(points: list[tuple]) -> list[mf.Manifold]:
+    balls = [ball(p, r) for p, r in points]
+    links = [mf.Manifold.batch_hull([a, b]) for a, b in zip(balls, balls[1:])]
+    return links
+
+
+def _morningstar_tail(s: float) -> list[mf.Manifold]:
+    rump = R(s, 6.2)
+    points = [
+        (P(s, 0.0, -20.0, 0.2), rump),
+        (P(s, 12.0, -32.0, 0.0), R(s, 5.0, 2.4)),
+        (P(s, 26.0, -34.0, 0.0), R(s, 4.4, 2.2)),
+        (P(s, 36.0, -22.0, 1.4), R(s, 8.2)),
     ]
-    outline = mf.CrossSection.batch_hull([heel, ball_cs, *toes])
-    sole = mf.Manifold.extrude(outline, 4.2)
-    # Soft instep so the foot is not a slab, sole stays flat on z=0.
-    instep = ell((0.0, 2.0, 3.2), (8.5, 12.0, 3.4))
-    toe_domes = union_all(
-        [
-            ell((-6.4, 14.2, 3.6), (4.0, 4.6, 2.2)),
-            ell((0.0, 17.0, 3.7), (4.4, 5.0, 2.3)),
-            ell((6.4, 14.2, 3.6), (4.0, 4.6, 2.2)),
-        ]
+    parts = _chain(points)
+    center = np.array(points[-1][0], dtype=float)
+    radius = points[-1][1]
+    directions = (
+        (0.0, 0.05, 1.0),
+        (0.38, 0.22, 1.0),
+        (-0.34, 0.28, 1.0),
+        (0.42, -0.18, 1.0),
+        (-0.16, -0.42, 1.0),
+        (0.12, 0.48, 1.0),
     )
-    foot = (sole + instep + toe_domes).trim_by_plane((0.0, 0.0, 1.0), 0.0)
-    # Toe-out stance. Mirror later expects +X to be the right foot.
-    pivot = (0.0, 0.0, 0.0)
-    foot = (
-        foot.translate((-pivot[0], -pivot[1], -pivot[2]))
-        .rotate((0.0, 0.0, -side * 12.0))
-        .translate((side * 14.0, 1.5, 0.0))
-    )
-    return foot
+    for raw in directions:
+        direction = np.array(raw, dtype=float)
+        direction /= np.linalg.norm(direction)
+        base = center + direction * (radius * 0.45)
+        tip = center + direction * (radius + R(s, 6.5, 5.0))
+        parts.append(link(tuple(base), R(s, 2.3, 1.8), tuple(tip), R(s, 1.15, 1.25)))
+    return parts
 
 
-def build_leg(side: float) -> mf.Manifold:
-    s = side
-    ankle = (s * 12.4, 0.4, 6.2)
-    calf = (s * 12.2, -3.4, 15.0)
-    knee = (s * 11.6, 1.8, 24.5)
-    quad = (s * 9.5, 4.8, 34.0)
-    inner = (s * 3.6, 1.2, 35.0)
-    hip = (s * 8.0, -1.0, 40.0)
-    parts = [
-        ell(ankle, (5.6, 5.4, 5.2)),
-        ell(calf, (6.8, 8.6, 8.4)),
-        ell(knee, (6.2, 6.6, 6.4)),
-        ell(quad, (11.2, 11.6, 13.0)),
-        ell(inner, (8.2, 8.4, 11.5)),
-        ell(hip, (9.5, 10.5, 9.5)),
-        link(ankle, 5.2, calf, 6.6),
-        link(calf, 6.4, knee, 6.0),
-        link(knee, 6.2, quad, 10.0),
-        link(quad, 9.5, hip, 9.0),
-        # Vastus on the front, hamstring up the back so the glutes have meat under them.
-        ell((s * 11.5, 9.2, 32.5), (6.8, 6.2, 8.4)),
-        # Vertical hamstring. Same back-Y as the calf, so it does not shelf outward.
-        link((s * 11.0, -6.5, 18.0), 6.2, (s * 7.5, -6.0, 42.0), 7.0),
+def _dagger_tail(s: float) -> list[mf.Manifold]:
+    points = [
+        (P(s, 0.0, -20.0, 0.2), R(s, 5.4)),
+        (P(s, 2.0, -32.0, 0.0), R(s, 4.2, 2.2)),
+        (P(s, 0.0, -40.0, 0.0), R(s, 3.2, 2.0)),
     ]
-    leg = union_all(parts)
-    # Muscle seams. Centers sit just inside the surface.
-    seams = union_all(
+    parts = _chain(points)
+    blade = mf.Manifold.batch_hull(
         [
-            capsule((s * 13.5, 9.5, 27.0), (s * 14.0, 8.0, 37.0), 0.85),
-            capsule((s * 12.0, -8.5, 12.0), (s * 12.4, -7.0, 20.0), 0.75),
+            ball(P(s, 0.0, -38.0, 0.0), R(s, 3.4, 2.2)),
+            ball(P(s, 0.0, -56.0, 0.3), R(s, 1.5, 1.6)),
+            ball(P(s, 5.0, -46.0, 0.0), R(s, 1.5, 1.6)),
+            ball(P(s, -5.0, -46.0, 0.0), R(s, 1.5, 1.6)),
         ]
     )
-    return leg - seams
+    parts.append(blade)
+    return parts
 
 
-def build_limbs_and_torso():
-    """Return uncolored anatomy groups."""
-    feet = build_foot(1.0) + build_foot(-1.0)
-    legs = build_leg(1.0) + build_leg(-1.0)
-    # Steep arch between the thighs. The sloping faces stay under 45 degrees,
-    # which a flat crotch shelf would not.
-    arch_cs = mf.CrossSection.batch_hull(
+def _feather_tail(s: float) -> list[mf.Manifold]:
+    parts = _chain(
         [
-            mf.CrossSection.circle(1.2).translate((-13.0, 14.0)),
-            mf.CrossSection.circle(1.2).translate((13.0, 14.0)),
-            mf.CrossSection.circle(1.0).translate((0.0, 40.0)),
+            (P(s, 0.0, -16.0, 0.2), R(s, 4.6, 2.2)),
+            (P(s, 0.0, -24.0, 0.0), R(s, 3.2, 2.0)),
         ]
     )
-    crotch_arch = (
-        mf.Manifold.extrude(arch_cs, 70.0)
-        .rotate((90.0, 0.0, 0.0))
-        .translate((0.0, 28.0, 0.0))
+    length = max(11.0, 16.0 * s)
+    width = max(2.4, 3.6 * s)
+    thick = max(2.2, 2.6 * s)
+    for ang in (-58.0, -30.0, 0.0, 30.0, 58.0):
+        feather = ell((0.0, 0.0, 0.0), (width, length, thick))
+        feather = feather.translate((0.0, -length * 0.85, 0.0))
+        feather = feather.rotate((0.0, 0.0, ang))
+        feather = feather.translate(P(s, 0.0, -18.0, 0.0))
+        parts.append(feather)
+    return parts
+
+
+def _carve_face(solid: mf.Manifold, s: float) -> mf.Manifold:
+    eye = ell(P(s, 4.8, 38.0, 13.4), (R(s, 2.1, 1.4), R(s, 2.4, 1.5), R(s, 1.8, 1.3)))
+    nostril = ball(P(s, 1.5, 51.5, 10.6), R(s, 1.05, 0.9))
+    carved = solid - both(eye) - both(nostril)
+    require_ok(carved, "face")
+    return carved
+
+
+def place(solid: mf.Manifold, x: float, y: float, yaw: float) -> mf.Manifold:
+    return solid.rotate((0.0, 0.0, yaw)).translate((x, y, BASE_TOP))
+
+
+def build_perch() -> mf.Manifold:
+    # Rocks stay inside the oval. A sphere that hangs past the rim leaves
+    # an unsupported belly where the slab no longer sits underneath it.
+    slab = mf.Manifold.cylinder(BASE_TOP, 86.0, 86.0, 96).scale((1.0, 0.84, 1.0))
+    mask = mf.Manifold.cylinder(BASE_TOP + 18.0, 86.0, 86.0, 96).scale((1.0, 0.84, 1.0))
+    specs = (
+        (-70.0, -42.0, 6.4),
+        (64.0, -44.0, 6.8),
+        (72.0, 6.0, 5.8),
+        (-74.0, 16.0, 6.2),
+        (6.0, 50.0, 5.6),
+        (-18.0, -52.0, 6.0),
+        (50.0, 40.0, 5.4),
+        (-56.0, 42.0, 5.8),
+        (36.0, -50.0, 5.2),
     )
-    legs = legs - crotch_arch
+    rocks = [ball((x, y, BASE_TOP - 0.2), radius) for x, y, radius in specs]
+    return union_all([slab, union_all(rocks) ^ mask])
 
-    # Full hip goes into the trunks. Yellow only keeps the part above the belt,
-    # otherwise a crotch plug is left hanging under the arch.
-    hip_full = ell((0.0, 1.5, 42.0), (21.0, 14.5, 12.0))
-    glute_full_r = ell((7.2, -5.5, 44.0), (7.2, 6.2, 6.5))
-    hip = z_range(hip_full, 51.0, 70.0)
-    glute_r = z_range(glute_full_r, 51.0, 70.0)
-    waist = ell((0.0, -0.5, 50.5), (14.5, 12.5, 8.0))
-    chest = ell((0.0, 2.0, 67.0), (20.5, 16.0, 14.5))
-    # Bottom pole sits inside the chest so the exposed lat is a wall, not a shelf.
-    lat_r = ell((14.8, -0.5, 73.0), (7.2, 6.8, 6.8))
-    trap_r = ell((7.0, -1.5, 78.5), (7.5, 7.0, 6.5))
-    pec_r = ell((8.8, 13.2, 71.0), (9.0, 7.2, 8.4))
-    oblique_r = ell((13.2, 4.5, 62.0), (5.0, 5.0, 6.0))
 
-    torso = union_all(
-        [
-            hip,
-            both(glute_r),
-            waist,
-            chest,
-            both(lat_r),
-            both(trap_r),
-            both(pec_r),
-            both(oblique_r),
-        ]
-    )
-
-    # Shadow lines that make the physique read at desk distance.
-    definition = union_all(
-        [
-            capsule((0.0, 18.5, 63.0), (0.0, 16.5, 78.5), 1.2),  # sternum
-            capsule((-13.0, 17.2, 60.6), (13.0, 17.2, 60.6), 1.0),
-            capsule((-12.0, 16.6, 55.0), (12.0, 16.6, 55.0), 0.95),
-            capsule((0.0, 17.4, 49.8), (0.0, 16.6, 63.0), 0.85),
-        ]
-    )
-    torso = torso - definition
-
-    neck = ell((0.0, 4.0, 82.0), (9.2, 8.6, 9.0))
-    head_c = (0.0, 8.0, 97.0)
-    head_r = (16.4, 15.0, 15.2)
-    head = ell(head_c, head_r)
-    # Heavy brow, tipped down toward the bill. Stays below the sweatband.
-    brow_r = ell((6.4, 18.2, 100.2), (7.2, 4.4, 2.8))
-    cheek_r = ell((10.0, 15.5, 93.5), (5.8, 4.8, 4.8))
-    jaw = ell((0.0, 13.0, 88.5), (11.5, 8.5, 6.8))
-    head_group = union_all([head, both(brow_r), both(cheek_r), jaw, neck])
-
-    # Base is buried in the lower back so the tail cannot detach when the
-    # trunks take a bite out of the glutes.
-    tail = mf.Manifold.batch_hull(
-        [
-            ell((0.0, -4.0, 62.0), (6.0, 6.5, 6.0)),
-            ell((0.0, -12.0, 64.0), (4.4, 4.5, 3.8)),
-            ell((0.0, -21.0, 74.0), (2.6, 4.2, 2.0)),
-            ell((-2.8, -19.0, 72.5), (1.8, 3.0, 1.5)),
-            ell((2.8, -19.0, 72.5), (1.8, 3.0, 1.5)),
-        ]
-    )
-
-    # Arms hang close to the ribs and end in gloves that sit on the trunks.
-    def arm(side: float) -> mf.Manifold:
-        s = side
-        delt = (s * 24.0, 1.5, 77.0)
-        bicep = (s * 23.2, 6.5, 67.5)
-        elbow = (s * 20.5, 5.2, 59.5)
-        forearm = (s * 18.2, 4.6, 55.5)
-        parts = [
-            ell(delt, (10.0, 8.4, 8.8)),
-            ell(bicep, (7.2, 6.4, 8.4)),
-            ell(elbow, (5.6, 5.2, 5.6)),
-            ell(forearm, (5.4, 5.0, 5.8)),
-            link(delt, 8.6, bicep, 6.8),
-            link(bicep, 6.6, elbow, 5.3),
-            link(elbow, 5.2, forearm, 5.0),
-            ell((s * 25.5, 5.5, 65.5), (3.2, 3.2, 6.5)),
-        ]
-        return union_all(parts)
-
-    arms = arm(1.0) + arm(-1.0)
-
-    def glove(side: float) -> mf.Manifold:
-        s = side
-        fist = ell((s * 16.2, 5.2, 51.0), (6.6, 5.6, 5.8))
-        cuff = ell((s * 17.6, 4.8, 56.2), (5.8, 5.0, 4.6))
-        thumb = ell((s * 11.2, 8.0, 52.0), (3.0, 2.6, 4.0))
-        knuckle = union_all(
-            [
-                ell((s * (16.2 + dx), 9.2, 52.4), (1.6, 1.4, 1.5))
-                for dx in (-3.1, -1.0, 1.1, 3.2)
-            ]
-        )
-        hand = union_all(
-            [
-                fist,
-                cuff,
-                thumb,
-                knuckle,
-                link((s * 16.2, 5.2, 51.0), 5.6, (s * 17.6, 4.8, 56.2), 5.0),
-            ]
-        )
-        # Flat cuff bottom sits on the trunks instead of a round overhang.
-        hand = z_range(hand, 46.4, 64.0)
-        groove = capsule((s * 11.0, 9.0, 56.0), (s * 23.5, 1.5, 56.0), 0.65)
-        return hand - groove
-
-    gloves = glove(1.0) + glove(-1.0)
-
-    # Upper bill + heavy lower jaw that lands on the chest.
-    bill_upper = mf.Manifold.batch_hull(
-        [
-            ell((0.0, 18.0, 93.0), (11.0, 7.5, 4.8)),
-            ell((0.0, 28.5, 95.2), (9.6, 7.2, 3.8)),
-            ell((0.0, 38.0, 97.6), (6.4, 5.2, 2.6)),
-        ]
-    )
-    bill_lower = mf.Manifold.batch_hull(
-        [
-            ell((0.0, 16.5, 89.0), (9.4, 6.8, 4.0)),
-            ell((0.0, 27.0, 91.6), (8.4, 6.2, 3.0)),
-            ell((0.0, 35.5, 94.0), (5.8, 4.6, 2.3)),
-            # Chin pad buried in the pecs so the jaw is supported.
-            ell((0.0, 13.5, 80.0), (8.4, 7.2, 6.8)),
-            ell((0.0, 17.5, 84.5), (7.4, 6.4, 5.4)),
-        ]
-    )
-    bill = bill_upper + bill_lower
-    # Mouth seam and nostrils. Keep them shallow so the bill stays one piece.
-    seam = (
-        mf.Manifold.cylinder(46.0, 0.55, 0.55, 20)
-        .rotate((0.0, 90.0, 0.0))
-        .translate((-20.0, 26.5, 92.8))
-    )
-    nostrils = union_all(
-        [
-            mf.Manifold.cylinder(6.0, 1.2, 1.2, 16).translate((s * 3.6, 27.0, 96.2))
-            for s in (-1.0, 1.0)
-        ]
-    )
-    bill = bill - seam - nostrils
-
-    # Eyes sit in the front of the skull, big enough for a 0.4 mm nozzle.
-    def eye(side: float) -> mf.Manifold:
-        return ell((side * 6.8, 19.4, 95.4), (4.0, 3.5, 3.9))
-
-    eyes = eye(1.0) + eye(-1.0)
-
-    # Vertical belt walls. A slice of a rounded waist flares as it rises and
-    # prints as a ledge, so the band is an extrusion of the waist outline.
-    belt_band = mf.Manifold.extrude(waist.slice(50.5), 8.8).translate((0.0, 0.0, 45.6))
-    # Buckle grows forward as it rises, so the face is proud without a ledge.
-    buckle = mf.Manifold.batch_hull(
-        [
-            ell((-5.2, 10.4, 48.8), (1.5, 1.1, 1.1)),
-            ell((5.2, 10.4, 48.8), (1.5, 1.1, 1.1)),
-            ell((-4.8, 12.6, 54.4), (1.7, 1.2, 1.5)),
-            ell((4.8, 12.6, 54.4), (1.7, 1.2, 1.5)),
-        ]
-    )
-    belt = belt_band + buckle
-
-    # Trunks are the hip mass between the legs and the belt, with a high side cut
-    # so the outer quad still shows.
-    trunk_core = z_range(
-        union_all([hip_full, both(glute_full_r), waist, legs]), 28.5, 46.8
-    )
-    side_cut = union_all(
-        [
-            ell((s * 20.0, 6.0, 30.5), (10.0, 12.0, 8.0))
-            for s in (-1.0, 1.0)
-        ]
-    )
-    trunks = trunk_core - side_cut - crotch_arch
-
-    # The trunks are cut from the same thigh surface. Subtracting that copy
-    # leaves vertices stacked on top of each other, and a slicer weld turns
-    # those into non-manifold edges. Build the orange thigh directly: the leg
-    # below the trunk line, plus the outer quad the side cut leaves exposed.
-    leg_body = drop_dust(legs)
-    orange_legs = drop_dust(
-        z_range(leg_body, -5.0, 28.5)
-        + drop_dust(z_range(leg_body, 28.5, 46.8) ^ side_cut)
-        + feet
-    )
-
-    # Sweatband: forehead slice, stepped outward toward the crown so the lip
-    # climbs at a printable angle instead of sticking out as a ledge.
-    band_slices = []
-    z0, z1 = 102.4, 107.2
-    steps = 5
-    for i in range(steps):
-        t0 = i / steps
-        t1 = (i + 1) / steps
-        grow = 1.0 + 0.05 * (t0 + t1) * 0.5
-        grown = (
-            head.translate((-head_c[0], -head_c[1], -head_c[2]))
-            .scale((grow, grow, 1.0))
-            .translate(head_c)
-        )
-        za = z0 + (z1 - z0) * t0
-        zb = z0 + (z1 - z0) * t1 + 0.25
-        band_slices.append(z_range(grown, za, zb))
-    headband = union_all(band_slices)
-
-    yellow_src = union_all([torso, neck, head_group, tail, arms])
+def build_scene() -> dict:
+    tairn = place(build_dragon(1.02, "morningstar", slender=0.96), -2.0, -4.0, 10.0)
+    sgaeyl = place(build_dragon(0.80, "dagger", slender=1.14), -58.0, 2.0, -16.0)
+    andarna = place(build_dragon(0.50, "feather", slender=1.05), 46.0, 28.0, 18.0)
     return {
-        "yellow_src": yellow_src,
-        "orange_src": orange_legs,
-        "black_src": union_all([belt, gloves, eyes]),
-        "red_src": union_all([trunks, headband]),
-        "bill": bill,
-        "eyes": eyes,
+        "tairn": tairn,
+        "sgaeyl": sgaeyl,
+        "andarna": andarna,
+        "stone_src": build_perch(),
     }
 
 
-def assign_colors(raw: dict) -> dict[str, mf.Manifold]:
-    """Give overlaps to the part that should be visible.
+def cut_overlap(solid: mf.Manifold, cutter: mf.Manifold) -> mf.Manifold:
+    """Subtract only when the solids actually share volume.
 
-    Priority, highest first: eyes and the rest of the black hardware,
-    the bill, then red clothing, then orange legs, then the yellow body.
+    A boolean along a merely touching face stacks vertices, and a slicer
+    weld turns that into a non-manifold edge.
     """
-    black = drop_dust(raw["black_src"])
-    bill = drop_dust(raw["bill"] - black)
-    red = drop_dust(raw["red_src"] - black - bill)
-    # The orange thighs already stop at the trunk. Subtracting red or the bill
-    # anyway runs the boolean along a shared face and stacks vertices.
-    orange = drop_dust(raw["orange_src"] + bill)
-    yellow = drop_dust(raw["yellow_src"] - black - red - orange)
-    parts = {"yellow": yellow, "orange": orange, "black": black, "red": red}
+    if solid.is_empty() or cutter.is_empty():
+        return solid
+    shared = solid ^ cutter
+    if shared.is_empty() or shared.volume() < 1.0:
+        return solid
+    return drop_dust(solid - cutter)
+
+
+def assign_colors(raw: dict) -> dict[str, mf.Manifold]:
+    tairn = drop_dust(raw["tairn"])
+    sgaeyl = drop_dust(cut_overlap(raw["sgaeyl"], tairn))
+    andarna = drop_dust(cut_overlap(cut_overlap(raw["andarna"], tairn), sgaeyl))
+    stone = drop_dust(raw["stone_src"] - tairn - sgaeyl - andarna)
+    parts = {
+        "tairn": tairn,
+        "sgaeyl": sgaeyl,
+        "andarna": andarna,
+        "stone": stone,
+    }
     for key, solid in parts.items():
         require_ok(solid, key)
         if solid.is_empty():
@@ -529,7 +458,7 @@ def voxel_report(parts: dict[str, mf.Manifold], pitch: float = 0.85):
     volume = np.zeros((*dims, 4), dtype=np.float32)
     zs = vmin[2] + (np.arange(dims[2]) + 0.5) * pitch
 
-    order = ["yellow", "orange", "red", "black"]
+    order = ["stone", "andarna", "sgaeyl", "tairn"]
     for key in order:
         color = hex_to_rgb(next(p["hex"] for p in PALETTE if p["key"] == key))
         solid = parts[key]
@@ -818,15 +747,14 @@ def label_panel(img: np.ndarray, title: str) -> Image.Image:
 
 def save_shaded(parts: dict[str, mf.Manifold], path: Path, size: int) -> None:
     path.mkdir(parents=True, exist_ok=True)
-    keys = ["yellow", "orange", "black", "red"]
     meshes = []
     colors = []
-    for key in keys:
-        # Lighten black just enough that form still reads in the preview.
-        rgb = hex_to_rgb(next(p["hex"] for p in PALETTE if p["key"] == key))
-        if key == "black":
-            rgb = rgb * 0.35 + np.array([0.16, 0.16, 0.17])
-        meshes.append(to_trimesh(parts[key]))
+    for item in PALETTE:
+        rgb = hex_to_rgb(item["hex"])
+        # Keep a black dragon readable without changing the filament color.
+        if float(rgb.sum()) < 0.45:
+            rgb = rgb * 0.35 + np.array([0.18, 0.18, 0.2])
+        meshes.append(to_trimesh(parts[item["key"]]))
         colors.append(rgb)
     shots = [
         ("front", 0, 12),
@@ -843,7 +771,7 @@ def save_shaded(parts: dict[str, mf.Manifold], path: Path, size: int) -> None:
             "side": "Side",
             "back": "Back",
         }[name]
-        panel = label_panel(img, f"Muscled duck  ·  {title}")
+        panel = label_panel(img, f"Tairn, Sgaeyl, Andarna  ·  {title}")
         panel.save(path / f"{name}.png")
         panels.append(panel)
     legend = color_legend(panels[0].width * 2)
@@ -963,7 +891,7 @@ def write_binary_stl(mesh: trimesh.Trimesh, path: Path) -> None:
     n = np.asarray(mesh.face_normals, dtype=np.float32)
     count = tri.shape[0]
     buf = bytearray()
-    header = b"Muscled duck Flashforge AD5X"
+    header = b"Fourth Wing dragons Flashforge AD5X"
     buf += header[:80].ljust(80, b" ")
     buf += struct.pack("<I", count)
     for i in range(count):
@@ -1010,13 +938,13 @@ def write_3mf(parts: dict[str, mf.Manifold], path: Path) -> None:
         'xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02" '
         'xmlns:m="http://schemas.microsoft.com/3dmanufacturing/material/2015/02">'
         "<metadata name=\"Application\">AD5X-Print-Studio</metadata>"
-        "<metadata name=\"Title\">Muscled Duck</metadata>"
+        "<metadata name=\"Title\">Tairn Sgaeyl Andarna</metadata>"
         "<resources>"
         '<m:basematerials id="1">'
         + "".join(bases)
         + "</m:basematerials>"
         + "".join(objects)
-        + '<object id="1" name="Muscled Duck" type="model"><components>'
+        + '<object id="1" name="Tairn Sgaeyl Andarna" type="model"><components>'
         + "".join(components)
         + "</components></object></resources>"
         '<build><item objectid="1" transform="1 0 0 0 1 0 0 0 1 0 0 0" printable="1"/></build>'
@@ -1036,13 +964,13 @@ def write_3mf(parts: dict[str, mf.Manifold], path: Path) -> None:
     model_settings = (
         '<?xml version="1.0" encoding="UTF-8"?>\n<config>\n'
         ' <object id="1">\n'
-        '  <metadata key="name" value="Muscled Duck"/>\n'
+        '  <metadata key="name" value="Tairn Sgaeyl Andarna"/>\n'
         '  <metadata key="extruder" value="1"/>\n'
         + "\n".join(f"  {line}" for line in part_xml)
         + "\n </object>\n"
         " <plate>\n"
         '  <metadata key="plater_id" value="1"/>\n'
-        '  <metadata key="plater_name" value="Muscled Duck"/>\n'
+        '  <metadata key="plater_name" value="Tairn Sgaeyl Andarna"/>\n'
         "  <model_instance>\n"
         '   <metadata key="object_id" value="1"/>\n'
         '   <metadata key="instance_id" value="0"/>\n'
@@ -1095,7 +1023,7 @@ def self_test() -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate the 4-color muscled duck.")
+    parser = argparse.ArgumentParser(description="Generate the four-color Fourth Wing dragons.")
     parser.add_argument("--quality", choices=("preview", "final"), default="final")
     parser.add_argument("--render-size", type=int, default=720)
     parser.add_argument("--skip-render", action="store_true")
@@ -1104,7 +1032,7 @@ def main() -> None:
     self_test()
     set_quality(args.quality)
     print(f"sculpting ({args.quality})...")
-    parts = settle_on_bed(assign_colors(build_limbs_and_torso()))
+    parts = settle_on_bed(assign_colors(build_scene()))
     print("checking support and balance...")
     pitch = 1.05 if args.quality == "preview" else 0.8
     report = voxel_report(parts, pitch=pitch)
@@ -1133,9 +1061,9 @@ def main() -> None:
         filename = f"0{item['slot']}_{item['key']}.stl"
         write_binary_stl(mesh, stl_dir / filename)
         print(f"wrote {filename}  tris={len(mesh.faces)}")
-    write_3mf(parts, OUT / "muscled-duck-ad5x.3mf")
+    write_3mf(parts, OUT / "fourth-wing-dragons-ad5x.3mf")
     (OUT / "print.json").write_text(json.dumps(stats, indent=2) + "\n")
-    print(f"wrote {OUT / 'muscled-duck-ad5x.3mf'}")
+    print(f"wrote {OUT / 'fourth-wing-dragons-ad5x.3mf'}")
 
     if not args.skip_render:
         print("rendering...")

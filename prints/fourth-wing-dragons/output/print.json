@@ -1,0 +1,76 @@
+{
+  "parts": {
+    "tairn": {
+      "name": "Tairn",
+      "slot": 1,
+      "hex": "#161616",
+      "material": "PLA",
+      "volume_cm3": 33.05,
+      "approx_grams_without_purge": 16.7,
+      "triangles": 11354,
+      "components": 1
+    },
+    "sgaeyl": {
+      "name": "Sgaeyl",
+      "slot": 2,
+      "hex": "#1A4FD0",
+      "material": "PLA",
+      "volume_cm3": 13.73,
+      "approx_grams_without_purge": 8.4,
+      "triangles": 9836,
+      "components": 1
+    },
+    "andarna": {
+      "name": "Andarna",
+      "slot": 3,
+      "hex": "#E2B007",
+      "material": "PLA",
+      "volume_cm3": 4.52,
+      "approx_grams_without_purge": 4.2,
+      "triangles": 10730,
+      "components": 1
+    },
+    "stone": {
+      "name": "Stone perch",
+      "slot": 4,
+      "hex": "#8D7963",
+      "material": "PLA",
+      "volume_cm3": 186.0,
+      "approx_grams_without_purge": 88.6,
+      "triangles": 14558,
+      "components": 1
+    }
+  },
+  "solid_volume_cm3": 237.3,
+  "approx_filament_g": 117.9,
+  "size_mm": {
+    "x": 172.0,
+    "y": 144.48,
+    "z": 38.89
+  },
+  "bbox_min_mm": [
+    -86.0,
+    -72.24,
+    0.0
+  ],
+  "approx_note": "Filament mass is a rough shell-and-infill estimate at 3 walls of 0.4 mm and 12% infill. It does not include IFS purge. The slicer total is the one to trust.",
+  "quality": "final",
+  "unsupported_voxels": 0,
+  "sole_margin_mm": 70.9,
+  "center_of_mass_mm": [
+    -1.94,
+    1.06,
+    7.15
+  ],
+  "printer": {
+    "model": "Flashforge AD5X",
+    "build_mm": [
+      220,
+      220,
+      220
+    ],
+    "nozzle_mm": 0.4,
+    "filament": "PLA 1.75 mm",
+    "ifs_colors": 4
+  }
+}

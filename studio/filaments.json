@@ -4,27 +4,27 @@
   "slots": [
     {
       "slot": 1,
-      "name": "Duck yellow",
-      "hex": "#F5C518",
-      "role": "Body, head, arms, tail"
+      "name": "Black",
+      "hex": "#161616",
+      "role": "Tairn, morningstar tail"
     },
     {
       "slot": 2,
-      "name": "Orange",
-      "hex": "#FF6A00",
-      "role": "Bill, muscular legs, webbed feet"
+      "name": "Blue",
+      "hex": "#1A4FD0",
+      "role": "Sgaeyl, dagger tail"
     },
     {
       "slot": 3,
-      "name": "Black",
-      "hex": "#1A1A1A",
-      "role": "Power belt, lifting gloves, eyes"
+      "name": "Gold",
+      "hex": "#E2B007",
+      "role": "Andarna, feather tail"
     },
     {
       "slot": 4,
-      "name": "Red",
-      "hex": "#E10600",
-      "role": "Posing trunks, forehead sweatband"
+      "name": "Sandstone",
+      "hex": "#8D7963",
+      "role": "Stone perch"
     }
   ]
 }
