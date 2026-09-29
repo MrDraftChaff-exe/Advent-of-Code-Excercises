@@ -103,6 +103,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("tylenol")).toBe("tylenol");
   });
 
+  it("maps September 30 to the James Dean extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-09-30"));
+    expect(reel?.id).toBe("james-dean");
+    expect(dailyArtifactStem("james-dean")).toBe("james_dean");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

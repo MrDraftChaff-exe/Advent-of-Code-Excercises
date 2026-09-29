@@ -468,6 +468,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#TamperSeal/);
   });
 
+  it("keeps the James Dean post caption off the phone frame", () => {
+    const dean = TEMPLATES.find((t) => t.id === "james-dean");
+    expect(dean?.postCaption).toMatch(/had not opened yet/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, dean!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("James Dean");
+    expect(painted).toContain("WHACK");
+    expect(painted).toContain("FACT");
+    expect(painted).toContain("Porsche 550");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("had not opened yet");
+    expect(painted).not.toContain("one crash made him");
+    expect(painted).not.toMatch(/#JamesDean/);
+    expect(painted).not.toMatch(/#PorscheSpyder/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -282,6 +282,19 @@ Poster still: `tylenol-burke-1982.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/tylenol-post.txt`](../catalog/tylenol-post.txt).
 
+# James Dean FACT/WHACK collage, 1953–2018
+
+Poster still: `james-dean-1955.jpg`. Collage slides:
+
+- `james-dean-1955.jpg` — [James_Dean_ca_1955.jpg](https://commons.wikimedia.org/wiki/File:James_Dean_ca_1955.jpg). Studio publicity, c. 1955. Public domain. 9:16 crop of the leather-jacket portrait.
+- `porsche-550-spyder.jpg` — [Porsche_550,_Bj._1956,_vorn_Seite_(2018-06-30_Sp).JPG](https://commons.wikimedia.org/wiki/File:Porsche_550,_Bj._1956,_vorn_Seite_(2018-06-30_Sp).JPG). Lothar Spurzem, 2018. CC BY-SA 2.0. 9:16 crop of a Porsche 550 Spyder, not Dean’s car.
+- `james-dean-speedster.jpg` — [James_Dean_and_Porsche_Speedster_23F_at_Palm_Springs_Races_March,_1955.jpg](https://commons.wikimedia.org/wiki/File:James_Dean_and_Porsche_Speedster_23F_at_Palm_Springs_Races_March,_1955.jpg). Chad White. CC BY-SA 3.0. 9:16 crop of Dean racing a Speedster.
+- `james-dean-giant-set.jpg` — [James_Dean_%26_George_Stevens_on_set_of_Giant_(1955).jpg](https://commons.wikimedia.org/wiki/File:James_Dean_%26_George_Stevens_on_set_of_Giant_(1955).jpg). Times staff, 1955. Public domain. 9:16 crop of Dean on the Giant set.
+- `james-dean-1953.jpg` — [James_Dean_-_publicity_-_early.JPG](https://commons.wikimedia.org/wiki/File:James_Dean_-_publicity_-_early.JPG). Studio publicity, c. 1953. Public domain. 9:16 crop of the early headshot.
+- `james-dean-memorial.jpg` — [James_Dean_monument.JPG](https://commons.wikimedia.org/wiki/File:James_Dean_monument.JPG). Public domain. 9:16 crop of the Cholame memorial.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/james-dean-post.txt`](../catalog/james-dean-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

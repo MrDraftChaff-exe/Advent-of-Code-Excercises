@@ -277,6 +277,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Your pill bottle")).toBe(true);
   });
 
+  it("uses the James Dean caption as the paste block", () => {
+    const dean = TEMPLATES.find((t) => t.id === "james-dean");
+    expect(dean).toBeDefined();
+    const caption = buildPasteCaption(dean!);
+    expect(caption).toContain("had not opened yet");
+    expect(caption).toContain("one crash made him");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#JamesDean");
+    expect(caption.startsWith("Rebel had not opened")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

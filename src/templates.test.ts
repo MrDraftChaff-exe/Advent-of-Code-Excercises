@@ -520,6 +520,29 @@ describe("templates", () => {
     expect(canvasHeadlineText(tylenol!)).not.toMatch(/\b419\b/);
   });
 
+  it("ships a James Dean FACT/WHACK extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const dean = TEMPLATES.find((t) => t.id === "james-dean");
+    expect(dean).toBeDefined();
+    expect(dean?.title).toBe("James Dean");
+    expect(dean?.year).toBe("1955");
+    expect(dean?.format).toBe("whack");
+    expect(dean?.imageUrl).toContain("james-dean-1955");
+    expect(dean?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(dean?.imageCredit).toMatch(/studio publicity/);
+    expect(dean?.theme).toBe("ember");
+    expect(dean?.durationSec).toBe(60);
+    expect(dean?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(dean?.bullets[0]).toMatch(/Rebel/);
+    expect(dean?.bullets[3]).toMatch(/Porsche 550/);
+    expect(dean?.bullets[11]).toMatch(/71 years ago tonight/);
+    expect(dean?.postCaption).toMatch(/had not opened yet/);
+    expect(dean?.postCaption).toContain("@FactsOrWhacks");
+    expect(dean?.hashtags).toContain("#JamesDean");
+    expect(canvasHeadlineText(dean!)).toBe("James Dean");
+    expect(canvasHeadlineText(dean!)).not.toMatch(/\b420\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

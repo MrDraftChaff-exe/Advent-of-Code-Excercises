@@ -127,6 +127,18 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/44 years ago tonight/);
   });
 
+  it("collages the James Dean extra as six FACT/WHACK beats", () => {
+    const dean = TEMPLATES.find((t) => t.id === "james-dean");
+    expect(dean).toBeDefined();
+    expect(usesCollage(dean!)).toBe(true);
+    expect(reelSlides(dean!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(dean!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/Rebel/);
+    expect(beats[1].facts[1]).toMatch(/Porsche 550/);
+    expect(beats[5].facts[1]).toMatch(/71 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

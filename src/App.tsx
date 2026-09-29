@@ -682,6 +682,13 @@ export default function App() {
             >
               Tylenol caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/james-dean-post.txt"
+              download="james-dean-post.txt"
+            >
+              James Dean caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
