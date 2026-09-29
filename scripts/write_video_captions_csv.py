@@ -409,6 +409,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Photo: Donald Macbeth, 1922 · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=419,
+            title="Tylenol",
+            year="1982",
+            filename="419-tylenol.mp4",
+            caption_path=catalog / "tylenol-post.txt",
+            credit="Photo: Suzanne Vlamis, 1982 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -509,6 +518,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/pirate-day-post.csv", [by_n[416]])
         write_rows(ROOT / "public/catalog/billie-jean-post.csv", [by_n[417]])
         write_rows(ROOT / "public/catalog/rosetta-post.csv", [by_n[418]])
+        write_rows(ROOT / "public/catalog/tylenol-post.csv", [by_n[419]])
     print(args.out, args.out.stat().st_size)
 
 

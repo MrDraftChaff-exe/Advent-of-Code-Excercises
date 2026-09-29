@@ -69,7 +69,7 @@ describe("video captions CSV", () => {
     expect(run.status, run.stderr).toBe(0);
     const raw = readFileSync(out, "utf8");
     const physicalLines = raw.replace(/^\uFEFF/, "").trimEnd().split("\n");
-    expect(physicalLines).toHaveLength(419);
+    expect(physicalLines).toHaveLength(420);
 
     const rows = parseCsv(raw);
     const header = rows[0];
@@ -79,7 +79,7 @@ describe("video captions CSV", () => {
     expect(header).toContain("hashtags");
     expect(header).toContain("description");
     expect(header).not.toContain("paste_caption");
-    expect(body).toHaveLength(418);
+    expect(body).toHaveLength(419);
 
     const fileIdx = header.indexOf("video_filename");
     const copyIdx = header.indexOf("copy_caption");
@@ -90,7 +90,7 @@ describe("video captions CSV", () => {
     const numIdx = header.indexOf("episode_number");
 
     const names = body.map((r) => r[fileIdx]);
-    expect(new Set(names).size).toBe(418);
+    expect(new Set(names).size).toBe(419);
     expect(body[0][fileIdx]).toBe("001-the-enlightenment.mp4");
     expect(body[0][packIdx]).toBe("facts-or-whacks-videos-001-050.zip");
     const apartheid = body.find((r) => r[numIdx] === "30");
@@ -281,5 +281,13 @@ describe("video captions CSV", () => {
     expect(rosetta?.[copyIdx]).toContain("Follow @FactsOrWhacks");
     expect(rosetta?.[copyIdx]).not.toMatch(/\r|\n/);
     expect(rosetta?.[header.indexOf("duration_sec")]).toBe("60");
+
+    const tylenol = body.find((r) => r[numIdx] === "419");
+    expect(tylenol?.[fileIdx]).toBe("419-tylenol.mp4");
+    expect(tylenol?.[copyIdx]).toContain("#TylenolMurders");
+    expect(tylenol?.[copyIdx]).toContain("still has that seal");
+    expect(tylenol?.[copyIdx]).toContain("Follow @FactsOrWhacks");
+    expect(tylenol?.[copyIdx]).not.toMatch(/\r|\n/);
+    expect(tylenol?.[header.indexOf("duration_sec")]).toBe("60");
   });
 });

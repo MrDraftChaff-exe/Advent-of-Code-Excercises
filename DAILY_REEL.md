@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Rosetta on Sep 27).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Tylenol on Sep 29).
 2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-09-27
+# optional: npm run daily:pack -- --date 2026-09-29
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -89,8 +89,9 @@ Already-shipped extras (do not silently replace them):
 | 416 | `pirate-day` | Talk Like a Pirate Day / Blackbeard 1718. 60s collage |
 | 417 | `billie-jean` | Battle of the Sexes, Sep 20 1973 — 53 years. 60s collage |
 | 418 | `rosetta` | Champollion reads hieroglyphs, Sep 27 1822 — 204 years. FACT/WHACK collage |
+| 419 | `tylenol` | Chicago Tylenol tampering, Sep 29 1982 — 44 years. FACT/WHACK collage |
 
-Next extra number is one higher than the current max extra (`418` → `419`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`419` → `420`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

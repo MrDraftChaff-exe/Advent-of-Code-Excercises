@@ -451,6 +451,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toContain("Napoleon");
   });
 
+  it("keeps the Tylenol post caption off the phone frame", () => {
+    const tylenol = TEMPLATES.find((t) => t.id === "tylenol");
+    expect(tylenol?.postCaption).toMatch(/still has that seal/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, tylenol!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Tylenol");
+    expect(painted).toContain("WHACK");
+    expect(painted).toContain("FACT");
+    expect(painted).toContain("store shelves");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("still has that seal");
+    expect(painted).not.toContain("put it there");
+    expect(painted).not.toMatch(/#TylenolMurders/);
+    expect(painted).not.toMatch(/#TamperSeal/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

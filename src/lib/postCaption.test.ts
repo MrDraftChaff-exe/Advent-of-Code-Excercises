@@ -266,6 +266,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Everyone said Egyptian")).toBe(true);
   });
 
+  it("uses the Tylenol caption as the paste block", () => {
+    const tylenol = TEMPLATES.find((t) => t.id === "tylenol");
+    expect(tylenol).toBeDefined();
+    const caption = buildPasteCaption(tylenol!);
+    expect(caption).toContain("still has that seal");
+    expect(caption).toContain("put it there");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#TylenolMurders");
+    expect(caption.startsWith("Your pill bottle")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

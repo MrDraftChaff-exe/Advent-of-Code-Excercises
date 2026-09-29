@@ -115,6 +115,18 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/204 years ago tonight/);
   });
 
+  it("collages the Tylenol extra as six FACT/WHACK beats", () => {
+    const tylenol = TEMPLATES.find((t) => t.id === "tylenol");
+    expect(tylenol).toBeDefined();
+    expect(usesCollage(tylenol!)).toBe(true);
+    expect(reelSlides(tylenol!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(tylenol!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/factory/);
+    expect(beats[0].facts[1]).toMatch(/store shelves/);
+    expect(beats[5].facts[1]).toMatch(/44 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

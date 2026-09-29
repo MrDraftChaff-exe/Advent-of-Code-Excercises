@@ -269,6 +269,19 @@ Poster still: `rosetta-stone.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/rosetta-post.txt`](../catalog/rosetta-post.txt).
 
+# Tylenol FACT/WHACK collage, 1975–2018
+
+Poster still: `tylenol-burke-1982.jpg`. Collage slides:
+
+- `tylenol-burke-1982.jpg` — [James_E._Burke_holding_Tylenol_bottle_in_1982.jpg](https://commons.wikimedia.org/wiki/File:James_E._Burke_holding_Tylenol_bottle_in_1982.jpg). Suzanne Vlamis, 1982. Public domain. 9:16 crop of the chief executive with the bottle.
+- `chicago-sears-tower.jpg` — [Chicago_Sears_Tower.jpg](https://commons.wikimedia.org/wiki/File:Chicago_Sears_Tower.jpg). Daniel Schwen, 2008. CC BY-SA 4.0. 9:16 crop of the tower.
+- `tylenol-osco-1975.jpg` — [1975_Osco_Tylenol_ad.jpg](https://commons.wikimedia.org/wiki/File:1975_Osco_Tylenol_ad.jpg). Osco, 1975. Public domain. 9:16 crop of the shelf ad.
+- `tylenol-capsules.jpg` — [Extra_Strength_Tylenol_and_Tylenol_PM.jpg](https://commons.wikimedia.org/wiki/File:Extra_Strength_Tylenol_and_Tylenol_PM.jpg). Ragesoss, 2008. CC BY-SA 4.0. 9:16 crop of opened bottles.
+- `tylenol-bottle.jpg` — [Tylenol_bottle_closeup.jpg](https://commons.wikimedia.org/wiki/File:Tylenol_bottle_closeup.jpg). Colin, 2008. CC BY-SA 2.0. 9:16 crop of a sealed bottle.
+- `tamper-seal.jpg` — [Tamper_evident_seal_on_OTC_pharmaceutical.jpg](https://commons.wikimedia.org/wiki/File:Tamper_evident_seal_on_OTC_pharmaceutical.jpg). Rlsheehan, 2018. CC BY-SA 4.0. 9:16 crop of the cap seal.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/tylenol-post.txt`](../catalog/tylenol-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

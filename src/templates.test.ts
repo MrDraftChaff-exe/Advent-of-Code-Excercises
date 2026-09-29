@@ -497,6 +497,29 @@ describe("templates", () => {
     expect(canvasHeadlineText(rosetta!)).not.toMatch(/\b418\b/);
   });
 
+  it("ships a Tylenol FACT/WHACK extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const tylenol = TEMPLATES.find((t) => t.id === "tylenol");
+    expect(tylenol).toBeDefined();
+    expect(tylenol?.title).toBe("Tylenol");
+    expect(tylenol?.year).toBe("1982");
+    expect(tylenol?.format).toBe("whack");
+    expect(tylenol?.imageUrl).toContain("tylenol-burke");
+    expect(tylenol?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(tylenol?.imageCredit).toMatch(/Suzanne Vlamis/);
+    expect(tylenol?.theme).toBe("ember");
+    expect(tylenol?.durationSec).toBe(60);
+    expect(tylenol?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(tylenol?.bullets[0]).toMatch(/factory/);
+    expect(tylenol?.bullets[1]).toMatch(/store shelves/);
+    expect(tylenol?.bullets[11]).toMatch(/44 years ago tonight/);
+    expect(tylenol?.postCaption).toMatch(/still has that seal/);
+    expect(tylenol?.postCaption).toContain("@FactsOrWhacks");
+    expect(tylenol?.hashtags).toContain("#TylenolMurders");
+    expect(canvasHeadlineText(tylenol!)).toBe("Tylenol");
+    expect(canvasHeadlineText(tylenol!)).not.toMatch(/\b419\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

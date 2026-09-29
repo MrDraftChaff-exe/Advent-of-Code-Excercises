@@ -675,6 +675,13 @@ export default function App() {
             >
               Rosetta caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/tylenol-post.txt"
+              download="tylenol-post.txt"
+            >
+              Tylenol caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
