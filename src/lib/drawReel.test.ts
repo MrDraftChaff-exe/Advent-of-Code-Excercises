@@ -485,6 +485,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#PorscheSpyder/);
   });
 
+  it("keeps the Model T post caption off the phone frame", () => {
+    const modelT = TEMPLATES.find((t) => t.id === "model-t");
+    expect(modelT?.postCaption).toMatch(/not always black/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, modelT!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Model T");
+    expect(painted).toContain("WHACK");
+    expect(painted).toContain("FACT");
+    expect(painted).toContain("red, green, and gray");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("not always black");
+    expect(painted).not.toContain("could keep");
+    expect(painted).not.toMatch(/#ModelT/);
+    expect(painted).not.toMatch(/#TinLizzie/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

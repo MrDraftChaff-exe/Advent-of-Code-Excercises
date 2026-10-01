@@ -295,6 +295,19 @@ Poster still: `james-dean-1955.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/james-dean-post.txt`](../catalog/james-dean-post.txt).
 
+# Model T FACT/WHACK collage, 1909–2021
+
+Poster still: `model-t-1909.jpg`. Collage slides:
+
+- `model-t-1909.jpg` — [Ford_Model_T_Touring_(1909)_Classic-Gala_2021_1X7A0211.jpg](https://commons.wikimedia.org/wiki/File:Ford_Model_T_Touring_(1909)_Classic-Gala_2021_1X7A0211.jpg). Alexander Migl, 2021. CC BY-SA 4.0. 9:16 crop of a red 1909 touring.
+- `henry-ford-1919.jpg` — [Henry_ford_1919.jpg](https://commons.wikimedia.org/wiki/File:Henry_ford_1919.jpg). Fred Hartsook, 1919. Public domain. 9:16 crop of the portrait.
+- `model-t-1912.jpg` — [Ford_T,_Bj._1912_(2017-07-02_Sp).JPG](https://commons.wikimedia.org/wiki/File:Ford_T,_Bj._1912_(2017-07-02_Sp).JPG). Lothar Spurzem, 2017. CC BY-SA 2.0. 9:16 crop of a maroon 1912 touring.
+- `ford-assembly-1913.jpg` — [Ford_assembly_line_-_1913.jpg](https://commons.wikimedia.org/wiki/File:Ford_assembly_line_-_1913.jpg). Unknown, 1913. Public domain. 9:16 crop of the Highland Park magneto line.
+- `ford-chassis-line.jpg` — [Assembly_line_at_the_Ford_Motor_Company%27s_Highland_Park_plant_LCCN2011661021.jpg](https://commons.wikimedia.org/wiki/File:Assembly_line_at_the_Ford_Motor_Company%27s_Highland_Park_plant_LCCN2011661021.jpg). Library of Congress, 1913. Public domain. 9:16 crop of the chassis line.
+- `model-t-red-1909.jpg` — [1909_Ford_Model_T_Touring_(6829458593).jpg](https://commons.wikimedia.org/wiki/File:1909_Ford_Model_T_Touring_(6829458593).jpg). Iwao, 2012. CC BY 2.0. 9:16 crop of a red brass-era touring.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/model-t-post.txt`](../catalog/model-t-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

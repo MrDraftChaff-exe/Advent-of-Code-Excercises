@@ -689,6 +689,13 @@ export default function App() {
             >
               James Dean caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/model-t-post.txt"
+              download="model-t-post.txt"
+            >
+              Model T caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

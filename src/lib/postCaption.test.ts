@@ -288,6 +288,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Rebel had not opened")).toBe(true);
   });
 
+  it("uses the Model T caption as the paste block", () => {
+    const modelT = TEMPLATES.find((t) => t.id === "model-t");
+    expect(modelT).toBeDefined();
+    const caption = buildPasteCaption(modelT!);
+    expect(caption).toContain("not always black");
+    expect(caption).toContain("could keep");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#ModelT");
+    expect(caption.startsWith("It was not always black")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

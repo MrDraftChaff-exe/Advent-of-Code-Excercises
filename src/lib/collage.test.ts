@@ -139,6 +139,18 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/71 years ago tonight/);
   });
 
+  it("collages the Model T extra as six FACT/WHACK beats", () => {
+    const modelT = TEMPLATES.find((t) => t.id === "model-t");
+    expect(modelT).toBeDefined();
+    expect(usesCollage(modelT!)).toBe(true);
+    expect(reelSlides(modelT!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(modelT!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/black/);
+    expect(beats[0].facts[1]).toMatch(/red, green, and gray/);
+    expect(beats[5].facts[1]).toMatch(/118 years ago tonight/);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

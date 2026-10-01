@@ -543,6 +543,29 @@ describe("templates", () => {
     expect(canvasHeadlineText(dean!)).not.toMatch(/\b420\b/);
   });
 
+  it("ships a Model T FACT/WHACK extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const modelT = TEMPLATES.find((t) => t.id === "model-t");
+    expect(modelT).toBeDefined();
+    expect(modelT?.title).toBe("Model T");
+    expect(modelT?.year).toBe("1908");
+    expect(modelT?.format).toBe("whack");
+    expect(modelT?.imageUrl).toContain("model-t-1909");
+    expect(modelT?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(modelT?.imageCredit).toMatch(/Alexander Migl/);
+    expect(modelT?.theme).toBe("ember");
+    expect(modelT?.durationSec).toBe(60);
+    expect(modelT?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(modelT?.bullets[0]).toMatch(/black/);
+    expect(modelT?.bullets[1]).toMatch(/red, green, and gray/);
+    expect(modelT?.bullets[11]).toMatch(/118 years ago tonight/);
+    expect(modelT?.postCaption).toMatch(/not always black/);
+    expect(modelT?.postCaption).toContain("@FactsOrWhacks");
+    expect(modelT?.hashtags).toContain("#ModelT");
+    expect(canvasHeadlineText(modelT!)).toBe("Model T");
+    expect(canvasHeadlineText(modelT!)).not.toMatch(/\b421\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);
