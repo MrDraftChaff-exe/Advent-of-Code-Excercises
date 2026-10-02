@@ -156,9 +156,9 @@ def encode_one(
 
 def _zoompan_filter(index: int, frames: int) -> str:
     if index % 2 == 0:
-        z = f"min(1+0.00038*on,1.12)"
+        z = "min(1+0.00038*on,1.12)"
     else:
-        z = f"max(1.12-0.00038*on,1.0)"
+        z = "max(1.12-0.00038*on,1.0)"
     return (
         f"[{index}:v]scale=1296:2304:force_original_aspect_ratio=increase,"
         f"crop=1296:2304,zoompan=z='{z}':x='iw/2-(iw/zoom/2)':"
@@ -173,9 +173,12 @@ def encode_collage(
     seconds: float = 62.0,
     seed: str | None = None,
     audio: Path | None = None,
+    overlays: list[Path] | None = None,
 ) -> Path:
     """Ken Burns + crossfade beat stills into an MP4 that is at least `seconds`.
 
+    Zoom moves the photograph only. Pass `overlays` (one transparent PNG per
+    still) to keep type, credits, and the handle locked to the frame.
     Daily growth clips must probe at >= 60s. The default is 62s so players that
     round down still show a full minute.
     """
@@ -185,6 +188,8 @@ def encode_collage(
     if not stills:
         raise ValueError("encode_collage needs at least one still")
     n = len(stills)
+    if overlays is not None and len(overlays) != n:
+        raise ValueError("overlays must match stills")
     clip, frames, fade = collage_timeline(n, seconds)
     tmp_pad: Path | None = None
     pad_path = audio
@@ -207,25 +212,47 @@ def encode_collage(
                 str(still),
             ]
         )
+    if overlays:
+        for overlay in overlays:
+            cmd.extend(
+                [
+                    "-framerate",
+                    "30",
+                    "-loop",
+                    "1",
+                    "-t",
+                    f"{clip:.3f}",
+                    "-i",
+                    str(overlay),
+                ]
+            )
     cmd.extend(["-i", str(pad_path)])
+    audio_index = n + (n if overlays else 0)
     filters = [_zoompan_filter(i, frames) for i in range(n)]
+    labels = [f"v{i}" for i in range(n)]
+    if overlays:
+        for i in range(n):
+            filters.append(
+                f"[v{i}][{n + i}:v]overlay=0:0:format=auto,format=yuv420p[vo{i}]"
+            )
+            labels[i] = f"vo{i}"
     if n == 1:
         filters.append(
-            "[v0]fps=30,format=yuv420p,tpad=stop_mode=clone:stop_duration=2[vout]"
+            f"[{labels[0]}]fps=30,format=yuv420p,tpad=stop_mode=clone:stop_duration=2[vout]"
         )
     else:
-        last = "v0"
+        last = labels[0]
         for i in range(1, n):
             offset = i * (clip - fade)
             out = f"x{i}"
             filters.append(
-                f"[{last}][v{i}]xfade=transition=fade:duration={fade:.3f}:offset={offset:.3f}[{out}]"
+                f"[{last}][{labels[i]}]xfade=transition=fade:duration={fade:.3f}:offset={offset:.3f}[{out}]"
             )
             last = out
         filters.append(
             f"[{last}]fps=30,format=yuv420p,tpad=stop_mode=clone:stop_duration=2[vout]"
         )
-    filters.append(f"[{n}:a]aresample=44100,apad=pad_dur=2[aout]")
+    filters.append(f"[{audio_index}:a]aresample=44100,apad=pad_dur=2[aout]")
     cmd.extend(
         [
             "-filter_complex",

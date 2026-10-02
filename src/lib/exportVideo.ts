@@ -88,7 +88,17 @@ export async function exportReelVideo(
         const img = photos.get(beat.imageUrl) ?? hero;
         drawFrame(ctx, reel, t, img, {
           mode: "beat",
+          layer: "photo",
           kenBurns: kenBurnsAt(beat, t),
+          slide: {
+            facts: beat.facts,
+            imageCaption: beat.imageCaption,
+            imageCredit: beat.imageCredit,
+          },
+        });
+        drawFrame(ctx, reel, t, null, {
+          mode: "beat",
+          layer: "overlay",
           slide: {
             facts: beat.facts,
             imageCaption: beat.imageCaption,

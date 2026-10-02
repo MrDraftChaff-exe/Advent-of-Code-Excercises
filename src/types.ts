@@ -26,6 +26,11 @@ export type KenBurns = {
 export type DrawFrameOptions = {
   /** Poster still shows every fact. Beat mode is one collage cut. */
   mode?: "poster" | "beat";
+  /**
+   * Photo zooms in the encoder. Overlay is the locked type.
+   * Full is the poster and the beat still.
+   */
+  layer?: "full" | "photo" | "overlay";
   kenBurns?: KenBurns;
   slide?: {
     facts: string[];

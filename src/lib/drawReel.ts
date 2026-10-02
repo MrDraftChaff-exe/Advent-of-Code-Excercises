@@ -345,20 +345,24 @@ export function drawFrame(
   const w = CANVAS_W;
   const h = CANVAS_H;
   const theme = THEMES[reel.theme];
-  drawNebula(ctx, w, h, time, theme);
+  const layer = options.layer ?? "full";
+  if (layer !== "overlay") {
+    drawNebula(ctx, w, h, time, theme);
 
-  if (image && (image.naturalWidth || image.width)) {
-    drawCoverImage(ctx, image, 0, 0, w, h, options.kenBurns);
-  } else {
-    drawPhotoPlaceholder(
-      ctx,
-      0,
-      0,
-      w,
-      h,
-      options.slide?.imageCaption || reel.imageCaption || "Photo",
-    );
+    if (image && (image.naturalWidth || image.width)) {
+      drawCoverImage(ctx, image, 0, 0, w, h, options.kenBurns);
+    } else {
+      drawPhotoPlaceholder(
+        ctx,
+        0,
+        0,
+        w,
+        h,
+        options.slide?.imageCaption || reel.imageCaption || "Photo",
+      );
+    }
   }
+  if (layer === "photo") return;
   if (reelFormat(reel) === "whack") {
     drawWhackScrim(ctx, w, h);
     drawWhackOverlay(ctx, reel, time, options);
@@ -630,6 +634,7 @@ export async function snapshotPng(
 export async function snapshotBeatPng(
   reel: ReelContent,
   beatIndex: number,
+  layer: "full" | "photo" | "overlay" = "full",
 ): Promise<Blob> {
   const beats = collageBeats({ ...reel, durationSec: reel.durationSec || 60 });
   const beat = beats[Math.max(0, Math.min(beats.length - 1, beatIndex))];
@@ -638,10 +643,15 @@ export async function snapshotBeatPng(
   canvas.height = CANVAS_H;
   const ctx = canvas.getContext("2d");
   if (!ctx) return Promise.reject(new Error("No 2D context"));
-  const photo = await loadReelImage(beat.imageUrl || reel.imageUrl);
+  if (layer === "overlay") ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+  const photo =
+    layer === "overlay"
+      ? null
+      : await loadReelImage(beat.imageUrl || reel.imageUrl);
   const time = (beat.start + beat.end) / 2;
   drawFrame(ctx, reel, time, photo, {
     mode: "beat",
+    layer,
     slide: {
       facts: beat.facts,
       imageCaption: beat.imageCaption,

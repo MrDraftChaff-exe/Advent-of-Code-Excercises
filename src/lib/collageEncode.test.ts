@@ -15,6 +15,7 @@ describe("collage encoder duration", () => {
     expect(fn).toContain('"-framerate"');
     expect(fn).toContain("tpad=");
     expect(fn).not.toMatch(/"-shortest"/);
+    expect(fn).toContain("overlays");
   });
 
   it("encodes an 8s six-still collage that is not short", () => {
@@ -40,5 +41,46 @@ print(mod.probe_duration(dest))
     expect(run.status, `${run.stdout}\n${run.stderr}`).toBe(0);
     const duration = Number.parseFloat(run.stdout.trim().split("\n").at(-1) || "");
     expect(duration).toBeGreaterThanOrEqual(8);
+  });
+
+  it("zooms the photo and keeps an edge overlay inside the frame", () => {
+    const dir = mkdtempSync(join(tmpdir(), "collage-lock-"));
+    const py = `
+from pathlib import Path
+from PIL import Image, ImageDraw
+import subprocess
+import importlib.util
+root = Path(${JSON.stringify(process.cwd())})
+spec = importlib.util.spec_from_file_location("stills", root / "scripts/stills_to_videos.py")
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+folder = Path(${JSON.stringify(dir)})
+photo = Image.new("RGB", (1080, 1920), (220, 30, 30))
+ImageDraw.Draw(photo).rectangle((0, 0, 1080, 36), fill=(20, 20, 240))
+still = folder / "photo.png"
+photo.save(still)
+overlay = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+ImageDraw.Draw(overlay).rectangle((0, 0, 1080, 64), fill=(40, 220, 60, 255))
+plate = folder / "overlay.png"
+overlay.save(plate)
+dest = folder / "locked.mp4"
+mod.encode_collage(mod.ffmpeg_bin(), [still], dest, 8.0, seed="lock-test", overlays=[plate])
+frame = folder / "frame.png"
+subprocess.check_call([
+    "ffmpeg", "-y", "-ss", "6", "-i", str(dest), "-frames:v", "1", str(frame),
+], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+top = Image.open(frame).convert("RGB").getpixel((540, 8))
+print(top[0], top[1], top[2])
+`;
+    const run = spawnSync("python3", ["-c", py], { encoding: "utf8" });
+    expect(run.status, `${run.stdout}\n${run.stderr}`).toBe(0);
+    const [r, g, b] = run.stdout
+      .trim()
+      .split("\n")
+      .at(-1)!
+      .split(" ")
+      .map(Number);
+    expect(g).toBeGreaterThan(r + 40);
+    expect(g).toBeGreaterThan(b);
   });
 });

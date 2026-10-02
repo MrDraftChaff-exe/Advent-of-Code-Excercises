@@ -105,9 +105,14 @@ async function main() {
         });
       const beats = collage.collageBeats(videoReel);
       const beatUrls = [];
+      const photoUrls = [];
+      const overlayUrls = [];
       for (let i = 0; i < beats.length; i++) {
-        const blob = await draw.snapshotBeatPng(videoReel, i);
-        beatUrls.push(await toUrl(blob));
+        beatUrls.push(await toUrl(await draw.snapshotBeatPng(videoReel, i, "full")));
+        photoUrls.push(await toUrl(await draw.snapshotBeatPng(videoReel, i, "photo")));
+        overlayUrls.push(
+          await toUrl(await draw.snapshotBeatPng(videoReel, i, "overlay")),
+        );
       }
       const slug = fonts.slugify(`${reel.episode}-${reel.title}`);
       return {
@@ -117,6 +122,8 @@ async function main() {
         stem: daily.dailyArtifactStem(reel.id),
         posterUrl: await toUrl(poster),
         beatUrls,
+        photoUrls,
+        overlayUrls,
       };
     },
     { forcedId, dateArg, videoSeconds: VIDEO_SECONDS },
@@ -132,6 +139,16 @@ async function main() {
   fs.mkdirSync(beatDir, { recursive: true });
   const beatFiles = result.beatUrls.map((url, i) => {
     const file = path.join(beatDir, `beat-${String(i).padStart(2, "0")}.png`);
+    writePng(file, url);
+    return file;
+  });
+  const photoFiles = result.photoUrls.map((url, i) => {
+    const file = path.join(beatDir, `photo-${String(i).padStart(2, "0")}.png`);
+    writePng(file, url);
+    return file;
+  });
+  const overlayFiles = result.overlayUrls.map((url, i) => {
+    const file = path.join(beatDir, `overlay-${String(i).padStart(2, "0")}.png`);
     writePng(file, url);
     return file;
   });
@@ -151,9 +168,10 @@ async function main() {
     "spec = importlib.util.spec_from_file_location('stills', 'scripts/stills_to_videos.py')",
     "mod = importlib.util.module_from_spec(spec)",
     "spec.loader.exec_module(mod)",
-    `stills = [Path(p) for p in ${JSON.stringify(beatFiles)}]`,
+    `stills = [Path(p) for p in ${JSON.stringify(photoFiles)}]`,
+    `overlays = [Path(p) for p in ${JSON.stringify(overlayFiles)}]`,
     `dest = Path(${JSON.stringify(destMp4)})`,
-    `mod.encode_collage(mod.ffmpeg_bin(), stills, dest, ${VIDEO_SECONDS}, seed=${JSON.stringify(result.slug)})`,
+    `mod.encode_collage(mod.ffmpeg_bin(), stills, dest, ${VIDEO_SECONDS}, seed=${JSON.stringify(result.slug)}, overlays=overlays)`,
     "print(dest, dest.stat().st_size)",
   ].join("\n");
   const encode = spawnSync("python3", ["-c", encodePy], {
@@ -188,14 +206,18 @@ async function main() {
   }
 
   const stillName = `${result.stem}_9x16_still.png`;
+  const coverName = `${result.stem}_cover.png`;
   const videoName = `${result.stem}_60s.mp4`;
   const packedStill = path.join(OUT_DIR, stillName);
+  const packedCover = path.join(OUT_DIR, coverName);
   const packedVideo = path.join(OUT_DIR, videoName);
   fs.copyFileSync(still, packedStill);
+  fs.copyFileSync(beatFiles[0], packedCover);
   fs.copyFileSync(destMp4, packedVideo);
 
   for (const dir of ["/opt/cursor/artifacts", "/home/ubuntu/Desktop"]) {
     copyIfDir(packedStill, dir, stillName);
+    copyIfDir(packedCover, dir, coverName);
     copyIfDir(packedVideo, dir, videoName);
     copyIfDir(captionPath, dir, captionName);
   }
