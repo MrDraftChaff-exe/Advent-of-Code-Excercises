@@ -696,6 +696,13 @@ export default function App() {
             >
               Model T caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/freddie-post.txt"
+              download="freddie-post.txt"
+            >
+              Freddie caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

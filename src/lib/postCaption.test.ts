@@ -299,6 +299,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("It was not always black")).toBe(true);
   });
 
+  it("uses the Freddie caption as the paste block", () => {
+    const freddie = TEMPLATES.find((t) => t.id === "freddie");
+    expect(freddie).toBeDefined();
+    const caption = buildPasteCaption(freddie!);
+    expect(caption).toContain("searching the Queen songs");
+    expect(caption).toContain("solo record");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#FreddieMercury");
+    expect(caption.startsWith("Everybody is searching")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

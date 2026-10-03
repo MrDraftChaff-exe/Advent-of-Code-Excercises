@@ -8,7 +8,7 @@ How to match a file:
 2. Catalog files live in `video_zip_pack` as `path_inside_zip`.
 3. Click `copy_caption` once and paste under the Reel. `description` is the same text without handle/hashtags. `hashtags` is the tag list only.
 
-Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), `413` (Star-Spangled Banner), `414` (Teddy Roosevelt), `415` (El Grito), `416` (Pirates), `417` (Billie Jean), `418` (Rosetta), `419` (Tylenol), `420` (James Dean), and `421` (Model T) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
+Episode `001` is pack `001-050`. Episode `351` is pack `351-395`. Rows `396` (Dolly Parton), `397` (Tim Curry), `398` (Peter Cullen), `399` (Hayden Panettiere), `400` (BTK), `401` (Hurricane Katrina), `402` (Thurgood Marshall), `403` (Princess Diana), `404` (Tupac), `405` (Japan Surrenders), `406` (Gloria Steinem), `407` (Squeaky Fromme), `408` (Magellan), `409` (Star Trek), `410` (Elvis), `411` (LHC), `412` (9/11), `413` (Star-Spangled Banner), `414` (Teddy Roosevelt), `415` (El Grito), `416` (Pirates), `417` (Billie Jean), `418` (Rosetta), `419` (Tylenol), `420` (James Dean), `421` (Model T), and `422` (Freddie) are extras, not in the 395 packs. Buffer’s CSV bulk upload cannot attach these videos; paste `copy_caption` in the composer. Daily growth posts: [`../../DAILY_REEL.md`](../../DAILY_REEL.md).
 
 ## Dolly Parton extra post
 
@@ -113,3 +113,7 @@ Load the **James Dean** template, or copy row `420`. Caption file: [`james-dean-
 ## Model T extra post
 
 Load the **Model T** template, or copy row `421`. Caption file: [`model-t-post.txt`](model-t-post.txt). Video filename: `421-model-t.mp4`. The growth clip is a 60s FACT/WHACK collage, not a frozen still.
+
+## Freddie extra post
+
+Load the **Freddie** template, or copy row `422`. Caption file: [`freddie-post.txt`](freddie-post.txt). Video filename: `422-freddie.mp4`. The growth clip is a 60s two-fact collage. Use `freddie_cover.png` as the platform cover.

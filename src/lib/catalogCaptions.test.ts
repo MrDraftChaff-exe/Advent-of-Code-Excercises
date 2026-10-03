@@ -69,7 +69,7 @@ describe("video captions CSV", () => {
     expect(run.status, run.stderr).toBe(0);
     const raw = readFileSync(out, "utf8");
     const physicalLines = raw.replace(/^\uFEFF/, "").trimEnd().split("\n");
-    expect(physicalLines).toHaveLength(422);
+    expect(physicalLines).toHaveLength(423);
 
     const rows = parseCsv(raw);
     const header = rows[0];
@@ -79,7 +79,7 @@ describe("video captions CSV", () => {
     expect(header).toContain("hashtags");
     expect(header).toContain("description");
     expect(header).not.toContain("paste_caption");
-    expect(body).toHaveLength(421);
+    expect(body).toHaveLength(422);
 
     const fileIdx = header.indexOf("video_filename");
     const copyIdx = header.indexOf("copy_caption");
@@ -90,7 +90,7 @@ describe("video captions CSV", () => {
     const numIdx = header.indexOf("episode_number");
 
     const names = body.map((r) => r[fileIdx]);
-    expect(new Set(names).size).toBe(421);
+    expect(new Set(names).size).toBe(422);
     expect(body[0][fileIdx]).toBe("001-the-enlightenment.mp4");
     expect(body[0][packIdx]).toBe("facts-or-whacks-videos-001-050.zip");
     const apartheid = body.find((r) => r[numIdx] === "30");
@@ -305,5 +305,13 @@ describe("video captions CSV", () => {
     expect(modelT?.[copyIdx]).toContain("Follow @FactsOrWhacks");
     expect(modelT?.[copyIdx]).not.toMatch(/\r|\n/);
     expect(modelT?.[header.indexOf("duration_sec")]).toBe("60");
+
+    const freddie = body.find((r) => r[numIdx] === "422");
+    expect(freddie?.[fileIdx]).toBe("422-freddie.mp4");
+    expect(freddie?.[copyIdx]).toContain("#FreddieMercury");
+    expect(freddie?.[copyIdx]).toContain("solo record");
+    expect(freddie?.[copyIdx]).toContain("Follow @FactsOrWhacks");
+    expect(freddie?.[copyIdx]).not.toMatch(/\r|\n/);
+    expect(freddie?.[header.indexOf("duration_sec")]).toBe("60");
   });
 });

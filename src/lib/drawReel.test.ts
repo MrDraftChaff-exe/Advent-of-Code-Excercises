@@ -502,6 +502,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#TinLizzie/);
   });
 
+  it("keeps the Freddie post caption off the phone frame", () => {
+    const freddie = TEMPLATES.find((t) => t.id === "freddie");
+    expect(freddie?.postCaption).toMatch(/searching the Queen songs/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, freddie!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Freddie");
+    expect(painted).toContain("Farrokh");
+    expect(painted).toContain("72,000");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("searching the Queen songs");
+    expect(painted).not.toContain("solo record");
+    expect(painted).not.toMatch(/\bWHACK\b/);
+    expect(painted).not.toMatch(/#FreddieMercury/);
+    expect(painted).not.toMatch(/#LiveAid/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

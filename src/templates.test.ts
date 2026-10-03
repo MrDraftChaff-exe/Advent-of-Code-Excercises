@@ -566,6 +566,30 @@ describe("templates", () => {
     expect(canvasHeadlineText(modelT!)).not.toMatch(/\b421\b/);
   });
 
+  it("ships a Freddie Mercury template without the chip format or replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const freddie = TEMPLATES.find((t) => t.id === "freddie");
+    expect(freddie).toBeDefined();
+    expect(freddie?.title).toBe("Freddie");
+    expect(freddie?.year).toBe("1975");
+    expect(freddie?.format).toBeUndefined();
+    expect(freddie?.imageUrl).toContain("freddie-1975");
+    expect(freddie?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(freddie?.imageCredit).toMatch(/Koh Hasebe/);
+    expect(freddie?.theme).toBe("ember");
+    expect(freddie?.durationSec).toBe(60);
+    expect(freddie?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(freddie?.bullets[0]).toMatch(/5 minutes and 55 seconds/);
+    expect(freddie?.bullets[1]).toMatch(/nine weeks/);
+    expect(freddie?.bullets[11]).toMatch(/277,000 pounds/);
+    expect(freddie?.bullets.join(" ")).not.toMatch(/radio will not play/);
+    expect(freddie?.postCaption).toMatch(/searching the Queen songs/);
+    expect(freddie?.postCaption).toContain("@FactsOrWhacks");
+    expect(freddie?.hashtags).toContain("#FreddieMercury");
+    expect(canvasHeadlineText(freddie!)).toBe("Freddie");
+    expect(canvasHeadlineText(freddie!)).not.toMatch(/\b422\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

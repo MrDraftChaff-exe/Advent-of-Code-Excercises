@@ -115,6 +115,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("model-t")).toBe("model_t");
   });
 
+  it("maps October 3 to the Freddie extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-03"));
+    expect(reel?.id).toBe("freddie");
+    expect(dailyArtifactStem("freddie")).toBe("freddie");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

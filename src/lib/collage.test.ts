@@ -151,6 +151,25 @@ describe("collage beats", () => {
     expect(beats[5].facts[1]).toMatch(/118 years ago tonight/);
   });
 
+  it("collages the Freddie extra as six two-fact beats", () => {
+    const freddie = TEMPLATES.find((t) => t.id === "freddie");
+    expect(freddie).toBeDefined();
+    expect(usesCollage(freddie!)).toBe(true);
+    expect(reelSlides(freddie!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(freddie!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/5 minutes and 55 seconds/);
+    expect(beats[5].facts[1]).toMatch(/277,000 pounds/);
+    expect(beats.map((beat) => beat.imageUrl)).toEqual([
+      "/images/freddie-1975.jpg",
+      "/images/freddie-1977.jpg",
+      "/images/freddie-1977-scarf.jpg",
+      "/images/freddie-1977-stage.jpg",
+      "/images/freddie-queen-1985.jpg",
+      "/images/freddie-harlequin.jpg",
+    ]);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Model T on Oct 1).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Freddie on Oct 3).
 2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-10-01
+# optional: npm run daily:pack -- --date 2026-10-03
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -92,8 +92,9 @@ Already-shipped extras (do not silently replace them):
 | 419 | `tylenol` | Chicago Tylenol tampering, Sep 29 1982 — 44 years. FACT/WHACK collage |
 | 420 | `james-dean` | James Dean crash, Sep 30 1955 — 71 years. FACT/WHACK collage |
 | 421 | `model-t` | Ford Model T ships, Oct 1 1908 — 118 years. FACT/WHACK collage |
+| 422 | `freddie` | Freddie Mercury. Notebook from Mr. Bad Guy sold for 277,000 pounds on Oct 2. Two facts, not chips. Hold Sputnik for Oct 4 |
 
-Next extra number is one higher than the current max extra (`421` → `422`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`422` → `423`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

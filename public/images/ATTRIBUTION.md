@@ -308,6 +308,19 @@ Poster still: `model-t-1909.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/model-t-post.txt`](../catalog/model-t-post.txt).
 
+# Freddie collage, 1975–1985
+
+Poster still: `freddie-1975.jpg`. Collage slides:
+
+- `freddie-1975.jpg` — [Freddie_Mercury_2_(1975_Elektra_publicity_photo).png](https://commons.wikimedia.org/wiki/File:Freddie_Mercury_2_(1975_Elektra_publicity_photo).png). Koh Hasebe, 1975. Public domain. 9:16 crop of the Elektra portrait.
+- `freddie-1977.jpg` — [Queen_News_Of_The_World_(1977_Press_Kit_Photo_04)_Freddie_Mercury.jpg](https://commons.wikimedia.org/wiki/File:Queen_News_Of_The_World_(1977_Press_Kit_Photo_04)_Freddie_Mercury.jpg). Christopher Hopper, 1977. Public domain. 9:16 crop of the press-kit portrait.
+- `freddie-1977-scarf.jpg` — [Queen_News_Of_The_World_(1977_Press_Kit_Photo_01).jpg](https://commons.wikimedia.org/wiki/File:Queen_News_Of_The_World_(1977_Press_Kit_Photo_01).jpg). Christopher Hopper, 1977. Public domain. 9:16 crop of Mercury at the left of the brick-wall group.
+- `freddie-1977-stage.jpg` — [Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg](https://commons.wikimedia.org/wiki/File:Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg). Carl Lender, 1977. CC BY-SA 3.0. 9:16 crop of the New Haven show.
+- `freddie-queen-1985.jpg` — [Queen_(1985_Live_Aid_publicity_photo).png](https://commons.wikimedia.org/wiki/File:Queen_(1985_Live_Aid_publicity_photo).png). David Bailey, 1985. Public domain (PD-US-1978-89 publicity still). 9:16 crop of the Live Aid promo, Mercury in front.
+- `freddie-harlequin.jpg` — [Queen_(15383194666).jpg](https://commons.wikimedia.org/wiki/File:Queen_(15383194666).jpg). Carl Lender, 1977. CC BY 2.0. 9:16 crop of the harlequin suit.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/freddie-post.txt`](../catalog/freddie-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
