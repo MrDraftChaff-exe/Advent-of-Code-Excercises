@@ -1,0 +1,326 @@
+# Mandela voting, 1994
+
+- File: `mandela-voting-1994.jpg`
+- Original: [Mandela_voting_in_1994.jpg](https://commons.wikimedia.org/wiki/File:Mandela_voting_in_1994.jpg)
+- Photographer: Paul Weinberg
+- License: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+
+The reel template prints the credit on-frame so exported videos and stills keep the attribution.
+
+# Dolly Parton, 2010
+
+- File: `dolly-parton-2010.jpg`
+- Original: [Dolly_Parton_accepting_Liseberg_Applause_Award_2010_portrait.jpg](https://commons.wikimedia.org/wiki/File:Dolly_Parton_accepting_Liseberg_Applause_Award_2010_portrait.jpg)
+- Photographer: Curtis Hilbun
+- Date: 16 November 2010, Liseberg Applause Award
+- License: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+The Dolly template prints the credit on-frame. Paste caption: [`../catalog/dolly-parton-post.txt`](../catalog/dolly-parton-post.txt).
+
+# Tim Curry, 2025
+
+- File: `tim-curry-2025.jpg`
+- Original: [Tim_Curry_-_Rocky_Horror_50th.jpg](https://commons.wikimedia.org/wiki/File:Tim_Curry_-_Rocky_Horror_50th.jpg)
+- Photographer: Kevin Paul
+- Date: 26 September 2025, Rocky Horror Picture Show 50th anniversary Q&A, Los Angeles
+- License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+The Tim Curry template prints the credit on-frame. Paste caption: [`../catalog/tim-curry-post.txt`](../catalog/tim-curry-post.txt).
+
+# Peter Cullen, 2023
+
+- File: `peter-cullen-2023.jpg`
+- Original: [Peter_Cullen_(53394384000).jpg](https://commons.wikimedia.org/wiki/File:Peter_Cullen_(53394384000).jpg)
+- Photographer: Pedro Heshike for Galaxy Con
+- Date: 2 December 2023, GalaxyCon Columbus
+- License: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+
+The Peter Cullen template prints the credit on-frame. Paste caption: [`../catalog/peter-cullen-post.txt`](../catalog/peter-cullen-post.txt).
+
+# Hayden Panettiere, 2011
+
+- File: `hayden-panettiere-2011.jpg`
+- Original: [Hayden_Panettiere_in_2011_04_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Hayden_Panettiere_in_2011_04_(cropped).jpg)
+- Photographer: Tabercil
+- Date: 27 August 2011, Fan Expo Toronto
+- License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)
+
+The Hayden Panettiere template prints the credit on-frame. Paste caption: [`../catalog/hayden-panettiere-post.txt`](../catalog/hayden-panettiere-post.txt).
+
+# Dennis Rader, U.S. Air Force, 1966
+
+- File: `dennis-rader-airman.jpg`
+- Original: [Dennis_Rader_Airman_Portrait.jpg](https://commons.wikimedia.org/wiki/File:Dennis_Rader_Airman_Portrait.jpg)
+- Photographer: United States Air Force
+- Date: 1966
+- License: Public domain (U.S. government work)
+
+The BTK template prints the credit on-frame. Paste caption: [`../catalog/btk-post.txt`](../catalog/btk-post.txt).
+
+# Hurricane Katrina, New Orleans, 2005
+
+- File: `katrina-new-orleans-2005.jpg`
+- Original: [KatrinaNewOrleansFlooded_edit2.jpg](https://commons.wikimedia.org/wiki/File:KatrinaNewOrleansFlooded_edit2.jpg)
+- Photographer: Petty Officer 2nd Class Kyle Niemi, U.S. Coast Guard
+- Date: 29 August 2005, New Orleans looking toward Lake Pontchartrain
+- License: Public domain (U.S. government work)
+
+The Hurricane Katrina template prints the credit on-frame. Paste caption: [`../catalog/hurricane-katrina-post.txt`](../catalog/hurricane-katrina-post.txt).
+
+# Thurgood Marshall, White House, 1967
+
+- File: `thurgood-marshall-1967.jpg`
+- Original: [Thurgoodmarshall1967.jpg](https://commons.wikimedia.org/wiki/File:Thurgoodmarshall1967.jpg)
+- Photographer: Yoichi R. Okamoto
+- Date: 13 June 1967, White House, nomination day
+- License: Public domain (U.S. government work; National Archives 2803441)
+
+The Thurgood Marshall template prints the credit on-frame. Paste caption: [`../catalog/thurgood-marshall-post.txt`](../catalog/thurgood-marshall-post.txt).
+
+# Princess Diana, White House, 1985
+
+- File: `princess-diana-1985.jpg`
+- Original: [Princess_Diana_Dancing_with_John_Travolta_in_Cross_Hall_at_The_White_House_-_DPLA_-_3842af096c213b9aca61e06931ee8150.jpg](https://commons.wikimedia.org/wiki/File:Princess_Diana_Dancing_with_John_Travolta_in_Cross_Hall_at_The_White_House_-_DPLA_-_3842af096c213b9aca61e06931ee8150.jpg)
+- Photographer: White House Photographic Office (Reagan administration)
+- Date: 9 November 1985, Cross Hall, White House
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop of Diana from that photograph.
+
+The Princess Diana template prints the credit on-frame. Paste caption: [`../catalog/princess-diana-post.txt`](../catalog/princess-diana-post.txt).
+
+# Tupac Shakur, passport photo, 1995
+
+- File: `tupac-shakur-1995.jpg`
+- Original: [Tupac_Shakur_passport_photo.png](https://commons.wikimedia.org/wiki/File:Tupac_Shakur_passport_photo.png)
+- Photographer: U.S. Department of State
+- Date: 8 December 1995
+- License: Public domain (U.S. government work)
+
+The Tupac template prints the credit on-frame. Paste caption: [`../catalog/tupac-post.txt`](../catalog/tupac-post.txt).
+
+# MacArthur signs Japan’s surrender, USS Missouri, 1945
+
+- File: `uss-missouri-surrender-1945.jpg`
+- Original: [Douglas_MacArthur_signs_formal_surrender.jpg](https://commons.wikimedia.org/wiki/File:Douglas_MacArthur_signs_formal_surrender.jpg)
+- Photographer: U.S. Navy
+- Date: 2 September 1945, Tokyo Bay
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop around MacArthur at the signing table.
+
+The Japan Surrenders template prints the credit on-frame. Paste caption: [`../catalog/japan-surrender-post.txt`](../catalog/japan-surrender-post.txt).
+
+# Gloria Steinem, Women's Action Alliance, 1972
+
+- File: `gloria-steinem-1972.jpg`
+- Original: [Gloria_Steinem_at_news_conference,_Women's_Action_Alliance,_January_12,_1972.jpg](https://commons.wikimedia.org/wiki/File:Gloria_Steinem_at_news_conference,_Women%27s_Action_Alliance,_January_12,_1972.jpg)
+- Photographer: Women's Action Alliance
+- Date: 12 January 1972
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop centering on the portrait.
+
+The Gloria Steinem template prints the credit on-frame. Paste caption: [`../catalog/gloria-steinem-post.txt`](../catalog/gloria-steinem-post.txt).
+
+# Secret Service rushes President Ford, Sacramento, 1975
+
+- File: `ford-fromme-1975.jpg`
+- Original: [Ford_rushed_from_Sacramento_assassination_attempt_image_A6320-23A.jpg](https://commons.wikimedia.org/wiki/File:Ford_rushed_from_Sacramento_assassination_attempt_image_A6320-23A.jpg)
+- Photographer: Ricardo Thomas, White House Photographic Office
+- Date: 5 September 1975, Sacramento, California
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop around Ford and the Secret Service detail.
+
+The Squeaky Fromme template prints the credit on-frame. Paste caption: [`../catalog/squeaky-fromme-post.txt`](../catalog/squeaky-fromme-post.txt).
+
+# Replica of Magellan’s Victoria, Sète, 2016
+
+- File: `nao-victoria-sete.jpg`
+- Original: [Nao_Victoria_(ship,_1992),_Sète_cf04.jpg](https://commons.wikimedia.org/wiki/File:Nao_Victoria_(ship,_1992),_S%C3%A8te_cf04.jpg)
+- Photographer: Christian Ferrer
+- Date: 26 March 2016, Escale à Sète, Hérault, France
+- License: CC BY 4.0
+- Note: Local file is a 9:16 crop of the replica of Magellan’s nao Victoria.
+
+The Magellan template prints the credit on-frame. Paste caption: [`../catalog/magellan-post.txt`](../catalog/magellan-post.txt).
+
+# Shuttle Enterprise rollout with Star Trek cast, Palmdale, 1976
+
+- File: `shuttle-enterprise-1976.jpg`
+- Original: [The_Shuttle_Enterprise_-_GPN-2000-001363.jpg](https://commons.wikimedia.org/wiki/File:The_Shuttle_Enterprise_-_GPN-2000-001363.jpg)
+- Photographer: NASA (GPN-2000-001363)
+- Date: 17 September 1976, Palmdale, California
+- License: Public domain (U.S. government work)
+- Note: Local file is a 9:16 crop of the original series cast and Gene Roddenberry in front of orbiter Enterprise.
+
+The Star Trek template prints the credit on-frame. Paste caption: [`../catalog/star-trek-post.txt`](../catalog/star-trek-post.txt).
+
+# Elvis Presley collage, 1958–1970
+
+Poster still: `elvis-1958.jpg`. Collage slides:
+
+- `elvis-1958.jpg` — [Elvis_Presley,_June_1958_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Elvis_Presley,_June_1958_(cropped).jpg). Modern Screen, June 1958. Public domain (not renewed). 9:16 crop of the portrait.
+- `elvis-army-1958.jpg` — [Elvis_sworn_into_army_1958.jpg](https://commons.wikimedia.org/wiki/File:Elvis_sworn_into_army_1958.jpg). Associated Press, Fort Chaffee, 25 March 1958. Public domain (not renewed). 9:16 crop around Elvis taking the oath.
+- `elvis-nixon-1970.jpg` — [Elvis-nixon.jpg](https://commons.wikimedia.org/wiki/File:Elvis-nixon.jpg). Ollie Atkins, White House, 21 December 1970. Public domain (U.S. government work). 9:16 crop of the handshake.
+- `elvis-nixon-elvis.jpg` — same White House photograph, 9:16 crop on Elvis.
+- `elvis-oval-1970.jpg` — [Elvis_Presley_1970.jpg](https://commons.wikimedia.org/wiki/File:Elvis_Presley_1970.jpg). Ollie Atkins, White House, 1970. Public domain (U.S. government work). 9:16 crop of the portrait.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/elvis-post.txt`](../catalog/elvis-post.txt).
+
+# LHC first beam collage, 2007–2021
+
+Poster still: `lhc-aerial-2008.jpg`. Collage slides:
+
+- `lhc-aerial-2008.jpg` — [CERN_Aerial_View.jpg](https://commons.wikimedia.org/wiki/File:CERN_Aerial_View.jpg). Maximilien Brice / CERN, 15 July 2008. CC BY-SA 3.0. 9:16 crop of the Geneva basin with the 27 km ring overlay.
+- `lhc-tunnel-2009.jpg` — [Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg). Maximilien Brice / CERN, 5 October 2009. CC BY-SA 3.0. 9:16 crop down the tunnel.
+- `lhc-cms-2019.jpg` — [CERN_LHC_CMS_07.jpg](https://commons.wikimedia.org/wiki/File:CERN_LHC_CMS_07.jpg). SimonWaldherr, 15 September 2019. CC BY-SA 4.0. 9:16 crop of CMS at Point 5.
+- `lhc-atlas-2007.jpg` — [Atlas_detector_CERN_feb2007.jpg](https://commons.wikimedia.org/wiki/File:Atlas_detector_CERN_feb2007.jpg). Sindre Skrede, 13 February 2007. Public domain. 9:16 crop of ATLAS under construction.
+- `lhc-atlas-2019.jpg` — [CERN_LHC_ATLAS_Detector.jpg](https://commons.wikimedia.org/wiki/File:CERN_LHC_ATLAS_Detector.jpg). SimonWaldherr, 14 September 2019. CC BY-SA 4.0. 9:16 crop of ATLAS at Point 1.
+- `lhc-alice-2021.jpg` — [ALICE_experiment_at_CERN.jpg](https://commons.wikimedia.org/wiki/File:ALICE_experiment_at_CERN.jpg). Andres T, 14 December 2021. CC BY-SA 2.0. 9:16 crop of ALICE at Point 2.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/lhc-post.txt`](../catalog/lhc-post.txt).
+
+# 9/11 25th anniversary collage, 2001–2024
+
+Poster still: `wtc-aerial-2001.jpg`. Collage slides:
+
+- `wtc-aerial-2001.jpg` — [World_Trade_Center,_New_York_City_-_aerial_view_(March_2001).jpg](https://commons.wikimedia.org/wiki/File:World_Trade_Center,_New_York_City_-_aerial_view_(March_2001).jpg). Jeffmock, March 2001. Public domain. 9:16 crop of both towers.
+- `911-iss-plume.jpg` — [Manhattan_smoke_plume_on_September_11,_2001_from_International_Space_Station_(Expedition_3_crew).jpg](https://commons.wikimedia.org/wiki/File:Manhattan_smoke_plume_on_September_11,_2001_from_International_Space_Station_(Expedition_3_crew).jpg). NASA / ISS Expedition 3, 11 September 2001. Public domain. 9:16 crop on the plume over Lower Manhattan.
+- `911-pentagon.jpg` — [US_Navy_010911-N-1350W-022_Pentagon_on_night_of_Sep._11_attack.jpg](https://commons.wikimedia.org/wiki/File:US_Navy_010911-N-1350W-022_Pentagon_on_night_of_Sep._11_attack.jpg). Photographer’s Mate 2nd Class Lisa Borges / U.S. Navy, 11 September 2001. Public domain. 9:16 crop of the Pentagon and Capitol.
+- `911-ground-zero.jpg` — [September_17_2001_Ground_Zero_01.jpg](https://commons.wikimedia.org/wiki/File:September_17_2001_Ground_Zero_01.jpg). Chief Photographer’s Mate Eric J. Tilford / U.S. Navy, 17 September 2001. Public domain. 9:16 crop of the remaining facade.
+- `911-flight93.jpg` — [Flight_93_National_Memorial_aerial_20241223_(12).jpg](https://commons.wikimedia.org/wiki/File:Flight_93_National_Memorial_aerial_20241223_(12).jpg). Designism, 23 December 2024. CC0. 9:16 crop of the circular memorial at Shanksville.
+- `911-fema-booher.jpg` — [FEMA_-_5374_-_Photograph_by_Andrea_Booher_taken_on_09-22-2001_in_New_York.jpg](https://commons.wikimedia.org/wiki/File:FEMA_-_5374_-_Photograph_by_Andrea_Booher_taken_on_09-22-2001_in_New_York.jpg). Andrea Booher / FEMA, 22 September 2001. Public domain. 9:16 crop of search teams.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/september-11-post.txt`](../catalog/september-11-post.txt).
+
+# Star-Spangled Banner collage, 1814–2024
+
+Poster still: `star-spangled-flag-1873.jpg`. Collage slides:
+
+- `star-spangled-flag-1873.jpg` — [Fort_McHenry_flag.jpg](https://commons.wikimedia.org/wiki/File:Fort_McHenry_flag.jpg). George Henry Preble, 1873. Public domain. 9:16 crop of the garrison flag with a soldier for scale.
+- `fort-mchenry-bombardment.jpg` — John Bower, *A view of the bombardment of Fort McHenry*, morning of 13 September 1814. Library of Congress. Public domain. 9:16 crop on the harbor, ships, and bombs bursting in air.
+- `francis-scott-key.jpg` — [Francis_Scott_Key_(NPG).jpg](https://commons.wikimedia.org/wiki/File:Francis_Scott_Key_(NPG).jpg). Rembrandt Peale, c. 1796. National Portrait Gallery. Public domain. 9:16 crop of the portrait.
+- `fort-mchenry-interior.jpg` — [Fort_McHenry_Interior.jpg](https://commons.wikimedia.org/wiki/File:Fort_McHenry_Interior.jpg). Northern-Virginia-Photographer, 25 August 2024. CC0. 9:16 crop of the 15-star flag on the parade ground.
+- `star-spangled-repair.jpg` — [Repair_Work_on_Star-Spangled_Banner.jpg](https://commons.wikimedia.org/wiki/File:Repair_Work_on_Star-Spangled_Banner.jpg). Smithsonian Institution, 1914. Public domain. 9:16 crop of seamstresses stitching the flag.
+- `star-spangled-smithsonian.jpg` — [Star-Spangled_Banner_in_West_Wing_of_Smithsonian_Institution_Building.jpg](https://commons.wikimedia.org/wiki/File:Star-Spangled_Banner_in_West_Wing_of_Smithsonian_Institution_Building.jpg). Smithsonian Institution, 1914. Public domain. 9:16 crop of the flag laid out in the Castle.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/star-spangled-banner-post.txt`](../catalog/star-spangled-banner-post.txt).
+
+# Teddy Roosevelt collage, 1898–2023
+
+Poster still: `teddy-roosevelt-1904.jpg`. Collage slides:
+
+- `teddy-roosevelt-1904.jpg` — [President_Theodore_Roosevelt,_1904.jpg](https://commons.wikimedia.org/wiki/File:President_Theodore_Roosevelt,_1904.jpg). Pach Brothers, 1904. Public domain. 9:16 crop of the portrait.
+- `teddy-wilcox-house.jpg` — [Theodore_Roosevelt_Inaugural_National_Historic_Site.jpg](https://commons.wikimedia.org/wiki/File:Theodore_Roosevelt_Inaugural_National_Historic_Site.jpg). Kenneth C. Zirkel, 14 October 2023. CC BY 4.0. 9:16 crop of the statue and Wilcox House in Buffalo.
+- `teddy-rough-riders.jpg` — [Colonel Roosevelt and his Rough Riders at the top of the hill which they captured, Battle of San Juan](https://commons.wikimedia.org/wiki/File:Colonel_Roosevelt_and_his_Rough_Riders_at_the_top_of_the_hill_which_they_captured,_Battle_of_San_Juan)_-_by_William_Dinwiddie_LCCN96521936.jpg). William Dinwiddie, 1898. Public domain. 9:16 crop on Roosevelt and the flag.
+- `teddy-rough-rider.jpg` — [Portrait of Theodore Roosevelt in his Rough Rider Uniform](https://commons.wikimedia.org/wiki/File:Portrait_of_Theodore_Roosevelt_in_his_Rough_Rider_Uniform_(48341021-0c13-4f5e-8700-1101b046f578).jpg). Fedor Encke, 1902 (NPS photograph of the painting). Public domain. 9:16 crop inside the frame.
+- `teddy-panama-canal.jpg` — [Pres. Theodore Roosevelt on steam-powered digging machine during construction of the Panama Canal](https://commons.wikimedia.org/wiki/File:Pres._Theodore_Roosevelt_on_steam-powered_digging_machine_during_construction_of_the_Panama_Canal_LCCN2002714444.jpg). Underwood & Underwood, 1906. Public domain. 9:16 crop on Roosevelt in the cab.
+- `teddy-muir-yosemite.jpg` — [Muir_and_Roosevelt_restored.jpg](https://commons.wikimedia.org/wiki/File:Muir_and_Roosevelt_restored.jpg). Underwood & Underwood, 1903. Public domain. 9:16 crop of Roosevelt and Muir at Glacier Point.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/teddy-roosevelt-post.txt`](../catalog/teddy-roosevelt-post.txt).
+
+# El Grito collage, 1810–2021
+
+Poster still: `hidalgo-estandarte.jpg`. Collage slides:
+
+- `hidalgo-estandarte.jpg` — [Miguel_Hidalgo_con_estandarte.jpg](https://commons.wikimedia.org/wiki/File:Miguel_Hidalgo_con_estandarte.jpg). Antonio Fabrés, 1905. Public domain. 9:16 crop of Hidalgo with the Guadalupe banner.
+- `dolores-church.jpg` — [Parroquia_de_Nuestra_Señora_de_los_Dolores_-_Dolores_Hidalgo,_Guanajuato,_México.jpg](https://commons.wikimedia.org/wiki/File:Parroquia_de_Nuestra_Se%C3%B1ora_de_los_Dolores_-_Dolores_Hidalgo,_Guanajuato,_M%C3%A9xico.jpg). Juan Carlos Fonseca Mata, 2019. CC BY-SA 4.0. 9:16 crop of the parish facade.
+- `hidalgo-grito.jpg` — [El_cura_D._Miguel_Hidalgo_proclama_la_Independencia_Nacional_en_Dolores.jpg](https://commons.wikimedia.org/wiki/File:El_cura_D._Miguel_Hidalgo_proclama_la_Independencia_Nacional_en_Dolores,_a_la_madrugada_del_16_de_septiembre_de_1810,_no_obstante_que_no_ten%C3%ADa_terminados_a%C3%BAn_los_preparativos_para_la_revoluci%C3%B3n.jpg). Adrián Unzueta, 1910. Public domain. 9:16 crop of the dawn shout.
+- `hidalgo-1865.jpg` — [Generalísimo_Miguel_Hidalgo_y_Costilla.png](https://commons.wikimedia.org/wiki/File:General%C3%ADsimo_Miguel_Hidalgo_y_Costilla.png). Joaquín Ramírez, 1865. Public domain. 9:16 crop of the seated priest.
+- `hidalgo-guadalupe.jpg` — [Estandarte_2_de_Miguel_Hidalgo_MNH.jpg](https://commons.wikimedia.org/wiki/File:Estandarte_2_de_Miguel_Hidalgo_MNH.jpg). Sarumo74, 2014. CC BY-SA 4.0. 9:16 crop of Hidalgo’s Guadalupe standard.
+- `angel-independencia.jpg` — [Angel_de_la_independencia170409.jpg](https://commons.wikimedia.org/wiki/File:Angel_de_la_independencia170409.jpg). Cvmontuy, 2017. CC BY-SA 4.0. 9:16 crop of the Angel of Independence column.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/el-grito-post.txt`](../catalog/el-grito-post.txt).
+
+# Pirates collage, 1724–1920
+
+Poster still: `blackbeard-capture.jpg`. Collage slides:
+
+- `blackbeard-capture.jpg` — [The_Capture_of_the_Pirate_Blackbeard.jpg](https://commons.wikimedia.org/wiki/File:The_Capture_of_the_Pirate_Blackbeard.jpg). Jean Leon Gerome Ferris, 1920. Public domain. 9:16 crop of Blackbeard and Maynard.
+- `pirate-galleon.jpg` — [Attack_on_a_Galleon.jpg](https://commons.wikimedia.org/wiki/File:Attack_on_a_Galleon.jpg). Howard Pyle, 1905. Public domain. 9:16 crop of the pirate sloop under the galleon stern.
+- `blackbeard-1724.jpg` — [Blackbeard_the_Pirate.jpg](https://commons.wikimedia.org/wiki/File:Blackbeard_the_Pirate.jpg). Benjamin Cole, 1724. Public domain. 9:16 crop of the engraving, fuses in the hat.
+- `pirate-handsome.jpg` — [Pyle_pirate_handsome.jpg](https://commons.wikimedia.org/wiki/File:Pyle_pirate_handsome.jpg). Howard Pyle, 1905. Public domain. 9:16 crop of the buccaneer with a red cloak.
+- `pirate-duel.jpg` — [Pg_104_-_Who_Shall_be_Captain_(color).jpg](https://commons.wikimedia.org/wiki/File:Pg_104_-_Who_Shall_be_Captain_(color).jpg). Howard Pyle, 1911. Public domain. 9:16 crop of the beach fight over the chest.
+- `pirate-fight.jpg` — [Pyle_Barbe_Noire.jpg](https://commons.wikimedia.org/wiki/File:Pyle_Barbe_Noire.jpg). Howard Pyle, 1894. Public domain. 9:16 crop of the boarding fight.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/pirate-day-post.txt`](../catalog/pirate-day-post.txt).
+
+# Billie Jean collage, 1951–2016
+
+Poster still: `billie-jean-litter.jpg`. Collage slides:
+
+- `billie-jean-litter.jpg` — [Billie_Jean_King_carried_onto_court.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_carried_onto_court.jpg). Associated Press, 20 September 1973. Public domain (PD-US-no-notice). 9:16 crop of King on the gold litter.
+- `billie-jean-riggs-1973.jpg` — [Billie_Jean_King_and_Bobby_Riggs_1973.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_and_Bobby_Riggs_1973.jpg). 1973 press still. Public domain (PD-US-no-notice). 9:16 crop of the duo portrait.
+- `bobby-riggs-1951.jpg` — [Bobby_Riggs_1951.jpg](https://commons.wikimedia.org/wiki/File:Bobby_Riggs_1951.jpg). *Los Angeles Daily News*, 1951. Public domain (PD-US-no-notice). 9:16 crop of the tennis hustler.
+- `astrodome-houston.jpg` — [The_Astrodome_the_world's_first_domed_stadium_Houston_Texas_LCCN2011633917.jpg](https://commons.wikimedia.org/wiki/File:The_Astrodome_the_world%27s_first_domed_stadium_Houston_Texas_LCCN2011633917.jpg). Carol M. Highsmith / Library of Congress. Public domain. 9:16 crop of the dome.
+- `billie-jean-2009.jpg` — [Billie_Jean_King_Cover_Photo.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King_Cover_Photo.jpg). Jonathan Exley, 2009. CC0. 9:16 crop of the posed portrait.
+- `billie-jean-2016.jpg` — [Billie_Jean_King,_2016.jpg](https://commons.wikimedia.org/wiki/File:Billie_Jean_King,_2016.jpg). Gage Skidmore, 2016. CC BY-SA 2.0. 9:16 crop of King laughing.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/billie-jean-post.txt`](../catalog/billie-jean-post.txt).
+
+# Rosetta FACT/WHACK collage, 1803–2014
+
+Poster still: `rosetta-stone.jpg`. Collage slides:
+
+- `rosetta-stone.jpg` — [The_Rosetta_Stone.jpg](https://commons.wikimedia.org/wiki/File:The_Rosetta_Stone.jpg). Donald Macbeth, 1922. Public domain. 9:16 crop of the broken slab.
+- `champollion-1831.jpg` — [Jean-François_Champollion,_by_Léon_Cogniet.jpg](https://commons.wikimedia.org/wiki/File:Jean-Fran%C3%A7ois_Champollion,_by_L%C3%A9on_Cogniet.jpg). Léon Cogniet, 1831. Public domain. 9:16 crop of the portrait.
+- `fort-julien.jpg` — [Fort_Julien_with_an_Egyptian_Boat.jpg](https://commons.wikimedia.org/wiki/File:Fort_Julien_with_an_Egyptian_Boat.jpg). After Francis Brockell Spilsbury, 1803. Public domain. 9:16 crop of the Nile fort.
+- `rosetta-glyphs.jpg` — [Detail_of_Rosetta_Stone.JPG](https://commons.wikimedia.org/wiki/File:Detail_of_Rosetta_Stone.JPG). ProtoplasmaKid, 2014. CC BY-SA 4.0. 9:16 crop of the three scripts.
+- `lettre-dacier.jpg` — [Lettre_à_M._Dacier_(1822).jpg](https://commons.wikimedia.org/wiki/File:Lettre_%C3%A0_M._Dacier_(1822).jpg). Firmin Didot, 1822. Public domain. 9:16 crop of the title page.
+- `philae-temple.jpg` — [Philae_Temple_R03.jpg](https://commons.wikimedia.org/wiki/File:Philae_Temple_R03.jpg). Marc Ryckaert, 2012. CC BY 3.0. 9:16 crop of the Isis pylon.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/rosetta-post.txt`](../catalog/rosetta-post.txt).
+
+# Tylenol FACT/WHACK collage, 1975–2018
+
+Poster still: `tylenol-burke-1982.jpg`. Collage slides:
+
+- `tylenol-burke-1982.jpg` — [James_E._Burke_holding_Tylenol_bottle_in_1982.jpg](https://commons.wikimedia.org/wiki/File:James_E._Burke_holding_Tylenol_bottle_in_1982.jpg). Suzanne Vlamis, 1982. Public domain. 9:16 crop of the chief executive with the bottle.
+- `chicago-sears-tower.jpg` — [Chicago_Sears_Tower.jpg](https://commons.wikimedia.org/wiki/File:Chicago_Sears_Tower.jpg). Daniel Schwen, 2008. CC BY-SA 4.0. 9:16 crop of the tower.
+- `tylenol-osco-1975.jpg` — [1975_Osco_Tylenol_ad.jpg](https://commons.wikimedia.org/wiki/File:1975_Osco_Tylenol_ad.jpg). Osco, 1975. Public domain. 9:16 crop of the shelf ad.
+- `tylenol-capsules.jpg` — [Extra_Strength_Tylenol_and_Tylenol_PM.jpg](https://commons.wikimedia.org/wiki/File:Extra_Strength_Tylenol_and_Tylenol_PM.jpg). Ragesoss, 2008. CC BY-SA 4.0. 9:16 crop of opened bottles.
+- `tylenol-bottle.jpg` — [Tylenol_bottle_closeup.jpg](https://commons.wikimedia.org/wiki/File:Tylenol_bottle_closeup.jpg). Colin, 2008. CC BY-SA 2.0. 9:16 crop of a sealed bottle.
+- `tamper-seal.jpg` — [Tamper_evident_seal_on_OTC_pharmaceutical.jpg](https://commons.wikimedia.org/wiki/File:Tamper_evident_seal_on_OTC_pharmaceutical.jpg). Rlsheehan, 2018. CC BY-SA 4.0. 9:16 crop of the cap seal.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/tylenol-post.txt`](../catalog/tylenol-post.txt).
+
+# James Dean FACT/WHACK collage, 1953–2018
+
+Poster still: `james-dean-1955.jpg`. Collage slides:
+
+- `james-dean-1955.jpg` — [James_Dean_ca_1955.jpg](https://commons.wikimedia.org/wiki/File:James_Dean_ca_1955.jpg). Studio publicity, c. 1955. Public domain. 9:16 crop of the leather-jacket portrait.
+- `porsche-550-spyder.jpg` — [Porsche_550,_Bj._1956,_vorn_Seite_(2018-06-30_Sp).JPG](https://commons.wikimedia.org/wiki/File:Porsche_550,_Bj._1956,_vorn_Seite_(2018-06-30_Sp).JPG). Lothar Spurzem, 2018. CC BY-SA 2.0. 9:16 crop of a Porsche 550 Spyder, not Dean’s car.
+- `james-dean-speedster.jpg` — [James_Dean_and_Porsche_Speedster_23F_at_Palm_Springs_Races_March,_1955.jpg](https://commons.wikimedia.org/wiki/File:James_Dean_and_Porsche_Speedster_23F_at_Palm_Springs_Races_March,_1955.jpg). Chad White. CC BY-SA 3.0. 9:16 crop of Dean racing a Speedster.
+- `james-dean-giant-set.jpg` — [James_Dean_%26_George_Stevens_on_set_of_Giant_(1955).jpg](https://commons.wikimedia.org/wiki/File:James_Dean_%26_George_Stevens_on_set_of_Giant_(1955).jpg). Times staff, 1955. Public domain. 9:16 crop of Dean on the Giant set.
+- `james-dean-1953.jpg` — [James_Dean_-_publicity_-_early.JPG](https://commons.wikimedia.org/wiki/File:James_Dean_-_publicity_-_early.JPG). Studio publicity, c. 1953. Public domain. 9:16 crop of the early headshot.
+- `james-dean-memorial.jpg` — [James_Dean_monument.JPG](https://commons.wikimedia.org/wiki/File:James_Dean_monument.JPG). Public domain. 9:16 crop of the Cholame memorial.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/james-dean-post.txt`](../catalog/james-dean-post.txt).
+
+# Model T FACT/WHACK collage, 1909–2021
+
+Poster still: `model-t-1909.jpg`. Collage slides:
+
+- `model-t-1909.jpg` — [Ford_Model_T_Touring_(1909)_Classic-Gala_2021_1X7A0211.jpg](https://commons.wikimedia.org/wiki/File:Ford_Model_T_Touring_(1909)_Classic-Gala_2021_1X7A0211.jpg). Alexander Migl, 2021. CC BY-SA 4.0. 9:16 crop of a red 1909 touring.
+- `henry-ford-1919.jpg` — [Henry_ford_1919.jpg](https://commons.wikimedia.org/wiki/File:Henry_ford_1919.jpg). Fred Hartsook, 1919. Public domain. 9:16 crop of the portrait.
+- `model-t-1912.jpg` — [Ford_T,_Bj._1912_(2017-07-02_Sp).JPG](https://commons.wikimedia.org/wiki/File:Ford_T,_Bj._1912_(2017-07-02_Sp).JPG). Lothar Spurzem, 2017. CC BY-SA 2.0. 9:16 crop of a maroon 1912 touring.
+- `ford-assembly-1913.jpg` — [Ford_assembly_line_-_1913.jpg](https://commons.wikimedia.org/wiki/File:Ford_assembly_line_-_1913.jpg). Unknown, 1913. Public domain. 9:16 crop of the Highland Park magneto line.
+- `ford-chassis-line.jpg` — [Assembly_line_at_the_Ford_Motor_Company%27s_Highland_Park_plant_LCCN2011661021.jpg](https://commons.wikimedia.org/wiki/File:Assembly_line_at_the_Ford_Motor_Company%27s_Highland_Park_plant_LCCN2011661021.jpg). Library of Congress, 1913. Public domain. 9:16 crop of the chassis line.
+- `model-t-red-1909.jpg` — [1909_Ford_Model_T_Touring_(6829458593).jpg](https://commons.wikimedia.org/wiki/File:1909_Ford_Model_T_Touring_(6829458593).jpg). Iwao, 2012. CC BY 2.0. 9:16 crop of a red brass-era touring.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/model-t-post.txt`](../catalog/model-t-post.txt).
+
+# Freddie collage, 1975–1985
+
+Poster still: `freddie-1975.jpg`. Collage slides:
+
+- `freddie-1975.jpg` — [Freddie_Mercury_2_(1975_Elektra_publicity_photo).png](https://commons.wikimedia.org/wiki/File:Freddie_Mercury_2_(1975_Elektra_publicity_photo).png). Koh Hasebe, 1975. Public domain. 9:16 crop of the Elektra portrait.
+- `freddie-1977.jpg` — [Queen_News_Of_The_World_(1977_Press_Kit_Photo_04)_Freddie_Mercury.jpg](https://commons.wikimedia.org/wiki/File:Queen_News_Of_The_World_(1977_Press_Kit_Photo_04)_Freddie_Mercury.jpg). Christopher Hopper, 1977. Public domain. 9:16 crop of the press-kit portrait.
+- `freddie-1977-scarf.jpg` — [Queen_News_Of_The_World_(1977_Press_Kit_Photo_01).jpg](https://commons.wikimedia.org/wiki/File:Queen_News_Of_The_World_(1977_Press_Kit_Photo_01).jpg). Christopher Hopper, 1977. Public domain. 9:16 crop of Mercury at the left of the brick-wall group.
+- `freddie-1977-stage.jpg` — [Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg](https://commons.wikimedia.org/wiki/File:Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg). Carl Lender, 1977. CC BY-SA 3.0. 9:16 crop of the New Haven show.
+- `freddie-queen-1985.jpg` — [Queen_(1985_Live_Aid_publicity_photo).png](https://commons.wikimedia.org/wiki/File:Queen_(1985_Live_Aid_publicity_photo).png). David Bailey, 1985. Public domain (PD-US-1978-89 publicity still). 9:16 crop of the Live Aid promo, Mercury in front.
+- `freddie-harlequin.jpg` — [Queen_(15383194666).jpg](https://commons.wikimedia.org/wiki/File:Queen_(15383194666).jpg). Carl Lender, 1977. CC BY 2.0. 9:16 crop of the harlequin suit.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/freddie-post.txt`](../catalog/freddie-post.txt).
+
+# 395-episode catalog
+
+Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
