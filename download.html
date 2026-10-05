@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download JSON</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #111; color: #fff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  button {
+    display: block; width: 100%; height: 100%;
+    font-size: 28px; font-weight: 700; border: 0; color: #fff;
+    background: #0a84ff; cursor: pointer;
+  }
+  p { position: absolute; left: 16px; right: 16px; bottom: 24px; text-align: center; font-size: 16px; }
+</style>
+</head>
+<body>
+<button id="dl" type="button">Download JSON</button>
+<p id="msg"></p>
+<script>
+const text = "{\n  \"name\": \"Melusine / Double Koyan / Oberon (Bond Teatime)\",\n  \"skillCommand\": \"j4#a1#b1#c13#g3#h3#i3#4,5,6,#\\nb2#c23#e13#f13#4,5,6,#\\nx14#a3#b3#c3#j#4,5,6,#\",\n  \"support\": {\n    \"classPreference\": \"Assassin\",\n    \"servants\": [\"koyanskaya_light\"],\n    \"ces\": [\"chaldea_teatime\"],\n    \"maxSkills\": true,\n    \"mlb\": true\n  },\n  \"party\": 1\n}\n";
+function save() {
+  const blob = new Blob([text], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "melusine-double-koyan-oberon-bond-teatime.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  document.getElementById("msg").textContent = "If nothing saved, check Downloads or the Files app.";
+}
+document.getElementById("dl").addEventListener("click", save);
+</script>
+</body>
+</html>
