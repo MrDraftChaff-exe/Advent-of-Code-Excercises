@@ -1,0 +1,12 @@
+{
+  "name": "Melusine / Double Koyan / Oberon (Bond Teatime)",
+  "skillCommand": "j4#a1#b1#c13#g3#h3#i3#4,5,6,#\nb2#c23#e13#f13#4,5,6,#\nx14#a3#b3#c3#j#4,5,6,#",
+  "support": {
+    "classPreference": "Assassin",
+    "servants": ["koyanskaya_light"],
+    "ces": ["chaldea_teatime"],
+    "maxSkills": true,
+    "mlb": true
+  },
+  "party": 1
+}
