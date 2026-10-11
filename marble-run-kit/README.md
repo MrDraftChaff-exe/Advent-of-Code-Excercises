@@ -72,7 +72,7 @@ Tracks do not plug into each other. The end of an upper track is aimed at the st
 Files:
 
 - `stl/*.stl` — one of each piece, already oriented for the bed.
-- `plates/starter-220-*.stl` — the starter set on 10 plates of 220 × 220 mm. Most of the pieces on those plates are tower posts.
+- `plates/starter-220-*.stl` — the starter set on 9 plates of 220 × 220 mm. Most of the pieces on those plates are tower posts.
 - `images/plates.png` — what is on each plate.
 
 ![Plate layouts](images/plates.png)

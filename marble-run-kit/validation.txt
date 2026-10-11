@@ -33,7 +33,7 @@ export FIT x1
 export LG x1
 
 part check
-  FN       70.0 x   70.0 x  26.0 mm  overhang    276 mm2  OK
+  FN       92.0 x   70.0 x  26.0 mm  overhang    256 mm2  OK
   T1      116.0 x   57.2 x  15.2 mm  overhang    254 mm2  OK
   T2      156.0 x   57.2 x  15.2 mm  overhang    253 mm2  OK
   T3      196.0 x   57.2 x  15.2 mm  overhang    250 mm2  OK
@@ -63,7 +63,7 @@ part check
   SN-C     12.0 x   12.0 x   3.2 mm  overhang     23 mm2  OK
   PS       28.0 x   28.0 x  27.2 mm  overhang    495 mm2  OK
   BF       46.0 x   46.0 x  11.2 mm  overhang      3 mm2  OK
-  BX       87.2 x   64.0 x  28.0 mm  overhang    313 mm2  OK
+  BX      109.0 x   64.0 x  28.0 mm  overhang    294 mm2  OK
   FIT      96.0 x   57.2 x  15.2 mm  overhang    254 mm2  OK
   LG      168.0 x   48.0 x   8.0 mm  overhang      0 mm2  OK
 
@@ -75,24 +75,22 @@ hinge and marble
   seesaw with glass marble -73.5 g·mm (tips if < 0)
   seesaw with steel bearing -276.9 g·mm
 
-starter set packs onto 10 plates of 220 x 220 mm
-  plate 1: 9 pieces, starter-220-1of10.stl
+starter set packs onto 9 plates of 220 x 220 mm
+  plate 1: 9 pieces, starter-220-1of9.stl
     EL-C, PS, SN-C, SW-P, T3
-  plate 2: 9 pieces, starter-220-2of10.stl
+  plate 2: 9 pieces, starter-220-2of9.stl
     PS, T3
-  plate 3: 11 pieces, starter-220-3of10.stl
+  plate 3: 11 pieces, starter-220-3of9.stl
     BF, LG, LP-C, LP-D, PS, SN-W, T2
-  plate 4: 7 pieces, starter-220-4of10.stl
-    BF, BX, PS, SN-B, T2
-  plate 5: 9 pieces, starter-220-5of10.stl
-    MG, PS, T1, WF, YS
-  plate 6: 5 pieces, starter-220-6of10.stl
-    FN, LD, SW-B, T1, ZZ
-  plate 7: 6 pieces, starter-220-7of10.stl
-    CL, EL-B, EL-W, FIT, JP
-  plate 8: 3 pieces, starter-220-8of10.stl
-    CU, LP-B, SP
-  plate 9: 3 pieces, starter-220-9of10.stl
-    CR, LP-A
-  plate 10: 2 pieces, starter-220-10of10.stl
-    SW-A, WF-C
+  plate 4: 7 pieces, starter-220-4of9.stl
+    BF, PS, SN-B, T2, WF
+  plate 5: 9 pieces, starter-220-5of9.stl
+    LD, MG, PS, T1, YS
+  plate 6: 5 pieces, starter-220-6of9.stl
+    EL-W, FN, SW-B, T1, ZZ
+  plate 7: 6 pieces, starter-220-7of9.stl
+    CL, EL-B, FIT, JP, SW-A
+  plate 8: 4 pieces, starter-220-8of9.stl
+    BX, CR, LP-B, SP
+  plate 9: 4 pieces, starter-220-9of9.stl
+    CR, CU, LP-A, WF-C

@@ -115,7 +115,8 @@ module part_fn() {
                 linear_extrude(1.0)
                     text_line(str("x", mark_qty), 3.6);
     }
-    translate([28, 0, 0]) hinge_male_at(0, 0, 0);
+    translate([44, 0, 0]) rz(180) end_pin();
+    translate([44, 0, 0]) rz(180) end_clip();
 }
 
 module part_ld() {
@@ -158,7 +159,8 @@ module part_bx() {
         inlet_step_cut();
         side_label(6, qty_lines("BX", mark_qty), 4.0);
     }
-    hinge_female_at(0, 0, 0);
+    translate([-clip_reach, 0, 0]) end_pin();
+    translate([-clip_reach, 0, 0]) end_clip();
 }
 
 // ---------- jump ----------
