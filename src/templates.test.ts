@@ -590,6 +590,30 @@ describe("templates", () => {
     expect(canvasHeadlineText(freddie!)).not.toMatch(/\b422\b/);
   });
 
+  it("ships an SNL extra without the chip format or replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const snl = TEMPLATES.find((t) => t.id === "snl");
+    expect(snl).toBeDefined();
+    expect(snl?.title).toBe("SNL");
+    expect(snl?.year).toBe("1975");
+    expect(snl?.format).toBeUndefined();
+    expect(snl?.imageUrl).toContain("snl-carlin-1975");
+    expect(snl?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(snl?.imageCredit).toMatch(/Little David/);
+    expect(snl?.theme).toBe("ember");
+    expect(snl?.durationSec).toBe(60);
+    expect(snl?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(snl?.bullets[0]).toMatch(/George Carlin/);
+    expect(snl?.bullets[1]).toMatch(/no sketches/);
+    expect(snl?.bullets[11]).toMatch(/51 years ago tonight/);
+    expect(snl?.postCaption).toMatch(/would not do a sketch/);
+    expect(snl?.postCaption).toContain("@FactsOrWhacks");
+    expect(snl?.hashtags).toContain("#SNL");
+    expect(snl?.hashtags).not.toContain("#FreddieMercury");
+    expect(canvasHeadlineText(snl!)).toBe("SNL");
+    expect(canvasHeadlineText(snl!)).not.toMatch(/\b423\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

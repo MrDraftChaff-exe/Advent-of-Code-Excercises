@@ -703,6 +703,13 @@ export default function App() {
             >
               Freddie caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/snl-post.txt"
+              download="snl-post.txt"
+            >
+              SNL caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

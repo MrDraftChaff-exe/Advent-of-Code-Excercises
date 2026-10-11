@@ -310,6 +310,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("Everybody is searching")).toBe(true);
   });
 
+  it("uses the SNL caption as the paste block", () => {
+    const snl = TEMPLATES.find((t) => t.id === "snl");
+    expect(snl).toBeDefined();
+    const caption = buildPasteCaption(snl!);
+    expect(caption).toContain("would not do a sketch");
+    expect(caption).toContain("New York went live");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#SNL");
+    expect(caption.startsWith("The first host would not")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

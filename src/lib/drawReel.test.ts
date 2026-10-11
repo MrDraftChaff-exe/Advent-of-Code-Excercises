@@ -519,6 +519,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#LiveAid/);
   });
 
+  it("keeps the SNL post caption off the phone frame", () => {
+    const snl = TEMPLATES.find((t) => t.id === "snl");
+    expect(snl?.postCaption).toMatch(/would not do a sketch/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, snl!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("SNL");
+    expect(painted).toContain("George Carlin");
+    expect(painted).toContain("Studio 8H");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("would not do a sketch");
+    expect(painted).not.toContain("New York went live");
+    expect(painted).not.toMatch(/\bWHACK\b/);
+    expect(painted).not.toMatch(/#SaturdayNightLive/);
+    expect(painted).not.toMatch(/#Studio8H/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

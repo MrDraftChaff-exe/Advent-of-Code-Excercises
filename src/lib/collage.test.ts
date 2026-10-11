@@ -170,6 +170,25 @@ describe("collage beats", () => {
     ]);
   });
 
+  it("collages the SNL extra as six two-fact beats", () => {
+    const snl = TEMPLATES.find((t) => t.id === "snl");
+    expect(snl).toBeDefined();
+    expect(usesCollage(snl!)).toBe(true);
+    expect(reelSlides(snl!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(snl!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/George Carlin/);
+    expect(beats[5].facts[1]).toMatch(/51 years ago tonight/);
+    expect(beats.map((beat) => beat.imageUrl)).toEqual([
+      "/images/snl-carlin-1975.jpg",
+      "/images/snl-chevy-1980.jpg",
+      "/images/snl-belushi-1976.jpg",
+      "/images/snl-kaufman-1979.jpg",
+      "/images/snl-gilda-1979.jpg",
+      "/images/snl-30-rock-1933.jpg",
+    ]);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

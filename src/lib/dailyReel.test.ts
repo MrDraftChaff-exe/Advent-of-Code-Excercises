@@ -121,6 +121,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("freddie")).toBe("freddie");
   });
 
+  it("maps October 11 to the SNL extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-11"));
+    expect(reel?.id).toBe("snl");
+    expect(dailyArtifactStem("snl")).toBe("snl");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

@@ -321,6 +321,19 @@ Poster still: `freddie-1975.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/freddie-post.txt`](../catalog/freddie-post.txt).
 
+# SNL collage, 1933–1980
+
+Poster still: `snl-carlin-1975.jpg`. Collage slides:
+
+- `snl-carlin-1975.jpg` — [George_Carlin_1975_(Little_David_Records)_Publicity.jpg](https://commons.wikimedia.org/wiki/File:George_Carlin_1975_(Little_David_Records)_Publicity.jpg). Little David Records, 1975. Public domain. 9:16 crop of the premiere-year portrait.
+- `snl-chevy-1980.jpg` — [Chevy_Chase_1980.jpg](https://commons.wikimedia.org/wiki/File:Chevy_Chase_1980.jpg). Alan Light, 1980. CC BY 2.0. 9:16 crop of Chase at a premiere.
+- `snl-belushi-1976.jpg` — [President_Gerald_R._Ford_Talking_with_Chevy_Chase...NARA_-_30805929.jpg](https://commons.wikimedia.org/wiki/File:President_Gerald_R._Ford_Talking_with_Chevy_Chase,_Saturday_Night_Live_Producer_Lorne_Michaels,_John_Belushi,_Dan_Aykroyd,_and_Others_at_the_32nd_Annual_Radio_and_Television_Correspondents_Association_Dinner_-_NARA_-_30805929.jpg). White House Photographic Office, March 24, 1976. Public domain. 9:16 crop of John Belushi.
+- `snl-kaufman-1979.jpg` — [Andy_Kaufman_1979.jpg](https://commons.wikimedia.org/wiki/File:Andy_Kaufman_1979.jpg). ABC, 1979. Public domain. 9:16 crop of Kaufman as his foreign-man character.
+- `snl-gilda-1979.jpg` — [Gilda_Radner_Saturday_Night_Live_NBC_press_photo_circa_1979.jpg](https://commons.wikimedia.org/wiki/File:Gilda_Radner_Saturday_Night_Live_NBC_press_photo_circa_1979.jpg). NBC, circa 1979. Public domain. 9:16 crop of the press portrait.
+- `snl-30-rock-1933.jpg` — [Rockefeller_Center,_December_1933.jpg](https://commons.wikimedia.org/wiki/File:Rockefeller_Center,_December_1933.jpg). Samuel H. Gottscho, December 5, 1933. Public domain. 9:16 crop of 30 Rockefeller Plaza.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/snl-post.txt`](../catalog/snl-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
