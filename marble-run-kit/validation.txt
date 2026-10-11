@@ -18,23 +18,23 @@ export SF x4
 export LG x1
 
 part check
-  CN     34.0 x   34.0 x  45.2 mm  OK
-  L     204.0 x   92.0 x  14.1 mm  OK
-  M     196.0 x   92.0 x  14.1 mm  OK
-  S     172.0 x   92.0 x  14.1 mm  OK
-  CL    141.8 x  122.0 x  14.1 mm  OK
-  CR    122.0 x  141.8 x  14.1 mm  OK
-  UT     98.2 x  131.8 x  16.1 mm  OK
-  SW    190.0 x   92.0 x  20.1 mm  OK
-  ZZ    180.0 x   92.0 x  14.1 mm  OK
-  WH    164.0 x  144.2 x  18.1 mm  OK
-  BF     72.0 x   72.0 x  18.1 mm  OK
-  VF    124.0 x   78.0 x  31.2 mm  OK
-  CB     95.0 x   68.8 x  20.0 mm  OK
-  YS    144.5 x  114.4 x  14.1 mm  OK
-  MG    144.5 x  114.4 x  14.1 mm  OK
-  SN    210.0 x   79.6 x  18.0 mm  OK
-  SF     98.0 x   65.8 x  20.8 mm  OK
+  CN     32.0 x   32.0 x  34.4 mm  OK
+  L     202.7 x   54.9 x  10.1 mm  OK
+  M     184.7 x   54.9 x  10.1 mm  OK
+  S     156.7 x   54.9 x  10.1 mm  OK
+  CL    116.0 x  112.0 x  10.1 mm  OK
+  CR    112.0 x  116.0 x  10.1 mm  OK
+  UT     91.2 x  110.0 x  16.1 mm  OK
+  SW    166.7 x   54.9 x  16.1 mm  OK
+  ZZ    196.7 x   54.9 x  10.1 mm  OK
+  WH    145.2 x  141.2 x  18.1 mm  OK
+  BF     68.0 x   68.0 x  16.9 mm  OK
+  VF    121.0 x   78.0 x  31.2 mm  OK
+  CB    100.0 x   58.0 x  20.0 mm  OK
+  YS    138.5 x   94.1 x  14.1 mm  OK
+  MG    138.5 x   94.1 x  14.1 mm  OK
+  SN    196.0 x   60.0 x  18.0 mm  OK
+  SF     95.0 x   52.0 x  20.8 mm  OK
   LG     88.0 x   40.0 x   3.2 mm  OK
 
 fit checks (empty means the parts clear)
@@ -47,34 +47,27 @@ fit checks (empty means the parts clear)
   ysfit      empty OK
   hopfit     empty OK
 
-full set packs onto 27 plates of 220 x 220 mm
-  plate 01:   6 pieces  CN, LG, SN
-  plate 02:   2 pieces  L
-  plate 03:   2 pieces  L
-  plate 04:   2 pieces  L
-  plate 05:   2 pieces  L
-  plate 06:   2 pieces  M
-  plate 07:   2 pieces  M
-  plate 08:   2 pieces  M
-  plate 09:   2 pieces  M
-  plate 10:   2 pieces  SW
-  plate 11:   2 pieces  ZZ
-  plate 12:   7 pieces  CN, S
-  plate 13:   7 pieces  CN, S
-  plate 14:   7 pieces  CN, S
-  plate 15:  10 pieces  CN, WH
-  plate 16:  10 pieces  CN, WH
-  plate 17:   6 pieces  BF, CN, VF, YS
-  plate 18:   6 pieces  BF, CN, VF, YS
-  plate 19:   6 pieces  CN, MG, SF
-  plate 20:   6 pieces  CN, MG, SF
-  plate 21:   6 pieces  CB, CL, CN
-  plate 22:   6 pieces  CB, CL, CN
-  plate 23:   8 pieces  BF, CL, CN
-  plate 24:   8 pieces  BF, CN, CR
-  plate 25:   8 pieces  BF, CN, CR
-  plate 26:  12 pieces  CN, CR
-  plate 27:   2 pieces  UT
+full set packs onto 20 plates of 220 x 220 mm
+  plate 01:   9 pieces  CN, L
+  plate 02:   9 pieces  CN, L
+  plate 03:   9 pieces  CN, L, ZZ
+  plate 04:   3 pieces  SN, ZZ
+  plate 05:   9 pieces  CN, M
+  plate 06:   9 pieces  CN, M
+  plate 07:   8 pieces  CN, LG, M, SW
+  plate 08:  14 pieces  CN, S, SW
+  plate 09:  14 pieces  CN, S
+  plate 10:   5 pieces  CB, CN, S, WH
+  plate 11:   5 pieces  CB, CN, WH
+  plate 12:   4 pieces  SF, YS
+  plate 13:   4 pieces  MG, SF
+  plate 14:   8 pieces  BF, CN, VF
+  plate 15:   4 pieces  BF, CL, UT
+  plate 16:   9 pieces  BF, CL, CN
+  plate 17:  15 pieces  CL, CN
+  plate 18:   1 pieces  CR
+  plate 19:   1 pieces  CR
+  plate 20:   1 pieces  CR
 
 printed pieces 140 + 60 marbles = 200
 LG is the gauge card and is not counted in the 200

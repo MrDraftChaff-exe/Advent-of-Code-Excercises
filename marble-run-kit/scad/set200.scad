@@ -23,37 +23,36 @@ marble_d = 16;
 ch_w = marble_d + 3.6;
 wall = 2.4;
 floor_t = 2.2;
-wall_h = 12;
+wall_h = 8;
 outer_w = ch_w + 2 * wall;
 
 // 1.5 in stack pitch, 1 in cylinder. Ring rides on the 1 in neck.
-seated = 38.1;
-cyl_d = 25.4;
-flange_d = 34;
-air = 0.30;
-trap_h = 6.8;
-ring_h = 4.8;
+// Short column segments, about as tall as they are wide, like the colored bands.
+seated = 28;
+cyl_d = 24;
+flange_d = 32;
+air = 0.25;
+trap_h = 5.4;
+ring_h = 3.2;
 shoulder_top = seated - trap_h;
 neck_top = seated - air;
-peg_d = 14.0;
-peg_h = 7.4;
+peg_d = 12.0;
+peg_h = 6.6;
 socket_d = peg_d + 0.40 + fit_extra;
-rib_d = peg_d + 0.90;
-groove_d = socket_d + 1.8;
+rib_d = peg_d + 0.80;
+groove_d = socket_d + 1.6;
 
-ring_id = cyl_d + 0.90 + fit_extra;
-ring_od = 40;
+ring_id = cyl_d + 0.85 + fit_extra;
+ring_od = 34;
 
-lip = 30; // far enough from the post that a 16 mm ball clears the flange
-// The lane runs beside the post, not through it, and sticks past each
-// tower so the next chute can sit underneath the exit.
-path_y = -40;
-past = 20;
-hinge_x = 24;
-hinge_y = 28;
-pin_d = 5.0;
-pin_hole = 6.4 + fit_extra;
-pin_z = 6.2;
+lip = 26; // chute mouth stops here, just outside the column
+hinge_x = 18;
+hinge_y = 16; // small ear on the side of the collar, not a long arm
+pin_d = 4.2;
+pin_hole = 5.4 + fit_extra;
+pin_z = 5.4;
+path_y = 0;
+past = 0;
 
 module rz(a) { rotate([0, 0, a]) children(); }
 
@@ -107,19 +106,20 @@ module connector() {
     }
 }
 
-foot_seat = 4.2 + trap_h;
+foot_seat = 5.2 + trap_h;
 
 module foot() {
     difference() {
         union() {
-            cylinder(d=72, h=4.4, $fn=64);
+            translate([-34, -34, 0]) cube([68, 68, 5]);
+            translate([0, 0, 4.2]) cylinder(d=cyl_d, h=1.4, $fn=48);
             neck_and_peg(foot_seat);
         }
         peg_slot(foot_seat);
     }
-    translate([0, 24, 4.05])
-        linear_extrude(1.0)
-            text_line("BF", 7);
+    translate([0, 22, 4.45])
+        linear_extrude(0.9)
+            text_line("BF", 6);
 }
 
 // ---------- captive ring and hinge ----------
@@ -129,38 +129,30 @@ module ring_only() {
     difference() {
         union() {
             cylinder(d=ring_od, h=ring_h, $fn=48);
-            translate([7, 6, 0])
-                cube([8, 26, ring_h]);
-            translate([7, 25.4, 0])
-                cube([22, 5.2, ring_h]);
+            // Short lug toward the ear. Stays off the chute.
+            translate([10, 13.6, 0])
+                cube([10, 6, ring_h]);
             translate([hinge_x, hinge_y, pin_z])
                 rotate([-90, 0, 0])
-                    cylinder(d=knuckle_d(), h=5.6, center=true, $fn=24);
+                    cylinder(d=knuckle_d(), h=5.2, center=true, $fn=20);
         }
         translate([0, 0, -0.4])
             cylinder(d=ring_id, h=ring_h + 0.8, $fn=48);
-        // Open the cap toward the chute so the floor can reach the post.
-        translate([16.2, -14, -0.6])
-            cube([12, 28, ring_h + 1.2]);
         translate([hinge_x, hinge_y, pin_z])
             rotate([-90, 0, 0])
-                cylinder(d=pin_hole, h=16, center=true, $fn=20);
+                cylinder(d=pin_hole, h=12, center=true, $fn=16);
     }
 }
 
-function knuckle_d() = pin_hole + 3.6;
+function knuckle_d() = pin_hole + 3.2;
 
 module track_pin() {
-    // Pin runs through the inner cheek, the knuckle, and the outer cheek.
-    translate([hinge_x, 26.6, pin_z])
+    translate([hinge_x, hinge_y - 1, pin_z])
         rotate([-90, 0, 0])
-            cylinder(d=pin_d, h=23.2, center=true, $fn=18);
-    translate([19, 9.5, 0])
-        cube([16, 7.2, 9.6]);
-    translate([17, 14.0, 0])
-        cube([14, 10.2, 10]);
-    translate([17, 31.8, 0])
-        cube([14, 8.0, 10]);
+            cylinder(d=pin_d, h=12, center=true, $fn=14);
+    // Cheek from the chute wall up to the knuckle. Stops clear of the collar.
+    translate([hinge_x - 4, outer_w / 2 - wall, 0])
+        cube([14, (hinge_y - 4.0) - (outer_w / 2 - wall), pin_z + 1.4]);
 }
 
 module place_end(x, y, ang) {
@@ -177,20 +169,46 @@ module straight_channel(x0, x1, wh=wall_h, y0=0) {
             cube([x1 - x0, wall, wh]);
 }
 
-module lane_body(span, wh) {
-    straight_channel(-past, span + past, wh, path_y);
-    // Start hinge is on +Y. This arm stays outside the flange.
-    translate([26, -31.2, 0])
-        cube([16, 48, 8]);
-    // End hinge stays on +Y (mirrored, not spun), lane stays on -Y.
-    translate([span - 48, -31.2, 0])
-        cube([22, 50, 8]);
-    for (x0 = [-past, span + past - 14]) {
-        translate([x0, path_y - outer_w / 2, floor_t])
-            cube([14, wall, 10]);
-        translate([x0, path_y + outer_w / 2 - wall, floor_t])
-            cube([14, wall, 10]);
+module inlet_cup() {
+    // Tray behind the column. Kept off the collar so the hinge stays free.
+    r = 34;
+    difference() {
+        union() {
+            for (i = [0:4]) {
+                a0 = 155 + i * 16;
+                a1 = a0 + 16;
+                hull() {
+                    translate([r * cos(a0), r * sin(a0), 0])
+                        cylinder(r=6, h=floor_t, $fn=8);
+                    translate([r * cos(a1), r * sin(a1), 0])
+                        cylinder(r=6, h=floor_t, $fn=8);
+                }
+            }
+            hull() {
+                translate([r * cos(215), r * sin(215), 0])
+                    cylinder(r=4, h=floor_t, $fn=8);
+                translate([-18, -26, 0])
+                    cylinder(r=4, h=floor_t, $fn=8);
+            }
+            hull() {
+                translate([-18, -26, 0])
+                    cylinder(r=4, h=floor_t, $fn=8);
+                translate([24, -20, 0])
+                    cylinder(r=4, h=floor_t, $fn=8);
+            }
+            hull() {
+                translate([24, -20, 0])
+                    cylinder(r=4, h=floor_t, $fn=8);
+                translate([lip, -outer_w / 2, 0])
+                    cube([10, 8, floor_t]);
+            }
+        }
     }
+}
+
+module lane_body(span, wh) {
+    straight_channel(lip, span - lip, wh, 0);
+    inlet_cup();
 }
 
 module flare(x_post, dir) {
@@ -397,16 +415,16 @@ module hopper(top_d, label, tangent=0) {
 module catch() {
     difference() {
         union() {
-            translate([46, 0, 0])
+            translate([54, 0, 0])
                 cylinder(d=58, h=20, $fn=48);
-            straight_channel(lip, 36);
+            straight_channel(lip, 42);
             place_end(0, 0, 0) track_pin();
         }
-        translate([46, 0, 3])
+        translate([54, 0, 3])
             cylinder(d=48, h=20, $fn=48);
         translate([lip, -ch_w / 2, floor_t])
             cube([40, ch_w, wall_h + 4]);
-        translate([46, 0, 18.2])
+        translate([54, 0, 18.2])
             linear_extrude(1.1)
                 text_line("CB", 6);
     }
@@ -545,13 +563,13 @@ module gauge() {
 module build() {
     if (part == "CN") connector();
     else if (part == "BF") foot();
-    else if (part == "S") span_track(132, "S");
-    else if (part == "M") span_track(156, "M");
-    else if (part == "L") span_track(164, "L");
+    else if (part == "S") span_track(100, "S");
+    else if (part == "M") span_track(128, "M");
+    else if (part == "L") span_track(146, "L");
     else if (part == "CL") bend(1);
     else if (part == "CR") bend(-1);
     else if (part == "UT") uturn();
-    else if (part == "SW") span_track(150, "SW", 18);
+    else if (part == "SW") span_track(110, "SW", 14);
     else if (part == "ZZ") bumps(140);
     else if (part == "WH") vortex();
     else if (part == "CB") catch();
@@ -617,8 +635,8 @@ module sloped_chute(span, z_high, drop) {
 
 module marble_on_chute(span, sink=0) {
     zc = floor_t + marble_d / 2 + 0.35 - sink;
-    for (x = [-past + 8 : 28 : span + past - 8])
-        translate([x, path_y, zc])
+    for (x = [lip + 6 : 22 : span - lip - 6])
+        translate([x, 0, zc])
             sphere(d=marble_d, $fn=16);
 }
 
@@ -642,6 +660,45 @@ module run_balls(span, high, low, sink=0) {
     color([0.82, 0.12, 0.10])
         sloped_chute(span, ring_z(high), drop)
             marble_on_chute(span, sink);
+}
+
+module photo_run() {
+    // A small build in the same arrangement as the clear column sets:
+    // square feet, short segments, slim chutes stepping down.
+    span = 100;
+    drop = ring_z(2) - ring_z(1);
+    gap = post_gap(span, drop);
+    module one_tower(col) {
+        color(col) {
+            foot();
+            for (i = [0:4])
+                translate([0, 0, foot_seat + i * seated])
+                    connector();
+        }
+    }
+    one_tower([0.95, 0.35, 0.15]);
+    translate([gap, 0, 0]) one_tower([0.15, 0.75, 0.35]);
+    translate([gap * 2, 0, 0]) one_tower([0.25, 0.45, 0.95]);
+    color([0.95, 0.75, 0.15])
+        run_span_only(span, 4, 3, gap * 0);
+    color([0.20, 0.85, 0.75])
+        translate([gap, 0, 0])
+            run_span_only(span, 2, 1, 0);
+    color([0.85, 0.25, 0.55]) {
+        run_balls(span, 4, 3);
+        translate([gap, 0, 0])
+            run_balls(span, 2, 1);
+    }
+}
+
+module run_span_only(span, high, low, shift) {
+    drop = ring_z(high) - ring_z(low);
+    translate([shift, 0, 0]) {
+        sloped_chute(span, ring_z(high), drop)
+            chute_only(span, "S");
+        translate([0, 0, ring_z(high)]) ring_only();
+        translate([post_gap(span, drop), 0, ring_z(low)]) scale([-1, 1, 1]) ring_only();
+    }
 }
 
 module run_straight(span, high, low, label, wh=wall_h) {
@@ -681,9 +738,7 @@ module run_transfer() {
 }
 
 module track_end_solid() {
-    straight_channel(20, 50, wall_h, path_y);
-    translate([26, -31.2, 0])
-        cube([16, 48, 8]);
+    straight_channel(lip, lip + 24);
     track_pin();
 }
 
@@ -706,8 +761,8 @@ else if (mode == "clear")
 else if (mode == "fit")
     intersection() {
         span_track(156, "M");
-        for (x = [0:28:156])
-            translate([x, path_y, floor_t + marble_d / 2 + 0.45])
+        for (x = [40:24:120])
+            translate([x, 0, floor_t + marble_d / 2 + 0.45])
                 sphere(d=marble_d, $fn=14);
     }
 else if (mode == "footstack")
@@ -718,7 +773,7 @@ else if (mode == "footstack")
 else if (mode == "footring")
     intersection() {
         foot();
-        translate([0, 0, 4.7]) ring_only();
+        translate([0, 0, 5.45]) ring_only();
     }
 else if (mode == "ysfit")
     intersection() {
@@ -740,7 +795,8 @@ else if (mode == "hopfit")
             translate([x, 0, floor_t + marble_d / 2 + 0.4])
                 sphere(d=marble_d, $fn=12);
     }
-else if (mode == "runL") run_straight(164, 2, 1, "L");
+else if (mode == "photo") photo_run();
+else if (mode == "runL") run_straight(156, 3, 2, "L");
 else if (mode == "runLclear")
     intersection() {
         run_world(164, 2, 1, "L");
@@ -807,7 +863,7 @@ else if (mode == "runLexit")
     intersection() {
         run_world(164, 2, 1, "L");
         sloped_chute(164, ring_z(2), ring_z(2) - ring_z(1))
-            translate([164 + past - 4, path_y, floor_t + marble_d / 2 + 0.35])
+            translate([164 - lip, 0, floor_t + marble_d / 2 + 0.35])
                 sphere(d=marble_d, $fn=16);
     }
 else if (mode == "runLand")

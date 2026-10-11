@@ -31,20 +31,20 @@ Marks are printed on the parts. `L x8` means eight of that piece in the full set
 
 | Mark | Count | What it is |
 | --- | --- | --- |
-| `CN` | 80 | Tower cylinder. 38.1 mm tall when stacked (1.5 in) and 25.4 mm across (1 in). |
-| `BF` | 8 | Wide foot. Start every tower on one. |
+| `CN` | 80 | Short column segment. 28 mm tall and 24 mm across, so a tower looks like stacked bands. |
+| `BF` | 8 | Square foot. Start every tower on one. |
 
 ### Tracks (36)
 
 | Mark | Count | What it is |
 | --- | --- | --- |
-| `L` | 8 | Long straight. Tower centers 164 mm apart when the chute is level. |
-| `M` | 8 | Medium straight. 156 mm. |
-| `S` | 6 | Short straight. 132 mm. |
+| `L` | 8 | Long straight. Columns 156 mm apart when the chute is level. |
+| `M` | 8 | Medium straight. 128 mm. |
+| `S` | 6 | Short straight. 100 mm. The piece used for the close hops. |
 | `CL` | 3 | 90° curve, left. |
 | `CR` | 3 | 90° curve, right. |
 | `UT` | 2 | 180° U-turn. |
-| `SW` | 2 | Swoop. 150 mm, tall walls, for a two-level drop. |
+| `SW` | 2 | Swoop. 110 mm, taller walls. |
 | `ZZ` | 2 | Straight with floor bumps. The marble clicks as it rolls. |
 | `WH` | 2 | 270° whirl. |
 
@@ -74,7 +74,7 @@ An 8 in chute plus both rings does not fit a 220 mm bed, so `L` is the longest s
 1. Stand a `BF` foot on the table.
 2. Slide a track ring down over the peg until it sits on the neck.
 3. Press a `CN` onto the peg. The bottom lip of the connector traps the ring. The ring can still spin, so you can aim the track.
-4. Stack more connectors. Each one adds **38.1 mm**.
+4. Stack more connectors. Each one adds **28 mm**.
 5. Clip the other ring onto a second tower.
 
 The hinges let the chute tilt while the rings stay level. The height difference is the slope.
@@ -83,12 +83,12 @@ The chute pivots on the hinge pins, which sit inboard of the rings, so the slope
 
 | Track | One level lower | Two levels lower |
 | --- | --- | --- |
-| `S` 132 mm | 27° | one level only |
-| `M` 156 mm | 21° | 45° |
-| `L` 164 mm | 19° | 41° |
-| `SW` 150 mm | 22° | 48° |
+| `S` 100 mm | 26° | one level only |
+| `M` 128 mm | 18° | 37° |
+| `L` 156 mm | 13° | 28° |
+| `SW` 110 mm | 22° | 49° |
 
-The lane runs beside the post, and it sticks out past each ring. The next chute, one level lower on that same tower, already lies under the exit. The marble drops about 20 mm onto it and keeps going.
+Each chute leaves a thin collar on the column, the way the clear sets do. A shallow cup wraps the back of that column. The marble rolls down the chute, meets the next column, and drops one segment into that cup, then out the next chute.
 
 The split sends the marble left or right. The merge does the opposite. The whirl and the big funnel are the pieces that loop the marble. The spinner's wheel is captive: after printing, twist it once so it turns freely. Do the same with every track hinge.
 
@@ -97,7 +97,7 @@ The split sends the marble left or right. The merge does the opposite. The whirl
 Files:
 
 - `stl/*.stl` — one of each piece, flat on the bed.
-- `plates/set-220-*.stl` — the whole set on 27 plates of 220 × 220 mm.
+- `plates/set-220-*.stl` — the whole set on 20 plates of 220 × 220 mm.
 - `images/plates.png` — which piece is on which plate.
 
 ![Plate layouts](images/plates.png)
