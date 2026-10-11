@@ -1,0 +1,93 @@
+export FN x1
+export T1 x4
+export T2 x4
+export T3 x6
+export CL x2
+export CR x2
+export CU x1
+export SP x1
+export WF x1
+export WF-C x1
+export YS x1
+export MG x1
+export SW-B x1
+export SW-A x1
+export SW-P x1
+export LP-A x1
+export LP-B x1
+export LP-C x1
+export LP-D x1
+export EL-B x1
+export EL-W x1
+export EL-C x1
+export ZZ x1
+export JP x1
+export LD x1
+export SN-B x1
+export SN-W x1
+export SN-C x1
+export ST-P x8
+export ST-Y x8
+export BX x1
+export FIT x1
+export LG x1
+
+part check
+  FN       70.0 x   70.0 x  26.0 mm  overhang    251 mm2  OK
+  T1       63.2 x   42.4 x  18.0 mm  overhang    389 mm2  OK
+  T2      111.2 x   42.4 x  18.0 mm  overhang    389 mm2  OK
+  T3      161.2 x   42.4 x  18.0 mm  overhang    385 mm2  OK
+  CL       79.9 x   77.2 x  18.0 mm  overhang    382 mm2  OK
+  CR       79.9 x   77.2 x  18.0 mm  overhang    378 mm2  OK
+  CU       65.8 x  105.9 x  18.0 mm  overhang    382 mm2  OK
+  SP       97.2 x   97.8 x  47.2 mm  overhang   3686 mm2  OK
+  WF       69.2 x   81.9 x  18.0 mm  overhang    377 mm2  OK
+  WF-C     54.0 x   56.0 x   8.2 mm  overhang      6 mm2  OK
+  YS       68.1 x   77.4 x  18.0 mm  overhang    501 mm2  OK
+  MG       77.3 x   58.3 x  18.0 mm  overhang    333 mm2  OK
+  SW-B    115.2 x   42.4 x  24.0 mm  overhang    943 mm2  OK
+  SW-A     66.0 x   40.0 x  13.0 mm  overhang   1025 mm2  OK
+  SW-P      9.0 x    9.0 x  36.4 mm  overhang     39 mm2  OK
+  LP-A     98.5 x  105.2 x  15.2 mm  overhang      0 mm2  OK
+  LP-B    100.5 x  107.2 x   2.4 mm  overhang      0 mm2  OK
+  LP-C     38.1 x   42.4 x  18.0 mm  overhang    267 mm2  OK
+  LP-D     38.0 x   41.3 x  15.2 mm  overhang    288 mm2  OK
+  EL-B     95.2 x   60.0 x  85.2 mm  overhang    768 mm2  OK
+  EL-W     70.0 x   70.0 x  18.0 mm  overhang      0 mm2  OK
+  EL-C     34.0 x   12.0 x  86.0 mm  overhang    249 mm2  OK
+  ZZ       77.8 x  113.9 x  18.0 mm  overhang    387 mm2  OK
+  JP       97.2 x   45.2 x  36.0 mm  overhang    401 mm2  OK
+  LD       68.0 x   72.0 x  26.0 mm  overhang    115 mm2  OK
+  SN-B    119.2 x   64.0 x  18.0 mm  overhang    231 mm2  OK
+  SN-W     34.0 x   34.0 x  13.0 mm  overhang      0 mm2  OK
+  SN-C     12.0 x   12.0 x   3.2 mm  overhang     23 mm2  OK
+  ST-P     46.0 x   34.0 x  25.4 mm  overhang    251 mm2  OK
+  ST-Y     32.0 x   24.0 x  19.0 mm  overhang    516 mm2  OK
+  BX       87.2 x   64.0 x  28.0 mm  overhang    287 mm2  OK
+  FIT      53.2 x   42.4 x  18.0 mm  overhang    390 mm2  OK
+  LG      168.0 x   48.0 x   8.0 mm  overhang      0 mm2  OK
+
+hinge and marble
+  fit 0° -> empty (want empty) OK
+  hit 0° -> empty (want empty) OK
+  hit 10° -> empty (want empty) OK
+  hit 22° -> contact (want contact) OK
+  seesaw empty torque 23.7 g·mm (tail heavy if > 0)
+  seesaw with glass marble -73.5 g·mm (tips if < 0)
+  seesaw with steel bearing -276.9 g·mm
+
+starter set packs onto 7 plates of 220 x 220 mm
+  plate 1: 12 pieces, starter-220-1of7.stl
+    EL-C, LG, SN-C, SN-W, ST-P, SW-P, T3
+  plate 2: 8 pieces, starter-220-2of7.stl
+    BX, SN-B, ST-P, T3
+  plate 3: 8 pieces, starter-220-3of7.stl
+    EL-B, LP-C, ST-P, SW-A, SW-B, T2, WF, ZZ
+  plate 4: 8 pieces, starter-220-4of7.stl
+    CL, CU, JP, ST-Y, T1, T2
+  plate 5: 3 pieces, starter-220-5of7.stl
+    LP-A, LP-B, SP
+  plate 6: 12 pieces, starter-220-6of7.stl
+    CL, CR, LP-D, MG, ST-Y, T1, YS
+  plate 7: 9 pieces, starter-220-7of7.stl
+    EL-W, FIT, FN, LD, ST-Y, T1, WF-C
