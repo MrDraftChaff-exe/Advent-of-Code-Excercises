@@ -88,7 +88,7 @@ The chute pivots on the hinge pins, which sit inboard of the rings, so the slope
 | `L` 164 mm | 19° | 41° |
 | `SW` 150 mm | 22° | 48° |
 
-Tracks do not plug into each other. The lip of an upper track should point at the mouth of the next track, usually one level down on the same tower or the next one. The mouths are wider than the chute so a dropping marble still lands.
+The lane runs beside the post, and it sticks out past each ring. The next chute, one level lower on that same tower, already lies under the exit. The marble drops about 20 mm onto it and keeps going.
 
 The split sends the marble left or right. The merge does the opposite. The whirl and the big funnel are the pieces that loop the marble. The spinner's wheel is captive: after printing, twist it once so it turns freely. Do the same with every track hinge.
 

@@ -45,6 +45,10 @@ ring_id = cyl_d + 0.90 + fit_extra;
 ring_od = 40;
 
 lip = 30; // far enough from the post that a 16 mm ball clears the flange
+// The lane runs beside the post, not through it, and sticks past each
+// tower so the next chute can sit underneath the exit.
+path_y = -40;
+past = 20;
 hinge_x = 24;
 hinge_y = 28;
 pin_d = 5.0;
@@ -165,12 +169,28 @@ module place_end(x, y, ang) {
 
 // ---------- channels ----------
 
-module straight_channel(x0, x1, wh=wall_h) {
-    translate([x0, -outer_w / 2, 0])
+module straight_channel(x0, x1, wh=wall_h, y0=0) {
+    translate([x0, y0 - outer_w / 2, 0])
         cube([x1 - x0, outer_w, floor_t]);
     for (s = [-1, 1])
-        translate([x0, s * outer_w / 2 - (s > 0 ? wall : 0), floor_t - 0.12])
+        translate([x0, y0 + s * outer_w / 2 - (s > 0 ? wall : 0), floor_t - 0.12])
             cube([x1 - x0, wall, wh]);
+}
+
+module lane_body(span, wh) {
+    straight_channel(-past, span + past, wh, path_y);
+    // Start hinge is on +Y. This arm stays outside the flange.
+    translate([26, -31.2, 0])
+        cube([16, 48, 8]);
+    // End hinge stays on +Y (mirrored, not spun), lane stays on -Y.
+    translate([span - 48, -31.2, 0])
+        cube([22, 50, 8]);
+    for (x0 = [-past, span + past - 14]) {
+        translate([x0, path_y - outer_w / 2, floor_t])
+            cube([14, wall, 10]);
+        translate([x0, path_y + outer_w / 2 - wall, floor_t])
+            cube([14, wall, 10]);
+    }
 }
 
 module flare(x_post, dir) {
@@ -210,16 +230,17 @@ function kit_qty(id) =
 module span_track(span, label, wh=wall_h) {
     difference() {
         union() {
-            straight_channel(lip, span - lip, wh);
-            flare(0, 1);
-            flare(span, -1);
+            lane_body(span, wh);
             place_end(0, 0, 0) track_pin();
-            place_end(span, 0, 180) track_pin();
+            translate([span, 0, 0]) scale([-1, 1, 1]) track_pin();
         }
-        mark_wall(span / 2, str(label, " x", kit_qty(label)));
+        translate([span / 2, path_y - outer_w / 2 + 0.15, floor_t + wall_h / 2])
+            rotate([90, 0, 0])
+                linear_extrude(0.9)
+                    text_line(str(label, " x", kit_qty(label)), 4.6);
     }
     place_end(0, 0, 0) ring_only();
-    place_end(span, 0, 180) ring_only();
+    translate([span, 0, 0]) scale([-1, 1, 1]) ring_only();
 }
 
 module profile_solid(wh=wall_h) {
@@ -341,7 +362,7 @@ module bumps(span) {
         union() {
             span_track(span, "ZZ");
             for (i = [0:4])
-                translate([38 + i * 16, -ch_w / 2 + 1.2, floor_t - 0.1])
+                translate([38 + i * 16, path_y - ch_w / 2 + 1.2, floor_t - 0.1])
                     cube([3.2, ch_w - 2.4, 2.7]);
         }
     }
@@ -575,13 +596,14 @@ module tower(levels) {
 module chute_only(span, label, wh=wall_h) {
     difference() {
         union() {
-            straight_channel(lip, span - lip, wh);
-            flare(0, 1);
-            flare(span, -1);
+            lane_body(span, wh);
             place_end(0, 0, 0) track_pin();
-            place_end(span, 0, 180) track_pin();
+            translate([span, 0, 0]) scale([-1, 1, 1]) track_pin();
         }
-        mark_wall(span / 2, str(label, " x", kit_qty(label)));
+        translate([span / 2, path_y - outer_w / 2 + 0.15, floor_t + wall_h / 2])
+            rotate([90, 0, 0])
+                linear_extrude(0.9)
+                    text_line(str(label, " x", kit_qty(label)), 4.6);
     }
 }
 
@@ -595,8 +617,8 @@ module sloped_chute(span, z_high, drop) {
 
 module marble_on_chute(span, sink=0) {
     zc = floor_t + marble_d / 2 + 0.35 - sink;
-    for (x = [lip + 8 : 24 : span - lip - 8])
-        translate([x, 0, zc])
+    for (x = [-past + 8 : 28 : span + past - 8])
+        translate([x, path_y, zc])
             sphere(d=marble_d, $fn=16);
 }
 
@@ -611,7 +633,7 @@ module run_world(span, high, low, label, wh=wall_h) {
             chute_only(span, label, wh);
     color([0.95, 0.75, 0.35]) {
         translate([0, 0, ring_z(high)]) ring_only();
-        translate([gap, 0, ring_z(low)]) rz(180) ring_only();
+        translate([gap, 0, ring_z(low)]) scale([-1, 1, 1]) ring_only();
     }
 }
 
@@ -647,9 +669,9 @@ module run_transfer() {
     }
     color([0.95, 0.75, 0.35]) {
         translate([0, 0, ring_z(3)]) ring_only();
-        translate([gap1, 0, ring_z(2)]) rz(180) ring_only();
+        translate([gap1, 0, ring_z(2)]) scale([-1, 1, 1]) ring_only();
         translate([gap1, 0, ring_z(1)]) ring_only();
-        translate([gap1 + gap2, 0, ring_z(0)]) rz(180) ring_only();
+        translate([gap1 + gap2, 0, ring_z(0)]) scale([-1, 1, 1]) ring_only();
     }
     color([0.82, 0.12, 0.10]) {
         sloped_chute(span1, ring_z(3), drop1) marble_on_chute(span1);
@@ -659,8 +681,9 @@ module run_transfer() {
 }
 
 module track_end_solid() {
-    straight_channel(lip, lip + 28);
-    flare(0, 1);
+    straight_channel(20, 50, wall_h, path_y);
+    translate([26, -31.2, 0])
+        cube([16, 48, 8]);
     track_pin();
 }
 
@@ -682,9 +705,9 @@ else if (mode == "clear")
     }
 else if (mode == "fit")
     intersection() {
-        span_track(120, "M");
-        for (x = [36:12:84])
-            translate([x, 0, floor_t + marble_d / 2 + 0.45])
+        span_track(156, "M");
+        for (x = [0:28:156])
+            translate([x, path_y, floor_t + marble_d / 2 + 0.45])
                 sphere(d=marble_d, $fn=14);
     }
 else if (mode == "footstack")
@@ -751,6 +774,26 @@ else if (mode == "runSWsit")
         run_balls(150, 2, 0, 1.2);
     }
 else if (mode == "runT") run_transfer();
+else if (mode == "runTland")
+    intersection() {
+        translate([post_gap(164, ring_z(3) - ring_z(2)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                chute_only(156, "M");
+        translate([post_gap(164, ring_z(3) - ring_z(2)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                translate([18, path_y, floor_t + marble_d / 2 + 0.35])
+                    sphere(d=marble_d, $fn=16);
+    }
+else if (mode == "runTlandsit")
+    intersection() {
+        translate([post_gap(164, ring_z(3) - ring_z(2)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                chute_only(156, "M");
+        translate([post_gap(164, ring_z(3) - ring_z(2)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                translate([18, path_y, floor_t + marble_d / 2 - 0.85])
+                    sphere(d=marble_d, $fn=16);
+    }
 else if (mode == "runLplastic")
     intersection() {
         tower(2);
@@ -764,8 +807,36 @@ else if (mode == "runLexit")
     intersection() {
         run_world(164, 2, 1, "L");
         sloped_chute(164, ring_z(2), ring_z(2) - ring_z(1))
-            translate([164 - lip, 0, floor_t + marble_d / 2 + 0.35])
+            translate([164 + past - 4, path_y, floor_t + marble_d / 2 + 0.35])
                 sphere(d=marble_d, $fn=16);
+    }
+else if (mode == "runLand")
+    intersection() {
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                chute_only(156, "M");
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                translate([-past + 6, path_y, floor_t + marble_d / 2 + 0.35])
+                    sphere(d=marble_d, $fn=16);
+    }
+else if (mode == "runLandsit")
+    intersection() {
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                chute_only(156, "M");
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                translate([-past + 6, path_y, floor_t + marble_d / 2 - 0.8])
+                    sphere(d=marble_d, $fn=16);
+    }
+else if (mode == "runLandpost")
+    intersection() {
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0]) tower(2);
+        translate([post_gap(164, ring_z(2) - ring_z(1)), 0, 0])
+            sloped_chute(156, ring_z(1), ring_z(1) - ring_z(0))
+                translate([-past + 6, path_y, floor_t + marble_d / 2 + 0.35])
+                    sphere(d=marble_d, $fn=16);
     }
 else if (mode == "runSexit")
     intersection() {
