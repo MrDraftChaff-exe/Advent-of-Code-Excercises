@@ -38,17 +38,17 @@ Marks are printed on the parts. `L x8` means eight of that piece in the full set
 
 | Mark | Count | What it is |
 | --- | --- | --- |
-| `L` | 8 | Long straight. Tower centers 156 mm apart. |
-| `M` | 8 | Medium straight. 120 mm. |
-| `S` | 6 | Short straight. 86 mm. |
+| `L` | 8 | Long straight. Tower centers 164 mm apart when the chute is level. |
+| `M` | 8 | Medium straight. 156 mm. |
+| `S` | 6 | Short straight. 132 mm. |
 | `CL` | 3 | 90° curve, left. |
 | `CR` | 3 | 90° curve, right. |
 | `UT` | 2 | 180° U-turn. |
-| `SW` | 2 | Swoop. Short, with tall walls, for a steep drop. |
+| `SW` | 2 | Swoop. 150 mm, tall walls, for a two-level drop. |
 | `ZZ` | 2 | Straight with floor bumps. The marble clicks as it rolls. |
 | `WH` | 2 | 270° whirl. |
 
-An 8 in chute plus both rings does not fit a 220 mm bed, so `L` is the longest straight that does. One tower level over `L` is still about 14°.
+An 8 in chute plus both rings does not fit a 220 mm bed, so `L` is the longest straight that does. One tower level over `L` is about 19°. The towers stand closer than the level length once the chute tilts.
 
 ### The other 24
 
@@ -79,12 +79,14 @@ An 8 in chute plus both rings does not fit a 220 mm bed, so `L` is the longest s
 
 The hinges let the chute tilt while the rings stay level. The height difference is the slope.
 
+The chute pivots on the hinge pins, which sit inboard of the rings, so the slope is steeper than the tower spacing alone suggests.
+
 | Track | One level lower | Two levels lower |
 | --- | --- | --- |
-| `S` 86 mm | 24° | 42° |
-| `M` 120 mm | 18° | 32° |
-| `L` 156 mm | 14° | 26° |
-| `SW` 92 mm | 22° | 40° |
+| `S` 132 mm | 27° | one level only |
+| `M` 156 mm | 21° | 45° |
+| `L` 164 mm | 19° | 41° |
+| `SW` 150 mm | 22° | 48° |
 
 Tracks do not plug into each other. The lip of an upper track should point at the mouth of the next track, usually one level down on the same tower or the next one. The mouths are wider than the chute so a dropping marble still lands.
 
@@ -95,7 +97,7 @@ The split sends the marble left or right. The merge does the opposite. The whirl
 Files:
 
 - `stl/*.stl` — one of each piece, flat on the bed.
-- `plates/set-220-*.stl` — the whole set on 23 plates of 220 × 220 mm.
+- `plates/set-220-*.stl` — the whole set on 27 plates of 220 × 220 mm.
 - `images/plates.png` — which piece is on which plate.
 
 ![Plate layouts](images/plates.png)
