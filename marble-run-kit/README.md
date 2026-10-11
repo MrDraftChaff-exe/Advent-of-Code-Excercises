@@ -1,6 +1,6 @@
 # Marble run kit
 
-Twenty printable parts that snap together into a marble run. A starter set, with more long tubes than anything else, packs onto **7 plates** of 220 × 220 mm.
+A tower-and-track marble run in the style of the Fat Brain 200-piece set. Short posts stack into towers. Tracks clip onto the posts. One end higher than the other is what makes the marble run.
 
 ## Which ball to use
 
@@ -47,42 +47,32 @@ Each part is marked on the side. `T3` over `x6` means “long tube, print six fo
 | `JP` | 1 | Jump ramp. Open lip, no front connector. |
 | `LD` | 1 | Wide landing for the jump. |
 | `SN` | 1 | Spinner. Pieces `SN-B` base, `SN-W` wheel, `SN-C` cap. |
-| `RS` | 12 | Locking riser, 12 mm. Slides under any channel and stacks into a frame. |
+| `PS` | 16 | Tower post. These are the connectors. Stack them. |
+| `BF` | 4 | Wide foot. Start each tower on one. |
 | `BX` | 1 | Finish box. Inlet only. |
 
 `FIT` is a small lock coupon, not one of the twenty. `LG` is the legend card and the ball gauge.
 
 ![All parts](images/parts.png)
 
-## Gravity is built in
+## How a run gets its slope
 
-Tubes, curves, and the U-turn are sloped about **12–13°**. The slope is in the part. The joint is a square lock, so a run cannot sag back to flat.
+This is the same idea as that clear tower set: most of the parts are posts, and the tracks hang between them.
 
-| Piece | Drop |
-| --- | --- |
-| `T1`, `CL`, `CR`, `FIT` | 12 mm, one riser |
-| `T2`, `CU` | 24 mm, two risers |
-| `T3` | 36 mm, three risers |
+1. Snap `PS` posts onto a `BF` foot. Each post adds 20 mm.
+2. Snap a track’s C-clip into the groove between the two discs on a post.
+3. Snap the other clip onto a second tower, one post lower.
 
-The outlet of one piece locks to the inlet of the next at the same height. The next piece’s outlet is another step lower. A marble is always going downhill on those parts.
+The clips stay level. The track hinges on them, so it tilts to the tower heights. One post of difference is about 13° on a short tube, 9° on a medium tube, and 7° on a long tube. Two posts on a short tube is a fast drop. The clip locks in the groove, so the height does not slip.
 
-## Risers lock into a frame
-
-Every channel has a T-shaped rail in the bottom. `RS` is a 12 mm block:
-
-- The head slides into that rail from the end of the piece and clicks into a pocket.
-- The same head slides into the slot in the bottom of another riser.
-
-So a riser locks under any channel, and risers lock to each other. Twelve risers is 144 mm of frame. Put three fewer risers under the outlet of a `T3` than under its inlet. The bottoms stay level. The channel carries the slope.
-
-Slide the head in until it clicks. Push harder to move it to the next pocket, one pocket every 12 mm.
+Tracks do not plug into each other. The end of an upper track is aimed at the start of the next track, one level down, often on the same tower or the next one. That is how the big sets are built.
 
 ## Printing
 
 Files:
 
 - `stl/*.stl` — one of each piece, already oriented for the bed.
-- `plates/starter-220-*.stl` — the starter quantities on 220 × 220 mm plates.
+- `plates/starter-220-*.stl` — the starter set on 10 plates of 220 × 220 mm. Most of the pieces on those plates are tower posts.
 - `images/plates.png` — what is on each plate.
 
 ![Plate layouts](images/plates.png)
@@ -94,22 +84,20 @@ Suggested slicer settings:
 - 15% infill
 - PLA or PETG
 - No supports
-- A brim on `RS`, `EL-W`, and `SP` if the corners lift
+- A brim on `PS`, `BF`, `EL-W`, and `SP` if the corners lift
 
-Print `FIT` first and lock it to a `T1`. The square stub should click in and then stay put. If it will not seat, open `scad/marble_kit.scad` and raise `fit_extra` by 0.1, then rerun `python3 scripts/build_kit.py`. Slide one `RS` into the rail under `FIT` until it clicks.
+Print one `PS`, one `BF`, and `FIT` first. Stack the post on the foot, then snap both clips of `FIT` onto posts. The clip should click into the groove and the track should tilt if one post is higher. If a clip will not go on, open `scad/marble_kit.scad`, raise `fit_extra` by 0.1, and rerun `python3 scripts/build_kit.py`.
 
 Every individual piece fits on a 180 × 180 mm bed. The combined plates are laid out for 220 × 220 mm, which is the common Ender-size bed. A 256 mm bed can use the same plates.
 
-## Building the frame
+## Building a tower run
 
-Start the funnel on a stack of risers. Each `T3` after that needs a stack three risers shorter, each `T2` or U-turn two shorter, each `T1` or 90° curve one shorter. The locked joint sets the height. The risers only hold the part up.
-
-A brim on `RS`, `EL-W`, and `SP` helps if the corners lift.
+Four feet, with towers of different heights, are enough for a first layout. Clip a long tube from a high groove to a groove one post lower. Put a curve on the lower tower and run it across to a third tower, again one post lower. Keep doing that until the marble reaches the finish box. A two-post drop on a short tube is the fast section.
 
 ## A run that uses the set
 
-1. `FN` on a tall stack.
-2. Two `T3`s at about 12°.
+1. `BF` feet in a loose grid, about 90–160 mm apart, with `PS` towers on them.
+2. `FN` clipped at the top of the tallest tower, then a `T3` down one post to the next tower.
 3. `CL`, a `T2`, `CR`.
 4. `SP` to lose a chunk of height in one footprint.
 5. `YS` to split.

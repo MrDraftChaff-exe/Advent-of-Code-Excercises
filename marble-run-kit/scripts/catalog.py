@@ -31,7 +31,8 @@ PIECES = [
     ("SN-B", 1, "Spinner base", "SN"),
     ("SN-W", 1, "Spinner wheel", "SN"),
     ("SN-C", 1, "Spinner cap", "SN"),
-    ("RS", 12, "Locking riser", "RS"),
+    ("PS", 16, "Tower post", "PS"),
+    ("BF", 4, "Tower foot", "BF"),
     ("BX", 1, "Finish box", "BX"),
     ("FIT", 1, "Hinge fit coupon", "FIT"),
     ("LG", 1, "Legend and ball gauge", "LG"),
@@ -39,5 +40,5 @@ PIECES = [
 
 PART_IDS = [
     "FN", "T1", "T2", "T3", "CL", "CR", "CU", "SP", "WF", "YS",
-    "MG", "SW", "LP", "EL", "ZZ", "JP", "LD", "SN", "RS", "BX",
+    "MG", "SW", "LP", "EL", "ZZ", "JP", "LD", "SN", "PS", "BX",
 ]

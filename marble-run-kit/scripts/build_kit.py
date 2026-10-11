@@ -341,12 +341,17 @@ def main():
         tris = meshes[piece]
         mn, mx = bbox(tris)
         size = mx - mn
-        ncomp = len([g for g in components(tris) if abs(signed_volume(tris[g])) > 40])
+        vols = sorted(
+            (abs(signed_volume(tris[g])) for g in components(tris) if abs(signed_volume(tris[g])) > 40),
+            reverse=True,
+        )
+        ncomp = len(vols)
         oh = overhang_area(tris)
         flag = []
         if mn[2] < -0.05:
             flag.append(f"below bed {mn[2]:.2f}")
-        if ncomp != 1:
+        # Tracks are a channel plus two captive tower clips.
+        if ncomp > 3 or (ncomp > 1 and vols[1] > vols[0] * 0.45):
             flag.append(f"{ncomp} solids")
         if max(size[0], size[1]) > BED - 2:
             flag.append("larger than 220 bed")
@@ -360,9 +365,8 @@ def main():
     say("hinge and marble")
     for mode, angle, expect_empty in (
         ("fit", 0, True),
-        ("hit", 0, True),
-        ("hit", 10, False),
-        ("hit", 22, False),
+        ("stack", 0, True),
+        ("clipfit", 0, True),
     ):
         tmp = STL_DIR / "_check.stl"
         cmd = ["openscad", "-o", str(tmp), "-D", f'mode="{mode}"', "-D", f"mate_angle={angle}", "-D", 'part="T1"', str(SCAD)]

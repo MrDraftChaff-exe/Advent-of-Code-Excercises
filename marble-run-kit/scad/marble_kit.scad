@@ -24,10 +24,10 @@ $fn = 48;
 ch_w = marble_d + 3.6;          // 19.6 at 16 mm
 wall = 2.8;
 floor_t = 2.6;
-keel_h = 7.2;                   // solid base that carries the riser rail
+keel_h = 0;
 wall_h = 12.6;                  // above the marble floor
 outer_w = ch_w + 2 * wall;
-floor_top = keel_h + floor_t;   // marble floor at the low (outlet) end
+floor_top = keel_h + floor_t;
 
 // Square lock. A square bar cannot rotate, so a run cannot sag flat.
 bar = 7.6;
@@ -229,8 +229,6 @@ module channel_straight(len, fz0, fz1, open_inlet=true) {
                 }
             }
         }
-        if (len > 14)
-            t_slot(4, len - 4);
     }
 }
 
@@ -244,22 +242,112 @@ module inlet_step_cut(zfloor=floor_top) {
     }
 }
 
-module tube(len, id, qty) {
-    d = track_drop(len);
+// ---------- tower system (Fat Brain style) ----------
+// Posts stack into towers. Each track clips onto two posts.
+// Slope is the height difference between those posts.
+
+post_d = 18;
+post_pitch = 20;
+flange_d = 28;
+flange_h = 3.2;
+clip_h = 8.4;
+groove_z = flange_h;
+groove_h = 13.6;
+peg_d = 12;
+peg_h = 7.2;
+socket_d = peg_d + 0.45 + fit_extra;
+socket_h = 7.6;
+pin_d = 6;
+pin_hole = pin_d + 0.7 + fit_extra;
+pin_z = 6.2;
+clip_reach = 16; // post center to hinge pin
+
+module post() {
     difference() {
-        channel_straight(len, floor_top + d, floor_top);
-        inlet_step_cut(floor_top + d);
-        translate([0, 0, d / 2])
-            side_label(len * 0.48, qty_lines(id, qty), 5.0);
-        side_arrow(len - 16);
+        union() {
+            cylinder(d=flange_d, h=flange_h, $fn=48);
+            translate([0, 0, flange_h])
+                cylinder(d=post_d, h=groove_h, $fn=48);
+            translate([0, 0, flange_h + groove_h])
+                cylinder(d=flange_d, h=flange_h, $fn=48);
+            translate([0, 0, flange_h + groove_h + flange_h])
+                cylinder(d=peg_d, h=peg_h, $fn=32);
+            // Snap rib. A groove in the next socket clears it once seated.
+            translate([0, 0, flange_h + groove_h + flange_h + 2.9])
+                cylinder(d=peg_d + 0.5, h=1.2, $fn=32);
+        }
+        translate([0, 0, -0.2])
+            cylinder(d=socket_d, h=socket_h, $fn=32);
+        translate([0, 0, 2.4])
+            cylinder(d=socket_d + 1.3, h=1.8, $fn=32);
+        translate([0, -flange_d / 2 - 0.1, 8])
+            rotate([90, 0, 0])
+                linear_extrude(1)
+                    text_line("PS", 4.2);
     }
-    translate([0, 0, d]) cradles();
-    translate([len, 0, 0]) {
-        axle_stubs();
-        for (s = [-1, 1])
-            translate([-6.2, s * (outer_w / 2) - (s > 0 ? wall : 0), floor_top - 0.05])
-                cube([6.2, wall, wall_h + 0.05]);
+}
+
+module base_foot() {
+    difference() {
+        union() {
+            cylinder(d=46, h=4, $fn=64);
+            translate([0, 0, 4])
+                cylinder(d=peg_d, h=peg_h, $fn=32);
+            translate([0, 0, 4 + 2.9])
+                cylinder(d=peg_d + 0.5, h=1.2, $fn=32);
+        }
+        translate([-10, -22, 1])
+            linear_extrude(1)
+                text_line("BF", 5);
     }
+}
+
+hinge_y = outer_w / 2 + 9;
+
+module end_clip() {
+    // C-clip for the post, plus a hinge knuckle beside the track.
+    // This body is not joined to the channel; the pin passes through the knuckle.
+    difference() {
+        union() {
+            cylinder(d=post_d + 8, h=clip_h, $fn=48);
+            translate([3, outer_w / 2 - 0.4, 0])
+                cube([clip_reach + 2, hinge_y - 1 - (outer_w / 2 - 0.4), clip_h]);
+            translate([clip_reach, hinge_y, pin_z])
+                rotate([-90, 0, 0])
+                    cylinder(d=pin_hole + 4.8, h=7, center=true, $fn=28);
+        }
+        translate([0, 0, -0.4])
+            cylinder(d=post_d + 0.55 + fit_extra, h=clip_h + 0.8, $fn=48);
+        translate([-8.2, 1.2, -0.6])
+            cube([16.4, post_d + 2, clip_h + 1.2]);
+        translate([clip_reach, hinge_y, pin_z])
+            rotate([-90, 0, 0])
+                cylinder(d=pin_hole, h=16, center=true, $fn=28);
+    }
+}
+
+module end_pin() {
+    // Pin captured in the clip knuckle, cheek joined only to the channel wall.
+    translate([clip_reach, hinge_y, pin_z])
+        rotate([-90, 0, 0])
+            cylinder(d=pin_d, h=14, center=true, $fn=24);
+    translate([clip_reach - 7, outer_w / 2 - wall, 0])
+        cube([14, hinge_y - 4.4 - (outer_w / 2 - wall), pin_z + pin_d / 2 + 1.2]);
+}
+
+module span_track(span, id, qty) {
+    difference() {
+        translate([14, 0, 0])
+            channel_straight(span - 28, floor_top, floor_top, false);
+        translate([14, 0, 0])
+            side_label((span - 28) * 0.45, qty_lines(id, qty), 4.6);
+        translate([span - 30, 0, 0])
+            side_arrow(0);
+    }
+    end_pin();
+    translate([span, 0, 0]) rz(180) end_pin();
+    end_clip();
+    translate([span, 0, 0]) rz(180) end_clip();
 }
 
 // ---------- swept channel (curves, zigzag, junctions) ----------
@@ -301,13 +389,6 @@ module sweep(pts, angs, fz) {
             hull() {
                 translate([pts[i][0], pts[i][1], pz(pts[i])]) rz(angs[i]) profile_void(fz);
                 translate([pts[i + 1][0], pts[i + 1][1], pz(pts[i + 1])]) rz(angs[i + 1]) profile_void(fz);
-            }
-        for (i = [0:n - 2])
-            hull() {
-                translate([pts[i][0], pts[i][1], 0]) rz(angs[i])
-                    t_slot_plain(-1.3, 1.3);
-                translate([pts[i + 1][0], pts[i + 1][1], 0]) rz(angs[i + 1])
-                    t_slot_plain(-1.3, 1.3);
             }
     }
 }
@@ -352,24 +433,25 @@ module curve(hand, id, qty) {
     hE = angs[len(angs) - 1];
     mid = pts[floor(n / 2)];
     hang = angs[floor(n / 2)];
-    d = drop_step;
-    ptsz = [for (i = [0:len(pts) - 1]) [pts[i][0], pts[i][1], d * (1 - i / (len(pts) - 1))]];
     difference() {
         union() {
-            channel_straight(lead + 1.2, floor_top + d, floor_top + d);
-            sweep(ptsz, angs, floor_top);
+            channel_straight(lead + 1.2, floor_top, floor_top);
+            sweep(pts, angs, floor_top);
             translate([pE[0], pE[1], 0]) rz(hE)
                 translate([-3, 0, 0])
                     channel_straight(lead + 3, floor_top, floor_top, false);
+            translate([-clip_reach, 0, 0]) end_pin();
+            translate([pE[0], pE[1], 0]) rz(hE)
+                translate([lead, 0, 0]) rz(180)
+                    end_pin();
         }
-        inlet_step_cut(floor_top + d);
-        translate([mid[0], mid[1], d / 2]) rz(hang)
+        translate([mid[0], mid[1], 0]) rz(hang)
             side_label(0, qty_lines(id, qty), 4.6);
     }
-    translate([0, 0, d]) hinge_female_at(0, 0, 0);
+    translate([-clip_reach, 0, 0]) end_clip();
     translate([pE[0], pE[1], 0]) rz(hE)
-        translate([lead, 0, 0])
-            hinge_male_at(0, 0, 0);
+        translate([lead, 0, 0]) rz(180)
+            end_clip();
 }
 
 module uturn(id, qty) {
@@ -383,24 +465,25 @@ module uturn(id, qty) {
     hE = angs[len(angs) - 1];
     mid = pts[floor(n / 2)];
     hang = angs[floor(n / 2)];
-    d = drop_step * 2;
-    ptsz = [for (i = [0:len(pts) - 1]) [pts[i][0], pts[i][1], d * (1 - i / (len(pts) - 1))]];
     difference() {
         union() {
-            channel_straight(lead + 1.2, floor_top + d, floor_top + d);
-            sweep(ptsz, angs, floor_top);
+            channel_straight(lead + 1.2, floor_top, floor_top);
+            sweep(pts, angs, floor_top);
             translate([pE[0], pE[1], 0]) rz(hE)
                 translate([-3, 0, 0])
                     channel_straight(lead + 3, floor_top, floor_top, false);
+            translate([-clip_reach, 0, 0]) end_pin();
+            translate([pE[0], pE[1], 0]) rz(hE)
+                translate([lead, 0, 0]) rz(180)
+                    end_pin();
         }
-        inlet_step_cut(floor_top + d);
-        translate([mid[0], mid[1], d / 2]) rz(hang)
+        translate([mid[0], mid[1], 0]) rz(hang)
             side_label(0, qty_lines(id, qty), 4.6);
     }
-    translate([0, 0, d]) hinge_female_at(0, 0, 0);
+    translate([-clip_reach, 0, 0]) end_clip();
     translate([pE[0], pE[1], 0]) rz(hE)
-        translate([lead, 0, 0])
-            hinge_male_at(0, 0, 0);
+        translate([lead, 0, 0]) rz(180)
+            end_clip();
 }
 
 include <parts_extra.scad>
@@ -408,10 +491,12 @@ include <parts_extra.scad>
 // ---------- dispatcher ----------
 
 module build_part() {
-    if (part == "T1") tube(52, "T1", mark_qty);
-    else if (part == "T2") tube(100, "T2", mark_qty);
-    else if (part == "T3") tube(150, "T3", mark_qty);
-    else if (part == "FIT") tube(42, "FIT", 1);
+    if (part == "T1") span_track(90, "T1", mark_qty);
+    else if (part == "T2") span_track(130, "T2", mark_qty);
+    else if (part == "T3") span_track(170, "T3", mark_qty);
+    else if (part == "FIT") span_track(70, "FIT", 1);
+    else if (part == "PS") post();
+    else if (part == "BF") base_foot();
     else if (part == "CL") curve(+1, "CL", mark_qty);
     else if (part == "CR") curve(-1, "CR", mark_qty);
     else if (part == "CU") uturn("CU", mark_qty);
@@ -476,12 +561,22 @@ else if (mode == "section")
         translate([-5, -0.4, -2]) cube([120, 0.8, 30]);
     }
 else if (mode == "fit") {
-    // Spheres that must miss the solid. An empty STL means the channel clears the ball.
     intersection() {
-        tube(52, "T1", 4);
-        let(d = track_drop(52))
-        for (x = [12:6:40])
-            translate([x, 0, floor_top + d * (1 - x / 52) + marble_d / 2 + 0.8])
+        span_track(90, "T1", 4);
+        for (x = [24:8:66])
+            translate([x, 0, floor_top + marble_d / 2 + 0.4])
                 sphere(d=marble_d, $fn=24);
+    }
+}
+else if (mode == "stack") {
+    intersection() {
+        post();
+        translate([0, 0, post_pitch + 0.25]) post();
+    }
+}
+else if (mode == "clipfit") {
+    intersection() {
+        post();
+        translate([0, 0, groove_z + 1.2]) end_clip();
     }
 }
