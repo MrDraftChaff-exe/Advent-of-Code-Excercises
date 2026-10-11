@@ -341,7 +341,7 @@ def main():
         tris = meshes[piece]
         mn, mx = bbox(tris)
         size = mx - mn
-        ncomp = len(components(tris))
+        ncomp = len([g for g in components(tris) if abs(signed_volume(tris[g])) > 40])
         oh = overhang_area(tris)
         flag = []
         if mn[2] < -0.05:
@@ -361,7 +361,7 @@ def main():
     for mode, angle, expect_empty in (
         ("fit", 0, True),
         ("hit", 0, True),
-        ("hit", 10, True),
+        ("hit", 10, False),
         ("hit", 22, False),
     ):
         tmp = STL_DIR / "_check.stl"

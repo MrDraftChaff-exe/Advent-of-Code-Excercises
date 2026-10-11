@@ -30,9 +30,9 @@ Each part is marked on the side. `T3` over `x6` means “long tube, print six fo
 | Mark | Starter count | What it is |
 | --- | --- | --- |
 | `FN` | 1 | Funnel. Start of a run, or a target for the jump. Outlet only. |
-| `T1` | 4 | Short tube, 52 mm between hinges. |
-| `T2` | 4 | Medium tube, 100 mm. |
-| `T3` | 6 | Long tube, 150 mm. This is the piece to print the most of. |
+| `T1` | 4 | Short tube, 52 mm, drops 12 mm. |
+| `T2` | 4 | Medium tube, 100 mm, drops 24 mm. |
+| `T3` | 6 | Long tube, 150 mm, drops 36 mm. Print the most of these. |
 | `CL` | 2 | 90° curve, left. |
 | `CR` | 2 | 90° curve, right. |
 | `CU` | 1 | 180° U-turn. |
@@ -47,25 +47,35 @@ Each part is marked on the side. `T3` over `x6` means “long tube, print six fo
 | `JP` | 1 | Jump ramp. Open lip, no front connector. |
 | `LD` | 1 | Wide landing for the jump. |
 | `SN` | 1 | Spinner. Pieces `SN-B` base, `SN-W` wheel, `SN-C` cap. |
-| `ST` | 8 | Support. `ST-P` post and `ST-Y` clip, eight of each. |
+| `RS` | 12 | Locking riser, 12 mm. Slides under any channel and stacks into a frame. |
 | `BX` | 1 | Finish box. Inlet only. |
 
-`FIT` is a small hinge coupon, not one of the twenty. `LG` is the legend card and the ball gauge.
+`FIT` is a small lock coupon, not one of the twenty. `LG` is the legend card and the ball gauge.
 
 ![All parts](images/parts.png)
 
-## How they connect
+## Gravity is built in
 
-Tubes, curves, the spiral, the splitter, and the merger share one joint.
+Tubes, curves, and the U-turn are sloped about **12–13°**. The slope is in the part. The joint is a square lock, so a run cannot sag back to flat.
 
-The upstream piece has two round stubs. The downstream piece has a keyhole on each side. Press the stubs down into the keyholes until they seat. The narrow neck is only there while you push the stub in. Once seated, the stub can rotate.
+| Piece | Drop |
+| --- | --- |
+| `T1`, `CL`, `CR`, `FIT` | 12 mm, one riser |
+| `T2`, `CU` | 24 mm, two risers |
+| `T3` | 36 mm, three risers |
 
-- Downhill angle is free from level to about **16°**. Past that the underside hits a stop.
-- Do not fold a joint uphill. The stop is only on the downhill side.
-- Every joint steps down by a fraction of a millimetre, so a mismatch is never a step up.
-- The side walls break for a few millimetres at the joint so the stub can pass. A 16 mm ball bridges that gap.
+The outlet of one piece locks to the inlet of the next at the same height. The next piece’s outlet is another step lower. A marble is always going downhill on those parts.
 
-Markings sit on the outer wall. The arrow points to the outlet.
+## Risers lock into a frame
+
+Every channel has a T-shaped rail in the bottom. `RS` is a 12 mm block:
+
+- The head slides into that rail from the end of the piece and clicks into a pocket.
+- The same head slides into the slot in the bottom of another riser.
+
+So a riser locks under any channel, and risers lock to each other. Twelve risers is 144 mm of frame. Put three fewer risers under the outlet of a `T3` than under its inlet. The bottoms stay level. The channel carries the slope.
+
+Slide the head in until it clicks. Push harder to move it to the next pocket, one pocket every 12 mm.
 
 ## Printing
 
@@ -84,19 +94,17 @@ Suggested slicer settings:
 - 15% infill
 - PLA or PETG
 - No supports
-- A brim on `ST-P`, `EL-W`, and `SP` if the corners lift
+- A brim on `RS`, `EL-W`, and `SP` if the corners lift
 
-Print `FIT` first and snap two of them together (print a second copy, or snap the coupon’s own two ends to a `T1`). The stub should click in with firm finger pressure and then rotate. If it will not seat, open `scad/marble_kit.scad` and raise `fit_extra` by 0.1, then rerun `python3 scripts/build_kit.py`.
+Print `FIT` first and lock it to a `T1`. The square stub should click in and then stay put. If it will not seat, open `scad/marble_kit.scad` and raise `fit_extra` by 0.1, then rerun `python3 scripts/build_kit.py`. Slide one `RS` into the rail under `FIT` until it clicks.
 
 Every individual piece fits on a 180 × 180 mm bed. The combined plates are laid out for 220 × 220 mm, which is the common Ender-size bed. A 256 mm bed can use the same plates.
 
-## Supports and slope
+## Building the frame
 
-`ST-P` posts stack. The peg is 12 mm. Each post adds 20 mm of height. `ST-Y` clips over a tube and sits on the top peg.
+Start the funnel on a stack of risers. Each `T3` after that needs a stack three risers shorter, each `T2` or U-turn two shorter, each `T1` or 90° curve one shorter. The locked joint sets the height. The risers only hold the part up.
 
-Set long tubes around **8–14°**. Under about 6° some glass marbles stall, especially after a curve. At 10° a `T3` drops about 26 mm. At 14° it drops about 36 mm. Eight posts stacked are 160 mm, which is enough for a funnel at the top and a finish box near the table.
-
-The track itself is the brace between posts. You do not need a free-standing tower under every joint. Prop the lower end of each sloped piece.
+A brim on `RS`, `EL-W`, and `SP` helps if the corners lift.
 
 ## A run that uses the set
 
@@ -118,7 +126,7 @@ The track itself is the brace between posts. You do not need a free-standing tow
 
 **Waterfall.** Printed flat. Snap `WF-C` over the open side (rails pointing down onto the walls). Stand it so the `UP` mark points up and the inlet hinge is at the top. The outlet hinge stays horizontal.
 
-**Loop.** `LP-A` is the open track, printed flat. `LP-B` is the cover; the pegs on `LP-A` go through the holes in `LP-B`. Stand the pair up. Slide `LP-C` onto the entry tenon and `LP-D` onto the exit tenon. Feed the loop from a `T3` at 14–16°, or from the jump. A steel 5/8 in bearing makes the loop much more reliable than glass.
+**Loop.** `LP-A` is the open track, printed flat. `LP-B` is the cover; the pegs on `LP-A` go through the holes in `LP-B`. Stand the pair up. Slide `LP-C` onto the entry tenon and `LP-D` onto the exit tenon. Feed the loop from a `T3`, or from the jump. A steel 5/8 in bearing makes the loop much more reliable than glass.
 
 **Jump and landing.** `JP` is a fixed ramp with an open lip. `LD` is the wide mouth that catches it. Start with the landing about 80–100 mm in front of the lip and a little lower, then move it after a few throws. Steel balls fly straighter.
 
@@ -143,7 +151,7 @@ That re-exports `stl/`, repacks `plates/`, and writes `validation.txt`. You need
 ## If something does not roll
 
 - Joint will not snap: raise `fit_extra` by 0.1 and rebuild. Do not sand the inside of the keyhole first.
-- Marble stalls on a tube: steepen it. 8° is the bottom of the useful range for glass.
+- Marble stalls on a tube: the tube is already about 13°. Check that the square joint is fully seated and the riser stacks differ by the drop in the table above.
 - Marble hops out of a curve: lower the angle, or come into the curve from `ZZ`.
 - Seesaw stays tipped: add one marble to the tail pocket.
 - Seesaw never tips: the tail pocket should be empty. A steel ball in the cup tips more easily than glass.

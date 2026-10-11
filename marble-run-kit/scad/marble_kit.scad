@@ -24,19 +24,38 @@ $fn = 48;
 ch_w = marble_d + 3.6;          // 19.6 at 16 mm
 wall = 2.8;
 floor_t = 2.6;
-wall_h = 12.6;                  // above the floor; marble crown peeks ~3.5 mm
+keel_h = 7.2;                   // solid base that carries the riser rail
+wall_h = 12.6;                  // above the marble floor
 outer_w = ch_w + 2 * wall;
-floor_top = floor_t;
+floor_top = keel_h + floor_t;   // marble floor at the low (outlet) end
 
-axle_d = 8.0;
-axle_z = 8.2;
-pocket_d = axle_d + 0.50 + fit_extra;
-neck_w = axle_d - 0.85;
-neck_clear = 0.40;              // neck starts this far above a seated axle crown
+// Square lock. A square bar cannot rotate, so a run cannot sag flat.
+bar = 7.6;
+bar_pocket = bar + 0.65 + fit_extra;
+neck_w = bar - 0.7;
+neck_clear = 0.40;
 stub_len = 7.6;
-stub_gap = 0.45;                // lateral air gap so male wall and female cradle don't fuse
-cradle_x = 7.2;                 // cradle block half-length along the track
-end_inset = 1.15;               // floor stops this far short of the hinge plane
+stub_gap = 0.45;
+cradle_x = 7.2;
+end_inset = 1.15;
+axle_d = bar;                   // legacy name used by a few clearances
+axle_z = floor_top + 5.6;
+
+// Gravity is built into each track: about 12 degrees, in 12 mm steps.
+slope_deg = 12;
+drop_step = 12;
+
+// Riser rail under every channel. Head slides in from the end and clicks.
+slot_mouth_w = 6.6;
+slot_mouth_h = 2.6;
+slot_cav_w = 10.8;
+slot_cav_z = 2.3;
+slot_cav_h = 3.0;
+head_w = 10.0;
+head_h = 2.6;
+head_len = 8.0;
+neck_bar_w = 5.6;
+riser_pitch = 12;
 
 joint_gap = 1.15;               // floor-to-floor gap when level
 // Downstream floor is slightly lower so a mismatch is always a step down.
@@ -77,6 +96,11 @@ module side_arrow(x) {
 function qty_lines(id, qty, with_qty=true) =
     with_qty ? [id, str("x", qty)] : [id];
 
+function track_drop(len) =
+    drop_step * max(1, round(len * tan(slope_deg) / drop_step));
+
+function pz(p) = len(p) > 2 ? p[2] : 0;
+
 // ---------- hinge ----------
 // Hinge axis is parallel to Y.
 // Male axle stubs live on the upstream OUT end.
@@ -86,30 +110,28 @@ function qty_lines(id, qty, with_qty=true) =
 function side_y(s, extra=0) = s * (outer_w / 2 + stub_gap + extra);
 
 module axle_stubs() {
-    // Embedded in our own side wall. The downstream walls start past the
-    // axle radius, so the two parts do not intersect.
+    // Square bar embedded in the side wall. Downstream walls start past it.
     y_root = outer_w / 2 - wall + 0.6;
     y_tip = outer_w / 2 + stub_gap + stub_len;
     for (s = [-1, 1]) {
         ymin = s > 0 ? y_root : -y_tip;
-        translate([0, ymin, axle_z])
-            rotate([-90, 0, 0])
-                cylinder(d=axle_d, h=y_tip - y_root, $fn=32);
+        translate([-bar / 2, ymin, axle_z - bar / 2])
+            cube([bar, y_tip - y_root, bar]);
     }
 }
 
 module keyhole_cut(length) {
-    rotate([-90, 0, 0])
-        cylinder(d=pocket_d, h=length, center=true, $fn=32);
-    nb = axle_d / 2 + neck_clear;
+    // Square pocket. The neck is above a seated bar, so it snaps in and then sits free.
+    translate([-bar_pocket / 2, -length / 2 - 0.1, -bar_pocket / 2])
+        cube([bar_pocket, length + 0.2, bar_pocket]);
+    nb = bar / 2 + neck_clear;
     translate([-neck_w / 2, -length / 2 - 0.2, nb])
         cube([neck_w, length + 0.4, 16]);
-    // Lead-in funnel so the axle cams the lips open.
     hull() {
         translate([-neck_w / 2, -length / 2 - 0.2, nb + 1.2])
             cube([neck_w, length + 0.4, 0.2]);
-        translate([-(pocket_d + 3) / 2, -length / 2 - 0.2, nb + 6.5])
-            cube([pocket_d + 3, length + 0.4, 0.2]);
+        translate([-(bar_pocket + 3) / 2, -length / 2 - 0.2, nb + 6.5])
+            cube([bar_pocket + 3, length + 0.4, 0.2]);
     }
 }
 
@@ -158,11 +180,20 @@ module cradles() {
     cradle_tie(1);
 }
 
-// Low shelf past the male hinge. The female underside is chamfered to land on it near 16°.
-module male_shelf() {
-    // Anvil just upstream of the hinge. The female chamfer lands on it near 16°.
-    translate([-5.2, -6.2, 0])
-        cube([5.2, 12.4, 1.25]);
+// Downward-opening T-slot. A riser head slides in from the end.
+module t_slot_plain(x0, x1) {
+    translate([x0, -slot_mouth_w / 2, -0.3])
+        cube([max(x1 - x0, 0.2), slot_mouth_w, slot_mouth_h + 0.3]);
+    translate([x0, -slot_cav_w / 2, slot_cav_z])
+        cube([max(x1 - x0, 0.2), slot_cav_w, slot_cav_h]);
+}
+
+module t_slot(x0, x1) {
+    t_slot_plain(x0, x1);
+    // Wider pockets the riser nub clicks into, one per riser_pitch.
+    for (x = [x0 + 8:riser_pitch:x1 - 4])
+        translate([x - 1.6, -(slot_mouth_w / 2 + 1.3), 0.3])
+            cube([3.2, slot_mouth_w + 2.6, slot_mouth_h]);
 }
 
 // Remove only the underside corner of the inlet floor so the part can pitch down.
@@ -178,47 +209,53 @@ module inlet_chamfer_cut() {
 // ---------- straight channel ----------
 
 module channel_straight(len, fz0, fz1, open_inlet=true) {
-    // Floor runs close to the hinge. Inlet walls start past the axle radius
+    // Floor runs close to the hinge. Inlet walls start past the lock bar
     // so a seated stub does not intersect them. The marble bridges that gap.
     x0 = end_inset;
     x1 = len - end_inset;
-    wx0 = open_inlet ? (axle_d / 2 + 1.35) : end_inset;
-    hull() {
-        translate([x0, -outer_w / 2, 0]) cube([0.2, outer_w, fz0]);
-        translate([x1 - 0.2, -outer_w / 2, 0]) cube([0.2, outer_w, fz1]);
-    }
-    for (s = [-1, 1]) {
-        hull() {
-            translate([wx0, s * (outer_w / 2) - (s > 0 ? wall : 0), fz0 - 0.05])
-                cube([0.2, wall, wall_h + 0.05]);
-            translate([x1 - 0.2, s * (outer_w / 2) - (s > 0 ? wall : 0), fz1 - 0.05])
-                cube([0.2, wall, wall_h + 0.05]);
+    wx0 = open_inlet ? (bar / 2 + 1.5) : end_inset;
+    difference() {
+        union() {
+            hull() {
+                translate([x0, -outer_w / 2, 0]) cube([0.2, outer_w, fz0]);
+                translate([x1 - 0.2, -outer_w / 2, 0]) cube([0.2, outer_w, fz1]);
+            }
+            for (s = [-1, 1]) {
+                hull() {
+                    translate([wx0, s * (outer_w / 2) - (s > 0 ? wall : 0), fz0 - 0.05])
+                        cube([0.2, wall, wall_h + 0.05]);
+                    translate([x1 - 0.2, s * (outer_w / 2) - (s > 0 ? wall : 0), fz1 - 0.05])
+                        cube([0.2, wall, wall_h + 0.05]);
+                }
+            }
         }
+        if (len > 14)
+            t_slot(4, len - 4);
     }
 }
 
 // Inlet floor is 0.3 mm low, then ramps back up so every joint steps downhill.
-module inlet_step_cut() {
+module inlet_step_cut(zfloor=floor_top) {
     hull() {
-        translate([0.4, -ch_w / 2 + 0.7, floor_top - 0.32])
+        translate([0.4, -ch_w / 2 + 0.7, zfloor - 0.32])
             cube([0.2, ch_w - 1.4, 0.34]);
-        translate([11.5, -ch_w / 2 + 0.7, floor_top - 0.02])
+        translate([11.5, -ch_w / 2 + 0.7, zfloor - 0.02])
             cube([0.2, ch_w - 1.4, 0.04]);
     }
 }
 
 module tube(len, id, qty) {
+    d = track_drop(len);
     difference() {
-        channel_straight(len, floor_top, floor_top);
-        inlet_chamfer_cut();
-        inlet_step_cut();
-        side_label(len * 0.48, qty_lines(id, qty), 5.0);
+        channel_straight(len, floor_top + d, floor_top);
+        inlet_step_cut(floor_top + d);
+        translate([0, 0, d / 2])
+            side_label(len * 0.48, qty_lines(id, qty), 5.0);
         side_arrow(len - 16);
     }
-    cradles();
+    translate([0, 0, d]) cradles();
     translate([len, 0, 0]) {
         axle_stubs();
-        male_shelf();
         for (s = [-1, 1])
             translate([-6.2, s * (outer_w / 2) - (s > 0 ? wall : 0), floor_top - 0.05])
                 cube([6.2, wall, wall_h + 0.05]);
@@ -245,15 +282,32 @@ module profile_void(fz) {
 module sweep(pts, angs, fz) {
     n = len(pts);
     difference() {
+        union() {
+            for (i = [0:n - 2])
+                hull() {
+                    translate([pts[i][0], pts[i][1], pz(pts[i])]) rz(angs[i]) profile_solid(fz);
+                    translate([pts[i + 1][0], pts[i + 1][1], pz(pts[i + 1])]) rz(angs[i + 1]) profile_solid(fz);
+                }
+            // Keel down to the bed so the riser rail stays on the bottom.
+            for (i = [0:n - 2])
+                hull() {
+                    translate([pts[i][0], pts[i][1], 0]) rz(angs[i])
+                        translate([-0.7, -8, 0]) cube([1.4, 16, keel_h]);
+                    translate([pts[i + 1][0], pts[i + 1][1], 0]) rz(angs[i + 1])
+                        translate([-0.7, -8, 0]) cube([1.4, 16, keel_h]);
+                }
+        }
         for (i = [0:n - 2])
             hull() {
-                translate([pts[i][0], pts[i][1], 0]) rz(angs[i]) profile_solid(fz);
-                translate([pts[i + 1][0], pts[i + 1][1], 0]) rz(angs[i + 1]) profile_solid(fz);
+                translate([pts[i][0], pts[i][1], pz(pts[i])]) rz(angs[i]) profile_void(fz);
+                translate([pts[i + 1][0], pts[i + 1][1], pz(pts[i + 1])]) rz(angs[i + 1]) profile_void(fz);
             }
         for (i = [0:n - 2])
             hull() {
-                translate([pts[i][0], pts[i][1], 0]) rz(angs[i]) profile_void(fz);
-                translate([pts[i + 1][0], pts[i + 1][1], 0]) rz(angs[i + 1]) profile_void(fz);
+                translate([pts[i][0], pts[i][1], 0]) rz(angs[i])
+                    t_slot_plain(-1.3, 1.3);
+                translate([pts[i + 1][0], pts[i + 1][1], 0]) rz(angs[i + 1])
+                    t_slot_plain(-1.3, 1.3);
             }
     }
 }
@@ -270,7 +324,6 @@ function arc_angs(a0, a1, n=18) =
 module hinge_male_at(x, y, ang) {
     translate([x, y, 0]) rz(ang) {
         axle_stubs();
-        male_shelf();
         for (s = [-1, 1])
             translate([-6.2, s * (outer_w / 2) - (s > 0 ? wall : 0), floor_top - 0.05])
                 cube([6.2, wall, wall_h + 0.05]);
@@ -299,21 +352,21 @@ module curve(hand, id, qty) {
     hE = angs[len(angs) - 1];
     mid = pts[floor(n / 2)];
     hang = angs[floor(n / 2)];
+    d = drop_step;
+    ptsz = [for (i = [0:len(pts) - 1]) [pts[i][0], pts[i][1], d * (1 - i / (len(pts) - 1))]];
     difference() {
         union() {
-            channel_straight(lead + 1.2, floor_top, floor_top);
-            sweep(pts, angs, floor_top);
-            // Outlet lead, in the end-tangent frame, overlapping the arc.
+            channel_straight(lead + 1.2, floor_top + d, floor_top + d);
+            sweep(ptsz, angs, floor_top);
             translate([pE[0], pE[1], 0]) rz(hE)
                 translate([-3, 0, 0])
                     channel_straight(lead + 3, floor_top, floor_top, false);
         }
-        inlet_chamfer_cut();
-        inlet_step_cut();
-        translate([mid[0], mid[1], 0]) rz(hang)
+        inlet_step_cut(floor_top + d);
+        translate([mid[0], mid[1], d / 2]) rz(hang)
             side_label(0, qty_lines(id, qty), 4.6);
     }
-    hinge_female_at(0, 0, 0);
+    translate([0, 0, d]) hinge_female_at(0, 0, 0);
     translate([pE[0], pE[1], 0]) rz(hE)
         translate([lead, 0, 0])
             hinge_male_at(0, 0, 0);
@@ -330,20 +383,21 @@ module uturn(id, qty) {
     hE = angs[len(angs) - 1];
     mid = pts[floor(n / 2)];
     hang = angs[floor(n / 2)];
+    d = drop_step * 2;
+    ptsz = [for (i = [0:len(pts) - 1]) [pts[i][0], pts[i][1], d * (1 - i / (len(pts) - 1))]];
     difference() {
         union() {
-            channel_straight(lead + 1.2, floor_top, floor_top);
-            sweep(pts, angs, floor_top);
+            channel_straight(lead + 1.2, floor_top + d, floor_top + d);
+            sweep(ptsz, angs, floor_top);
             translate([pE[0], pE[1], 0]) rz(hE)
                 translate([-3, 0, 0])
                     channel_straight(lead + 3, floor_top, floor_top, false);
         }
-        inlet_chamfer_cut();
-        inlet_step_cut();
-        translate([mid[0], mid[1], 0]) rz(hang)
+        inlet_step_cut(floor_top + d);
+        translate([mid[0], mid[1], d / 2]) rz(hang)
             side_label(0, qty_lines(id, qty), 4.6);
     }
-    hinge_female_at(0, 0, 0);
+    translate([0, 0, d]) hinge_female_at(0, 0, 0);
     translate([pE[0], pE[1], 0]) rz(hE)
         translate([lead, 0, 0])
             hinge_male_at(0, 0, 0);
@@ -361,25 +415,54 @@ module build_part() {
     else if (part == "CL") curve(+1, "CL", mark_qty);
     else if (part == "CR") curve(-1, "CR", mark_qty);
     else if (part == "CU") uturn("CU", mark_qty);
+    else if (part == "RS") part_rs();
     else extra_part();
+}
+
+module part_rs() {
+    // 12 mm locking riser. The head slides into the rail under any channel,
+    // and into the slot in the bottom of another riser.
+    difference() {
+        union() {
+            translate([-8, -8, 0]) cube([16, 16, riser_pitch]);
+            translate([-head_len / 2, -neck_bar_w / 2, riser_pitch])
+                cube([head_len, neck_bar_w, slot_mouth_h]);
+            translate([-head_len / 2, -head_w / 2, riser_pitch + slot_mouth_h - 0.05])
+                cube([head_len, head_w, head_h]);
+            // Nub that clicks into the rail pockets.
+            translate([-1.2, -3.7, riser_pitch + 0.5])
+                cube([2.4, 7.4, 1.5]);
+        }
+        t_slot(-9, 9);
+        translate([-7, -7.9, 4])
+            rotate([90, 0, 0])
+                linear_extrude(1.0)
+                    text_line("RS", 4.5);
+        translate([-6, -7.9, 1.2])
+            rotate([90, 0, 0])
+                linear_extrude(1.0)
+                    text_line(str("x", mark_qty), 3.4);
+    }
 }
 
 module mated() {
     len = 52;
+    d = track_drop(len);
     tube(len, "T1", 4);
     translate([len, 0, axle_z])
         rotate([0, mate_angle, 0])
-            translate([0, 0, -axle_z])
+            translate([0, 0, -(axle_z + d)])
                 tube(len, "T1", 4);
 }
 
 module mate_hit() {
     len = 52;
+    d = track_drop(len);
     intersection() {
         tube(len, "T1", 4);
         translate([len, 0, axle_z])
             rotate([0, mate_angle, 0])
-                translate([0, 0, -axle_z])
+                translate([0, 0, -(axle_z + d)])
                     tube(len, "T1", 4);
     }
 }
@@ -396,8 +479,9 @@ else if (mode == "fit") {
     // Spheres that must miss the solid. An empty STL means the channel clears the ball.
     intersection() {
         tube(52, "T1", 4);
-        for (x = [10:6:42])
-            translate([x, 0, floor_top + marble_d / 2 + 0.3])
+        let(d = track_drop(52))
+        for (x = [12:6:40])
+            translate([x, 0, floor_top + d * (1 - x / 52) + marble_d / 2 + 0.8])
                 sphere(d=marble_d, $fn=24);
     }
 }

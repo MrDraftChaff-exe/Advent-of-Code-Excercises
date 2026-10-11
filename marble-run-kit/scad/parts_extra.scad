@@ -654,7 +654,7 @@ module part_legend() {
                 text("15.5 NO-GO", size=4.2, font="Liberation Sans:style=Bold", $fn=12);
         translate([6, 16, 1.5])
             linear_extrude(1.2)
-                text("T3 x6   T2 x4   T1 x4   ST x8", size=3.4, font="Liberation Sans:style=Bold", $fn=12);
+                text("T3 x6  T2 x4  T1 x4  RS x12", size=3.4, font="Liberation Sans:style=Bold", $fn=12);
         translate([6, 8, 1.5])
             linear_extrude(1.2)
                 text("CL x2  CR x2  CU x1  others x1", size=3.4, font="Liberation Sans:style=Bold", $fn=12);
