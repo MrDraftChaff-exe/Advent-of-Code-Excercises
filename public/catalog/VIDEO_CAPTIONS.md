@@ -121,3 +121,7 @@ Load the **Freddie** template, or copy row `422`. Caption file: [`freddie-post.t
 ## SNL extra post
 
 Load the **SNL** template, or copy row `423`. Caption file: [`snl-post.txt`](snl-post.txt). Video filename: `423-snl.mp4`. The growth clip is a 60s two-fact collage. Use `snl_cover.png` as the platform cover.
+
+## Yeager extra post
+
+Load the **Yeager** template, or copy row `424`. Caption file: [`yeager-post.txt`](yeager-post.txt). Video filename: `424-yeager.mp4`. The growth clip is a 60s two-fact collage. Use `yeager_cover.png` as the platform cover.

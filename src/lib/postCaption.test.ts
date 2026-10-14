@@ -321,6 +321,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("The first host would not")).toBe(true);
   });
 
+  it("uses the Yeager caption as the paste block", () => {
+    const yeager = TEMPLATES.find((t) => t.id === "yeager");
+    expect(yeager).toBeDefined();
+    const caption = buildPasteCaption(yeager!);
+    expect(caption).toContain("horse doctor");
+    expect(caption).toContain("the boom was his");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#ChuckYeager");
+    expect(caption.startsWith("He broke two ribs")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

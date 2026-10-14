@@ -189,6 +189,25 @@ describe("collage beats", () => {
     ]);
   });
 
+  it("collages the Yeager extra as six two-fact beats", () => {
+    const yeager = TEMPLATES.find((t) => t.id === "yeager");
+    expect(yeager).toBeDefined();
+    expect(usesCollage(yeager!)).toBe(true);
+    expect(reelSlides(yeager!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(yeager!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/horse/);
+    expect(beats[5].facts[1]).toMatch(/79 years ago tonight/);
+    expect(beats.map((beat) => beat.imageUrl)).toEqual([
+      "/images/yeager-1950.jpg",
+      "/images/yeager-x1-cockpit.jpg",
+      "/images/yeager-x1-b29.jpg",
+      "/images/yeager-x1-rocket.jpg",
+      "/images/yeager-xs1-team.jpg",
+      "/images/yeager-x1-flight.jpg",
+    ]);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

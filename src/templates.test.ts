@@ -614,6 +614,30 @@ describe("templates", () => {
     expect(canvasHeadlineText(snl!)).not.toMatch(/\b423\b/);
   });
 
+  it("ships a Yeager extra without the chip format or replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const yeager = TEMPLATES.find((t) => t.id === "yeager");
+    expect(yeager).toBeDefined();
+    expect(yeager?.title).toBe("Yeager");
+    expect(yeager?.year).toBe("1947");
+    expect(yeager?.format).toBeUndefined();
+    expect(yeager?.imageUrl).toContain("yeager-1950");
+    expect(yeager?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(yeager?.imageCredit).toMatch(/Air Force/);
+    expect(yeager?.theme).toBe("ember");
+    expect(yeager?.durationSec).toBe(60);
+    expect(yeager?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(yeager?.bullets[0]).toMatch(/horse/);
+    expect(yeager?.bullets[1]).toMatch(/two ribs/);
+    expect(yeager?.bullets[11]).toMatch(/79 years ago tonight/);
+    expect(yeager?.postCaption).toMatch(/horse doctor/);
+    expect(yeager?.postCaption).toContain("@FactsOrWhacks");
+    expect(yeager?.hashtags).toContain("#ChuckYeager");
+    expect(yeager?.hashtags).not.toContain("#SNL");
+    expect(canvasHeadlineText(yeager!)).toBe("Yeager");
+    expect(canvasHeadlineText(yeager!)).not.toMatch(/\b424\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

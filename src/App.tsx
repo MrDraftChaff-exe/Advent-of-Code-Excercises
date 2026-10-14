@@ -710,6 +710,13 @@ export default function App() {
             >
               SNL caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/yeager-post.txt"
+              download="yeager-post.txt"
+            >
+              Yeager caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

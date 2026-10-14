@@ -127,6 +127,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("snl")).toBe("snl");
   });
 
+  it("maps October 14 to the Yeager extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-14"));
+    expect(reel?.id).toBe("yeager");
+    expect(dailyArtifactStem("yeager")).toBe("yeager");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

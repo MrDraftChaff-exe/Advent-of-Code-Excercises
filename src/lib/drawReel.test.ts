@@ -536,6 +536,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#Studio8H/);
   });
 
+  it("keeps the Yeager post caption off the phone frame", () => {
+    const yeager = TEMPLATES.find((t) => t.id === "yeager");
+    expect(yeager?.postCaption).toMatch(/horse doctor/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, yeager!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Yeager");
+    expect(painted).toContain("Glamorous Glennis");
+    expect(painted).toContain("Mach 1.06");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("horse doctor");
+    expect(painted).not.toContain("the boom was his");
+    expect(painted).not.toMatch(/\bWHACK\b/);
+    expect(painted).not.toMatch(/#ChuckYeager/);
+    expect(painted).not.toMatch(/#SoundBarrier/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

@@ -334,6 +334,19 @@ Poster still: `snl-carlin-1975.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/snl-post.txt`](../catalog/snl-post.txt).
 
+# Yeager collage, 1947–1950
+
+Poster still: `yeager-1950.jpg`. Collage slides:
+
+- `yeager-1950.jpg` — [Charles_Yeager_photo_portrait_head_on_shoulders_left_side.jpg](https://commons.wikimedia.org/wiki/File:Charles_Yeager_photo_portrait_head_on_shoulders_left_side.jpg). U.S. Air Force, August 4, 1950. Public domain. 9:16 crop of the portrait.
+- `yeager-x1-cockpit.jpg` — [Chuck_Yeager_X-1_(color).jpg](https://commons.wikimedia.org/wiki/File:Chuck_Yeager_X-1_(color).jpg). Jack Ridley, September 26, 1947. Public domain. 9:16 crop of Yeager in the X-1 cockpit.
+- `yeager-x1-b29.jpg` — [Bell_X-1_in_the_belly_of_a_B-29.jpg](https://commons.wikimedia.org/wiki/File:Bell_X-1_in_the_belly_of_a_B-29.jpg). U.S. Air Force, 1940s. Public domain. 9:16 crop of the X-1 in the bomber bay.
+- `yeager-x1-rocket.jpg` — [Bell_X-1_46-062_(in_flight).jpg](https://commons.wikimedia.org/wiki/File:Bell_X-1_46-062_(in_flight).jpg). NASA. Public domain. 9:16 crop of the tail and rocket exhaust. Same photograph as the desert beat.
+- `yeager-xs1-team.jpg` — [Key_members_of_the_XS-1_Research_Team_-_GPN-2000-000137.jpg](https://commons.wikimedia.org/wiki/File:Key_members_of_the_XS-1_Research_Team_-_GPN-2000-000137.jpg). NACA, 1948. Public domain. 9:16 crop of the team.
+- `yeager-x1-flight.jpg` — [Bell_X-1_46-062_(in_flight).jpg](https://commons.wikimedia.org/wiki/File:Bell_X-1_46-062_(in_flight).jpg). NASA. Public domain. 9:16 crop of the X-1 over the desert.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/yeager-post.txt`](../catalog/yeager-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).
