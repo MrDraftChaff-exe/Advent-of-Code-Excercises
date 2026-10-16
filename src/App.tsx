@@ -717,6 +717,13 @@ export default function App() {
             >
               Yeager caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/disney-post.txt"
+              download="disney-post.txt"
+            >
+              Disney caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

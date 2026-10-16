@@ -638,6 +638,30 @@ describe("templates", () => {
     expect(canvasHeadlineText(yeager!)).not.toMatch(/\b424\b/);
   });
 
+  it("ships a Disney extra without the chip format or replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const disney = TEMPLATES.find((t) => t.id === "disney");
+    expect(disney).toBeDefined();
+    expect(disney?.title).toBe("Disney");
+    expect(disney?.year).toBe("1923");
+    expect(disney?.format).toBeUndefined();
+    expect(disney?.imageUrl).toContain("disney-walt-1938");
+    expect(disney?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(disney?.imageCredit).toMatch(/Alan Fisher/);
+    expect(disney?.theme).toBe("ember");
+    expect(disney?.durationSec).toBe(60);
+    expect(disney?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(disney?.bullets[0]).toMatch(/five years away/);
+    expect(disney?.bullets[1]).toMatch(/four-page contract/);
+    expect(disney?.bullets[11]).toMatch(/103 years ago tonight/);
+    expect(disney?.postCaption).toMatch(/no mouse on the contract/);
+    expect(disney?.postCaption).toContain("@FactsOrWhacks");
+    expect(disney?.hashtags).toContain("#WaltDisney");
+    expect(disney?.hashtags).not.toContain("#ChuckYeager");
+    expect(canvasHeadlineText(disney!)).toBe("Disney");
+    expect(canvasHeadlineText(disney!)).not.toMatch(/\b425\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

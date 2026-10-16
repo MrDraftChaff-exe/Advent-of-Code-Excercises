@@ -553,6 +553,23 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#SoundBarrier/);
   });
 
+  it("keeps the Disney post caption off the phone frame", () => {
+    const disney = TEMPLATES.find((t) => t.id === "disney");
+    expect(disney?.postCaption).toMatch(/no mouse on the contract/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, disney!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("Disney");
+    expect(painted).toContain("Mickey Mouse");
+    expect(painted).toContain("Kingswell");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("no mouse on the contract");
+    expect(painted).not.toContain("says yes");
+    expect(painted).not.toMatch(/\bWHACK\b/);
+    expect(painted).not.toMatch(/#WaltDisney/);
+    expect(painted).not.toMatch(/#AliceComedies/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

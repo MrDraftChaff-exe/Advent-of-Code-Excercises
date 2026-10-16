@@ -347,6 +347,19 @@ Poster still: `yeager-1950.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/yeager-post.txt`](../catalog/yeager-post.txt).
 
+# Disney collage, 1921–2015
+
+Poster still: `disney-walt-1938.jpg`. Collage slides:
+
+- `disney-walt-1938.jpg` — [Walt_Disney_NYWTS.jpg](https://commons.wikimedia.org/wiki/File:Walt_Disney_NYWTS.jpg). Alan Fisher, New York World-Telegram, 1938. Public domain. 9:16 crop of the portrait.
+- `disney-roy-1965.jpg` — [Walt_Disney_with_Company_at_Press_Conference.jpg](https://commons.wikimedia.org/wiki/File:Walt_Disney_with_Company_at_Press_Conference.jpg). Florida Development Commission, November 15, 1965. Public domain. 9:16 crop of Roy O. Disney.
+- `disney-alice-1926.jpg` — [Alice_Comedies_(FBO_Ad)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Alice_Comedies_(FBO_Ad)_(cropped).jpg). Winkler Productions, 1926. Public domain. 9:16 crop of the Alice Comedies advertisement.
+- `disney-letterhead-1921.jpg` — [Walt_Disney_envelope_ca._1921.jpg](https://commons.wikimedia.org/wiki/File:Walt_Disney_envelope_ca._1921.jpg). Walt Disney, circa 1921. Public domain. The Kansas City letterhead, fitted on the frame.
+- `disney-kingswell-2015.jpg` — [Kingswellstudio.JPG](https://commons.wikimedia.org/wiki/File:Kingswellstudio.JPG). Coolcaesar, April 18, 2015. CC BY-SA 4.0. 9:16 crop of the Kingswell Avenue building.
+- `disney-hyperion-1929.jpg` — [Walt_Disney_Studios_in_1929.jpg](https://commons.wikimedia.org/wiki/File:Walt_Disney_Studios_in_1929.jpg). Walt Disney Studios, 1929. Public domain. 9:16 crop of the Hyperion Avenue lot.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/disney-post.txt`](../catalog/disney-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

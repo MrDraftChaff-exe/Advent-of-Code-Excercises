@@ -332,6 +332,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("He broke two ribs")).toBe(true);
   });
 
+  it("uses the Disney caption as the paste block", () => {
+    const disney = TEMPLATES.find((t) => t.id === "disney");
+    expect(disney).toBeDefined();
+    const caption = buildPasteCaption(disney!);
+    expect(caption).toContain("no mouse on the contract");
+    expect(caption).toContain("says yes");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#WaltDisney");
+    expect(caption.startsWith("There is no mouse")).toBe(true);
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

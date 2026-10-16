@@ -15,7 +15,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Yeager on Oct 14).
+1. Click **Today’s reel**. That loads the dated extra already in `src/lib/dailyReel.ts` (today: Disney on Oct 16).
 2. **Save PNG** for the 9:16 poster still. **Download video** for a studio WebM, or run `npm run daily:pack` for the collage MP4 + unique pad. The file must **probe at least 60.0 seconds**. Encode at 62s so players that round down still show a full minute.
 3. **Copy post caption** and paste under the post.
 
@@ -26,7 +26,7 @@ If Today’s reel says this date has no extra, **search the 395-episode catalog*
 ```bash
 # Studio must already be running on http://127.0.0.1:5173
 npm run daily:pack
-# optional: npm run daily:pack -- --date 2026-10-14
+# optional: npm run daily:pack -- --date 2026-10-16
 ```
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
@@ -95,8 +95,9 @@ Already-shipped extras (do not silently replace them):
 | 422 | `freddie` | Freddie Mercury. Notebook from Mr. Bad Guy sold for 277,000 pounds on Oct 2. Two facts, not chips. Hold Sputnik for Oct 4 |
 | 423 | `snl` | NBC’s Saturday Night premieres Oct 11 1975 — 51 years. George Carlin hosts. Two facts, not chips. Columbus Day waits for Oct 12 |
 | 424 | `yeager` | Chuck Yeager breaks the sound barrier, Oct 14 1947 — 79 years. Two facts, not chips. I Love Lucy waits for Oct 15 |
+| 425 | `disney` | Disney Brothers Cartoon Studio, Oct 16 1923 — 103 years. Alice contract, no Mickey yet. Two facts, not chips. Capone waits for Oct 17 |
 
-Next extra number is one higher than the current max extra (`424` → `425`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
+Next extra number is one higher than the current max extra (`425` → `426`, …). Add a new extra to `DAILY_TEMPLATE_BY_MD` in `src/lib/dailyReel.ts` so **Today’s reel** can load it.
 
 ## House style
 

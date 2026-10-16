@@ -133,6 +133,12 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("yeager")).toBe("yeager");
   });
 
+  it("maps October 16 to the Disney extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-16"));
+    expect(reel?.id).toBe("disney");
+    expect(dailyArtifactStem("disney")).toBe("disney");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

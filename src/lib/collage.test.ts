@@ -208,6 +208,25 @@ describe("collage beats", () => {
     ]);
   });
 
+  it("collages the Disney extra as six two-fact beats", () => {
+    const disney = TEMPLATES.find((t) => t.id === "disney");
+    expect(disney).toBeDefined();
+    expect(usesCollage(disney!)).toBe(true);
+    expect(reelSlides(disney!).length).toBeGreaterThanOrEqual(5);
+    const beats = collageBeats(disney!);
+    expect(beats).toHaveLength(BEAT_COUNT);
+    expect(beats[0].facts[0]).toMatch(/five years away/);
+    expect(beats[5].facts[1]).toMatch(/103 years ago tonight/);
+    expect(beats.map((beat) => beat.imageUrl)).toEqual([
+      "/images/disney-walt-1938.jpg",
+      "/images/disney-roy-1965.jpg",
+      "/images/disney-alice-1926.jpg",
+      "/images/disney-letterhead-1921.jpg",
+      "/images/disney-kingswell-2015.jpg",
+      "/images/disney-hyperion-1929.jpg",
+    ]);
+  });
+
   it("picks the beat for a timestamp and zooms the crop", () => {
     const elvis = TEMPLATES.find((t) => t.id === "elvis")!;
     const mid = beatAtTime(elvis, 25);

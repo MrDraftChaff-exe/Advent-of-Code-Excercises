@@ -463,6 +463,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Photo: U.S. Air Force, 1950 · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=425,
+            title="Disney",
+            year="1923",
+            filename="425-disney.mp4",
+            caption_path=catalog / "disney-post.txt",
+            credit="Photo: Alan Fisher, 1938 · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -569,6 +578,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/freddie-post.csv", [by_n[422]])
         write_rows(ROOT / "public/catalog/snl-post.csv", [by_n[423]])
         write_rows(ROOT / "public/catalog/yeager-post.csv", [by_n[424]])
+        write_rows(ROOT / "public/catalog/disney-post.csv", [by_n[425]])
     print(args.out, args.out.stat().st_size)
 
 
