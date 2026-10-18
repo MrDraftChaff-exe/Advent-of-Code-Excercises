@@ -570,6 +570,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/#AliceComedies/);
   });
 
+  it("paints the Alaska series intro and leaves the caption gap off the frame", () => {
+    const alaska = TEMPLATES.find((t) => t.id === "alaska");
+    expect(alaska?.postCaption).toMatch(/before Congress pays/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, alaska!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("On this day in 1867");
+    expect(painted).toContain("Alaska");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("before Congress pays");
+    expect(painted).not.toContain("Fact or whack?");
+    expect(painted).not.toMatch(/#historytok/);
+    expect(painted).not.toMatch(/\bWHACK\b/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

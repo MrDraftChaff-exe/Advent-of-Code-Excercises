@@ -360,6 +360,19 @@ Poster still: `disney-walt-1938.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/disney-post.txt`](../catalog/disney-post.txt).
 
+# Alaska on-this-day collage, 1827–1868
+
+Poster still: `alaska-seward.jpg`. Collage slides:
+
+- `alaska-seward.jpg` — [William_H._Seward_portrait_-_restoration.jpg](https://commons.wikimedia.org/wiki/File:William_H._Seward_portrait_-_restoration.jpg). Unknown photographer. Public domain. 9:16 crop of the portrait.
+- `alaska-treaty-painting.jpg` — [Alaska_purchase.jpg](https://commons.wikimedia.org/wiki/File:Alaska_purchase.jpg). Emanuel Leutze. Public domain. The treaty painting, fitted on the frame.
+- `alaska-colton-map.jpg` — [Colton's map of the territory of Alaska](https://commons.wikimedia.org/wiki/File:Colton%27s_map_of_the_territory_of_Alaska_-_(Russian_America)_ceded_by_Russia_to_the_United_States_(13972186306).jpg). J. H. Colton. Public domain. The map, fitted on the frame.
+- `alaska-new-archangel-1837.jpg` — [View_of_New_Archangel,_1837.tif](https://commons.wikimedia.org/wiki/File:View_of_New_Archangel,_1837.tif). 1837. Public domain. 9:16 crop of Novo-Arkhangelsk.
+- `alaska-castle-1827.jpg` — [1827 illustration of Castle Hill](https://commons.wikimedia.org/wiki/File:1827_illustration_of_Castle_Hill_(Old_Sitka,_Alaska)_by_Postels.jpg). Postels, 1827. Public domain. 9:16 crop of Castle Hill.
+- `alaska-check-1868.jpg` — [Alaska_Purchase_(hi-res).jpg](https://commons.wikimedia.org/wiki/File:Alaska_Purchase_(hi-res).jpg). U.S. Treasury warrant, August 1, 1868. Public domain. The $7.2 million warrant, fitted on the frame.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/alaska-post.txt`](../catalog/alaska-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

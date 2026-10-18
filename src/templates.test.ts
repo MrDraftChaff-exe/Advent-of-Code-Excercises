@@ -662,6 +662,29 @@ describe("templates", () => {
     expect(canvasHeadlineText(disney!)).not.toMatch(/\b425\b/);
   });
 
+  it("ships an Alaska on-this-day extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const alaska = TEMPLATES.find((t) => t.id === "alaska");
+    expect(alaska).toBeDefined();
+    expect(alaska?.title).toBe("Alaska");
+    expect(alaska?.year).toBe("1867");
+    expect(alaska?.series).toBe("on-this-day");
+    expect(alaska?.format).toBeUndefined();
+    expect(alaska?.imageUrl).toContain("alaska-seward");
+    expect(alaska?.images?.length).toBeGreaterThanOrEqual(5);
+    expect(alaska?.durationSec).toBe(60);
+    expect(alaska?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(alaska?.bullets[0]).toBe(
+      "On this day in 1867, the United States takes Alaska",
+    );
+    expect(alaska?.bullets[11]).toMatch(/159 years ago tonight/);
+    expect(alaska?.postCaption).toMatch(/before Congress pays/);
+    expect(alaska?.postCaption).toContain("#historytok #historyfacts #Alaska");
+    expect(alaska?.postCaption).not.toContain("#FYP");
+    expect(canvasHeadlineText(alaska!)).toBe("Alaska");
+    expect(canvasHeadlineText(alaska!)).not.toMatch(/\b426\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

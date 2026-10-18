@@ -343,6 +343,17 @@ describe("paste captions", () => {
     expect(caption.startsWith("There is no mouse")).toBe(true);
   });
 
+  it("uses the Alaska series caption as the paste block", () => {
+    const alaska = TEMPLATES.find((t) => t.id === "alaska");
+    expect(alaska).toBeDefined();
+    const caption = buildPasteCaption(alaska!);
+    expect(caption.startsWith("On this day in 1867")).toBe(true);
+    expect(caption).toContain("before Congress pays");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#historytok #historyfacts #Alaska");
+    expect(caption).not.toContain("#FYP");
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

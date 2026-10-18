@@ -139,6 +139,13 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("disney")).toBe("disney");
   });
 
+  it("maps October 18 to the Alaska extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-18"));
+    expect(reel?.id).toBe("alaska");
+    expect(reel?.series).toBe("on-this-day");
+    expect(dailyArtifactStem("alaska")).toBe("alaska");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

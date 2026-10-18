@@ -129,3 +129,7 @@ Load the **Yeager** template, or copy row `424`. Caption file: [`yeager-post.txt
 ## Disney extra post
 
 Load the **Disney** template, or copy row `425`. Caption file: [`disney-post.txt`](disney-post.txt). Video filename: `425-disney.mp4`. The growth clip is a 60s two-fact collage. Use `disney_cover.png` as the platform cover.
+
+## Alaska extra post
+
+Load the **Alaska** template, or copy row `426`. Caption file: [`alaska-post.txt`](alaska-post.txt). Video filename: `426-alaska.mp4`. The growth clip is a 60s on-this-day collage. Say the opening line, end on “Fact or whack?”, and pin “Guess fact or whack before you watch.” Use `alaska_cover.png` as the platform cover.

@@ -724,6 +724,13 @@ export default function App() {
             >
               Disney caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/alaska-post.txt"
+              download="alaska-post.txt"
+            >
+              Alaska caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +
