@@ -237,6 +237,14 @@ describe("collage beats", () => {
     expect(later.scale).toBeGreaterThanOrEqual(1);
   });
 
+  it("adds Fact or whack only when the daily series flag is set", () => {
+    const yeager = TEMPLATES.find((t) => t.id === "yeager");
+    expect(yeager?.series).toBeUndefined();
+    const beats = collageBeats({ ...yeager!, series: "on-this-day" });
+    expect(beats[5].facts[beats[5].facts.length - 1]).toBe("Fact or whack?");
+    expect(collageBeats(yeager!)[5].facts).not.toContain("Fact or whack?");
+  });
+
   it("falls back to the hero still when an extra has one photo", () => {
     const magellan = TEMPLATES.find((t) => t.id === "magellan")!;
     expect(usesCollage(magellan)).toBe(false);

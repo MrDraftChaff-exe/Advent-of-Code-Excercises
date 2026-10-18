@@ -31,7 +31,7 @@ npm run daily:pack
 
 That writes `*_9x16_still.png`, `*_60s.mp4`, and `*_post.txt` to `/opt/cursor/artifacts` and `/home/ubuntu/Desktop` when those folders exist, and always to `dist/template-stills/`.
 
-Schedule that script on your machine, not a Cursor cloud agent:
+Schedule the file build in the morning. **Post the clip between 7 and 9pm ET.** That is when this audience is scrolling. Do not post a second clip later the same night.
 
 ```
 0 8 * * * cd /path/to/facts-or-whacks && npm run daily:pack
@@ -106,8 +106,9 @@ Next extra number is one higher than the current max extra (`425` → `426`, …
 - Daily **growth video is at least 60 seconds** (platform monetization). Encode the collage at **62 seconds** so `ffprobe` reports >= 60.0 after xfade. The poster PNG still shows all 12 facts. The MP4 is a collage: six beats, two facts each, Ken Burns zoom, crossfade between public-domain photographs. Prefer 4–6 local Commons photos; a single photo still gets fact beats and zoom.
 - Optional `format: "whack"` exists, but do **not** use it for a new daily. The chip layout did not hold viewers. Keep two facts on the photograph, the way Star Trek and Elvis shipped.
 - Ken Burns moves the **photograph only**. Type, credits, and `@FactsOrWhacks` stay locked to the frame. A zoom that crops a sentence kills the watch.
-- On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`.
-- Off-frame: episode numbers, hashtags, follow CTA. Custom `postCaption` is the paste block; include a follow line. **Exactly 5 hashtags**, all specific to this episode. No `*Tok`, `#FYP`, `#Reels`, `#Shorts`, `#DidYouKnow`, `#OnThisDay`, or `#FactsOrWhacks`. Do not reuse the same five tags from yesterday. The `@FactsOrWhacks` handle stays in the caption body, not as a hashtag.
+- On-frame: title, year, facts, image caption, credit, `@FactsOrWhacks`. The first fact is the series line, on screen from the first frame: `On this day in YEAR, …`. The last beat ends with `Fact or whack?` (`series: "on-this-day"`).
+- Off-frame: episode numbers and hashtags. Caption is a plain hook: the same “On this day” fact, then one curiosity gap. Not a riddle. Include `Follow @FactsOrWhacks. A new one drops every night.`
+- Hashtags on every new daily: `#historytok #historyfacts` plus **one** topic tag. Use `seriesHashtags()` in `src/lib/onThisDay.ts`. Do not add `#FYP` alone or at all. No `#DidYouKnow`, `#OnThisDay`, or `#FactsOrWhacks`. Other `*tok` tags stay banned. Already-posted extras keep the tags they shipped with.
 - Unique quiet sine pad seeded by the still stem. It should breathe, change chords, and pulse. No triangle drone, no chorus detune, no 7ths.
 - Photo: Wikimedia Commons **public domain or CC**, downloaded locally. Credit on-frame. Prefer a portrait that cover-fills 9:16.
 - Do not copy other reels’ scripts. Do not put conspiracy, pending autopsy, or unverified death-toll numbers on the still.
@@ -120,9 +121,20 @@ Use this before inventing another on-screen layout.
 - **Did not hold:** death tributes, assassination, science lectures, memorials, civic anniversaries, and the FACT/WHACK chips (Rosetta through Model T).
 - **The zoom was cropping the type.** That alone drops watch time. New packs zoom the photo and pin the words. Re-export any clip you have not posted yet. Do not post a second clip the same day just to replace a zoom.
 - **Cover:** upload `*_cover.png` (the opening beat), not the 12-fact poster. The poster is for saving. The cover is one picture and two lines.
-- **Voice is the open gap.** The sine pad is original and claim-safe, and it does not stop a scroll. Record the lines in your own voice before changing the layout again.
-- **Post every day.** Multi-day gaps in September reset distribution. One clip, then the same file on TikTok, Reels, and Shorts.
-- Keep the five specific tags and the follow line in the caption. Do not put `#FYP` or a follow button on the frame. The handle is already on the picture.
+- **Voice:** record the series intro and `Fact or whack?` in your own voice over the sine pad. The pad does not stop a scroll. `seriesSpeak()` prints the exact lines.
+- **Post every day.** The bio already promises it. Gaps reset distribution. One clip, then the same file on TikTok, Reels, and Shorts.
+
+## Muse checklist (every new daily)
+
+Same intro, same pacing, same 62-second length. Do not invent another layout.
+
+1. Post once, between **7 and 9pm ET**. Reply to every comment within an hour.
+2. First line, on screen in the first frame and spoken: `On this day in YEAR, [the fact].` Example: `On this day in 1947, a man broke the sound barrier with two broken ribs.`
+3. Caption states that fact, then one curiosity gap. Not a riddle.
+4. The video ends on `Fact or whack?` Pin this comment: `Guess fact or whack before you watch.`
+5. Hashtags: `#historytok #historyfacts` plus one topic tag. No `#FYP`.
+6. Pin three videos on the profile so a new visitor lands on a strong one. Pin **SNL** and **Disney**. For the third, pin whichever of Star Trek, Elvis, Magellan, or Rosetta has the highest average watch time. Rosetta was the chip test; do not pin it if those three beat it.
+7. On-screen text stays. Most people start muted. The spoken line is in addition to the words, not instead of them.
 
 ## Build checklist (newsjack extra only)
 

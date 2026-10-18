@@ -1,4 +1,5 @@
 import type { ReelContent, ReelSlide } from "../types";
+import { SERIES_CLOSER } from "./onThisDay";
 
 /** Posted growth clips are one minute for platform monetization. */
 export const VIDEO_DURATION_SEC = 60;
@@ -48,6 +49,13 @@ export function collageBeats(reel: ReelContent): CollageBeat[] {
             imageCredit: reel.imageCredit,
           };
     const start = index * beatDur;
+    const beatFacts = facts.slice(
+      index * FACTS_PER_BEAT,
+      (index + 1) * FACTS_PER_BEAT,
+    );
+    if (reel.series === "on-this-day" && index === BEAT_COUNT - 1) {
+      beatFacts.push(SERIES_CLOSER);
+    }
     return {
       index,
       start,
@@ -55,7 +63,7 @@ export function collageBeats(reel: ReelContent): CollageBeat[] {
       imageUrl: slide.imageUrl,
       imageCaption: slide.imageCaption,
       imageCredit: slide.imageCredit,
-      facts: facts.slice(index * FACTS_PER_BEAT, (index + 1) * FACTS_PER_BEAT),
+      facts: beatFacts,
       zoomIn: index % 2 === 0,
       focusX: 0.46 + ((index * 17) % 9) * 0.01,
       focusY: 0.24 + ((index * 13) % 7) * 0.012,

@@ -17,13 +17,16 @@ const BANNED = new Set([
   "youtube",
   "youtubeshorts",
   "historymatters",
-  "historyfacts",
   "weirdhistory",
 ]);
+
+/** Series tags Muse asked for on every daily. Other *tok tags stay banned. */
+const SERIES_TAGS = new Set(["historytok", "historyfacts"]);
 
 export function isBannedHashtag(tag: string): boolean {
   const key = tag.replace(/^#/, "").toLowerCase();
   if (!key) return true;
+  if (SERIES_TAGS.has(key)) return false;
   if (key.endsWith("tok")) return true;
   return BANNED.has(key);
 }

@@ -16,10 +16,10 @@ describe("hashtag house rule", () => {
       sanitizeHashtags(
         "#PrincessDiana #HistoryTok #DidYouKnow #FactsOrWhacks #OnThisDay #RoyalFamily #Diana #Landmines #Panorama",
       ),
-    ).toBe("#PrincessDiana #RoyalFamily #Diana #Landmines #Panorama");
+    ).toBe("#PrincessDiana #HistoryTok #RoyalFamily #Diana #Landmines");
     expect(sanitizeHashtags("#MovieTok #TrueCrimeTok #FYP")).toBe("");
-    expect(sanitizeHashtags("#HistoryTok", "Jack the Ripper")).toBe(
-      "#Jack #Ripper",
+    expect(sanitizeHashtags("#HistoryTok #historyfacts #Yeager")).toBe(
+      "#HistoryTok #historyfacts #Yeager",
     );
   });
 

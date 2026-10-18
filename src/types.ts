@@ -60,6 +60,11 @@ export type ReelContent = {
   reveal: RevealMode;
   /** Defaults to lecture. Whack extras paint FACT/WHACK chips and leave the photo open. */
   format?: ReelFormat;
+  /**
+   * Daily series. First fact is "On this day in YEAR, ...".
+   * The last beat ends with "Fact or whack?"
+   */
+  series?: "on-this-day";
 };
 
 export type Theme = {
