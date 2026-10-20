@@ -133,3 +133,7 @@ Load the **Disney** template, or copy row `425`. Caption file: [`disney-post.txt
 ## Alaska extra post
 
 Load the **Alaska** template, or copy row `426`. Caption file: [`alaska-post.txt`](alaska-post.txt). Video filename: `426-alaska.mp4`. The growth clip is a 60s on-this-day collage. Say the opening line, end on “Fact or whack?”, and pin “Guess fact or whack before you watch.” Use `alaska_cover.png` as the platform cover.
+
+## Yorktown extra post
+
+Load the **Yorktown** template, or copy row `427`. Caption file: [`yorktown-post.txt`](yorktown-post.txt). Video filename: `427-yorktown.mp4`. The growth clip is a 60s on-this-day collage. Say the opening line, end on “Fact or whack?”, and pin “Guess fact or whack before you watch.” Use `yorktown_cover.png` as the platform cover.

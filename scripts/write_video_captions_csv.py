@@ -481,6 +481,15 @@ def extra_rows() -> list[dict[str, str]]:
             credit="Photo: unknown · Public domain",
             duration_sec="60",
         ),
+        extra_row(
+            n=427,
+            title="Yorktown",
+            year="1781",
+            filename="427-yorktown.mp4",
+            caption_path=catalog / "yorktown-post.txt",
+            credit="Painting: Gilbert Stuart · Public domain",
+            duration_sec="60",
+        ),
     ]
 
 
@@ -589,6 +598,7 @@ def main() -> None:
         write_rows(ROOT / "public/catalog/yeager-post.csv", [by_n[424]])
         write_rows(ROOT / "public/catalog/disney-post.csv", [by_n[425]])
         write_rows(ROOT / "public/catalog/alaska-post.csv", [by_n[426]])
+        write_rows(ROOT / "public/catalog/yorktown-post.csv", [by_n[427]])
     print(args.out, args.out.stat().st_size)
 
 

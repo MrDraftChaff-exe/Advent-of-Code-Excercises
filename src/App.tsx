@@ -731,6 +731,13 @@ export default function App() {
             >
               Alaska caption
             </a>
+            <a
+              className="ghost"
+              href="/catalog/yorktown-post.txt"
+              download="yorktown-post.txt"
+            >
+              Yorktown caption
+            </a>
           </div>
           <p className="hint">
             CSV column <code>copy_caption</code> is description + handle +

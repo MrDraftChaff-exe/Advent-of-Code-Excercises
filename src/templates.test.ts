@@ -685,6 +685,28 @@ describe("templates", () => {
     expect(canvasHeadlineText(alaska!)).not.toMatch(/\b426\b/);
   });
 
+  it("ships a Yorktown on-this-day extra without replacing apartheid", () => {
+    expect(TEMPLATES[0].id).toBe("apartheid");
+    const yorktown = TEMPLATES.find((t) => t.id === "yorktown");
+    expect(yorktown).toBeDefined();
+    expect(yorktown?.title).toBe("Yorktown");
+    expect(yorktown?.year).toBe("1781");
+    expect(yorktown?.series).toBe("on-this-day");
+    expect(yorktown?.format).toBeUndefined();
+    expect(yorktown?.imageUrl).toContain("yorktown-washington");
+    expect(yorktown?.durationSec).toBe(60);
+    expect(yorktown?.bullets).toHaveLength(TARGET_FACT_COUNT);
+    expect(yorktown?.bullets[0]).toBe(
+      "On this day in 1781, Cornwallis surrenders at Yorktown",
+    );
+    expect(yorktown?.bullets[11]).toMatch(/245 years ago tonight/);
+    expect(yorktown?.postCaption).toMatch(/from a deputy/);
+    expect(yorktown?.postCaption).toContain("#historytok #historyfacts #Yorktown");
+    expect(yorktown?.postCaption).not.toContain("#FYP");
+    expect(canvasHeadlineText(yorktown!)).toBe("Yorktown");
+    expect(canvasHeadlineText(yorktown!)).not.toMatch(/\b427\b/);
+  });
+
   it("uses twelve full-sentence facts on every template", () => {
     for (const template of TEMPLATES) {
       expect(template.bullets).toHaveLength(TARGET_FACT_COUNT);

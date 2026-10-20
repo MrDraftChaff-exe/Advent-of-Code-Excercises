@@ -585,6 +585,21 @@ describe("canvas layout rules", () => {
     expect(painted).not.toMatch(/\bWHACK\b/);
   });
 
+  it("paints the Yorktown series intro and leaves the sword line off the poster", () => {
+    const yorktown = TEMPLATES.find((t) => t.id === "yorktown");
+    expect(yorktown?.postCaption).toMatch(/from a deputy/);
+    const { ctx, texts } = stubContext();
+    drawFrame(ctx, yorktown!, 4, null);
+    const painted = texts.join("");
+    expect(painted).toContain("On this day in 1781");
+    expect(painted).toContain("Yorktown");
+    expect(painted).toContain("@FactsOrWhacks");
+    expect(painted).not.toContain("from a deputy");
+    expect(painted).not.toContain("Fact or whack?");
+    expect(painted).not.toMatch(/#historytok/);
+    expect(painted).not.toMatch(/\bWHACK\b/);
+  });
+
   it("keeps lecture extras from painting FACT/WHACK chips", () => {
     const { ctx, texts } = stubContext();
     drawFrame(ctx, TEMPLATES[0], 4, null);

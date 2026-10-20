@@ -354,6 +354,17 @@ describe("paste captions", () => {
     expect(caption).not.toContain("#FYP");
   });
 
+  it("uses the Yorktown series caption as the paste block", () => {
+    const yorktown = TEMPLATES.find((t) => t.id === "yorktown");
+    expect(yorktown).toBeDefined();
+    const caption = buildPasteCaption(yorktown!);
+    expect(caption.startsWith("On this day in 1781")).toBe(true);
+    expect(caption).toContain("from a deputy");
+    expect(caption).toContain("Follow @FactsOrWhacks");
+    expect(caption).toContain("#historytok #historyfacts #Yorktown");
+    expect(caption).not.toContain("#FYP");
+  });
+
   it("falls back to a one-line title, facts, handle, and hashtags", () => {
     const caption = buildPasteCaption({
       ...TEMPLATES[0],

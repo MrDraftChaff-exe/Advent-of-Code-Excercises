@@ -373,6 +373,18 @@ Poster still: `alaska-seward.jpg`. Collage slides:
 
 Each slide prints its own credit on-frame. Paste caption: [`../catalog/alaska-post.txt`](../catalog/alaska-post.txt).
 
+# Yorktown on-this-day collage, 1781
+
+Poster still: `yorktown-washington.jpg`. Collage slides:
+
+- `yorktown-washington.jpg` — [Gilbert Stuart Williamstown Portrait of George Washington](https://commons.wikimedia.org/wiki/File:Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg). Gilbert Stuart. Public domain. 9:16 crop of the portrait.
+- `yorktown-de-grasse.jpg` — [Comte de Grasse gravure anglaise](https://commons.wikimedia.org/wiki/File:Comte_de_Grasse_gravure_anglaise.jpeg). Engraving. Public domain. 9:16 crop of the admiral.
+- `yorktown-map.jpg` — [Plan of York Town, October 1781](https://commons.wikimedia.org/wiki/File:Plan_of_York_Town_in_Virginia_and_adjacent_country_exhibiting_the_operations_of_the_American_French_English_armies_during_the_siege_of_that_place_in_Oct_1781_surveyed_from_the_22nd_to_the_28th_Octr.jpg). Surveyed October 22–28, 1781. Public domain. 9:16 crop of the siege plan.
+- `yorktown-cornwallis.jpg` — [Charles, Earl Cornwallis, MET](https://commons.wikimedia.org/wiki/File:Charles,_Earl_Cornwallis_MET_MM8360.jpg). Metropolitan Museum of Art. CC0. 9:16 crop of the portrait.
+- `yorktown-trumbull-detail.jpg` and `yorktown-trumbull.jpg` — [Surrender of Lord Cornwallis](https://commons.wikimedia.org/wiki/File:Surrender_of_Lord_Cornwallis.jpg). John Trumbull. Public domain. A detail crop, then the full painting fitted on the frame.
+
+Each slide prints its own credit on-frame. Paste caption: [`../catalog/yorktown-post.txt`](../catalog/yorktown-post.txt).
+
 # 395-episode catalog
 
 Every catalog episode now uses a locally downloaded Wikimedia Commons raster in `catalog/`. File-by-file credits: [`catalog/ATTRIBUTION.md`](catalog/ATTRIBUTION.md).

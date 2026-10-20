@@ -146,6 +146,13 @@ describe("daily reel calendar", () => {
     expect(dailyArtifactStem("alaska")).toBe("alaska");
   });
 
+  it("maps October 19 to the Yorktown extra", () => {
+    const reel = pickDailyTemplate(parseIsoDate("2026-10-19"));
+    expect(reel?.id).toBe("yorktown");
+    expect(reel?.series).toBe("on-this-day");
+    expect(dailyArtifactStem("yorktown")).toBe("yorktown");
+  });
+
   it("returns nothing on a day with no dated extra", () => {
     expect(pickDailyTemplate(parseIsoDate("2026-12-25"))).toBeUndefined();
   });

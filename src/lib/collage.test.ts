@@ -237,6 +237,15 @@ describe("collage beats", () => {
     expect(later.scale).toBeGreaterThanOrEqual(1);
   });
 
+  it("ends the Yorktown series on Fact or whack after the payoff", () => {
+    const yorktown = TEMPLATES.find((t) => t.id === "yorktown");
+    expect(yorktown?.series).toBe("on-this-day");
+    const beats = collageBeats(yorktown!);
+    expect(beats[0].facts[0]).toMatch(/On this day in 1781/);
+    expect(beats[5].facts).toContain(yorktown!.bullets[11]);
+    expect(beats[5].facts[beats[5].facts.length - 1]).toBe("Fact or whack?");
+  });
+
   it("ends the Alaska series on Fact or whack after the payoff", () => {
     const alaska = TEMPLATES.find((t) => t.id === "alaska");
     expect(alaska?.series).toBe("on-this-day");
