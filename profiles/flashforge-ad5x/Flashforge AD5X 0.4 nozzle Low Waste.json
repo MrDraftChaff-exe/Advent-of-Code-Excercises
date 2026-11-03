@@ -13,5 +13,5 @@
     ],
     "default_print_profile": "0.20mm Standard Low Waste @FF AD5X",
     "purge_in_prime_tower": "1",
-    "printer_notes": "Low-waste 0.4 mm preset for the Flashforge AD5X. Select process \"0.20mm Standard Low Waste @FF AD5X\" with this printer. Purge in prime tower is on, so color-change purge can be laid into infill and supports. The prime tower stays on, which that feature requires."
+    "printer_notes": "Same AD5X 0.4 mm printer with Purge in prime tower turned on. The process 0.20mm Standard Low Waste @FF AD5X also appears when the stock Flashforge AD5X 0.4 nozzle printer is selected. Use this printer preset when you want that purge switch already on."
 }

@@ -2,16 +2,22 @@
 
 Daily profile for a Flashforge AD5X with a 0.4 mm nozzle and PLA. It keeps the stock 0.20 mm surfaces (2 walls, 5 top layers, 3 bottom layers, 0.20 mm layers, 0.25 mm first layer) and spends less filament on infill, supports, and color changes.
 
-Import `AD5X-0.20mm-Standard-Low-Waste.zip` in Orca-Flashforge or Orca Slicer with **File → Import → Import Configs**. Then select:
+The process preset stands on its own. It shows up for the stock **Flashforge AD5X 0.4 nozzle** printer, which is the one already in the printer list. The optional printer preset only turns on **Purge in prime tower**.
+
+## Import
+
+1. In the slicer, the printer **Flashforge AD5X 0.4 nozzle** has to already be in the printer dropdown. Add that system printer from the configuration wizard first if it is missing. An import with no matching printer is dropped, and the dialog then says no config was imported.
+2. Use **File → Import → Import Configs**. Select `0.20mm Standard Low Waste @FF AD5X.json`. You can select the zip instead; it contains the same process file plus the optional printer preset.
+3. The dialog should report that a config was imported. Restart the slicer if the new name is not in the list yet.
+4. Leave the printer on **Flashforge AD5X 0.4 nozzle**. Open the process dropdown and choose **0.20mm Standard Low Waste @FF AD5X**. It is a user preset, so it sits apart from the system 0.20 mm profiles.
+5. Open the printer settings, Multimaterial tab, and turn on **Purge in prime tower**. That switch is what makes the flush multiplier, flush-into-infill, and flush-into-support apply. Selecting the optional printer **Flashforge AD5X 0.4 nozzle Low Waste** turns the same switch on for you.
 
 | | |
 | --- | --- |
-| Printer | Flashforge AD5X 0.4 nozzle Low Waste |
+| Printer | Flashforge AD5X 0.4 nozzle |
 | Process | 0.20mm Standard Low Waste @FF AD5X |
 | Nozzle | 0.4 mm |
 | Material | PLA in every IFS slot used by the print |
-
-The process preset is hidden until that printer preset is selected. The printer preset turns on **Purge in prime tower**. On this printer that switch is what makes the flush multiplier, flush-into-infill, and flush-into-support apply. With it off, Orca replaces the flush table with a flat prime volume and ignores those three settings.
 
 ## What changed from stock 0.20 mm Standard @FF AD5X
 
@@ -29,7 +35,7 @@ The process preset is hidden until that printer preset is selected. The printer 
 | Flush into support | on | on |
 | Flush into other objects | off | off |
 | Flush multiplier | 0.3 | 0.2 |
-| Purge in prime tower | off | on |
+| Purge in prime tower | printer switch off | turn on under the printer's Multimaterial tab |
 | Seam | aligned, no scarf | aligned, scarf on smooth outer walls |
 
 Supports stay off. Turn them on for a print that needs them. Tree supports at 40° catch the overhangs that PLA will not hold, and those supports are allowed to be printed from the purge. Support filament and support-interface filament stay on the default slot, which is what allows the purge to flow into them.
