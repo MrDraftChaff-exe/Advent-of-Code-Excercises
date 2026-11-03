@@ -30,10 +30,21 @@ The process preset is hidden until that printer preset is selected. The printer 
 | Flush into other objects | off | off |
 | Flush multiplier | 0.3 | 0.2 |
 | Purge in prime tower | off | on |
+| Seam | aligned, no scarf | aligned, scarf on smooth outer walls |
 
 Supports stay off. Turn them on for a print that needs them. Tree supports at 40° catch the overhangs that PLA will not hold, and those supports are allowed to be printed from the purge. Support filament and support-interface filament stay on the default slot, which is what allows the purge to flow into them.
 
 Outer walls are never used as purge, so the shell color stays the filament assigned to that part.
+
+## Seams
+
+The stock profile lines every outer-wall start and stop up in one place and leaves a small gap there. On a rounded corner that becomes the groove in the photo: a notch that runs layer after layer, easy to see in white.
+
+This profile still uses an aligned seam, so a sharp corner keeps the join tucked into that corner. On a smooth loop, where there is no sharp corner to hide it, the outer wall uses a scarf joint: the end of the loop ramps down over 15 mm and the next start ramps up over the same path, so the gap is closed instead of stacked. The scarf prints at 60 mm/s. The outer wall itself stays at the stock 200 mm/s, and only that 15 mm ramp slows down. The ramp starts at 10% of the layer height so the first bit of the join still has plastic in it.
+
+Inner seams are staggered so they do not sit in one line behind the outer wall. Before the outer wall starts, the nozzle unretracts on the inside of the wall. At the end of a closed loop it wipes inward.
+
+A sharp 90° corner still gets a normal aligned seam. That mark is shorter than a scarf laid across a crisp edge. If a corner like the one in the photo is still open after a reslice, turn off **Conditional scarf joint** for that project so every outer wall gets the ramp.
 
 ## Purge amount
 
