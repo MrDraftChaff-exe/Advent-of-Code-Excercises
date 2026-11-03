@@ -1,0 +1,17 @@
+{
+    "type": "machine",
+    "name": "Flashforge AD5X 0.4 nozzle Low Waste",
+    "inherits": "Flashforge AD5X 0.4 nozzle",
+    "from": "User",
+    "setting_id": "a7k2lw04mad5x",
+    "instantiation": "true",
+    "version": "2.1.1",
+    "printer_model": "Flashforge AD5X",
+    "printer_settings_id": "Flashforge AD5X 0.4 nozzle Low Waste",
+    "nozzle_diameter": [
+        "0.4"
+    ],
+    "default_print_profile": "0.20mm Standard Low Waste @FF AD5X",
+    "purge_in_prime_tower": "1",
+    "printer_notes": "Same AD5X 0.4 mm printer with Purge in prime tower turned on. The process 0.20mm Standard Low Waste @FF AD5X also appears when the stock Flashforge AD5X 0.4 nozzle printer is selected. Use this printer preset when you want that purge switch already on."
+}
