@@ -1,0 +1,41 @@
+{
+  "_state": {
+    "lastFetched": 1730000000000,
+    "userAffinities": [
+      {
+        "otherUserId": "111111111111111111",
+        "communicationRank": 1,
+        "dmRank": 3,
+        "vcRank": 2,
+        "isFriend": true
+      },
+      {
+        "otherUserId": "222222222222222222",
+        "communicationRank": 2,
+        "dmRank": 1,
+        "vcRank": 0,
+        "isFriend": false
+      },
+      {
+        "otherUserId": "333333333333333333",
+        "communication_rank": 8,
+        "dm_rank": 2,
+        "vc_rank": 1,
+        "is_friend": true
+      },
+      null,
+      {
+        "otherUserId": "",
+        "communicationRank": 99
+      },
+      {
+        "otherUserId": "444444444444444444",
+        "communicationRank": 0,
+        "dmRank": 0,
+        "vcRank": 0,
+        "isFriend": false
+      }
+    ]
+  },
+  "_version": 1
+}
